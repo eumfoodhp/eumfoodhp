@@ -1,0 +1,1192 @@
+<?php
+/* ============================================================
+    공통 메뉴 및 일반 텍스트
+   ============================================================ */
+$lang['common_more'] = '了解更多';
+
+/* 공통 메뉴 - 대메뉴 */
+$lang['menu_about'] = '公司简介';
+$lang['menu_business'] = '事业领域';  /* 신규 추가 */
+$lang['menu_product'] = '产品介绍';
+$lang['menu_news'] = '新闻资讯';      /* 신규 추가 */
+$lang['menu_support'] = '客户咨询';  /* 명칭 변경: 고객지원 -> 고객문의 */
+
+/* 퀵메뉴 (우측 고정) */
+$lang['quick_mall'] = '官方商城';
+$lang['quick_contact'] = '客户咨询';
+$lang['quick_catalog'] = '产品目录';
+$lang['quick_top'] = '返回顶部';
+
+/* 회사소개 - 서브메뉴 */
+$lang['sub_greeting'] = '致辞';
+$lang['sub_history'] = '沿革';
+$lang['sub_cert'] = '认证状况';
+$lang['sub_org'] = '组织图';
+$lang['sub_location'] = '交通指南';
+
+/* 사업영역 - 서브메뉴 (신규) */
+$lang['sub_biz_area'] = '事业领域';
+$lang['sub_facility'] = '设施现状';
+$lang['sub_biz_process'] = '生产流程介绍';
+
+/* 제품소개 - 서브메뉴 (분류 세분화) */
+$lang['sub_prod_pickles'] = '腌制食品';
+$lang['sub_prod_namul'] = '山野菜类';
+$lang['sub_prod_braised'] = '酱菜类';
+$lang['sub_prod_salted'] = '调料酱·鱼酱'; /* 명칭 수정 */
+$lang['sub_prod_sauce'] = '酱类·混合类';
+$lang['sub_prod_tea'] = '液体茶';
+
+/* 뉴스룸 - 서브메뉴 (신규 및 통합) */
+$lang['sub_notice'] = '公告栏';
+$lang['sub_news_press'] = '媒体报道'; /* 신규 추가 */
+$lang['sub_board'] = '下载';      /* 명칭 변경: 자료실 -> 다운로드 */
+$lang['press_release_label_ko'] = 'PRESS RELEASE';
+$lang['press_search_placeholder_ko'] = '请输入您的搜索词';
+$lang['press_empty_ko'] = '没有注册的新闻稿。';
+$lang['board_card_1_label'] = 'Brochure';
+$lang['board_card_1_title'] = '公司介绍';
+$lang['board_card_1_desc'] = '收录（株）EUMFOOD SYSTEM 企业信息与事业概况的公司介绍资料。';
+$lang['board_card_2_label'] = 'Catalog';
+$lang['board_card_2_title'] = '电子目录';
+$lang['board_card_2_desc'] = '可浏览全线产品与规格说明的电子型录。';
+$lang['board_card_3_label'] = 'Logo';
+$lang['board_card_3_title'] = 'CI标志';
+$lang['board_card_3_desc'] = '（株）EUMFOOD SYSTEM 官方标志源文件及使用规范。';
+
+/* 고객문의 - 서브메뉴 (신규) */
+$lang['sub_inquiry_1to1'] = '1:1询价';
+$lang['sub_inquiry_sales'] = '销售查询';
+$lang['contact_hero_desc'] = '请留下您对（株）EUMFOOD SYSTEM 的任何疑问。';
+$lang['contact_section_label'] = '客户留言';
+$lang['contact_sort_latest'] = '最新优先';
+$lang['contact_sort_oldest'] = '最早优先';
+$lang['contact_search_subject'] = '标题';
+$lang['contact_search_writer'] = '作者';
+$lang['contact_search_placeholder'] = '请输入您的搜索词';
+$lang['contact_write'] = '发布';
+$lang['contact_col_no'] = 'NO';
+$lang['contact_col_title'] = '标题';
+$lang['contact_col_writer'] = '作者';
+$lang['contact_col_date'] = '创建日期';
+$lang['contact_col_state'] = '询价状态';
+$lang['contact_state_done'] = '已回复';
+$lang['contact_state_pending'] = '待回复';
+$lang['contact_empty'] = '暂无留言。';
+$lang['contact_write_desc'] = '请填写您的咨询内容。';
+$lang['contact_label_subject'] = '标题';
+$lang['contact_label_writer'] = '作者';
+$lang['contact_label_phone'] = '联系电话';
+$lang['contact_label_content'] = '咨询内容';
+$lang['contact_submit'] = '提交';
+$lang['contact_cancel'] = '取消';
+$lang['contact_detail_desc'] = '查询详情';
+$lang['contact_answer_title'] = '回答';
+$lang['contact_answer_empty'] = '尚未登记任何回应。';
+$lang['contact_back_list'] = '返回列表';
+$lang['sales_hero_desc'] = '请留下与销售相关的询问。';
+$lang['sales_label'] = '联系我们';
+$lang['sales_step1_title'] = '请填写资料，我们将尽快与您联系。';
+$lang['sales_step2_title'] = '请填写资料，我们将尽快与您联系。';
+$lang['sales_step3_title'] = '请阅读并同意条款后提交，以便我们快速受理。';
+$lang['sales_phone_label'] = '总机电话';
+$lang['sales_tel_quality'] = '质量：031-334-6810';
+$lang['sales_tel_sales'] = '销售：070-4334-5206';
+$lang['sales_tel_admin'] = '会计：070-4334-5205';
+$lang['sales_tel_purchase'] = '购买：070-4334-5207';
+$lang['sales_tel_rnd'] = '研究开发：070-4334-5885';
+$lang['sales_address_label'] = '地址';
+$lang['sales_address_value'] = '地址 京畿道龙仁市处仁区二东邑华山路191';
+
+$lang['sales_form_company'] = '公司';
+$lang['sales_form_company_ph'] = '请输入公司名称';
+$lang['sales_form_position'] = '职务';
+$lang['sales_form_position_ph'] = '请输入职务';
+$lang['sales_form_name'] = '姓名';
+$lang['sales_form_name_ph'] = '请输入姓名';
+$lang['sales_form_email'] = '电子邮箱';
+$lang['sales_form_email_ph'] = '请输入电子邮箱';
+$lang['sales_form_phone'] = '联系电话';
+$lang['sales_form_phone_ph'] = '请输入联系电话';
+$lang['sales_form_country'] = '国家';
+$lang['sales_form_country_ph'] = '请选择国家';
+$lang['sales_country_korea'] = '韩国';
+$lang['sales_country_china'] = '中国';
+$lang['sales_country_japan'] = '日本';
+$lang['sales_country_usa'] = '美国';
+$lang['sales_country_other'] = '其他';
+$lang['sales_form_category'] = '咨询类型';
+$lang['sales_cat_product_brand'] = '产品/品牌相关咨询';
+$lang['sales_cat_partnership'] = '合作/协作咨询';
+$lang['sales_cat_product_sponsorship'] = '产品赞助咨询';
+$lang['sales_cat_corporate_general'] = '企业一般咨询';
+$lang['sales_form_content'] = '请详细说明您想咨询的内容。';
+$lang['sales_form_content_ph'] = '请输入咨询内容';
+$lang['sales_form_attach'] = '附件';
+$lang['sales_form_attach_ph'] = '请选择附件';
+$lang['sales_form_file_btn'] = '选择文件';
+$lang['sales_privacy_agree'] = '个人信息收集及使用同意';
+$lang['sales_privacy_required'] = '[必选]';
+$lang['sales_privacy_p1'] = '（株）EUMFOOD SYSTEM 依据《促进信息通信网络利用及信息保护等相关法律》安全处理个人信息。';
+$lang['sales_privacy_p2'] = '必填收集项：企业名称、合作内容、部门、负责人姓名、联系方式、电子邮箱';
+$lang['sales_privacy_p3'] = '* 必须同意必填项方可提交咨询。';
+$lang['sales_submit'] = '提交';
+$lang['sales_alert_required'] = '请填写所有必填项。';
+$lang['sales_alert_success'] = '营业咨询已提交。';
+
+/* 제조공정 - 서브메뉴 (필요 시 유지) */
+$lang['sub_proc_pickles'] = '腌制食品工艺';
+$lang['sub_proc_braised'] = '酱菜类食品工艺';
+$lang['sub_proc_salted'] = '调料酱·鱼酱工艺';
+$lang['sub_proc_sauce'] = '液态茶饮与酱类·混合类工艺';
+$lang['sub_proc_mealkit'] = '简易料理套餐工艺';
+
+/* 기타 유틸 */
+$lang['menu_inquiry'] = '联系我们';
+
+/* ============================================================
+    메인 페이지 섹션별 텍스트
+   ============================================================ */
+
+/* Section 1: Hero (Figma 175-3744) */
+$lang['main_hero_brand'] = 'EUMFOOD';
+$lang['main_hero_sub'] = '每日相遇的日常幸福，';
+$lang['main_hero_title'] = '延续那份温暖的温度。';
+
+/* Section 2: Overview */
+$lang['main_ov_sub'] = 'Overview';
+$lang['main_ov_title_1'] = '竭诚相连的纽带，';
+$lang['main_ov_title_2'] = '共同分享的成长价值';
+$lang['main_ov_desc'] = "以信任相连、真挚的沟通，引领我们每一个人走向幸福的成长。我们始终以可靠的品质回报，\n并愿与您一同描绘更温暖的未来。";
+$lang['main_ov_more'] = '了解更多';
+
+/* Section 3: Business — Figma 413-9986 */
+$lang['main_biz_sub'] = 'FOOD SOLUTION';
+$lang['main_biz_title'] = '（株）EUMFOOD SYSTEM 事业领域';
+$lang['main_biz_more'] = '了解更多';
+$lang['main_biz_items'] = [
+    [
+        'title' => '家庭替代食品（HMR）',
+        'desc' => "严选原料与(株）EUMFOOD SYSTEM 独有的技术诀窍, 尽数呈现。",
+    ],
+    [
+        'title' => '集团用餐，餐饮专业生产',
+        'desc' => '针对学校, 企业, 医院等各环境的系统卫生管理, 提供健康的一餐。',
+    ],
+    [
+        'title' => '特许专用产品',
+        'desc' => "严格按照标准，完美落实各连锁总部独有的特色菜谱。",
+    ],
+    [
+        'title' => '酱类，混合酱，液体茶',
+        'desc' => '研发中心专家研究人员研发的多种酱料，最大限度地发挥菜肴的风味。',
+    ],
+];
+
+/* Section 4: Process (메인 공정/특장점 영역) */
+$lang['main_proc_more'] = '了解更多';
+$lang['main_proc_tabs'] = [
+    [
+        'tag' => 'Supply',
+        'title' => "团餐与配餐\nB2B专业伙伴",
+        'desc' => '与国内领先食品企业协作，在大规模团餐与配餐领域验证稳定供应能力, 以系统化物流与大产能冷藏生产，助力伙伴业务成长。',
+        'link' => '/pages/business_supply.php'
+    ], // section4-1.png 매칭
+    [
+        'tag' => 'Formula',
+        'title' => "加盟专用调味酱与\n产品研发（R&D）",
+        'desc' => '不止于代工，我们专注加盟专用酱料与招牌菜研发, 结合趋势提供定制配方，提升品牌竞争力。',
+        'link' => '/pages/business_rnd.php'
+    ], // section4-2.png 매칭
+    [
+        'tag' => 'Safe',
+        'title' => "HACCP认证与\n质量管理",
+        'desc' => '从原料甄选到包装全程贯彻HACCP, 承诺洁净, 可信赖的餐桌, 以严格品控保持最佳鲜度。',
+        'link' => '/pages/business_safe.php'
+    ], // section4-3.png 매칭
+];
+
+/* Section 5: Product */
+$lang['main_prod_more_text'] = '了解更多';
+$lang['main_prod_sub'] = 'Product';
+$lang['main_prod_title'] = '（株）EUMFOOD SYSTEM 产品';
+$lang['main_prod_label_storage'] = '保管';
+$lang['main_prod_label_package'] = '包装';
+
+$lang['main_prod_categories'] = [
+    ['name' => '腌制食品', 'link' => '/pages/product_pickles.php'],
+    ['name' => '酱菜类', 'link' => '/pages/product_braised.php'],
+    ['name' => '山野菜类', 'link' => '/pages/product_namul.php'],
+    ['name' => '调料酱·鱼酱', 'link' => '/pages/product_salted.php'],
+    ['name' => '酱类·混合类', 'link' => '/pages/product_sauce.php'],
+    ['name' => '液体茶', 'link' => '/pages/product_tea.php'],
+];
+
+$lang['main_prod_list'] = [
+    '腌制食品' => [
+        ['name' => '调味萝卜干', 'eng' => 'Seasoned Dried Radish Strips', 'desc' => '将晒得干香的萝卜拌入秘制辣酱，越嚼越清爽甘甜，是配饭一绝的小菜。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-pickles-1.png'],
+        ['name' => '调味紫苏叶', 'eng' => 'Seasoned Perilla Leaves', 'desc' => '紫苏叶逐片以香辣调料腌渍，盖在饭上食用，香气满口。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-pickles-2.png'],
+        ['name' => '剥皮蒜泡菜', 'eng' => 'Pickled Peeled Garlic', 'desc' => '减轻蒜的辛辣，突出爽脆与清爽酸味，保留大蒜本味的健康腌蒜。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-pickles-3.png'],
+        ['name' => '腌野蒜叶', 'eng' => 'Pickled Wild Garlic Leaves', 'desc' => '山野蒜叶香气柔和、口感细嫩，甜咸酱油入味，与烧烤类菜肴绝配。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-pickles-4.png'],
+    ],
+    '酱菜类' => [
+        ['name' => '酱烧莲藕', 'eng' => 'Braised Lotus Root', 'desc' => '新鲜莲藕以甜咸酱油慢炖，爽脆中带嚼劲，表面油亮诱人。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-braise-1.png'],
+        ['name' => '炒干小鳀', 'eng' => 'Stir-fried Dried Anchovies', 'desc' => '精选小鳀鱼炒香炒酥，可配坚果或青椒，风味与营养兼具。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-braise-2.png'],
+        ['name' => '酱煮牛蒡', 'eng' => 'Braised Burdock Root', 'desc' => '富含膳食纤维的牛蒡切细丝，以秘制酱油炖透，风味独特、口感爽脆。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-braise-3.png'],
+        ['name' => '酱小土豆', 'eng' => 'Braised Baby Potatoes', 'desc' => '一口大小的土豆带皮炖制，外皮略韧、内里绵软。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-braise-4.png'],
+    ],
+    '山野菜类' => [
+        ['name' => '烫蕨菜', 'eng' => 'Blanched Bracken', 'desc' => '柔韧不柴，呈现蕨菜本味的健康野菜。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/sub/namul_rect_58.png'],
+        ['name' => '烫山菜', 'eng' => 'Blanched Gondre', 'desc' => '香气浓郁、口感柔润，适合拌饭或入汤。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/sub/namul_rect_61.png'],
+        ['name' => '蕨菜炒拌', 'eng' => 'Seasoned Bracken', 'desc' => '柔嫩蕨菜以秘制酱料炒香，越嚼越能感受醇厚风味。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/sub/namul_rect_55.png'],
+        ['name' => '炒红薯茎', 'eng' => 'Stir-fried Sweet Potato Stems', 'desc' => '保留爽脆口感，咸香渗入茎芯，令人停不下筷。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/sub/namul_rect_56.png'],
+    ],
+    '调料酱·鱼酱' => [
+        ['name' => '鱿鱼酱', 'eng' => 'Seasoned Squid Jeot', 'desc' => '弹韧鱿鱼与辛香腌料相融的味道。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-salted-squid-new.png'],
+        ['name' => '章鱼酱', 'eng' => 'Seasoned Octopus Jeot', 'desc' => '饱满章鱼的口感与秘制腌料的浓郁鲜味。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-salted-octopus-new.png'],
+        ['name' => '虾酱', 'eng' => 'Seasoned Shrimp Jeot', 'desc' => '新鲜虾腌渍得干净规整，风味醇厚清爽。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-salted-shrimp-new.png'],
+    ],
+    '酱类·混合类' => [
+        ['name' => '炸酱调味酱', 'eng' => 'Jajang Sauce', 'desc' => '将春酱的浓醇悉心呈现，满口香醇、口感柔顺的炸酱底酱。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-sauce-1.png'],
+        ['name' => '意大利面酱', 'eng' => 'Spaghetti Sauce', 'desc' => '熟番茄的鲜度融合香草气息，呈现层次丰富、鲜香浓郁的经典意面酱。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-sauce-2.png'],
+        ['name' => '冷面拌酱', 'eng' => 'Naengmyeon Bibim Sauce', 'desc' => '这款拌饭酱针对冷面和拌饭面进行了优化，具有甜、酸、咸的味道。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-sauce-3.png'],
+        ['name' => '烤肉火锅酱', 'eng' => 'Bulgogi Jeongol Sauce', 'desc' => '这是一种火锅酱料，可带出传统烤肉的甜咸风味。', 'storage' => '冷藏', 'weight' => '1KG', 'img' => '/images/main/prod-sauce-4.png'],
+    ],
+    '液体茶' => [
+        ['name' => '生姜浓缩饮', 'eng' => 'Ginger Syrup', 'desc' => '浓姜辛香温润身心，液态茶浓缩饮。', 'storage' => '冷藏', 'weight' => '1L', 'img' => '/images/main/prod-tea-1.png'],
+        ['name' => '梨桔梗浓缩饮', 'eng' => 'Pear & Bellflower Syrup', 'desc' => '以黄金比例呈现梨的甘甜与桔梗营养，适合全家。', 'storage' => '冷藏', 'weight' => '500ML~1L', 'img' => '/images/main/prod-tea-2.png'],
+        ['name' => '覆盆子浓缩饮', 'eng' => 'Bokbunja Syrup', 'desc' => '浓醇覆盆子酸甜果香，活力满满的果味膏。', 'storage' => '冷藏', 'weight' => '500ML~1L', 'img' => '/images/main/prod-tea-3.png'],
+        ['name' => '酸樱桃浓缩饮', 'eng' => 'Tart Cherry Syrup', 'desc' => '酸爽与红宝石色泽兼具的高端酸樱桃膏。', 'storage' => '冷藏', 'weight' => '500ML~1L', 'img' => '/images/main/prod-tea-4.png'],
+    ],
+];
+
+/* Section 6: Partner */
+$lang['main_partner_sub'] = 'Partner Company';
+$lang['main_partner_title'] = "介绍我们基于信任与合作共同成长的主要合作伙伴。";
+$lang['main_partner_logos'] = [
+    ['img' => 'p_logo_01.png', 'name' => 'SPC'],
+    ['img' => 'p_logo_02.png', 'name' => '东远家庭食品'],
+    ['img' => 'p_logo_03.png', 'name' => '现代绿色食品'],
+    ['img' => 'p_logo_04.png', 'name' => '我们的家'],
+    ['img' => 'p_logo_05.png', 'name' => '新世界食品'],
+    ['img' => 'p_logo_06.png', 'name' => '弗莱威'],
+    ['img' => 'p_logo_07.png', 'name' => 'Food1st'],
+    ['img' => 'p_logo_08.png', 'name' => 'welstory'],
+    ['img' => 'p_logo_09.png', 'name' => '酷澎'],
+    ['img' => 'p_logo_10.png', 'name' => '圃美多'],
+];
+
+/* Section 7: Notice */
+$lang['main_notice_sub'] = 'Notice';
+$lang['main_notice_title'] = '公告';
+$lang['main_notice_more'] = '了解更多';
+
+/* Section 8: Directions (오시는 길) */
+$lang['main_dir_sub'] = 'Directions';
+$lang['main_dir_title'] = '前往（株）EUMFOOD SYSTEM 的路线';
+$lang['main_dir_desc'] = '我们将成为一家大家通过真诚沟通共同成长的公司。';
+$lang['main_dir_tabs'] = [
+    'factory' => [
+        'name' => '（株）EUMFOOD SYSTEM  工厂',
+        'addr_label' => '地址',
+        'address' => '京畿道龙仁市处仁区二东邑华山路191',
+        'phone_label' => '电话',
+        'phones' => [
+            '质量' => '031-334-6810',
+            '销售' => '070-4334-5206',
+            '采购' => '070-4334-5207',
+            '研究开发' => '070-4334-5885',
+            '会计' => '070-4334-5205'
+        ],
+        'fax_label' => '传真',
+        'fax' => '031-321-6810 / 031-334-6811'
+    ],
+    'logistics' => [
+        'name' => '华山食品系统物流中心',
+        'addr_label' => '地址',
+        'address' => '京畿道安城市阳城路李贤里265 B1',
+        'phone_label' => '电话',
+        'phones' => [
+            '代表' => '031-673-1125'
+        ],
+        'fax_label' => '传真',
+        'fax' => '031-321-6810 / 031-334-6811'
+    ]
+];
+
+$lang['main_notice_none'] = '我们正在准备新消息。';
+$lang['main_notice_coming'] = 'COMING SOON';
+
+
+/* ============================================================
+    서브 페이지 데이터
+   ============================================================ */
+
+/* 서브 페이지 공통 */
+$lang['sub_banner_history_desc'] = "我们将成为一家大家通过真诚沟通共同成长的公司。";
+
+/* 회사연혁 (History) */
+$lang['history_title'] = "沿革";
+$lang['history_sec2_period'] = "2009 年至今";
+$lang['history_sec2_title'] = "我们将从一家专业化公司跨越到一家全球性企业。";
+
+$lang['history_data'] = [
+    [
+        'year' => '2026',
+        'list' => [
+            ['month' => '03', 'content' => '（株）EUMFOOD SYSTEM 新品牌发布'],
+            ['month' => '01', 'content' => '智能工厂工艺自动化系统引进']
+        ]
+    ],
+    [
+        'year' => '2025',
+        'list' => [
+            ['month' => '12', 'content' => '年销售额突破000亿韩元，被选定为有望出口中小企业'],
+            ['month' => '05', 'content' => 'HACCP卫生设备的全面更换和扩建']
+        ]
+    ]
+];
+
+$lang['history_list'] = [
+    [
+        'year' => '2014',
+        'contents' => [
+            '海军司令部合同（镇海）',
+            '我们的家园合同签订',
+            '韩华酒店度假村合同签订',
+            '味噌屋小菜配送',
+            '三星 Welstory NPB 进行中'
+        ]
+    ],
+    [
+        'year' => '2013',
+        'contents' => [
+            '扩大咸味海鲜和炖菜的菜单构成',
+            '东远家庭食品合同签订',
+            '目前工厂搬迁',
+            '渔业和农产品HACCP认证'
+        ]
+    ]
+];
+
+// --- 제조공정: 절임식품 공정 ---
+$lang['sub_proc_slogan'] = "我们将成为一家大家通过真诚沟通共同成长的公司。";
+$lang['proc_pickles_title'] = "腌制食品加工过程";
+$lang['proc_pickles_top_sub'] = "Operational Excellence";
+$lang['proc_pickles_top_main'] = "技术亮点";
+$lang['proc_pickles_top_desc'] = "在韩国腌制食品领域位居前列，获HACCP认证并以严格卫生管理安全生产；配备金属检测与X光检测，可管控金属及石块、陶瓷等非金属异物。";
+
+// Step 01
+$lang['proc_step01_tit'] = "3阶段气泡清洗过程";
+$lang['proc_step01_desc'] = "这是一个最大限度地减少对原材料的损害的过程，并且利用三级气泡彻底、卫生地清洁即使是最小的异物。";
+
+// Step 02
+$lang['proc_step02_tit'] = "分拣流程";
+$lang['proc_step02_desc'] = "这是一个通过首先过滤掉不符合规格或损坏的原材料来确保均匀和高质量原材料的过程。";
+
+// Step 03
+$lang['proc_step03_tit'] = "排序过程-1";
+$lang['proc_step03_desc'] = "这是工人们更精确地检查原材料并最终只选择最优质的原材料用于餐桌的过程。";
+
+// Step 04
+$lang['proc_step04_tit'] = "混合（调味）过程";
+$lang['proc_step04_desc'] = "这是一个通过将精心挑选的原材料与（株）EUMFOOD SYSTEM 的特殊调味料以精确的比例混合来创造出深沉、丰富味道的过程。";
+
+// Step 05
+$lang['proc_step05_tit'] = "包装流程";
+$lang['proc_step05_desc'] = "在此过程中，成品以正确的数量放置在严格卫生 (HACCP) 的环境中并密封以完全阻止外部污染。";
+
+// Step 06
+$lang['proc_step06_tit'] = "金属和重量检测流程";
+$lang['proc_step06_desc'] = "这是一个安全过程，严格检查标准重量并使用金属探测器完全过滤掉细小的金属污染物。";
+
+// Step 07
+$lang['proc_step07_tit'] = "X射线检测过程";
+$lang['proc_step07_desc'] = "这是一个完美的验证过程，可以彻底控制使用最先进的 X 射线设备肉眼难以看到的非金属污染物，例如石头和陶瓷。";
+
+/* ============================================================
+    푸터 정보
+   ============================================================ */
+$lang['ft_ceo'] = '董事长 五福';
+$lang['ft_biz_no'] = '商业登记号 142-85-08749';
+$lang['ft_corp_no'] = '法人商业登记号码 215-81-61160';
+$lang['ft_address'] = '地址 京畿道龙仁市处仁区二东邑华山路191';
+$lang['ft_admin'] = '管理后台';
+$lang['ft_tel_quality'] = '（质量）031-334-6810';
+$lang['ft_tel_sales'] = '（销售）070-4334-5206';
+$lang['ft_tel_purchase'] = '（购买）070-4334-5207';
+$lang['ft_tel_dev'] = '（研究开发）070-4334-5885';
+$lang['ft_copyright'] = '版权所有 © （株）EUMFOOD SYSTEM 保留所有权利。';
+
+// --- 제조공정: 조림류 공정 ---
+$lang['proc_braised_top_sub'] = "Operational Excellence";
+$lang['proc_braised_top_main'] = "技术亮点";
+$lang['proc_braised_top_desc'] = "依托酱菜类品制造经验，在严格卫生管理下组织生产，并以先进检测设备管控异物，提供可信赖的产品。";
+
+// Step 01
+$lang['proc_braised_step01_tit'] = "分拣流程";
+$lang['proc_braised_step01_desc'] = "这是一个基本流程，严格分离不符合规格或损坏的原材料，只选择最好的原材料。";
+
+// Step 02
+$lang['proc_braised_step02_tit'] = "加热过程";
+$lang['proc_braised_step02_desc'] = "它是一个核心制造过程，在适当的温度和时间下均匀地烹饪原材料，控制微生物并最大限度地提高风味和质地。";
+
+// Step 03
+$lang['proc_braised_step03_tit'] = "包装流程";
+$lang['proc_braised_step03_desc'] = "这是根据HACCP标准，在卫生环境中按规定数量安全密封熟制品的过程。";
+
+// Step 04
+$lang['proc_braised_step04_tit'] = "金属和重量检测流程";
+$lang['proc_braised_step04_desc'] = "这是一个安全的过程，可以检查产品的准确重量，并通过金属探测器完全阻挡细小的金属异物。";
+
+// Step 05
+$lang['proc_braised_step05_tit'] = "X射线检测过程";
+$lang['proc_braised_step05_desc'] = "这是最终的验证过程，即使是金属以外的微小异物，如石头、玻璃和陶瓷，也可以使用最先进的设备进行更精确的控制。";
+
+// --- 제조공정: 양념젓갈 공정 ---
+$lang['proc_salted_top_sub'] = "Operational Excellence";
+$lang['proc_salted_top_main'] = "技术亮点";
+$lang['proc_salted_top_desc'] = "以优化配比与严格卫生体系保持酱腌海鲜的浓郁风味与新鲜度，经层层检验，将更安全、更美味的产品送达顾客。";
+
+// Step 01
+$lang['proc_salted_step01_tit'] = "分拣流程";
+$lang['proc_salted_step01_desc'] = "这是从作为咸鱼主要原料的海产品中去除异物的基本工序，并且严格挑选优质原料。";
+
+// Step 02
+$lang['proc_salted_step02_tit'] = "混合（调味）过程";
+$lang['proc_salted_step02_desc'] = "这是通过将调味料与精选原料按照最佳比例混合，发挥出咸鱼独特的鲜味和风味的工序。";
+
+// Step 03
+$lang['proc_salted_step03_tit'] = "包装流程";
+$lang['proc_salted_step03_desc'] = "这是将一定量的食品放入卫生容器或袋子中并安全密封以保持新鲜度的过程。";
+
+// Step 04
+$lang['proc_salted_step04_tit'] = "金属和重量检测流程";
+$lang['proc_salted_step04_desc'] = "这是一个安全步骤，可以用金属探测器完全阻挡细小的金属异物，同时确认准确的重量。";
+
+// Step 05
+$lang['proc_salted_step05_tit'] = "X射线检测过程";
+$lang['proc_salted_step05_desc'] = "这是最后的验证过程，精确检查肉眼难以识别的细骨碎片和其他非金属异物。";
+
+// --- 제조공정: 액상차, 소스류 공정 ---
+$lang['proc_sauce_top_sub'] = "Operational Excellence";
+$lang['proc_sauce_top_main'] = "技术亮点";
+$lang['proc_sauce_top_desc'] = "通过高温加热和快速冷却系统保留了原料独特的口感和香气，灭菌灌装方法完美保持了液体产品的稳定性和新鲜度。";
+
+// Step 01
+$lang['proc_sauce_step01_tit'] = "加热、冷却过程";
+$lang['proc_sauce_step01_desc'] = "这是通过高温加热灭菌和提取风味，然后快速冷却以保留原料的味道和香气的关键过程。";
+
+// Step 02
+$lang['proc_sauce_step02_tit'] = "制袋灌装工艺";
+$lang['proc_sauce_step02_desc'] = "这是将灭菌后的液体内容物小心地无污染地填充到专用袋中的过程。";
+
+// Step 03
+$lang['proc_sauce_step03_tit'] = "包装流程";
+$lang['proc_sauce_step03_desc'] = "这是一个通过根据最终规格包装填充袋来确保分销过程中安全的过程。";
+
+// Step 04
+$lang['proc_sauce_step04_tit'] = "金属和重量检测流程";
+$lang['proc_sauce_step04_desc'] = "这是通过检查成品的重量并检查金属异物来确保产品的可靠性和安全性的步骤。";
+
+// --- 제품소개: 나물류 (Eum Signature) ---
+$lang['prod_namul_title'] = "山野菜类";
+$lang['prod_namul_sub_tit'] = "EUM Signature";
+$lang['prod_namul_main_tit'] = "山野菜类";
+$lang['prod_namul_summary'] = "蕨菜与红薯茎炒制，以及焯蕨菜、焯山菜等原物组成的野菜系列。";
+$lang['prod_contact_msg'] = "* 如需产品咨询，请联系销售部门（070-4334-5206 / 070-8673-0077）。";
+
+// 제품 데이터 — 显示4款：缩略图 55,56,58,61
+$lang['prod_namul_item01_name'] = "山野菜类";
+$lang['prod_namul_item01_en'] = "Stir-fried Bracken";
+$lang['prod_namul_item01_desc'] = "柔嫩蕨菜以秘制酱料炒香，越嚼越能感受醇厚风味。";
+
+$lang['prod_namul_item02_name'] = "炒红薯茎";
+$lang['prod_namul_item02_en'] = "Stir-fried Sweet Potato Stems";
+$lang['prod_namul_item02_desc'] = "保留爽脆口感，咸香渗入茎芯，令人停不下筷。";
+
+$lang['prod_namul_item03_name'] = "烫蕨菜";
+$lang['prod_namul_item03_en'] = "Blanched Bracken";
+$lang['prod_namul_item03_desc'] = "柔韧不柴，呈现蕨菜本味的健康野菜。";
+
+$lang['prod_namul_item04_name'] = "烫山菜";
+$lang['prod_namul_item04_en'] = "Blanched Gondre";
+$lang['prod_namul_item04_desc'] = "香气浓郁、口感柔润，适合拌饭或入汤。";
+
+$lang['prod_namul_item05_name'] = "调味곤드레";
+$lang['prod_namul_item05_en'] = "Seasoned Gondre";
+$lang['prod_namul_item05_desc'] = "甜辣调味均匀裹附，开胃下饭。";
+
+$lang['prod_namul_item06_name'] = "煮蕨菜";
+$lang['prod_namul_item06_en'] = "Boiled Bracken";
+$lang['prod_namul_item06_desc'] = "保留蕨菜自然口感的煮制产品，省时且品质稳定。";
+
+$lang['prod_namul_item07_name'] = "焯곤드레";
+$lang['prod_namul_item07_en'] = "Blanched Gondre";
+$lang['prod_namul_item07_desc'] = "新鲜곤드레适度焯烫，口感柔润清淡，为拌野菜系列的招牌焯곤드레。";
+
+// --- 제품소개 공통 UI ---
+$lang['prod_contact_full'] = "<span class='highlight'>* 如需产品咨询</span>，请联系销售部门（070-4334-5206 / 070-8673-0077）。";
+
+$lang['prod_spec_storage'] = "保管";
+$lang['prod_spec_refrigerated'] = "冷藏";
+$lang['prod_spec_frozen'] = "冷冻";
+$lang['prod_spec_package'] = "包装";
+$lang['prod_spec_volume'] = "容量";
+$lang['prod_spec_unit_1kg'] = "1KG";
+
+// ============================================================
+// 절임식품 (product_pickles.php) - 18종 전체 데이터
+// prod_pickles_01~18 与 ko.php / en.php 键名、序号一致。
+// ============================================================
+$lang['prod_pickles_sub_tit'] = "Eum Signature";
+$lang['prod_pickles_main_tit'] = "代表生产产品（腌制食品）";
+$lang['prod_pickles_summary'] = "萝卜干、紫苏叶、红辣椒泡菜、大蒜泡菜等18种传统腌菜。";
+
+// 01 ~ 18번까지 루프문에 매칭되는 키값입니다.
+$lang['prod_pickles_01_name'] = "调味萝卜干";
+$lang['prod_pickles_01_en'] = "Spicy Seasoned Dried Radish";
+$lang['prod_pickles_01_desc'] = "将晒得干香的萝卜拌入秘制辣酱，越嚼越清爽甘甜，是配饭一绝的小菜。";
+
+$lang['prod_pickles_02_name'] = "酱油调味萝卜干";
+$lang['prod_pickles_02_en'] = "Soy Sauce Glazed Dried Radish";
+$lang['prod_pickles_02_desc'] = "不用辣椒酱，而以浓郁酱油调味突出鲜香，清淡却不失咸鲜，是别具风味的萝卜干料理。";
+
+$lang['prod_pickles_03_name'] = "酱油蒜薹渍";
+$lang['prod_pickles_03_en'] = "Pickled Garlic Scapes";
+$lang['prod_pickles_03_desc'] = "保留蒜薹特有的辛香与爽脆，以酱油腌渍入味，搭配肉类可带来干净利落的回味。";
+
+$lang['prod_pickles_04_name'] = "腌青梅";
+$lang['prod_pickles_04_en'] = "Pickled Green Plums";
+$lang['prod_pickles_04_desc'] = "选用熟透青梅，以糖醋腌渍，酸甜爽口、口感清脆，有助消化、开胃。";
+
+$lang['prod_pickles_05_name'] = "酱油腌洋葱";
+$lang['prod_pickles_05_en'] = "Pickled Onions";
+$lang['prod_pickles_05_desc'] = "淡化洋葱辛辣，突出酱油咸鲜与醋香，百搭配菜，与各类菜肴都相配。";
+
+$lang['prod_pickles_06_name'] = "盐渍萝卜丝";
+$lang['prod_pickles_06_en'] = "Shredded Salted Radish";
+$lang['prod_pickles_06_desc'] = "长时间盐渍入味的萝卜切成细丝，咸鲜清爽，是传统开胃小菜。";
+
+$lang['prod_pickles_07_name'] = "榨菜丝拌菜";
+$lang['prod_pickles_07_en'] = "Seasoned Zha Cai";
+$lang['prod_pickles_07_desc'] = "中式经典配菜，榨菜茎腌渍后口感爽脆，麻辣咸香，可解腻提味。";
+
+$lang['prod_pickles_08_name'] = "剥皮蒜泡菜";
+$lang['prod_pickles_08_en'] = "Pickled Peeled Garlic";
+$lang['prod_pickles_08_desc'] = "减轻蒜的辛辣，突出爽脆与清爽酸味，保留大蒜本味的健康腌蒜。";
+
+$lang['prod_pickles_09_name'] = "五宝渍";
+$lang['prod_pickles_09_en'] = "Assorted Pickled Vegetables";
+$lang['prod_pickles_09_desc'] = "汇集五种珍贵蔬菜，口感爽脆、酸甜平衡的传统什锦渍。";
+
+$lang['prod_pickles_10_name'] = "调味紫苏叶";
+$lang['prod_pickles_10_en'] = "Spicy Seasoned Perilla Leaves";
+$lang['prod_pickles_10_desc'] = "紫苏叶逐片以香辣调料腌渍，盖在饭上食用，香气满口。";
+
+$lang['prod_pickles_11_name'] = "腌野蒜叶";
+$lang['prod_pickles_11_en'] = "Pickled Garlic Leaves";
+$lang['prod_pickles_11_desc'] = "山野蒜叶香气柔和、口感细嫩，甜咸酱油入味，与烧烤类菜肴绝配。";
+
+$lang['prod_pickles_12_name'] = "大酱腌紫苏叶";
+$lang['prod_pickles_12_en'] = "Perilla Leaves Pickled";
+$lang['prod_pickles_12_desc'] = "紫苏叶以浓郁大酱长时间腌渍，咸鲜醇厚，带有传统家常风味。";
+
+$lang['prod_pickles_13_name'] = "拌腌辣椒";
+$lang['prod_pickles_13_en'] = "Spicy Seasoned Pickled Chili Peppers";
+$lang['prod_pickles_13_desc'] = "发酵到位的辣椒以甜辣调料拌匀，辛辣爽口、酸香开胃。";
+
+$lang['prod_pickles_14_name'] = "酱油腌辣椒";
+$lang['prod_pickles_14_en'] = "Pickled Chili Peppers in Soy Sauce";
+$lang['prod_pickles_14_desc'] = "辣椒爽脆，酱油鲜香浓郁，一口咬下咸鲜汁水饱满。";
+
+$lang['prod_pickles_15_name'] = "大酱腌辣椒";
+$lang['prod_pickles_15_en'] = "Doenjang Pickled Chili Peppers";
+$lang['prod_pickles_15_desc'] = "发酵辣椒拌入醇厚大酱，温和不刺激，酱香与鲜味突出。";
+
+$lang['prod_pickles_16_name'] = "拌腌蒜瓣";
+$lang['prod_pickles_16_en'] = "Spicy Seasoned Pickled Garlic";
+$lang['prod_pickles_16_desc'] = "爽脆腌蒜再以辣椒酱拌制，风味更浓、辣味更利落。";
+
+$lang['prod_pickles_17_name'] = "凉拌腌黄瓜";
+$lang['prod_pickles_17_en'] = "Pickled Cucumbers";
+$lang['prod_pickles_17_desc'] = "将腌黄瓜挤去水分后拌以香辣调料，夏日开胃，与白饭十分相配。";
+
+$lang['prod_pickles_18_name'] = "腌荞头";
+$lang['prod_pickles_18_en'] = "Pickled Scallion Bulbs";
+$lang['prod_pickles_18_desc'] = "以酸甜卤汁腌渍荞头根部，口感爽脆，适合搭配寿司、刺身等日式料理。";
+
+// ============================================================
+// 조림류 (product_braised.php) - 9종 전체 데이터
+// ============================================================
+$lang['prod_braised_sub_tit'] = "EUM Signature";
+$lang['prod_braised_main_tit'] = "代表生产产品（酱菜类）";
+$lang['prod_braised_summary'] = "莲藕、鱼干、牛蒡、黑豆等九款精心炖制的人气小菜。";
+
+$lang['prod_braised_01_name'] = "酱蓮根";
+$lang['prod_braised_01_en'] = "Braised Lotus Root";
+$lang['prod_braised_01_desc'] = "新鲜莲藕以甜咸酱油慢炖，爽脆中带嚼劲，表面油亮诱人。";
+
+$lang['prod_braised_02_name'] = "辣椒酱鱼干丝";
+$lang['prod_braised_02_en'] = "Spicy Seasoned Dried Filefish Strips";
+$lang['prod_braised_02_desc'] = "弹牙鱼干以甜辣辣椒酱炒制，越嚼越香。";
+
+$lang['prod_braised_03_name'] = "酱蓮根";
+$lang['prod_braised_03_en'] = "Braised Burdock Root";
+$lang['prod_braised_03_desc'] = "富含膳食纤维的牛蒡切细丝，以秘制酱油炖透，风味独特、口感爽脆。";
+
+$lang['prod_braised_04_name'] = "酱黑豆";
+$lang['prod_braised_04_en'] = "Braised Black Beans";
+$lang['prod_braised_04_desc'] = "甄选黑豆炖至入味，绵软不硬，豆香浓郁、营养丰富。";
+
+$lang['prod_braised_05_name'] = "炒干小鳀鱼";
+$lang['prod_braised_05_en'] = "Stir-fried Anchovies";
+$lang['prod_braised_05_desc'] = "精选小鳀鱼炒香炒酥，可配坚果或青椒，风味与营养兼具。";
+
+$lang['prod_braised_06_name'] = "酱花生";
+$lang['prod_braised_06_en'] = "Braised Peanuts";
+$lang['prod_braised_06_desc'] = "花生以咸甜酱汁炖透，香脆饱满，咸甜平衡。";
+
+$lang['prod_braised_07_name'] = "炒明太鱼丝";
+$lang['prod_braised_07_en'] = "Stir-fried Dried Pollock Strips";
+$lang['prod_braised_07_desc'] = "柔软有嚼劲的明太鱼丝炒至油亮，甜度温和，老少皆宜。";
+
+$lang['prod_braised_08_name'] = "酱小土豆";
+$lang['prod_braised_08_en'] = "Braised Baby Potatoes";
+$lang['prod_braised_08_desc'] = "一口大小的土豆带皮炖制，外皮略韧、内里绵软。";
+
+$lang['prod_braised_09_name'] = "炒辣椒酱鳀鱼";
+$lang['prod_braised_09_en'] = "Spicy Braised Anchovies";
+$lang['prod_braised_09_desc'] = "新鲜鳀鱼配以韩式辣椒酱炖煮，鲜香微辣，下饭绝佳。";
+
+// ============================================================
+// 양념젓갈·젓갈류 (product_salted.php) - 15종 전체 데이터
+// ============================================================
+$lang['prod_salted_sub_tit'] = "EUM Signature";
+$lang['prod_salted_main_tit'] = "调料酱·鱼酱";
+$lang['prod_salted_summary'] = "鱿鱼酱、章鱼酱、虾酱三款代表酱腌海鲜。";
+
+$lang['prod_salted_01_name'] = "鱿鱼酱";
+$lang['prod_salted_01_en'] = "Seasoned Squid Jeot";
+$lang['prod_salted_01_desc'] = "弹韧鱿鱼与辛香腌料相融的味道。";
+
+$lang['prod_salted_02_name'] = "章鱼酱";
+$lang['prod_salted_02_en'] = "Seasoned Octopus Jeot";
+$lang['prod_salted_02_desc'] = "饱满章鱼的口感与秘制腌料的浓郁鲜味。";
+
+$lang['prod_salted_03_name'] = "虾酱";
+$lang['prod_salted_03_en'] = "Salted Shrimp Jeot";
+$lang['prod_salted_03_desc'] = "新鲜虾腌渍得干净规整，风味醇厚清爽。";
+
+$lang['prod_salted_04_name'] = "剥皮蒜酱菜";
+$lang['prod_salted_04_en'] = "Peeled Garlic Pickles";
+$lang['prod_salted_04_desc'] = "整粒剥皮大蒜以咸鲜卤汁腌渍，口感爽脆，咸香开胃。";
+
+$lang['prod_salted_05_name'] = "腌青阳椒";
+$lang['prod_salted_05_en'] = "Pickled Green Chilies";
+$lang['prod_salted_05_desc'] = "保留椒身爽脆，咸辣适口，配饭配汤皆宜。";
+
+$lang['prod_salted_06_name'] = "波纹黄瓜泡菜";
+$lang['prod_salted_06_en'] = "Crinkle-cut Pickles";
+$lang['prod_salted_06_desc'] = "厚切波纹黄瓜腌渍爽脆，清新解腻。";
+
+$lang['prod_salted_07_name'] = "酱黑豆";
+$lang['prod_salted_07_en'] = "Simmered Black Beans";
+$lang['prod_salted_07_desc'] = "黑豆以甜咸酱汁收浓，油亮甘香，传统下饭小菜。";
+
+$lang['prod_salted_08_name'] = "拌苏子叶";
+$lang['prod_salted_08_en'] = "Seasoned Perilla Leaves";
+$lang['prod_salted_08_desc'] = "苏子叶裹匀辛香调料，香气足、口感柔。";
+
+$lang['prod_salted_09_name'] = "苏子叶酱菜";
+$lang['prod_salted_09_en'] = "Pickled Perilla Leaves";
+$lang['prod_salted_09_desc'] = "以酱油基底腌渍，咸鲜入味，苏子叶清香突出。";
+
+$lang['prod_salted_10_name'] = "腌蒜苔";
+$lang['prod_salted_10_en'] = "Pickled Garlic Scapes";
+$lang['prod_salted_10_desc'] = "蒜苔爽脆腌渍，咸鲜开胃。";
+
+$lang['prod_salted_11_name'] = "生菜茎泡菜";
+$lang['prod_salted_11_en'] = "Lettuce Stem Kimchi";
+$lang['prod_salted_11_desc'] = "茎部爽脆，辣酱入味，风味厚重。";
+
+$lang['prod_salted_12_name'] = "拌蒜苔";
+$lang['prod_salted_12_en'] = "Seasoned Garlic Scapes";
+$lang['prod_salted_12_desc'] = "蒜苔拌以辣酱，爽脆带辣，风味鲜明。";
+
+$lang['prod_salted_13_name'] = "酱花生";
+$lang['prod_salted_13_en'] = "Braised Peanuts";
+$lang['prod_salted_13_desc'] = "整粒花生以酱油甜卤收浓，油润甘香。";
+
+$lang['prod_salted_14_name'] = "酱牛蒡条";
+$lang['prod_salted_14_en'] = "Pickled Burdock Strips";
+$lang['prod_salted_14_desc'] = "厚切牛蒡酱渍，爽脆咸鲜。";
+
+$lang['prod_salted_15_name'] = "调味萝卜干";
+$lang['prod_salted_15_en'] = "Seasoned Dried Radish Strips";
+$lang['prod_salted_15_desc'] = "萝卜干条拌辣酱，嚼劲足、越嚼越香。";
+
+// ============================================================
+// 소스 (product_sauce.php) - 31종 전체 데이터
+// ============================================================
+$lang['prod_sauce_pack_sub_tit'] = "Eum Signature";
+$lang['prod_sauce_pack_main_tit'] = "包装方式&重量";
+$lang['prod_sauce_pack_note'] = "※根据酱汁的比重，包装重量可能会有所不同。";
+
+$lang['prod_sauce_korean_sub_tit'] = "Eum Signature";
+$lang['prod_sauce_korean_main_tit'] = "韩式酱类·韩式混合类";
+$lang['prod_sauce_china_sub_tit'] = "Eum Signature";
+$lang['prod_sauce_china_main_tit'] = "西式酱类·西式混合类";
+$lang['prod_sauce_asia_sub_tit'] = "Eum Signature";
+$lang['prod_sauce_asia_main_tit'] = "亚洲式酱类·亚洲式混合类";
+
+// 01~04 포장
+$lang['prod_sauce_01_name'] = "小包装（塑料薄膜，容器，条包）";
+$lang['prod_sauce_01_en'] = "Small pack (film, cup, stick)";
+$lang['prod_sauce_01_desc'] = "";
+$lang['prod_sauce_01_storage'] = "室温";
+$lang['prod_sauce_01_unit'] = "25g ~ 50g 以内";
+
+$lang['prod_sauce_02_name'] = "（盖）袋包装/自立袋包装";
+$lang['prod_sauce_02_en'] = "Pouch (with cap)";
+$lang['prod_sauce_02_desc'] = "";
+$lang['prod_sauce_02_storage'] = "室温";
+$lang['prod_sauce_02_unit'] = "100g ~ 5kg";
+
+$lang['prod_sauce_03_name'] = "瓶装";
+$lang['prod_sauce_03_en'] = "Bottle";
+$lang['prod_sauce_03_desc'] = "";
+$lang['prod_sauce_03_storage'] = "室温";
+$lang['prod_sauce_03_unit'] = "200g ~ 1kg";
+
+$lang['prod_sauce_04_name'] = "大桶装";
+$lang['prod_sauce_04_en'] = "Can / Jerry Can";
+$lang['prod_sauce_04_desc'] = "";
+$lang['prod_sauce_04_storage'] = "室温";
+$lang['prod_sauce_04_unit'] = "10kg ~ 20kg";
+
+// 05~13 한식 소스
+$lang['prod_sauce_05_name'] = "包饭酱";
+$lang['prod_sauce_05_en'] = "Ssamjang Sauce";
+$lang['prod_sauce_05_desc'] = "这是一种与肉类菜肴完美搭配的韩式酱料，将美味的豆酱和红辣椒酱完美地结合在一起。";
+
+$lang['prod_sauce_06_name'] = "冷面拌饭酱";
+$lang['prod_sauce_06_en'] = "Naengmyeon Bibim Sauce";
+$lang['prod_sauce_06_desc'] = "这款拌饭酱针对冷面和拌饭面进行了优化，具有甜、酸、咸的味道。";
+
+$lang['prod_sauce_07_name'] = "调味猪肉酱";
+$lang['prod_sauce_07_en'] = "Spicy Pork Marinade Sauce";
+$lang['prod_sauce_07_desc'] = "这是一款让您轻松实现辣甜炒肉独特风味的调味酱。";
+
+$lang['prod_sauce_08_name'] = "浓浓的黄豆酱";
+$lang['prod_sauce_08_en'] = "Gangdoenjang Sauce";
+$lang['prod_sauce_08_desc'] = "它为浓郁的豆酱基料增添了浓郁的鲜味，在包饭和炖菜中非常有用。";
+
+$lang['prod_sauce_09_name'] = "冷面汤";
+$lang['prod_sauce_09_en'] = "Naengmyeon Broth";
+$lang['prod_sauce_09_desc'] = "这是冷面专用的汤底，味道清凉。";
+
+$lang['prod_sauce_10_name'] = "烤肉火锅酱";
+$lang['prod_sauce_10_en'] = "Bulgogi Hotpot Sauce";
+$lang['prod_sauce_10_desc'] = "这是一种火锅酱料，可带出传统烤肉的甜咸风味。";
+
+$lang['prod_sauce_11_name'] = "五花肉店酱油";
+$lang['prod_sauce_11_en'] = "Soy Dipping Sauce for Pork BBQ";
+$lang['prod_sauce_11_desc'] = "这是一种商业用途的酱油蘸酱，可带出肉的自然味道。";
+
+$lang['prod_sauce_12_name'] = "拌饭用红辣椒酱";
+$lang['prod_sauce_12_en'] = "Gochujang Sauce for Bibimbap";
+$lang['prod_sauce_12_desc'] = "这种酱汁具有拌饭的最佳稠度和甜辣口味。";
+
+$lang['prod_sauce_13_name'] = "炒年糕酱";
+$lang['prod_sauce_13_en'] = "Tteokbokki Sauce";
+$lang['prod_sauce_13_desc'] = "它可以可靠地再现小吃式炒年糕的甜辣口味。";
+
+// 14~21 西式酱料（展示）· 16 炸猪排酱亦列于亚洲
+$lang['prod_sauce_14_name'] = "意大利面酱";
+$lang['prod_sauce_14_en'] = "Spaghetti Sauce";
+$lang['prod_sauce_14_desc'] = "熟番茄的鲜度融合香草气息，呈现层次丰富、鲜香浓郁的经典意面酱。";
+
+$lang['prod_sauce_15_name'] = "披萨酱";
+$lang['prod_sauce_15_en'] = "Pizza Sauce";
+$lang['prod_sauce_15_desc'] = "以精选番茄为底、配以丰富香辛，进一步衬托披萨风味的底酱。";
+
+$lang['prod_sauce_16_name'] = "炸猪排酱";
+$lang['prod_sauce_16_en'] = "Pork Cutlet Sauce";
+$lang['prod_sauce_16_desc'] = "提升油炸食物的香脆与浓郁，以甜咸相宜的风味为料理完成度加分。";
+
+$lang['prod_sauce_17_name'] = "烧烤酱";
+$lang['prod_sauce_17_en'] = "Barbecue Sauce";
+$lang['prod_sauce_17_desc'] = "烟熏与甜咸鲜味的平衡，突出烤制菜肴的风味。";
+
+$lang['prod_sauce_18_name'] = "辣椒酱";
+$lang['prod_sauce_18_en'] = "Chili Hot Sauce";
+$lang['prod_sauce_18_desc'] = "辣椒的辛香配以微酸，为油炸或小吃增添利落辛辣感。";
+
+$lang['prod_sauce_19_name'] = "烟熏蜂蜜酱";
+$lang['prod_sauce_19_en'] = "Smoky Honey Dressing";
+$lang['prod_sauce_19_desc'] = "烟熏的沉稳与蜂蜜的柔甜相融，为沙拉与炸物带来更精致的风味。";
+
+$lang['prod_sauce_20_name'] = "玫瑰酱";
+$lang['prod_sauce_20_en'] = "Rose Sauce";
+$lang['prod_sauce_20_desc'] = "鲜番茄与奶油按黄金比例调和，香醇饱满、余味丰富。";
+
+$lang['prod_sauce_21_name'] = "大蒜面包酱";
+$lang['prod_sauce_21_en'] = "Garlic Bread Sauce";
+$lang['prod_sauce_21_desc'] = "辛香大蒜与柔和黄油相衬，带来丰盈鲜香与余韵。";
+
+// 23~31 아시아 소스
+$lang['prod_sauce_23_name'] = "荞麦酱";
+$lang['prod_sauce_23_en'] = "Buckwheat Soy Sauce";
+$lang['prod_sauce_23_desc'] = "鲣鱼木烟熏的深邃与酱油鲜味交融，清冽浓郁，为荞麦面而设计的蘸汁。";
+
+$lang['prod_sauce_24_name'] = "麻婆豆腐酱";
+$lang['prod_sauce_24_en'] = "Mapo Tofu Sauce";
+$lang['prod_sauce_24_desc'] = "豆瓣酱的辣香与麻香俱全，无需额外调味即可复刻正宗中式风味。";
+
+$lang['prod_sauce_25_name'] = "炸酱油";
+$lang['prod_sauce_25_en'] = "Black Bean Sauce";
+$lang['prod_sauce_25_desc'] = "将春酱的浓醇悉心呈现，满口香醇、口感柔顺的炸酱底酱。";
+
+$lang['prod_sauce_26_name'] = "寿司拌醋（调和醋）";
+$lang['prod_sauce_26_en'] = "Sushi Vinegar Mix";
+$lang['prod_sauce_26_desc'] = "醋、糖、盐以黄金比例调和，如专业店般为寿司米带来清爽本味。";
+
+$lang['prod_sauce_27_name'] = "炒Jjamppong酱";
+$lang['prod_sauce_27_en'] = "Stir-fried Jjamppong Sauce";
+$lang['prod_sauce_27_desc'] = "镬气与辛辣浓缩其中，为海鲜、面食增添鲜辣层次。";
+
+$lang['prod_sauce_28_name'] = "泗川咕噜肉酱";
+$lang['prod_sauce_28_en'] = "Sichuan Sweet & Sour Sauce";
+$lang['prod_sauce_28_desc'] = "甜咸基底叠加川味辣香，为油炸菜解腻提味。";
+
+$lang['prod_sauce_30_name'] = "羊皮酱";
+$lang['prod_sauce_30_en'] = "Yangjangpi Sauce";
+$lang['prod_sauce_30_desc'] = "芥末的辛冲与微酸相衬，衬托海鲜与蔬菜的凉拌酱。";
+
+$lang['prod_sauce_31_name'] = "花生酱";
+$lang['prod_sauce_31_en'] = "Peanut Sauce";
+$lang['prod_sauce_31_desc'] = "花生香醇、口感绵滑，适合作涮锅蘸料与各类“蘸食”。";
+
+// ============================================================
+// 액상차 (product_tea.php) - 5종 전체 데이터
+// ============================================================
+$lang['prod_tea_sub_tit'] = "Eum Signature";
+$lang['prod_tea_main_tit'] = "液体茶";
+
+$lang['prod_tea_01_name'] = "梨桔梗浓缩液";
+$lang['prod_tea_01_en'] = "Pear & Bellflower Syrup";
+$lang['prod_tea_01_desc'] = "以黄金比例呈现梨的甘甜与桔梗营养，适合全家。";
+$lang['prod_tea_01_unit'] = "500ML~1L";
+
+$lang['prod_tea_02_name'] = "覆盆子浓缩液";
+$lang['prod_tea_02_en'] = "Bokbunja Syrup";
+$lang['prod_tea_02_desc'] = "浓醇覆盆子酸甜果香，活力满满的果味膏。";
+$lang['prod_tea_02_unit'] = "500ML~1L";
+
+$lang['prod_tea_03_name'] = "生姜浓缩液";
+$lang['prod_tea_03_en'] = "Ginger Syrup";
+$lang['prod_tea_03_desc'] = "浓姜辛香温润身心，液态茶浓缩饮。";
+$lang['prod_tea_03_unit'] = "1L";
+
+$lang['prod_tea_04_name'] = "苹果芒果浓缩液";
+$lang['prod_tea_04_en'] = "Apple Mango Syrup";
+$lang['prod_tea_04_desc'] = "浓醇苹果芒果香，适合作多种饮品基底。";
+$lang['prod_tea_04_unit'] = "500ML~1L";
+
+$lang['prod_tea_05_name'] = "樱桃浓缩液";
+$lang['prod_tea_05_en'] = "Tart Cherry Syrup";
+$lang['prod_tea_05_desc'] = "酸爽与红宝石色泽兼具的高端酸樱桃膏。";
+$lang['prod_tea_05_unit'] = "500ML~1L";
+
+// 회사소개 - 인사말 관련（sub_greeting 见文件顶部）
+$lang['greeting_title'] = '致辞';
+$lang['sub_banner_greeting_desc'] = '我们将成为一家大家通过真诚沟通共同成长的公司。';
+
+// 인사말 섹션 2 텍스트
+$lang['greeting_ceo_intro'] = '董事长致辞';
+$lang['greeting_hello_1'] = '您好。';
+$lang['greeting_hello_2'] = '我是（株）EUMFOOD SYSTEM 董事长黄万植。';
+$lang['greeting_ceo_text'] = "一日之始与终，餐桌上一顿温热的饭菜最能带来鼓励与慰藉。（株）EUMFOOD SYSTEM 珍视每一位顾客的日常，也愿让餐食所传递的温暖与幸福更加丰盈。我们愿与您携手，描绘更温暖的明天。\n自2009年创立以来，我们与客户一同积累的经验与心得，将继续化为动力：为您的日常增添喜悦，并打造新鲜、安全的产品。\n愿您的每一天都美味而幸福。";
+$lang['greeting_ceo_label'] = '（株）EUMFOOD SYSTEM 董事长';
+$lang['greeting_ceo_name'] = '黄万植';
+
+// 회사소개 - 서브 탭 메뉴
+$lang['sub_tab_greeting'] = '致辞';
+$lang['sub_tab_history'] = '沿革';
+$lang['sub_tab_cert'] = '认证状况';
+$lang['sub_tab_org'] = '组织图';
+$lang['sub_tab_direction'] = '交通指南';
+
+
+// cert Page
+$lang['cert_title'] = "认证状况";
+$lang['cert_cate_label'] = "危险管理系统";
+$lang['cert_main_tit_1'] = "有害元素集约化管理标准";
+$lang['cert_main_tit_2'] = "HACCP体系";
+$lang['cert_sub_tit'] = "提前分析去除有害元素";
+$lang['cert_desc'] = "在看不见的地方也倾注诚意，承诺为您呈现值得信赖、最为安全的餐桌。";
+$lang['cert_benefit_tit'] = "成为 HACCP 认证制造商的好处";
+$lang['cert_benefit_1'] = "1. 夯实基础卫生管理";
+$lang['cert_benefit_2'] = "2. 经证实的食品安全保障";
+$lang['cert_benefit_3'] = "3. 一致的品质保证体系";
+$lang['cert_benefit_4'] = "4. 系统化现场管理流程";
+
+// 인증서 명칭 (网格顺序)
+$lang['cert_name_1'] = "腌制食品HACCP认证";
+$lang['cert_name_2'] = "酱菜类HACCP认证";
+$lang['cert_name_3'] = "山野菜HACCP认证";
+$lang['cert_name_4'] = "调料酱·鱼酱HACCP认证";
+$lang['cert_name_5'] = "酱类HACCP认证";
+$lang['cert_name_6'] = "混合类HACCP认证";
+$lang['cert_name_7'] = "液体茶HACCP认证";
+$lang['cert_name_8'] = "诚信纳税人证书";
+$lang['cert_name_9'] = "传统食品名匠";
+$lang['cert_preparing'] = "准备中";
+
+// inc/lang/ko.php 내부에 추가
+$lang['sub_banner_cert_desc'] = "我们通过彻底的卫生管理和严格的标准承诺安全食品。";
+
+// Organization Page
+$lang['org_title'] = "组织图";
+$lang['org_sub_banner_desc'] = "我们将成为一家大家通过真诚沟通共同成长的公司。";
+$lang['org_chart_image'] = '/images/sub/org-chart-zh.png';
+$lang['org_bg_text'] = "Eum FOOD organization";
+$lang['org_role_ceo'] = "代表理事";
+$lang['org_role_director'] = "总括理事";
+$lang['org_staff_finance'] = "会计·人事";
+$lang['org_dept_production'] = "生产管理团队";
+$lang['org_sub_production_a'] = "甲栋生产管理";
+$lang['org_sub_production_b'] = "乙栋生产管理";
+$lang['org_dept_research'] = "研究开发";
+$lang['org_sub_rnd_dedicated'] = "研发专责部门";
+$lang['org_dept_planning'] = "企划团队";
+$lang['org_dept_purchase'] = "采购团队";
+$lang['org_sub_logistics'] = "物流团队";
+$lang['org_dept_safety'] = "安全管理";
+$lang['org_sub_safety_law'] = "重大灾害法";
+$lang['org_sub_safety_mgmt'] = "管理业务";
+$lang['org_dept_sales'] = "营业团队";
+$lang['org_dept_facility'] = "总务团队";
+$lang['org_dept_quality'] = "品质管理团队";
+$lang['org_sub_lab'] = "实验室";
+
+// inc/lang/ko.php 내부에 추가
+
+// 오시는 길 페이지용 (에러 발생 항목들)
+$lang['loc_title'] = "交通指南"; 
+$lang['loc_sub_banner_desc'] = "我们将引导您前往（株）EUMFOOD SYSTEM 所在地，为您提供安全、新鲜的食品。";
+
+// 혹시 몰라 아까 드린 오시는 길 탭 메뉴 키값도 다시 확인 (둘 중 하나로 통일 필요)
+$lang['sub_tab_location'] = "交通指南";
+$lang['sub_tab_direction'] = "交通指南";
+
+// ============================================================
+// 오시는 길 (Location Page)
+// ============================================================
+$lang['loc_way_to_come'] = "交通指南";
+
+// 1. ㈜이음푸드시스템 제조사 (용인)
+$lang['loc_factory_title'] = "（株）EUMFOOD SYSTEM 工厂";
+$lang['loc_factory_addr_label'] = "地址";
+$lang['loc_factory_addr'] = "京畿道龙仁市处仁区二东邑华山路191";
+$lang['loc_factory_tel_label'] = "电话";
+$lang['loc_factory_tel_info'] = "(品质) 031-334-6810 (销售) 070-4334-5206 (采购) 070-4334-5207<br>(研究开发) 070-4334-5885 (会计) 070-4334-5205";
+$lang['loc_tel_quality'] = "品质 : 031-334-6810";
+$lang['loc_tel_sales'] = "销售 : 070-4334-5206";
+$lang['loc_tel_purchase'] = "采购 : 070-4334-5207";
+$lang['loc_tel_rd'] = "研究开发 : 070-4334-5885";
+$lang['loc_tel_mgmt'] = "会计 : 070-4334-5205";
+$lang['loc_factory_fax_label'] = "传真";
+$lang['loc_factory_fax'] = "031-321-6810 / 031-334-6811";
+
+// 2. 화산푸드시스템 물류센터 (안성)
+$lang['loc_center_title'] = "华山食品系统物流中心";
+$lang['loc_center_addr'] = "京畿道安城市阳城路李贤里265 B1";
+$lang['loc_center_tel'] = "031-673-1125";
+
+// 3. QR 및 기타 라벨
+$lang['loc_qr_label'] = "QR";
+$lang['loc_qr_tmap'] = "T图";
+$lang['loc_qr_kakao'] = "卡考地图";
+$lang['loc_qr_naver'] = "纳维尔地图";
+$lang['loc_map_factory_alt'] = "（株）EUMFOOD SYSTEM 工厂位置地图";
+$lang['loc_map_center_alt'] = "华山食品系统物流中心位置地图";
+
+// Business Area
+$lang['biz_title'] = "事业领域";
+$lang['biz_sub_desc'] = "我们将以真诚的沟通，成为与大家共同成长的企业。";
+
+// Section 1: Overview
+$lang['biz_ov_cate'] = "Overview";
+$lang['biz_ov_title_bold'] = "（株）EUMFOOD SYSTEM";
+$lang['biz_ov_title_thin'] = "我们通过透明沟通建立信任价值，通过技术专长实现共赢成长。";
+$lang['biz_ov_line1'] = "（株）EUMFOOD SYSTEM";
+$lang['biz_ov_line2'] = "以透明沟通建立信任价值，";
+$lang['biz_ov_line3'] = "以技术专长实现共赢成长。";
+
+$lang['biz_stat_label1'] = "成立日";
+$lang['biz_stat_value1'] = "2009";
+$lang['biz_stat_unit1'] = "年";
+
+$lang['biz_stat_label2'] = "任职员";
+$lang['biz_stat_value2'] = "71";
+$lang['biz_stat_unit2'] = "人数";
+
+$lang['biz_stat_label3'] = "销售量";
+$lang['biz_stat_value3'] = "329";
+$lang['biz_stat_unit3'] = "亿";
+
+$lang['biz_stat_label4'] = "认证状况";
+$lang['biz_stat_value4'] = "7";
+$lang['biz_stat_unit4'] = "个";
+
+// Section 2: Business Areas
+$lang['biz_area_cate'] = "Business Areas";
+$lang['biz_area_title'] = "（株）EUMFOOD SYSTEM 事业领域";
+
+// 아이템 01
+$lang['biz_item_num1'] = "01.";
+$lang['biz_item_sub1'] = "优质方便食品，丰富您的日常生活";
+$lang['biz_item_ttl1'] = "家庭替代食品 (HMR)";
+$lang['biz_item_desc1'] = "使用精心挑选的原材料和（株）EUMFOOD SYSTEM 的独特技术，我们在家中提供新鲜烹制食物的浓郁味道。\n为了顺应不断变化的饮食文化趋势，我们提供高质量的 HMR 解决方案，提供口味、营养和便利。";
+
+// 아이템 02
+$lang['biz_item_num2'] = "02.";
+$lang['biz_item_sub2'] = "一种信任的伙伴关系，对每个人的健康膳食负责";
+$lang['biz_item_ttl2'] = "餐饮及团体餐";
+$lang['biz_item_desc2'] = "针对学校、企业、医院等各环境的系统卫生管理, 提供健康的一餐。";
+
+// 아이템 03
+$lang['biz_item_num3'] = "03.";
+$lang['biz_item_sub3'] = "独特的品味，定制专属产品，完善品牌形象";
+$lang['biz_item_ttl3'] = "特许专用产品";
+$lang['biz_item_desc3'] = "每个加盟总部的独特配方都是按照严格的标准完美实施的。\n通过彻底的安全维护和统一的质量控制，无论您身在何处，我们都可以帮助您保持品牌独特、一致的品味。";
+
+// 아이템 04
+$lang['biz_item_num4'] = "04.";
+$lang['biz_item_sub4'] = "秘制酱汁和感性饮品底料，提升菜肴的完美度";
+$lang['biz_item_ttl4'] = "酱类，混合酱，液体茶";
+$lang['biz_item_desc4'] = "研发中心专家研究人员研发的多种酱料，最大限度地发挥菜肴的风味。";
+
+// Business Facility（Figma 541:5028 — 乙栋设备网格顺序）
+$lang['fac_title'] = "设施现状";
+$lang['fac_sub_desc'] = "以先进设备与卫生生产环境，打造值得信赖的品质。";
+$lang['facility_status_sub_tit'] = "设施现状";
+$lang['facility_status_main_tit'] = "（株）EUMFOOD SYSTEM 设施现状";
+$lang['facility_tab_ga'] = "甲栋";
+$lang['facility_tab_na'] = "乙栋";
+$lang['facility_pending_tooltip'] = "准备中";
+$lang['facility_tablist_label'] = "选择厂房";
+$lang['facility_name_label'] = "设备名称";
+
+// Business Facility — 甲栋（Figma 643:10384）
+$lang['facility_ga_item_01_name'] = "加热锅";
+$lang['facility_ga_item_01_desc'] = "以均匀温度加热大批量食材，充分释放其原有风味与<br>香气。";
+$lang['facility_ga_item_02_name'] = "包装机械";
+$lang['facility_ga_item_02_desc'] = "高性能自动化系统将内容物真空包装，使产品新鲜度<br>长期保持。";
+$lang['facility_ga_item_03_name'] = "调配机";
+$lang['facility_ga_item_03_desc'] = "使多种原料不结块、均匀混合，实现口味<br>一致稳定。";
+$lang['facility_ga_item_04_name'] = "泡沫清洗机";
+$lang['facility_ga_item_04_desc'] = "产生强力微细气泡，在不损伤原料的前提下将各角落异物<br>洁净去除。";
+$lang['facility_ga_item_05_name'] = "筛选输送机";
+$lang['facility_ga_item_05_desc'] = "将洗净的原料送往下一工序，并持续管理与输送<br>残留异物。";
+$lang['facility_ga_item_06_name'] = "热水杀菌器";
+$lang['facility_ga_item_06_desc'] = "以高温热水杀菌，抑制微生物繁殖并提升<br>流通安全性。";
+$lang['facility_ga_item_07_name'] = "异物拣选输送机";
+$lang['facility_ga_item_07_desc'] = "在原料移动过程中仔细确认并准确筛除<br>不合格异物。";
+$lang['facility_ga_item_08_name'] = "真空包装机";
+$lang['facility_ga_item_08_desc'] = "彻底排出内部空气，防止氧化并进一步提升<br>保存性。";
+$lang['facility_ga_item_09_name'] = "空气淋浴器";
+$lang['facility_ga_item_09_desc'] = "在车间入口以强风去除衣物上的灰尘与微细异物，<br>保障卫生。";
+$lang['facility_ga_item_10_name'] = "重量·金属检测器";
+$lang['facility_ga_item_10_desc'] = "检测生产过程中可能混入的细微金属，严格<br>保障产品安全。";
+$lang['facility_ga_item_11_name'] = "X光检测器";
+$lang['facility_ga_item_11_desc'] = "以 X 光透视方式精密发现并检测金属及<br>非金属异物。";
+$lang['facility_ga_item_12_name'] = "外箱半自动包装机";
+$lang['facility_ga_item_12_desc'] = "快速牢固地为成品箱封胶带，按出货规格<br>安全包装。";
+
+$lang['facility_item_01_name'] = "配料罐（杀菌、冷却）";
+$lang['facility_item_02_name'] = "在线混合机";
+$lang['facility_item_03_name'] = "转盘包装机";
+$lang['facility_item_04_name'] = "双列小型包装机";
+$lang['facility_item_05_name'] = "液体茶灌装机";
+$lang['facility_item_06_name'] = "袋装灌装机";
+$lang['facility_item_07_name'] = "泡沫清洗机";
+$lang['facility_item_08_name'] = "黄瓜切段机";
+$lang['facility_item_09_name'] = "腌菜包装机";
+$lang['facility_item_10_name'] = "金属检测器";
+$lang['facility_item_11_name'] = "外箱半自动包装机";
+
+$lang['facility_item_01_desc'] = "对大容量原料进行均匀混合，使每批产品口味一致、稳定可靠。";
+$lang['facility_item_02_desc'] = "高速旋转使原料微粒化、分散均匀，呈现细腻颗粒与<br>上乘酱汁品质。";
+$lang['facility_item_03_desc'] = "高速回转系统支持大批量生产，定量灌装与封口精准<br>可靠。";
+$lang['facility_item_04_desc'] = "双列同时生产小规格产品，提高效率并按统一规格<br>整洁包装。";
+$lang['facility_item_05_desc'] = "面向多种容器卫生灌装酱料，定量准确，提升产品<br>可信度。";
+$lang['facility_item_06_desc'] = "针对自立袋优化的灌装系统，防滴漏，安全洁净地<br>完成充填。";
+$lang['facility_item_07_desc'] = "尽量减少原料损伤，经三阶段气泡清洗，细微异物亦可<br>卫生去除。";
+$lang['facility_item_08_desc'] = "将原料切成均匀、规整的形状，兼顾口感与外观<br>呈现。";
+$lang['facility_item_09_desc'] = "保持原料与调味液比例稳定，带来爽脆口感与如新<br>鲜般风味。";
+$lang['facility_item_10_desc'] = "在制造流程末段检出细微金属异物，为食品安全提供<br>坚实保障。";
+$lang['facility_item_11_desc'] = "将成品牢固装箱，减少流通破损并提升<br>作业效率。";
+
+// ============================================================
+// 사업영역 - 제조공정 소개 (business_process.php) — Figma 553:5978
+// ============================================================
+$lang['biz_process_sub_desc'] = "为您介绍符合HACCP标准的系统化生产流程。";
+$lang['biz_process_overview_sub_tit'] = "制造流程";
+$lang['biz_process_overview_main_tit'] = "（株）EUMFOOD SYSTEM 制造流程";
+$lang['biz_process_type_pickles'] = "腌制食品";
+$lang['biz_process_type_braised'] = "炖煮类";
+$lang['biz_process_type_pickle'] = "腌菜";
+$lang['biz_process_type_sauce'] = "调味酱、混合酱、液态茶饮";
+$lang['biz_process_step_prefix'] = "Step";
+
+$lang['biz_pf_pickles_cat'] = "腌制食品";
+$lang['biz_pf_pickles_head'] = "腌制食品流程";
+$lang['biz_pf_pickles_eyebrow'] = "腌制食品";
+$lang['biz_pf_braised_cat'] = "炖煮类";
+$lang['biz_pf_braised_head'] = "酱菜类流程";
+$lang['biz_pf_pickle_cat'] = "腌菜";
+$lang['biz_pf_pickle_head'] = "酸甜黄瓜";
+$lang['biz_pf_sauce_cat'] = "调味酱、混合酱、液态茶饮";
+$lang['biz_pf_sauce_head'] = "酱类·混合类·液体茶";
+
+$lang['biz_pf_pk_01b'] = "01"; $lang['biz_pf_pk_01t'] = "入库"; $lang['biz_pf_pk_01d'] = "原料入专用库区并记录，实现可追溯管理。";
+$lang['biz_pf_pk_02b'] = "02"; $lang['biz_pf_pk_02t'] = "原料检验"; $lang['biz_pf_pk_02d'] = "检查原料状态、规格与异物情况，确认可投入后续工序。";
+$lang['biz_pf_pk_03b'] = "03"; $lang['biz_pf_pk_03t'] = "浸泡"; $lang['biz_pf_pk_03d'] = "按工艺条件进行浸泡处理，稳定原料组织与口感。";
+$lang['biz_pf_pk_04b'] = "04"; $lang['biz_pf_pk_04t'] = "清洗"; $lang['biz_pf_pk_04d'] = "通过多段清洗去除残留异物并保持卫生。";
+$lang['biz_pf_pk_05b'] = "05"; $lang['biz_pf_pk_05t'] = "配料（拌）"; $lang['biz_pf_pk_05d'] = "在调配设备中均匀混合调味料与原料，保证口味一致。";
+$lang['biz_pf_pk_06b'] = "07"; $lang['biz_pf_pk_06t'] = "内包装"; $lang['biz_pf_pk_06d'] = "按包装形式充填、封口，确保卫生与保存性。";
+$lang['biz_pf_pk_07b'] = "08"; $lang['biz_pf_pk_07t'] = "金属检测"; $lang['biz_pf_pk_07d'] = "金属检测仪拦截金属异物。";
+$lang['biz_pf_pk_08b'] = "09"; $lang['biz_pf_pk_08t'] = "X-ray"; $lang['biz_pf_pk_08d'] = "X光检查石头、陶瓷等非金属异物。";
+$lang['biz_pf_pk_09b'] = "10"; $lang['biz_pf_pk_09t'] = "外包装，出厂"; $lang['biz_pf_pk_09d'] = "最终外包装后出货，安全送达流通环节。";
+$lang['biz_pf_pk_10b'] = "10"; $lang['biz_pf_pk_10t'] = ""; $lang['biz_pf_pk_10d'] = "";
+
+$lang['biz_pf_br_01b'] = "01"; $lang['biz_pf_br_01t'] = "入库"; $lang['biz_pf_br_01d'] = "原料入库并记录追溯信息。";
+$lang['biz_pf_br_02b'] = "02"; $lang['biz_pf_br_02t'] = "原料检验"; $lang['biz_pf_br_02d'] = "按规格与品质标准检验原料。";
+$lang['biz_pf_br_03b'] = "03"; $lang['biz_pf_br_03t'] = "筛选"; $lang['biz_pf_br_03d'] = "仅选取符合标准的原料。";
+$lang['biz_pf_br_04b'] = "04"; $lang['biz_pf_br_04t'] = "加热（炖煮）"; $lang['biz_pf_br_04d'] = "加热炖煮形成风味与口感。";
+$lang['biz_pf_br_05b'] = "05"; $lang['biz_pf_br_05t'] = "内包装"; $lang['biz_pf_br_05d'] = "内包装与封口，保障卫生与品质。";
+$lang['biz_pf_br_06b'] = "06"; $lang['biz_pf_br_06t'] = "金属检测"; $lang['biz_pf_br_06d'] = "检出并剔除金属异物。";
+$lang['biz_pf_br_07b'] = "07"; $lang['biz_pf_br_07t'] = "X光检测"; $lang['biz_pf_br_07d'] = "X光检查非金属异物。";
+$lang['biz_pf_br_08b'] = "08"; $lang['biz_pf_br_08t'] = "外包装，出厂"; $lang['biz_pf_br_08d'] = "外包装后出货。";
+
+$lang['biz_pf_pi_01b'] = "01"; $lang['biz_pf_pi_01t'] = "入库"; $lang['biz_pf_pi_01d'] = "原料入库与检验。";
+$lang['biz_pf_pi_02b'] = "02"; $lang['biz_pf_pi_02t'] = "原料检验"; $lang['biz_pf_pi_02d'] = "对来料的品质、规格与状态进行检验。";
+$lang['biz_pf_pi_03b'] = "03"; $lang['biz_pf_pi_03t'] = "筛选"; $lang['biz_pf_pi_03d'] = "按标准分选原料。";
+$lang['biz_pf_pi_04b'] = "04"; $lang['biz_pf_pi_04t'] = "清洗"; $lang['biz_pf_pi_04d'] = "清洗去除杂质，保持卫生。";
+$lang['biz_pf_pi_05b'] = "05"; $lang['biz_pf_pi_05t'] = "切段"; $lang['biz_pf_pi_05d'] = "按规格切段供下道工序。";
+$lang['biz_pf_pi_06b'] = "06"; $lang['biz_pf_pi_06t'] = "内包装"; $lang['biz_pf_pi_06d'] = "腌菜产品内包装与封口。";
+$lang['biz_pf_pi_07b'] = "07"; $lang['biz_pf_pi_07t'] = "金属检测"; $lang['biz_pf_pi_07d'] = "金属检测保障安全。";
+$lang['biz_pf_pi_08b'] = "08"; $lang['biz_pf_pi_08t'] = "外包装，出厂"; $lang['biz_pf_pi_08d'] = "外包装后出货。";
+
+$lang['biz_pf_sa_01b'] = "01"; $lang['biz_pf_sa_01t'] = "入库"; $lang['biz_pf_sa_01d'] = "原辅料入库并完成检收。";
+$lang['biz_pf_sa_02b'] = "02"; $lang['biz_pf_sa_02t'] = "原料检验"; $lang['biz_pf_sa_02d'] = "检查原料规格、品质与适用性。";
+$lang['biz_pf_sa_03b'] = "03"; $lang['biz_pf_sa_03t'] = "计量"; $lang['biz_pf_sa_03d'] = "按配方精确计量。";
+$lang['biz_pf_sa_04b'] = "04"; $lang['biz_pf_sa_04t'] = "加热（冷却）"; $lang['biz_pf_sa_04d'] = "管控加热与冷却条件，保障品质与安全。";
+$lang['biz_pf_sa_05b'] = "05"; $lang['biz_pf_sa_05t'] = "内包装"; $lang['biz_pf_sa_05d'] = "按容器类型充填与封口。";
+$lang['biz_pf_sa_06b'] = "06"; $lang['biz_pf_sa_06t'] = "金属检测"; $lang['biz_pf_sa_06d'] = "金属检测工序。";
+$lang['biz_pf_sa_07b'] = "07"; $lang['biz_pf_sa_07t'] = "外包装，出厂"; $lang['biz_pf_sa_07d'] = "外包装后出货。";
+
+$lang['btn_product_intro'] = "查看产品介绍";

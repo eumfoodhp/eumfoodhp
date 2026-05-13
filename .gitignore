@@ -1,0 +1,43 @@
+# Local tooling (used only on dev machine)
+ftp-sync.ps1
+ftp-sync.log
+.dump-token
+dbdump-*.php
+eumfood1.sql
+*.sql.gz
+
+# Secrets — never commit real credentials
+site/inc/db_conn.php
+.env
+.env.*
+!.env.example
+
+# Large user content (deployed via object storage, not git)
+site/upload/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / agents
+.vscode/
+.idea/
+.claude/
+*.swp
+
+# Node / Next.js (future)
+node_modules/
+.next/
+out/
+dist/
+build/
+.turbo/
+*.tsbuildinfo
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vercel
+.vercel/

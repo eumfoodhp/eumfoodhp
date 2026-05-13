@@ -1,0 +1,76 @@
+/* ============================================================
+    Admin Reset & Base Styles
+   ============================================================ */
+
+/* 1. 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f9f9f9; /* 관리자 페이지 배경색 */
+}
+
+/* 2. 링크 초기화 */
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* 3. 리스트 초기화 */
+ul, ol, li {
+    list-style: none;
+}
+
+/* 4. 이미지 및 폼 요소 초기화 */
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+input, textarea, button, select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* 5. 스크롤바 커스텀 (선택사항 - 관리자 느낌) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+/* 텍스트 중앙/왼쪽 정렬 공통 클래스 */
+.txt_center { text-align: center !important; }
+.txt_left { text-align: left !important; }
+.txt_right { text-align: right !important; }

@@ -1,0 +1,216 @@
+/* 시설현황 — Figma 541:5028 (나동 설비 그리드) */
+
+#sub_contents.business_facility_page .breadcrumb_wrap {
+    margin-bottom: 60px;
+}
+
+#sub_contents.business_facility_page .sub_visual_img.business_facility_hero_visual {
+    min-height: 640px;
+    padding-bottom: 40px;
+    background-image: url('/images/sub/business_facility_hero.png');
+}
+
+#sub_contents.business_facility_page .sub_visual_img.business_facility_hero_visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.46) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+#sub_contents.business_facility_page .sub_tab_container {
+    z-index: 2;
+}
+
+.facility_status_section {
+    padding: 100px 0 140px;
+}
+
+.facility_status_inner {
+    width: 1580px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.facility_status_head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.facility_title_group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.facility_sub_tit {
+    color: #ff5d27;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.45px;
+    font-weight: 500;
+}
+
+.facility_main_tit {
+    color: #222;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 42px;
+    line-height: 60px;
+    letter-spacing: -1.05px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.facility_toggle {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.fac_tab_item {
+    box-sizing: border-box;
+    min-width: 96px;
+    padding: 12px 20px;
+    border: 1px solid #e5e5ec;
+    border-radius: 9999px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.35px;
+    font-weight: 500;
+    background: #fff;
+    color: #767676;
+    cursor: pointer;
+    position: relative;
+}
+
+.fac_tab_item.active {
+    background: #ff5d27;
+    border-color: #ff5d27;
+    color: #fff;
+    cursor: default;
+}
+
+.facility_grid--hidden {
+    display: none !important;
+}
+
+.facility_grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 28px;
+    row-gap: 48px;
+    width: 100%;
+}
+
+.facility_card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.facility_img {
+    position: relative;
+    overflow: hidden;
+    height: 414px;
+    border-radius: 20px;
+    background: #f3f4f8;
+}
+
+.facility_img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.facility_info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.facility_name_row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.facility_name_label {
+    flex-shrink: 0;
+    min-width: 48px;
+    color: #ff5d27;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.45px;
+    font-weight: 500;
+}
+
+.facility_name_row .divider {
+    flex-shrink: 0;
+    width: 1px;
+    height: 16px;
+    background: #e5e5ec;
+}
+
+.facility_name {
+    flex: 1;
+    min-width: 0;
+    color: #222;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.45px;
+    font-weight: 500;
+}
+
+.facility_desc {
+    color: #767676;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: -0.4px;
+    font-weight: 300;
+    margin: 0;
+}
+
+@media (max-width: 1200px) {
+    .facility_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .facility_status_head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .facility_main_tit {
+        font-size: 34px;
+        line-height: 46px;
+    }
+
+    .facility_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 735px) {
+    #sub_contents.business_facility_page .sub_visual_img.business_facility_hero_visual::after {
+        display: none;
+    }
+}
