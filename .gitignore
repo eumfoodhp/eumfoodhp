@@ -5,6 +5,11 @@ ftp-sync.log
 dbdump-*.php
 eumfood1.sql
 *.sql.gz
+convert-lang.mjs
+create-next.log
+git-push.log
+web/dev.log
+page-test.html
 
 # Secrets — never commit real credentials
 site/inc/db_conn.php

@@ -1,0 +1,8 @@
+/* Site CSS lives at /public/css/*.css and is linked from layouts/pages. */
+/* This file is intentionally left near-empty so the legacy CSS owns layout/typography. */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,176 @@
+/**
+ * 인증현황 (about_cert.php) — Figma 보완
+ * 기본 레이아웃은 sub.css .cert_* 참고
+ */
+
+.cert_main_title_l1 {
+    font-weight: 300;
+}
+
+.cert_main_title_l2 {
+    font-weight: 700;
+}
+
+.cert_page .cert_info {
+    align-items: center;
+}
+
+.cert_page .cert_img_inner {
+    background: #fff;
+}
+
+.cert_page .cert_img_inner img {
+    object-fit: contain;
+}
+
+@media (max-width: 1200px) {
+    .cert_page .haccp_benefit ul {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1024px) {
+    #sub_contents.cert_page .cert_container {
+        padding: 84px 32px 0;
+        gap: 44px;
+    }
+
+    #sub_contents.cert_page .cert_top {
+        gap: 32px;
+        align-items: flex-start;
+    }
+
+    #sub_contents.cert_page .top_left,
+    #sub_contents.cert_page .top_right {
+        width: 100%;
+        max-width: none;
+    }
+
+    #sub_contents.cert_page .cert_main_title {
+        font-size: 34px;
+        line-height: 46px;
+    }
+
+    #sub_contents.cert_page .cert_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    #sub_contents.cert_page .cert_img_box {
+        height: 260px;
+    }
+
+    #sub_contents.cert_page .cert_img_inner {
+        width: 150px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 735px) {
+    #sub_contents.cert_page .sub_visual_section {
+        padding-top: 0 !important;
+        margin-bottom: 8px;
+    }
+
+    #sub_contents.cert_page .cert_container {
+        padding: 62px 20px 0;
+        gap: 32px;
+    }
+
+    #sub_contents.cert_page .cert_main_title {
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    #sub_contents.cert_page .haccp_icon {
+        width: 72px;
+        height: 72px;
+    }
+
+    #sub_contents.cert_page .cert_desc,
+    #sub_contents.cert_page .haccp_benefit ul {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    #sub_contents.cert_page .cert_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    #sub_contents.cert_page .cert_img_box {
+        height: 230px;
+    }
+
+    #sub_contents.cert_page .cert_img_inner {
+        width: 130px;
+        height: 174px;
+    }
+}
+
+@media (max-width: 375px) {
+    #sub_contents.cert_page .sub_visual_section {
+        padding-top: 24px !important;
+        margin-bottom: 28px;
+    }
+
+    #sub_contents.cert_page .breadcrumb_wrap {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    #sub_contents.cert_page .sub_page_title {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    #sub_contents.cert_page .sub_page_desc {
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    #sub_contents.cert_page .cert_container {
+        padding: 48px 14px 0;
+        gap: 24px;
+    }
+
+    #sub_contents.cert_page .cert_main_title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    #sub_contents.cert_page .haccp_icon {
+        width: 62px;
+        height: 62px;
+    }
+
+    #sub_contents.cert_page .haccp_benefit ul {
+        gap: 4px 10px;
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    #sub_contents.cert_page .cert_grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    #sub_contents.cert_page .cert_img_box {
+        height: 200px;
+    }
+
+    #sub_contents.cert_page .cert_img_inner {
+        width: 108px;
+        height: 144px;
+    }
+
+    #sub_contents.cert_page .cert_name {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    #sub_contents.cert_page .cert_date {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}

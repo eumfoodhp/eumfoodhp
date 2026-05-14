@@ -1,0 +1,17 @@
+/* 오시는 길 — 피그마 104:763 보조 (메인은 sub.css .location_*) */
+.location_inner {
+    max-width: 1580px;
+    margin: 0 auto;
+}
+
+/* 카카오/네이버 정적 안내 이미지 — QR과 동일 68×68 */
+#sub_contents.location_page .qr_item--mapimg {
+    width: 68px;
+}
+
+#sub_contents.location_page .qr_item--mapimg .qr_img {
+    width: 68px;
+    height: 68px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
