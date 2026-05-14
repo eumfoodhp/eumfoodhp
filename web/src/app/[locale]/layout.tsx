@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import QuickMenu from '@/components/QuickMenu';
 
 import '../globals.css';
+import '@/styles/common.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -35,13 +36,6 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-        />
-        <link rel="stylesheet" href="/css/common.css" />
-      </head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Header />

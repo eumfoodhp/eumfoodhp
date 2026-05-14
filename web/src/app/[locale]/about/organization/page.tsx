@@ -2,6 +2,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
+import '@/styles/about_organization.css';
 
 const ORG_CHART_BY_LOCALE: Record<string, string> = {
   ko: '/images/sub/org-chart-v3.png',
@@ -23,8 +25,6 @@ export default async function OrganizationPage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
-      <link rel="stylesheet" href="/css/about_organization.css" />
 
       <main id="sub_contents" className="organization_page">
         <SubVisual

@@ -4,6 +4,8 @@ import Script from 'next/script';
 import { Link } from '@/i18n/navigation';
 import HeroSwiper from '@/components/HeroSwiper';
 import { nl2br } from '@/lib/nl2br';
+import '@/styles/main.css';
+import 'swiper/css';
 
 type ProcTab = { tag: string; title: string; link: string; desc: string };
 type ProdCategory = { name: string; link: string };
@@ -56,8 +58,6 @@ export default async function HomePage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/main.css" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
       <main id="main">
         <section className="hero_section">

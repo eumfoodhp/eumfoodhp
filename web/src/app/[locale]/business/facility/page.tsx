@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { businessTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
+import '@/styles/business_facility.css';
 
 // Hard-coded per local /public/images/sub/facility/ contents. ga-05 is png-only,
 // na-07 ships as -new.png, the rest are jpg if available else png.
@@ -25,8 +27,6 @@ export default function FacilityPage() {
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
-      <link rel="stylesheet" href="/css/business_facility.css" />
 
       <main id="sub_contents" className="business_facility_page">
         <SubVisual

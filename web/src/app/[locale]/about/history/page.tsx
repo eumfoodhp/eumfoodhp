@@ -3,6 +3,7 @@ import Script from 'next/script';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
 
 type HistoryDataItem = { year: string; list: Array<{ month: string; content: string }> };
 type HistoryListItem = { year: string; contents: string[] };
@@ -38,7 +39,6 @@ export default async function HistoryPage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
 
       <main id="sub_contents" className="history_page">
         <SubVisual

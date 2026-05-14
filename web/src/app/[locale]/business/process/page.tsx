@@ -3,6 +3,8 @@ import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import StubBody from '@/components/StubBody';
 import { businessTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
+import '@/styles/business_process.css';
 
 export default async function BusinessProcessPage({
   params,
@@ -15,8 +17,6 @@ export default async function BusinessProcessPage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
-      <link rel="stylesheet" href="/css/business_process.css" />
 
       <main id="sub_contents" className="business_process_page">
         <SubVisual

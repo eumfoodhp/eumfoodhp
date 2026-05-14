@@ -3,6 +3,7 @@ import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import StubBody from '@/components/StubBody';
 import { supportTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
 
 export default async function Page({
   params,
@@ -14,7 +15,6 @@ export default async function Page({
   const t = await getTranslations();
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
       <main id="sub_contents" className="contact_view_page">
         <SubVisual
           parentLabel={t('menu_support')}

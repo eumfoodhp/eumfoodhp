@@ -46,3 +46,6 @@ yarn-error.log*
 
 # Vercel
 .vercel/
+fix-css-imports.mjs
+page-check.html
+page-check2.html

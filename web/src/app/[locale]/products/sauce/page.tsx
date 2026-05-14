@@ -3,6 +3,8 @@ import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import StubBody from '@/components/StubBody';
 import { productsTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
+import '@/styles/product_sauce.css';
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -10,8 +12,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations();
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
-      <link rel="stylesheet" href="/css/product_sauce.css" />
       <main id="sub_contents" className="product_page">
         <SubVisual
           parentLabel={t('menu_product')}

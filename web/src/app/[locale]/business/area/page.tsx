@@ -3,6 +3,8 @@ import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { businessTabs } from '@/lib/sub-tabs';
 import { nl2br } from '@/lib/nl2br';
+import '@/styles/sub.css';
+import '@/styles/business_area.css';
 
 const STATS = [1, 2, 3, 4] as const;
 const AREAS = [1, 2, 3, 4] as const;
@@ -18,8 +20,6 @@ export default async function BusinessAreaPage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
-      <link rel="stylesheet" href="/css/business_area.css" />
 
       <main id="sub_contents" className="business_area_page">
         <SubVisual

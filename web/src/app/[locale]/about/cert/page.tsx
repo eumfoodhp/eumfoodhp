@@ -2,6 +2,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
+import '@/styles/about_cert.css';
 
 const CERTS = [
   { key: 'cert_name_1', img: '/images/sub/cert/cert-01-pickles.png' },
@@ -26,8 +28,6 @@ export default async function CertPage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
-      <link rel="stylesheet" href="/css/about_cert.css" />
 
       <main id="sub_contents" className="cert_page">
         <SubVisual

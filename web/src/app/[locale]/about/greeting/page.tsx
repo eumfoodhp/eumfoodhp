@@ -3,6 +3,7 @@ import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
 import { nl2br } from '@/lib/nl2br';
+import '@/styles/sub.css';
 
 export default async function GreetingPage({
   params,
@@ -15,7 +16,6 @@ export default async function GreetingPage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
 
       <main id="sub_contents" className="greeting_page">
         <SubVisual

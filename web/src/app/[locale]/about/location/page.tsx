@@ -2,6 +2,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
+import '@/styles/sub.css';
+import '@/styles/about_location.css';
 
 export default async function LocationPage({
   params,
@@ -19,8 +21,6 @@ export default async function LocationPage({
 
   return (
     <>
-      <link rel="stylesheet" href="/css/sub.css" />
-      <link rel="stylesheet" href="/css/about_location.css" />
 
       <main id="sub_contents" className="location_page">
         <SubVisual
