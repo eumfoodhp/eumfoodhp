@@ -130,20 +130,19 @@
 }
 
 /* ============================================================
-   퀵메뉴 — 화면 중앙(세로) → 헤더 우측 아래 ㄱ자 배치
-   자사몰 / 고객문의 / 카탈로그 가로 + ↑ 아래로
+   퀵메뉴 — ㄱ자 배치
+   가로획 = 헤더, 세로획 = 퀵메뉴 (헤더 우측 끝 아래에서 세로로)
    ============================================================ */
 .quick_menu {
     position: fixed !important;
-    top: 80px !important;                       /* 헤더(top 16 + height ~58) 바로 아래 */
-    right: 32px !important;
+    top: 92px !important;                       /* 헤더(top 16 + height ~60 + 16 여백) */
+    right: 32px !important;                     /* 헤더 우측 여백과 정렬 */
     left: auto !important;
     bottom: auto !important;
     transform: none !important;
-    width: auto !important;
-    display: grid !important;
-    grid-template-columns: repeat(3, 74px) !important;
-    grid-template-rows: 74px 74px !important;
+    width: 74px !important;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 12px !important;
     align-items: stretch !important;
 }
@@ -158,19 +157,12 @@
     border-color: transparent !important;
 }
 
-/* ㄱ자 배치: 가로 3개 + 아래 우측에 ↑ */
-.quick_item.mall    { grid-column: 1; grid-row: 1; }
-.quick_item.contact { grid-column: 2; grid-row: 1; }
-.quick_item.catalog { grid-column: 3; grid-row: 1; }
-.quick_item.btn_top { grid-column: 3; grid-row: 2; }
-
 @media (max-width: 1024px) {
     .quick_menu {
-        top: 64px !important;
-        right: 16px !important;
-        grid-template-columns: repeat(3, 64px) !important;
-        grid-template-rows: 64px 64px !important;
-        gap: 8px !important;
+        top: 72px !important;
+        right: 20px !important;
+        width: 64px !important;
+        gap: 10px !important;
     }
     .quick_item {
         width: 64px !important;
@@ -179,27 +171,16 @@
 }
 
 @media (max-width: 735px) {
-    /* 모바일에서는 ㄱ자가 너무 넓어서 다시 세로 1열로 우측 하단 고정 */
     .quick_menu {
         top: auto !important;
         bottom: 16px !important;
         right: 12px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        grid-template-columns: none !important;
-        grid-template-rows: none !important;
+        width: 44px !important;
         gap: 6px !important;
     }
     .quick_item {
         width: 44px !important;
         height: 44px !important;
-    }
-    .quick_item.mall,
-    .quick_item.contact,
-    .quick_item.catalog,
-    .quick_item.btn_top {
-        grid-column: auto;
-        grid-row: auto;
     }
 }
 
