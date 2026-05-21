@@ -83,33 +83,90 @@
 }
 
 /* ============================================================
-   헤더 — 흰색 → 연한 크림/오렌지 톤으로 따뜻하게
+   헤더 — 반투명 크림 + 블러 (모던 글래스 효과)
    ============================================================ */
 #header {
-    background: #FBF6F2 !important;
-    border-bottom-color: #F0E6DE !important;
+    background: rgba(251, 246, 242, 0.78) !important;
+    backdrop-filter: saturate(180%) blur(14px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
+    border-bottom: none !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.03) !important;
 }
 
-/* 메가메뉴 펼쳐졌을 때 배경도 같이 톤 맞춤 */
 .mega_menu_backdrop {
-    background: #FBF6F2 !important;
+    background: rgba(251, 246, 242, 0.95) !important;
+    backdrop-filter: saturate(180%) blur(14px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
+}
+
+.header_inner {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
 }
 
 /* ============================================================
-   "문의하기" CTA 버튼 — 주황 채움 → 흰 배경 + 주황 테두리
-   호버 시 기존 주황 채움으로 전환
+   우측 유틸리티 영역 — 3개 버튼 사이즈/스타일 통일
+   문의하기: 텍스트 버튼 (작은 사각, 라운드)
+   언어/메뉴: 40×40 아이콘 버튼 (호버 시 옅은 배경)
    ============================================================ */
+.util_area {
+    gap: 6px !important;
+}
+
 .btn_inquiry {
-    background: #fff !important;
-    border: 1px solid #FF5D27 !important;
+    height: 40px;
+    padding: 0 18px !important;
+    border-radius: 10px !important;
+    background: #FF5D27 !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.15s ease !important;
 }
 .btn_inquiry span {
-    color: #FF5D27 !important;
-    transition: color 0.25s ease;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.2px !important;
 }
 .btn_inquiry:hover {
-    background: #FF5D27 !important;
+    background: #E64D1C !important;
+    transform: translateY(-1px);
 }
-.btn_inquiry:hover span {
-    color: #fff !important;
+
+.lang_toggle_btn,
+.mo_menu_btn {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.18s ease !important;
+}
+.lang_toggle_btn:hover,
+.mo_menu_btn:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+.lang_toggle_btn img,
+.mo_menu_btn img {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* 언어 드롭다운 — 모던 카드 스타일 */
+.lang_list {
+    border-radius: 10px !important;
+    padding: 6px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+.lang_list li a {
+    border-radius: 6px !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
 }
