@@ -27,6 +27,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           title={t('sub_prod_salted')}
           desc={t('fac_sub_desc')}
           tabBar={<SubTabBar tabs={productsTabs(t)} activeKey="salted" />}
+          heroClass="product_salted_hero_visual"
         />
 
         <section className="product_list_section">

@@ -28,6 +28,7 @@ export default async function BusinessAreaPage({
           title={t('biz_title')}
           desc={t('biz_sub_desc')}
           tabBar={<SubTabBar tabs={businessTabs(t)} activeKey="area" />}
+          heroClass="business_hero_visual"
         />
 
         <section className="biz_overview_section">

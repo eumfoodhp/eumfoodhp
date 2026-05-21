@@ -25,6 +25,7 @@ export default async function BusinessProcessPage({
           title={t('sub_biz_process')}
           desc={t('biz_process_sub_desc')}
           tabBar={<SubTabBar tabs={businessTabs(t)} activeKey="process" />}
+          heroClass="business_process_hero_visual"
         />
         <StubBody note="제조공정 상세 다이어그램은 원본에서 가져와 정식 포팅 예정입니다." />
       </main>

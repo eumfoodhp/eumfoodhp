@@ -6,10 +6,31 @@ type Props = {
   title: string;
   desc: string;
   tabBar?: ReactNode;
+  /**
+   * Per-page hero variant class — e.g. "business_hero_visual",
+   * "product_pickles_hero_visual". CSS in /styles/<page>.css sets
+   * background-image on that class. If omitted, falls back to
+   * /images/sub/tempo.png (used by about/process pages).
+   */
+  heroClass?: string;
 };
 
 /** Shared sub-page hero: breadcrumb + title + desc + (optional) tab bar. */
-export default function SubVisual({ parentLabel, currentLabel, title, desc, tabBar }: Props) {
+export default function SubVisual({
+  parentLabel,
+  currentLabel,
+  title,
+  desc,
+  tabBar,
+  heroClass,
+}: Props) {
+  const heroProps = heroClass
+    ? { className: `sub_visual_img ${heroClass}` }
+    : {
+        className: 'sub_visual_img',
+        style: { backgroundImage: "url('/images/sub/tempo.png')" },
+      };
+
   return (
     <section className="sub_visual_section">
       <div className="sub_inner">
@@ -26,10 +47,7 @@ export default function SubVisual({ parentLabel, currentLabel, title, desc, tabB
             <p className="sub_page_desc">{desc}</p>
           </div>
         </div>
-        <div
-          className="sub_visual_img"
-          style={{ backgroundImage: "url('/images/sub/tempo.png')" }}
-        />
+        <div {...heroProps} />
         {tabBar && (
           <div className="sub_tab_container sub_tab_container--below">
             <div className="sub_tab_inner">{tabBar}</div>

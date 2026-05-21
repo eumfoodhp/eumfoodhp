@@ -49,3 +49,5 @@ yarn-error.log*
 fix-css-imports.mjs
 page-check.html
 page-check2.html
+add-hero-class.mjs
+fix-hero-class.mjs
