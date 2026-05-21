@@ -1,3 +1,20 @@
+// Patch: this file is loaded via Next.js <Script strategy="afterInteractive">,
+// which runs AFTER the document's DOMContentLoaded event has already fired.
+// Without this shim, DOMContentLoaded listeners added below would never run,
+// leaving #main > section{ opacity:0 } sections permanently invisible.
+(function () {
+    if (document.readyState !== 'loading') {
+        const origAddEventListener = document.addEventListener.bind(document);
+        document.addEventListener = function (type, listener, options) {
+            if (type === 'DOMContentLoaded' && typeof listener === 'function') {
+                queueMicrotask(listener);
+            } else {
+                origAddEventListener(type, listener, options);
+            }
+        };
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     /**
      * Section 4: Process Tab Interaction
