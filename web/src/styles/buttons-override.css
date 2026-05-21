@@ -22,7 +22,7 @@
 .lang_list li a,
 .period_tab,
 .quick_item:not(.btn_top) {
-    border-radius: 9999px !important;
+    border-radius: 12px !important;
 }
 
 /* 원형 아이콘 버튼은 그대로 원형 유지 (덮어쓰기 방지용 명시) */
@@ -34,4 +34,50 @@
 /* 모바일 메뉴 닫기(×)는 기본값(0) 유지 */
 .mo_close_btn {
     border-radius: 0 !important;
+}
+
+/* ============================================================
+   서브탭바를 배너 이미지 안 → 아래로 빼고 다크 텍스트로 전환
+   ============================================================ */
+.sub_tab_container.sub_tab_container--below {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    bottom: auto !important;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.sub_tab_container--below .sub_tab_inner {
+    background: rgba(0, 0, 0, 0.05) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.sub_tab_container--below .sub_tab_item {
+    color: #444 !important;
+}
+
+.sub_tab_container--below .sub_tab_item.active {
+    background: #fff !important;
+    color: #222 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sub_tab_container--below .sub_tab_item:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.6) !important;
+    color: #222 !important;
+}
+
+/* ============================================================
+   퀵메뉴 카드 — 흰 배경에서 안 보여서 옅은 테두리 추가
+   ============================================================ */
+.quick_item {
+    border: 1px solid #e5e5ec !important;
+}
+
+.quick_item:hover {
+    border-color: transparent !important;  /* 호버 시 색 채워지면 테두리 사라짐 */
 }

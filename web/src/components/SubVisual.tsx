@@ -29,13 +29,12 @@ export default function SubVisual({ parentLabel, currentLabel, title, desc, tabB
         <div
           className="sub_visual_img"
           style={{ backgroundImage: "url('/images/sub/tempo.png')" }}
-        >
-          {tabBar && (
-            <div className="sub_tab_container">
-              <div className="sub_tab_inner">{tabBar}</div>
-            </div>
-          )}
-        </div>
+        />
+        {tabBar && (
+          <div className="sub_tab_container sub_tab_container--below">
+            <div className="sub_tab_inner">{tabBar}</div>
+          </div>
+        )}
       </div>
     </section>
   );
