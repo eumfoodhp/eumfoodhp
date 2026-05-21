@@ -94,23 +94,23 @@
     width: calc(100% - 40px) !important;
     max-width: 1580px !important;
     border-radius: 20px !important;
-    border-bottom: none !important;
-    background: rgba(255, 93, 39, 0.95) !important;  /* 브랜드 오렌지 */
-    backdrop-filter: saturate(180%) blur(12px) !important;
-    -webkit-backdrop-filter: saturate(180%) blur(12px) !important;
-    box-shadow: 0 10px 28px rgba(255, 93, 39, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+    border: 1.5px solid #FF5D27 !important;       /* 오렌지 테두리 */
+    background: rgba(255, 255, 255, 0.92) !important;  /* 흰색 배경 (반투명+블러) */
+    backdrop-filter: saturate(180%) blur(14px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* GNB 메뉴 텍스트 — 오렌지 배경 위 흰색으로 대비 */
+/* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
 .gnb_main_link,
 .gnb_main_link span {
-    color: #fff !important;
+    color: #222 !important;
 }
 .gnb_main_link:hover,
 .gnb_main_link:hover span,
 .gnb_main_link:focus-visible,
 .gnb_main_link:focus-visible span {
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: #FF5D27 !important;
 }
 
 /* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤 */
@@ -249,7 +249,7 @@ html, body {
     height: 40px;
     padding: 0 18px !important;
     border-radius: 10px !important;
-    background: #fff !important;
+    background: #FF5D27 !important;             /* 주황 채움 — 흰 헤더 위 CTA 강조 */
     border: none !important;
     display: inline-flex !important;
     align-items: center;
@@ -257,17 +257,14 @@ html, body {
     transition: background 0.2s ease, transform 0.15s ease !important;
 }
 .btn_inquiry span {
-    color: #FF5D27 !important;
+    color: #fff !important;
     font-size: 14px !important;
     font-weight: 600 !important;
     letter-spacing: -0.2px !important;
 }
 .btn_inquiry:hover {
-    background: rgba(255, 255, 255, 0.88) !important;
+    background: #E64D1C !important;
     transform: translateY(-1px);
-}
-.btn_inquiry:hover span {
-    color: #E64D1C !important;
 }
 
 .lang_toggle_btn,
@@ -275,17 +272,16 @@ html, body {
     width: 40px !important;
     height: 40px !important;
     border-radius: 10px !important;
-    background: #fff !important;             /* 문의하기와 동일한 흰 배경 */
+    background: transparent !important;
     border: none !important;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, transform 0.15s ease !important;
+    transition: background 0.18s ease !important;
 }
 .lang_toggle_btn:hover,
 .mo_menu_btn:hover {
-    background: rgba(255, 255, 255, 0.88) !important;
-    transform: translateY(-1px);
+    background: rgba(255, 93, 39, 0.08) !important;  /* 옅은 오렌지 호버 */
 }
 .lang_toggle_btn img,
 .mo_menu_btn img {
