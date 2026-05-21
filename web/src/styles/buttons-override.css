@@ -72,14 +72,77 @@
 }
 
 /* ============================================================
-   퀵메뉴 카드 — 흰 배경에서 안 보여서 옅은 테두리 추가
+   퀵메뉴 — 화면 중앙(세로) → 헤더 우측 아래 ㄱ자 배치
+   자사몰 / 고객문의 / 카탈로그 가로 + ↑ 아래로
    ============================================================ */
-.quick_item {
-    border: 1px solid #d0d0d8 !important;  /* 흰 배경에서 윤곽 잘 보이게 */
+.quick_menu {
+    position: fixed !important;
+    top: 80px !important;                       /* 헤더(top 16 + height ~58) 바로 아래 */
+    right: 32px !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 74px) !important;
+    grid-template-rows: 74px 74px !important;
+    gap: 12px !important;
+    align-items: stretch !important;
 }
 
+.quick_item {
+    align-self: stretch !important;
+    width: 74px !important;
+    height: 74px !important;
+    border: 1px solid #d0d0d8 !important;       /* 흰 배경에서 윤곽 */
+}
 .quick_item:hover {
-    border-color: transparent !important;  /* 호버 시 색 채워지면 테두리 사라짐 */
+    border-color: transparent !important;
+}
+
+/* ㄱ자 배치: 가로 3개 + 아래 우측에 ↑ */
+.quick_item.mall    { grid-column: 1; grid-row: 1; }
+.quick_item.contact { grid-column: 2; grid-row: 1; }
+.quick_item.catalog { grid-column: 3; grid-row: 1; }
+.quick_item.btn_top { grid-column: 3; grid-row: 2; }
+
+@media (max-width: 1024px) {
+    .quick_menu {
+        top: 64px !important;
+        right: 16px !important;
+        grid-template-columns: repeat(3, 64px) !important;
+        grid-template-rows: 64px 64px !important;
+        gap: 8px !important;
+    }
+    .quick_item {
+        width: 64px !important;
+        height: 64px !important;
+    }
+}
+
+@media (max-width: 735px) {
+    /* 모바일에서는 ㄱ자가 너무 넓어서 다시 세로 1열로 우측 하단 고정 */
+    .quick_menu {
+        top: auto !important;
+        bottom: 16px !important;
+        right: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        gap: 6px !important;
+    }
+    .quick_item {
+        width: 44px !important;
+        height: 44px !important;
+    }
+    .quick_item.mall,
+    .quick_item.contact,
+    .quick_item.catalog,
+    .quick_item.btn_top {
+        grid-column: auto;
+        grid-row: auto;
+    }
 }
 
 /* ============================================================
@@ -94,7 +157,7 @@
     width: calc(100% - 40px) !important;
     max-width: 1580px !important;
     border-radius: 20px !important;
-    border: 1.5px solid #FF5D27 !important;       /* 오렌지 테두리 */
+    border: 1.5px solid #222 !important;          /* 검은색 테두리 */
     background: rgba(255, 255, 255, 0.92) !important;  /* 흰색 배경 (반투명+블러) */
     backdrop-filter: saturate(180%) blur(14px) !important;
     -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
