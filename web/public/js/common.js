@@ -62,15 +62,10 @@ moTitles.forEach((title) => {
     });
 });
 
-langLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const url = new URL(window.location.href);
-        const langValue = link.getAttribute('href').split('=')[1];
-        url.searchParams.set('lang', langValue);
-        window.location.href = url.toString();
-    });
-});
+// [제거됨] PHP 시절 ?lang=xx 쿼리 기반 언어 전환 로직.
+// 새 사이트는 next-intl이 /ko, /en, /zh 경로 라우팅을 처리하므로,
+// 이 핸들러가 클릭을 가로채면 정작 next-intl Link가 동작 못 함.
+// LanguageSwitcher 컴포넌트가 모든 전환을 담당.
 
 /* PC 메가메뉴: GNB→서브 사이 데드존에서 :has()만으로 닫히는 현상 방지 */
 (function () {
