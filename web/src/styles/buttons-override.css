@@ -125,10 +125,10 @@
 }
 
 /* 언어/햄버거 아이콘 — 흰색으로 invert */
-/* 흰 배경 위에서 아이콘 — 브랜드 오렌지(#FF5D27)로 변환 */
+/* 주황 배경 위 아이콘 — 흰색으로 invert (문의하기 텍스트 색과 일치) */
 .lang_toggle_btn img,
 .mo_menu_btn img {
-    filter: brightness(0) saturate(100%) invert(47%) sepia(69%) saturate(2918%) hue-rotate(347deg) brightness(102%) contrast(101%) !important;
+    filter: brightness(0) invert(1) !important;
 }
 
 /* fixed 카드와 본문 첫 콘텐츠 간격 — 기존 padding-top: 107px 보정 */
@@ -272,16 +272,17 @@ html, body {
     width: 40px !important;
     height: 40px !important;
     border-radius: 10px !important;
-    background: transparent !important;
+    background: #FF5D27 !important;             /* 문의하기와 동일 — 주황 채움 */
     border: none !important;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    transition: background 0.18s ease !important;
+    transition: background 0.2s ease, transform 0.15s ease !important;
 }
 .lang_toggle_btn:hover,
 .mo_menu_btn:hover {
-    background: rgba(255, 93, 39, 0.08) !important;  /* 옅은 오렌지 호버 */
+    background: #E64D1C !important;
+    transform: translateY(-1px);
 }
 .lang_toggle_btn img,
 .mo_menu_btn img {
