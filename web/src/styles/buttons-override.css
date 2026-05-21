@@ -135,8 +135,8 @@
    ============================================================ */
 .quick_menu {
     position: fixed !important;
-    top: 92px !important;                       /* 헤더(top 16 + height ~60 + 16 여백) */
-    right: 32px !important;                     /* 헤더 우측 여백과 정렬 */
+    top: 120px !important;                      /* 헤더 카드(top 16 + height ~90) 완전히 아래 + 14px 여백 */
+    right: 20px !important;                     /* 헤더 우측 끝(viewport-20px)과 정렬 */
     left: auto !important;
     bottom: auto !important;
     transform: none !important;
@@ -159,8 +159,8 @@
 
 @media (max-width: 1024px) {
     .quick_menu {
-        top: 72px !important;
-        right: 20px !important;
+        top: 100px !important;
+        right: 12px !important;
         width: 64px !important;
         gap: 10px !important;
     }
