@@ -19,6 +19,7 @@ export default function SubTabBar({
         <Link
           key={tab.key}
           href={tab.href}
+          scroll={false}
           className={`sub_tab_item ${tab.key === activeKey ? 'active' : ''}`}
         >
           {tab.label}
