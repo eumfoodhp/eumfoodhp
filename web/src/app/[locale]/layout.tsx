@@ -10,6 +10,7 @@ import QuickMenu from '@/components/QuickMenu';
 
 import '../globals.css';
 import '@/styles/common.css';
+import '@/styles/buttons-override.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

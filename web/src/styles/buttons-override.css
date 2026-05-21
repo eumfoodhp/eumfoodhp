@@ -1,0 +1,37 @@
+/**
+ * 전역 버튼 라운딩 통일 — 모든 텍스트 버튼/탭을 pill 모양으로.
+ * 원형(circle) 또는 아이콘 전용 버튼은 기존 형태 유지.
+ *
+ * 원본 사이트는 .btn_inquiry(9999px)만 pill이고 나머지(.sub_tab_item 4px,
+ * .btn_download 등)는 살짝만 둥글어서 통일성이 부족했음.
+ */
+
+/* 텍스트 라벨이 들어가는 버튼/탭/링크 — 전부 pill */
+.btn_inquiry,
+.btn_download,
+.admin_link,
+.sub_tab_item,
+.fac_tab_item,
+.dir_tab_btn,
+.prod_cate_btn,
+.biz_more_btn,
+.ov_more_btn,
+.proc_more_btn,
+.prod_more_link,
+.notice_more_link,
+.lang_list li a,
+.period_tab,
+.quick_item:not(.btn_top) {
+    border-radius: 9999px !important;
+}
+
+/* 원형 아이콘 버튼은 그대로 원형 유지 (덮어쓰기 방지용 명시) */
+.proc_tab_btn,
+.quick_item.btn_top {
+    border-radius: 50% !important;
+}
+
+/* 모바일 메뉴 닫기(×)는 기본값(0) 유지 */
+.mo_close_btn {
+    border-radius: 0 !important;
+}
