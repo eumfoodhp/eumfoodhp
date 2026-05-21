@@ -95,10 +95,43 @@
     max-width: 1580px !important;
     border-radius: 20px !important;
     border-bottom: none !important;
-    background: rgba(251, 246, 242, 0.82) !important;
-    backdrop-filter: saturate(180%) blur(14px) !important;
-    -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    background: rgba(255, 93, 39, 0.95) !important;  /* 브랜드 오렌지 */
+    backdrop-filter: saturate(180%) blur(12px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(12px) !important;
+    box-shadow: 0 10px 28px rgba(255, 93, 39, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* GNB 메뉴 텍스트 — 오렌지 배경 위 흰색으로 대비 */
+.gnb_main_link,
+.gnb_main_link span {
+    color: #fff !important;
+}
+.gnb_main_link:hover,
+.gnb_main_link:hover span,
+.gnb_main_link:focus-visible,
+.gnb_main_link:focus-visible span {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤 */
+.mega_sub_list a {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+.mega_sub_list a:hover,
+.mega_sub_list a:focus-visible {
+    color: #fff !important;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* 언어/햄버거 아이콘 — 흰색으로 invert */
+.lang_toggle_btn img,
+.mo_menu_btn img {
+    filter: brightness(0) invert(1) !important;
+}
+.lang_toggle_btn:hover,
+.mo_menu_btn:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
 }
 
 /* fixed 카드와 본문 첫 콘텐츠 간격 — 기존 padding-top: 107px 보정 */
@@ -110,16 +143,16 @@ html, body {
     padding: 16px 32px !important;
 }
 
-/* 메가메뉴 배경: 100vw 전폭 → 헤더 카드 내부에 맞게 조정 */
+/* 메가메뉴 배경: 100vw 전폭 → 헤더 카드 내부에 맞게 조정 (오렌지 톤) */
 .mega_menu_backdrop {
     width: 100% !important;
     left: 0 !important;
     transform: none !important;
-    background: rgba(251, 246, 242, 0.98) !important;
+    background: rgba(255, 93, 39, 0.97) !important;
     border-radius: 0 0 20px 20px !important;
-    backdrop-filter: saturate(180%) blur(14px) !important;
-    -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: saturate(180%) blur(12px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(12px) !important;
+    box-shadow: 0 12px 28px rgba(255, 93, 39, 0.2) !important;
 }
 
 @media (max-width: 1024px) {
@@ -163,7 +196,7 @@ html, body {
     height: 40px;
     padding: 0 18px !important;
     border-radius: 10px !important;
-    background: #FF5D27 !important;
+    background: #fff !important;
     border: none !important;
     display: inline-flex !important;
     align-items: center;
@@ -171,14 +204,17 @@ html, body {
     transition: background 0.2s ease, transform 0.15s ease !important;
 }
 .btn_inquiry span {
-    color: #fff !important;
+    color: #FF5D27 !important;
     font-size: 14px !important;
     font-weight: 600 !important;
     letter-spacing: -0.2px !important;
 }
 .btn_inquiry:hover {
-    background: #E64D1C !important;
+    background: rgba(255, 255, 255, 0.88) !important;
     transform: translateY(-1px);
+}
+.btn_inquiry:hover span {
+    color: #E64D1C !important;
 }
 
 .lang_toggle_btn,
