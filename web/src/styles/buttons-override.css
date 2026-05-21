@@ -143,16 +143,72 @@ html, body {
     padding: 16px 32px !important;
 }
 
-/* 메가메뉴 배경: 100vw 전폭 → 헤더 카드 내부에 맞게 조정 (오렌지 톤) */
+/* ============================================================
+   메가메뉴 → 메뉴별 개별 드롭다운 카드로 전환
+   특정 메뉴에 마우스오버 시 해당 메뉴의 서브만 아래에 나타남
+   ============================================================ */
+
+/* 풀폭 backdrop 제거 (이제 각 컬럼이 카드로 자체 배경 가짐) */
 .mega_menu_backdrop {
-    width: 100% !important;
-    left: 0 !important;
+    display: none !important;
+}
+
+/* mega_panel은 위치 anchor 역할만 — 시각적 배경/그림자 모두 제거 */
+.mega_panel {
+    background: transparent !important;
+    box-shadow: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transition: none !important;
+    pointer-events: none !important;  /* 카드만 클릭 가능, 사이 공간 통과 */
+    top: 100% !important;
     transform: none !important;
+}
+
+.mega_panel_inner {
+    padding: 8px 0 0 !important;
+    pointer-events: none !important;
+}
+
+/* 각 컬럼이 자체 드롭다운 카드 */
+.mega_col {
     background: rgba(255, 93, 39, 0.97) !important;
-    border-radius: 0 0 20px 20px !important;
-    backdrop-filter: saturate(180%) blur(12px) !important;
-    -webkit-backdrop-filter: saturate(180%) blur(12px) !important;
-    box-shadow: 0 12px 28px rgba(255, 93, 39, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 14px 20px !important;
+    min-width: 180px;
+    pointer-events: auto;
+    box-shadow: 0 10px 28px rgba(255, 93, 39, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+    /* 위쪽 hover dead-zone 줄이려 padding-top 살짝 + margin-top 음수 */
+    margin-top: 0;
+}
+
+/* 카드 위쪽에 투명 hit area 한 줄 (gnb과의 dead-zone 완화) */
+.mega_col::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -16px;
+    height: 16px;
+}
+
+/* 매칭되는 메뉴 hover 시에만 해당 카드 노출 */
+.gnb_wrap:has(.gnb_main_link:nth-child(1):hover) .mega_col.mega_c1,
+.gnb_wrap:has(.gnb_main_link:nth-child(2):hover) .mega_col.mega_c2,
+.gnb_wrap:has(.gnb_main_link:nth-child(3):hover) .mega_col.mega_c3,
+.gnb_wrap:has(.gnb_main_link:nth-child(4):hover) .mega_col.mega_c4,
+.gnb_wrap:has(.gnb_main_link:nth-child(5):hover) .mega_col.mega_c5,
+.mega_col:hover {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
 }
 
 @media (max-width: 1024px) {
