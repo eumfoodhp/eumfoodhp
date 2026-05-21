@@ -5,10 +5,10 @@ type Props = {
   currentLabel: string;
   title: string;
   desc: string;
-  tabBar: ReactNode;
+  tabBar?: ReactNode;
 };
 
-/** Shared sub-page hero: breadcrumb + title + desc + tab bar. */
+/** Shared sub-page hero: breadcrumb + title + desc + (optional) tab bar. */
 export default function SubVisual({ parentLabel, currentLabel, title, desc, tabBar }: Props) {
   return (
     <section className="sub_visual_section">
@@ -30,9 +30,11 @@ export default function SubVisual({ parentLabel, currentLabel, title, desc, tabB
           className="sub_visual_img"
           style={{ backgroundImage: "url('/images/sub/tempo.png')" }}
         >
-          <div className="sub_tab_container">
-            <div className="sub_tab_inner">{tabBar}</div>
-          </div>
+          {tabBar && (
+            <div className="sub_tab_container">
+              <div className="sub_tab_inner">{tabBar}</div>
+            </div>
+          )}
         </div>
       </div>
     </section>
