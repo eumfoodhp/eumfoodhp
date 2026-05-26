@@ -1567,9 +1567,15 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         height: auto;
         min-height: 760px;
     }
-    /* 모바일: 지도 그림이 가로 폭에 맞춰 작아지도록 contain + 우측 정렬 */
+    /* 모바일: 지도 이미지를 우측 일부 영역만 차지하도록 폭 명시.
+       cover로 비율 유지하면서 우측에 한반도가 깔끔히 정렬됨.
+       가로폭이 줄수록 % 기반이라 절대 크기도 같이 줄어듦. */
     .dir_bg_map {
-        object-fit: contain;
+        width: 55%;
+        height: 100%;
+        left: auto;
+        right: 0;
+        object-fit: cover;
         object-position: right center;
     }
     .dir_content_area {
@@ -1770,6 +1776,9 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     .direction_section {
         min-height: 680px;
     }
+    .dir_bg_map {
+        width: 48%;
+    }
     .dir_content_area {
         max-width: none;
         gap: 24px;
@@ -1966,6 +1975,9 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
 
     .direction_section {
         min-height: 620px;
+    }
+    .dir_bg_map {
+        width: 42%;
     }
     .dir_content_area {
         padding: 42px 0;
