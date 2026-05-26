@@ -330,13 +330,26 @@ html, body {
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
 }
 
-/* 1280px 이하: 데스크탑 GNB 숨기고 햄버거 메뉴로 전환 (원본은 1024이지만 5개메뉴+3버튼 너무 빡빡함) */
-@media (max-width: 1280px) {
-    .gnb_wrap { display: none !important; }
-    .mega_panel { display: none !important; }
-    .btn_inquiry { display: none !important; }    /* 모바일 메뉴 안에 같은 항목 있음 */
-    .lang_toggle_btn { display: inline-flex !important; }
-    .mo_menu_btn { display: inline-flex !important; }
+/* 1024px 이하에서만 햄버거 메뉴 (원본 기본값과 동일).
+   1024~1280 좁은 데스크탑은 GNB 폰트/간격 살짝 줄여 충돌 완화. */
+@media (max-width: 1280px) and (min-width: 1025px) {
+    .gnb_main_link {
+        font-size: 15px !important;
+        letter-spacing: -0.3px !important;
+    }
+    .header_inner {
+        padding: 14px 18px !important;
+    }
+    .util_area {
+        gap: 4px !important;
+    }
+    .btn_inquiry {
+        padding: 0 12px !important;
+    }
+    .logo {
+        width: 92px !important;
+        height: auto !important;
+    }
 }
 
 @media (max-width: 1024px) {
