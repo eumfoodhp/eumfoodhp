@@ -252,7 +252,23 @@ html, body {
 }
 
 .header_inner {
+    width: 100% !important;                    /* 원본 1800px 고정폭 제거 → 헤더 카드에 맞게 */
+    max-width: 100% !important;
     padding: 16px 32px !important;
+    box-sizing: border-box !important;
+}
+
+/* 1024~1280px 사이의 좁은 데스크탑에서 GNB가 우측 버튼과 충돌하지 않도록 폰트/간격 축소 */
+@media (max-width: 1280px) and (min-width: 1025px) {
+    .gnb_main_link {
+        font-size: 16px !important;
+    }
+    .header_inner {
+        padding: 14px 20px !important;
+    }
+    .util_area {
+        gap: 4px !important;
+    }
 }
 
 /* ============================================================
