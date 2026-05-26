@@ -21,7 +21,11 @@ export default function LanguageSwitcher() {
         className="lang_toggle_btn"
         aria-label={`Language: ${LABELS[currentLocale] ?? currentLocale}`}
       >
-        <img src="/images/common/lang.png" alt="Language" />
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+        </svg>
       </button>
       <ul className="lang_list">
         {routing.locales.map((locale) => (

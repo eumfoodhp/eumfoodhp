@@ -258,6 +258,15 @@ html, body {
     max-width: 100% !important;
     padding: 16px 32px !important;
     box-sizing: border-box !important;
+    /* 원본은 1fr auto 1fr — 좁은 폭에서 로고가 1fr 안에 못 들어가 메뉴와 겹침.
+       auto 1fr auto: 로고/유틸은 자연 폭, 가운데가 늘어남 */
+    grid-template-columns: auto 1fr auto !important;
+}
+
+/* 가운데 GNB 영역은 자체 그리드 폭에 맞게 가운데 정렬 */
+.gnb_wrap {
+    justify-self: center !important;
+    place-self: center !important;
 }
 
 /* (구) 1024~1280 폰트 축소 규칙 제거 — 이제 1280 이하는 햄버거 전환 */
@@ -389,44 +398,40 @@ html, body {
     gap: 6px !important;
 }
 
-.btn_inquiry {
-    height: 40px;
-    padding: 0 18px !important;
-    border-radius: 10px !important;
-    background: #FF5D27 !important;             /* 주황 채움 — 흰 헤더 위 CTA 강조 */
-    border: none !important;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, transform 0.15s ease !important;
-}
-.btn_inquiry span {
-    color: #fff !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    letter-spacing: -0.2px !important;
-}
-.btn_inquiry:hover {
-    background: #E64D1C !important;
-    transform: translateY(-1px);
-}
-
+/* 3개 아이콘 버튼(문의·언어·메뉴) 동일 사이즈 사각형 */
+.btn_inquiry,
 .lang_toggle_btn,
 .mo_menu_btn {
     width: 40px !important;
     height: 40px !important;
+    padding: 0 !important;
     border-radius: 10px !important;
-    background: #FF5D27 !important;             /* 문의하기와 동일 — 주황 채움 */
+    background: #FF5D27 !important;
     border: none !important;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
+    color: #fff !important;                    /* SVG currentColor 용 */
     transition: background 0.2s ease, transform 0.15s ease !important;
 }
+.btn_inquiry:hover,
 .lang_toggle_btn:hover,
 .mo_menu_btn:hover {
     background: #E64D1C !important;
     transform: translateY(-1px);
+}
+.btn_inquiry svg,
+.lang_toggle_btn svg,
+.mo_menu_btn svg {
+    stroke: #fff !important;
+    width: 22px !important;
+    height: 22px !important;
+}
+
+/* 더 이상 PNG 안 쓰니까 filter 제거 (SVG가 currentColor 사용) */
+.lang_toggle_btn img,
+.mo_menu_btn img {
+    display: none !important;
 }
 .lang_toggle_btn img,
 .mo_menu_btn img {
