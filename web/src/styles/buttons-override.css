@@ -524,3 +524,42 @@ html, body {
     font-size: 13px !important;
     font-weight: 500 !important;
 }
+
+/* ============================================================
+   시설현황(business/facility) 카드 사이즈 축소
+   사용자 지적: '화면 차지 비율 너무 큼'
+   ============================================================ */
+.business_facility_page .facility_grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+}
+.business_facility_page .facility_card .facility_img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.business_facility_page .facility_card .facility_img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+.business_facility_page .facility_card .facility_name {
+    font-size: 15px !important;
+}
+.business_facility_page .facility_card .facility_desc {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+
+@media (max-width: 1024px) {
+    .business_facility_page .facility_grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 18px !important;
+    }
+}
+@media (max-width: 735px) {
+    .business_facility_page .facility_grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 14px !important;
+    }
+}

@@ -132,7 +132,11 @@ function FacilityGrid({
               <span className="divider"></span>
               <span className="facility_name">{t(nameKey(num))}</span>
             </div>
-            <p className="facility_desc">{t(descKey(num))}</p>
+            <p
+              className="facility_desc"
+              dangerouslySetInnerHTML={{ __html: t(descKey(num)) }}
+            />
+
           </div>
         </article>
       ))}

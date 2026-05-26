@@ -4,15 +4,14 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 
-const LABELS: Record<(typeof routing.locales)[number], string> = {
+const LABELS: Record<string, string> = {
   ko: 'KO',
-  en: 'EN',
   zh: 'ZH',
 };
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
-  const currentLocale = useLocale() as keyof typeof LABELS;
+  const currentLocale = useLocale();
 
   return (
     <div className="lang_wrap">
