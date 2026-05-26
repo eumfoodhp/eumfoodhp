@@ -397,6 +397,14 @@
         "storage": "冷藏",
         "weight": "500ML~1L",
         "img": "/images/main/prod-tea-4.png"
+      },
+      {
+        "name": "苹果芒果浓缩饮",
+        "eng": "Apple Mango Syrup",
+        "desc": "浓郁的苹果芒果香气，可用作多种饮品基底的液态茶。",
+        "storage": "冷藏",
+        "weight": "500ML~1L",
+        "img": "/images/sub/prod5-5.png"
       }
     ]
   },

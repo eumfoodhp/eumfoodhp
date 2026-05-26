@@ -397,6 +397,14 @@
         "storage": "Refrigerated",
         "weight": "500ML~1L",
         "img": "/images/main/prod-tea-4.png"
+      },
+      {
+        "name": "Apple Mango Syrup",
+        "eng": "Apple Mango Syrup",
+        "desc": "Rich apple-mango aroma ideal as a base for various beverages.",
+        "storage": "Refrigerated",
+        "weight": "500ML~1L",
+        "img": "/images/sub/prod5-5.png"
       }
     ]
   },

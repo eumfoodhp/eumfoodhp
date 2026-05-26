@@ -397,6 +397,14 @@
         "storage": "냉장",
         "weight": "500ML~1L",
         "img": "/images/main/prod-tea-4.png"
+      },
+      {
+        "name": "밥상군자 내몸애 애플망고청",
+        "eng": "Apple Mango Syrup",
+        "desc": "애플망고의 진한 향을 담아 다양한 음료 베이스로 활용하기 좋은 액상차",
+        "storage": "냉장",
+        "weight": "500ML~1L",
+        "img": "/images/sub/prod5-5.png"
       }
     ]
   },
