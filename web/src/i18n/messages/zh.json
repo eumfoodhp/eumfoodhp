@@ -484,52 +484,40 @@
   "history_title": "沿革",
   "history_sec2_period": "2009 年至今",
   "history_sec2_title": "我们将从一家专业化公司跨越到一家全球性企业。",
-  "history_data": [
+  "history_data": [],
+  "history_list": [
     {
       "year": "2026",
-      "list": [
-        {
-          "month": "03",
-          "content": "（株）EUMFOOD SYSTEM 新品牌发布"
-        },
-        {
-          "month": "01",
-          "content": "智能工厂工艺自动化系统引进"
-        }
+      "contents": [
+        "敬请期待。",
+        "敬请期待。"
       ]
     },
     {
       "year": "2025",
-      "list": [
-        {
-          "month": "12",
-          "content": "年销售额突破000亿韩元，被选定为有望出口中小企业"
-        },
-        {
-          "month": "05",
-          "content": "HACCP卫生设备的全面更换和扩建"
-        }
-      ]
-    }
-  ],
-  "history_list": [
-    {
-      "year": "2014",
       "contents": [
-        "海军司令部合同（镇海）",
-        "我们的家园合同签订",
-        "韩华酒店度假村合同签订",
-        "味噌屋小菜配送",
-        "三星 Welstory NPB 进行中"
+        "Mom's Touch 酱料供应",
+        "Welstory 酱料供应",
+        "李在模披萨酱料供应",
+        "GS电视购物品牌'宫厨房'酱料销售"
       ]
     },
     {
-      "year": "2013",
+      "year": "2024",
       "contents": [
-        "扩大咸味海鲜和炖菜的菜单构成",
-        "东远家庭食品合同签订",
-        "目前工厂搬迁",
-        "渔业和农产品HACCP认证"
+        "CJ Freshway PB 合作签订",
+        "三星Wellstory优秀合作伙伴感谢牌奖",
+        "The Taco Booth 酱料供应",
+        "自营智能商店'EUM Food Market'开业"
+      ]
+    },
+    {
+      "year": "2014",
+      "contents": [
+        "与SPC签订合同",
+        "与韩华酒店&度假村签订合同",
+        "MISOYA小菜供应",
+        "三星Wellstory PB 进行（大酱拌菜类）"
       ]
     }
   ],

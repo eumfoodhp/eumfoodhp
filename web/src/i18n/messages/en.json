@@ -484,52 +484,40 @@
   "history_title": "Company history",
   "history_sec2_period": "2009 – present",
   "history_sec2_title": "We will leap from a specialized company to a global business.",
-  "history_data": [
+  "history_data": [],
+  "history_list": [
     {
       "year": "2026",
-      "list": [
-        {
-          "month": "03",
-          "content": "Eum Food System Co., Ltd. new brand launch"
-        },
-        {
-          "month": "01",
-          "content": "Introduction of smart factory process automation system"
-        }
+      "contents": [
+        "Coming soon.",
+        "Coming soon."
       ]
     },
     {
       "year": "2025",
-      "list": [
-        {
-          "month": "12",
-          "content": "Achieved annual sales of KRW 00 billion and selected as a promising export small business"
-        },
-        {
-          "month": "05",
-          "content": "Complete replacement and expansion of HACCP sanitary equipment"
-        }
-      ]
-    }
-  ],
-  "history_list": [
-    {
-      "year": "2014",
       "contents": [
-        "Naval Command contract (Jinhae)",
-        "Our Home contract signed",
-        "Hanwha Hotel & Resort contract signed",
-        "Delivery of Misoya side dishes",
-        "Samsung Welstory NPB in progress"
+        "Mom's Touch sauce supply",
+        "Welstory sauce supply",
+        "Lee Jae-mo Pizza sauce supply",
+        "GS Home Shopping brand 'Goong Kitchen' sauce sales"
       ]
     },
     {
-      "year": "2013",
+      "year": "2024",
       "contents": [
-        "Expansion of menu composition for salted seafood and stewed foods",
-        "Dongwon Home Food contract signed",
-        "Current factory relocation",
-        "HACCP certification for fisheries and agricultural products"
+        "CJ Freshway PB contract signed",
+        "Samsung Welstory Outstanding Partner Award",
+        "The Taco Booth sauce supply",
+        "Launched smartstore 'Eumfood Market'"
+      ]
+    },
+    {
+      "year": "2014",
+      "contents": [
+        "Contract signed with SPC",
+        "Contract signed with Hanwha Hotels & Resorts",
+        "Misoya banchan supply",
+        "Samsung Welstory PB (Doenjang seasoned dishes)"
       ]
     }
   ],
