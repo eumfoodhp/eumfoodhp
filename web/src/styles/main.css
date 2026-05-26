@@ -915,7 +915,7 @@
     background-color: #F6F7F8;
 }
 
-/* 배경 이미지 고정 */
+/* 배경 이미지 고정 — 가로 좁아질 때 한국 지도(우측 위치) 유지하면서 좌측만 자연스럽게 잘림 */
 .dir_bg_map {
     position: absolute;
     top: 0;
@@ -923,6 +923,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: right center;
     z-index: 1;
 }
 
