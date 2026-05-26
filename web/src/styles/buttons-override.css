@@ -328,7 +328,20 @@ html, body {
     place-self: center !important;
 }
 
-/* (구) 1024~1280 폰트 축소 규칙 제거 — 이제 1280 이하는 햄버거 전환 */
+/* GNB 컬럼 폭 — 원본은 100vw 기준이라 헤더 내부 가용폭 무시.
+   재정의: 우리 헤더 안에서 logo(120)+padding(64)+gap(48)+util(150)+여유(40) ≈ 422 빼고 5등분 */
+#header {
+    --gnb-col: min(180px, max(72px, calc((100vw - 460px) / 5))) !important;
+}
+
+/* 좁은 데스크탑(1025~1280): 사이즈 더 축소 */
+@media (max-width: 1280px) and (min-width: 1025px) {
+    .gnb_main_link { font-size: 15px !important; letter-spacing: -0.3px !important; }
+    .header_inner { padding: 14px 18px !important; column-gap: 16px !important; }
+    .util_area { gap: 4px !important; }
+    .logo { width: 92px !important; height: auto !important; }
+    #header { --gnb-col: min(150px, calc((100vw - 380px) / 5)) !important; }
+}
 
 /* ============================================================
    메가메뉴 → 메뉴별 개별 드롭다운 카드로 전환
