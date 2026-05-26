@@ -106,6 +106,23 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
+/* 텍스트가 카드 좌측에 너무 붙는 문제 — 좌측 내부 여백 추가 */
+.direction_section .dir_content_area {
+    left: 60px !important;
+}
+
+@media (max-width: 1024px) {
+    .direction_section .dir_content_area {
+        left: 32px !important;
+    }
+}
+
+@media (max-width: 735px) {
+    .direction_section .dir_content_area {
+        left: 20px !important;
+    }
+}
+
 @media (max-width: 1024px) {
     .direction_section {
         width: calc(100% - 24px) !important;
@@ -297,7 +314,7 @@ html, body {
     /* 원본은 1fr auto 1fr — 좁은 폭에서 로고가 1fr 안에 못 들어가 메뉴와 겹침.
        auto 1fr auto: 로고/유틸은 자연 폭, 가운데가 늘어남 */
     grid-template-columns: auto 1fr auto !important;
-    column-gap: 48px !important;               /* 로고-메뉴, 메뉴-우측버튼 사이 여백 */
+    column-gap: 24px !important;               /* 로고-메뉴-우측버튼 사이 여백 (이전 48 → 24, 좁은 폭에서도 안 잘리게) */
 }
 
 /* 가운데 GNB 영역은 자체 그리드 폭에 맞게 가운데 정렬 */
