@@ -9,7 +9,7 @@ export default function QuickMenu() {
   return (
     <div className="quick_menu">
       <a
-        href="https://smartstore.naver.com/Eumfood/"
+        href="https://smartstore.naver.com/eumfood"
         target="_blank"
         rel="noopener noreferrer"
         className="quick_item mall"
