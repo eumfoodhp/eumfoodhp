@@ -128,7 +128,12 @@
         width: calc(100% - 24px) !important;
         margin: 60px auto !important;
         border-radius: 16px !important;
-        height: 720px !important;
+        height: 540px !important;
+        background-color: #FFF6EC !important;     /* 살구톤 살짝 — 지도 사라진 자리 톤 채움 */
+    }
+    /* 좁은 폭에서 잘리는 장식용 지도 숨김 */
+    .direction_section .dir_bg_map {
+        display: none !important;
     }
 }
 
@@ -137,13 +142,13 @@
         width: calc(100% - 20px) !important;
         margin: 40px auto !important;
         border-radius: 14px !important;
-        height: 560px !important;
+        height: 480px !important;
     }
 }
 
 @media (max-width: 480px) {
     .direction_section {
-        height: 480px !important;
+        height: 440px !important;
     }
 }
 
