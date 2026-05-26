@@ -1567,6 +1567,11 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         height: auto;
         min-height: 760px;
     }
+    /* 모바일: 지도 그림이 가로 폭에 맞춰 작아지도록 contain + 우측 정렬 */
+    .dir_bg_map {
+        object-fit: contain;
+        object-position: right center;
+    }
     .dir_content_area {
         position: relative;
         top: auto;
