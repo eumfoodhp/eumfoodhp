@@ -95,6 +95,42 @@
 }
 
 /* ============================================================
+   메인 페이지 .direction_section (오시는 길) 라운드 카드 처리
+   헤더/배너와 동일한 폭·모서리로 정렬
+   ============================================================ */
+.direction_section {
+    width: calc(100% - 40px) !important;
+    max-width: 1580px !important;
+    margin: 80px auto !important;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 1024px) {
+    .direction_section {
+        width: calc(100% - 24px) !important;
+        margin: 60px auto !important;
+        border-radius: 16px !important;
+        height: 720px !important;
+    }
+}
+
+@media (max-width: 735px) {
+    .direction_section {
+        width: calc(100% - 20px) !important;
+        margin: 40px auto !important;
+        border-radius: 14px !important;
+        height: 560px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .direction_section {
+        height: 480px !important;
+    }
+}
+
+/* ============================================================
    서브탭바를 배너 이미지 안 → 아래로 빼고 다크 텍스트로 전환
    ============================================================ */
 .sub_tab_container.sub_tab_container--below {
