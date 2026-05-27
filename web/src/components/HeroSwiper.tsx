@@ -5,6 +5,9 @@ import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 
+// 메인 히어로 슬라이드 — 이미지 폴더의 음식 톤 png를 일관성 있게 노출
+const HERO_SLIDES = ['main', 'main1', 'main2', 'main3'];
+
 export default function HeroSwiper() {
   return (
     <Swiper
@@ -16,11 +19,11 @@ export default function HeroSwiper() {
       speed={2000}
       className="swiper hero_swiper"
     >
-      {[1, 2, 3].map((i) => (
-        <SwiperSlide key={i}>
+      {HERO_SLIDES.map((name) => (
+        <SwiperSlide key={name}>
           <div
             className="hero_bg"
-            style={{ backgroundImage: `url('/images/main/main${i}.png')` }}
+            style={{ backgroundImage: `url('/images/main/${name}.png')` }}
           />
         </SwiperSlide>
       ))}
