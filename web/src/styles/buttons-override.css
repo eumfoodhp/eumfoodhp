@@ -754,34 +754,25 @@ html, body {
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
 }
 
-/* 문의 quick item만 = 말풍선 안에 텍스트 형태로. 가로폭은 자동, 높이는 ↑와 동일(44px) */
+/* 문의 quick item = 그라데이션 배경 + "문의" 텍스트만 (아이콘 제거) */
 .quick_menu .quick_contact {
-    width: auto !important;
-    min-width: 44px;
-    padding: 0 !important;
-    background: transparent !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: linear-gradient(135deg, #F39800 0%, #FFB347 50%, #4CAF50 100%) !important;
     border: none !important;
-    box-shadow: none !important;
-    position: relative;
-    overflow: visible;
+    color: #fff !important;
+    overflow: hidden;
 }
 .quick_menu .quick_contact:hover {
-    background: transparent !important;
+    background: linear-gradient(135deg, #E08800 0%, #FFA53A 50%, #3DA040 100%) !important;
     transform: translateY(-2px);
 }
-.quick_menu .quick_contact_icon {
-    display: block;
-}
 .quick_menu .quick_contact_label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -25%); /* 말풍선 위쪽에 위치 — 꼬리 빼고 본체 중앙 */
     color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    pointer-events: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    line-height: 1;
 }
 .quick_menu .quick_item:hover {
     background: #FFF1EA !important;
