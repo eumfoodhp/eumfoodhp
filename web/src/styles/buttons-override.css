@@ -320,7 +320,7 @@
     }
 }
 
-/* GNB 메뉴 헤더 가운데 정렬 */
+/* GNB 메뉴 헤더 가운데 정렬 + 4컬럼 강제 (고객문의 메뉴 삭제 후) */
 .gnb_wrap {
     position: absolute !important;
     left: 50% !important;
@@ -328,6 +328,18 @@
     transform: translate(-50%, -50%) !important;
     z-index: 5 !important;
     margin: 0 !important;
+    grid-template-columns: repeat(4, var(--gnb-col)) !important;
+}
+
+/* mega_panel(드롭다운 영역)도 4컬럼 grid로 정렬해 각 메뉴 바로 아래 카드 위치 */
+.mega_panel,
+.mega_panel_inner {
+    grid-template-columns: repeat(4, var(--gnb-col)) !important;
+}
+
+/* mega_col을 각자 grid 셀 안에서 가운데 정렬 (메뉴 텍스트와 정렬 일치) */
+.mega_col {
+    justify-self: center !important;
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
