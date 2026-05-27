@@ -39,7 +39,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 <span className="sub_tit">{t('prod_tea_sub_tit')}</span>
                 <h3 className="main_tit">{t('prod_tea_main_tit')}</h3>
               </div>
-              <a href="/data/eumfoodsystem.pdf" className="btn_download" download>
+              <a href="/data/catalogue.pdf" className="btn_download" download>
                 <span>{t('btn_product_intro')}</span>
                 <img src="/images/sub/download.png" alt="" />
               </a>

@@ -69,7 +69,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                       {note && <p className="sauce_note">{note}</p>}
                     </div>
                     {sec.isPack && (
-                      <a href="/data/eumfoodsystem.pdf" className="btn_download" download>
+                      <a href="/data/catalogue.pdf" className="btn_download" download>
                         <span>{t('btn_product_intro')}</span>
                         <img src="/images/sub/download.png" alt="" />
                       </a>

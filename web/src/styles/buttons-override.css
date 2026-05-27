@@ -737,7 +737,7 @@ html, body {
     gap: 6px !important;
 }
 
-/* QuickMenu 아이콘 — 헤더와 동일 톤앤매너 (흰 배경 + 주황 라인) */
+/* QuickMenu 아이콘 — 흰 배경 + 주황 라인, 동일 사이즈/그림자 */
 .quick_menu .quick_item {
     display: inline-flex !important;
     align-items: center;
@@ -752,6 +752,36 @@ html, body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     text-decoration: none !important;
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+}
+
+/* 문의 quick item만 = 말풍선 안에 텍스트 형태로. 가로폭은 자동, 높이는 ↑와 동일(44px) */
+.quick_menu .quick_contact {
+    width: auto !important;
+    min-width: 44px;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    overflow: visible;
+}
+.quick_menu .quick_contact:hover {
+    background: transparent !important;
+    transform: translateY(-2px);
+}
+.quick_menu .quick_contact_icon {
+    display: block;
+}
+.quick_menu .quick_contact_label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%); /* 말풍선 위쪽에 위치 — 꼬리 빼고 본체 중앙 */
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    pointer-events: none;
 }
 .quick_menu .quick_item:hover {
     background: #FFF1EA !important;
