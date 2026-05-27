@@ -1045,22 +1045,26 @@
 }
 
 /* Section 8: Directions */
-/* 데스크탑·모바일 통일: 자연 흐름.
-   이미지가 width:100% + height:auto라 비율 그대로 유지하면서 가로폭에 맞춰
-   통째로 줌아웃되듯 축소. position:absolute/object-fit:cover를 쓰지 않으니
-   크롭 자체가 발생하지 않아 포커스 이동도 없음. */
+/* Figma 원본 디자인 복구: 컨테이너 height 900px + 좌측 텍스트 + 우측 지도.
+   말풍선 제거된 이미지(map_ko_factory.png) 사용. object-position:right로 가로
+   줄어도 한반도(우측)는 유지되고 좌측만 잘림. */
 .direction_section {
     width: 100%;
+    height: 900px;
     position: relative;
     overflow: hidden;
     background-color: #F6F7F8;
 }
 
 .dir_bg_map {
-    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    /* position:absolute / object-fit / aspect-ratio 다 제거 — 자연 흐름이 가장 단순 */
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    z-index: 1;
 }
 
 .direction_inner {
