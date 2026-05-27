@@ -343,40 +343,80 @@
     }
 }
 
-/* 모바일 풀메뉴 안 부가 링크 (자사몰/카탈로그/문의/언어) */
+/* 풀메뉴 = 요즘 스타일 단일 컬럼, 4그룹 컬럼 배치 강제 해제 */
+.menu_wrapper {
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding-bottom: 32px !important;
+}
+.menu_group {
+    width: 100% !important;
+    gap: 12px !important;
+    padding: 18px 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+.menu_group:last-of-type {
+    border-bottom: none !important;
+}
+.menu_dep1 h3 {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #222 !important;
+}
+.menu_dep2 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px 24px !important;
+    width: 100%;
+    padding-left: 4px;
+}
+.menu_dep2 li a {
+    color: #555 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+/* 부가 링크 (자사몰/카탈로그/문의/언어) — 아이콘 + 라벨, 단일 컬럼 깔끔 */
 .mo_extra_links {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     margin-top: 24px;
     padding-top: 24px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #f0f0f0;
 }
-.mo_extra_link {
-    display: block;
+.mo_extra_link,
+.mo_extra_lang {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
     padding: 14px 16px;
-    color: #222;
-    font-size: 16px;
+    color: #222 !important;
+    font-size: 15px;
     font-weight: 500;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: background 0.2s ease;
 }
 .mo_extra_link:hover {
     background: rgba(243, 152, 0, 0.08);
+    color: #F39800 !important;
+}
+.mo_extra_icon {
+    flex-shrink: 0;
     color: #F39800;
 }
-.mo_extra_lang {
-    margin-top: 8px;
-    padding: 14px 16px;
-}
 .mo_extra_lang .lang_toggle_btn {
-    /* 풀메뉴 안에서는 아이콘 버튼 대신 텍스트 형태로 변경 */
     display: inline-flex !important;
     width: auto !important;
+    height: auto !important;
     padding: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
+}
+.mo_extra_lang .lang_toggle_btn svg {
+    display: none !important;
 }
 
 /* header_inner: padding으로 내부 콘텐츠 위치 */

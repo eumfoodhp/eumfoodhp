@@ -158,7 +158,7 @@ export default async function Header() {
                 ]}
               />
 
-              {/* 모바일 풀메뉴 부가 링크 — 데스크탑 우측 아이콘들과 동일 기능 */}
+              {/* 풀메뉴 부가 링크 — 각 항목 아이콘 + 라벨 */}
               <div className="mo_extra_links">
                 <a
                   href="https://smartstore.naver.com/eumfood"
@@ -166,15 +166,32 @@ export default async function Header() {
                   rel="noopener noreferrer"
                   className="mo_extra_link"
                 >
-                  {t('quick_mall')}
+                  <svg className="mo_extra_icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 10V6a4 4 0 1 0-8 0v4" />
+                    <path d="M3.5 7h17l-1.4 13.2a2 2 0 0 1-2 1.8H6.9a2 2 0 0 1-2-1.8L3.5 7z" />
+                  </svg>
+                  <span>{t('quick_mall')}</span>
                 </a>
                 <a href="/data/catalogue.pdf" download className="mo_extra_link">
-                  {t('quick_catalog')}
+                  <svg className="mo_extra_icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  <span>{t('quick_catalog')}</span>
                 </a>
                 <Link href="/contact" className="mo_extra_link">
-                  {t('quick_contact')}
+                  <svg className="mo_extra_icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                  </svg>
+                  <span>{t('quick_contact')}</span>
                 </Link>
                 <div className="mo_extra_lang">
+                  <svg className="mo_extra_icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+                  </svg>
                   <LanguageSwitcher />
                 </div>
               </div>
