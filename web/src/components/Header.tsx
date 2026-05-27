@@ -7,6 +7,10 @@ export default async function Header() {
 
   return (
     <header id="header">
+      {/* 위 row: 언어만 우측 정렬 */}
+      <div className="header_top_row">
+        <LanguageSwitcher />
+      </div>
       <div className="header_inner">
         <h1 className="logo">
           <Link href="/">
@@ -99,9 +103,6 @@ export default async function Header() {
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
             </svg>
           </Link>
-
-          {/* 언어 (지구) */}
-          <LanguageSwitcher />
 
           {/* 햄버거 메뉴 */}
           <button type="button" className="mo_menu_btn" aria-label="Menu">

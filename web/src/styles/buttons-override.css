@@ -290,9 +290,22 @@
     }
 }
 
+/* 헤더 상단 row — 언어 아이콘만 우측 정렬 */
+.header_top_row {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 32px 0;
+}
+@media (max-width: 1024px) {
+    .header_top_row { padding: 10px 20px 0; }
+}
+@media (max-width: 735px) {
+    .header_top_row { padding: 8px 16px 0; }
+}
+
 /* header_inner: padding으로 내부 콘텐츠 위치 */
 .header_inner {
-    padding: 16px 32px !important;
+    padding: 12px 32px 16px !important;
 }
 
 @media (max-width: 1024px) {
