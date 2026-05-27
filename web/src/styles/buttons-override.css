@@ -251,7 +251,7 @@
    헤더 — fixed full-width → floating 라운드 카드로 전환
    배너 이미지(.sub_visual_img)와 동일한 폭/모서리로 정렬
    ============================================================ */
-/* 헤더 투명 + 배너 위 absolute overlay (최상단). 박스/그림자/마진 다 제거 */
+/* 헤더 투명 + 배너 위 absolute overlay. 상단에 충분한 패딩 줘서 배너 안쪽에 자연스럽게 떠 있음 */
 #header {
     position: absolute !important;
     top: 0 !important;
@@ -261,7 +261,7 @@
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 36px 48px 0 !important;     /* 상단 36px 여백 + 좌우 48px */
     border-radius: 0 !important;
     border: none !important;
     background: transparent !important;
@@ -269,6 +269,23 @@
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
     z-index: 100 !important;
+}
+
+/* header_inner: padding은 #header에서 처리하므로 0. grid는 그대로 유지 */
+.header_inner {
+    padding: 0 !important;
+}
+
+@media (max-width: 1024px) {
+    #header {
+        padding: 24px 24px 0 !important;
+    }
+}
+
+@media (max-width: 735px) {
+    #header {
+        padding: 18px 16px 0 !important;
+    }
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
