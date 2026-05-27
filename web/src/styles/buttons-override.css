@@ -393,9 +393,9 @@
     padding-left: 4px;
 }
 .menu_dep2 li a {
-    color: #555 !important;
+    color: #222 !important;
     font-size: 14px !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 
 /* 부가 링크 (자사몰/카탈로그/문의/언어) — 아이콘 + 라벨, 단일 컬럼 깔끔 */
