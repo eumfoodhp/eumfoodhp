@@ -481,9 +481,13 @@
     grid-template-columns: repeat(4, var(--gnb-col)) !important;
 }
 
-/* mega_col을 각자 grid 셀 안에서 가운데 정렬 (메뉴 텍스트와 정렬 일치) */
+/* mega_col을 메뉴 텍스트와 정확히 같은 폭/위치로 — min-width 강제 해제 */
 .mega_col {
     justify-self: center !important;
+    min-width: 0 !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    padding: 14px 18px !important;
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
