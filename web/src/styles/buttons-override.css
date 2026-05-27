@@ -251,10 +251,28 @@
    헤더 — fixed full-width → floating 라운드 카드로 전환
    배너 이미지(.sub_visual_img)와 동일한 폭/모서리로 정렬
    ============================================================ */
-/* 헤더 — 배너 최상단 overlay, 살짝 투명한 흰 그라데이션 배경 (가독성 확보) */
+/* 배너 = 화면 최상단에서 40px 아래 시작 (헤더 절반 여백) */
+.hero_section {
+    margin-top: 40px !important;
+    padding-top: 120px !important;  /* 배너 안 콘텐츠가 헤더에 안 가려지게 */
+}
+@media (max-width: 1024px) {
+    .hero_section {
+        margin-top: 30px !important;
+        padding-top: 100px !important;
+    }
+}
+@media (max-width: 735px) {
+    .hero_section {
+        margin-top: 24px !important;
+        padding-top: 90px !important;
+    }
+}
+
+/* 헤더 = 배너 시작점(40px)에 absolute로 배치. 헤더 자체는 배너 안에 자리. */
 #header {
     position: absolute !important;
-    top: 0 !important;
+    top: 40px !important;
     left: 0 !important;
     right: 0 !important;
     transform: none !important;
@@ -270,8 +288,14 @@
     box-shadow: none !important;
     z-index: 100 !important;
 }
+@media (max-width: 1024px) {
+    #header { top: 30px !important; }
+}
+@media (max-width: 735px) {
+    #header { top: 24px !important; }
+}
 
-/* header_inner: 좌우 여백 + 상하 패딩으로 콘텐츠 위치 */
+/* header_inner: 로고 좌측, 메뉴 중앙, 아이콘 우측. grid 1fr 1fr로 logo/util 양 끝. */
 .header_inner {
     padding: 20px 48px !important;
 }
@@ -288,28 +312,14 @@
     }
 }
 
-/* 배너에 헤더 만큼 상단 여백 추가 (헤더가 absolute라 자리 안 차지 → hero 콘텐츠가 헤더와 겹치지 않도록) */
-.hero_section {
-    padding-top: 100px !important;
-}
-@media (max-width: 1024px) {
-    .hero_section {
-        padding-top: 80px !important;
-    }
-}
-@media (max-width: 735px) {
-    .hero_section {
-        padding-top: 70px !important;
-    }
-}
-
-/* GNB 중앙정렬 — 헤더 박스가 가로 100%이므로 left:50% + translate -50% = 화면 정중앙 */
+/* GNB 메뉴 중앙정렬 — viewport 정중앙 강제 (헤더 자체가 가로 100%) */
 .gnb_wrap {
     position: absolute !important;
     left: 50% !important;
     top: 50% !important;
     transform: translate(-50%, -50%) !important;
     z-index: 5 !important;
+    margin: 0 !important;
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
