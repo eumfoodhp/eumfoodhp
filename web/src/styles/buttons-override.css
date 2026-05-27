@@ -181,25 +181,28 @@
     width: 100%;
 }
 
+/* 회색 배경 제거 → 투명. active 탭은 헤더의 주황 버튼 스타일과 통일 */
 .sub_tab_container--below .sub_tab_inner {
-    background: rgba(0, 0, 0, 0.05) !important;
+    background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 
 .sub_tab_container--below .sub_tab_item {
     color: #444 !important;
+    background: transparent !important;
 }
 
 .sub_tab_container--below .sub_tab_item.active {
-    background: #fff !important;
-    color: #222 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: #FF5D27 !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(255, 93, 39, 0.25);
 }
 
 .sub_tab_container--below .sub_tab_item:hover:not(.active) {
-    background: rgba(255, 255, 255, 0.6) !important;
-    color: #222 !important;
+    background: rgba(255, 93, 39, 0.1) !important;
+    color: #FF5D27 !important;
 }
 
 /* ============================================================
@@ -272,29 +275,8 @@
     margin: 16px auto 24px !important;
     border-radius: 20px !important;
     border: none !important;                       /* 검은 테두리 제거 */
-    /* 색상 팔레트 더 확장 + 농도 다양화 — 진한 블롭과 옅은 블롭 혼합한 화려한 마블링 */
-    background:
-        /* 메인 강조 블롭 — 진하게 */
-        radial-gradient(ellipse 45% 90% at 5% 28%, rgba(255, 93, 39, 0.22) 0%, transparent 62%),
-        radial-gradient(ellipse 42% 90% at 95% 62%, rgba(124, 179, 66, 0.24) 0%, transparent 62%),
-        radial-gradient(ellipse 30% 70% at 50% 105%, rgba(255, 140, 70, 0.20) 0%, transparent 55%),
-        /* 중간 블롭 — 보통 농도 */
-        radial-gradient(circle at 25% 82%, rgba(180, 210, 90, 0.18) 0%, transparent 38%),
-        radial-gradient(circle at 70% 18%, rgba(255, 160, 80, 0.18) 0%, transparent 36%),
-        radial-gradient(circle at 88% 8%, rgba(255, 210, 130, 0.20) 0%, transparent 34%),
-        radial-gradient(circle at 12% 92%, rgba(140, 200, 80, 0.18) 0%, transparent 32%),
-        radial-gradient(circle at 60% 75%, rgba(255, 170, 100, 0.16) 0%, transparent 30%),
-        /* 보조 색감 블롭 — 핑크/보라/노랑 등 다양화 */
-        radial-gradient(circle at 38% 38%, rgba(255, 165, 195, 0.15) 0%, transparent 30%),
-        radial-gradient(circle at 96% 35%, rgba(200, 160, 220, 0.14) 0%, transparent 30%),
-        radial-gradient(circle at 8% 58%, rgba(255, 230, 140, 0.18) 0%, transparent 32%),
-        radial-gradient(circle at 78% 92%, rgba(155, 215, 130, 0.16) 0%, transparent 28%),
-        /* 마이크로 블롭 — 옅게 흩뿌리듯 */
-        radial-gradient(circle at 35% 12%, rgba(180, 220, 130, 0.13) 0%, transparent 22%),
-        radial-gradient(circle at 88% 78%, rgba(255, 200, 220, 0.12) 0%, transparent 22%),
-        radial-gradient(circle at 52% 55%, rgba(255, 220, 170, 0.13) 0%, transparent 22%),
-        radial-gradient(circle at 20% 45%, rgba(230, 200, 240, 0.11) 0%, transparent 20%),
-        #FFFBF5 !important;
+    /* 그라데이션 제거, 주황 단색 */
+    background: #FF5D27 !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
@@ -303,7 +285,7 @@
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
 .gnb_main_link,
 .gnb_main_link span {
-    color: #222 !important;
+    color: #fff !important;
 }
 
 /* common.css의 1025px+에서 .gnb_main_link가 text-align:left/justify-content:flex-start.
@@ -317,7 +299,9 @@
 .gnb_main_link:hover span,
 .gnb_main_link:focus-visible,
 .gnb_main_link:focus-visible span {
-    color: #FF5D27 !important;
+    color: #FFE5D8 !important;
+    text-decoration: underline;
+    text-underline-offset: 6px;
 }
 
 /* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤 */
@@ -541,7 +525,7 @@ html, body {
     gap: 6px !important;
 }
 
-/* 3개 아이콘 버튼(문의·언어·메뉴) 동일 사이즈 사각형 */
+/* 3개 아이콘 버튼(문의·언어·메뉴) — 주황 헤더 위에 흰 버튼, 아이콘은 주황 */
 .btn_inquiry,
 .lang_toggle_btn,
 .mo_menu_btn {
@@ -549,24 +533,26 @@ html, body {
     height: 40px !important;
     padding: 0 !important;
     border-radius: 10px !important;
-    background: #FF5D27 !important;
+    background: #fff !important;
     border: none !important;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    color: #fff !important;                    /* SVG currentColor 용 */
-    transition: background 0.2s ease, transform 0.15s ease !important;
+    color: #FF5D27 !important;                 /* SVG currentColor 용 */
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 .btn_inquiry:hover,
 .lang_toggle_btn:hover,
 .mo_menu_btn:hover {
-    background: #E64D1C !important;
+    background: #FFF1EA !important;
     transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 .btn_inquiry svg,
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
-    stroke: #fff !important;
+    stroke: #FF5D27 !important;
     width: 22px !important;
     height: 22px !important;
 }
