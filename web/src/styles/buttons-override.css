@@ -837,11 +837,19 @@ html, body {
 .btn_inquiry svg,
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
-    /* 메뉴(햄버거)만 초록, 다른 우측 아이콘은 주황 유지 */
-    stroke: #4CAF50 !important;
-    color: #4CAF50 !important;
+    /* 기본: 주황 (자사몰/카탈로그/문의/언어). 햄버거는 아래에서 초록 override */
+    stroke: #F39800 !important;
+    color: #F39800 !important;
     width: 22px !important;
     height: 22px !important;
+}
+
+/* 햄버거(메뉴) 아이콘만 초록 — 그룹 selector 다음에 위치해서 specificity 동일하지만 cascade 우선 */
+.mo_menu_btn,
+.mo_menu_btn svg,
+.mo_menu_btn svg line {
+    stroke: #4CAF50 !important;
+    color: #4CAF50 !important;
 }
 
 .util_area {
