@@ -1,3 +1,80 @@
+/* ============================================================
+   제조공정 정식 구현 — 4 카테고리 step 그리드 (Figma 541:5032)
+   ============================================================ */
+#sub_contents.business_process_page .biz_pf_steps_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 32px;
+    margin-top: 16px;
+}
+
+#sub_contents.business_process_page .biz_pf_step--grid {
+    width: 100%;
+    align-items: stretch;
+    gap: 8px;
+}
+
+#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_badge {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    align-self: flex-start;
+    padding: 6px 16px;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 8px;
+}
+
+#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_circle {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 0.7;
+    border-radius: 16px;
+    padding: 24px;
+    background: #F6F7F8;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_label {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #222;
+}
+
+#sub_contents.business_process_page .biz_pf_step_desc {
+    margin: 8px 0 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+}
+
+@media (max-width: 1024px) {
+    #sub_contents.business_process_page .biz_pf_steps_grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px 24px;
+    }
+}
+
+@media (max-width: 735px) {
+    #sub_contents.business_process_page .biz_pf_steps_grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 16px;
+    }
+    #sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_label {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    #sub_contents.business_process_page .biz_pf_step_desc {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
 /* 제조공정 — 서브 히어로 + 탭 */
 
 #sub_contents.business_process_page .breadcrumb_wrap {
