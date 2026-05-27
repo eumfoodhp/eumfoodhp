@@ -305,6 +305,14 @@
 .gnb_main_link span {
     color: #222 !important;
 }
+
+/* common.css의 1025px+에서 .gnb_main_link가 text-align:left/justify-content:flex-start.
+   각 컬럼 셀(180px) 안에서 텍스트가 좌측에 붙어 GNB 전체가 시각적으로 좌측 치우침.
+   각 셀 가운데 정렬로 override해야 5개 메뉴가 균등 분포되어 정중앙으로 보임. */
+.gnb_wrap .gnb_main_link {
+    justify-content: center !important;
+    text-align: center !important;
+}
 .gnb_main_link:hover,
 .gnb_main_link:hover span,
 .gnb_main_link:focus-visible,
