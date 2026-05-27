@@ -282,32 +282,27 @@ export default async function HomePage({
             </div>
 
             <div className="notice_content">
-              {/* DB 미연결 — 일단 빈 카드 3개 (마이그레이션 시 채워짐) */}
-              {[0, 1, 2].map((i) => (
-                <div key={i} className="notice_card notice_card_empty">
-                  <div className="card_img card_img_empty"></div>
+              {/* Figma 디자인: ex1/2/3.png 이미지 + NEWS 라벨 + 본문 + 날짜
+                  DB 연결 전까지는 동일 placeholder 본문을 3개 노출. */}
+              {[1, 2, 3].map((i) => (
+                <article key={i} className="notice_card">
+                  <div
+                    className="card_img"
+                    style={{ backgroundImage: `url('/images/main/ex${i}.png')` }}
+                  ></div>
                   <div className="card_info">
                     <div className="card_top_group">
-                      <div className="card_cate_group" style={{ opacity: 0.3 }}>
+                      <div className="card_cate_group">
                         <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
-                          <circle cx="3" cy="3" r="3" fill="#ddd" />
+                          <circle cx="3" cy="3" r="3" fill="#FF5D27" />
                         </svg>
-                        <span className="card_cate" style={{ color: '#ccc' }}>
-                          {t('main_notice_coming')}
-                        </span>
+                        <span className="card_cate">{t('main_notice_card_label')}</span>
                       </div>
-                      <h3
-                        className="card_title"
-                        style={{ color: '#ccc', textAlign: 'center' }}
-                      >
-                        {t('main_notice_none')}
-                      </h3>
+                      <p className="card_title">{t('main_notice_card_desc')}</p>
                     </div>
-                    <span className="card_date" style={{ color: '#eee' }}>
-                      0000.00.00
-                    </span>
+                    <span className="card_date">{t('main_notice_card_date')}</span>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>

@@ -452,9 +452,12 @@
       "name": "圃美多"
     }
   ],
-  "main_notice_sub": "Notice",
-  "main_notice_title": "公告",
+  "main_notice_sub": "NOTICE",
+  "main_notice_title": "公告及资料室",
   "main_notice_more": "了解更多",
+  "main_notice_card_label": "NEWS",
+  "main_notice_card_desc": "提供与（株）EUMFOOD SYSTEM 相关的公告和各类资料的信息发布板。",
+  "main_notice_card_date": "2026.00.00",
   "main_dir_sub": "Directions",
   "main_dir_title": "前往（株）EUMFOOD SYSTEM 的路线",
   "main_dir_desc": "我们将成为一家大家通过真诚沟通共同成长的公司。",

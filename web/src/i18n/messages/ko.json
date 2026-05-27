@@ -452,9 +452,12 @@
       "name": "풀무원"
     }
   ],
-  "main_notice_sub": "Notice",
-  "main_notice_title": "공지사항",
+  "main_notice_sub": "NOTICE",
+  "main_notice_title": "공지사항 및 자료실",
   "main_notice_more": "더 알아보기",
+  "main_notice_card_label": "NEWS",
+  "main_notice_card_desc": "㈜이음푸드시스템과 관련된 공지사항과 다양한 자료를 확인할 수 있는 공간으로 필요한 정보를 제공하는 게시판입니다.",
+  "main_notice_card_date": "2026.00.00",
   "main_dir_sub": "Directions",
   "main_dir_title": "㈜이음푸드시스템 찾아오시는 길",
   "main_dir_desc": "진정성있는 소통으로 모두가 함께 성장하는 기업이 되겠습니다.",

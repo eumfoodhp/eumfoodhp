@@ -452,9 +452,12 @@
       "name": "Pulmuone"
     }
   ],
-  "main_notice_sub": "Notice",
-  "main_notice_title": "Notices",
+  "main_notice_sub": "NOTICE",
+  "main_notice_title": "Notices & Resources",
   "main_notice_more": "Learn more",
+  "main_notice_card_label": "NEWS",
+  "main_notice_card_desc": "A board offering information about ㈜EUM Food System notices and various resources.",
+  "main_notice_card_date": "2026.00.00",
   "main_dir_sub": "Directions",
   "main_dir_title": "Directions to Eum Food System Co., Ltd.",
   "main_dir_desc": "We will become a company where everyone grows together through sincere communication.",
