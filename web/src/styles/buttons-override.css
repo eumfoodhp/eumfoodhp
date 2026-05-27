@@ -743,7 +743,43 @@ html, body {
     gap: 6px !important;
 }
 
-/* 우측 5 아이콘 톤앤매너 통일 — 모두 흰 배경 + 주황 라인 아이콘, 동일 사이즈/그림자 */
+/* QuickMenu 아이콘 — 헤더와 동일 톤앤매너 (흰 배경 + 주황 라인) */
+.quick_menu .quick_item {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    color: #F39800 !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    text-decoration: none !important;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+}
+.quick_menu .quick_item:hover {
+    background: #FFF1EA !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+}
+.quick_menu .quick_item svg {
+    stroke: #F39800 !important;
+}
+.quick_menu .quick_item.quick_lang {
+    position: relative;
+}
+.quick_menu .quick_item.quick_lang .lang_toggle_btn {
+    /* 안쪽 LanguageSwitcher 버튼 자체 스타일 제거하고 quick_item 컨테이너에 의존 */
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 헤더 우측 5 아이콘 톤앤매너 통일 — 모두 흰 배경 + 주황 라인 아이콘, 동일 사이즈/그림자 */
 .btn_mall,
 .btn_catalog,
 .btn_inquiry,

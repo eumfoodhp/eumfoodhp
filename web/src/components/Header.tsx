@@ -65,43 +65,8 @@ export default async function Header() {
         </div>
 
         <div className="util_area">
-          {/* 자사몰 — 종이가방 아이콘 (Heroicons shopping-bag) */}
-          <a
-            href="https://smartstore.naver.com/eumfood"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn_mall"
-            aria-label={t('quick_mall')}
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M16 10V6a4 4 0 1 0-8 0v4" />
-              <path d="M3.5 7h17l-1.4 13.2a2 2 0 0 1-2 1.8H6.9a2 2 0 0 1-2-1.8L3.5 7z" />
-            </svg>
-          </a>
-
-          {/* 카탈로그 — 다운로드 화살표 아이콘 */}
-          <a
-            href="/data/catalogue.pdf"
-            download
-            className="btn_catalog"
-            aria-label={t('quick_catalog')}
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-          </a>
-
-          {/* 고객문의 (말풍선) */}
-          <Link href="/contact" className="btn_inquiry" aria-label={t('menu_inquiry')}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-            </svg>
-          </Link>
-
-          {/* 언어 (지구) */}
-          <LanguageSwitcher />
+          {/* 자사몰/카탈로그/문의/언어는 QuickMenu(우측 하단 floating)로 이동.
+              헤더 우측에는 햄버거(모바일 전용)만 남김. */}
 
           {/* 햄버거 메뉴 — PC에서는 숨김, 모바일(1024px↓)에서만 노출 */}
           <button type="button" className="mo_menu_btn" aria-label="Menu">
