@@ -189,8 +189,8 @@
 }
 
 .sub_tab_container--below .sub_tab_item:hover:not(.active) {
-    background: rgba(255, 93, 39, 0.08) !important;
-    color: #FF5D27 !important;
+    background: rgba(243, 152, 0, 0.08) !important;
+    color: #F39800 !important;
 }
 
 /* ============================================================
@@ -366,7 +366,7 @@
 .gnb_main_link:hover span,
 .gnb_main_link:focus-visible,
 .gnb_main_link:focus-visible span {
-    color: #FF5D27 !important;
+    color: #F39800 !important;
 }
 
 /* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤 */
@@ -494,12 +494,12 @@ html, body {
 
 /* 각 컬럼이 자체 드롭다운 카드 */
 .mega_col {
-    background: rgba(255, 93, 39, 0.97) !important;
+    background: rgba(243, 152, 0, 0.97) !important;
     border-radius: 12px !important;
     padding: 14px 20px !important;
     min-width: 180px;
     pointer-events: auto;
-    box-shadow: 0 10px 28px rgba(255, 93, 39, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 28px rgba(243, 152, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06);
     visibility: hidden;
     opacity: 0;
     transform: translateY(-4px);
@@ -605,7 +605,7 @@ html, body {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    color: #FF5D27 !important;
+    color: #F39800 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
     text-decoration: none;
@@ -624,7 +624,7 @@ html, body {
 .btn_inquiry svg,
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
-    stroke: #FF5D27 !important;
+    stroke: #F39800 !important;
     width: 22px !important;
     height: 22px !important;
 }

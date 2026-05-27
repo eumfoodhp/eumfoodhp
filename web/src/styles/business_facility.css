@@ -52,7 +52,7 @@
 }
 
 .facility_sub_tit {
-    color: #ff5d27;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     line-height: 28px;
@@ -94,8 +94,8 @@
 }
 
 .fac_tab_item.active {
-    background: #ff5d27;
-    border-color: #ff5d27;
+    background: #F39800;
+    border-color: #F39800;
     color: #fff;
     cursor: default;
 }
@@ -151,7 +151,7 @@
 .facility_name_label {
     flex-shrink: 0;
     min-width: 48px;
-    color: #ff5d27;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     line-height: 28px;

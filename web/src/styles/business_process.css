@@ -132,7 +132,7 @@
 
 #sub_contents.business_process_page .biz_pf_eyebrow {
     margin: 0;
-    color: #ff5d27;
+    color: #F39800;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -283,7 +283,7 @@
     z-index: 1;
     padding: 12px 36px;
     border-radius: 999px;
-    background: #ff5d27;
+    background: #F39800;
     color: #fff;
     font-size: 18px;
     font-weight: 500;

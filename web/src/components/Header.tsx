@@ -65,7 +65,7 @@ export default async function Header() {
         </div>
 
         <div className="util_area">
-          {/* 자사몰 — 외부 스마트스토어 */}
+          {/* 자사몰 — 종이가방 아이콘 (Heroicons shopping-bag) */}
           <a
             href="https://smartstore.naver.com/eumfood"
             target="_blank"
@@ -74,13 +74,12 @@ export default async function Header() {
             aria-label={t('quick_mall')}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <path d="M16 10a4 4 0 0 1-8 0" />
+              <path d="M16 10V6a4 4 0 1 0-8 0v4" />
+              <path d="M3.5 7h17l-1.4 13.2a2 2 0 0 1-2 1.8H6.9a2 2 0 0 1-2-1.8L3.5 7z" />
             </svg>
           </a>
 
-          {/* 카탈로그 — PDF 다운로드 */}
+          {/* 카탈로그 — 다운로드 화살표 아이콘 */}
           <a
             href="/data/catalogue.pdf"
             download
@@ -88,8 +87,9 @@ export default async function Header() {
             aria-label={t('quick_catalog')}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
           </a>
 
