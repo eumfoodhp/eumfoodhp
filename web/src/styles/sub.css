@@ -35,9 +35,20 @@
 
 .sub_top_left {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    align-items: baseline;
+    gap: 20px;
     flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+}
+
+/* 현재 페이지명 (인사말 등) 강조 — 더 크고 굵게 */
+.sub_top_left .breadcrumb .depth2.current {
+    color: #222 !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+    line-height: 30px !important;
 }
 
 /* 큰 타이틀 숨김 (접근성 보존, 시각 X) */
@@ -51,11 +62,11 @@
     border: 0;
 }
 
-/* desc — 브레드크럼 옆 작은 텍스트 */
+/* desc — 브레드크럼 옆 강조된 회색 텍스트 */
 .sub_top_left .sub_page_desc {
-    color: #767676;
-    font-size: 14px;
-    font-weight: 400;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
     line-height: 22px;
     letter-spacing: -0.3px;
     margin: 0;
