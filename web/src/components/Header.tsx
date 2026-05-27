@@ -21,7 +21,6 @@ export default async function Header() {
               <Link href="/business/area" className="gnb_main_link"><span>{t('menu_business')}</span></Link>
               <Link href="/products/pickles" className="gnb_main_link"><span>{t('menu_product')}</span></Link>
               <Link href="/notice" className="gnb_main_link"><span>{t('menu_news')}</span></Link>
-              <Link href="/contact" className="gnb_main_link"><span>{t('menu_support')}</span></Link>
             </div>
           </nav>
 
@@ -59,12 +58,6 @@ export default async function Header() {
                   <li><Link href="/notice">{t('sub_notice')}</Link></li>
                   <li><Link href="/press">{t('sub_news_press')}</Link></li>
                   <li><Link href="/download">{t('sub_board')}</Link></li>
-                </ul>
-              </div>
-              <div className="mega_col mega_c5">
-                <ul className="mega_sub_list">
-                  <li><Link href="/contact">{t('sub_inquiry_1to1')}</Link></li>
-                  <li><Link href="/contact/sales">{t('sub_inquiry_sales')}</Link></li>
                 </ul>
               </div>
             </div>
@@ -129,13 +122,6 @@ export default async function Header() {
                   { href: '/notice', label: t('sub_notice') },
                   { href: '/press', label: t('sub_news_press') },
                   { href: '/download', label: t('sub_board') },
-                ]}
-              />
-              <MobileMenuGroup
-                title={t('menu_support')}
-                items={[
-                  { href: '/contact', label: t('sub_inquiry_1to1') },
-                  { href: '/contact/sales', label: t('sub_inquiry_sales') },
                 ]}
               />
             </div>

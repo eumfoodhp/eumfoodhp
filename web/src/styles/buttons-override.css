@@ -251,23 +251,24 @@
    헤더 — fixed full-width → floating 라운드 카드로 전환
    배너 이미지(.sub_visual_img)와 동일한 폭/모서리로 정렬
    ============================================================ */
+/* 헤더 투명 + 배너 위 absolute overlay (최상단). 박스/그림자/마진 다 제거 */
 #header {
-    position: relative !important;                 /* fixed → relative: 스크롤 따라가지 않음 */
-    top: auto !important;
-    left: auto !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     transform: none !important;
-    /* 메인 .hero_section/.sub_inner 모두 max-width:1580 이지만 좌우 여백 공식이 달라
-       그 중 더 일관된 calc(100% - 40px) 사용 — 양쪽 20px씩 띄움 */
-    width: calc(100% - 40px) !important;
-    max-width: 1580px !important;
-    margin: 16px auto 24px !important;
-    border-radius: 20px !important;
-    border: none !important;                       /* 검은 테두리 제거 */
-    /* 파트너 섹션과 동일한 주황 그라데이션 (위 진한 #FF5D27 → 아래 옅은 #FFCDBD) */
-    background: linear-gradient(0deg, #FFCDBD 0.7%, #FFAD93 48.56%, #FF5D27 100.26%) !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    box-shadow: none !important;
+    z-index: 100 !important;
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
@@ -525,9 +526,7 @@ html, body {
     gap: 6px !important;
 }
 
-/* 우측 버튼 분리: 문의하기는 주황 채움(텍스트 pill 형태), 지구/햄버거는 흰 카드에 어두운 라인 아이콘 */
-
-/* 공통 기본 사이즈 */
+/* 우측 3 아이콘 통일 — 모두 흰 배경 + 주황 라인 아이콘. 배너 위 투명 헤더라 흰 카드로 가독성. */
 .btn_inquiry,
 .lang_toggle_btn,
 .mo_menu_btn {
@@ -535,47 +534,23 @@ html, body {
     height: 40px !important;
     padding: 0 !important;
     border-radius: 10px !important;
+    background: #fff !important;
     border: none !important;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, transform 0.15s ease !important;
-}
-
-/* 문의하기 — 주황 배경 + 흰 글씨/아이콘 (Figma 우측 메인 버튼) */
-.btn_inquiry {
-    background: #FF5D27 !important;
-    color: #fff !important;
-    padding: 0 18px !important;
-    width: auto !important;
-    min-width: 100px;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: -0.3px;
-}
-.btn_inquiry:hover {
-    background: #E64D1C !important;
-    transform: translateY(-1px);
-}
-.btn_inquiry svg {
-    stroke: #fff !important;
-    width: 18px !important;
-    height: 18px !important;
-    margin-right: 6px;
-}
-
-/* 언어/햄버거 — 주황 그라데이션 헤더 위에 흰 버튼 + 주황 라인 아이콘 */
-.lang_toggle_btn,
-.mo_menu_btn {
-    background: #fff !important;
     color: #FF5D27 !important;
-    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
 }
+.btn_inquiry:hover,
 .lang_toggle_btn:hover,
 .mo_menu_btn:hover {
     background: #FFF1EA !important;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
+.btn_inquiry svg,
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
     stroke: #FF5D27 !important;
