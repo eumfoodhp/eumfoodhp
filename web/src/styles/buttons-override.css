@@ -481,9 +481,9 @@
     grid-template-columns: repeat(4, var(--gnb-col)) !important;
 }
 
-/* mega_col을 메뉴 텍스트와 정확히 같은 폭/위치로 — min-width 강제 해제 */
+/* mega_col 우측 정렬 (사용자 요청) */
 .mega_col {
-    justify-self: center !important;
+    justify-self: end !important;
     min-width: 0 !important;
     width: max-content !important;
     max-width: 100% !important;
