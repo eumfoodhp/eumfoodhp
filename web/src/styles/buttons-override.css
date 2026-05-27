@@ -362,14 +362,7 @@
     }
 }
 
-@media (max-width: 1024px) {
-    .util_area > .btn_mall,
-    .util_area > .btn_catalog,
-    .util_area > .btn_inquiry,
-    .util_area > .lang_wrap {
-        display: none !important;
-    }
-}
+/* 모바일 GNB는 common.css 1024px↓에서 display:none. 우측 아이콘은 그대로 모두 표시 */
 
 /* 풀메뉴 = 요즘 스타일 단일 컬럼, 4그룹 컬럼 배치 강제 해제 */
 .menu_wrapper {
@@ -464,7 +457,7 @@
     }
 }
 
-/* GNB 메뉴 헤더 가운데 정렬 + 4컬럼 강제 (고객문의 메뉴 삭제 후) */
+/* GNB 메뉴 헤더 가운데 정렬 + 5컬럼 (문의 메뉴 다시 추가) */
 .gnb_wrap {
     position: absolute !important;
     left: 50% !important;
@@ -472,13 +465,13 @@
     transform: translate(-50%, -50%) !important;
     z-index: 5 !important;
     margin: 0 !important;
-    grid-template-columns: repeat(4, var(--gnb-col)) !important;
+    grid-template-columns: repeat(5, var(--gnb-col)) !important;
 }
 
-/* mega_panel(드롭다운 영역)도 4컬럼 grid로 정렬해 각 메뉴 바로 아래 카드 위치 */
+/* mega_panel(드롭다운 영역) 5컬럼 grid */
 .mega_panel,
 .mega_panel_inner {
-    grid-template-columns: repeat(4, var(--gnb-col)) !important;
+    grid-template-columns: repeat(5, var(--gnb-col)) !important;
 }
 
 /* mega_col 우측 정렬 (사용자 요청) */

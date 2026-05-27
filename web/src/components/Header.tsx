@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
+import CatalogButton from './CatalogButton';
 
 export default async function Header() {
   const t = await getTranslations();
@@ -21,6 +22,7 @@ export default async function Header() {
               <Link href="/business/area" className="gnb_main_link"><span>{t('menu_business')}</span></Link>
               <Link href="/products/pickles" className="gnb_main_link"><span>{t('menu_product')}</span></Link>
               <Link href="/notice" className="gnb_main_link"><span>{t('menu_news')}</span></Link>
+              <Link href="/contact" className="gnb_main_link"><span>{t('menu_inquiry')}</span></Link>
             </div>
           </nav>
 
@@ -60,15 +62,40 @@ export default async function Header() {
                   <li><Link href="/download">{t('sub_board')}</Link></li>
                 </ul>
               </div>
+              <div className="mega_col mega_c5">
+                <ul className="mega_sub_list">
+                  <li><Link href="/contact">{t('sub_inquiry_1to1')}</Link></li>
+                  <li><Link href="/contact/sales">{t('sub_inquiry_sales')}</Link></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="util_area">
-          {/* 자사몰/카탈로그/문의/언어는 QuickMenu(우측 하단 floating)로 이동.
-              헤더 우측에는 햄버거(모바일 전용)만 남김. */}
+          {/* 쇼핑몰 → 카탈로그 → 메뉴(햄버거) → 언어 순서 */}
+          <a
+            href="https://smartstore.naver.com/eumfood"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn_mall"
+            aria-label={t('quick_mall')}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M16 10V6a4 4 0 1 0-8 0v4" />
+              <path d="M3.5 7h17l-1.4 13.2a2 2 0 0 1-2 1.8H6.9a2 2 0 0 1-2-1.8L3.5 7z" />
+            </svg>
+          </a>
 
-          {/* 햄버거 메뉴 — PC에서는 숨김, 모바일(1024px↓)에서만 노출 */}
+          <CatalogButton className="btn_catalog">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </CatalogButton>
+
+          {/* 메뉴(햄버거) — 모든 화면에서 표시. 풀메뉴 트리거 */}
           <button type="button" className="mo_menu_btn" aria-label="Menu">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="4" y1="7" x2="20" y2="7" />
@@ -76,6 +103,8 @@ export default async function Header() {
               <line x1="4" y1="17" x2="20" y2="17" />
             </svg>
           </button>
+
+          <LanguageSwitcher />
         </div>
 
         <div id="mo_nav" className="full_menu_overlay">
