@@ -754,8 +754,11 @@ html, body {
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
 }
 
-/* 문의 quick item = 흰 배경 + 검정 텍스트, 가로 1.5배 (66x44) */
+/* 문의 quick item = 흰 배경 + 검정 텍스트, 가로 1.5배 (66x44), 텍스트 정중앙 */
 .quick_menu .quick_contact {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 66px !important;
     height: 44px !important;
     background: #fff !important;
@@ -763,17 +766,22 @@ html, body {
     color: #222 !important;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    text-decoration: none !important;
+    padding: 0 !important;
 }
 .quick_menu .quick_contact:hover {
     background: #F7F7F7 !important;
     transform: translateY(-2px);
 }
 .quick_menu .quick_contact_label {
-    color: #222;
-    font-size: 14px;
-    font-weight: 700;
+    color: #222 !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
     letter-spacing: -0.4px;
-    line-height: 1;
+    line-height: 1.2 !important;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
 }
 .quick_menu .quick_item:hover {
     background: #FFF1EA !important;
@@ -829,7 +837,9 @@ html, body {
 .btn_inquiry svg,
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
+    /* 메뉴(햄버거)만 초록, 다른 우측 아이콘은 주황 유지 */
     stroke: #4CAF50 !important;
+    color: #4CAF50 !important;
     width: 22px !important;
     height: 22px !important;
 }
