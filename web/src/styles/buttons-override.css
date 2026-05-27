@@ -251,7 +251,7 @@
    헤더 — fixed full-width → floating 라운드 카드로 전환
    배너 이미지(.sub_visual_img)와 동일한 폭/모서리로 정렬
    ============================================================ */
-/* 헤더 투명 + 배너 위 absolute overlay. 상단에 충분한 패딩 줘서 배너 안쪽에 자연스럽게 떠 있음 */
+/* 헤더 — 배너 최상단 overlay, 살짝 투명한 흰 그라데이션 배경 (가독성 확보) */
 #header {
     position: absolute !important;
     top: 0 !important;
@@ -261,31 +261,55 @@
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
-    padding: 36px 48px 0 !important;     /* 상단 36px 여백 + 좌우 48px */
+    padding: 0 !important;
     border-radius: 0 !important;
     border: none !important;
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0) 100%) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
     box-shadow: none !important;
     z-index: 100 !important;
 }
 
-/* header_inner: padding은 #header에서 처리하므로 0. grid는 그대로 유지 */
+/* header_inner: 좌우 여백 + 상하 패딩으로 콘텐츠 위치 */
 .header_inner {
-    padding: 0 !important;
+    padding: 20px 48px !important;
 }
 
 @media (max-width: 1024px) {
-    #header {
-        padding: 24px 24px 0 !important;
+    .header_inner {
+        padding: 16px 24px !important;
     }
 }
 
 @media (max-width: 735px) {
-    #header {
-        padding: 18px 16px 0 !important;
+    .header_inner {
+        padding: 14px 16px !important;
     }
+}
+
+/* 배너에 헤더 만큼 상단 여백 추가 (헤더가 absolute라 자리 안 차지 → hero 콘텐츠가 헤더와 겹치지 않도록) */
+.hero_section {
+    padding-top: 100px !important;
+}
+@media (max-width: 1024px) {
+    .hero_section {
+        padding-top: 80px !important;
+    }
+}
+@media (max-width: 735px) {
+    .hero_section {
+        padding-top: 70px !important;
+    }
+}
+
+/* GNB 중앙정렬 — 헤더 박스가 가로 100%이므로 left:50% + translate -50% = 화면 정중앙 */
+.gnb_wrap {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 5 !important;
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
