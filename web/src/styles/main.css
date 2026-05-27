@@ -1045,27 +1045,22 @@
 }
 
 /* Section 8: Directions */
-/* aspect-ratio = 실제 지도 이미지 비율(2880×1110 = 2.595, 동일 비율의 en1/zh1도 1920×740).
-   컨테이너 비율 = 이미지 비율이므로 cover가 크롭 없이 fit → 가로 줄어들면 통째로 줌아웃,
-   포커스 이동 없음. */
+/* 데스크탑·모바일 통일: 자연 흐름.
+   이미지가 width:100% + height:auto라 비율 그대로 유지하면서 가로폭에 맞춰
+   통째로 줌아웃되듯 축소. position:absolute/object-fit:cover를 쓰지 않으니
+   크롭 자체가 발생하지 않아 포커스 이동도 없음. */
 .direction_section {
     width: 100%;
-    aspect-ratio: 2880 / 1110;
     position: relative;
     overflow: hidden;
     background-color: #F6F7F8;
 }
 
-/* 배경 이미지: 컨테이너 비율과 동일하므로 cover가 잘림 없이 fit됨 (포커스 이동 X) */
 .dir_bg_map {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    z-index: 1;
+    height: auto;
+    /* position:absolute / object-fit / aspect-ratio 다 제거 — 자연 흐름이 가장 단순 */
 }
 
 .direction_inner {
