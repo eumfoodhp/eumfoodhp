@@ -95,39 +95,27 @@
 }
 
 /* ============================================================
-   메인 페이지 .direction_section (오시는 길) 라운드 카드 처리
-   헤더/배너와 동일한 폭·모서리로 정렬
+   메인 페이지 .direction_section (오시는 길)
+   Figma 원본대로 화면 가로 풀 와이드(박스 X), 좌측 콘텐츠는 sub_inner 폭 안에서 정렬
    ============================================================ */
 .direction_section {
-    width: calc(100% - 40px) !important;
-    max-width: 1580px !important;
-    margin: 80px auto !important;
-    border-radius: 20px !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
 
-/* 텍스트가 카드 좌측에 너무 붙는 문제 — 좌측 내부 여백 추가 */
-.direction_section .dir_content_area {
-    left: 60px !important;
-}
-
-@media (max-width: 1024px) {
-    .direction_section .dir_content_area {
-        left: 32px !important;
-    }
-}
-
-@media (max-width: 735px) {
-    .direction_section .dir_content_area {
-        left: 20px !important;
-    }
+/* 좌측 텍스트는 sub_inner 컨테이너(max 1580px) 안에서 좌측 정렬 */
+.direction_section .direction_inner {
+    padding: 0 32px !important;
 }
 
 @media (max-width: 1024px) {
     .direction_section {
-        width: calc(100% - 24px) !important;
-        margin: 60px auto !important;
-        border-radius: 16px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
         height: 540px !important;
         background-color: #FFF6EC !important;
     }
@@ -154,9 +142,9 @@
 
 @media (max-width: 735px) {
     .direction_section {
-        width: calc(100% - 20px) !important;
-        margin: 40px auto !important;
-        border-radius: 14px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
         height: 480px !important;
     }
 }
