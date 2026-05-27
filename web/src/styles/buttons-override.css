@@ -256,10 +256,10 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* 헤더 — 배너와 분리된 별도 박스 (relative). 배너 위에 카드형으로 표시 */
+/* 헤더 — 요즘 스타일: sticky 글래스모피즘 + 컴팩트 카드 */
 #header {
-    position: relative !important;
-    top: auto !important;
+    position: sticky !important;
+    top: 16px !important;
     left: auto !important;
     right: auto !important;
     transform: none !important;
@@ -267,26 +267,28 @@
     max-width: 1580px !important;
     margin: 16px auto 24px !important;
     padding: 0 !important;
-    border-radius: 20px !important;
-    border: none !important;
-    background: #fff !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    background: rgba(255, 255, 255, 0.78) !important;
+    backdrop-filter: saturate(180%) blur(14px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(14px) !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
-    z-index: auto !important;
+    z-index: 100 !important;
 }
 @media (max-width: 1024px) {
     #header {
+        top: 12px !important;
         width: calc(100% - 24px) !important;
         margin: 12px auto 20px !important;
-        border-radius: 16px !important;
+        border-radius: 14px !important;
     }
 }
 @media (max-width: 735px) {
     #header {
+        top: 10px !important;
         width: calc(100% - 20px) !important;
         margin: 10px auto 16px !important;
-        border-radius: 14px !important;
+        border-radius: 12px !important;
     }
 }
 
