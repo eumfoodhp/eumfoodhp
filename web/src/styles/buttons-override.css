@@ -174,8 +174,16 @@
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* 우측 정렬 강제 — .sub_tab_container의 base block 폭 무시 */
+/* base가 position:absolute + left:50% + translateX(-50%)로 가운데 정렬 강제하던 거 풀고
+   flex space-between의 우측 자식으로 동작하도록 static + margin-left:auto */
 .sub_tab_container--top {
+    position: static !important;
+    bottom: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    z-index: auto !important;
     width: fit-content !important;
     max-width: none !important;
     margin-left: auto !important;
