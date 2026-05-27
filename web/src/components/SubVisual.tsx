@@ -34,26 +34,26 @@ export default function SubVisual({
   return (
     <section className="sub_visual_section">
       <div className="sub_inner">
-        <div className="breadcrumb_wrap">
-          <nav className="breadcrumb">
-            <img src="/images/sub/home.png" alt="home" className="home_icon" />
-            <i className="dot"></i>
-            <span className="depth1">{parentLabel}</span>
-            <i className="dot"></i>
-            <span className="depth2 current">{currentLabel}</span>
-          </nav>
-          <div className="sub_title_group">
-            <h2 className="sub_page_title">{title}</h2>
+        <div className="sub_top_bar">
+          <div className="sub_top_left">
+            <nav className="breadcrumb">
+              <img src="/images/sub/home.png" alt="home" className="home_icon" />
+              <i className="dot"></i>
+              <span className="depth1">{parentLabel}</span>
+              <i className="dot"></i>
+              <span className="depth2 current">{currentLabel}</span>
+            </nav>
             <p className="sub_page_desc">{desc}</p>
+            {/* SR-only로 타이틀 유지 (검색·접근성) */}
+            <h2 className="sub_page_title sr_only">{title}</h2>
           </div>
-        </div>
-        <div className={heroClassName} style={heroStyle}>
           {tabBar && (
-            <div className="sub_tab_container sub_tab_container--below">
+            <div className="sub_tab_container sub_tab_container--top">
               <div className="sub_tab_inner">{tabBar}</div>
             </div>
           )}
         </div>
+        <div className={heroClassName} style={heroStyle} />
       </div>
     </section>
   );
