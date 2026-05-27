@@ -577,7 +577,9 @@ html, body {
     gap: 6px !important;
 }
 
-/* 우측 3 아이콘 통일 — 모두 흰 배경 + 주황 라인 아이콘. 배너 위 투명 헤더라 흰 카드로 가독성. */
+/* 우측 5 아이콘 톤앤매너 통일 — 모두 흰 배경 + 주황 라인 아이콘, 동일 사이즈/그림자 */
+.btn_mall,
+.btn_catalog,
 .btn_inquiry,
 .lang_toggle_btn,
 .mo_menu_btn {
@@ -593,7 +595,10 @@ html, body {
     color: #FF5D27 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+    text-decoration: none;
 }
+.btn_mall:hover,
+.btn_catalog:hover,
 .btn_inquiry:hover,
 .lang_toggle_btn:hover,
 .mo_menu_btn:hover {
@@ -601,12 +606,18 @@ html, body {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
+.btn_mall svg,
+.btn_catalog svg,
 .btn_inquiry svg,
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
     stroke: #FF5D27 !important;
     width: 22px !important;
     height: 22px !important;
+}
+
+.util_area {
+    gap: 8px !important;
 }
 
 /* 더 이상 PNG 안 쓰니까 filter 제거 (SVG가 currentColor 사용) */
