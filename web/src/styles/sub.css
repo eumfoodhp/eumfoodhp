@@ -18,9 +18,9 @@
 /* ============================================================
     Section 1: Sub Visual & Title Area
    ============================================================ */
-.sub_visual_section { 
-    width: 100%; 
-    padding: 80px 0 0 0 !important; 
+.sub_visual_section {
+    width: 100%;
+    padding: 32px 0 0 0 !important; /* 헤더와 텍스트 사이 컴팩트 */
 }
 
 /* 1. 브레드크럼 + 타이틀 그룹 */
@@ -30,8 +30,8 @@
     max-width: 750px;
     flex-direction: column;
     align-items: center;
-    gap: 48px; /* var(--padding-11) */
-    margin-bottom: 80px;
+    gap: 16px; /* 48 → 16 컴팩트 */
+    margin-bottom: 36px; /* 80 → 36 컴팩트 */
 }
 
 /* 2~5. 브레드크럼 상세 */
@@ -49,10 +49,10 @@
 .sub_title_group { text-align: center; display: flex; flex-direction: column; gap: 16px; }
 .sub_page_title {
     color: #222;
-    font-size: 72px; /* display 1 */
+    font-size: 56px; /* 72 → 56 컴팩트 */
     font-weight: 700;
-    line-height: 88px;
-    letter-spacing: -1.8px;
+    line-height: 68px;
+    letter-spacing: -1.4px;
 }
 .sub_page_desc {
     color: #505050;

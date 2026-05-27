@@ -169,28 +169,42 @@
     width: 100%;
 }
 
-/* Figma 디자인: 회색 박스 제거(투명) + active는 흰 박스 + 진한 글씨 */
+/* 요즘 스타일 서브탭바 — pill 버튼 그룹, 컴팩트 spacing */
+.sub_tab_container--below {
+    margin-top: 28px !important;
+    margin-bottom: 28px !important;
+}
+
 .sub_tab_container--below .sub_tab_inner {
-    background: transparent !important;
+    display: inline-flex !important;
+    gap: 4px !important;
+    padding: 6px !important;
+    background: #F4F5F7 !important;
+    border-radius: 999px !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
 }
 
 .sub_tab_container--below .sub_tab_item {
-    color: #555 !important;
+    padding: 10px 22px !important;
+    color: #666 !important;
     background: transparent !important;
+    border-radius: 999px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s ease, color 0.2s ease !important;
 }
 
 .sub_tab_container--below .sub_tab_item.active {
-    background: #fff !important;
-    color: #222 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: #222 !important;
+    color: #fff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .sub_tab_container--below .sub_tab_item:hover:not(.active) {
-    background: rgba(243, 152, 0, 0.08) !important;
-    color: #F39800 !important;
+    background: rgba(0, 0, 0, 0.04) !important;
+    color: #222 !important;
 }
 
 /* ============================================================
