@@ -1045,11 +1045,12 @@
 }
 
 /* Section 8: Directions */
-/* aspect-ratio: 컨테이너 가로 줄어들면 세로도 비례 축소.
-   컨테이너 비율 = 이미지 비율이라 cover라도 크롭 없이 그대로 줌아웃되듯 축소됨. */
+/* aspect-ratio = 실제 지도 이미지 비율(2880×1110 = 2.595, 동일 비율의 en1/zh1도 1920×740).
+   컨테이너 비율 = 이미지 비율이므로 cover가 크롭 없이 fit → 가로 줄어들면 통째로 줌아웃,
+   포커스 이동 없음. */
 .direction_section {
     width: 100%;
-    aspect-ratio: 1920 / 900;
+    aspect-ratio: 2880 / 1110;
     position: relative;
     overflow: hidden;
     background-color: #F6F7F8;
