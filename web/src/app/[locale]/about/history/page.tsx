@@ -3,6 +3,7 @@ import Script from 'next/script';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
+import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
 
 type HistoryDataItem = { year: string; list: Array<{ month: string; content: string }> };
@@ -15,6 +16,9 @@ const PERIODS = [
   { id: 'p4', label: '2011 ~ 2009', start: 2009, end: 2011 },
 ];
 
+// admin이 글 추가/수정/삭제하면 즉시 반영
+export const revalidate = 0;
+
 export default async function HistoryPage({
   params,
 }: {
@@ -24,15 +28,37 @@ export default async function HistoryPage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  // Combine the two lang sources into a `{ year: string[] }` map.
-  const data = (t.raw('history_data') ?? []) as HistoryDataItem[];
-  const list = (t.raw('history_list') ?? []) as HistoryListItem[];
   const byYear: Record<string, string[]> = {};
-  for (const item of data) {
-    byYear[item.year] = (byYear[item.year] ?? []).concat(item.list.map((x) => x.content));
+
+  // 1차: Supabase에서 history_entries 가져오기
+  try {
+    const supabase = getSupabase();
+    const { data: entries } = await supabase
+      .from('history_entries')
+      .select('year, month, title, sort_order')
+      .order('year', { ascending: false })
+      .order('sort_order', { ascending: true });
+
+    if (entries && entries.length > 0) {
+      for (const e of entries as Array<{ year: number; title: string }>) {
+        const y = String(e.year);
+        byYear[y] = (byYear[y] ?? []).concat(e.title);
+      }
+    }
+  } catch {
+    // Supabase 실패 시 아래 i18n fallback
   }
-  for (const item of list) {
-    byYear[item.year] = (byYear[item.year] ?? []).concat(item.contents);
+
+  // 2차 fallback: DB가 비었거나 에러면 기존 i18n 데이터 사용
+  if (Object.keys(byYear).length === 0) {
+    const data = (t.raw('history_data') ?? []) as HistoryDataItem[];
+    const list = (t.raw('history_list') ?? []) as HistoryListItem[];
+    for (const item of data) {
+      byYear[item.year] = (byYear[item.year] ?? []).concat(item.list.map((x) => x.content));
+    }
+    for (const item of list) {
+      byYear[item.year] = (byYear[item.year] ?? []).concat(item.contents);
+    }
   }
 
   const sortedYears = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
