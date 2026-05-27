@@ -24,12 +24,12 @@ export default function SubVisual({
   tabBar,
   heroClass,
 }: Props) {
-  const heroProps = heroClass
-    ? { className: `sub_visual_img ${heroClass}` }
-    : {
-        className: 'sub_visual_img',
-        style: { backgroundImage: "url('/images/sub/tempo.png')" },
-      };
+  const heroClassName = heroClass
+    ? `sub_visual_img ${heroClass}`
+    : 'sub_visual_img';
+  const heroStyle = heroClass
+    ? undefined
+    : { backgroundImage: "url('/images/sub/tempo.png')" };
 
   return (
     <section className="sub_visual_section">
@@ -47,12 +47,13 @@ export default function SubVisual({
             <p className="sub_page_desc">{desc}</p>
           </div>
         </div>
-        <div {...heroProps} />
-        {tabBar && (
-          <div className="sub_tab_container sub_tab_container--below">
-            <div className="sub_tab_inner">{tabBar}</div>
-          </div>
-        )}
+        <div className={heroClassName} style={heroStyle}>
+          {tabBar && (
+            <div className="sub_tab_container sub_tab_container--below">
+              <div className="sub_tab_inner">{tabBar}</div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
