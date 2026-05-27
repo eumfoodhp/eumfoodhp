@@ -157,6 +157,27 @@ export default async function Header() {
                   { href: '/download', label: t('sub_board') },
                 ]}
               />
+
+              {/* 모바일 풀메뉴 부가 링크 — 데스크탑 우측 아이콘들과 동일 기능 */}
+              <div className="mo_extra_links">
+                <a
+                  href="https://smartstore.naver.com/eumfood"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mo_extra_link"
+                >
+                  {t('quick_mall')}
+                </a>
+                <a href="/data/catalogue.pdf" download className="mo_extra_link">
+                  {t('quick_catalog')}
+                </a>
+                <Link href="/contact" className="mo_extra_link">
+                  {t('quick_contact')}
+                </Link>
+                <div className="mo_extra_lang">
+                  <LanguageSwitcher />
+                </div>
+              </div>
             </div>
           </div>
         </div>

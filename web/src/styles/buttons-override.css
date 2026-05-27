@@ -322,12 +322,58 @@
     }
 }
 
-/* PC(1025px+): 햄버거 메뉴 숨김 — GNB가 다 보이니까 불필요.
-   1024px↓ 모바일에서만 햄버거 노출. */
+/* 표준 반응형 패턴:
+   PC(1025+): GNB 노출 + 자사몰/카탈로그/문의/언어 4개 우측, 햄버거 숨김
+   모바일(1024-): GNB 숨김 + 우측 4개도 숨김, 햄버거만 노출 → 풀메뉴 안에 다 들어감 */
 @media (min-width: 1025px) {
     .mo_menu_btn {
         display: none !important;
     }
+}
+
+@media (max-width: 1024px) {
+    .util_area > .btn_mall,
+    .util_area > .btn_catalog,
+    .util_area > .btn_inquiry,
+    .util_area > .lang_wrap {
+        display: none !important;
+    }
+}
+
+/* 모바일 풀메뉴 안 부가 링크 (자사몰/카탈로그/문의/언어) */
+.mo_extra_links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #eee;
+}
+.mo_extra_link {
+    display: block;
+    padding: 14px 16px;
+    color: #222;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+.mo_extra_link:hover {
+    background: rgba(243, 152, 0, 0.08);
+    color: #F39800;
+}
+.mo_extra_lang {
+    margin-top: 8px;
+    padding: 14px 16px;
+}
+.mo_extra_lang .lang_toggle_btn {
+    /* 풀메뉴 안에서는 아이콘 버튼 대신 텍스트 형태로 변경 */
+    display: inline-flex !important;
+    width: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 /* header_inner: padding으로 내부 콘텐츠 위치 */
