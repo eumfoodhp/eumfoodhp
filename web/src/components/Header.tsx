@@ -7,10 +7,6 @@ export default async function Header() {
 
   return (
     <header id="header">
-      {/* 위 row: 언어만 우측 정렬 */}
-      <div className="header_top_row">
-        <LanguageSwitcher />
-      </div>
       <div className="header_inner">
         <h1 className="logo">
           <Link href="/">
@@ -104,7 +100,10 @@ export default async function Header() {
             </svg>
           </Link>
 
-          {/* 햄버거 메뉴 */}
+          {/* 언어 (지구) */}
+          <LanguageSwitcher />
+
+          {/* 햄버거 메뉴 — PC에서는 숨김, 모바일(1024px↓)에서만 노출 */}
           <button type="button" className="mo_menu_btn" aria-label="Menu">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="4" y1="7" x2="20" y2="7" />
