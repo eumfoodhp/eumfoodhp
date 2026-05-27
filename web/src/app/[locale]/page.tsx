@@ -144,66 +144,26 @@ export default async function HomePage({
           </div>
         </section>
 
-        <section className="process_section">
+        <section className="process_section process_section--cards">
           <div className="process_inner">
-            <div className="proc_img_box">
-              {procTabs.map((_, i) => (
-                <img
-                  key={i}
-                  src={`/images/main/section4-${i + 1}.png`}
-                  alt="process"
-                  className={`proc_img${i === 0 ? ' active' : ''}`}
-                  data-proc={i + 1}
-                />
-              ))}
-            </div>
-
-            <div className="proc_info_box">
-              <div className="proc_text_content">
-                {procTabs.map((item, idx) => (
+            <div className="proc_card_grid">
+              {procTabs.map((item, idx) => (
+                <article key={idx} className="proc_card">
                   <div
-                    key={idx}
-                    className={`proc_info_group${idx === 0 ? ' active' : ''}`}
-                    data-proc={idx + 1}
-                  >
-                    <div className="proc_title_wrap">
-                      <span className="proc_tag">{item.tag}</span>
-                      <h2 className="proc_title">{nl2br(item.title)}</h2>
-                    </div>
+                    className="proc_card_img"
+                    style={{ backgroundImage: `url('/images/main/section4-${idx + 1}.png')` }}
+                  />
+                  <div className="proc_card_body">
+                    <span className="proc_card_tag">{item.tag}</span>
+                    <h3 className="proc_card_title">{nl2br(item.title)}</h3>
+                    <p className="proc_card_desc">{item.desc}</p>
+                    <Link href={item.link} className="proc_card_link">
+                      <span>{t('common_more')}</span>
+                      <ArrowIcon />
+                    </Link>
                   </div>
-                ))}
-
-                <div className="proc_tabs">
-                  {procTabs.map((item, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      className={`proc_tab_btn${idx === 0 ? ' active' : ''}`}
-                      data-proc={idx + 1}
-                      data-link={item.link}
-                    >
-                      {idx + 1}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="proc_desc_wrap">
-                  {procTabs.map((item, idx) => (
-                    <p
-                      key={idx}
-                      className={`proc_desc${idx === 0 ? ' active' : ''}`}
-                      data-proc={idx + 1}
-                    >
-                      {item.desc}
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              <Link href="/business/area" id="proc_more_btn" className="proc_more_btn">
-                <span>{t('common_more')}</span>
-                <ArrowIcon />
-              </Link>
+                </article>
+              ))}
             </div>
           </div>
         </section>
