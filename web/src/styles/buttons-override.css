@@ -1321,3 +1321,22 @@ html[lang="zh"] .dl_title {
         height: 10px;
     }
 }
+
+/* ============================================================
+   원페이지 (/about, /business) — 모든 컨테이너 폭 헤더(1800/93.75%) 통일.
+   브레드크럼·SectionHeader pill 좌우 마진이 헤더 pill 과 정확히 일치.
+   ============================================================ */
+.about_onepage .sub_inner,
+.business_onepage .sub_inner {
+    width: 1800px !important;
+    max-width: 93.75% !important;
+    margin: 0 auto !important;
+}
+
+/* SectionHeader 도 같은 폭 (헤더 1800/93.75%) — 명시 강제 */
+.about_onepage .section_header_inner,
+.business_onepage .section_header_inner {
+    width: 1800px !important;
+    max-width: 93.75% !important;
+    margin: 0 auto !important;
+}
