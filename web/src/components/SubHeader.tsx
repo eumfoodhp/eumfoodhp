@@ -125,32 +125,22 @@ export default function SubHeader() {
   const currentItem = matchCurrentItem(category, pathname, hash);
 
   return (
-    <div className="sub_header" role="navigation" aria-label="sub navigation">
-      <div className="sub_header_inner">
-        {/* Box 1 (1/3) — 현재 선택된 서브메뉴 이름만 */}
-        <div className="sub_header_box sub_header_box--current">
-          <span className="sub_header_label">{t(currentItem.key)}</span>
-        </div>
-
-        {/* Box 2 (2/3) — 전체 서브메뉴 가로 나열 */}
-        <nav className="sub_header_box sub_header_box--nav">
-          <ul className="sub_header_nav_list">
-            {category.items.map((item) => {
-              const isActive = currentItem.href === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`sub_header_nav_link${isActive ? ' is_active' : ''}`}
-                  >
-                    {t(item.key)}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </div>
-    </div>
+    <nav className="sub_header" role="navigation" aria-label="sub navigation">
+      <ul className="sub_header_nav_list">
+        {category.items.map((item) => {
+          const isActive = currentItem.href === item.href;
+          return (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={`sub_header_nav_link${isActive ? ' is_active' : ''}`}
+              >
+                {t(item.key)}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
