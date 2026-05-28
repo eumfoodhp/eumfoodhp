@@ -157,6 +157,13 @@ export default async function Header() {
                   { href: '/download', label: t('sub_board') },
                 ]}
               />
+              <MobileMenuGroup
+                title={t('menu_inquiry')}
+                items={[
+                  { href: '/contact', label: t('sub_inquiry_1to1') },
+                  { href: '/contact/sales', label: t('sub_inquiry_sales') },
+                ]}
+              />
 
               {/* 풀메뉴 부가 아이콘 — 자사몰/카탈로그만, 가로 배치, 아이콘만 */}
               <div className="mo_extra_links mo_extra_links--icons">

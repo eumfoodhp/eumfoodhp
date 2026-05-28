@@ -439,14 +439,14 @@
     font-weight: 500 !important;
 }
 
-/* 부가 아이콘 (자사몰/카탈로그) — 가로 배치, 아이콘만 */
+/* 부가 아이콘 (자사몰/카탈로그) — 가로 배치, 아이콘만. border-top 제거(소식 메뉴와 두 줄 중복) */
 .mo_extra_links {
     display: flex;
     flex-direction: row !important;
     gap: 12px;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid #f0f0f0;
+    margin-top: 16px;
+    padding-top: 0;
+    border-top: none;
     justify-content: flex-start;
 }
 .mo_extra_link.mo_extra_icon_only {
