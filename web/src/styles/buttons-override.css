@@ -350,15 +350,30 @@
     z-index: 100 !important;
 }
 
-/* 헤더 우측 아이콘들 — 흰색 강제. 각자 개별 selector로 명시 (그룹 의심 해결) */
-.btn_mall          { background-color: #FFFFFF !important; background: #FFFFFF !important; }
-.btn_catalog       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
-.btn_inquiry       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
-.lang_toggle_btn   { background-color: #FFFFFF !important; background: #FFFFFF !important; }
-.mo_menu_btn       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
-.quick_menu .quick_item    { background-color: #FFFFFF !important; background: #FFFFFF !important; }
-.quick_menu .quick_contact { background-color: #FFFFFF !important; background: #FFFFFF !important; }
-.quick_menu .btn_top       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+/* 모든 헤더/QuickMenu 아이콘 — 강제 흰배경 + 색 자동 보정 차단.
+   forced-color-adjust: none + isolation: isolate로 모바일 다크모드 픽셀 보정 막음. */
+#header .btn_mall,
+#header .btn_catalog,
+#header .btn_inquiry,
+#header .lang_toggle_btn,
+#header .mo_menu_btn,
+.quick_menu .quick_item,
+.quick_menu .quick_contact,
+.quick_menu .btn_top,
+.lang_wrap > .lang_toggle_btn {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    background-image: none !important;
+    forced-color-adjust: none !important;
+    -webkit-forced-color-adjust: none !important;
+    isolation: isolate !important;
+}
+
+/* 헤더 자체도 동일 강제 */
+#header {
+    forced-color-adjust: none !important;
+    -webkit-forced-color-adjust: none !important;
+}
 @media (max-width: 1024px) {
     #header {
         top: 12px !important;

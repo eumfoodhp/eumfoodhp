@@ -36,6 +36,7 @@ export default function CatalogButton({ className, ariaLabel, children }: Props)
       onClick={handleClick}
       className={className}
       aria-label={ariaLabel ?? t('quick_catalog')}
+      style={{ backgroundColor: '#ffffff' }}
     >
       {children}
     </a>

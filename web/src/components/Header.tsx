@@ -80,6 +80,7 @@ export default async function Header() {
             rel="noopener noreferrer"
             className="btn_mall"
             aria-label={t('quick_mall')}
+            style={{ backgroundColor: '#ffffff' }}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M16 10V6a4 4 0 1 0-8 0v4" />
@@ -87,7 +88,7 @@ export default async function Header() {
             </svg>
           </a>
 
-          <CatalogButton className="btn_catalog">
+          <CatalogButton className="btn_catalog btn_catalog_white">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
@@ -96,7 +97,12 @@ export default async function Header() {
           </CatalogButton>
 
           {/* 메뉴(햄버거) — 모든 화면에서 표시. 풀메뉴 트리거 */}
-          <button type="button" className="mo_menu_btn" aria-label="Menu">
+          <button
+            type="button"
+            className="mo_menu_btn"
+            aria-label="Menu"
+            style={{ backgroundColor: '#ffffff' }}
+          >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="4" y1="7" x2="20" y2="7" />
               <line x1="4" y1="12" x2="20" y2="12" />
