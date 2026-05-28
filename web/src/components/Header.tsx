@@ -165,33 +165,6 @@ export default async function Header() {
                 ]}
               />
 
-              {/* 풀메뉴 부가 아이콘 — 자사몰/카탈로그만, 가로 배치, 아이콘만 */}
-              <div className="mo_extra_links mo_extra_links--icons">
-                <a
-                  href="https://smartstore.naver.com/eumfood"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mo_extra_link mo_extra_icon_only"
-                  aria-label={t('quick_mall')}
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 10V6a4 4 0 1 0-8 0v4" />
-                    <path d="M3.5 7h17l-1.4 13.2a2 2 0 0 1-2 1.8H6.9a2 2 0 0 1-2-1.8L3.5 7z" />
-                  </svg>
-                </a>
-                <a
-                  href="/data/eumfoodsystem.pdf"
-                  download
-                  className="mo_extra_link mo_extra_icon_only"
-                  aria-label={t('quick_catalog')}
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                  </svg>
-                </a>
-              </div>
             </div>
           </div>
         </div>
