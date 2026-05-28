@@ -8,7 +8,7 @@
   "quick_mall": "Store",
   "quick_contact": "Inquiry",
   "quick_catalog": "Catalog",
-  "catalog_confirm": "Download the catalog?",
+  "catalog_confirm": "Downloading '{filename}'.",
   "quick_top": "Back to top",
   "sub_greeting": "Greetings",
   "sub_history": "Company history",
@@ -1185,6 +1185,6 @@
   "biz_pf_sa_07t": "Outer packaging / shipping",
   "biz_pf_sa_07d": "Outer packaging and shipment.",
   "btn_product_intro": "Product brochure",
-  "brochure_confirm": "Download the product brochure?",
+  "brochure_confirm": "Downloading '{filename}'.",
   "stub_preparing": "This page is under preparation."
 }

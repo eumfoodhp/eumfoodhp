@@ -8,7 +8,7 @@
   "quick_mall": "官方商城",
   "quick_contact": "咨询",
   "quick_catalog": "产品目录",
-  "catalog_confirm": "是否下载产品目录？",
+  "catalog_confirm": "即将下载 '{filename}'。",
   "quick_top": "返回顶部",
   "sub_greeting": "致辞",
   "sub_history": "沿革",
@@ -1185,6 +1185,6 @@
   "biz_pf_sa_07t": "外包装，出厂",
   "biz_pf_sa_07d": "外包装后出货。",
   "btn_product_intro": "产品介绍",
-  "brochure_confirm": "是否下载产品介绍？",
+  "brochure_confirm": "即将下载 '{filename}'。",
   "stub_preparing": "此页面正在准备中。"
 }

@@ -8,7 +8,7 @@
   "quick_mall": "자사몰",
   "quick_contact": "문의",
   "quick_catalog": "카탈로그",
-  "catalog_confirm": "카탈로그를 다운로드 받으시겠습니까?",
+  "catalog_confirm": "'{filename}'가 다운로드됩니다.",
   "quick_top": "맨위로",
   "sub_greeting": "인사말",
   "sub_history": "회사연혁",
@@ -1185,6 +1185,6 @@
   "biz_pf_sa_07t": "외포장/출하",
   "biz_pf_sa_07d": "외포장 후 출하합니다.",
   "btn_product_intro": "상품 소개서",
-  "brochure_confirm": "상품 소개서를 다운로드 받으시겠습니까?",
+  "brochure_confirm": "'{filename}'가 다운로드됩니다.",
   "stub_preparing": "이 페이지는 준비 중입니다."
 }

@@ -19,17 +19,17 @@ export default function CatalogButton({ className, ariaLabel, children }: Props)
   const t = useTranslations();
   const locale = useLocale();
 
-  const pdfHref =
-    locale === 'zh'
-      ? '/data/' + encodeURIComponent('易音食品系统_企业简介_2026.pdf')
-      : '/data/' + encodeURIComponent('이음푸드시스템_회사소개서_2026.pdf');
+  // 파일명(확장자 포함 / 확장자 제외 표기용)
+  const filename =
+    locale === 'zh' ? '易音食品系统_企业简介_2026' : '이음푸드시스템_회사소개서_2026';
+  const pdfHref = '/data/' + encodeURIComponent(filename + '.pdf');
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const msg = (() => {
       try {
-        return t('catalog_confirm');
+        return t('catalog_confirm', { filename });
       } catch {
-        return '카탈로그를 다운로드 받으시겠습니까?';
+        return `'${filename}'가 다운로드됩니다.`;
       }
     })();
     if (!window.confirm(msg)) {

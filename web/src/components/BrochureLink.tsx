@@ -15,14 +15,15 @@ type Props = {
  */
 export default function BrochureLink({ className, children }: Props) {
   const t = useTranslations();
-  const pdfHref = '/data/' + encodeURIComponent('이음푸드시스템_제품소개서_2026.pdf');
+  const filename = '이음푸드시스템_제품소개서_2026';
+  const pdfHref = '/data/' + encodeURIComponent(filename + '.pdf');
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const msg = (() => {
       try {
-        return t('brochure_confirm');
+        return t('brochure_confirm', { filename });
       } catch {
-        return '상품 소개서를 다운로드 받으시겠습니까?';
+        return `'${filename}'가 다운로드됩니다.`;
       }
     })();
     if (!window.confirm(msg)) {
