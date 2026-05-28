@@ -1,0 +1,252 @@
+/* ============================================================
+   공개 게시판/폼 공통 스타일 (1:1 문의, 영업문의 등)
+   contact/page.tsx, contact/write/page.tsx, contact/sales/page.tsx 등에서 사용.
+   ============================================================ */
+
+/* ----------- 폼 컨테이너 ----------- */
+.public_form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 32px 0 80px;
+}
+
+.pf_section_title {
+    margin: 24px 0 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.pf_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 640px) {
+    .pf_row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pf_field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pf_field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.pf_field input[type='text'],
+.pf_field input[type='email'],
+.pf_field input[type='tel'],
+.pf_field input[type='url'],
+.pf_field input[type='number'],
+.pf_field select,
+.pf_field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #111827;
+    background: #fff;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pf_field textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+.pf_field input:focus,
+.pf_field select:focus,
+.pf_field textarea:focus {
+    border-color: #F39800;
+    box-shadow: 0 0 0 3px rgba(243, 152, 0, 0.15);
+}
+
+.pf_checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pf_checkbox input[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    accent-color: #F39800;
+}
+
+.pf_privacy {
+    margin-top: 8px;
+    padding: 16px;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+}
+
+.pf_actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.pf_submit {
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: #F39800;
+    border: 1px solid #F39800;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.pf_submit:hover {
+    background: #E08A00;
+}
+
+.pf_submit--sm {
+    padding: 8px 18px;
+    font-size: 13px;
+}
+
+.pf_cancel {
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+    background: #fff;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.pf_cancel:hover {
+    background: #F3F4F6;
+}
+
+/* ----------- 공개 안내 박스 ----------- */
+.public_notice {
+    margin: 24px auto;
+    max-width: 880px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.public_notice.success {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    color: #065F46;
+}
+
+/* ----------- 공개 목록 헤더 ----------- */
+.public_list_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 32px 0 16px;
+}
+
+.public_list_count {
+    font-size: 14px;
+    color: #6B7280;
+    font-weight: 500;
+}
+
+.public_empty {
+    padding: 60px 20px;
+    text-align: center;
+    color: #9CA3AF;
+    background: #F9FAFB;
+    border: 1px dashed #D1D5DB;
+    border-radius: 12px;
+}
+
+/* ----------- 공개 게시판 테이블 ----------- */
+.public_table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: #fff;
+    border-top: 2px solid #111827;
+}
+
+.public_table thead th {
+    padding: 14px 12px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    background: #F9FAFB;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.public_table tbody td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #E5E7EB;
+    color: #374151;
+}
+
+.public_table tbody tr:hover {
+    background: #FAFBFC;
+}
+
+.public_table_title {
+    color: #111827;
+    font-weight: 500;
+}
+
+.status_chip {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.status_chip--ok {
+    background: #ECFDF5;
+    color: #047857;
+}
+
+.status_chip--wait {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+/* ----------- 모바일 ----------- */
+@media (max-width: 640px) {
+    .public_form { padding: 24px 0 60px; }
+    .pf_actions { flex-direction: column-reverse; }
+    .pf_submit, .pf_cancel { width: 100%; text-align: center; }
+    .public_table { font-size: 13px; }
+    .public_table thead th,
+    .public_table tbody td { padding: 10px 8px; }
+}
