@@ -165,25 +165,44 @@
         0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* 카드 내부: 깨끗한 흰 배경 + 원본 컬러 로고만 */
+/* 카드 내부: 흐린 배경 이미지 + 어두운 오버레이 + 가운데 로고 */
+
+/* 배경 이미지 — blur + brightness 처리. 흐림 가장자리 잘림 방지를 위해 inset -10% */
 .carousel_card .card_bg {
     position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 30% 25%, rgba(243, 152, 0, 0.04), transparent 60%),
-        linear-gradient(180deg, #ffffff 0%, #fbfbfc 100%);
+    inset: -10%;  /* blur edge 잘림 방지 */
+    background-color: #2a2a2a;  /* 이미지 없을 때 fallback */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: blur(6px) brightness(0.62) saturate(1.05);
     z-index: 0;
 }
 
-/* 미세한 윗쪽 빛 — 프리미엄 카드 느낌 */
+/* 배경 위 어두운 그라데이션 오버레이 — 로고 가독성 강화 */
+.carousel_card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.25) 0%,
+        rgba(0, 0, 0, 0.35) 50%,
+        rgba(0, 0, 0, 0.55) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 미세한 윗쪽 빛 — 카드 윤곽감 */
 .carousel_card::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent 30%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent 20%);
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
 }
 
 .carousel_card .card_logo_wrap {
@@ -192,21 +211,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 32px 24px;
-    z-index: 1;
+    padding: 28px 20px;
+    z-index: 3;
 }
 
 .carousel_card .card_logo {
-    max-width: 75%;
-    max-height: 65%;
+    max-width: 78%;
+    max-height: 60%;
     object-fit: contain;
-    /* 원본 색 유지. 카드 자체의 grayscale 필터로 흑백 처리됨. */
+    /* 흰 로고가 어두운 bg 위로 잘 보이도록 살짝 그림자 */
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* hover 시 로고 살짝 더 큼직하게 */
+/* hover 시 로고 살짝 확대 */
 .carousel_card:hover .card_logo {
     transform: scale(1.06);
+}
+
+/* hover 시 배경 blur 살짝 완화 + 밝아짐 → 어떤 사진인지 보이게 */
+.carousel_card:hover .card_bg {
+    filter: blur(3px) brightness(0.78) saturate(1.1);
 }
 
 /* ============================================================
