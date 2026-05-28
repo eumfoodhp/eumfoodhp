@@ -300,11 +300,11 @@
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* 주요 카드 컴포넌트들 일괄 그림자 — 배너와 톤 통일 */
+/* 주요 카드 컴포넌트 그림자 — 배너와 톤 통일.
+   제품 카드(.prod_card, .product_card)는 깔끔한 디자인 위해 그림자/보더 X (이미지만 라운드) */
 .biz_card,
 .notice_card,
 .proc_card,
-.prod_card,
 .partner_item,
 .dir_info_box,
 .facility_card {
@@ -312,9 +312,22 @@
 }
 .biz_card:hover,
 .notice_card:hover,
-.proc_card:hover,
-.prod_card:hover {
+.proc_card:hover {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 제품 카드 — 보더/그림자/배경 모두 제거. 이미지만 라운드 */
+.prod_card,
+.product_card,
+#sub_contents .product_card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.prod_card:hover,
+.product_card:hover {
+    box-shadow: none !important;
+    transform: none !important;
 }
 
 /* 헤더 — 요즘 스타일: sticky 글래스모피즘 + 컴팩트 카드 */
