@@ -350,8 +350,9 @@
     z-index: 100 !important;
 }
 
-/* 모든 헤더/QuickMenu 아이콘 — 강제 흰배경 + 색 자동 보정 차단.
-   forced-color-adjust: none + isolation: isolate로 모바일 다크모드 픽셀 보정 막음. */
+/* 진짜 원인: Android Chrome 다크모드가 form 요소(button)를 선별적으로 다크 보정.
+   해결: appearance:none으로 user-agent form 스타일 완전 제거 + 흰배경 강제 */
+
 #header .btn_mall,
 #header .btn_catalog,
 #header .btn_inquiry,
@@ -361,15 +362,17 @@
 .quick_menu .quick_contact,
 .quick_menu .btn_top,
 .lang_wrap > .lang_toggle_btn {
+    -webkit-appearance: none !important;
+    appearance: none !important;
     background: #FFFFFF !important;
     background-color: #FFFFFF !important;
     background-image: none !important;
+    color: inherit !important;
     forced-color-adjust: none !important;
     -webkit-forced-color-adjust: none !important;
     isolation: isolate !important;
 }
 
-/* 헤더 자체도 동일 강제 */
 #header {
     forced-color-adjust: none !important;
     -webkit-forced-color-adjust: none !important;
