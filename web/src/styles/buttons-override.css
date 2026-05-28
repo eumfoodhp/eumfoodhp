@@ -1368,9 +1368,10 @@ html[lang="zh"] .dl_title {
 }
 
 
+
 /* ============================================================
-   SubHeader — 헤더 아래 sticky 서브 네비, 2 박스 구성
-   [Box1: 카테고리 · 현재 선택]  [Box2: 전체 메뉴 토글]
+   SubHeader — 헤더 아래 sticky, 2 박스 (1:2 비율)
+   [Box1 1/3: 현재 선택만]  [Box2 2/3: 전체 서브메뉴 가로 나열]
    ============================================================ */
 .sub_header {
     position: sticky;
@@ -1384,7 +1385,7 @@ html[lang="zh"] .dl_title {
 
 .sub_header_inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;  /* 반반 */
+    grid-template-columns: 1fr 2fr;  /* 1/3 + 2/3 */
     gap: 12px;
 }
 
@@ -1397,120 +1398,63 @@ html[lang="zh"] .dl_title {
         0 2px 6px rgba(0, 0, 0, 0.04);
     min-height: 60px;
     box-sizing: border-box;
-    position: relative;
-}
-
-/* Box 1: 현재 선택 표시 */
-.sub_header_box--current {
     display: flex;
     align-items: center;
-    gap: 14px;
+}
+
+/* Box 1: 현재 선택된 서브메뉴 이름만 */
+.sub_header_box--current {
     padding: 16px 28px;
 }
 
-.sub_header_cate {
-    font-size: 14px;
-    font-weight: 600;
-    color: #F39800;
-    letter-spacing: -0.2px;
-    flex-shrink: 0;
-}
-
-.sub_header_pipe {
-    width: 1px;
-    height: 18px;
-    background: #E5E7EB;
-}
-
 .sub_header_label {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     color: #111827;
     letter-spacing: -0.4px;
 }
 
-/* Box 2: 토글 */
-.sub_header_box--toggle {
-    padding: 0;
+/* Box 2: 전체 서브메뉴 가로 나열 (메인 GNB 스타일) */
+.sub_header_box--nav {
+    padding: 0 12px;
 }
 
-.sub_header_toggle_btn {
-    width: 100%;
-    height: 100%;
-    min-height: 60px;
-    padding: 16px 28px;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #374151;
-    letter-spacing: -0.3px;
-    border-radius: 18px;
-    transition: background 0.15s ease;
-}
-
-.sub_header_toggle_btn:hover {
-    background: #F9FAFB;
-}
-
-.sub_header_toggle_btn .chev {
-    transition: transform 0.2s ease;
-    color: #6B7280;
-    flex-shrink: 0;
-}
-
-.sub_header_toggle_btn .chev.open {
-    transform: rotate(180deg);
-}
-
-/* Dropdown */
-.sub_header_dropdown {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
+.sub_header_nav_list {
     list-style: none;
     margin: 0;
-    padding: 8px;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    border-radius: 14px;
-    box-shadow:
-        0 12px 32px rgba(0, 0, 0, 0.1),
-        0 4px 10px rgba(0, 0, 0, 0.05);
-    z-index: 95;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    align-items: center;
 }
 
-.sub_header_dropdown_link {
+.sub_header_nav_link {
     display: block;
-    padding: 12px 20px;
-    border-radius: 10px;
+    text-align: center;
+    padding: 14px 8px;
     font-size: 15px;
     font-weight: 500;
-    color: #374151;
+    color: #6B7280;
     text-decoration: none;
     letter-spacing: -0.2px;
-    transition: background 0.15s ease, color 0.15s ease;
+    border-radius: 10px;
+    transition: color 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
 }
 
-.sub_header_dropdown_link:hover {
-    background: #FFF6EC;
+.sub_header_nav_link:hover {
     color: #F39800;
 }
 
-.sub_header_dropdown_link.is_active {
-    background: #FFF6EC;
+.sub_header_nav_link.is_active {
     color: #F39800;
     font-weight: 700;
 }
 
 /* ============================================================
-   GNB 메인 메뉴 — 활성 카테고리 주황 포인트 (밑줄 + 컬러)
+   GNB 메인 메뉴 — 활성 카테고리 주황 포인트
    ============================================================ */
 .gnb_main_link.is_active,
 .gnb_main_link.is_active span {
@@ -1539,31 +1483,35 @@ html[lang="zh"] .dl_title {
         top: 80px;
         max-width: calc(100% - 24px);
     }
-    .sub_header_inner {
-        gap: 8px;
+    .sub_header_box {
+        min-height: 48px;
     }
     .sub_header_box--current {
         padding: 12px 16px;
-        gap: 10px;
-    }
-    .sub_header_cate {
-        font-size: 12px;
     }
     .sub_header_label {
-        font-size: 15px;
+        font-size: 16px;
     }
-    .sub_header_toggle_btn {
-        padding: 12px 16px;
-        font-size: 14px;
-        min-height: 48px;
-    }
-    .sub_header_box {
-        min-height: 48px;
+    .sub_header_nav_link {
+        padding: 10px 6px;
+        font-size: 13px;
     }
 }
 
 @media (max-width: 640px) {
     .sub_header_inner {
         grid-template-columns: 1fr;
+    }
+    .sub_header_box--nav {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .sub_header_box--nav::-webkit-scrollbar { display: none; }
+    .sub_header_nav_list {
+        display: flex;
+        gap: 4px;
+    }
+    .sub_header_nav_link {
+        flex-shrink: 0;
     }
 }
