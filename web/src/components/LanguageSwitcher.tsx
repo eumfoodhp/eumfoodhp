@@ -15,8 +15,10 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="lang_wrap">
-      <button
-        type="button"
+      {/* <button> → <span role="button"> : Android Chrome Force Dark 회피 (form-control만 강제 보정함) */}
+      <span
+        role="button"
+        tabIndex={0}
         className="lang_toggle_btn"
         aria-label={`Language: ${LABELS[currentLocale] ?? currentLocale}`}
       >
@@ -25,7 +27,7 @@ export default function LanguageSwitcher() {
           <line x1="3" y1="12" x2="21" y2="12" />
           <path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
         </svg>
-      </button>
+      </span>
       <ul className="lang_list">
         {routing.locales.map((locale) => (
           <li key={locale}>

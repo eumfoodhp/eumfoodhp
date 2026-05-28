@@ -73,29 +73,9 @@ export default async function Header() {
         </div>
 
         <div className="util_area">
-          {/* 테스트: 좌2(자사몰/카탈로그) ↔ 우2(햄버거/언어) 위치 스왑 */}
-          {/* 메뉴(햄버거) — 모든 화면에서 표시. 풀메뉴 트리거 */}
-          <button
-            type="button"
-            className="mo_menu_btn"
-            aria-label="Menu"
-            style={{
-              backgroundColor: '#ffffff',
-              background: '#ffffff',
-              WebkitAppearance: 'none',
-              appearance: 'none',
-              forcedColorAdjust: 'none',
-            }}
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <line x1="4" y1="7" x2="20" y2="7" />
-              <line x1="4" y1="12" x2="20" y2="12" />
-              <line x1="4" y1="17" x2="20" y2="17" />
-            </svg>
-          </button>
-
-          <LanguageSwitcher />
-
+          {/* 쇼핑몰 → 카탈로그 → 메뉴(햄버거) → 언어 순서로 원위치.
+              햄버거/언어는 <button> 대신 <span role="button"> 사용 — Android Chrome Force Dark가
+              form-control(<button>)만 강제 보정하기 때문에 비폼 요소로 우회. */}
           <a
             href="https://smartstore.naver.com/eumfood"
             target="_blank"
@@ -123,6 +103,22 @@ export default async function Header() {
               <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
           </CatalogButton>
+
+          {/* 메뉴(햄버거) — <span role="button">로 비폼 요소화. Force Dark 회피. */}
+          <span
+            role="button"
+            tabIndex={0}
+            className="mo_menu_btn"
+            aria-label="Menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+          </span>
+
+          <LanguageSwitcher />
         </div>
 
         <div id="mo_nav" className="full_menu_overlay">
