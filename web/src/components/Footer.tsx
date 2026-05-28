@@ -5,8 +5,16 @@ export default async function Footer() {
 
   return (
     <footer id="footer">
-      {/* 한반도 배경 위 펄스 마커 — CSS 애니메이션 */}
-      <span className="pulse_dot" aria-hidden="true"></span>
+      {/* 한반도 이미지 + 펄스 마커 (이미지 좌표 기준 절대 위치). */}
+      <div className="footer_bg" aria-hidden="true">
+        <img
+          src="/images/main/map_ko_factory.png"
+          alt=""
+          className="footer_bg_img"
+          loading="lazy"
+        />
+        <span className="pulse_dot"></span>
+      </div>
 
       <div className="footer_inner">
         <div className="footer_top">
