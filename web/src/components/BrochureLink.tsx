@@ -10,10 +10,12 @@ type Props = {
 
 /**
  * 제품 페이지의 "상품 소개서" 다운로드 트리거 — 클릭 시 확인 팝업.
- * 파일 경로: /data/catalogue.pdf (헤더 카탈로그(eumfoodsystem.pdf)와 다른 파일)
+ * 파일 경로: /data/이음푸드시스템_26년_제품소개서.pdf
+ * (다운로드 시 사용자에게도 동일 한글 파일명으로 저장됨)
  */
 export default function BrochureLink({ className, children }: Props) {
   const t = useTranslations();
+  const pdfHref = '/data/' + encodeURIComponent('이음푸드시스템_26년_제품소개서.pdf');
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const msg = (() => {
@@ -30,7 +32,7 @@ export default function BrochureLink({ className, children }: Props) {
 
   return (
     <a
-      href="/data/catalogue.pdf"
+      href={pdfHref}
       download
       onClick={handleClick}
       className={className}
