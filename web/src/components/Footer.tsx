@@ -8,14 +8,8 @@ export default async function Footer() {
       <div className="footer_inner">
         <div className="footer_top">
           <div className="f_logo">
-            <img src="/images/common/ftlogo.png" alt="㈜이음푸드시스템" />
-          </div>
-          <div className="f_util">
-            <div className="cert_mark">
-              <img src="/images/common/haccp.png" alt="HACCP" />
-            </div>
-            {/* 관리자페이지 링크 제거 — Next.js에 admin 라우트 없음 (원본 PHP 사이트 잔재).
-                필요시 별도 admin URL(예: 티제이웹 호스팅 관리자)로 연결해야 함. */}
+            {/* 컬러 로고 (헤더와 동일) — 단색 ftlogo.png 대체 */}
+            <img src="/images/common/logo.png" alt="㈜이음푸드시스템" />
           </div>
         </div>
 
@@ -31,6 +25,14 @@ export default async function Footer() {
               </div>
               <div className="f_row">
                 <span>{t('ft_corp_no')}</span>
+              </div>
+              {/* HACCP 인증 마크 — 법인사업자등록번호 아래로 이동 */}
+              <div className="f_row cert_row">
+                <img
+                  src="/images/common/haccp.png"
+                  alt="HACCP 인증"
+                  className="cert_mark_img"
+                />
               </div>
             </div>
 
