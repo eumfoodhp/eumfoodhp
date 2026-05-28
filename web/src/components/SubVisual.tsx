@@ -9,10 +9,14 @@ type Props = {
   /**
    * Per-page hero variant class — e.g. "business_hero_visual",
    * "product_pickles_hero_visual". CSS in /styles/<page>.css sets
-   * background-image on that class. If omitted, falls back to
-   * /images/sub/tempo.png (used by about/process pages).
+   * background-image on that class. Only rendered when showHero=true.
    */
   heroClass?: string;
+  /**
+   * 배너 이미지(hero) 노출 여부. 기본 false — 배너는 시설현황 같은
+   * 일부 페이지에서만 명시적으로 활성화. 다른 페이지는 브레드크럼+탭만.
+   */
+  showHero?: boolean;
 };
 
 /** Shared sub-page hero: breadcrumb + title + desc + (optional) tab bar. */
@@ -23,6 +27,7 @@ export default function SubVisual({
   desc,
   tabBar,
   heroClass,
+  showHero = false,
 }: Props) {
   const heroClassName = heroClass
     ? `sub_visual_img ${heroClass}`
@@ -53,7 +58,7 @@ export default function SubVisual({
             </div>
           )}
         </div>
-        <div className={heroClassName} style={heroStyle} />
+        {showHero && <div className={heroClassName} style={heroStyle} />}
       </div>
     </section>
   );

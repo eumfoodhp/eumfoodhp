@@ -36,6 +36,7 @@ export default function FacilityPage() {
           desc={t('fac_sub_desc')}
           tabBar={<SubTabBar tabs={businessTabs(t)} activeKey="facility" />}
           heroClass="business_facility_hero_visual"
+          showHero
         />
 
         <section className="facility_status_section">
