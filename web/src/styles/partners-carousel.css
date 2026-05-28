@@ -131,12 +131,6 @@
     transform: rotateY(var(--angle)) translateZ(var(--radius));
     transform-style: preserve-3d;
 
-    /* 평소엔 흑백 */
-    filter: grayscale(100%);
-    transition:
-        filter 0.5s ease,
-        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-
     border-radius: 20px;
     overflow: hidden;
     background: #fff;
@@ -146,23 +140,13 @@
         0 0 0 1px rgba(0, 0, 0, 0.04),
         0 20px 50px rgba(0, 0, 0, 0.12),
         0 6px 14px rgba(0, 0, 0, 0.06);
-    cursor: pointer;
 
     /* 바닥 반사 효과 (WebKit / Chromium) */
     -webkit-box-reflect: below 4px
         linear-gradient(transparent 65%, rgba(0, 0, 0, 0.18));
-}
 
-/* hover: 흑백 해제 + 앞으로 튀어나오기 + 정면을 향하지는 않고 살짝 확대 */
-.carousel_card:hover {
-    filter: grayscale(0%);
-    transform: rotateY(var(--angle))
-        translateZ(calc(var(--radius) + 80px))
-        scale(1.08);
-    z-index: 10;
-    box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.2),
-        0 10px 20px rgba(0, 0, 0, 0.12);
+    /* 사용자 요청: hover 상호작용 없음, 단순 감상용 */
+    pointer-events: none;
 }
 
 /* 카드 = 합성 이미지 한 장 통째로 표시 (배경+로고 합성된 카드 PNG/JPG) */
