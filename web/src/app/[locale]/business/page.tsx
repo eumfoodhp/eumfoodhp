@@ -10,7 +10,6 @@
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import NextSectionLink from '@/components/NextSectionLink';
-import QuickJumpDots from '@/components/QuickJumpDots';
 import FacilitySection from '@/components/FacilitySection';
 import '@/styles/sub.css';
 import '@/styles/business_facility.css';
@@ -58,7 +57,6 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
 
   return (
     <main id="sub_contents" className="business_onepage onepage_story">
-      <QuickJumpDots sections={sections} />
       <div className="onepage_content">
 
       {/* ===== 1. 시설현황 ===== */}

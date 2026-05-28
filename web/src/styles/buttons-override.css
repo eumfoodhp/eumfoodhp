@@ -1393,41 +1393,62 @@ html[lang="zh"] .dl_title {
     border-radius: 50%;
 }
 
-/* 모바일 */
-@media (max-width: 1024px) {
-    .sub_header {
-        top: 80px;
-        max-width: calc(100% - 24px);
-    }
-    .sub_header_box {
-        min-height: 48px;
-    }
-    .sub_header_box--current {
-        padding: 12px 16px;
-    }
-    .sub_header_label {
-        font-size: 16px;
-    }
-    .sub_header_nav_link {
-        padding: 10px 6px;
-        font-size: 13px;
-    }
+/* ============================================================
+   SubHeader — 헤더 아래 얇은 인라인 텍스트 strip (미니멀)
+   pill/box 없이 단순 텍스트 리스트만.
+   ============================================================ */
+.sub_header {
+    width: 1800px;
+    max-width: 93.75%;
+    margin: 4px auto 0;
+    padding: 10px 24px 14px;
+    border-bottom: 1px solid #F3F4F6;
 }
 
-@media (max-width: 640px) {
-    .sub_header_inner {
-        grid-template-columns: 1fr;
+.sub_header_nav_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.sub_header_nav_link {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #9CA3AF;
+    text-decoration: none;
+    letter-spacing: -0.2px;
+    padding: 2px 0;
+    transition: color 0.15s ease;
+    white-space: nowrap;
+}
+
+.sub_header_nav_link:hover {
+    color: #F39800;
+}
+
+.sub_header_nav_link.is_active {
+    color: #F39800;
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .sub_header {
+        max-width: calc(100% - 24px);
+        padding: 8px 16px 12px;
     }
-    .sub_header_box--nav {
+    .sub_header_nav_list {
+        gap: 18px;
         overflow-x: auto;
         scrollbar-width: none;
+        flex-wrap: nowrap;
     }
-    .sub_header_box--nav::-webkit-scrollbar { display: none; }
-    .sub_header_nav_list {
-        display: flex;
-        gap: 4px;
-    }
+    .sub_header_nav_list::-webkit-scrollbar { display: none; }
     .sub_header_nav_link {
+        font-size: 12px;
         flex-shrink: 0;
     }
 }

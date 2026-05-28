@@ -11,7 +11,6 @@
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import NextSectionLink from '@/components/NextSectionLink';
-import QuickJumpDots from '@/components/QuickJumpDots';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
@@ -89,7 +88,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main id="sub_contents" className="about_onepage onepage_story">
-      <QuickJumpDots sections={sections} />
       <div className="onepage_content">
 
       {/* ===== 1. 인사말 ===== */}

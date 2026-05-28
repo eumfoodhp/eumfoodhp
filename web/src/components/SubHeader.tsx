@@ -122,9 +122,6 @@ export default function SubHeader() {
   const category = matchCategory(pathname);
   if (!category) return null;
 
-  // 원페이지 (/about, /business) 에선 SubHeader 숨김 — SideNav 가 대체
-  if (pathname === '/about' || pathname === '/business') return null;
-
   const currentItem = matchCurrentItem(category, pathname, hash);
 
   return (
