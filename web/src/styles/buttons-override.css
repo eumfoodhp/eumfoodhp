@@ -470,11 +470,8 @@
     }
 }
 
-/* GNB 메뉴 — 5컬럼이지만 짧아진 텍스트에 맞춰 cell 폭 줄임 + 간격 좁힘 */
-#header {
-    --gnb-col: 120px !important;
-    --gnb-column-gap: 16px !important;
-}
+/* GNB 메뉴 — common.css의 --gnb-col 변수가 min(180px, ...) 강제라
+   buttons-override.css에서 grid-template-columns 직접 명시(변수 안 거침). */
 .gnb_wrap {
     position: absolute !important;
     left: 50% !important;
@@ -482,24 +479,30 @@
     transform: translate(-50%, -50%) !important;
     z-index: 5 !important;
     margin: 0 !important;
-    grid-template-columns: repeat(5, var(--gnb-col)) !important;
-    column-gap: 16px !important;
+    grid-template-columns: repeat(5, 96px) !important;
+    column-gap: 8px !important;
 }
 
-/* mega_panel(드롭다운 영역) 5컬럼 grid, gnb와 동일 */
+/* mega_panel(드롭다운 영역) gnb와 정확히 동일한 grid */
 .mega_panel,
 .mega_panel_inner {
-    grid-template-columns: repeat(5, var(--gnb-col)) !important;
-    column-gap: 16px !important;
+    grid-template-columns: repeat(5, 96px) !important;
+    column-gap: 8px !important;
 }
 
-/* mega_col 통일된 영역 — 모든 카드 같은 폭, 셀 가운데 정렬 (메뉴 텍스트와 정확히 align) */
+/* common.css의 #header --gnb-col이 더 큰 값으로 오버라이드되지 않게 강제 */
+#header {
+    --gnb-col: 96px !important;
+    --gnb-column-gap: 8px !important;
+}
+
+/* mega_col 통일 — cell 폭(96px) 살짝 넘는 정도 + 셀 가운데 정렬 */
 .mega_col {
     justify-self: center !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 160px !important;
-    padding: 14px 16px !important;
+    width: max-content !important;
+    min-width: 130px !important;
+    max-width: 180px !important;
+    padding: 12px 14px !important;
     box-sizing: border-box;
 }
 
@@ -542,9 +545,8 @@
 }
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
-    color: #000 !important;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    color: #F39800 !important;
+    text-decoration: none !important;
 }
 
 /* 언어/햄버거 아이콘 — 흰색으로 invert */
