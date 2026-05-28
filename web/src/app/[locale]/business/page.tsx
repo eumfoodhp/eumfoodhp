@@ -9,7 +9,6 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SubVisual from '@/components/SubVisual';
 import SectionHeader from '@/components/SectionHeader';
 import FacilitySection from '@/components/FacilitySection';
 import '@/styles/sub.css';
@@ -59,22 +58,17 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
 
   return (
     <main id="sub_contents" className="business_onepage">
-      <SubVisual
-        parentLabel={t('menu_business')}
-        currentLabel=""
-        title={t('menu_business')}
-        desc=""
-      />
+      {/* SubVisual 제거 — breadcrumb 는 각 SectionHeader 왼쪽에 inline */}
 
       {/* ===== 1. 시설현황 ===== */}
       <div id="facility" className="business_facility_page">
-        <SectionHeader sections={sections} currentKey="facility" />
+        <SectionHeader sections={sections} currentKey="facility" parentLabel={t('menu_business')} />
         <FacilitySection />
       </div>
 
       {/* ===== 2. 제조공정 ===== */}
       <div id="process" className="business_process_page">
-        <SectionHeader sections={sections} currentKey="process" />
+        <SectionHeader sections={sections} currentKey="process" parentLabel={t('menu_business')} />
         {CATEGORIES.map((cat) => (
           <section
             key={cat.key}
@@ -111,7 +105,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
 
       {/* ===== 3. 인증·특허 ===== */}
       <div id="cert" className="cert_page">
-        <SectionHeader sections={sections} currentKey="cert" />
+        <SectionHeader sections={sections} currentKey="cert" parentLabel={t('menu_business')} />
         <section className="cert_content_section">
           <div className="sub_inner">
             <div className="cert_container">

@@ -10,7 +10,6 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SubVisual from '@/components/SubVisual';
 import SectionHeader from '@/components/SectionHeader';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
@@ -91,16 +90,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main id="sub_contents" className="about_onepage">
-      <SubVisual
-        parentLabel={t('menu_about')}
-        currentLabel=""
-        title={t('menu_about')}
-        desc=""
-      />
+      {/* SubVisual 제거 — breadcrumb 는 각 SectionHeader 왼쪽에 inline 으로 들어감 */}
 
       {/* ===== 1. 인사말 ===== */}
       <div id="greeting">
-        <SectionHeader sections={sections} currentKey="greeting" />
+        <SectionHeader sections={sections} currentKey="greeting" parentLabel={t('menu_about')} />
         <section className="ceo_intro_section">
           <div className="ceo_inner">
             <div className="ceo_main_group">
@@ -123,7 +117,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 2. 회사연혁 ===== */}
       <div id="history">
-        <SectionHeader sections={sections} currentKey="history" />
+        <SectionHeader sections={sections} currentKey="history" parentLabel={t('menu_about')} />
         <section className="new_history_section">
           <div className="sub_inner">
             <div className="new_history_container">
@@ -155,7 +149,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 3. 주요 사업 ===== */}
       <div id="area">
-        <SectionHeader sections={sections} currentKey="area" />
+        <SectionHeader sections={sections} currentKey="area" parentLabel={t('menu_about')} />
         <section className="biz_overview_section">
           <div className="sub_inner biz_ov_inner">
             <div className="ov_left">
@@ -214,7 +208,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 4. 조직도 ===== */}
       <div id="organization">
-        <SectionHeader sections={sections} currentKey="organization" />
+        <SectionHeader sections={sections} currentKey="organization" parentLabel={t('menu_about')} />
         <section className="org_content_section">
           <div className="org_container">
             <div className="org_chart_wrap">
@@ -229,7 +223,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 5. 오시는길 ===== */}
       <div id="location">
-        <SectionHeader sections={sections} currentKey="location" />
+        <SectionHeader sections={sections} currentKey="location" parentLabel={t('menu_about')} />
         <section className="location_content_section">
           <div className="sub_inner location_inner">
             {/* 본사·공장 */}
