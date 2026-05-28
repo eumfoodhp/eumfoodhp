@@ -25,51 +25,7 @@ export default async function Header() {
               <Link href="/contact" className="gnb_main_link"><span>{t('menu_inquiry')}</span></Link>
             </div>
           </nav>
-
-          <div className="mega_panel">
-            <div className="mega_menu_backdrop" aria-hidden="true"></div>
-            <div className="mega_panel_inner">
-              <div className="mega_col mega_c1">
-                <ul className="mega_sub_list">
-                  <li><Link href="/about/greeting">{t('sub_greeting')}</Link></li>
-                  <li><Link href="/about/history">{t('sub_history')}</Link></li>
-                  <li><Link href="/business/area">{t('sub_biz_area')}</Link></li>
-                  <li><Link href="/about/organization">{t('sub_org')}</Link></li>
-                  <li><Link href="/about/location">{t('sub_location')}</Link></li>
-                </ul>
-              </div>
-              <div className="mega_col mega_c2">
-                <ul className="mega_sub_list">
-                  <li><Link href="/business/facility">{t('sub_facility')}</Link></li>
-                  <li><Link href="/business/process">{t('sub_biz_process')}</Link></li>
-                  <li><Link href="/about/cert">{t('sub_cert')}</Link></li>
-                </ul>
-              </div>
-              <div className="mega_col mega_c3">
-                <ul className="mega_sub_list">
-                  <li><Link href="/products/pickles">{t('sub_prod_pickles')}</Link></li>
-                  <li><Link href="/products/braised">{t('sub_prod_braised')}</Link></li>
-                  <li><Link href="/products/namul">{t('sub_prod_namul')}</Link></li>
-                  <li><Link href="/products/salted">{t('sub_prod_salted')}</Link></li>
-                  <li><Link href="/products/sauce">{t('sub_prod_sauce')}</Link></li>
-                  <li><Link href="/products/tea">{t('sub_prod_tea')}</Link></li>
-                </ul>
-              </div>
-              <div className="mega_col mega_c4">
-                <ul className="mega_sub_list">
-                  <li><Link href="/notice">{t('sub_notice')}</Link></li>
-                  <li><Link href="/press">{t('sub_news_press')}</Link></li>
-                  <li><Link href="/download">{t('sub_board')}</Link></li>
-                </ul>
-              </div>
-              <div className="mega_col mega_c5">
-                <ul className="mega_sub_list">
-                  <li><Link href="/contact">{t('sub_inquiry_1to1')}</Link></li>
-                  <li><Link href="/contact/sales">{t('sub_inquiry_sales')}</Link></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          {/* 메가 드롭다운 제거 — 헤더 아래 sticky SubHeader 가 대체 */}
         </div>
 
         <div className="util_area">

@@ -5,6 +5,7 @@ import Script from 'next/script';
 
 import { routing } from '@/i18n/routing';
 import Header from '@/components/Header';
+import SubHeader from '@/components/SubHeader';
 import Footer from '@/components/Footer';
 import QuickMenu from '@/components/QuickMenu';
 
@@ -43,6 +44,7 @@ export default async function LocaleLayout({
       <body style={{ backgroundColor: '#ffffff', color: '#222222' }}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Header />
+          <SubHeader />
           {children}
           <Footer />
           <QuickMenu />
