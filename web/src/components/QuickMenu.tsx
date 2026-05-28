@@ -26,21 +26,22 @@ export default function QuickMenu() {
         </svg>
       </Link>
 
-      <button
-        type="button"
+      {/* <button> → <span role="button"> : Android Chrome Force Dark 회피 (form-control만 강제 보정함) */}
+      <span
+        role="button"
+        tabIndex={0}
         className="quick_item btn_top"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label={t('quick_top')}
-        style={{
-          backgroundColor: '#ffffff',
-          background: '#ffffff',
-          WebkitAppearance: 'none',
-          appearance: 'none',
-          forcedColorAdjust: 'none',
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         }}
+        aria-label={t('quick_top')}
       >
         <img src="/images/common/top.png" alt="" />
-      </button>
+      </span>
     </div>
   );
 }
