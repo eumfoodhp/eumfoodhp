@@ -1122,3 +1122,85 @@ html[lang="zh"] .dl_title {
 @media (max-width: 735px) {
     .footer_map { margin-bottom: 20px; }
 }
+
+/* ============================================================
+   '더 알아보기' 버튼 — 주황 테두리 통일 (overview/biz/proc/prod/notice)
+   ============================================================ */
+.ov_more_btn,
+.biz_more_btn,
+.proc_more_btn,
+.prod_more_link,
+.notice_more_link {
+    border: 1.5px solid #F39800 !important;
+    color: #F39800 !important;
+    background: #fff !important;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.ov_more_btn:hover,
+.biz_more_btn:hover,
+.proc_more_btn:hover,
+.prod_more_link:hover,
+.notice_more_link:hover {
+    background: #F39800 !important;
+    color: #fff !important;
+    border-color: #F39800 !important;
+}
+
+.ov_more_btn svg,
+.biz_more_btn svg,
+.proc_more_btn svg,
+.prod_more_link svg,
+.notice_more_link svg {
+    stroke: currentColor;
+}
+
+/* overview는 스크롤 시 다크 배경으로 전환되므로 active 상태에서 흰색 톤 유지 */
+.sticky_wrapper.active .ov_more_btn {
+    border-color: #fff !important;
+    color: #fff !important;
+    background: transparent !important;
+}
+.sticky_wrapper.active .ov_more_btn:hover {
+    background: #fff !important;
+    color: #222 !important;
+}
+
+/* ============================================================
+   제품 섹션: 모바일에서 '더 알아보기' 줄바뀜 방지
+   ============================================================ */
+.product_section .prod_nav_wrap {
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+    align-items: center !important;
+}
+
+.product_section .prod_categories {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap !important;
+}
+.product_section .prod_categories::-webkit-scrollbar {
+    display: none;
+}
+
+.product_section .prod_more_link {
+    flex-shrink: 0 !important;
+}
+
+@media (max-width: 735px) {
+    .product_section .prod_more_link {
+        width: auto !important;
+        min-width: 110px !important;
+        padding: 10px 14px !important;
+        min-height: 42px !important;
+        font-size: 13px !important;
+    }
+    .product_section .prod_cate_btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
