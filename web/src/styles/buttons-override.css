@@ -132,49 +132,10 @@
     box-sizing: border-box !important;
 }
 
-@media (max-width: 1024px) {
-    .direction_section {
-        width: 100% !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        height: 540px !important;
-        background-color: #FFF6EC !important;
-    }
-    /* 지도 텍스트(말풍선)는 이미지 좌측에 있으므로, 우측 절반만 보이게 크롭해서
-       한반도 지형 윤곽만 노출. 카드 우측에 부드럽게 페이드. */
-    .direction_section .dir_bg_map {
-        display: block !important;
-        position: absolute !important;
-        right: 0 !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: auto !important;
-        width: 50% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: right center !important;
-        opacity: 0.55 !important;
-        pointer-events: none;
-        /* 왼쪽 가장자리 자연스럽게 페이드 → 카드 배경에 녹아듦 */
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 40%, #000 80%);
-        mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 40%, #000 80%);
-    }
-}
-
-@media (max-width: 735px) {
-    .direction_section {
-        width: 100% !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        height: 480px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .direction_section {
-        height: 440px !important;
-    }
-}
+/* ※ 1024px 이하 .dir_bg_map 50%-크롭/mask/opacity 강제 override 제거.
+   기존엔 모바일에서 한반도 좌측을 잘라내고 페이드 처리했는데 1024px 경계에서
+   이미지 모양이 갑자기 바뀌는 점프가 발생했음.
+   대신 main.css 원본의 자연 흐름(width:100%, height:auto, 비율 유지) 사용. */
 
 /* ============================================================
    서브탭바를 배너 이미지 안 → 아래로 빼고 다크 텍스트로 전환
