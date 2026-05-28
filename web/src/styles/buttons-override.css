@@ -526,14 +526,17 @@
     --gnb-column-gap: 8px !important;
 }
 
-/* mega_col 우측 정렬 (사용자 요청) */
+/* mega_col 박스 자체를 오른쪽으로 밀어 부모 메뉴 텍스트와 좌측선 맞춤 */
 .mega_col {
-    justify-self: end !important;
+    justify-self: start !important;
     width: max-content !important;
     min-width: 130px !important;
     max-width: 180px !important;
     padding: 12px 14px !important;
     box-sizing: border-box;
+    /* 박스를 컬럼 시작 → 오른쪽으로 밀어 부모 메뉴 텍스트 좌측 위치에 정렬.
+       96px 컬럼에서 메뉴 텍스트가 중앙에 있으므로 (96 - 텍스트폭)/2 ≈ 30~36px. */
+    margin-left: 32px !important;
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
@@ -568,18 +571,10 @@
     color: #F39800 !important;
 }
 
-/* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤, 우측정렬 */
-.mega_sub_list {
-    text-align: right !important;
-}
-.mega_sub_list li {
-    text-align: right !important;
-}
+/* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤 (좌측정렬 원복) */
 .mega_sub_list a {
     color: #222 !important;
     font-weight: 500 !important;
-    text-align: right !important;
-    justify-content: flex-end !important;
 }
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
