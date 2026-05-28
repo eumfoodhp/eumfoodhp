@@ -10,7 +10,7 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import ProgressNav from '@/components/ProgressNav';
+import NextSectionLink from '@/components/NextSectionLink';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
@@ -87,13 +87,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   ];
 
   return (
-    <main id="sub_contents" className="about_onepage onepage_progress">
-      <ProgressNav sections={sections} category={t('menu_about')} />
-
+    <main id="sub_contents" className="about_onepage onepage_story">
       <div className="onepage_content">
 
       {/* ===== 1. 인사말 ===== */}
-      <div id="greeting">
+      <div id="greeting" className="story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">01</span>
+          <h2 className="story_section_title">{t('sub_greeting')}</h2>
+        </header>
         <section className="ceo_intro_section">
           <div className="ceo_inner">
             <div className="ceo_main_group">
@@ -112,10 +114,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
+        <NextSectionLink nextId="history" nextLabel={t('sub_history')} />
       </div>
 
       {/* ===== 2. 회사연혁 ===== */}
-      <div id="history">
+      <div id="history" className="story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">02</span>
+          <h2 className="story_section_title">{t('sub_history')}</h2>
+        </header>
         <section className="new_history_section">
           <div className="sub_inner">
             <div className="new_history_container">
@@ -143,10 +150,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
+        <NextSectionLink nextId="area" nextLabel={t('sub_biz_area')} />
       </div>
 
       {/* ===== 3. 주요 사업 ===== */}
-      <div id="area">
+      <div id="area" className="story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">03</span>
+          <h2 className="story_section_title">{t('sub_biz_area')}</h2>
+        </header>
         <section className="biz_overview_section">
           <div className="sub_inner biz_ov_inner">
             <div className="ov_left">
@@ -201,10 +213,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
+        <NextSectionLink nextId="organization" nextLabel={t('sub_org')} />
       </div>
 
       {/* ===== 4. 조직도 ===== */}
-      <div id="organization">
+      <div id="organization" className="story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">04</span>
+          <h2 className="story_section_title">{t('sub_org')}</h2>
+        </header>
         <section className="org_content_section">
           <div className="org_container">
             <div className="org_chart_wrap">
@@ -215,10 +232,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="org_bg_typo">{t('org_bg_text')}</div>
           </div>
         </section>
+        <NextSectionLink nextId="location" nextLabel={t('sub_location')} />
       </div>
 
       {/* ===== 5. 오시는길 ===== */}
-      <div id="location">
+      <div id="location" className="story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">05</span>
+          <h2 className="story_section_title">{t('sub_location')}</h2>
+        </header>
         <section className="location_content_section">
           <div className="sub_inner location_inner">
             {/* 본사·공장 */}
@@ -301,6 +323,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
+        <NextSectionLink isLast />
       </div>
 
       </div>

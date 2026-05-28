@@ -9,7 +9,7 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import ProgressNav from '@/components/ProgressNav';
+import NextSectionLink from '@/components/NextSectionLink';
 import FacilitySection from '@/components/FacilitySection';
 import '@/styles/sub.css';
 import '@/styles/business_facility.css';
@@ -56,18 +56,25 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
   ];
 
   return (
-    <main id="sub_contents" className="business_onepage onepage_progress">
-      <ProgressNav sections={sections} category={t('menu_business')} />
-
+    <main id="sub_contents" className="business_onepage onepage_story">
       <div className="onepage_content">
 
       {/* ===== 1. 시설현황 ===== */}
-      <div id="facility" className="business_facility_page">
+      <div id="facility" className="business_facility_page story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">01</span>
+          <h2 className="story_section_title">{t('sub_facility')}</h2>
+        </header>
         <FacilitySection />
+        <NextSectionLink nextId="process" nextLabel={t('sub_biz_process')} />
       </div>
 
       {/* ===== 2. 제조공정 ===== */}
-      <div id="process" className="business_process_page">
+      <div id="process" className="business_process_page story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">02</span>
+          <h2 className="story_section_title">{t('sub_biz_process')}</h2>
+        </header>
         {CATEGORIES.map((cat) => (
           <section
             key={cat.key}
@@ -100,10 +107,15 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
             </div>
           </section>
         ))}
+        <NextSectionLink nextId="cert" nextLabel={t('sub_cert')} />
       </div>
 
       {/* ===== 3. 인증·특허 ===== */}
-      <div id="cert" className="cert_page">
+      <div id="cert" className="cert_page story_section">
+        <header className="story_section_head">
+          <span className="story_section_index">03</span>
+          <h2 className="story_section_title">{t('sub_cert')}</h2>
+        </header>
         <section className="cert_content_section">
           <div className="sub_inner">
             <div className="cert_container">
@@ -160,6 +172,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
             </div>
           </div>
         </section>
+        <NextSectionLink isLast />
       </div>
 
       </div>
