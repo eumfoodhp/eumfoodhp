@@ -939,11 +939,12 @@
     color: #FFF; /* 기본 상태: 흰색 텍스트 */
 }
 
-/* 활성화 상태 (Active) 및 호버 (Hover) */
+/* 활성화 상태 (Active) 및 호버 (Hover) — 회색 포커스 */
 .sub_tab_item.active,
 .sub_tab_item:hover {
-    background: #FFF; /* var(--White) */
-    color: #222;      /* var(--Text-color-Primary-text-color) */
+    background: #E5E7EB;
+    color: #222;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 
