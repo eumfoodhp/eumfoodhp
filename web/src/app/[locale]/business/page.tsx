@@ -62,7 +62,6 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
       {/* ===== 1. 시설현황 ===== */}
       <div id="facility" className="business_facility_page story_section">
         <header className="story_section_head">
-          <span className="story_section_index">01</span>
           <h2 className="story_section_title">{t('sub_facility')}</h2>
         </header>
         <FacilitySection />
@@ -72,7 +71,6 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
       {/* ===== 2. 제조공정 ===== */}
       <div id="process" className="business_process_page story_section">
         <header className="story_section_head">
-          <span className="story_section_index">02</span>
           <h2 className="story_section_title">{t('sub_biz_process')}</h2>
         </header>
         {CATEGORIES.map((cat) => (
@@ -113,7 +111,6 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
       {/* ===== 3. 인증·특허 ===== */}
       <div id="cert" className="cert_page story_section">
         <header className="story_section_head">
-          <span className="story_section_index">03</span>
           <h2 className="story_section_title">{t('sub_cert')}</h2>
         </header>
         <section className="cert_content_section">

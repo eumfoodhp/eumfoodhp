@@ -111,6 +111,7 @@ export default function SubHeader() {
   const pathname = usePathname();
   const t = useTranslations();
   const [hash, setHash] = useState('');
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     setHash(window.location.hash);
@@ -119,13 +120,66 @@ export default function SubHeader() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
+  // 자동 숨김/노출: 스크롤하거나 헤더 근처 hover 시 펼침,
+  // 활동 멈추면 2초 뒤 자동 닫힘.
+  useEffect(() => {
+    let hideTimer: ReturnType<typeof setTimeout> | null = null;
+    let isMouseOverSub = false;
+
+    const show = () => {
+      setVisible(true);
+      if (hideTimer) clearTimeout(hideTimer);
+      // 마우스가 sub_header 위에 있으면 안 닫음
+      hideTimer = setTimeout(() => {
+        if (!isMouseOverSub) setVisible(false);
+      }, 2000);
+    };
+
+    const onScroll = () => show();
+
+    const onMove = (e: MouseEvent) => {
+      // 상단 120px 안에서 마우스 움직이면 펼침
+      if (e.clientY < 140) show();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('mousemove', onMove, { passive: true });
+
+    // sub_header 자체 hover 트래킹
+    const node = document.querySelector('.sub_header');
+    const onEnter = () => {
+      isMouseOverSub = true;
+      setVisible(true);
+      if (hideTimer) clearTimeout(hideTimer);
+    };
+    const onLeave = () => {
+      isMouseOverSub = false;
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => setVisible(false), 800);
+    };
+    node?.addEventListener('mouseenter', onEnter);
+    node?.addEventListener('mouseleave', onLeave);
+
+    return () => {
+      if (hideTimer) clearTimeout(hideTimer);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('mousemove', onMove);
+      node?.removeEventListener('mouseenter', onEnter);
+      node?.removeEventListener('mouseleave', onLeave);
+    };
+  }, [pathname]);
+
   const category = matchCategory(pathname);
   if (!category) return null;
 
   const currentItem = matchCurrentItem(category, pathname, hash);
 
   return (
-    <nav className="sub_header" role="navigation" aria-label="sub navigation">
+    <nav
+      className={`sub_header${visible ? ' is_visible' : ''}`}
+      role="navigation"
+      aria-label="sub navigation"
+    >
       <ul className="sub_header_nav_list">
         {category.items.map((item) => {
           const isActive = currentItem.href === item.href;

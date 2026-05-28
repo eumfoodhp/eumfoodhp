@@ -93,7 +93,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* ===== 1. 인사말 ===== */}
       <div id="greeting" className="story_section">
         <header className="story_section_head">
-          <span className="story_section_index">01</span>
           <h2 className="story_section_title">{t('sub_greeting')}</h2>
         </header>
         <section className="ceo_intro_section">
@@ -120,7 +119,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* ===== 2. 회사연혁 ===== */}
       <div id="history" className="story_section">
         <header className="story_section_head">
-          <span className="story_section_index">02</span>
           <h2 className="story_section_title">{t('sub_history')}</h2>
         </header>
         <section className="new_history_section">
@@ -156,7 +154,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* ===== 3. 주요 사업 ===== */}
       <div id="area" className="story_section">
         <header className="story_section_head">
-          <span className="story_section_index">03</span>
           <h2 className="story_section_title">{t('sub_biz_area')}</h2>
         </header>
         <section className="biz_overview_section">
@@ -219,7 +216,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* ===== 4. 조직도 ===== */}
       <div id="organization" className="story_section">
         <header className="story_section_head">
-          <span className="story_section_index">04</span>
           <h2 className="story_section_title">{t('sub_org')}</h2>
         </header>
         <section className="org_content_section">
@@ -238,7 +234,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* ===== 5. 오시는길 ===== */}
       <div id="location" className="story_section">
         <header className="story_section_head">
-          <span className="story_section_index">05</span>
           <h2 className="story_section_title">{t('sub_location')}</h2>
         </header>
         <section className="location_content_section">

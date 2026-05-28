@@ -1307,6 +1307,21 @@ html[lang="zh"] .dl_title {
         0 8px 24px rgba(0, 0, 0, 0.06),
         0 2px 6px rgba(0, 0, 0, 0.04);
     box-sizing: border-box;
+    /* 자동 숨김: 기본은 접힘, .is_visible 클래스로 펼침 */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transform: translateY(-12px);
+    transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.3s ease, padding 0.3s ease;
+    pointer-events: none;
+}
+.sub_header.is_visible {
+    max-height: 80px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .sub_header_nav_list {
@@ -1470,28 +1485,23 @@ html[lang="zh"] .dl_title {
     width: 1580px;
     max-width: 95%;
     margin: 0 auto;
-    padding: 80px 0 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding: 80px 0 24px;
+    text-align: left;
+    border-bottom: 1px solid #F3F4F6;
+    margin-bottom: 8px;
 }
 
-.story_section_index {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-    color: #F39800;
-    letter-spacing: 0.12em;
-    font-variant-numeric: tabular-nums;
-}
+/* .story_section_index 제거됨 */
 
 .story_section_title {
     margin: 0;
-    font-size: 44px;
+    font-size: 38px;
     font-weight: 700;
     color: #111827;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.6px;
     line-height: 1.2;
+    text-align: left;
+    padding-left: 0;
 }
 
 /* NextSectionLink — 섹션 사이 구분 + 화살표 버튼 */
@@ -1637,22 +1647,7 @@ html[lang="zh"] .dl_title {
     margin-bottom: 8px;
 }
 
-.story_section_index {
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    background: #F39800;
-    color: #fff;
-    border-radius: 16px;
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    font-variant-numeric: tabular-nums;
-    box-shadow: 0 8px 20px rgba(243, 152, 0, 0.25);
-}
+/* .story_section_index 제거됨 */
 
 .story_section_title {
     margin: 0;
@@ -1664,17 +1659,7 @@ html[lang="zh"] .dl_title {
     position: relative;
 }
 
-.story_section_title::before {
-    content: '';
-    position: absolute;
-    left: -16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 28px;
-    background: #F39800;
-    border-radius: 2px;
-}
+/* .story_section_title::before 제거됨 */
 
 /* NextSectionLink — 구분선 더 진하게 */
 .next_section {
@@ -1827,19 +1812,11 @@ html[lang="zh"] .dl_title {
         padding: 64px 0 24px;
         gap: 16px;
     }
-    .story_section_index {
-        width: 48px;
-        height: 48px;
-        font-size: 18px;
-        border-radius: 12px;
-    }
+    /* .story_section_index 제거됨 */
     .story_section_title {
         font-size: 26px;
     }
-    .story_section_title::before {
-        height: 22px;
-        left: -12px;
-    }
+    /* .story_section_title::before 제거됨 */
 }
 
 @media (max-width: 640px) {
