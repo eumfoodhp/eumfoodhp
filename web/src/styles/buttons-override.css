@@ -607,10 +607,18 @@
     color: #F39800 !important;
 }
 
-/* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤 */
+/* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤, 우측정렬 */
+.mega_sub_list {
+    text-align: right !important;
+}
+.mega_sub_list li {
+    text-align: right !important;
+}
 .mega_sub_list a {
     color: #222 !important;
     font-weight: 500 !important;
+    text-align: right !important;
+    justify-content: flex-end !important;
 }
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
