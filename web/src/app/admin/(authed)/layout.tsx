@@ -3,6 +3,9 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { getCurrentAdmin } from '@/lib/supabase-server';
 
+// admin 페이지는 항상 dynamic (cookies 기반 인증)
+export const dynamic = 'force-dynamic';
+
 /**
  * 인증 필요한 admin 페이지 레이아웃 — 미인증 시 로그인 페이지로 리다이렉트.
  * 사이드바 + 메인 영역 구성.

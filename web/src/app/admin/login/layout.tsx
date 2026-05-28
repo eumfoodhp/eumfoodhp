@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import { getCurrentAdmin } from '@/lib/supabase-server';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * 로그인 페이지 layout. 이미 로그인된 사용자는 대시보드로 리다이렉트.
  */
