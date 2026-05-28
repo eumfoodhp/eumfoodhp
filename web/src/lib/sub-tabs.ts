@@ -9,7 +9,8 @@ export function aboutTabs(t: Translator) {
   return [
     { key: 'greeting', href: '/about/greeting', label: t('sub_tab_greeting') },
     { key: 'history', href: '/about/history', label: t('sub_tab_history') },
-    { key: 'cert', href: '/about/cert', label: t('sub_tab_cert') },
+    // 주요 사업 (구 사업영역) — '소개' 그룹으로 이동
+    { key: 'area', href: '/business/area', label: t('sub_biz_area') },
     { key: 'org', href: '/about/organization', label: t('sub_tab_org') },
     { key: 'location', href: '/about/location', label: t('sub_tab_direction') },
   ];
@@ -17,9 +18,10 @@ export function aboutTabs(t: Translator) {
 
 export function businessTabs(t: Translator) {
   return [
-    { key: 'area', href: '/business/area', label: t('sub_biz_area') },
     { key: 'facility', href: '/business/facility', label: t('sub_facility') },
     { key: 'process', href: '/business/process', label: t('sub_biz_process') },
+    // 인증·특허 — '제조' 그룹으로 이동
+    { key: 'cert', href: '/about/cert', label: t('sub_cert') },
   ];
 }
 

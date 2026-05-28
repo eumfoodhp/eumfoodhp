@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
-import { businessTabs } from '@/lib/sub-tabs';
+import { aboutTabs } from '@/lib/sub-tabs';
 import { nl2br } from '@/lib/nl2br';
 import '@/styles/sub.css';
 import '@/styles/business_area.css';
@@ -23,11 +23,11 @@ export default async function BusinessAreaPage({
 
       <main id="sub_contents" className="business_area_page">
         <SubVisual
-          parentLabel={t('menu_business')}
+          parentLabel={t('menu_about')}
           currentLabel={t('sub_biz_area')}
           title={t('biz_title')}
           desc={t('biz_sub_desc')}
-          tabBar={<SubTabBar tabs={businessTabs(t)} activeKey="area" />}
+          tabBar={<SubTabBar tabs={aboutTabs(t)} activeKey="area" />}
           heroClass="business_hero_visual"
         />
 

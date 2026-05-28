@@ -33,16 +33,16 @@ export default async function Header() {
                 <ul className="mega_sub_list">
                   <li><Link href="/about/greeting">{t('sub_greeting')}</Link></li>
                   <li><Link href="/about/history">{t('sub_history')}</Link></li>
-                  <li><Link href="/about/cert">{t('sub_cert')}</Link></li>
+                  <li><Link href="/business/area">{t('sub_biz_area')}</Link></li>
                   <li><Link href="/about/organization">{t('sub_org')}</Link></li>
                   <li><Link href="/about/location">{t('sub_location')}</Link></li>
                 </ul>
               </div>
               <div className="mega_col mega_c2">
                 <ul className="mega_sub_list">
-                  <li><Link href="/business/area">{t('sub_biz_area')}</Link></li>
                   <li><Link href="/business/facility">{t('sub_facility')}</Link></li>
                   <li><Link href="/business/process">{t('sub_biz_process')}</Link></li>
+                  <li><Link href="/about/cert">{t('sub_cert')}</Link></li>
                 </ul>
               </div>
               <div className="mega_col mega_c3">
@@ -133,7 +133,7 @@ export default async function Header() {
                 items={[
                   { href: '/about/greeting', label: t('sub_greeting') },
                   { href: '/about/history', label: t('sub_history') },
-                  { href: '/about/cert', label: t('sub_cert') },
+                  { href: '/business/area', label: t('sub_biz_area') },
                   { href: '/about/organization', label: t('sub_org') },
                   { href: '/about/location', label: t('sub_location') },
                 ]}
@@ -141,9 +141,9 @@ export default async function Header() {
               <MobileMenuGroup
                 title={t('menu_business')}
                 items={[
-                  { href: '/business/area', label: t('sub_biz_area') },
                   { href: '/business/facility', label: t('sub_facility') },
                   { href: '/business/process', label: t('sub_biz_process') },
+                  { href: '/about/cert', label: t('sub_cert') },
                 ]}
               />
               <MobileMenuGroup

@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SubVisual from '@/components/SubVisual';
 import SubTabBar from '@/components/SubTabBar';
-import { aboutTabs } from '@/lib/sub-tabs';
+import { businessTabs } from '@/lib/sub-tabs';
 import '@/styles/sub.css';
 import '@/styles/about_cert.css';
 
@@ -31,11 +31,11 @@ export default async function CertPage({
 
       <main id="sub_contents" className="cert_page">
         <SubVisual
-          parentLabel={t('menu_about')}
+          parentLabel={t('menu_business')}
           currentLabel={t('sub_tab_cert')}
           title={t('cert_title')}
           desc={t('sub_banner_cert_desc')}
-          tabBar={<SubTabBar tabs={aboutTabs(t)} activeKey="cert" />}
+          tabBar={<SubTabBar tabs={businessTabs(t)} activeKey="cert" />}
         />
 
         <section className="cert_content_section">
