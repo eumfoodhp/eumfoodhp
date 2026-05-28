@@ -905,7 +905,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 .f_info_group {
     display: flex;
     align-items: flex-start;
-    gap: 100px; /* 각 컬럼(INFO, TEL, ADRESS) 사이 간격 */
+    gap: 80px;
 }
 
 .f_box {
@@ -913,18 +913,19 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    /* 3등분 균등 칼럼 — INFO/TEL/ADDRESS 사이 간격 시각적으로 동일 */
+    flex: 1 1 0;
+    min-width: 0;
 }
 
-/* 컬럼별 너비 최적화 */
-.info_box { width: 320px; }
-/* TEL: 중문 등 긴 라벨에서도 번호가 끊기지 않도록 2열 그리드 + 내용 너비 기준 */
-.tel_box {
+/* 컬럼별 개별 width/min-width 강제 해제 (위 flex: 1 1 0 적용) */
+.info_box,
+.tel_box,
+.address_box {
     width: auto;
-    min-width: min(400px, 100%);
+    min-width: 0;
     max-width: 100%;
-    flex: 0 1 auto;
 }
-.address_box { flex: 1; }
 
 .f_box h3 {
     color: #222;
