@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import CatalogButton from './CatalogButton';
+import GnbNav from './GnbNav';
 
 export default async function Header() {
   const t = await getTranslations();
@@ -17,13 +18,8 @@ export default async function Header() {
 
         <div className="gnb_wrap">
           <nav className="gnb" aria-label="PC navigation">
-            <div className="gnb_grid">
-              <Link href="/about" className="gnb_main_link"><span>{t('menu_about')}</span></Link>
-              <Link href="/business" className="gnb_main_link"><span>{t('menu_business')}</span></Link>
-              <Link href="/products/pickles" className="gnb_main_link"><span>{t('menu_product')}</span></Link>
-              <Link href="/notice" className="gnb_main_link"><span>{t('menu_news')}</span></Link>
-              <Link href="/contact" className="gnb_main_link"><span>{t('menu_inquiry')}</span></Link>
-            </div>
+            {/* GnbNav (Client) — usePathname 으로 active 카테고리 주황 포인트 */}
+            <GnbNav />
           </nav>
           {/* 메가 드롭다운 제거 — 헤더 아래 sticky SubHeader 가 대체 */}
         </div>
