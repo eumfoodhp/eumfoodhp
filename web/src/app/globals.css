@@ -1,15 +1,23 @@
 /* Site CSS lives at /public/css/*.css and is linked from layouts/pages. */
 /* This file is intentionally left near-empty so the legacy CSS owns layout/typography. */
 
-/* 사이트는 라이트 디자인 — 다크모드여도 form 요소가 다크로 보이지 않도록 알림.
-   (only 없이 light만 하면 user-agent가 라이트 렌더, 강제는 아님) */
-:root {
-  color-scheme: light;
+/* OS 다크모드 강제 사용자도 사이트는 라이트로 렌더 — only light로 강제 */
+:root,
+html {
+  color-scheme: only light !important;
 }
 html,
 body {
   margin: 0;
   padding: 0;
-  background: #fff !important;
-  color: #222 !important;
+  background: #ffffff !important;
+  color: #222222 !important;
+  /* Safari iOS 다크모드 추가 차단 */
+  -webkit-text-fill-color: initial;
+  forced-color-adjust: none;
+}
+
+/* 모든 button/a 요소의 user-agent 다크 색 차단 */
+button, a, input, textarea, select {
+  forced-color-adjust: none;
 }
