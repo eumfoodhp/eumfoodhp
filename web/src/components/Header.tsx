@@ -80,7 +80,13 @@ export default async function Header() {
             rel="noopener noreferrer"
             className="btn_mall"
             aria-label={t('quick_mall')}
-            style={{ backgroundColor: '#ffffff' }}
+            style={{
+              backgroundColor: '#ffffff',
+              background: '#ffffff',
+              WebkitAppearance: 'none',
+              appearance: 'none',
+              forcedColorAdjust: 'none',
+            }}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M16 10V6a4 4 0 1 0-8 0v4" />
@@ -101,7 +107,13 @@ export default async function Header() {
             type="button"
             className="mo_menu_btn"
             aria-label="Menu"
-            style={{ backgroundColor: '#ffffff' }}
+            style={{
+              backgroundColor: '#ffffff',
+              background: '#ffffff',
+              WebkitAppearance: 'none',
+              appearance: 'none',
+              forcedColorAdjust: 'none',
+            }}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="4" y1="7" x2="20" y2="7" />
