@@ -1,11 +1,15 @@
 /* Site CSS lives at /public/css/*.css and is linked from layouts/pages. */
 /* This file is intentionally left near-empty so the legacy CSS owns layout/typography. */
 
-/* OS 다크모드/라이트모드 둘 다 동일 디자인 — 페이지 자체 색 명시 */
+/* 사이트는 라이트 디자인 — 다크모드여도 form 요소가 다크로 보이지 않도록 알림.
+   (only 없이 light만 하면 user-agent가 라이트 렌더, 강제는 아님) */
+:root {
+  color-scheme: light;
+}
 html,
 body {
   margin: 0;
   padding: 0;
-  background: #fff;
-  color: #222;
+  background: #fff !important;
+  color: #222 !important;
 }

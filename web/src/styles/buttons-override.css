@@ -350,17 +350,15 @@
     z-index: 100 !important;
 }
 
-/* 헤더 우측 아이콘들 — 흰색 명시 강제 (다크모드 무시) */
-.btn_mall,
-.btn_catalog,
-.btn_inquiry,
-.lang_toggle_btn,
-.mo_menu_btn,
-.quick_menu .quick_item,
-.quick_menu .quick_contact,
-.quick_menu .btn_top {
-    background-color: #FFFFFF !important;
-}
+/* 헤더 우측 아이콘들 — 흰색 강제. 각자 개별 selector로 명시 (그룹 의심 해결) */
+.btn_mall          { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+.btn_catalog       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+.btn_inquiry       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+.lang_toggle_btn   { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+.mo_menu_btn       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+.quick_menu .quick_item    { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+.quick_menu .quick_contact { background-color: #FFFFFF !important; background: #FFFFFF !important; }
+.quick_menu .btn_top       { background-color: #FFFFFF !important; background: #FFFFFF !important; }
 @media (max-width: 1024px) {
     #header {
         top: 12px !important;
