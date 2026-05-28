@@ -93,7 +93,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     <main id="sub_contents" className="about_onepage">
       <SubVisual
         parentLabel={t('menu_about')}
-        currentLabel={t('menu_about')}
+        currentLabel=""
         title={t('menu_about')}
         desc=""
       />

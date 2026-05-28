@@ -1,12 +1,15 @@
 'use client';
 
 /**
- * 한 페이지 안 여러 섹션 사이 네비게이션 헤더.
- * 사용자 sketch 패턴:
- *   [이전 항목들 작게] [현재 항목 BIG] [다음 항목들 작게]
+ * 한 페이지 안 여러 섹션 사이 네비게이션 헤더 (헤더 pill 스타일).
  *
- * 각 섹션 상단에 배치 → 스크롤하면서 페이지 어디쯤인지 시각화.
- * 항목 클릭 시 #anchor 로 스무스 스크롤.
+ * 레이아웃 (사용자 sketch 기준):
+ *   [현재 BIG | 다른 1 | 다른 2 | 다른 3 | 다른 4]
+ *   - N등분 균등 그리드 (sections.length 만큼).
+ *   - 첫 칸: 현재 섹션 (크고 진한 톤).
+ *   - 나머지 칸: 그 외 섹션들, 원래 순서대로 배치.
+ *   - 헤더와 동일한 흰 pill + 그림자 + 라운드 코너.
+ *   - 항목 클릭 시 #anchor 스무스 스크롤.
  */
 
 type Section = {
@@ -20,50 +23,34 @@ type Props = {
 };
 
 export default function SectionHeader({ sections, currentKey }: Props) {
-  const currentIdx = sections.findIndex((s) => s.key === currentKey);
-  const prev = sections.slice(0, currentIdx);
-  const current = sections[currentIdx];
-  const next = sections.slice(currentIdx + 1);
+  const current = sections.find((s) => s.key === currentKey);
+  const others = sections.filter((s) => s.key !== currentKey);
+  if (!current) return null;
 
   const handleClick = (key: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const el = document.getElementById(key);
     if (el) {
-      const headerOffset = 100; // 고정 헤더 높이 보정
+      const headerOffset = 120; // 고정 헤더 + 여백
       const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
-  if (!current) return null;
-
   return (
     <div className="section_header">
       <div className="section_header_inner">
-        {/* 이전 항목들 (왼쪽, 작게) */}
-        <ul className="section_nav section_nav--prev">
-          {prev.map((s) => (
-            <li key={s.key}>
-              <a href={`#${s.key}`} onClick={handleClick(s.key)}>
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* 현재 항목 (가운데, 크게) */}
-        <h2 className="section_header_title">{current.label}</h2>
-
-        {/* 다음 항목들 (오른쪽, 작게) */}
-        <ul className="section_nav section_nav--next">
-          {next.map((s) => (
-            <li key={s.key}>
-              <a href={`#${s.key}`} onClick={handleClick(s.key)}>
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="section_header_title">{current.label}</div>
+        {others.map((s) => (
+          <a
+            key={s.key}
+            href={`#${s.key}`}
+            onClick={handleClick(s.key)}
+            className="section_header_link"
+          >
+            {s.label}
+          </a>
+        ))}
       </div>
     </div>
   );

@@ -45,8 +45,12 @@ export default function SubVisual({
               <img src="/images/sub/home.png" alt="home" className="home_icon" />
               <i className="dot"></i>
               <span className="depth1">{parentLabel}</span>
-              <i className="dot"></i>
-              <span className="depth2 current">{currentLabel}</span>
+              {currentLabel && currentLabel !== parentLabel && (
+                <>
+                  <i className="dot"></i>
+                  <span className="depth2 current">{currentLabel}</span>
+                </>
+              )}
             </nav>
             <p className="sub_page_desc">{desc}</p>
             {/* SR-only로 타이틀 유지 (검색·접근성) */}
