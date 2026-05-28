@@ -164,10 +164,11 @@
         0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* 카드 내부: 배경 그라데이션 + 흰색 로고 + 라벨 */
+/* 카드 내부: 깨끗한 흰 배경 + 원본 컬러 로고 + 하단 라벨 */
 .carousel_card .card_bg {
     position: absolute;
     inset: 0;
+    background: #ffffff;
     z-index: 0;
 }
 
@@ -176,26 +177,19 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 56px;
+    bottom: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 28px 20px;
     z-index: 1;
 }
 
 .carousel_card .card_logo {
-    max-width: 75%;
-    max-height: 60%;
+    max-width: 85%;
+    max-height: 70%;
     object-fit: contain;
-    /* 흰색 톤다운 — 평소엔 약간 투명한 흰색 실루엣 */
-    filter: brightness(0) invert(1) opacity(0.92);
-    transition: filter 0.4s ease;
-}
-
-.carousel_card:hover .card_logo {
-    /* hover 시 원본 색으로 복원 */
-    filter: none;
+    /* 원본 색 유지. 카드 자체의 grayscale 필터로 흑백 처리됨. */
 }
 
 .carousel_card .card_label {
@@ -203,30 +197,24 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 12px 16px;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    color: #fff;
-    font-size: 13px;
+    padding: 10px 14px;
+    background: #fafafa;
+    border-top: 1px solid #f1f1f1;
+    color: #555;
+    font-size: 12px;
     font-weight: 600;
     text-align: center;
     letter-spacing: -0.2px;
     z-index: 2;
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-/* ============================================================
-   카드별 다른 배경 그라데이션 — 9가지 hue
-   ============================================================ */
-.carousel_card:nth-child(1) .card_bg { background: linear-gradient(135deg, #F39800, #E07000); }
-.carousel_card:nth-child(2) .card_bg { background: linear-gradient(135deg, #10A34A, #056F31); }
-.carousel_card:nth-child(3) .card_bg { background: linear-gradient(135deg, #2563EB, #1E3A8A); }
-.carousel_card:nth-child(4) .card_bg { background: linear-gradient(135deg, #DC2626, #991B1B); }
-.carousel_card:nth-child(5) .card_bg { background: linear-gradient(135deg, #7C3AED, #4C1D95); }
-.carousel_card:nth-child(6) .card_bg { background: linear-gradient(135deg, #EC4899, #9D174D); }
-.carousel_card:nth-child(7) .card_bg { background: linear-gradient(135deg, #14B8A6, #115E59); }
-.carousel_card:nth-child(8) .card_bg { background: linear-gradient(135deg, #F59E0B, #78350F); }
-.carousel_card:nth-child(9) .card_bg { background: linear-gradient(135deg, #6366F1, #312E81); }
+/* hover 시 라벨도 강조 */
+.carousel_card:hover .card_label {
+    background: #FFF6EC;
+    color: #F39800;
+    border-top-color: #F39800;
+}
 
 /* ============================================================
    모바일
