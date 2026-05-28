@@ -1,0 +1,275 @@
+/* ============================================================
+   3D 회전목마 협력사 섹션 (.partner_section--3d)
+   ------------------------------------------------------------
+   원리:
+   1) perspective: 부모에 원근 거리(1400px)을 줘서 3D 깊이감 생성.
+   2) transform-style: preserve-3d: 자식들이 3D 공간에서 평평하게
+      합쳐지지 않고 각자 3D 위치를 유지.
+   3) 각 카드는 rotateY(angle) translateZ(radius) 로 원형 궤도에 배치.
+      angle = i * (360°/N) 이라서 N개 카드가 원형으로 균등 분포.
+   4) ring 컨테이너에 rotateY 0→360 무한 애니메이션 → 전체가 회전.
+   5) hover 시: filter:grayscale 해제 + z 축 앞으로 + scale up.
+      또한 ring 의 animation-play-state: paused 로 회전 정지.
+   ============================================================ */
+
+.partner_section--3d {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0 160px;
+    background: linear-gradient(180deg, #fff 0%, #FFF6EC 100%);
+}
+
+.partner_section--3d .partner_inner {
+    width: 100%;
+    max-width: 1580px;
+    margin: 0 auto;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+
+.partner_section--3d .partner_text_box {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.partner_section--3d .partner_sub {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #F39800;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.partner_section--3d .partner_title {
+    margin: 0;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   회전목마 무대
+   ============================================================ */
+.carousel_stage {
+    position: relative;
+    height: 540px;
+    perspective: 1400px;
+    perspective-origin: 50% 30%;
+    /* 우주 공간 느낌의 배경 - 가운데가 살짝 어둡게 */
+    background: radial-gradient(
+        ellipse at center 60%,
+        rgba(243, 152, 0, 0.06) 0%,
+        transparent 60%
+    );
+}
+
+/* ============================================================
+   바닥 가상 궤도선 — 3D 공간 안에 원을 깔아 시각적 깊이 표현
+   ============================================================ */
+.orbit_guide {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 880px;
+    height: 880px;
+    transform: translate(-50%, -50%) rotateX(78deg);
+    transform-style: preserve-3d;
+    border: 1px dashed rgba(243, 152, 0, 0.25);
+    border-radius: 50%;
+    pointer-events: none;
+    /* 안쪽 점선도 한 줄 더 → 풍성한 궤도 느낌 */
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0),
+        inset 0 0 0 60px transparent,
+        inset 0 0 0 61px rgba(243, 152, 0, 0.1);
+}
+
+/* ============================================================
+   링 (rotateY 무한 회전)
+   ============================================================ */
+.carousel_ring {
+    position: relative;
+    width: 260px;
+    height: 360px;
+    margin: 60px auto 0;
+    transform-style: preserve-3d;
+    animation: ringSpin 32s linear infinite;
+}
+
+@keyframes ringSpin {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* hover 시 ring 회전 정지 → 카드 살펴보기 쉽게 */
+.carousel_stage:hover .carousel_ring {
+    animation-play-state: paused;
+}
+
+/* ============================================================
+   카드 (원형 궤도 배치)
+   ============================================================ */
+.carousel_card {
+    --i: 0;
+    --N: 9;
+    --angle: calc(var(--i) * (360deg / var(--N)));
+    --radius: 420px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    /* 각 카드를 원형 궤도 안 자기 자리로 회전·이동 */
+    transform: rotateY(var(--angle)) translateZ(var(--radius));
+    transform-style: preserve-3d;
+
+    /* 평소엔 흑백 */
+    filter: grayscale(100%);
+    transition:
+        filter 0.5s ease,
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.12),
+        0 6px 14px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+
+    /* 바닥 반사 효과 (WebKit / Chromium) */
+    -webkit-box-reflect: below 4px
+        linear-gradient(transparent 65%, rgba(0, 0, 0, 0.18));
+}
+
+/* hover: 흑백 해제 + 앞으로 튀어나오기 + 정면을 향하지는 않고 살짝 확대 */
+.carousel_card:hover {
+    filter: grayscale(0%);
+    transform: rotateY(var(--angle))
+        translateZ(calc(var(--radius) + 80px))
+        scale(1.08);
+    z-index: 10;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* 카드 내부: 배경 그라데이션 + 흰색 로고 + 라벨 */
+.carousel_card .card_bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.carousel_card .card_logo_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1;
+}
+
+.carousel_card .card_logo {
+    max-width: 75%;
+    max-height: 60%;
+    object-fit: contain;
+    /* 흰색 톤다운 — 평소엔 약간 투명한 흰색 실루엣 */
+    filter: brightness(0) invert(1) opacity(0.92);
+    transition: filter 0.4s ease;
+}
+
+.carousel_card:hover .card_logo {
+    /* hover 시 원본 색으로 복원 */
+    filter: none;
+}
+
+.carousel_card .card_label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: -0.2px;
+    z-index: 2;
+}
+
+/* ============================================================
+   카드별 다른 배경 그라데이션 — 9가지 hue
+   ============================================================ */
+.carousel_card:nth-child(1) .card_bg { background: linear-gradient(135deg, #F39800, #E07000); }
+.carousel_card:nth-child(2) .card_bg { background: linear-gradient(135deg, #10A34A, #056F31); }
+.carousel_card:nth-child(3) .card_bg { background: linear-gradient(135deg, #2563EB, #1E3A8A); }
+.carousel_card:nth-child(4) .card_bg { background: linear-gradient(135deg, #DC2626, #991B1B); }
+.carousel_card:nth-child(5) .card_bg { background: linear-gradient(135deg, #7C3AED, #4C1D95); }
+.carousel_card:nth-child(6) .card_bg { background: linear-gradient(135deg, #EC4899, #9D174D); }
+.carousel_card:nth-child(7) .card_bg { background: linear-gradient(135deg, #14B8A6, #115E59); }
+.carousel_card:nth-child(8) .card_bg { background: linear-gradient(135deg, #F59E0B, #78350F); }
+.carousel_card:nth-child(9) .card_bg { background: linear-gradient(135deg, #6366F1, #312E81); }
+
+/* ============================================================
+   모바일
+   ============================================================ */
+@media (max-width: 1024px) {
+    .partner_section--3d {
+        padding: 70px 0 110px;
+    }
+    .carousel_stage {
+        height: 460px;
+        perspective: 1000px;
+    }
+    .carousel_ring {
+        width: 220px;
+        height: 300px;
+    }
+    .carousel_card {
+        --radius: 320px;
+    }
+    .orbit_guide {
+        width: 680px;
+        height: 680px;
+    }
+}
+
+@media (max-width: 640px) {
+    .carousel_stage {
+        height: 380px;
+        perspective: 800px;
+    }
+    .carousel_ring {
+        width: 180px;
+        height: 240px;
+    }
+    .carousel_card {
+        --radius: 240px;
+    }
+    .orbit_guide {
+        width: 500px;
+        height: 500px;
+    }
+    .carousel_card .card_label {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+}

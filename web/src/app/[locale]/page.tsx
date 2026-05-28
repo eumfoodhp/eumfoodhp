@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import HeroSwiper from '@/components/HeroSwiper';
 import { nl2br } from '@/lib/nl2br';
 import '@/styles/main.css';
+import '@/styles/partners-carousel.css';
 import 'swiper/css';
 
 type ProcTab = { tag: string; title: string; link: string; desc: string };
@@ -36,7 +37,7 @@ export default async function HomePage({
   const procTabs = t.raw('main_proc_tabs') as ProcTab[];
   const prodCategories = t.raw('main_prod_categories') as ProdCategory[];
   const prodList = t.raw('main_prod_list') as Record<string, ProdItem[]>;
-  const partners = t.raw('main_partner_logos') as Array<{ img: string }>;
+  const partners = t.raw('main_partner_logos') as Array<{ img: string; name: string }>;
   // dirTabs / DirTab / mapFactorySrc 제거 — 지도 섹션 통째로 footer 로 이관됨.
 
   return (
@@ -220,32 +221,39 @@ export default async function HomePage({
           </div>
         </section>
 
-        <section className="partner_section">
+        <section className="partner_section partner_section--3d">
           <div className="partner_inner">
             <div className="partner_text_box">
               <span className="partner_sub">{t('main_partner_sub')}</span>
               <h2 className="partner_title">{nl2br(t('main_partner_title'))}</h2>
             </div>
 
-            <div className="partner_logo_area">
-              <div className="logo_track to_left">
-                <div className="logo_list">
-                  {partners.concat(partners).map((p, i) => (
-                    <div key={`l-${i}`} className="partner_item">
-                      <img src={`/images/common/${p.img}`} alt="" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="carousel_stage">
+              {/* 바닥 가상 궤도 가이드 — 깊이감용 점선 원 */}
+              <div className="orbit_guide" aria-hidden="true"></div>
 
-              <div className="logo_track to_right">
-                <div className="logo_list">
-                  {[...partners].reverse().concat([...partners].reverse()).map((p, i) => (
-                    <div key={`r-${i}`} className="partner_item">
-                      <img src={`/images/common/${p.img}`} alt="" />
+              {/* 9개 카드가 원형 배치된 링 — 자동 회전, hover 시 정지 */}
+              <div className="carousel_ring">
+                {partners.slice(0, 9).map((p, i) => (
+                  <div
+                    key={p.img}
+                    className="carousel_card"
+                    style={{ ['--i' as never]: i }}
+                    role="group"
+                    aria-label={p.name}
+                  >
+                    <div className="card_bg" aria-hidden="true"></div>
+                    <div className="card_logo_wrap">
+                      <img
+                        src={`/images/common/${p.img}`}
+                        alt={p.name}
+                        className="card_logo"
+                        loading="lazy"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <div className="card_label">{p.name}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

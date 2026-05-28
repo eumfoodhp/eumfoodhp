@@ -1102,15 +1102,14 @@ html[lang="zh"] .dl_title {
 
 
 /* ============================================================
-   Footer 배경 — 한반도 일러스트 (background-image 로 사용)
-   우측 영역에 한반도가 깔리고 그 위에 INFO/TEL/ADDRESS 텍스트.
+   Footer 배경 — 한반도 일러스트 (background-image, 풀폭/풀하이트)
    ============================================================ */
 #footer {
     position: relative;
     background-image: url('/images/main/map_ko_factory.png');
     background-repeat: no-repeat;
-    background-position: right center;
-    background-size: contain;
+    background-position: center center;
+    background-size: cover;
 }
 
 /* 텍스트 가독성을 위해 살짝 흰색 오버레이 */
@@ -1126,13 +1125,6 @@ html[lang="zh"] .dl_title {
 #footer .footer_inner {
     position: relative;
     z-index: 1;
-}
-
-@media (max-width: 735px) {
-    #footer {
-        background-size: 180% auto;
-        background-position: right 80%;
-    }
 }
 
 /* ============================================================
