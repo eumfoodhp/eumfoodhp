@@ -235,9 +235,9 @@ export default async function HomePage({
               {/* 9개 카드가 원형 배치된 링 — 자동 회전, hover 시 정지 */}
               <div className="carousel_ring">
                 {partners.slice(0, 9).map((p, i) => {
-                  // 배경 이미지 컨벤션: p_bg_01.jpg ~ p_bg_09.jpg (사용자가 추가)
-                  const bgIndex = String(i + 1).padStart(2, '0');
-                  const bgUrl = `/images/common/p_bg_${bgIndex}.jpg`;
+                  // 카드 합성 이미지: p_card_01.jpg ~ p_card_09.jpg (사용자가 추가)
+                  const cardIndex = String(i + 1).padStart(2, '0');
+                  const cardUrl = `/images/common/p_card_${cardIndex}.jpg`;
                   return (
                     <div
                       key={p.img}
@@ -246,19 +246,12 @@ export default async function HomePage({
                       role="group"
                       aria-label={p.name}
                     >
-                      <div
-                        className="card_bg"
-                        aria-hidden="true"
-                        style={{ backgroundImage: `url(${bgUrl})` }}
-                      ></div>
-                      <div className="card_logo_wrap">
-                        <img
-                          src={`/images/common/${p.img}`}
-                          alt={p.name}
-                          className="card_logo"
-                          loading="lazy"
-                        />
-                      </div>
+                      <img
+                        src={cardUrl}
+                        alt={p.name}
+                        className="card_image"
+                        loading="lazy"
+                      />
                     </div>
                   );
                 })}

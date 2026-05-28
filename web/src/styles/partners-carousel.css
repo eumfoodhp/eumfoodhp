@@ -165,73 +165,15 @@
         0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* 카드 내부: 흐린 배경 이미지 + 어두운 오버레이 + 가운데 로고 */
-
-/* 배경 이미지 — blur + brightness 처리. 흐림 가장자리 잘림 방지를 위해 inset -10% */
-.carousel_card .card_bg {
+/* 카드 = 합성 이미지 한 장 통째로 표시 (배경+로고 합성된 카드 PNG/JPG) */
+.carousel_card .card_image {
     position: absolute;
-    inset: -10%;  /* blur edge 잘림 방지 */
-    background-color: #2a2a2a;  /* 이미지 없을 때 fallback */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    filter: blur(6px) brightness(0.62) saturate(1.05);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: 0;
-}
-
-/* 배경 위 어두운 그라데이션 오버레이 — 로고 가독성 강화 */
-.carousel_card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.25) 0%,
-        rgba(0, 0, 0, 0.35) 50%,
-        rgba(0, 0, 0, 0.55) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* 미세한 윗쪽 빛 — 카드 윤곽감 */
-.carousel_card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent 20%);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.carousel_card .card_logo_wrap {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 28px 20px;
-    z-index: 3;
-}
-
-.carousel_card .card_logo {
-    max-width: 78%;
-    max-height: 60%;
-    object-fit: contain;
-    /* 흰 로고가 어두운 bg 위로 잘 보이도록 살짝 그림자 */
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* hover 시 로고 살짝 확대 */
-.carousel_card:hover .card_logo {
-    transform: scale(1.06);
-}
-
-/* hover 시 배경 blur 살짝 완화 + 밝아짐 → 어떤 사진인지 보이게 */
-.carousel_card:hover .card_bg {
-    filter: blur(3px) brightness(0.78) saturate(1.1);
+    background-color: #f3f4f6;  /* 이미지 로딩 전 fallback */
 }
 
 /* ============================================================
