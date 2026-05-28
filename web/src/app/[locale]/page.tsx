@@ -37,14 +37,7 @@ export default async function HomePage({
   const prodCategories = t.raw('main_prod_categories') as ProdCategory[];
   const prodList = t.raw('main_prod_list') as Record<string, ProdItem[]>;
   const partners = t.raw('main_partner_logos') as Array<{ img: string }>;
-  // dirTabs / DirTab 제거 — direction 섹션 텍스트 전부 footer 로 이관됨.
-
-  const mapFactorySrc =
-    locale === 'en'
-      ? '/images/main/en1.png'
-      : locale === 'zh'
-      ? '/images/main/zh1.png'
-      : '/images/main/map_ko_factory.png';
+  // dirTabs / DirTab / mapFactorySrc 제거 — 지도 섹션 통째로 footer 로 이관됨.
 
   return (
     <>
@@ -298,17 +291,7 @@ export default async function HomePage({
           </div>
         </section>
 
-        <section className="direction_section">
-          {/* 텍스트 전부 삭제 — 위치/연락처는 모두 footer 에 통합.
-              지도 일러스트만 표시. */}
-          <img
-            src={mapFactorySrc}
-            alt={t('main_dir_title')}
-            className="dir_bg_map"
-            id="dir_map_img"
-            data-map-factory={mapFactorySrc}
-          />
-        </section>
+        {/* 지도 섹션 통째 footer 로 이동 — 페이지 하단 정리 */}
       </main>
 
       <Script src="/js/main.js" strategy="afterInteractive" />

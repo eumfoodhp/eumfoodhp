@@ -6,6 +6,16 @@ export default async function Footer() {
   return (
     <footer id="footer">
       <div className="footer_inner">
+        {/* 한반도 일러스트 — 페이지 본문에서 이관. 말풍선/주소 텍스트 제거된 클린 버전. */}
+        <div className="footer_map">
+          <img
+            src="/images/main/map_ko_factory.png"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+        </div>
+
         <div className="footer_top">
           <div className="f_logo">
             <img src="/images/common/ftlogo.png" alt="㈜이음푸드시스템" />
