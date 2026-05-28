@@ -1,0 +1,174 @@
+/**
+ * 제조 (Manufacturing) — 원페이지 형태.
+ * 시설현황 / 제조공정 / 인증·특허 3개 섹션을 단일 페이지에 스택.
+ * 각 섹션 상단에 SectionHeader (3등분 균등 그리드) 배치.
+ * 항목 클릭 시 anchor 스무스 스크롤.
+ *
+ * 기존 /business/facility, /business/process, /about/cert 페이지는 그대로
+ * 유지 (직접 링크 호환).
+ */
+
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import SubVisual from '@/components/SubVisual';
+import SectionHeader from '@/components/SectionHeader';
+import FacilitySection from '@/components/FacilitySection';
+import '@/styles/sub.css';
+import '@/styles/section-header.css';
+import '@/styles/business_facility.css';
+import '@/styles/business_process.css';
+import '@/styles/about_cert.css';
+
+type Cat = {
+  key: string;
+  modKey: string;
+  prefix: string;
+  label: string;
+  steps: number;
+  iconDir: string;
+};
+
+const CERTS = [
+  { key: 'cert_name_1', img: '/images/sub/cert/cert-01-pickles.png' },
+  { key: 'cert_name_2', img: '/images/sub/cert/cert-02-braise.png' },
+  { key: 'cert_name_3', img: '/images/sub/cert/cert-03-salted.png' },
+  { key: 'cert_name_4', img: '/images/sub/cert/cert-04-jeotgal.png' },
+  { key: 'cert_name_5', img: '/images/sub/cert/cert-05-sauce.png' },
+  { key: 'cert_name_6', img: '/images/sub/cert/cert-06-mix.png' },
+  { key: 'cert_name_7', img: '/images/sub/cert/cert-07-tea.png' },
+  { key: 'cert_name_8', img: '/images/sub/cert/cert-08-tax.png' },
+  { key: 'cert_name_9', img: '/images/sub/cert/cert-09-master.png' },
+];
+
+export default async function BusinessOnePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+
+  const CATEGORIES: Cat[] = [
+    { key: 'pickles', modKey: 'pickles', prefix: 'proc_pickles_step', label: t('sub_prod_pickles'), steps: 7, iconDir: 'biz-pf-pickles-5535977' },
+    { key: 'braised', modKey: 'braised', prefix: 'proc_braised_step', label: t('sub_prod_braised'), steps: 5, iconDir: 'biz-pf-braised-5535890' },
+    { key: 'salted',  modKey: 'pickle',  prefix: 'proc_salted_step',  label: t('sub_prod_salted'),  steps: 5, iconDir: 'biz-pf-pickle-5535894' },
+    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('sub_prod_sauce'),   steps: 4, iconDir: 'biz-pf-sauce-flow' },
+  ];
+
+  const sections = [
+    { key: 'facility', label: t('sub_facility') },
+    { key: 'process', label: t('sub_biz_process') },
+    { key: 'cert', label: t('sub_cert') },
+  ];
+
+  return (
+    <main id="sub_contents" className="business_onepage">
+      <SubVisual
+        parentLabel={t('menu_business')}
+        currentLabel=""
+        title={t('menu_business')}
+        desc=""
+      />
+
+      {/* ===== 1. 시설현황 ===== */}
+      <div id="facility" className="business_facility_page">
+        <SectionHeader sections={sections} currentKey="facility" />
+        <FacilitySection />
+      </div>
+
+      {/* ===== 2. 제조공정 ===== */}
+      <div id="process" className="business_process_page">
+        <SectionHeader sections={sections} currentKey="process" />
+        {CATEGORIES.map((cat) => (
+          <section
+            key={cat.key}
+            className={`biz_process_flow_section biz_process_flow_section--${cat.modKey}`}
+          >
+            <div className="sub_inner biz_pf_inner">
+              <div className="biz_pf_flow_head">
+                <p className="biz_pf_eyebrow">Process Flow</p>
+                <h2 className="biz_pf_flow_title">{cat.label}</h2>
+              </div>
+              <div className="biz_pf_steps_grid">
+                {Array.from({ length: cat.steps }, (_, i) => i + 1).map((n) => {
+                  const nn = String(n).padStart(2, '0');
+                  const iconSrc = `/images/sub/figma/${cat.iconDir}/${nn}.png`;
+                  const label = t(`${cat.prefix}${nn}_tit`);
+                  return (
+                    <div key={n} className="biz_pf_step biz_pf_step--grid">
+                      <div className="biz_pf_step_badge">Step {nn}</div>
+                      <div className="biz_pf_step_circle">
+                        <div className="biz_pf_step_icon">
+                          <img src={iconSrc} alt={label} width={90} height={90} loading="lazy" />
+                        </div>
+                        <p className="biz_pf_step_label">{label}</p>
+                      </div>
+                      <p className="biz_pf_step_desc">{t(`${cat.prefix}${nn}_desc`)}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {/* ===== 3. 인증·특허 ===== */}
+      <div id="cert" className="cert_page">
+        <SectionHeader sections={sections} currentKey="cert" />
+        <section className="cert_content_section">
+          <div className="sub_inner">
+            <div className="cert_container">
+              <div className="cert_top">
+                <div className="top_left">
+                  <span className="category_label">{t('cert_cate_label')}</span>
+                  <h3 className="cert_main_title">
+                    <span className="cert_main_title_l1">{t('cert_main_tit_1')}</span>
+                    <br />
+                    <span className="cert_main_title_l2">{t('cert_main_tit_2')}</span>
+                  </h3>
+                  <div className="haccp_icon_wrap">
+                    <img
+                      src="/images/sub/cert/cert-haccp-mark.png"
+                      alt="HACCP MAFRA 인증 마크"
+                      className="haccp_icon"
+                      width="107"
+                      height="107"
+                    />
+                  </div>
+                </div>
+                <div className="top_right">
+                  <div className="cert_top_group">
+                    <h4 className="sub_bold_title">{t('cert_sub_tit')}</h4>
+                    <p className="cert_desc">{t('cert_desc')}</p>
+                  </div>
+                  <div className="haccp_benefit">
+                    <h5 className="benefit_title">{t('cert_benefit_tit')}</h5>
+                    <ul>
+                      <li>{t('cert_benefit_1')}</li>
+                      <li>{t('cert_benefit_2')}</li>
+                      <li>{t('cert_benefit_3')}</li>
+                      <li>{t('cert_benefit_4')}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="cert_bottom">
+                <div className="cert_grid">
+                  {CERTS.map((item) => (
+                    <div key={item.key} className="cert_card">
+                      <div className="cert_img_box">
+                        <div className="cert_img_inner">
+                          <img src={item.img} alt={t(item.key)} />
+                        </div>
+                      </div>
+                      <div className="cert_info">
+                        <p className="cert_name">{t(item.key)}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}

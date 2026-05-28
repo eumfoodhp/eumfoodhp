@@ -19,7 +19,7 @@ export default async function Header() {
           <nav className="gnb" aria-label="PC navigation">
             <div className="gnb_grid">
               <Link href="/about" className="gnb_main_link"><span>{t('menu_about')}</span></Link>
-              <Link href="/business/facility" className="gnb_main_link"><span>{t('menu_business')}</span></Link>
+              <Link href="/business" className="gnb_main_link"><span>{t('menu_business')}</span></Link>
               <Link href="/products/pickles" className="gnb_main_link"><span>{t('menu_product')}</span></Link>
               <Link href="/notice" className="gnb_main_link"><span>{t('menu_news')}</span></Link>
               <Link href="/contact" className="gnb_main_link"><span>{t('menu_inquiry')}</span></Link>
