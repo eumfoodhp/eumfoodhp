@@ -10,6 +10,7 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import SideNav from '@/components/SideNav';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
@@ -77,9 +78,19 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const factoryMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(t('loc_factory_addr'))}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
   const centerMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(t('loc_center_addr'))}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
 
+  const sections = [
+    { id: 'greeting', label: t('sub_greeting') },
+    { id: 'history', label: t('sub_history') },
+    { id: 'area', label: t('sub_biz_area') },
+    { id: 'organization', label: t('sub_org') },
+    { id: 'location', label: t('sub_location') },
+  ];
+
   return (
-    <main id="sub_contents" className="about_onepage">
-      {/* SubVisual 제거 — breadcrumb 는 각 SectionHeader 왼쪽에 inline 으로 들어감 */}
+    <main id="sub_contents" className="about_onepage onepage_layout">
+      <SideNav sections={sections} category={t('menu_about')} />
+
+      <div className="onepage_content">
 
       {/* ===== 1. 인사말 ===== */}
       <div id="greeting">
@@ -290,6 +301,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
+      </div>
+
       </div>
     </main>
   );

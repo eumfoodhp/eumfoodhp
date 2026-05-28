@@ -1515,3 +1515,135 @@ html[lang="zh"] .dl_title {
         padding: 10px 12px;
     }
 }
+
+/* ============================================================
+   원페이지 레이아웃 (.onepage_layout) — 좌측 sticky SideNav + 우측 컨텐츠
+   ============================================================ */
+.onepage_layout {
+    width: 1800px;
+    max-width: 93.75%;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.onepage_content {
+    min-width: 0;  /* grid 자식 overflow 방지 */
+}
+
+/* ============================================================
+   SideNav — 좌측 sticky 세로 네비 (스크롤스파이)
+   ============================================================ */
+.sidenav {
+    position: sticky;
+    top: 140px;  /* 헤더(top:16) + 헤더 높이(~88) + 여유 */
+    align-self: start;
+    padding: 8px 0;
+}
+
+.sidenav_category {
+    font-size: 13px;
+    font-weight: 600;
+    color: #F39800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-left: 16px;
+}
+
+.sidenav_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid #E5E7EB;
+}
+
+.sidenav_link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    margin-left: -1px;  /* border 위에 marker 겹치기 */
+    color: #9CA3AF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    border-left: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease, padding 0.2s ease;
+}
+
+.sidenav_marker {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px solid #D1D5DB;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.sidenav_link:hover {
+    color: #374151;
+}
+
+.sidenav_link:hover .sidenav_marker {
+    border-color: #F39800;
+}
+
+.sidenav_link.is_active {
+    color: #F39800;
+    border-left-color: #F39800;
+    font-weight: 700;
+    padding-left: 20px;
+}
+
+.sidenav_link.is_active .sidenav_marker {
+    background: #F39800;
+    border-color: #F39800;
+    transform: scale(1.3);
+}
+
+/* 모바일 — sidebar 위로 (가로 스크롤 가능) */
+@media (max-width: 1024px) {
+    .onepage_layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 24px;
+    }
+    .sidenav {
+        position: sticky;
+        top: 80px;
+        z-index: 50;
+        padding: 8px 16px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        border-radius: 14px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .sidenav::-webkit-scrollbar { display: none; }
+    .sidenav_category {
+        display: none;
+    }
+    .sidenav_list {
+        display: flex;
+        border-left: 0;
+        gap: 4px;
+        min-width: 100%;
+    }
+    .sidenav_link {
+        flex-shrink: 0;
+        padding: 8px 12px;
+        border-left: 0;
+        border-bottom: 2px solid transparent;
+    }
+    .sidenav_link.is_active {
+        padding-left: 12px;
+        border-left: 0;
+        border-bottom-color: #F39800;
+    }
+}

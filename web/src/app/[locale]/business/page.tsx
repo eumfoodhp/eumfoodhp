@@ -9,6 +9,7 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import SideNav from '@/components/SideNav';
 import FacilitySection from '@/components/FacilitySection';
 import '@/styles/sub.css';
 import '@/styles/business_facility.css';
@@ -48,9 +49,17 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
     { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('sub_prod_sauce'),   steps: 4, iconDir: 'biz-pf-sauce-flow' },
   ];
 
+  const sections = [
+    { id: 'facility', label: t('sub_facility') },
+    { id: 'process', label: t('sub_biz_process') },
+    { id: 'cert', label: t('sub_cert') },
+  ];
+
   return (
-    <main id="sub_contents" className="business_onepage">
-      {/* SubVisual 제거 — breadcrumb 는 각 SectionHeader 왼쪽에 inline */}
+    <main id="sub_contents" className="business_onepage onepage_layout">
+      <SideNav sections={sections} category={t('menu_business')} />
+
+      <div className="onepage_content">
 
       {/* ===== 1. 시설현황 ===== */}
       <div id="facility" className="business_facility_page">
@@ -151,6 +160,8 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
             </div>
           </div>
         </section>
+      </div>
+
       </div>
     </main>
   );
