@@ -1394,34 +1394,41 @@ html[lang="zh"] .dl_title {
 }
 
 /* ============================================================
-   SubHeader — 헤더 아래 얇은 인라인 텍스트 strip (미니멀)
-   pill/box 없이 단순 텍스트 리스트만.
+   SubHeader — 헤더 아래 pill (헤더와 동일 폭). 가로 균등 분배.
    ============================================================ */
 .sub_header {
     width: 1800px;
     max-width: 93.75%;
-    margin: 4px auto 0;
-    padding: 10px 24px 14px;
-    border-bottom: 1px solid #F3F4F6;
+    margin: 8px auto 0;
+    padding: 0 12px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 18px;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.06),
+        0 2px 6px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
 }
 
 .sub_header_nav_list {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 28px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    align-items: center;
 }
 
 .sub_header_nav_link {
-    display: inline-block;
-    font-size: 13px;
+    display: block;
+    text-align: center;
+    padding: 16px 8px;
+    font-size: 15px;
     font-weight: 500;
-    color: #9CA3AF;
+    color: #6B7280;
     text-decoration: none;
     letter-spacing: -0.2px;
-    padding: 2px 0;
     transition: color 0.15s ease;
     white-space: nowrap;
 }
@@ -1438,18 +1445,28 @@ html[lang="zh"] .dl_title {
 @media (max-width: 1024px) {
     .sub_header {
         max-width: calc(100% - 24px);
-        padding: 8px 16px 12px;
+        padding: 0 8px;
     }
-    .sub_header_nav_list {
-        gap: 18px;
+    .sub_header_nav_link {
+        padding: 12px 6px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 640px) {
+    .sub_header {
         overflow-x: auto;
         scrollbar-width: none;
-        flex-wrap: nowrap;
     }
-    .sub_header_nav_list::-webkit-scrollbar { display: none; }
+    .sub_header::-webkit-scrollbar { display: none; }
+    .sub_header_nav_list {
+        display: flex;
+        gap: 4px;
+        min-width: 100%;
+    }
     .sub_header_nav_link {
-        font-size: 12px;
         flex-shrink: 0;
+        padding: 10px 14px;
     }
 }
 
@@ -1930,5 +1947,43 @@ html[lang="zh"] .dl_title {
     /* 좁은 모바일에서 우측 floating dots 가 컨텐츠를 가릴 수 있어서 숨김 */
     .quick_jump_dots {
         display: none;
+    }
+}
+
+/* ============================================================
+   전체 페이지 컨테이너 폭 통일 — 헤더/SubHeader 와 동일하게 1800/93.75%.
+   .sub_inner, .product_inner, .footer_inner 등 모든 main wrapper 강제.
+   ============================================================ */
+.sub_inner,
+.product_inner,
+.footer_inner,
+.facility_status_inner,
+.location_inner,
+.cert_container,
+.org_container,
+.new_history_container,
+.biz_ov_inner,
+.biz_area_container,
+.biz_pf_inner {
+    width: 1800px !important;
+    max-width: 93.75% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 1024px) {
+    .sub_inner,
+    .product_inner,
+    .footer_inner,
+    .facility_status_inner,
+    .location_inner,
+    .cert_container,
+    .org_container,
+    .new_history_container,
+    .biz_ov_inner,
+    .biz_area_container,
+    .biz_pf_inner {
+        max-width: calc(100% - 24px) !important;
+        padding: 0 !important;
     }
 }
