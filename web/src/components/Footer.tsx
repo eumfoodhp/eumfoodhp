@@ -25,7 +25,8 @@ export default async function Footer() {
               <h3>INFO</h3>
               <div className="f_row">
                 <span>{t('ft_ceo')}</span>
-                <i className="v_line"></i>
+              </div>
+              <div className="f_row">
                 <span>{t('ft_biz_no')}</span>
               </div>
               <div className="f_row">
