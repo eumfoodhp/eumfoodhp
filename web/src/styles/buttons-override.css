@@ -1245,3 +1245,78 @@ html[lang="zh"] .dl_title {
     width: 72px;
     height: auto;
 }
+
+/* ============================================================
+   Footer 지도 배경 위 동적 펄스 마커
+   PNG 안에 그려진 정적 점 위에 라이브 펄스 효과 오버레이.
+   배경 이미지가 cover 라 정확한 좌표가 viewport 비율에 따라 변하지만,
+   대략 right 30% / top 50% 부근에 위치 → 시각적 강조.
+   ============================================================ */
+#footer .pulse_dot {
+    position: absolute;
+    /* 한반도 일러스트의 점(서울 근방) 추정 위치 */
+    top: 50%;
+    right: 24%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #10A34A;  /* 점 색과 동일 (초록) */
+    box-shadow: 0 0 0 4px rgba(16, 163, 74, 0.25);
+    z-index: 1;
+    pointer-events: none;
+    animation: pulseDot 2.2s ease-in-out infinite;
+}
+
+/* 마커 외곽으로 퍼지는 ring */
+#footer .pulse_dot::before,
+#footer .pulse_dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(16, 163, 74, 0.5);
+    animation: pulseRing 2.2s ease-out infinite;
+}
+
+#footer .pulse_dot::after {
+    animation-delay: 1.1s;
+}
+
+@keyframes pulseDot {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 4px rgba(16, 163, 74, 0.25);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 8px rgba(16, 163, 74, 0.15);
+    }
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(3.5);
+        opacity: 0;
+    }
+}
+
+/* prefers-reduced-motion: 사용자가 모션 꺼두면 정적 점만 */
+@media (prefers-reduced-motion: reduce) {
+    #footer .pulse_dot,
+    #footer .pulse_dot::before,
+    #footer .pulse_dot::after {
+        animation: none;
+    }
+}
+
+@media (max-width: 735px) {
+    #footer .pulse_dot {
+        right: 20%;
+        width: 10px;
+        height: 10px;
+    }
+}

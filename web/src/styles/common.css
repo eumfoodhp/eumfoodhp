@@ -902,10 +902,13 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     gap: 30px;
 }
 
+/* INFO / TEL / ADDRESS — justify-content: space-between 으로 좌·중·우 균등 분포.
+   각 박스는 컨텐츠 너비로만 차지 → 시각적으로 등간격. */
 .f_info_group {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
-    gap: 80px;
+    gap: 24px;  /* 최소 간격 (창 좁을 때 안 붙도록) */
 }
 
 .f_box {
@@ -913,12 +916,11 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-    /* 3등분 균등 칼럼 — INFO/TEL/ADDRESS 사이 간격 시각적으로 동일 */
-    flex: 1 1 0;
+    flex: 0 0 auto;  /* shrink-to-content, no grow */
     min-width: 0;
 }
 
-/* 컬럼별 개별 width/min-width 강제 해제 (위 flex: 1 1 0 적용) */
+/* 컬럼별 개별 width/min-width 강제 해제 */
 .info_box,
 .tel_box,
 .address_box {

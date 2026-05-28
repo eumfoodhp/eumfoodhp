@@ -5,6 +5,9 @@ export default async function Footer() {
 
   return (
     <footer id="footer">
+      {/* 한반도 배경 위 펄스 마커 — CSS 애니메이션 */}
+      <span className="pulse_dot" aria-hidden="true"></span>
+
       <div className="footer_inner">
         <div className="footer_top">
           <div className="f_logo">
