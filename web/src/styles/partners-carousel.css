@@ -108,10 +108,8 @@
     }
 }
 
-/* hover 시 ring 회전 정지 → 카드 살펴보기 쉽게 */
-.carousel_stage:hover .carousel_ring {
-    animation-play-state: paused;
-}
+/* hover 시에도 회전 계속 — 사용자 요청 */
+/* .carousel_stage:hover .carousel_ring { animation-play-state: paused; } */
 
 /* ============================================================
    카드 (원형 궤도 배치)
