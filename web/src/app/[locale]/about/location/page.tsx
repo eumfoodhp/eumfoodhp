@@ -89,6 +89,16 @@ export default async function LocationPage({
                     <div className="qr_item qr_item--mapimg">
                       <img
                         className="qr_img"
+                        src="/images/sub/tmap1.jpg"
+                        alt={t('loc_qr_tmap')}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span>{t('loc_qr_tmap')}</span>
+                    </div>
+                    <div className="qr_item qr_item--mapimg">
+                      <img
+                        className="qr_img"
                         src="/images/sub/kakao1.jpg"
                         alt={t('loc_qr_kakao')}
                         loading="lazy"
@@ -143,6 +153,27 @@ export default async function LocationPage({
                     <p className="content">{t('loc_center_tel')}</p>
                   </li>
                 </ul>
+
+                <div className="qr_section">
+                  <div className="qr_label_row">
+                    <span className="qr_label">{t('loc_qr_label')}</span>
+                    <span className="loc_pipe" aria-hidden="true"></span>
+                  </div>
+                  <div className="qr_group">
+                    <div className="qr_item qr_item--mapimg">
+                      <img className="qr_img" src="/images/sub/tmap1.jpg" alt={t('loc_qr_tmap')} loading="lazy" decoding="async" />
+                      <span>{t('loc_qr_tmap')}</span>
+                    </div>
+                    <div className="qr_item qr_item--mapimg">
+                      <img className="qr_img" src="/images/sub/kakao1.jpg" alt={t('loc_qr_kakao')} loading="lazy" decoding="async" />
+                      <span>{t('loc_qr_kakao')}</span>
+                    </div>
+                    <div className="qr_item qr_item--mapimg">
+                      <img className="qr_img" src="/images/sub/naver1.jpg" alt={t('loc_qr_naver')} loading="lazy" decoding="async" />
+                      <span>{t('loc_qr_naver')}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

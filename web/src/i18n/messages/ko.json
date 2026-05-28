@@ -484,7 +484,7 @@
       "address": "경기도 안성시 양성로 이현리 265 B1",
       "phone_label": "번호",
       "phones": {
-        "대표": "031-673-1125"
+        "대표": "031-673-1225"
       },
       "fax_label": "팩스",
       "fax": "031-321-6810 / 031-334-6811"
@@ -984,7 +984,7 @@
   "loc_factory_fax": "031-321-6810 / 031-334-6811",
   "loc_center_title": "물류센터",
   "loc_center_addr": "경기도 안성시 양성로 이현리 265 B1",
-  "loc_center_tel": "031-673-1125",
+  "loc_center_tel": "031-673-1225",
   "loc_qr_label": "QR",
   "loc_qr_tmap": "티맵",
   "loc_qr_kakao": "카카오맵",

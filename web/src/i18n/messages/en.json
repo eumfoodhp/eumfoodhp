@@ -484,7 +484,7 @@
       "address": "265 B1, Ihyeon-ri, Yangseong-ro, Anseong-si, Gyeonggi-do",
       "phone_label": "Phone",
       "phones": {
-        "representative": "031-673-1125"
+        "representative": "031-673-1225"
       },
       "fax_label": "fax",
       "fax": "031-321-6810 / 031-334-6811"
@@ -984,7 +984,7 @@
   "loc_factory_fax": "031-321-6810 / 031-334-6811",
   "loc_center_title": "Hwasan Food System Logistics Center",
   "loc_center_addr": "265 B1, Ihyeon-ri, Yangseong-ro, Anseong-si, Gyeonggi-do",
-  "loc_center_tel": "031-673-1125",
+  "loc_center_tel": "031-673-1225",
   "loc_qr_label": "QR",
   "loc_qr_tmap": "T map",
   "loc_qr_kakao": "Kakao Map",

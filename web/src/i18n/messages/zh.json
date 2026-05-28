@@ -484,7 +484,7 @@
       "address": "京畿道安城市阳城路李贤里265 B1",
       "phone_label": "电话",
       "phones": {
-        "代表": "031-673-1125"
+        "代表": "031-673-1225"
       },
       "fax_label": "传真",
       "fax": "031-321-6810 / 031-334-6811"
@@ -984,7 +984,7 @@
   "loc_factory_fax": "031-321-6810 / 031-334-6811",
   "loc_center_title": "华山食品系统物流中心",
   "loc_center_addr": "京畿道安城市阳城路李贤里265 B1",
-  "loc_center_tel": "031-673-1125",
+  "loc_center_tel": "031-673-1225",
   "loc_qr_label": "QR",
   "loc_qr_tmap": "T图",
   "loc_qr_kakao": "卡考地图",
