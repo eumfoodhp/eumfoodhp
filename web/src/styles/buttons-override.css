@@ -1673,3 +1673,241 @@ html[lang="zh"] .dl_title {
         font-size: 24px;
     }
 }
+
+/* ============================================================
+   섹션 경계 강화 — 상단에 큰 인덱스 배지 + 진한 구분선
+   ============================================================ */
+
+/* 섹션 헤더: 좌측에 큰 주황 인덱스 + 가로 라인 + 타이틀 */
+.story_section {
+    position: relative;
+    /* 짝수 섹션은 살짝 다른 톤 배경으로 챕터 구분 */
+}
+
+.story_section:nth-of-type(even) {
+    background: linear-gradient(180deg, #FFFBF5 0%, #ffffff 100%);
+}
+
+.story_section_head {
+    width: 1800px;
+    max-width: 93.75%;
+    margin: 0 auto;
+    padding: 100px 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    border-bottom: 1px solid #F3F4F6;
+    margin-bottom: 8px;
+}
+
+.story_section_index {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: #F39800;
+    color: #fff;
+    border-radius: 16px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 8px 20px rgba(243, 152, 0, 0.25);
+}
+
+.story_section_title {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.6px;
+    line-height: 1.2;
+    position: relative;
+}
+
+.story_section_title::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 28px;
+    background: #F39800;
+    border-radius: 2px;
+}
+
+/* NextSectionLink — 구분선 더 진하게 */
+.next_section {
+    margin-top: 100px;
+}
+
+.next_section_divider {
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #F39800 20%,
+        #F39800 80%,
+        transparent 100%
+    );
+    opacity: 0.4;
+}
+
+.next_section_divider span {
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 0 0 6px #fff, 0 0 0 7px rgba(243, 152, 0, 0.3);
+}
+
+/* ============================================================
+   QuickJumpDots — 우측 floating sticky 바로가기
+   ============================================================ */
+.quick_jump_dots {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 16px 12px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.qjd_link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 4px 2px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.qjd_dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #D1D5DB;
+    background: transparent;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.qjd_link:hover .qjd_dot {
+    border-color: #F39800;
+    transform: scale(1.2);
+}
+
+.qjd_link.is_active .qjd_dot {
+    background: #F39800;
+    border-color: #F39800;
+    transform: scale(1.4);
+    box-shadow: 0 0 0 4px rgba(243, 152, 0, 0.15);
+}
+
+/* 툴팁 (hover 시 좌측에 떠오름) */
+.qjd_tooltip {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: #111827;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.qjd_tooltip::after {
+    /* 작은 화살 꼬리 */
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: #111827;
+}
+
+.qjd_tooltip_num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #F39800;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+}
+
+.qjd_tooltip_label {
+    color: #fff;
+}
+
+.qjd_link:hover .qjd_tooltip,
+.qjd_link.is_active .qjd_tooltip {
+    opacity: 0;  /* 기본 안 보임 */
+}
+
+.qjd_link:hover .qjd_tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* 모바일 — 작아지고 우측 가장자리에 살짝 붙음 */
+@media (max-width: 1024px) {
+    .quick_jump_dots {
+        right: 12px;
+        gap: 12px;
+        padding: 12px 8px;
+    }
+    .qjd_dot {
+        width: 8px;
+        height: 8px;
+    }
+    .story_section_head {
+        padding: 64px 0 24px;
+        gap: 16px;
+    }
+    .story_section_index {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+        border-radius: 12px;
+    }
+    .story_section_title {
+        font-size: 26px;
+    }
+    .story_section_title::before {
+        height: 22px;
+        left: -12px;
+    }
+}
+
+@media (max-width: 640px) {
+    /* 좁은 모바일에서 우측 floating dots 가 컨텐츠를 가릴 수 있어서 숨김 */
+    .quick_jump_dots {
+        display: none;
+    }
+}
