@@ -139,12 +139,15 @@
         filter 0.5s ease,
         transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
-    border-radius: 18px;
+    border-radius: 20px;
     overflow: hidden;
     background: #fff;
+    /* 다중 그림자 — 떠있는 느낌 */
     box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.12),
-        0 6px 14px rgba(0, 0, 0, 0.08);
+        0 1px 0 rgba(255, 255, 255, 0.9) inset,
+        0 0 0 1px rgba(0, 0, 0, 0.04),
+        0 20px 50px rgba(0, 0, 0, 0.12),
+        0 6px 14px rgba(0, 0, 0, 0.06);
     cursor: pointer;
 
     /* 바닥 반사 효과 (WebKit / Chromium) */
@@ -164,56 +167,48 @@
         0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* 카드 내부: 깨끗한 흰 배경 + 원본 컬러 로고 + 하단 라벨 */
+/* 카드 내부: 깨끗한 흰 배경 + 원본 컬러 로고만 */
 .carousel_card .card_bg {
     position: absolute;
     inset: 0;
-    background: #ffffff;
+    background:
+        radial-gradient(circle at 30% 25%, rgba(243, 152, 0, 0.04), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, #fbfbfc 100%);
     z-index: 0;
+}
+
+/* 미세한 윗쪽 빛 — 프리미엄 카드 느낌 */
+.carousel_card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent 30%);
+    pointer-events: none;
+    z-index: 3;
 }
 
 .carousel_card .card_logo_wrap {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 48px;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 28px 20px;
+    padding: 32px 24px;
     z-index: 1;
 }
 
 .carousel_card .card_logo {
-    max-width: 85%;
-    max-height: 70%;
+    max-width: 75%;
+    max-height: 65%;
     object-fit: contain;
     /* 원본 색 유지. 카드 자체의 grayscale 필터로 흑백 처리됨. */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.carousel_card .card_label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px 14px;
-    background: #fafafa;
-    border-top: 1px solid #f1f1f1;
-    color: #555;
-    font-size: 12px;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: -0.2px;
-    z-index: 2;
-    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-}
-
-/* hover 시 라벨도 강조 */
-.carousel_card:hover .card_label {
-    background: #FFF6EC;
-    color: #F39800;
-    border-top-color: #F39800;
+/* hover 시 로고 살짝 더 큼직하게 */
+.carousel_card:hover .card_logo {
+    transform: scale(1.06);
 }
 
 /* ============================================================

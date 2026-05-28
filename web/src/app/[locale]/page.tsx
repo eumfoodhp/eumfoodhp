@@ -251,7 +251,6 @@ export default async function HomePage({
                         loading="lazy"
                       />
                     </div>
-                    <div className="card_label">{p.name}</div>
                   </div>
                 ))}
               </div>
