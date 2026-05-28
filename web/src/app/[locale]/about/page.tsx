@@ -10,7 +10,7 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SideNav from '@/components/SideNav';
+import ProgressNav from '@/components/ProgressNav';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
@@ -87,8 +87,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   ];
 
   return (
-    <main id="sub_contents" className="about_onepage onepage_layout">
-      <SideNav sections={sections} category={t('menu_about')} />
+    <main id="sub_contents" className="about_onepage onepage_progress">
+      <ProgressNav sections={sections} category={t('menu_about')} />
 
       <div className="onepage_content">
 

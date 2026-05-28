@@ -9,7 +9,7 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SideNav from '@/components/SideNav';
+import ProgressNav from '@/components/ProgressNav';
 import FacilitySection from '@/components/FacilitySection';
 import '@/styles/sub.css';
 import '@/styles/business_facility.css';
@@ -56,8 +56,8 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
   ];
 
   return (
-    <main id="sub_contents" className="business_onepage onepage_layout">
-      <SideNav sections={sections} category={t('menu_business')} />
+    <main id="sub_contents" className="business_onepage onepage_progress">
+      <ProgressNav sections={sections} category={t('menu_business')} />
 
       <div className="onepage_content">
 
