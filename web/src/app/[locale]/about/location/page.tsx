@@ -15,8 +15,11 @@ export default async function LocationPage({
   const t = await getTranslations();
 
   const mapHl = locale === 'zh' ? 'zh-CN' : locale;
-  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
+  const factoryMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
     t('loc_factory_addr')
+  )}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
+  const centerMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
+    t('loc_center_addr')
   )}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
 
   return (
@@ -33,10 +36,11 @@ export default async function LocationPage({
 
         <section className="location_content_section">
           <div className="sub_inner location_inner">
+            {/* 본사·공장 */}
             <div className="location_row">
               <div className="map_area" id="map_yongin">
                 <iframe
-                  src={mapSrc}
+                  src={factoryMapSrc}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -104,6 +108,41 @@ export default async function LocationPage({
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* 물류센터 */}
+            <div className="location_row location_row--center">
+              <div className="map_area" id="map_anseong">
+                <iframe
+                  src={centerMapSrc}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={t('loc_center_title')}
+                />
+              </div>
+              <div className="info_area">
+                <div className="loc_heading">
+                  <span className="loc_cate">{t('loc_way_to_come')}</span>
+                  <h3 className="loc_name">{t('loc_center_title')}</h3>
+                </div>
+
+                <ul className="loc_detail_list">
+                  <li className="loc_detail_row">
+                    <span className="label">{t('loc_factory_addr_label')}</span>
+                    <span className="loc_pipe" aria-hidden="true"></span>
+                    <p className="content">{t('loc_center_addr')}</p>
+                  </li>
+                  <li className="loc_detail_row">
+                    <span className="label">{t('loc_factory_tel_label')}</span>
+                    <span className="loc_pipe" aria-hidden="true"></span>
+                    <p className="content">{t('loc_center_tel')}</p>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
