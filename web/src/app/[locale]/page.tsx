@@ -18,16 +18,6 @@ type ProdItem = {
   weight?: string;
   hide_meta?: boolean;
 };
-type DirTab = {
-  name: string;
-  addr_label: string;
-  address: string;
-  phone_label: string;
-  phones: Record<string, string>;
-  fax_label: string;
-  fax: string;
-};
-
 function productImageUrl(img: string) {
   if (img.startsWith('/') || /^https?:\/\//i.test(img)) return img;
   return `/images/main/${img}`;
@@ -47,7 +37,7 @@ export default async function HomePage({
   const prodCategories = t.raw('main_prod_categories') as ProdCategory[];
   const prodList = t.raw('main_prod_list') as Record<string, ProdItem[]>;
   const partners = t.raw('main_partner_logos') as Array<{ img: string }>;
-  const dirTabs = t.raw('main_dir_tabs') as Record<string, DirTab>;
+  // dirTabs / DirTab 제거 — direction 섹션 텍스트 전부 footer 로 이관됨.
 
   const mapFactorySrc =
     locale === 'en'
@@ -309,6 +299,8 @@ export default async function HomePage({
         </section>
 
         <section className="direction_section">
+          {/* 텍스트 전부 삭제 — 위치/연락처는 모두 footer 에 통합.
+              지도 일러스트만 표시. */}
           <img
             src={mapFactorySrc}
             alt={t('main_dir_title')}
@@ -316,51 +308,6 @@ export default async function HomePage({
             id="dir_map_img"
             data-map-factory={mapFactorySrc}
           />
-
-          <div className="direction_inner">
-            <div className="dir_content_area">
-              <div className="dir_header">
-                <span className="dir_sub">{t('main_dir_sub')}</span>
-                <h2 className="dir_title">{t('main_dir_title')}</h2>
-                <p className="dir_desc">{t('main_dir_desc')}</p>
-              </div>
-
-              <div className="dir_tabs">
-                <button type="button" className="dir_tab_btn active" data-dir="factory">
-                  {dirTabs.factory?.name}
-                </button>
-              </div>
-
-              <div className="dir_info_box">
-                {Object.entries(dirTabs).map(([key, info]) => (
-                  <div
-                    key={key}
-                    className={`dir_detail_group${key === 'factory' ? ' active' : ''}`}
-                    data-dir={key}
-                  >
-                    <div className="detail_item">
-                      <span className="detail_label">{info.addr_label}</span>
-                      <p className="detail_val">{info.address}</p>
-                    </div>
-                    <div className="detail_item">
-                      <span className="detail_label">{info.phone_label}</span>
-                      <div className="detail_val phone_grid">
-                        {Object.entries(info.phones).map(([pName, pNum]) => (
-                          <span key={pName}>
-                            {pName} : {pNum}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="detail_item">
-                      <span className="detail_label">{info.fax_label}</span>
-                      <p className="detail_val">{info.fax}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </section>
       </main>
 

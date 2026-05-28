@@ -42,6 +42,10 @@ export default async function Footer() {
                 <span>{t('ft_tel_purchase')}</span>
                 <i className="v_line tel_sep" aria-hidden="true"></i>
                 <span>{t('ft_tel_dev')}</span>
+                <span>{t('ft_tel_acc')}</span>
+              </div>
+              <div className="f_row" style={{ marginTop: 8 }}>
+                <span>{t('ft_fax')}</span>
               </div>
             </div>
 

@@ -132,10 +132,40 @@
     box-sizing: border-box !important;
 }
 
-/* ※ 1024px 이하 .dir_bg_map 50%-크롭/mask/opacity 강제 override 제거.
-   기존엔 모바일에서 한반도 좌측을 잘라내고 페이드 처리했는데 1024px 경계에서
-   이미지 모양이 갑자기 바뀌는 점프가 발생했음.
-   대신 main.css 원본의 자연 흐름(width:100%, height:auto, 비율 유지) 사용. */
+/* ※ 모든 뷰포트에서 지도가 점프 없이 부드럽게 축소되도록 옵션 B 적용:
+   1024px 이상에서도 .dir_bg_map 을 자연 비율로 표시 (position:relative).
+   .dir_content_area 도 absolute → relative 로 일관 처리.
+   원본 main.css 의 1024px 미디어쿼리 동작을 전 뷰포트 강제. */
+.direction_section {
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+}
+
+.direction_section .dir_bg_map {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: unset !important;
+    display: block !important;
+    z-index: 1;
+}
+
+.direction_section .dir_content_area {
+    position: relative !important;
+    top: auto !important;
+    left: 32px !important;
+    transform: none !important;
+    width: calc(100% - 64px) !important;
+    max-width: 1100px !important;
+    margin: 0 auto;
+    padding: 48px 0 64px !important;
+    gap: 24px;
+}
 
 /* ============================================================
    서브탭바를 배너 이미지 안 → 아래로 빼고 다크 텍스트로 전환

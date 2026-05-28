@@ -561,6 +561,8 @@
   "ft_tel_sales": "(영업) 070-4334-5206",
   "ft_tel_purchase": "(구매) 070-4334-5207",
   "ft_tel_dev": "(연구개발팀) 070-7733-5887",
+  "ft_tel_acc": "(회계) 070-4334-5205",
+  "ft_fax": "FAX 031-321-6810 / 031-334-6811",
   "ft_copyright": "Copyrights &copy; ㈜이음푸드시스템. All rights reserved.",
   "proc_braised_top_sub": "Operational Excellence",
   "proc_braised_top_main": "기술적측면",
