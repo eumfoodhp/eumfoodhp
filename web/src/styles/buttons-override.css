@@ -508,9 +508,9 @@
     --gnb-column-gap: 8px !important;
 }
 
-/* mega_col 통일 — cell 폭(96px) 살짝 넘는 정도 + 셀 가운데 정렬 */
+/* mega_col 우측 정렬 (사용자 요청) */
 .mega_col {
-    justify-self: center !important;
+    justify-self: end !important;
     width: max-content !important;
     min-width: 130px !important;
     max-width: 180px !important;
