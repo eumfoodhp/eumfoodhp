@@ -1,7 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { supportTabs } from '@/lib/sub-tabs';
 import { submitContact } from '../actions';
 import '@/styles/sub.css';
@@ -14,14 +12,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
   return (
     <main id="sub_contents" className="contact_write_page">
-      <SubVisual
-        parentLabel={t('menu_support')}
-        currentLabel={t('contact_write')}
-        title={t('contact_write')}
-        desc={t('contact_write_desc')}
-        tabBar={<SubTabBar tabs={supportTabs(t)} activeKey="contact" />}
-      />
-
       <div className="sub_inner">
         <form action={submitContact} className="public_form">
           {/* honeypot 봇 차단 — 사람은 안 보임 */}

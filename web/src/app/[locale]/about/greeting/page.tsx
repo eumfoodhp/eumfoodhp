@@ -1,6 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
 import { nl2br } from '@/lib/nl2br';
 import '@/styles/sub.css';
@@ -18,14 +16,6 @@ export default async function GreetingPage({
     <>
 
       <main id="sub_contents" className="greeting_page">
-        <SubVisual
-          parentLabel={t('menu_about')}
-          currentLabel={t('sub_greeting')}
-          title={t('greeting_title')}
-          desc={t('sub_banner_greeting_desc')}
-          tabBar={<SubTabBar tabs={aboutTabs(t)} activeKey="greeting" />}
-        />
-
         <section className="ceo_intro_section">
           <div className="ceo_inner">
             <div className="ceo_main_group">

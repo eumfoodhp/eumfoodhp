@@ -1,7 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { newsroomTabs } from '@/lib/sub-tabs';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/sub.css';
@@ -24,14 +22,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
   return (
     <main id="sub_contents" className="notice_page">
-      <SubVisual
-        parentLabel={t('menu_news')}
-        currentLabel={t('sub_notice')}
-        title={t('sub_notice')}
-        desc=""
-        tabBar={<SubTabBar tabs={newsroomTabs(t)} activeKey="notice" />}
-      />
-
       <div className="sub_inner">
         <div className="public_list_head">
           <span className="public_list_count">총 {list?.length ?? 0}건</span>

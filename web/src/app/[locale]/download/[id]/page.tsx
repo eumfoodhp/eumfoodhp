@@ -1,8 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { newsroomTabs } from '@/lib/sub-tabs';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/sub.css';
@@ -37,14 +35,6 @@ export default async function Page({
 
   return (
     <main id="sub_contents" className="download_view_page">
-      <SubVisual
-        parentLabel={t('menu_news')}
-        currentLabel={t('sub_board')}
-        title={t('sub_board')}
-        desc=""
-        tabBar={<SubTabBar tabs={newsroomTabs(t)} activeKey="download" />}
-      />
-
       <div className="sub_inner">
         <article className="public_view">
           <header className="public_view_head">

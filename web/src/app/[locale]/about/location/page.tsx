@@ -1,6 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
 import '@/styles/sub.css';
 import '@/styles/about_location.css';
@@ -26,14 +24,6 @@ export default async function LocationPage({
     <>
 
       <main id="sub_contents" className="location_page">
-        <SubVisual
-          parentLabel={t('menu_about')}
-          currentLabel={t('loc_title')}
-          title={t('loc_title')}
-          desc={t('loc_sub_banner_desc')}
-          tabBar={<SubTabBar tabs={aboutTabs(t)} activeKey="location" />}
-        />
-
         <section className="location_content_section">
           <div className="sub_inner location_inner">
             {/* 본사·공장 */}

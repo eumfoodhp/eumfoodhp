@@ -1,6 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { businessTabs } from '@/lib/sub-tabs';
 import '@/styles/sub.css';
 import '@/styles/business_process.css';
@@ -36,15 +34,6 @@ export default async function BusinessProcessPage({
   return (
     <>
       <main id="sub_contents" className="business_process_page">
-        <SubVisual
-          parentLabel={t('menu_business')}
-          currentLabel={t('sub_biz_process')}
-          title={t('sub_biz_process')}
-          desc={t('biz_process_sub_desc')}
-          tabBar={<SubTabBar tabs={businessTabs(t)} activeKey="process" />}
-          heroClass="business_process_hero_visual"
-        />
-
         {CATEGORIES.map((cat) => (
           <section
             key={cat.key}

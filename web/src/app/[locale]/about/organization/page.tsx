@@ -1,6 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
 import '@/styles/sub.css';
 import '@/styles/about_organization.css';
@@ -27,14 +25,6 @@ export default async function OrganizationPage({
     <>
 
       <main id="sub_contents" className="organization_page">
-        <SubVisual
-          parentLabel={t('menu_about')}
-          currentLabel={t('sub_tab_org')}
-          title={t('org_title')}
-          desc={t('org_sub_banner_desc')}
-          tabBar={<SubTabBar tabs={aboutTabs(t)} activeKey="org" />}
-        />
-
         <section className="org_content_section">
           <div className="org_container">
             <div className="org_chart_wrap">

@@ -1,8 +1,6 @@
 import BrochureLink from '@/components/BrochureLink';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Script from 'next/script';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { productsTabs } from '@/lib/sub-tabs';
 import '@/styles/sub.css';
 import '@/styles/product_pickles.css';
@@ -19,15 +17,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   return (
     <>
       <main id="sub_contents" className="product_page product_pickles_page">
-        <SubVisual
-          parentLabel={t('menu_product')}
-          currentLabel={t('sub_prod_pickles')}
-          title={t('sub_prod_pickles')}
-          desc={t('fac_sub_desc')}
-          tabBar={<SubTabBar tabs={productsTabs(t)} activeKey="pickles" />}
-          heroClass="product_pickles_hero_visual"
-        />
-
         <section className="product_list_section">
           <div className="product_inner">
             <div className="product_top_area">

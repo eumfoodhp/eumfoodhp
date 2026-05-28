@@ -1,6 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Script from 'next/script';
-import SubVisual from '@/components/SubVisual';
 import { nl2br } from '@/lib/nl2br';
 import '@/styles/sub.css';
 
@@ -14,13 +13,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   return (
     <>
       <main id="sub_contents" className="process_page">
-        <SubVisual
-          parentLabel={t('sub_biz_process')}
-          currentLabel={t('sub_proc_braised')}
-          title={t('sub_proc_braised')}
-          desc={t('sub_proc_slogan')}
-        />
-
         <section className="process_content_section">
           <div className="process_inner">
             <div className="process_top_info">

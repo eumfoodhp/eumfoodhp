@@ -1,7 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Script from 'next/script';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { aboutTabs } from '@/lib/sub-tabs';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
@@ -67,14 +65,6 @@ export default async function HistoryPage({
     <>
 
       <main id="sub_contents" className="history_page">
-        <SubVisual
-          parentLabel={t('menu_about')}
-          currentLabel={t('sub_tab_history')}
-          title={t('history_title')}
-          desc={t('sub_banner_history_desc')}
-          tabBar={<SubTabBar tabs={aboutTabs(t)} activeKey="history" />}
-        />
-
         <section className="new_history_section">
           <div className="sub_inner">
             <div className="new_history_container">

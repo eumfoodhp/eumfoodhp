@@ -1,7 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { supportTabs } from '@/lib/sub-tabs';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/sub.css';
@@ -31,14 +29,6 @@ export default async function Page({
 
   return (
     <main id="sub_contents" className="contact_page">
-      <SubVisual
-        parentLabel={t('menu_support')}
-        currentLabel={t('sub_inquiry_1to1')}
-        title={t('sub_inquiry_1to1')}
-        desc={t('contact_hero_desc')}
-        tabBar={<SubTabBar tabs={supportTabs(t)} activeKey="contact" />}
-      />
-
       <div className="sub_inner">
         {sp.submitted === '1' && (
           <div className="public_notice success" role="status">

@@ -128,8 +128,8 @@
 .business_section .business_inner,
 .process_section .process_inner,
 .process_section--cards .process_inner {
-    width: 1800px !important;
-    max-width: 93.75% !important;
+    width: 1580px !important;
+    max-width: 95% !important;
     margin: 0 auto !important;
     padding: 0 !important;
     box-sizing: border-box !important;
@@ -365,8 +365,8 @@
     left: auto !important;
     right: auto !important;
     transform: none !important;
-    width: 1800px !important;
-    max-width: 93.75% !important;
+    width: 1580px !important;
+    max-width: 95% !important;
     margin: 16px auto 24px !important;
     padding: 0 !important;
     border-radius: 18px !important;
@@ -1328,16 +1328,16 @@ html[lang="zh"] .dl_title {
    ============================================================ */
 .about_onepage .sub_inner,
 .business_onepage .sub_inner {
-    width: 1800px !important;
-    max-width: 93.75% !important;
+    width: 1580px !important;
+    max-width: 95% !important;
     margin: 0 auto !important;
 }
 
 /* SectionHeader 도 같은 폭 (헤더 1800/93.75%) — 명시 강제 */
 .about_onepage .section_header_inner,
 .business_onepage .section_header_inner {
-    width: 1800px !important;
-    max-width: 93.75% !important;
+    width: 1580px !important;
+    max-width: 95% !important;
     margin: 0 auto !important;
 }
 
@@ -1360,8 +1360,8 @@ html[lang="zh"] .dl_title {
 /* SectionHeader 폭 정확히 강제 — 더 높은 specificity */
 .about_onepage .section_header .section_header_inner,
 .business_onepage .section_header .section_header_inner {
-    width: 1800px !important;
-    max-width: 93.75% !important;
+    width: 1580px !important;
+    max-width: 95% !important;
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box !important;
@@ -1397,8 +1397,8 @@ html[lang="zh"] .dl_title {
    SubHeader — 헤더 아래 pill (헤더와 동일 폭). 가로 균등 분배.
    ============================================================ */
 .sub_header {
-    width: 1800px;
-    max-width: 93.75%;
+    width: 1580px;
+    max-width: 95%;
     margin: 8px auto 0;
     padding: 0 12px;
     background: #fff;
@@ -1478,8 +1478,8 @@ html[lang="zh"] .dl_title {
     position: sticky;
     top: 112px;
     z-index: 90;
-    width: 1800px;
-    max-width: 93.75%;
+    width: 1580px;
+    max-width: 95%;
     margin: 8px auto 0;
     box-sizing: border-box;
     background: #fff;
@@ -1568,8 +1568,8 @@ html[lang="zh"] .dl_title {
 
 /* 각 섹션 시작 헤더: 큰 인덱스 번호 + 큰 타이틀 */
 .story_section_head {
-    width: 1800px;
-    max-width: 93.75%;
+    width: 1580px;
+    max-width: 95%;
     margin: 0 auto;
     padding: 80px 0 32px;
     display: flex;
@@ -1597,8 +1597,8 @@ html[lang="zh"] .dl_title {
 
 /* NextSectionLink — 섹션 사이 구분 + 화살표 버튼 */
 .next_section {
-    width: 1800px;
-    max-width: 93.75%;
+    width: 1580px;
+    max-width: 95%;
     margin: 80px auto 0;
     display: flex;
     flex-direction: column;
@@ -1727,8 +1727,8 @@ html[lang="zh"] .dl_title {
 }
 
 .story_section_head {
-    width: 1800px;
-    max-width: 93.75%;
+    width: 1580px;
+    max-width: 95%;
     margin: 0 auto;
     padding: 100px 0 40px;
     display: flex;
@@ -1965,8 +1965,8 @@ html[lang="zh"] .dl_title {
 .biz_ov_inner,
 .biz_area_container,
 .biz_pf_inner {
-    width: 1800px !important;
-    max-width: 93.75% !important;
+    width: 1580px !important;
+    max-width: 95% !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
 }

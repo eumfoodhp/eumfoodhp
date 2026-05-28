@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import SubVisual from '@/components/SubVisual';
-import SubTabBar from '@/components/SubTabBar';
 import { businessTabs } from '@/lib/sub-tabs';
 import '@/styles/sub.css';
 import '@/styles/business_facility.css';
@@ -29,16 +27,6 @@ export default function FacilityPage() {
     <>
 
       <main id="sub_contents" className="business_facility_page">
-        <SubVisual
-          parentLabel={t('menu_business')}
-          currentLabel={t('sub_facility')}
-          title={t('fac_title')}
-          desc={t('fac_sub_desc')}
-          tabBar={<SubTabBar tabs={businessTabs(t)} activeKey="facility" />}
-          heroClass="business_facility_hero_visual"
-          showHero
-        />
-
         <section className="facility_status_section">
           <div className="facility_status_inner">
             <div className="facility_status_head">
