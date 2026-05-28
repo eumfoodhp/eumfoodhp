@@ -95,26 +95,147 @@
 }
 
 /* ============================================================
-   메인 페이지 .direction_section (오시는 길)
-   Figma 원본대로 화면 가로 풀 와이드(박스 X), 좌측 콘텐츠는 sub_inner 폭 안에서 정렬
+   메인 페이지 .direction_section v2 (오시는 길 — 풀폭 지도 + 떠있는 카드)
+   Apple Maps 스타일. iframe = 인터랙티브 Google Maps.
+   카드는 데스크탑 좌측 absolute, 모바일 지도 아래 스택.
    ============================================================ */
-.direction_section {
+.direction_section.direction_v2 {
+    position: relative !important;
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
     border-radius: 0 !important;
     box-shadow: none !important;
+    background: none !important;
+    overflow: hidden;
 }
 
-/* 좌측 텍스트는 sub_inner 컨테이너(max 1580px) 안에서 좌측 정렬 */
-.direction_section .direction_inner {
-    padding: 0 32px !important;
-    box-sizing: border-box !important;
+/* 지도 iframe — 풀폭, 가변 높이 */
+.direction_v2 .dir_map_iframe {
+    display: block;
+    width: 100%;
+    height: 640px;
+    border: 0;
+    background: #F3F4F6;
 }
 
-/* dir_content_area 는 position:absolute 라서 부모 padding 무시 → left 직접 조정 */
-.direction_section .dir_content_area {
-    left: 32px !important;
+/* 카드 wrap — 컨테이너 max-width 안에서 좌측 정렬용 */
+.direction_v2 .dir_card_wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none; /* 카드 영역 외엔 지도 클릭 가능 */
+    display: flex;
+    align-items: center;
+    padding: 0 max(32px, calc((100% - 1580px) / 2));
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.direction_v2 .dir_card {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 420px;
+    padding: 36px 32px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.direction_v2 .dir_sub {
+    display: block;
+    margin-bottom: 8px;
+    color: #F39800;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.direction_v2 .dir_title {
+    margin: 0 0 12px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.35;
+}
+
+.direction_v2 .dir_desc {
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: #6B7280;
+    line-height: 1.6;
+}
+
+.direction_v2 .dir_card_info {
+    padding-top: 20px;
+    border-top: 1px solid #E5E7EB;
+}
+
+.direction_v2 .dc_row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: start;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.direction_v2 .dc_row + .dc_row {
+    border-top: 1px solid #F3F4F6;
+}
+
+.direction_v2 .dc_label {
+    color: #9CA3AF;
+    font-size: 12px;
+    font-weight: 600;
+    padding-top: 2px;
+    letter-spacing: 0.04em;
+}
+
+.direction_v2 .dc_val {
+    margin: 0;
+    color: #1F2937;
+    word-break: keep-all;
+}
+
+.direction_v2 .dc_phones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+    font-size: 13px;
+}
+
+.direction_v2 .dc_phones em {
+    color: #9CA3AF;
+    font-style: normal;
+    margin-right: 4px;
+}
+
+.direction_v2 .dir_card_cta {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: #F39800;
+    color: #fff;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.direction_v2 .dir_card_cta:hover {
+    background: #E08A00;
 }
 
 /* ============================================================
@@ -132,47 +253,67 @@
     box-sizing: border-box !important;
 }
 
-@media (max-width: 1024px) {
-    .direction_section {
-        width: 100% !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        height: 540px !important;
-        background-color: #FFF6EC !important;
-    }
-    /* 지도 텍스트(말풍선)는 이미지 좌측에 있으므로, 우측 절반만 보이게 크롭해서
-       한반도 지형 윤곽만 노출. 카드 우측에 부드럽게 페이드. */
-    .direction_section .dir_bg_map {
-        display: block !important;
-        position: absolute !important;
-        right: 0 !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: auto !important;
-        width: 50% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: right center !important;
-        opacity: 0.55 !important;
-        pointer-events: none;
-        /* 왼쪽 가장자리 자연스럽게 페이드 → 카드 배경에 녹아듦 */
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 40%, #000 80%);
-        mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 40%, #000 80%);
-    }
+/* ============================================================
+   메인 페이지 .notice_section / .product_section / .business_section
+   1024~1580px 뷰포트에서 .*_inner 가 좌단에 붙는 문제 fix
+   (기존엔 max-width:1024px 미디어쿼리에서만 padding 0 32px 적용됨)
+   ============================================================ */
+.notice_section .notice_inner,
+.product_section .product_inner,
+.business_section .business_inner {
+    width: 100% !important;
+    max-width: 1580px !important;
+    margin: 0 auto !important;
+    padding: 0 32px !important;
+    box-sizing: border-box !important;
 }
 
-@media (max-width: 735px) {
-    .direction_section {
-        width: 100% !important;
-        margin: 0 !important;
-        border-radius: 0 !important;
-        height: 480px !important;
+/* ---------- direction_v2 반응형 ---------- */
+@media (max-width: 900px) {
+    /* 카드가 지도 위에 떠있으면 모바일에선 화면 다 가림 → 지도 아래로 스택 */
+    .direction_section.direction_v2 {
+        height: auto !important;
+    }
+    .direction_v2 .dir_map_iframe {
+        height: 360px;
+    }
+    .direction_v2 .dir_card_wrap {
+        position: static;
+        padding: 0;
+        display: block;
+    }
+    .direction_v2 .dir_card {
+        max-width: none;
+        width: 100%;
+        box-sizing: border-box;
+        margin: -24px 0 0; /* 지도 하단과 살짝 겹쳐 어색한 경계 부드럽게 */
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06);
+        padding: 28px 24px 40px;
+    }
+    .direction_v2 .dir_title {
+        font-size: 22px;
+    }
+    .direction_v2 .dc_phones {
+        grid-template-columns: 1fr;
+        gap: 4px;
     }
 }
 
 @media (max-width: 480px) {
-    .direction_section {
-        height: 440px !important;
+    .direction_v2 .dir_map_iframe {
+        height: 300px;
+    }
+    .direction_v2 .dir_card {
+        padding: 24px 20px 32px;
+    }
+    .direction_v2 .dir_title {
+        font-size: 20px;
+    }
+    .direction_v2 .dc_row {
+        grid-template-columns: 50px 1fr;
+        gap: 8px;
+        font-size: 13px;
     }
 }
 

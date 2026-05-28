@@ -49,13 +49,6 @@ export default async function HomePage({
   const partners = t.raw('main_partner_logos') as Array<{ img: string }>;
   const dirTabs = t.raw('main_dir_tabs') as Record<string, DirTab>;
 
-  const mapFactorySrc =
-    locale === 'en'
-      ? '/images/main/en1.png'
-      : locale === 'zh'
-      ? '/images/main/zh1.png'
-      : '/images/main/map_ko_factory.png';
-
   return (
     <>
 
@@ -308,57 +301,60 @@ export default async function HomePage({
           </div>
         </section>
 
-        <section className="direction_section">
-          <img
-            src={mapFactorySrc}
-            alt={t('main_dir_title')}
-            className="dir_bg_map"
-            id="dir_map_img"
-            data-map-factory={mapFactorySrc}
+        <section className="direction_section direction_v2">
+          {/* 풀폭 Google Maps iframe (API 키 없이 동작). 모바일에서도 동일하게 작동 */}
+          <iframe
+            src={`https://maps.google.com/maps?q=${encodeURIComponent(dirTabs.factory?.address ?? '경기도 용인시 처인구 이동읍 화산로 191')}&t=&z=16&ie=UTF8&iwloc=B&output=embed&hl=${locale}`}
+            className="dir_map_iframe"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            title={t('main_dir_title')}
+            aria-label={t('main_dir_title')}
           />
 
-          <div className="direction_inner">
-            <div className="dir_content_area">
-              <div className="dir_header">
-                <span className="dir_sub">{t('main_dir_sub')}</span>
-                <h2 className="dir_title">{t('main_dir_title')}</h2>
-                <p className="dir_desc">{t('main_dir_desc')}</p>
-              </div>
+          {/* 떠있는 정보 카드 — 데스크탑 좌측 absolute, 모바일 지도 아래 스택 */}
+          <div className="dir_card_wrap">
+            <div className="dir_card">
+              <span className="dir_sub">{t('main_dir_sub')}</span>
+              <h2 className="dir_title">{t('main_dir_title')}</h2>
+              <p className="dir_desc">{t('main_dir_desc')}</p>
 
-              <div className="dir_tabs">
-                <button type="button" className="dir_tab_btn active" data-dir="factory">
-                  {dirTabs.factory?.name}
-                </button>
-              </div>
-
-              <div className="dir_info_box">
-                {Object.entries(dirTabs).map(([key, info]) => (
-                  <div
-                    key={key}
-                    className={`dir_detail_group${key === 'factory' ? ' active' : ''}`}
-                    data-dir={key}
-                  >
-                    <div className="detail_item">
-                      <span className="detail_label">{info.addr_label}</span>
-                      <p className="detail_val">{info.address}</p>
-                    </div>
-                    <div className="detail_item">
-                      <span className="detail_label">{info.phone_label}</span>
-                      <div className="detail_val phone_grid">
-                        {Object.entries(info.phones).map(([pName, pNum]) => (
-                          <span key={pName}>
-                            {pName} : {pNum}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="detail_item">
-                      <span className="detail_label">{info.fax_label}</span>
-                      <p className="detail_val">{info.fax}</p>
+              {Object.entries(dirTabs).map(([key, info]) => (
+                <div key={key} className="dir_card_info">
+                  <div className="dc_row">
+                    <span className="dc_label">{info.addr_label}</span>
+                    <p className="dc_val">{info.address}</p>
+                  </div>
+                  <div className="dc_row">
+                    <span className="dc_label">{info.phone_label}</span>
+                    <div className="dc_val dc_phones">
+                      {Object.entries(info.phones).map(([pName, pNum]) => (
+                        <span key={pName}>
+                          <em>{pName}</em> {pNum}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                ))}
-              </div>
+                  <div className="dc_row">
+                    <span className="dc_label">{info.fax_label}</span>
+                    <p className="dc_val">{info.fax}</p>
+                  </div>
+                </div>
+              ))}
+
+              <a
+                href={`https://map.kakao.com/?q=${encodeURIComponent(dirTabs.factory?.address ?? '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="dir_card_cta"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>지도에서 길찾기</span>
+              </a>
             </div>
           </div>
         </section>
