@@ -10,7 +10,7 @@ export default function QuickMenu() {
   return (
     <div className="quick_menu">
       <Link href="/contact" className="quick_item quick_contact" aria-label={t('quick_contact')}>
-        <span className="quick_contact_label">{t('quick_contact')}</span>
+        <span className="quick_contact_label">{t('quick_contact')} 💬</span>
       </Link>
 
       <button
