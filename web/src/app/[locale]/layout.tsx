@@ -36,11 +36,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} style={{ colorScheme: 'light' }}>
-      <head>
-        {/* OS 다크모드 무시 — 라이트만 */}
-        <meta name="color-scheme" content="light only" />
-      </head>
+    <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Header />
