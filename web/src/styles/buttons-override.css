@@ -1340,3 +1340,29 @@ html[lang="zh"] .dl_title {
     max-width: 93.75% !important;
     margin: 0 auto !important;
 }
+
+/* ============================================================
+   원페이지 (/about, /business) 브레드크럼 진하게 + 현재 섹션 주황색
+   ============================================================ */
+.about_onepage .breadcrumb .depth1,
+.about_onepage .breadcrumb .depth2,
+.business_onepage .breadcrumb .depth1,
+.business_onepage .breadcrumb .depth2 {
+    color: #222 !important;
+    font-weight: 600 !important;
+}
+
+.about_onepage .section_header_title,
+.business_onepage .section_header_title {
+    color: #F39800 !important;
+}
+
+/* SectionHeader 폭 정확히 강제 — 더 높은 specificity */
+.about_onepage .section_header .section_header_inner,
+.business_onepage .section_header .section_header_inner {
+    width: 1800px !important;
+    max-width: 93.75% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
