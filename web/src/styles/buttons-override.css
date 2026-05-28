@@ -571,10 +571,12 @@
     color: #F39800 !important;
 }
 
-/* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤 (좌측정렬 원복) */
+/* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤, GNB 와 사이즈 차이 줄임 */
 .mega_sub_list a {
     color: #222 !important;
     font-weight: 500 !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
 }
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
@@ -636,7 +638,7 @@ html, body {
 
 /* 좁은 데스크탑(1025~1280): 사이즈 더 축소 */
 @media (max-width: 1280px) and (min-width: 1025px) {
-    .gnb_main_link { font-size: 15px !important; letter-spacing: -0.3px !important; }
+    .gnb_main_link { font-size: 17px !important; letter-spacing: -0.3px !important; }
     .header_inner { padding: 14px 18px !important; column-gap: 16px !important; }
     .util_area { gap: 4px !important; }
     .logo { width: 92px !important; height: auto !important; }
