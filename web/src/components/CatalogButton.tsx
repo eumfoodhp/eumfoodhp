@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 
 type Props = {
@@ -10,11 +10,15 @@ type Props = {
 };
 
 /**
- * 카탈로그 다운로드 트리거 — 클릭 시 확인 팝업 후 PDF 다운로드.
- * 파일 경로: /data/eumfoodsystem.pdf
+ * 회사 소개서 다운로드 트리거 — 클릭 시 확인 팝업 후 PDF 다운로드.
+ * - zh: /data/eumfoodsystem-zh.pdf (중문판)
+ * - 그 외(ko/en): /data/eumfoodsystem.pdf (한국어판)
  */
 export default function CatalogButton({ className, ariaLabel, children }: Props) {
   const t = useTranslations();
+  const locale = useLocale();
+
+  const pdfHref = locale === 'zh' ? '/data/eumfoodsystem-zh.pdf' : '/data/eumfoodsystem.pdf';
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const msg = (() => {
@@ -31,7 +35,7 @@ export default function CatalogButton({ className, ariaLabel, children }: Props)
 
   return (
     <a
-      href="/data/eumfoodsystem.pdf"
+      href={pdfHref}
       download
       onClick={handleClick}
       className={className}

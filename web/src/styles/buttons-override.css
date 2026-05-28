@@ -1169,3 +1169,73 @@ html, body {
         gap: 14px !important;
     }
 }
+
+
+/* ============================================================
+   중문(zh) locale 전용 폰트/레이아웃 보정
+   중국어는 한국어보다 글자 폭이 커서 큰 헤딩에서 줄넘침/겹침이 발생.
+   <html lang="zh"> 자동 적용.
+   ============================================================ */
+
+/* 메인 overview 헤딩: 좌·우 두 줄이 스크롤 시 가운데로 수렴할 때
+   중문은 폭이 커서 겹침. 폰트 30% 축소 + letter-spacing 조절. */
+html[lang="zh"] .ov_title {
+    font-size: clamp(28px, 3.4vw, 50px) !important;
+    letter-spacing: -0.4px !important;
+}
+
+html[lang="zh"] .ov_sub {
+    letter-spacing: 0.04em;
+}
+
+/* 메인 섹션 헤딩 (Business/Product/Notice/Direction sub-title + title) — 약간 축소 */
+html[lang="zh"] .biz_title,
+html[lang="zh"] .prod_title,
+html[lang="zh"] .notice_title,
+html[lang="zh"] .dir_title,
+html[lang="zh"] .proc_title {
+    font-size: clamp(28px, 3.2vw, 44px) !important;
+    letter-spacing: -0.3px;
+    word-break: keep-all;
+}
+
+/* 히어로 헤드라인 */
+html[lang="zh"] .hero_headline,
+html[lang="zh"] .main_title {
+    letter-spacing: -0.4px;
+    word-break: keep-all;
+}
+
+/* GNB 메인 메뉴 — 중문은 글자가 굵게 보여서 살짝 축소 */
+html[lang="zh"] .gnb_main_link span {
+    font-size: 15px !important;
+}
+
+/* 서브 탭바 — 긴 중문 라벨 줄넘침 방지 */
+html[lang="zh"] .sub_tab_item {
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+/* "더 알아보기" 류 버튼 — 중문이면 더 짧지만 padding 보정 */
+html[lang="zh"] .ov_more_btn,
+html[lang="zh"] .biz_more_btn,
+html[lang="zh"] .prod_more_link,
+html[lang="zh"] .notice_more_link {
+    white-space: nowrap;
+}
+
+/* direction_v2 카드 타이틀 */
+html[lang="zh"] .direction_v2 .dir_title {
+    font-size: 22px;
+    word-break: keep-all;
+}
+
+/* 카드 제목 일반 (notice/press 등) — 중문 줄 끊김 자연스럽게 */
+html[lang="zh"] .card_title,
+html[lang="zh"] .press_card_title,
+html[lang="zh"] .public_view_title,
+html[lang="zh"] .dl_title {
+    word-break: keep-all;
+}
+
