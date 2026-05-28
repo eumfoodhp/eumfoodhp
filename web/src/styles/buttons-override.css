@@ -470,7 +470,11 @@
     }
 }
 
-/* GNB 메뉴 헤더 가운데 정렬 + 5컬럼 (문의 메뉴 다시 추가) */
+/* GNB 메뉴 — 5컬럼이지만 짧아진 텍스트에 맞춰 cell 폭 줄임 + 간격 좁힘 */
+#header {
+    --gnb-col: 120px !important;
+    --gnb-column-gap: 16px !important;
+}
 .gnb_wrap {
     position: absolute !important;
     left: 50% !important;
@@ -479,21 +483,24 @@
     z-index: 5 !important;
     margin: 0 !important;
     grid-template-columns: repeat(5, var(--gnb-col)) !important;
+    column-gap: 16px !important;
 }
 
-/* mega_panel(드롭다운 영역) 5컬럼 grid */
+/* mega_panel(드롭다운 영역) 5컬럼 grid, gnb와 동일 */
 .mega_panel,
 .mega_panel_inner {
     grid-template-columns: repeat(5, var(--gnb-col)) !important;
+    column-gap: 16px !important;
 }
 
-/* mega_col 우측 정렬 (사용자 요청) */
+/* mega_col 통일된 영역 — 모든 카드 같은 폭, 셀 가운데 정렬 (메뉴 텍스트와 정확히 align) */
 .mega_col {
-    justify-self: end !important;
+    justify-self: center !important;
+    width: 100% !important;
     min-width: 0 !important;
-    width: max-content !important;
-    max-width: 100% !important;
-    padding: 14px 18px !important;
+    max-width: 160px !important;
+    padding: 14px 16px !important;
+    box-sizing: border-box;
 }
 
 /* GNB 메뉴 텍스트 — 흰 배경 위 다크 톤 (기본 색 사용) */
