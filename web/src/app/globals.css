@@ -1,8 +1,15 @@
 /* Site CSS lives at /public/css/*.css and is linked from layouts/pages. */
 /* This file is intentionally left near-empty so the legacy CSS owns layout/typography. */
 
+/* OS 다크모드 무시 — 사이트는 라이트만 사용 */
+:root {
+  color-scheme: light only;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  background: #fff;
+  color: #222;
 }
