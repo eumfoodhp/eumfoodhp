@@ -1390,86 +1390,29 @@ html[lang="zh"] .dl_title {
 }
 
 /* ============================================================
-   SubHeader — 헤더 아래 sticky, 단일 pill (헤더와 동일 폭)
-   전체 서브메뉴 가로 균등 나열 (메인 GNB 스타일).
+   SubHeader — 헤더 아래 sticky pill (단일 정의로 통합).
+   sticky / auto-hide / 가로 균등 grid 모두 여기 한 곳에서.
    ============================================================ */
 .sub_header {
     position: sticky;
     top: 112px;
     z-index: 90;
-    width: 1580px;
-    max-width: 95%;
-    margin: 8px auto 0;
-    box-sizing: border-box;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    border-radius: 18px;
-    box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.06),
-        0 2px 6px rgba(0, 0, 0, 0.04);
-    padding: 0 12px;
 }
 
-.sub_header_nav_list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-auto-columns: 1fr;
-    grid-auto-flow: column;
-    align-items: center;
-}
-
+/* sub_header 내부의 link 들 — 브라우저 기본 focus 아웃라인 제거.
+   focus-visible 시에만 옅은 주황 ring 으로 표시. */
 .sub_header_nav_link {
-    display: block;
-    text-align: center;
-    padding: 18px 8px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #6B7280;
-    text-decoration: none;
-    letter-spacing: -0.2px;
-    border-radius: 10px;
-    transition: color 0.15s ease, background 0.15s ease;
-    white-space: nowrap;
+    outline: none;
 }
-
-.sub_header_nav_link:hover {
-    color: #F39800;
-}
-
-.sub_header_nav_link.is_active {
-    color: #F39800;
-    font-weight: 700;
+.sub_header_nav_link:focus-visible {
+    outline: 2px solid rgba(243, 152, 0, 0.5);
+    outline-offset: 2px;
 }
 
 /* 모바일 */
 @media (max-width: 1024px) {
     .sub_header {
         top: 80px;
-        max-width: calc(100% - 24px);
-        padding: 0 8px;
-    }
-    .sub_header_nav_link {
-        padding: 12px 6px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 640px) {
-    .sub_header {
-        overflow-x: auto;
-        scrollbar-width: none;
-    }
-    .sub_header::-webkit-scrollbar { display: none; }
-    .sub_header_nav_list {
-        display: flex;
-        gap: 4px;
-        min-width: 100%;
-    }
-    .sub_header_nav_link {
-        flex-shrink: 0;
-        padding: 10px 12px;
     }
 }
 
@@ -1633,7 +1576,15 @@ html[lang="zh"] .dl_title {
 /* 섹션 헤더: 좌측에 큰 주황 인덱스 + 가로 라인 + 타이틀 */
 .story_section {
     position: relative;
+    /* anchor 클릭 시 헤더(112px)+서브헤더(~64px) 만큼 아래로 가지 않도록 보정 */
+    scroll-margin-top: 188px;
     /* 짝수 섹션은 살짝 다른 톤 배경으로 챕터 구분 */
+}
+
+@media (max-width: 1024px) {
+    .story_section {
+        scroll-margin-top: 140px;
+    }
 }
 
 .story_section:nth-of-type(even) {
