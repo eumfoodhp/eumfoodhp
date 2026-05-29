@@ -1,0 +1,382 @@
+/* ============================================================
+   1:1 문의 (Inquiry) — Figma 293:10206 매칭
+   ============================================================ */
+.inquiry_inner { padding: 40px 0 100px; }
+
+.inquiry_head { margin-bottom: 28px; }
+.inquiry_eyebrow {
+    margin: 0 0 8px;
+    color: #F39800;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.inquiry_title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.6px;
+}
+
+.inquiry_filter_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 16px;
+    padding: 16px 0;
+    border-top: 1px solid #E5E7EB;
+    flex-wrap: wrap;
+}
+.inquiry_filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.inquiry_select {
+    height: 38px;
+    padding: 0 32px 0 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    background: #fff;
+    background-image: linear-gradient(45deg, transparent 50%, #6B7280 50%), linear-gradient(135deg, #6B7280 50%, transparent 50%);
+    background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    font-size: 13px;
+    color: #374151;
+    appearance: none;
+    min-width: 110px;
+    cursor: pointer;
+}
+.inquiry_search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    background: #fff;
+    min-width: 260px;
+}
+.inquiry_search_input {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    padding: 0 12px;
+    height: 38px;
+    font-size: 13px;
+    color: #374151;
+    outline: none;
+}
+.inquiry_search_input::placeholder { color: #9CA3AF; }
+.inquiry_search_btn {
+    width: 38px; height: 38px;
+    background: transparent;
+    border: 0;
+    color: #6B7280;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.inquiry_write_btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 40px;
+    background: #F39800;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+.inquiry_write_btn:hover { background: #E07F00; }
+
+.inquiry_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    background: #fff;
+    border-top: 2px solid #1F2937;
+}
+.inquiry_table thead th {
+    padding: 14px 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B7280;
+    background: #F9FAFB;
+    border-bottom: 1px solid #E5E7EB;
+    text-align: center;
+}
+.inquiry_table tbody td {
+    padding: 18px 8px;
+    font-size: 14px;
+    color: #374151;
+    border-bottom: 1px solid #F3F4F6;
+    text-align: center;
+}
+.inquiry_table_title {
+    text-align: left !important;
+    padding-left: 16px !important;
+}
+
+.status_chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.status_chip--answered { background: #FFE4D6; color: #F26337; }
+.status_chip--wait { background: #F3F4F6; color: #6B7280; }
+
+.inquiry_pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 32px;
+}
+.inquiry_page_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 6px;
+    color: #6B7280;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+.inquiry_page_btn:hover { background: #F3F4F6; }
+.inquiry_page_btn.is_active {
+    background: #FFE4D6;
+    color: #F26337;
+    font-weight: 700;
+}
+.inquiry_page_btn.is_disabled { color: #D1D5DB; cursor: not-allowed; }
+.inquiry_page_gap { color: #9CA3AF; padding: 0 4px; }
+
+/* ============================================================
+   영업문의 (Sales) — Figma 293:9958 STEP 01/02/03
+   ============================================================ */
+.sales_inner {
+    padding: 40px 0 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.sales_head {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #E5E7EB;
+}
+.sales_eyebrow {
+    margin: 0 0 8px;
+    color: #F39800;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.sales_title {
+    margin: 0 0 24px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.6px;
+}
+.sales_contact_info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+.sales_contact_row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: baseline;
+}
+.sales_contact_row p {
+    margin: 0;
+    color: #4B5563;
+    font-size: 14px;
+    line-height: 22px;
+}
+.sales_contact_label {
+    font-weight: 700;
+    color: #111827;
+    font-size: 14px;
+    min-width: 64px;
+}
+
+.sales_form {
+    max-width: 1100px;
+    padding: 0;
+    gap: 0;
+}
+.sales_step {
+    border: 1px dashed #BBD3FF;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #fff;
+}
+.sales_step_head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+.sales_step_no {
+    color: #F39800;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.sales_step_title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.4px;
+}
+
+.sales_radio_row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 10px 0;
+}
+.sales_radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #374151;
+}
+.sales_radio input[type='radio'] {
+    width: 16px;
+    height: 16px;
+    accent-color: #F39800;
+    margin: 0;
+    cursor: pointer;
+}
+
+.sales_file_row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.sales_file_display {
+    flex: 1;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    color: #6B7280;
+}
+.sales_file_btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #1F2937;
+    color: #1F2937;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.sales_file_btn:hover { background: #F9FAFB; }
+
+.sales_terms {
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 0;
+    margin-top: 8px;
+}
+.sales_terms_summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    list-style: none;
+    background: #F9FAFB;
+    border-radius: 8px;
+}
+.sales_terms_summary::-webkit-details-marker { display: none; }
+.sales_terms_check_icon {
+    width: 20px; height: 20px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #F39800;
+    font-size: 12px;
+    font-weight: 700;
+}
+.sales_terms_title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+.sales_terms_required {
+    color: #F26337;
+    font-size: 13px;
+    font-weight: 700;
+}
+.sales_terms_arrow {
+    color: #6B7280;
+    font-size: 16px;
+    transition: transform 0.15s ease;
+}
+.sales_terms[open] .sales_terms_arrow { transform: rotate(180deg); }
+.sales_terms_body {
+    padding: 20px 16px;
+    color: #4B5563;
+    font-size: 13px;
+    line-height: 1.7;
+}
+.sales_terms_body p { margin: 0 0 12px; }
+.sales_terms_body p:last-child { margin: 0; }
+
+.sales_terms_agree { margin-top: 4px; align-items: center; }
+
+.sales_actions {
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+.sales_submit {
+    background: #F39800;
+    padding: 14px 36px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .sales_step { padding: 20px 18px; }
+    .sales_radio_row { flex-direction: column; gap: 12px; }
+    .inquiry_filter_bar { flex-direction: column; align-items: stretch; }
+    .inquiry_write_btn { align-self: flex-end; }
+}
