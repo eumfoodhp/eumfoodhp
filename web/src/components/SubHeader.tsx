@@ -118,32 +118,35 @@ export default function SubHeader() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
-  // 자동 숨김/노출: 스크롤하거나 헤더 근처 hover 시 펼침,
-  // 활동 멈추면 2초 뒤 자동 닫힘.
+  // 자동 숨김/노출: 페이지 안에서 마우스가 움직이거나 스크롤하면 펼침,
+  // 2초간 아무 활동도 없으면 자동 닫힘. sub_header 위에 마우스 올라가 있는
+  // 동안엔 닫지 않음.
   useEffect(() => {
     let hideTimer: ReturnType<typeof setTimeout> | null = null;
     let isMouseOverSub = false;
+    const HIDE_DELAY = 2000;
+
+    const scheduleHide = () => {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (!isMouseOverSub) setVisible(false);
+      }, HIDE_DELAY);
+    };
 
     const show = () => {
       setVisible(true);
-      if (hideTimer) clearTimeout(hideTimer);
-      // 마우스가 sub_header 위에 있으면 안 닫음
-      hideTimer = setTimeout(() => {
-        if (!isMouseOverSub) setVisible(false);
-      }, 2000);
+      scheduleHide();
     };
 
-    const onScroll = () => show();
+    // 마우스 움직임 / 스크롤 / 터치 — 사용자 활동 신호로 보고 펼침
+    const onActivity = () => show();
 
-    const onMove = (e: MouseEvent) => {
-      // 상단 120px 안에서 마우스 움직이면 펼침
-      if (e.clientY < 140) show();
-    };
+    window.addEventListener('scroll', onActivity, { passive: true });
+    window.addEventListener('mousemove', onActivity, { passive: true });
+    window.addEventListener('touchstart', onActivity, { passive: true });
+    window.addEventListener('keydown', onActivity);
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('mousemove', onMove, { passive: true });
-
-    // sub_header 자체 hover 트래킹
+    // sub_header 자체 hover 트래킹 — 위에 마우스 올려두면 안 닫힘
     const node = document.querySelector('.sub_header');
     const onEnter = () => {
       isMouseOverSub = true;
@@ -152,16 +155,17 @@ export default function SubHeader() {
     };
     const onLeave = () => {
       isMouseOverSub = false;
-      if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => setVisible(false), 800);
+      scheduleHide();
     };
     node?.addEventListener('mouseenter', onEnter);
     node?.addEventListener('mouseleave', onLeave);
 
     return () => {
       if (hideTimer) clearTimeout(hideTimer);
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('scroll', onActivity);
+      window.removeEventListener('mousemove', onActivity);
+      window.removeEventListener('touchstart', onActivity);
+      window.removeEventListener('keydown', onActivity);
       node?.removeEventListener('mouseenter', onEnter);
       node?.removeEventListener('mouseleave', onLeave);
     };
