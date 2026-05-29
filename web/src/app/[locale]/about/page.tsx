@@ -66,8 +66,25 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   // ---- 오시는길 지도 URLs ----
   const mapHl = locale === 'zh' ? 'zh-CN' : locale;
-  const factoryMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(t('loc_factory_addr'))}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
-  const centerMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(t('loc_center_addr'))}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
+  const factoryAddr = t('loc_factory_addr');
+  const centerAddr = t('loc_center_addr');
+  const factoryMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(factoryAddr)}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
+  const centerMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(centerAddr)}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
+
+  // ---- QR 코드: 주소를 각 지도 서비스 검색 URL 로 인코딩 → qrserver.com 으로 이미지 생성.
+  //      모바일에서 스캔 시 해당 지도 서비스의 검색 결과 페이지가 열림 (앱 설치 시 앱으로 핸드오프).
+  const qr = (url: string) =>
+    `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=${encodeURIComponent(url)}`;
+  const factoryQR = {
+    tmap: qr(`https://tmap.life/?q=${encodeURIComponent(factoryAddr)}`),
+    kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(factoryAddr)}`),
+    naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(factoryAddr)}`),
+  };
+  const centerQR = {
+    tmap: qr(`https://tmap.life/?q=${encodeURIComponent(centerAddr)}`),
+    kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(centerAddr)}`),
+    naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(centerAddr)}`),
+  };
 
   const sections = [
     { id: 'greeting', label: t('sub_greeting') },
@@ -250,12 +267,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </header>
         <section className="location_content_section">
           <div className="sub_inner location_inner">
-            {/* 본사·공장 */}
-            <article className="loc_card">
-              <header className="loc_card_head">
-                <span className="loc_card_no">01</span>
-                <span className="loc_card_eyebrow">Office &amp; Factory</span>
-              </header>
+            {/* 본사·공장 — 지도 LEFT / 정보 RIGHT */}
+            <article className="loc_card loc_card--map_left">
               <div className="loc_card_body">
                 <div className="loc_card_map">
                   <iframe
@@ -270,53 +283,87 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   />
                 </div>
                 <div className="loc_card_info">
+                  <span className="loc_eyebrow">{t('loc_way_to_come')}</span>
                   <h3 className="loc_card_name">{t('loc_factory_title')}</h3>
                   <ul className="loc_card_meta">
                     <li className="loc_meta_row">
-                      <span className="loc_meta_icon" aria-hidden="true">
-                        <PinIcon />
-                      </span>
+                      <span className="loc_meta_icon" aria-hidden="true"><PinIcon /></span>
                       <div className="loc_meta_text">
-                        <span className="loc_meta_label">{t('loc_factory_addr_label')}</span>
                         <p className="loc_meta_value">{t('loc_factory_addr')}</p>
                       </div>
                     </li>
                     <li className="loc_meta_row">
-                      <span className="loc_meta_icon" aria-hidden="true">
-                        <PhoneIcon />
-                      </span>
+                      <span className="loc_meta_icon" aria-hidden="true"><PhoneIcon /></span>
                       <div className="loc_meta_text">
-                        <span className="loc_meta_label">{t('loc_factory_tel_label')}</span>
                         <div className="loc_meta_tel_grid">
                           <span>{t('loc_tel_quality')}</span>
                           <span>{t('loc_tel_sales')}</span>
+                          <span>{t('loc_tel_mgmt')}</span>
                           <span>{t('loc_tel_purchase')}</span>
                           <span>{t('loc_tel_rd')}</span>
-                          <span>{t('loc_tel_mgmt')}</span>
                         </div>
                       </div>
                     </li>
                     <li className="loc_meta_row">
-                      <span className="loc_meta_icon" aria-hidden="true">
-                        <FaxIcon />
-                      </span>
+                      <span className="loc_meta_icon" aria-hidden="true"><FaxIcon /></span>
                       <div className="loc_meta_text">
-                        <span className="loc_meta_label">{t('loc_factory_fax_label')}</span>
-                        <p className="loc_meta_value">{t('loc_factory_fax')}</p>
+                        <p className="loc_meta_value">FAX. {t('loc_factory_fax')}</p>
                       </div>
                     </li>
                   </ul>
+                  <div className="loc_qr_group">
+                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(factoryAddr)}`} target="_blank" rel="noopener noreferrer">
+                      <img src={factoryQR.tmap} alt={t('loc_qr_tmap')} width={120} height={120} />
+                      <span className="loc_qr_label">{t('loc_qr_tmap')}</span>
+                    </a>
+                    <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(factoryAddr)}`} target="_blank" rel="noopener noreferrer">
+                      <img src={factoryQR.kakao} alt={t('loc_qr_kakao')} width={120} height={120} />
+                      <span className="loc_qr_label">{t('loc_qr_kakao')}</span>
+                    </a>
+                    <a className="loc_qr_item" href={`https://map.naver.com/p/search/${encodeURIComponent(factoryAddr)}`} target="_blank" rel="noopener noreferrer">
+                      <img src={factoryQR.naver} alt={t('loc_qr_naver')} width={120} height={120} />
+                      <span className="loc_qr_label">{t('loc_qr_naver')}</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </article>
 
-            {/* 물류센터 */}
-            <article className="loc_card">
-              <header className="loc_card_head">
-                <span className="loc_card_no">02</span>
-                <span className="loc_card_eyebrow">Logistics Center</span>
-              </header>
+            {/* 물류센터 — 정보 LEFT / 지도 RIGHT (반전) */}
+            <article className="loc_card loc_card--map_right">
               <div className="loc_card_body">
+                <div className="loc_card_info">
+                  <span className="loc_eyebrow">{t('loc_way_to_come')}</span>
+                  <h3 className="loc_card_name">{t('loc_center_title')}</h3>
+                  <ul className="loc_card_meta">
+                    <li className="loc_meta_row">
+                      <span className="loc_meta_icon" aria-hidden="true"><PinIcon /></span>
+                      <div className="loc_meta_text">
+                        <p className="loc_meta_value">{t('loc_center_addr')}</p>
+                      </div>
+                    </li>
+                    <li className="loc_meta_row">
+                      <span className="loc_meta_icon" aria-hidden="true"><PhoneIcon /></span>
+                      <div className="loc_meta_text">
+                        <p className="loc_meta_value">TEL. {t('loc_center_tel')}</p>
+                      </div>
+                    </li>
+                  </ul>
+                  <div className="loc_qr_group">
+                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(centerAddr)}`} target="_blank" rel="noopener noreferrer">
+                      <img src={centerQR.tmap} alt={t('loc_qr_tmap')} width={120} height={120} />
+                      <span className="loc_qr_label">{t('loc_qr_tmap')}</span>
+                    </a>
+                    <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(centerAddr)}`} target="_blank" rel="noopener noreferrer">
+                      <img src={centerQR.kakao} alt={t('loc_qr_kakao')} width={120} height={120} />
+                      <span className="loc_qr_label">{t('loc_qr_kakao')}</span>
+                    </a>
+                    <a className="loc_qr_item" href={`https://map.naver.com/p/search/${encodeURIComponent(centerAddr)}`} target="_blank" rel="noopener noreferrer">
+                      <img src={centerQR.naver} alt={t('loc_qr_naver')} width={120} height={120} />
+                      <span className="loc_qr_label">{t('loc_qr_naver')}</span>
+                    </a>
+                  </div>
+                </div>
                 <div className="loc_card_map">
                   <iframe
                     src={centerMapSrc}
@@ -326,31 +373,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={t('loc_center_title')}
+                    title={t('loc_map_center_alt')}
                   />
-                </div>
-                <div className="loc_card_info">
-                  <h3 className="loc_card_name">{t('loc_center_title')}</h3>
-                  <ul className="loc_card_meta">
-                    <li className="loc_meta_row">
-                      <span className="loc_meta_icon" aria-hidden="true">
-                        <PinIcon />
-                      </span>
-                      <div className="loc_meta_text">
-                        <span className="loc_meta_label">{t('loc_factory_addr_label')}</span>
-                        <p className="loc_meta_value">{t('loc_center_addr')}</p>
-                      </div>
-                    </li>
-                    <li className="loc_meta_row">
-                      <span className="loc_meta_icon" aria-hidden="true">
-                        <PhoneIcon />
-                      </span>
-                      <div className="loc_meta_text">
-                        <span className="loc_meta_label">{t('loc_factory_tel_label')}</span>
-                        <p className="loc_meta_value">{t('loc_center_tel')}</p>
-                      </div>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </article>
