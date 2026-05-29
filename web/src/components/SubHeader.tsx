@@ -150,13 +150,14 @@ export default function SubHeader() {
     if (sections.length === 0) return;
 
     const pickActive = () => {
-      // 헤더 높이만큼 보정한 viewport top 기준으로
-      // 그 선을 가장 최근에 통과한 섹션을 active 로.
-      const probe = 160; // 헤더+서브헤더 대략 높이
+      // 헤더+서브헤더 아래쪽 ~30% viewport 라인 기준으로 가장 최근에
+      // top 이 그 라인을 통과한 섹션을 active 로. 기존 160px 은 너무
+      // 위쪽이라 새 섹션이 들어와도 한 박자 늦게 active 되던 문제.
+      const probe = Math.max(220, window.innerHeight * 0.35);
       let current = sections[0].id;
       for (const sec of sections) {
         const top = sec.getBoundingClientRect().top;
-        if (top - probe <= 0) current = sec.id;
+        if (top <= probe) current = sec.id;
         else break;
       }
       setActiveId(current);
