@@ -32,15 +32,15 @@
 
 .loc_card_body {
     display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: 48px;
+    /* minmax(0, ...) 핵심 — grid item 의 자동 min-content 를 0 으로 강제,
+       그렇지 않으면 정보 영역의 긴 컨텐츠 (전화 5종 / QR 3종) 가 grid track
+       을 늘려서 카드 폭을 초과 → overflow:hidden 으로 좌측 텍스트가 잘려 보임. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px;
     align-items: stretch;
 }
-
-/* 반전 (정보 왼쪽 / 지도 오른쪽) — JSX 순서가 이미 info → map 이므로 기본 흐름 그대로.
-   첫번째 카드 (map_left) 는 JSX 순서가 map → info 라 기본 흐름 그대로 작동. */
 .loc_card--map_right .loc_card_body {
-    grid-template-columns: 1fr 1.05fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 /* ============================================================
@@ -80,6 +80,7 @@
     flex-direction: column;
     gap: 24px;
     padding: 8px 4px;
+    min-width: 0; /* grid item 안의 자식 wrapping 보장 */
 }
 
 .loc_eyebrow {
@@ -163,7 +164,9 @@
     letter-spacing: -0.3px;
 }
 .loc_meta_tel_grid span {
-    white-space: nowrap;
+    /* white-space: nowrap 제거 — 좁은 정보 영역에서 grid track 늘림 방지.
+       전화번호는 자동으로 줄바꿈 (브라우저가 보통 ':' 뒤에서 wrap). */
+    word-break: keep-all;
 }
 
 /* ============================================================

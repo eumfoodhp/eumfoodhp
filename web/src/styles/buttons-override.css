@@ -1712,19 +1712,9 @@ html[lang="zh"] .dl_title {
     border-radius: 3px;
 }
 
-/* 타이틀 아래 가로선 — 앞쪽 80px 만 주황색으로 액센트 */
+/* 타이틀 아래 가로선 — 제거 (사용자 요청) */
 .story_section_head::after {
-    content: '';
-    display: block;
-    margin-top: 28px;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        #F26337 0px,
-        #F26337 80px,
-        #E5E7EB 80px,
-        #E5E7EB 100%
-    );
+    content: none;
 }
 
 @media (max-width: 1024px) {
