@@ -1769,19 +1769,17 @@ html[lang="zh"] .dl_title {
    /products 원페이지 — 상단 다운로드 바 + 카드 보임 강제 + sauce 서브 헤딩
    ============================================================ */
 
-/* 절임식품 섹션 헤더 우측에 상품소개서 다운로드 버튼 — 타이틀과 같은 줄 */
+/* 절임식품 섹션 헤더 — 상품소개서 버튼을 타이틀 위 한 줄로 우측 정렬,
+   그 아래에 타이틀 */
 .story_section_head--with_action {
     display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
     gap: 16px;
 }
-.story_section_head--with_action .story_section_title {
-    flex: 1;
-    min-width: 0;
-}
 .story_section_action {
+    align-self: flex-end;       /* 우측 정렬 */
+    order: -1;                  /* DOM 상 타이틀 다음이지만 시각적으로 타이틀 위 */
     flex-shrink: 0;
 }
 
