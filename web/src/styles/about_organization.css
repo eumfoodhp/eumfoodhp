@@ -15,12 +15,13 @@
 }
 
 .org_chart {
-    --org-line: #C0CDE0;
+    --org-line: #B6DDB8;            /* 노드 초록 톤과 어울리는 옅은 그린 */
+    --org-line-w: 2px;              /* 커넥터 선 두께 */
     --org-blue: #1F60A8;
     --org-orange: #F26337;
     --org-yellow: #FBB041;
-    --gap-y: 32px;
-    --stub-y: 28px;
+    --gap-y: 36px;
+    --stub-y: 32px;
 
     width: 100%;
     max-width: 1180px;
@@ -57,8 +58,10 @@
 }
 
 .org_node:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(91, 190, 95, 0.20);
+    /* 이동 없음 — 노드만 떠오르면 커넥터 선이 어색하게 끊겨 보임.
+       대신 살짝 배경 톤 + 그림자만 강조. */
+    background: #F4FBF5;
+    box-shadow: 0 4px 14px rgba(91, 190, 95, 0.18);
 }
 
 /* 대표이사만 주황 테두리 + 주황 글자 */
@@ -69,7 +72,8 @@
     font-size: 15px;
 }
 .org_node--ceo:hover {
-    box-shadow: 0 6px 16px rgba(242, 99, 55, 0.22);
+    background: #FFF6F2;
+    box-shadow: 0 4px 14px rgba(242, 99, 55, 0.18);
 }
 
 /* 총괄이사 — 다른 노드와 동일한 초록이지만 살짝 강조 (글자 크기) */
@@ -113,10 +117,11 @@
     position: absolute;
     left: 50%;
     top: 100%;
-    width: 1px;
+    width: var(--org-line-w);
     height: var(--gap-y);
     background: var(--org-line);
-    transform: translateX(-0.5px);
+    transform: translateX(-1px);
+    border-radius: 2px;
     z-index: 0;
 }
 
@@ -135,9 +140,10 @@
     right: 100%;
     top: 50%;
     width: 140px;        /* CEO 수직선까지의 거리 */
-    height: 1px;
+    height: var(--org-line-w);
     background: var(--org-line);
-    transform: translateY(-0.5px);
+    transform: translateY(-1px);
+    border-radius: 2px;
 }
 
 /* --- L2: 총괄이사 --- */
@@ -154,10 +160,11 @@
     position: absolute;
     left: 50%;
     top: 100%;
-    width: 1px;
+    width: var(--org-line-w);
     height: var(--gap-y);
     background: var(--org-line);
-    transform: translateX(-0.5px);
+    transform: translateX(-1px);
+    border-radius: 2px;
     z-index: 0;
 }
 
@@ -177,10 +184,11 @@
     content: '';
     position: absolute;
     top: 0;
-    left: calc((100% - (12px * 7)) / 16 + 0px); /* (col width)/2 = 1열 중앙 */
-    right: calc((100% - (12px * 7)) / 16 + 0px); /* 8열 중앙 */
-    height: 1px;
+    left: calc((100% - (12px * 7)) / 16);   /* 1열 중앙 */
+    right: calc((100% - (12px * 7)) / 16);  /* 8열 중앙 */
+    height: var(--org-line-w);
     background: var(--org-line);
+    border-radius: 2px;
 }
 
 .org_dept_col {
@@ -197,10 +205,11 @@
     position: absolute;
     top: calc(-1 * var(--stub-y));
     left: 50%;
-    width: 1px;
+    width: var(--org-line-w);
     height: var(--stub-y);
     background: var(--org-line);
-    transform: translateX(-0.5px);
+    transform: translateX(-1px);
+    border-radius: 2px;
 }
 
 /* 부서 → 소속팀 연결 (소속팀이 있는 칼럼만) */
@@ -213,10 +222,11 @@
     position: absolute;
     left: 50%;
     bottom: 100%;
-    width: 1px;
+    width: var(--org-line-w);
     height: 8px;
     background: var(--org-line);
-    transform: translateX(-0.5px);
+    transform: translateX(-1px);
+    border-radius: 2px;
 }
 
 /* 소속팀끼리 연결 (예: 생산관리팀의 가동/나동 두 개) */
@@ -228,10 +238,11 @@
     position: absolute;
     left: 50%;
     bottom: 100%;
-    width: 1px;
+    width: var(--org-line-w);
     height: 4px;
     background: var(--org-line);
-    transform: translateX(-0.5px);
+    transform: translateX(-1px);
+    border-radius: 2px;
 }
 
 /* --- 반응형 --- */
