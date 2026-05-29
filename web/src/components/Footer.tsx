@@ -5,7 +5,7 @@ export default async function Footer() {
 
   return (
     <footer id="footer">
-      {/* 한반도 이미지 + 펄스 마커 (이미지 좌표 기준 절대 위치). */}
+      {/* 한반도 배경 이미지 — 점은 PNG 안에 정적으로 포함됨 */}
       <div className="footer_bg" aria-hidden="true">
         <img
           src="/images/main/map_ko_factory.png"
@@ -13,7 +13,6 @@ export default async function Footer() {
           className="footer_bg_img"
           loading="lazy"
         />
-        <span className="pulse_dot"></span>
       </div>
 
       <div className="footer_inner">
