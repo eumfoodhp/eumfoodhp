@@ -810,9 +810,9 @@
     width: 100%;
 }
 
-/* 안녕하십니까 / 황만식입니다 두 줄 사이 큰 공백 (2 줄 분량) */
+/* 안녕하십니까 / 황만식입니다 두 줄 사이 공백 — 실제 2줄 분량 (h3 line-height 68px × 2) */
 .ceo_main_title {
-    gap: 40px;
+    gap: 120px;
 }
 
 /* 1. CEO Introduce 태그 */
