@@ -1459,18 +1459,16 @@ html[lang="zh"] .dl_title {
 }
 
 /* NextSectionLink — 섹션 사이 구분 + 화살표 버튼.
-   PREV(row1) / divider(row2) 만 section A 의 normal flow 안에서 차지.
-   NEXT 는 absolute 로 section A 아래 (= section B 영역)에 띄움.
-   margin-top: auto 로 부모 .story_section 의 맨 아래 정렬 — section A 의
-   min-height 100vh 영향 안 받음. */
+   PREV(좌상) / divider(중) / NEXT(우하) 대각선 배치.
+   PREV·divider 는 grid 로 normal flow, NEXT 만 absolute 로 divider 아래
+   (section B 영역) — section A 의 min-height 100vh 보존. */
 .next_section {
     position: relative;
     width: 100%;
     max-width: none;
     margin: auto 0 0;
     display: grid;
-    grid-template-columns: 1fr auto auto 1fr;
-    column-gap: 16px;
+    grid-template-columns: 1fr 1fr;
     row-gap: 32px;
     align-items: center;
 }
@@ -1511,23 +1509,23 @@ html[lang="zh"] .dl_title {
     z-index: 10;
 }
 
-/* grid: PREV row1 col2 / divider row2 풀폭.
-   NEXT 는 absolute 로 divider 아래에 띄움 (section B 영역) — section A 의
-   min-height 100vh 그대로 유지. */
+/* PREV 좌상 / divider 중 풀폭 / NEXT 우하 (대각선 배치). */
 .next_section_link--prev {
     background: transparent;
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
+    justify-self: center;       /* 좌측 1fr 컬럼의 중앙 ≈ viewport 25% */
 }
 .next_section_divider {
     grid-column: 1 / -1;
     grid-row: 2;
 }
 .next_section > .next_section_link:not(.next_section_link--prev) {
-    /* NEXT — divider 바로 아래 (section B 영역) 에 absolute 띄움 */
+    /* NEXT — divider 아래 우측에 absolute 띄움 (section B 영역) */
     position: absolute;
     top: calc(100% + 16px);
-    left: calc(50% + 8px);      /* 중앙에서 살짝 우측 (column-gap/2) */
+    left: 75%;                  /* 우측 1fr 컬럼의 중앙 ≈ viewport 75% */
+    transform: translateX(-50%);
 }
 
 /* 다음 섹션 화살표 버튼 */
