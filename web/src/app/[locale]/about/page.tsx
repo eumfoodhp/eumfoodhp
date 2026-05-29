@@ -238,7 +238,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 </div>
               </div>
             </div>
-            <div className="org_bg_typo">{t('org_bg_text')}</div>
           </div>
         </section>
         <NextSectionLink nextId="location" nextLabel={t('sub_location')} />
