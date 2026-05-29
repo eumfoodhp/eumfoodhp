@@ -1461,11 +1461,12 @@ html[lang="zh"] .dl_title {
 /* NextSectionLink — 섹션 사이 구분 + 화살표 버튼.
    grid 4칸 (1fr | PREV | NEXT | 1fr) — 양옆 1fr 가 가용공간을 다 먹어서
    컨테이너 자체가 풀폭, divider 도 1/-1 span 으로 viewport 끝까지.
-   PREV·NEXT 는 중앙 좌·우에 16px 갭으로 배치 (원래 side-by-side X 유지). */
+   margin-top: auto 로 부모 .story_section (flex column) 의 맨 아래
+   = 섹션 경계에 위치. PREV·divider·NEXT 모두 경계 근처에 함께 모임. */
 .next_section {
     width: 100%;
     max-width: none;
-    margin: 80px 0 0;
+    margin: auto 0 0;
     display: grid;
     grid-template-columns: 1fr auto auto 1fr;
     column-gap: 16px;
