@@ -395,9 +395,44 @@
     font-weight: 700;
 }
 
+@media (max-width: 900px) {
+    .sales_head { padding: 24px 0 18px; }
+    .sales_eyebrow { font-size: 12px; }
+    .sales_title { font-size: 26px; }
+    .inquiry_eyebrow { font-size: 12px; }
+    .inquiry_title { font-size: 24px; }
+    .sales_step { padding: 22px 20px; gap: 16px; }
+    .sales_step_no { font-size: 12px; }
+    .sales_step_title { font-size: 15px; line-height: 1.4; }
+    /* iOS zoom 방지 — input/select/textarea 16px 이상 */
+    .public_form input,
+    .public_form select,
+    .public_form textarea,
+    .pf_field input,
+    .pf_field select,
+    .pf_field textarea { font-size: 16px; }
+    /* 2열 → 1열 */
+    .pf_row {
+        flex-direction: column;
+        gap: 14px;
+    }
+    .pf_row .pf_field { width: 100%; min-width: 0; }
+}
+
 @media (max-width: 768px) {
     .sales_step { padding: 20px 18px; }
     .sales_radio_row { flex-direction: column; gap: 12px; }
-    .inquiry_filter_bar { flex-direction: column; align-items: stretch; }
-    .inquiry_write_btn { align-self: flex-end; }
+    .inquiry_filter_bar { flex-direction: column; align-items: stretch; gap: 10px; }
+    .inquiry_write_btn { align-self: stretch; width: 100%; }
+    .sales_file_row { flex-direction: column; gap: 10px; align-items: stretch; }
+    .sales_file_btn { width: 100%; text-align: center; }
+    .sales_terms_summary { flex-wrap: wrap; gap: 8px; }
+    .sales_terms_body { padding: 14px 16px; font-size: 13px; }
+    .pf_actions.sales_actions { padding-top: 12px; }
+    .pf_submit.sales_submit { width: 100%; min-width: 0; }
+}
+
+@media (max-width: 560px) {
+    .sales_title { font-size: 22px; }
+    .inquiry_title { font-size: 20px; }
 }
