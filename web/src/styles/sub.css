@@ -801,18 +801,18 @@
     width: 100%;
 }
 
-/* 타이틀 + 본문 묶음 — 타이틀과 본문 사이 간격 늘림 */
+/* 타이틀 묶음 ↔ 본문 사이 — 두 줄 분량 공백 (h3 line-height 68 × 2 = 136 근사) */
 .ceo_content_group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
+    gap: 120px;
     width: 100%;
 }
 
-/* 안녕하십니까 / 황만식입니다 두 줄 사이 공백 — 실제 2줄 분량 (h3 line-height 68px × 2) */
+/* 안녕하십니까 / 황만식입니다 두 h3 사이는 가깝게 (한 줄 약간 띄움) */
 .ceo_main_title {
-    gap: 120px;
+    gap: 12px;
 }
 
 /* 1. CEO Introduce 태그 */
