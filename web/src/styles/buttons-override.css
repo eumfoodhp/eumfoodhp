@@ -1739,14 +1739,20 @@ html[lang="zh"] .dl_title {
    /products 원페이지 — 상단 다운로드 바 + 카드 보임 강제 + sauce 서브 헤딩
    ============================================================ */
 
-/* 상단 단일 상품소개서 다운로드 바 — 우측 정렬, 섹션 시작 전에 한 칸 */
-.products_top_bar {
-    width: 1580px;
-    max-width: 95%;
-    margin: 0 auto;
-    padding: 32px 0 8px;
-    display: flex;
-    justify-content: flex-end;
+/* 절임식품 섹션 헤더 우측에 상품소개서 다운로드 버튼 — 타이틀과 같은 줄 */
+.story_section_head--with_action {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.story_section_head--with_action .story_section_title {
+    flex: 1;
+    min-width: 0;
+}
+.story_section_action {
+    flex-shrink: 0;
 }
 
 /* IntersectionObserver(.is_visible) JS 가 안 붙어 있어서 카드가 영원히
@@ -1781,10 +1787,6 @@ html[lang="zh"] .dl_title {
 }
 
 @media (max-width: 1024px) {
-    .products_top_bar {
-        max-width: calc(100% - 24px);
-        padding-top: 24px;
-    }
     .sauce_subsection_head .main_tit {
         font-size: 20px;
     }

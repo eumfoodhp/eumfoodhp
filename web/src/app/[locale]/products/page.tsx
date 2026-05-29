@@ -17,7 +17,6 @@ import '@/styles/product_namul.css';
 import '@/styles/product_salted.css';
 import '@/styles/product_sauce.css';
 import '@/styles/product_tea.css';
-import '@/styles/products-onepage-override.css';
 
 // --- 카테고리별 데이터 ---
 const PICKLES_ORDER = [9, 1, 3, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18];
@@ -72,21 +71,15 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
     <main id="sub_contents" className="product_page products_onepage onepage_story">
       <div className="onepage_content">
 
-        {/* 페이지 최상단 — 단일 상품소개서 다운로드 바.
-            aside 태그 사용 — div 였다면 .story_section:nth-of-type 카운트가
-            한 칸 밀려서 절임식품이 짝수(베이지)로 시작했음. aside 는 div 와
-            다른 타입이라 nth-of-type 에서 빠짐. */}
-        <aside className="products_top_bar">
-          <BrochureLink className="btn_download">
-            <span>{t('btn_product_intro')}</span>
-            <img src="/images/sub/download.png" alt="" />
-          </BrochureLink>
-        </aside>
-
         {/* ===== 1. 절임식품 ===== */}
         <div id="pickles" className="product_pickles_page story_section">
-          <header className="story_section_head">
+          <header className="story_section_head story_section_head--with_action">
             <h2 className="story_section_title">{t('sub_prod_pickles')}</h2>
+            {/* 단일 상품소개서 다운로드 — 절임식품 섹션 헤더 우측에만 노출 */}
+            <BrochureLink className="btn_download story_section_action">
+              <span>{t('btn_product_intro')}</span>
+              <img src="/images/sub/download.png" alt="" />
+            </BrochureLink>
           </header>
           <section className="product_list_section">
             <div className="product_inner">
