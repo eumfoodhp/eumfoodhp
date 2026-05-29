@@ -101,12 +101,12 @@ export default async function Header() {
               <MobileMenuGroup
                 title={t('menu_product')}
                 items={[
-                  { href: '/products/pickles', label: t('sub_prod_pickles') },
-                  { href: '/products/braised', label: t('sub_prod_braised') },
-                  { href: '/products/namul', label: t('sub_prod_namul') },
-                  { href: '/products/salted', label: t('sub_prod_salted') },
-                  { href: '/products/sauce', label: t('sub_prod_sauce') },
-                  { href: '/products/tea', label: t('sub_prod_tea') },
+                  { href: '/products#pickles', label: t('sub_prod_pickles') },
+                  { href: '/products#braised', label: t('sub_prod_braised') },
+                  { href: '/products#namul', label: t('sub_prod_namul') },
+                  { href: '/products#salted', label: t('sub_prod_salted') },
+                  { href: '/products#sauce', label: t('sub_prod_sauce') },
+                  { href: '/products#tea', label: t('sub_prod_tea') },
                 ]}
               />
               <MobileMenuGroup

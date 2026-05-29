@@ -44,12 +44,12 @@ const CATEGORIES: Category[] = [
     key: 'product',
     labelKey: 'menu_product',
     items: [
-      { href: '/products/pickles', key: 'sub_prod_pickles' },
-      { href: '/products/braised', key: 'sub_prod_braised' },
-      { href: '/products/namul', key: 'sub_prod_namul' },
-      { href: '/products/salted', key: 'sub_prod_salted' },
-      { href: '/products/sauce', key: 'sub_prod_sauce' },
-      { href: '/products/tea', key: 'sub_prod_tea' },
+      { href: '/products#pickles', key: 'sub_prod_pickles' },
+      { href: '/products#braised', key: 'sub_prod_braised' },
+      { href: '/products#namul', key: 'sub_prod_namul' },
+      { href: '/products#salted', key: 'sub_prod_salted' },
+      { href: '/products#sauce', key: 'sub_prod_sauce' },
+      { href: '/products#tea', key: 'sub_prod_tea' },
     ],
   },
   {

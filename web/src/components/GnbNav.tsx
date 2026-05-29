@@ -17,7 +17,7 @@ export default function GnbNav() {
   const links = [
     { href: '/about', key: 'about', label: t('menu_about') },
     { href: '/business', key: 'business', label: t('menu_business') },
-    { href: '/products/pickles', key: 'product', label: t('menu_product') },
+    { href: '/products', key: 'product', label: t('menu_product') },
     { href: '/notice', key: 'news', label: t('menu_news') },
     { href: '/contact', key: 'inquiry', label: t('menu_inquiry') },
   ];
