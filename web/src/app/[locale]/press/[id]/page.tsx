@@ -39,11 +39,17 @@ export default async function Page({
           <header className="board_view_head">
             <h2 className="board_view_title">{press.title}</h2>
             <div className="board_view_meta">
-              <span>작성자 <b>이음푸드시스템</b></span>
+              <span>작성자</span>
               <i className="dot" aria-hidden />
-              <span>게시일 <b>{dateStr}</b></span>
+              <b>이음푸드시스템</b>
               <i className="dot" aria-hidden />
-              <span>조회수 <b>{press.view_count}회</b></span>
+              <span>게시일</span>
+              <i className="dot" aria-hidden />
+              <b>{dateStr}</b>
+              <i className="dot" aria-hidden />
+              <span>조회수</span>
+              <i className="dot" aria-hidden />
+              <b>{press.view_count}</b>
             </div>
           </header>
 
