@@ -1030,61 +1030,122 @@
     width: 100%;
 }
 
-/* 8. 우측 소제목 */
+/* 8. 우측 소제목 — 좌측 주황 막대 + 더 크게 */
 .sub_bold_title {
-    color: #222;
+    color: #111827;
     font-family: 'Pretendard', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 30px;
-    letter-spacing: -0.5px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -0.6px;
     margin: 0;
+    padding-left: 18px;
+    position: relative;
+}
+.sub_bold_title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 5px;
+    background: #F39800;
+    border-radius: 3px;
 }
 
-/* 9. 설명 본문 */
+/* 9. 설명 본문 — 옅은 베이지 인용구 카드 */
 .cert_desc {
-    color: #767676;
+    color: #4B5563;
     font-family: 'Pretendard', sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 28px;
-    letter-spacing: -0.45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.35px;
     margin: 0;
+    padding: 18px 22px;
+    background: #FFFBF3;
+    border-radius: 12px;
+    border-left: 3px solid #F39800;
 }
 
 /* 해썹 이점 리스트 */
 .haccp_benefit {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     width: 100%;
 }
 .haccp_benefit .benefit_title {
-    color: #222;
+    color: #111827;
     font-family: 'Pretendard', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 30px;
-    letter-spacing: -0.5px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.4px;
     margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.haccp_benefit .benefit_title::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #F39800;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
 }
 .haccp_benefit ul {
-    display: flex;
-    flex-direction: column;        /* 4개 항목 1·2·3·4 세로 나열 */
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));   /* 4개를 2×2 카드 그리드로 */
     gap: 12px;
-    color: #4B5563;
-    font-family: 'Pretendard', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: -0.3px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 .haccp_benefit ul li {
     position: relative;
-    padding-left: 0;               /* 번호가 텍스트에 이미 포함됨 */
+    padding: 14px 16px 14px 44px;
+    background: #fff;
+    border: 1px solid #F0E6D6;
+    border-radius: 10px;
+    color: #1F2937;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.haccp_benefit ul li:hover {
+    border-color: #F39800;
+    transform: translateY(-2px);
+}
+.haccp_benefit ul li::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #FFF6EC;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23F39800' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    .haccp_benefit ul {
+        grid-template-columns: 1fr;     /* 모바일은 세로 1열 */
+    }
 }
 
 /* 10. 하단 리스트 영역 */
