@@ -1546,6 +1546,16 @@ html[lang="zh"] .dl_title {
     transform: translateY(2px);
 }
 
+/* PREV / NEXT 는 absolute/grid 로 transform 으로 위치 잡혀 있어서,
+   기본 :hover { transform: translateY(2px) } 가 들어가면 좌우 offset 이
+   사라지고 가운데로 점프하는 버그. 각 버튼 호버 시 본래 transform 유지. */
+.next_section_link--prev:hover {
+    transform: translateX(-60px);
+}
+.next_section > .next_section_link:not(.next_section_link--prev):hover {
+    transform: translateX(calc(-50% + 60px));
+}
+
 .next_section_link:hover .next_section_icon {
     animation: bounceDown 0.8s ease-in-out infinite;
 }
@@ -1642,14 +1652,11 @@ html[lang="zh"] .dl_title {
     }
 }
 
-/* 홀수 섹션 — 흰색 명시 (부모 inherit 으로 색 안 잡히는 거 방지) */
-.story_section:nth-of-type(odd) {
+/* 섹션 배경 alternation 제거 — NEXT 가 absolute 로 다음 섹션 위로 침범하는
+   구조 + min-height: 100vh 가 줌아웃에 따라 변동 → 색 경계가 어긋남.
+   전부 통일된 흰색으로 가고, 섹션 구분은 divider 라인 하나로만. */
+.story_section {
     background: #FFFFFF;
-}
-
-/* 짝수 섹션 — 단색 베이지 */
-.story_section:nth-of-type(even) {
-    background: #FFFBF5;
 }
 
 /* === 섹션 헤더 강화 === */
