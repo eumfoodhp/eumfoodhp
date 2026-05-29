@@ -321,10 +321,11 @@
    헤더 — fixed full-width → floating 라운드 카드로 전환
    배너 이미지(.sub_visual_img)와 동일한 폭/모서리로 정렬
    ============================================================ */
-/* 배너 — 더 진한 입체감 (사용자가 명시적으로 강조 원함) */
+/* 배너 — 헤더와 동일한 입체감 (그림자 + 옅은 보더) */
 .hero_section,
 .sub_visual_img {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
 }
 
 /* 주요 카드 컴포넌트 그림자 — 배너와 톤 통일.

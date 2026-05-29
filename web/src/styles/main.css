@@ -7,7 +7,7 @@
     border-radius: 20px;
     overflow: hidden;
     position: relative; /* 자식 요소들의 기준점 */
-    background-color: #000; /* 이미지 로드 전 배경색 */
+    background-color: #f4f4f4; /* 이미지 로드 전 배경색 — 검정 X (모서리 누출) */
 }
 
 /* 2. Swiper 슬라이더 (배경 레이어) */
