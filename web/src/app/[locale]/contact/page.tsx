@@ -52,7 +52,7 @@ export default async function Page({
 
         {/* 페이지 헤딩 */}
         <header className="inquiry_head">
-          <p className="inquiry_eyebrow">Meaning of a passage</p>
+          <p className="inquiry_eyebrow">Q&amp;A</p>
           <h2 className="inquiry_title">1:1 문의</h2>
         </header>
 

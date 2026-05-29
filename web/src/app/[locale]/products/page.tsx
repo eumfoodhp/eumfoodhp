@@ -11,6 +11,7 @@ import BrochureLink from '@/components/BrochureLink';
 import NextSectionLink from '@/components/NextSectionLink';
 import { nl2br } from '@/lib/nl2br';
 import '@/styles/sub.css';
+import '@/styles/board_pages.css';
 import '@/styles/product_pickles.css';
 import '@/styles/product_braised.css';
 import '@/styles/product_namul.css';
@@ -70,6 +71,12 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
   return (
     <main id="sub_contents" className="product_page products_onepage onepage_story">
       <div className="onepage_content">
+
+        {/* 페이지 헤더 (eyebrow + 한글 제목) */}
+        <header className="board_page_head sub_inner page_heading_block">
+          <span className="eyebrow">PRODUCT</span>
+          <h1>제품소개</h1>
+        </header>
 
         {/* ===== 1. 절임식품 ===== */}
         <div id="pickles" className="product_pickles_page story_section">

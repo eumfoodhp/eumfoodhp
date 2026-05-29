@@ -13,6 +13,7 @@ import NextSectionLink from '@/components/NextSectionLink';
 import FacilitySection from '@/components/FacilitySection';
 import CertGrid from '@/components/CertGrid';
 import '@/styles/sub.css';
+import '@/styles/board_pages.css';
 import '@/styles/business_facility.css';
 import '@/styles/business_process.css';
 import '@/styles/about_cert.css';
@@ -60,6 +61,12 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
   return (
     <main id="sub_contents" className="business_onepage onepage_story">
       <div className="onepage_content">
+
+      {/* 페이지 헤더 (eyebrow + 한글 제목) */}
+      <header className="board_page_head sub_inner page_heading_block">
+        <span className="eyebrow">BUSINESS</span>
+        <h1>사업영역</h1>
+      </header>
 
       {/* ===== 1. 시설현황 ===== */}
       <div id="facility" className="business_facility_page story_section">

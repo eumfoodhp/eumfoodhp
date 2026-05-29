@@ -30,17 +30,7 @@ export default async function Page({
             <header className="sales_head">
               <p className="sales_eyebrow">Contact us</p>
               <h2 className="sales_title">영업문의</h2>
-              <div className="sales_contact_info">
-                <div className="sales_contact_row">
-                  <span className="sales_contact_label">대표전화</span>
-                  <p>품질: 031-334-6810 &nbsp; 영업: 070-4334-5206 &nbsp; 관리: 070-4334-5205</p>
-                  <p>구매: 070-4334-5207 &nbsp; 연구개발: 070-7733-5887</p>
-                </div>
-                <div className="sales_contact_row">
-                  <span className="sales_contact_label">주소</span>
-                  <p>주소 경기도 용인시 처인구 이동읍 화산로 191</p>
-                </div>
-              </div>
+              {/* 대표전화 / 주소 정보 제거 (사용자 요청) */}
             </header>
 
             <form action={submitSales} className="public_form sales_form" encType="multipart/form-data">

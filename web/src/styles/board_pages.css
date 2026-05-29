@@ -7,6 +7,13 @@
 .board_page_head {
     margin-bottom: 36px;
 }
+/* 원페이지 (about/business/products) 페이지 시작 부분 헤더 */
+.page_heading_block {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #E5E7EB;
+}
 .board_page_head .eyebrow {
     display: block;
     font-size: 13px;

@@ -15,6 +15,7 @@ import HistoryTabbed from '@/components/HistoryTabbed';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
+import '@/styles/board_pages.css';
 import '@/styles/business_area.css';
 import '@/styles/about_organization.css';
 import '@/styles/about_location.css';
@@ -98,6 +99,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <main id="sub_contents" className="about_onepage onepage_story">
       <div className="onepage_content">
+
+      {/* 페이지 헤더 (eyebrow + 한글 제목) */}
+      <header className="board_page_head sub_inner page_heading_block">
+        <span className="eyebrow">ABOUT US</span>
+        <h1>회사소개</h1>
+      </header>
 
       {/* ===== 1. 인사말 ===== */}
       <div id="greeting" className="story_section">
