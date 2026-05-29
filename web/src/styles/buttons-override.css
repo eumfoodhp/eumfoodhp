@@ -1593,6 +1593,18 @@ html[lang="zh"] .dl_title {
 }
 
 /* === 섹션 헤더 강화 === */
+/* 헤더와 정확히 동일한 width 공식 — !important 로 다른 override 들과 무관하게 고정 */
+#sub_contents .story_section_head,
+.story_section .story_section_head {
+    width: 1580px !important;
+    max-width: 95% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 .story_section_head {
     width: 1580px;
     max-width: 95%;
