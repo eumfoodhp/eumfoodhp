@@ -48,11 +48,14 @@
    ============================================================ */
 .loc_card_map {
     display: block;
+    width: 100%;          /* grid track 폭에 강제 — 안 그러면 aspect-ratio 의
+                             자동 폭 계산 (min-height * 16/10) 이 더 우선해서
+                             grid cell 을 넘어 정보 영역을 침범 */
+    min-width: 0;          /* grid item wrapping 보장 */
     border-radius: 18px;
     overflow: hidden;
     background: #f0f0f0;
-    min-height: 420px;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 10; /* width 결정 후 height 자동 계산 */
     position: relative;
     cursor: zoom-in;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -83,18 +86,9 @@
     min-width: 0; /* grid item 안의 자식 wrapping 보장 */
 }
 
+/* "찾아오는길" pill — 사용자 요청으로 노출 안 함 (DOM 은 유지) */
 .loc_eyebrow {
-    display: inline-flex;
-    align-items: center;
-    align-self: flex-start;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: #FFF1EA;
-    color: #F26337;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: -0.1px;
-    line-height: 1;
+    display: none;
 }
 
 .loc_card_name {
