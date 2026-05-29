@@ -272,10 +272,10 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
                     <div className={`product_grid${sec.isPack ? ' product_grid--sauce_pack' : ''}`}>
                       {sec.ids.map((id) => {
                         const num = String(id).padStart(2, '0');
-                        const refrigerated = t('prod_spec_refrigerated');
-                        const unit1kg = t('prod_spec_unit_1kg');
-                        const storage = safe(t, `prod_sauce_${num}_storage`, refrigerated);
-                        const unit = safe(t, `prod_sauce_${num}_unit`, unit1kg);
+                        // 모든 소스 제품 동일하게 '냉장 / 1KG'. 제품별 다른 값 필요 시
+                        // ko.json 에 prod_sauce_XX_storage / _unit 키 추가 후 safe() 로 분기.
+                        const storage = t('prod_spec_refrigerated');
+                        const unit = t('prod_spec_unit_1kg');
                         const imgUrl = sec.isPack
                           ? `/images/sub/sauce_pack/sauce-pack-${num}.png`
                           : `/images/sub/prod4-${id}.png`;

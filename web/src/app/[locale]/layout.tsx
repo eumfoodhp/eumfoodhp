@@ -19,7 +19,13 @@ export function generateStaticParams() {
 
 export const metadata = {
   title: '㈜이음푸드시스템',
-  description: '㈜이음푸드시스템 — 절임식품, 나물류, 조림류, 양념젓갈, 소스, 액상차 제조',
+  description: '㈜이음푸드시스템 — 절임식품, 나물, 조림, 젓갈, 소스, 액상차 제조',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default async function LocaleLayout({
