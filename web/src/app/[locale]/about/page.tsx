@@ -108,7 +108,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <section className="ceo_intro_section">
           <div className="ceo_inner">
             <div className="ceo_main_group">
-              <span className="ceo_tag">{t('greeting_ceo_intro')}</span>
+              {/* ceo_tag (CEO Introduce 영문 eyebrow) 제거 (사용자 요청) */}
               <div className="ceo_content_group">
                 <div className="ceo_main_title">
                   <h3 className="light">{t('greeting_hello_1')}</h3>
