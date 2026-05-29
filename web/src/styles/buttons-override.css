@@ -1954,3 +1954,171 @@ html[lang="zh"] .dl_title {
         animation: none;
     }
 }
+
+/* ============================================================
+   회사연혁 가로 스크롤 — 4개 PERIOD 카드 좌우 swipe.
+   ============================================================ */
+.history_h_section {
+    width: 1580px;
+    max-width: 95%;
+    margin: 32px auto 0;
+    position: relative;
+}
+
+.history_h_track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(360px, 50%);
+    gap: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 0 24px;
+    scrollbar-width: thin;
+    scrollbar-color: #F39800 #F3F4F6;
+}
+
+.history_h_track::-webkit-scrollbar {
+    height: 8px;
+}
+.history_h_track::-webkit-scrollbar-track {
+    background: #F3F4F6;
+    border-radius: 4px;
+}
+.history_h_track::-webkit-scrollbar-thumb {
+    background: #F39800;
+    border-radius: 4px;
+}
+
+.history_h_slide {
+    scroll-snap-align: start;
+    background: #fff;
+    border: 1px solid #F3F4F6;
+    border-radius: 18px;
+    padding: 28px 32px 32px;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.04),
+        0 2px 6px rgba(0, 0, 0, 0.03);
+    min-height: 480px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.history_h_slide::-webkit-scrollbar {
+    width: 4px;
+}
+.history_h_slide::-webkit-scrollbar-thumb {
+    background: #E5E7EB;
+    border-radius: 2px;
+}
+
+.history_h_period {
+    margin: 0 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #F39800;
+    font-size: 20px;
+    font-weight: 700;
+    color: #F39800;
+    letter-spacing: -0.3px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1;
+}
+
+.history_h_years {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.history_h_year {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.history_h_year_label {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.4px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+}
+
+.history_h_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.history_h_list li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #374151;
+    letter-spacing: -0.2px;
+}
+
+.history_h_list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #F39800;
+}
+
+/* 가로 스크롤 힌트 (좌우 화살표 + 텍스트) */
+.history_h_hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #9CA3AF;
+    letter-spacing: 0.04em;
+    animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* 모바일 — 한 슬라이드 풀폭에 가깝게 */
+@media (max-width: 735px) {
+    .history_h_track {
+        grid-auto-columns: 88%;
+        gap: 14px;
+    }
+    .history_h_slide {
+        padding: 20px 22px 24px;
+        min-height: 420px;
+    }
+    .history_h_period {
+        font-size: 17px;
+    }
+    .history_h_year {
+        grid-template-columns: 48px 1fr;
+        gap: 10px;
+    }
+    .history_h_year_label {
+        font-size: 18px;
+    }
+    .history_h_list li {
+        font-size: 13px;
+    }
+}

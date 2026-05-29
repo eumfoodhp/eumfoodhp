@@ -116,36 +116,37 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <NextSectionLink nextId="history" nextLabel={t('sub_history')} />
       </div>
 
-      {/* ===== 2. 회사연혁 ===== */}
+      {/* ===== 2. 회사연혁 — 가로 스크롤 (snap) ===== */}
       <div id="history" className="story_section">
         <header className="story_section_head">
           <h2 className="story_section_title">{t('sub_history')}</h2>
         </header>
-        <section className="new_history_section">
-          <div className="sub_inner">
-            <div className="new_history_container">
-              <div className="history_main">
-                {PERIODS.map((p) => (
-                  <div key={p.id} id={p.id} className="period_group">
-                    <h3 className="period_title">{p.label}</h3>
-                    <div className="period_content">
-                      {sortedYears
-                        .filter((y) => Number(y) >= p.start && Number(y) <= p.end)
-                        .map((year) => (
-                          <div key={year} className="year_item">
-                            <h4 className="year_tit">{year}</h4>
-                            <ul className="year_details">
-                              {byYear[year].map((c, i) => (
-                                <li key={i}>{c}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <section className="history_h_section">
+          <div className="history_h_track">
+            {PERIODS.map((p) => (
+              <article key={p.id} id={p.id} className="history_h_slide">
+                <h3 className="history_h_period">{p.label}</h3>
+                <div className="history_h_years">
+                  {sortedYears
+                    .filter((y) => Number(y) >= p.start && Number(y) <= p.end)
+                    .map((year) => (
+                      <div key={year} className="history_h_year">
+                        <h4 className="history_h_year_label">{year}</h4>
+                        <ul className="history_h_list">
+                          {byYear[year].map((c, i) => (
+                            <li key={i}>{c}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="history_h_hint" aria-hidden="true">
+            <span>←</span>
+            <span>좌우로 스크롤</span>
+            <span>→</span>
           </div>
         </section>
         <NextSectionLink nextId="area" nextLabel={t('sub_biz_area')} />
