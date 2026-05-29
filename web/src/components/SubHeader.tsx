@@ -172,32 +172,59 @@ export default function SubHeader() {
   }, [pathname]);
 
   // 자동 숨김/노출: 페이지 안에서 마우스가 움직이거나 스크롤하면 펼침,
-  // 2초간 아무 활동도 없으면 자동 닫힘. sub_header 위에 마우스 올라가 있는
-  // 동안엔 닫지 않음.
+  // 4초간 아무 활동도 없으면 자동 닫힘. sub_header 위에 마우스 올라가 있는
+  // 동안엔 닫지 않음. 토글 직후엔 자기 자신이 만든 layout/scroll 이벤트를
+  // 무시해서 깜빡임 방지.
   useEffect(() => {
     let hideTimer: ReturnType<typeof setTimeout> | null = null;
     let isMouseOverSub = false;
-    const HIDE_DELAY = 2000;
+    let suppressUntil = 0;          // 이 시점까지 scroll/mousemove 이벤트 무시
+    let lastMouseX = -1;
+    let lastMouseY = -1;
+    const HIDE_DELAY = 4000;
+    const SELF_EVENT_SUPPRESS_MS = 450; // CSS transition (300ms) + 여유
+    const MOUSE_THRESHOLD = 5;          // 5px 미만 떨림은 무시
 
     const scheduleHide = () => {
       if (hideTimer) clearTimeout(hideTimer);
       hideTimer = setTimeout(() => {
-        if (!isMouseOverSub) setVisible(false);
+        if (!isMouseOverSub) {
+          suppressUntil = Date.now() + SELF_EVENT_SUPPRESS_MS;
+          setVisible(false);
+        }
       }, HIDE_DELAY);
     };
 
     const show = () => {
-      setVisible(true);
+      setVisible((prev) => {
+        if (!prev) suppressUntil = Date.now() + SELF_EVENT_SUPPRESS_MS;
+        return true;
+      });
       scheduleHide();
     };
 
-    // 마우스 움직임 / 스크롤 / 터치 — 사용자 활동 신호로 보고 펼침
-    const onActivity = () => show();
+    const onScroll = () => {
+      if (Date.now() < suppressUntil) return;
+      show();
+    };
+    const onMouseMove = (e: MouseEvent) => {
+      if (Date.now() < suppressUntil) return;
+      // 미세 떨림 무시 (호버 상태에서도 마우스가 1~2px 흔들리는 경우)
+      if (lastMouseX >= 0) {
+        const dx = Math.abs(e.clientX - lastMouseX);
+        const dy = Math.abs(e.clientY - lastMouseY);
+        if (dx < MOUSE_THRESHOLD && dy < MOUSE_THRESHOLD) return;
+      }
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+      show();
+    };
+    const onTouchOrKey = () => show();
 
-    window.addEventListener('scroll', onActivity, { passive: true });
-    window.addEventListener('mousemove', onActivity, { passive: true });
-    window.addEventListener('touchstart', onActivity, { passive: true });
-    window.addEventListener('keydown', onActivity);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('touchstart', onTouchOrKey, { passive: true });
+    window.addEventListener('keydown', onTouchOrKey);
 
     // sub_header 자체 hover 트래킹 — 위에 마우스 올려두면 안 닫힘
     const node = document.querySelector('.sub_header');
@@ -215,10 +242,10 @@ export default function SubHeader() {
 
     return () => {
       if (hideTimer) clearTimeout(hideTimer);
-      window.removeEventListener('scroll', onActivity);
-      window.removeEventListener('mousemove', onActivity);
-      window.removeEventListener('touchstart', onActivity);
-      window.removeEventListener('keydown', onActivity);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchstart', onTouchOrKey);
+      window.removeEventListener('keydown', onTouchOrKey);
       node?.removeEventListener('mouseenter', onEnter);
       node?.removeEventListener('mouseleave', onLeave);
     };
