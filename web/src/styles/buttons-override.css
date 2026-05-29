@@ -1625,6 +1625,11 @@ html[lang="zh"] .dl_title {
     /* 짝수 섹션은 살짝 다른 톤 배경으로 챕터 구분 */
 }
 
+/* 첫·마지막 섹션 제외 — 중간 섹션 상단에 NEXT 버튼 공간 확보용 padding */
+.story_section:not(:first-of-type):not(:last-of-type) {
+    padding-top: 120px;
+}
+
 @media (max-width: 1024px) {
     .story_section {
         scroll-margin-top: 140px;
