@@ -12,7 +12,7 @@ export default async function Header() {
       <div className="header_inner">
         <h1 className="logo">
           <Link href="/">
-            <img src="/images/common/logo.png" alt="㈜이음푸드시스템 로고" />
+            <img src="/images/common/newlogo.png" alt="㈜이음푸드시스템 로고" />
           </Link>
         </h1>
 

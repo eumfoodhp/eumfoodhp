@@ -17,9 +17,9 @@ export default async function Footer() {
 
       <div className="footer_inner">
         <div className="footer_top">
-          <div className="f_logo">
-            {/* 컬러 로고 (헤더와 동일) — 단색 ftlogo.png 대체 */}
-            <img src="/images/common/logo.png" alt="㈜이음푸드시스템" />
+          <div className="f_logo f_logo--gray">
+            {/* 새 로고 — 푸터에서는 CSS filter 로 그레이 톤 처리 */}
+            <img src="/images/common/newlogo.png" alt="㈜이음푸드시스템" />
           </div>
         </div>
 

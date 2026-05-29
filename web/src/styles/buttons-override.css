@@ -328,6 +328,11 @@
     border: 1px solid rgba(0, 0, 0, 0.04) !important;
 }
 
+/* 푸터 로고 — 그레이 톤 처리 (filter grayscale + 약간 어둡게) */
+.f_logo--gray img {
+    filter: grayscale(1) brightness(0.7) opacity(0.85);
+}
+
 /* 주요 카드 컴포넌트 그림자 — 배너와 톤 통일.
    제품 카드(.prod_card, .product_card)는 깔끔한 디자인 위해 그림자/보더 X (이미지만 라운드) */
 .biz_card,
