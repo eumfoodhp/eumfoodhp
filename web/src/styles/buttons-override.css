@@ -2112,6 +2112,18 @@ html[lang="zh"] .dl_title {
     display: block;
 }
 
+/* 모바일: 한반도 (이미지 우측 50~95% 영역) 가 viewport 가운데로 오게
+   object-position 을 72% 로 잡아 한반도 중심이 컨테이너 중심에 정렬되도록.
+   pulse_dot 도 같은 만큼 이동시켜 baked-in 녹색 점과 정렬. */
+@media (max-width: 768px) {
+    .footer_bg_img {
+        object-position: 72% center;
+    }
+    .pulse_dot {
+        left: 50%;
+    }
+}
+
 /* 텍스트 가독성을 위해 흰색 오버레이 */
 #footer::before {
     content: '';
