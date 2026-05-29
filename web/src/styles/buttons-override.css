@@ -1501,18 +1501,19 @@ html[lang="zh"] .dl_title {
 }
 
 /* grid 4칸: 1fr | col2(PREV) | col3(NEXT) | 1fr.
-   PREV row1 col2, divider row2 풀폭(1/-1), NEXT row3 col3. */
+   PREV row1 col2 / NEXT row2 col3 / divider row3 풀폭(1/-1) — divider 가
+   섹션 끝 (= 다음 섹션과의 경계) 에 위치. */
 .next_section_link--prev {
     background: transparent;
     grid-column: 2;
     grid-row: 1;
 }
-.next_section_divider {
-    grid-column: 1 / -1;
-    grid-row: 2;
-}
 .next_section > .next_section_link:not(.next_section_link--prev) {
     grid-column: 3;
+    grid-row: 2;
+}
+.next_section_divider {
+    grid-column: 1 / -1;
     grid-row: 3;
 }
 
@@ -1606,21 +1607,21 @@ html[lang="zh"] .dl_title {
     /* anchor 클릭 시 헤더(112px)+서브헤더(~64px) 만큼 아래로 가지 않도록 보정 */
     scroll-margin-top: 188px;
     /* 컨텐츠가 적어도 섹션이 한 viewport 정도 차지 — 시각적 안정감 */
-    min-height: 88vh;
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
     /* 짝수 섹션은 살짝 다른 톤 배경으로 챕터 구분 */
 }
 
 @media (max-width: 1024px) {
     .story_section {
         scroll-margin-top: 140px;
-        min-height: 80vh;
+        min-height: 90vh !important;
     }
 }
 @media (max-width: 640px) {
     .story_section {
-        min-height: 70vh;
+        min-height: 80vh !important;
     }
 }
 
