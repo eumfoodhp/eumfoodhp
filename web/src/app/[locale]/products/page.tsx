@@ -72,12 +72,6 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
     <main id="sub_contents" className="product_page products_onepage onepage_story">
       <div className="onepage_content">
 
-        {/* 페이지 헤더 (eyebrow + 한글 제목) */}
-        <header className="board_page_head sub_inner page_heading_block">
-          <span className="eyebrow">PRODUCT</span>
-          <h1>제품소개</h1>
-        </header>
-
         {/* ===== 1. 절임식품 ===== */}
         <div id="pickles" className="product_pickles_page story_section">
           <header className="story_section_head story_section_head--with_action">

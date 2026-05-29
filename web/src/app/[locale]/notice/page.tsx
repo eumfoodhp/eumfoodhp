@@ -52,12 +52,6 @@ export default async function NewsroomOnePage({
     <main id="sub_contents" className="newsroom_onepage onepage_story">
       <div className="onepage_content">
 
-        {/* 페이지 헤더 (eyebrow + 한글 제목) */}
-        <header className="board_page_head sub_inner page_heading_block">
-          <span className="eyebrow">NEWSROOM</span>
-          <h1>뉴스룸</h1>
-        </header>
-
         {/* ===== 1. 공지사항 ===== */}
         <div id="notice" className="story_section">
           <header className="story_section_head">

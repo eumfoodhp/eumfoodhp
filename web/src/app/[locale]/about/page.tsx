@@ -100,12 +100,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     <main id="sub_contents" className="about_onepage onepage_story">
       <div className="onepage_content">
 
-      {/* 페이지 헤더 (eyebrow + 한글 제목) */}
-      <header className="board_page_head sub_inner page_heading_block">
-        <span className="eyebrow">ABOUT US</span>
-        <h1>회사소개</h1>
-      </header>
-
       {/* ===== 1. 인사말 ===== */}
       <div id="greeting" className="story_section">
         <header className="story_section_head">

@@ -62,12 +62,6 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
     <main id="sub_contents" className="business_onepage onepage_story">
       <div className="onepage_content">
 
-      {/* 페이지 헤더 (eyebrow + 한글 제목) */}
-      <header className="board_page_head sub_inner page_heading_block">
-        <span className="eyebrow">BUSINESS</span>
-        <h1>사업영역</h1>
-      </header>
-
       {/* ===== 1. 시설현황 ===== */}
       <div id="facility" className="business_facility_page story_section">
         <header className="story_section_head">

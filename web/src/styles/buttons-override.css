@@ -1748,21 +1748,11 @@ html[lang="zh"] .dl_title {
     background-size: 14px 14px, calc(100% - 20px) 2px;
 }
 /* with_action (상품소개서 다운로드 버튼이 헤더 우측에 있는 케이스) —
-   ::before 를 고정 폭 80px 으로 줄이고 텍스트 좌측 정렬, ::after 숨김.
-   안 그러면 ::before 가 flex: 1 로 가능한 공간 다 차지해서
-   텍스트가 우측 끝으로 밀려남. */
+   다른 헤더와 동일한 양 옆 ●━━ 텍스트 ━━● 마커 유지. title 은 flex 로
+   가능한 공간 다 차지, 다운로드 버튼은 헤더의 우측 flex item. */
 .story_section_head--with_action .story_section_title {
     flex: 1;
-    width: auto;
-    justify-content: flex-start;
-}
-.story_section_head--with_action .story_section_title::before {
-    flex: 0 0 80px;
-    width: 80px;
-    min-width: 80px;
-}
-.story_section_head--with_action .story_section_title::after {
-    display: none;
+    min-width: 0;
 }
 
 /* 타이틀 아래 가로선 — 제거 (사용자 요청) */
