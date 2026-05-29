@@ -342,6 +342,28 @@
     object-fit: contain;
 }
 
+/* ============================================================
+   카테고리별 배지 색상 — Figma 디자인 (283:6856) 매칭
+   - 절임식품(pickles): 주황 #F39800 (기본)
+   - 조림류(braised): 초록 #5BBE5F
+   - 피클(salted=pickle modKey): 주황 #F39800
+   - 소스/혼합장/액상차(sauce): 파랑 #5095D2
+   ============================================================ */
+#sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_step_badge {
+    background: #5BBE5F;
+}
+#sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_step_badge {
+    background: #5095D2;
+}
+
+/* eyebrow 텍스트도 배지와 동일한 톤으로 통일 */
+#sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_eyebrow {
+    color: #5BBE5F;
+}
+#sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_eyebrow {
+    color: #5095D2;
+}
+
 /* Figma 553:5977 절임식품 — 아이콘 영역 90×90 */
 #sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_step_icon img {
     max-width: 90px;

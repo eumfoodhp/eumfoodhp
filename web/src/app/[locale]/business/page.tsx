@@ -21,6 +21,7 @@ type Cat = {
   modKey: string;
   prefix: string;
   label: string;
+  eyebrow: string;
   steps: number;
   iconDir: string;
 };
@@ -43,10 +44,10 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
   const t = await getTranslations();
 
   const CATEGORIES: Cat[] = [
-    { key: 'pickles', modKey: 'pickles', prefix: 'proc_pickles_step', label: t('sub_prod_pickles'), steps: 7, iconDir: 'biz-pf-pickles-5535977' },
-    { key: 'braised', modKey: 'braised', prefix: 'proc_braised_step', label: t('sub_prod_braised'), steps: 5, iconDir: 'biz-pf-braised-5535890' },
-    { key: 'salted',  modKey: 'pickle',  prefix: 'proc_salted_step',  label: t('sub_prod_salted'),  steps: 5, iconDir: 'biz-pf-pickle-5535894' },
-    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('sub_prod_sauce'),   steps: 4, iconDir: 'biz-pf-sauce-flow' },
+    { key: 'pickles', modKey: 'pickles', prefix: 'proc_pickles_step', label: t('sub_prod_pickles'), eyebrow: 'Pickled Food',                  steps: 7, iconDir: 'biz-pf-pickles-5535977' },
+    { key: 'braised', modKey: 'braised', prefix: 'proc_braised_step', label: t('sub_prod_braised'), eyebrow: 'Braised Food',                  steps: 5, iconDir: 'biz-pf-braised-5535890' },
+    { key: 'salted',  modKey: 'pickle',  prefix: 'proc_salted_step',  label: t('sub_prod_salted'),  eyebrow: 'Pickle',                        steps: 5, iconDir: 'biz-pf-pickle-5535894' },
+    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('sub_prod_sauce'),   eyebrow: 'Sauce, Mixing Sauce, Liquid Tea', steps: 4, iconDir: 'biz-pf-sauce-flow' },
   ];
 
   const sections = [
@@ -80,7 +81,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
           >
             <div className="sub_inner biz_pf_inner">
               <div className="biz_pf_flow_head">
-                <p className="biz_pf_eyebrow">Process Flow</p>
+                <p className="biz_pf_eyebrow">{cat.eyebrow}</p>
                 <h2 className="biz_pf_flow_title">{cat.label}</h2>
               </div>
               <div className="biz_pf_steps_grid">
