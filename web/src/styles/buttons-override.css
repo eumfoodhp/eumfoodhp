@@ -1709,25 +1709,51 @@ html[lang="zh"] .dl_title {
     }
 }
 
-/* 타이틀 좌측 초록 점 + 가로선 마커 + 더 큰 폰트
-   (페이지 시작점을 표현하는 타임라인 챕터 마커) */
+/* 타이틀: 양 끝 초록 점 + 양 옆 가로선 + 가운데 텍스트
+   (헤더 전체 폭을 채우는 챕터 구분선 + 가운데 라벨) */
 .story_section_head .story_section_title {
     font-size: 48px;
-    padding-left: 100px;     /* 마커 80px + spacing 20px */
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    padding-left: 0;
     position: relative;
 }
-.story_section_head .story_section_title::before {
+.story_section_head .story_section_title::before,
+.story_section_head .story_section_title::after {
     content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 80px;
+    flex: 1;
     height: 14px;
-    background: transparent
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 14'><circle cx='7' cy='7' r='7' fill='%2322C55E'/><rect x='20' y='6' width='60' height='2' rx='1' fill='%2322C55E'/></svg>")
-        no-repeat center / contain;
+    min-width: 60px;
     border-radius: 0;
+    background-color: transparent;
+}
+/* 좌측: 점 (왼쪽 끝) + 선 (점 우측 ~ 우측 끝) */
+.story_section_head .story_section_title::before {
+    background-image:
+        radial-gradient(circle 7px at 7px center, #22C55E 99%, transparent 100%),
+        linear-gradient(#22C55E, #22C55E);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, 20px center;
+    background-size: 14px 14px, calc(100% - 20px) 2px;
+}
+/* 우측: 선 (좌측 ~ 점 좌측) + 점 (오른쪽 끝) */
+.story_section_head .story_section_title::after {
+    background-image:
+        radial-gradient(circle 7px at calc(100% - 7px) center, #22C55E 99%, transparent 100%),
+        linear-gradient(#22C55E, #22C55E);
+    background-repeat: no-repeat, no-repeat;
+    background-position: right center, left center;
+    background-size: 14px 14px, calc(100% - 20px) 2px;
+}
+/* with_action (인증서 페이지 등 헤더 우측 버튼 있음) — 우측 라인 숨김 */
+.story_section_head--with_action .story_section_title {
+    flex: 1;
+    width: auto;
+}
+.story_section_head--with_action .story_section_title::after {
+    display: none;
 }
 
 /* 타이틀 아래 가로선 — 제거 (사용자 요청) */
@@ -1741,25 +1767,38 @@ html[lang="zh"] .dl_title {
     }
     .story_section_head .story_section_title {
         font-size: 32px;
-        padding-left: 76px;
+        gap: 16px;
+    }
+    .story_section_head .story_section_title::before,
+    .story_section_head .story_section_title::after {
+        height: 12px;
+        min-width: 40px;
     }
     .story_section_head .story_section_title::before {
-        width: 60px;
-        height: 12px;
-        /* top/bottom 은 transform: translateY(-50%) 로 대체 — reset 명시 */
-        top: 50%;
-        bottom: auto;
+        background-size: 12px 12px, calc(100% - 18px) 2px;
+        background-position: left center, 18px center;
+    }
+    .story_section_head .story_section_title::after {
+        background-size: 12px 12px, calc(100% - 18px) 2px;
     }
 }
 
 @media (max-width: 640px) {
     .story_section_head .story_section_title {
-        font-size: 26px;
-        padding-left: 56px;
+        font-size: 22px;
+        gap: 12px;
+    }
+    .story_section_head .story_section_title::before,
+    .story_section_head .story_section_title::after {
+        height: 10px;
+        min-width: 24px;
     }
     .story_section_head .story_section_title::before {
-        width: 44px;
-        height: 10px;
+        background-size: 10px 10px, calc(100% - 16px) 2px;
+        background-position: left center, 16px center;
+    }
+    .story_section_head .story_section_title::after {
+        background-size: 10px 10px, calc(100% - 16px) 2px;
     }
 }
 
