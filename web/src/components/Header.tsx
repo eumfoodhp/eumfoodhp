@@ -83,19 +83,19 @@ export default async function Header() {
               <MobileMenuGroup
                 title={t('menu_about')}
                 items={[
-                  { href: '/about/greeting', label: t('sub_greeting') },
-                  { href: '/about/history', label: t('sub_history') },
-                  { href: '/business/area', label: t('sub_biz_area') },
-                  { href: '/about/organization', label: t('sub_org') },
-                  { href: '/about/location', label: t('sub_location') },
+                  { href: '/about#greeting', label: t('sub_greeting') },
+                  { href: '/about#history', label: t('sub_history') },
+                  { href: '/about#area', label: t('sub_biz_area') },
+                  { href: '/about#organization', label: t('sub_org') },
+                  { href: '/about#location', label: t('sub_location') },
                 ]}
               />
               <MobileMenuGroup
                 title={t('menu_business')}
                 items={[
-                  { href: '/business/facility', label: t('sub_facility') },
-                  { href: '/business/process', label: t('sub_biz_process') },
-                  { href: '/about/cert', label: t('sub_cert') },
+                  { href: '/business#facility', label: t('sub_facility') },
+                  { href: '/business#process', label: t('sub_biz_process') },
+                  { href: '/business#cert', label: t('sub_cert') },
                 ]}
               />
               <MobileMenuGroup

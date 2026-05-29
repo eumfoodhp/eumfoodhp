@@ -22,7 +22,7 @@ export async function createHistory(formData: FormData) {
   if (error) throw new Error(error.message);
 
   revalidatePath('/admin/history');
-  revalidatePath('/about/history');
+  revalidatePath('/about#history');
   redirect('/admin/history');
 }
 
@@ -45,7 +45,7 @@ export async function updateHistory(formData: FormData) {
   if (error) throw new Error(error.message);
 
   revalidatePath('/admin/history');
-  revalidatePath('/about/history');
+  revalidatePath('/about#history');
   redirect('/admin/history');
 }
 
@@ -58,5 +58,5 @@ export async function deleteHistory(formData: FormData) {
   if (error) throw new Error(error.message);
 
   revalidatePath('/admin/history');
-  revalidatePath('/about/history');
+  revalidatePath('/about#history');
 }

@@ -73,9 +73,7 @@ const CATEGORIES: Category[] = [
 
 export function matchCategory(pathname: string): Category | null {
   if (pathname === '/' || pathname === '') return null;
-  if (pathname.startsWith('/about/cert')) return CATEGORIES.find((c) => c.key === 'business')!;
   if (pathname.startsWith('/about')) return CATEGORIES.find((c) => c.key === 'about')!;
-  if (pathname.startsWith('/business/area')) return CATEGORIES.find((c) => c.key === 'about')!;
   if (pathname.startsWith('/business')) return CATEGORIES.find((c) => c.key === 'business')!;
   if (pathname.startsWith('/products')) return CATEGORIES.find((c) => c.key === 'product')!;
   if (

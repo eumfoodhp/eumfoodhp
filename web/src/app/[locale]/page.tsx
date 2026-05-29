@@ -88,7 +88,7 @@ export default async function HomePage({
 
                 <div className="ov_bottom_group">
                   <p className="ov_desc">{nl2br(t('main_ov_desc'))}</p>
-                  <Link href="/about/greeting" className="ov_more_btn">
+                  <Link href="/about#greeting" className="ov_more_btn">
                     <span>{t('main_ov_more')}</span>
                     <ArrowIcon />
                   </Link>
@@ -105,7 +105,7 @@ export default async function HomePage({
                 <span className="biz_sub">{t('main_biz_sub')}</span>
                 <h2 className="biz_title">{t('main_biz_title')}</h2>
               </div>
-              <Link href="/business/area" className="biz_more_btn">
+              <Link href="/about#area" className="biz_more_btn">
                 <span>{t('main_biz_more')}</span>
                 <ArrowIcon />
               </Link>
