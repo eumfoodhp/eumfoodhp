@@ -112,9 +112,9 @@ export default async function Header() {
               <MobileMenuGroup
                 title={t('menu_news')}
                 items={[
-                  { href: '/notice', label: t('sub_notice') },
-                  { href: '/press', label: t('sub_news_press') },
-                  // download 항목 제거 (사용자 요청)
+                  { href: '/notice#notice', label: t('sub_notice') },
+                  { href: '/notice#press', label: t('sub_news_press') },
+                  // download 라우트 자체 삭제됨
                 ]}
               />
               <MobileMenuGroup

@@ -108,7 +108,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 1. 인사말 ===== */}
       <div id="greeting" className="story_section">
-        {/* '인사말' story_section_head 제거 (사용자 요청) — CEO Introduce + 안녕하십니까 만 노출 */}
+        <header className="story_section_head">
+          <h2 className="story_section_title">{t('sub_greeting')}</h2>
+        </header>
         <section className="ceo_intro_section">
           <div className="ceo_inner">
             <div className="ceo_main_group">

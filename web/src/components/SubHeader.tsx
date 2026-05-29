@@ -56,9 +56,9 @@ const CATEGORIES: Category[] = [
     key: 'news',
     labelKey: 'menu_news',
     items: [
-      { href: '/notice', key: 'sub_notice' },
-      { href: '/press', key: 'sub_news_press' },
-      // download 항목 제거 (사용자 요청)
+      { href: '/notice#notice', key: 'sub_notice' },
+      { href: '/notice#press', key: 'sub_news_press' },
+      // download 라우트 자체 삭제됨
     ],
   },
   {

@@ -38,9 +38,9 @@ export function productsTabs(t: Translator) {
 
 export function newsroomTabs(t: Translator) {
   return [
-    { key: 'notice', href: '/notice', label: t('sub_notice') },
-    { key: 'press', href: '/press', label: t('sub_news_press') },
-    // download 항목 제거 (사용자 요청) — 라우트는 유지
+    { key: 'notice', href: '/notice#notice', label: t('sub_notice') },
+    { key: 'press', href: '/notice#press', label: t('sub_news_press') },
+    // download 라우트 자체 삭제됨
   ];
 }
 
