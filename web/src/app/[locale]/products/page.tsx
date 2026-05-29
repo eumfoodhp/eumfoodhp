@@ -71,6 +71,14 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
     <main id="sub_contents" className="product_page products_onepage onepage_story">
       <div className="onepage_content">
 
+        {/* 페이지 최상단 — 단일 상품소개서 다운로드 바 */}
+        <div className="products_top_bar">
+          <BrochureLink className="btn_download">
+            <span>{t('btn_product_intro')}</span>
+            <img src="/images/sub/download.png" alt="" />
+          </BrochureLink>
+        </div>
+
         {/* ===== 1. 절임식품 ===== */}
         <div id="pickles" className="product_pickles_page story_section">
           <header className="story_section_head">
@@ -78,16 +86,6 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
           </header>
           <section className="product_list_section">
             <div className="product_inner">
-              <div className="product_top_area">
-                <div className="tit_group">
-                  <span className="sub_tit">{t('prod_pickles_sub_tit')}</span>
-                  <h3 className="main_tit">{t('prod_pickles_main_tit')}</h3>
-                </div>
-                <BrochureLink className="btn_download">
-                  <span>{t('btn_product_intro')}</span>
-                  <img src="/images/sub/download.png" alt="" />
-                </BrochureLink>
-              </div>
               <div className="product_grid">
                 {PICKLES_ORDER.map((pickId, slotIndex) => {
                   const num = String(pickId).padStart(2, '0');
@@ -132,16 +130,6 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
           </header>
           <section className="product_list_section">
             <div className="product_inner">
-              <div className="product_top_area">
-                <div className="tit_group">
-                  <span className="sub_tit">{t('prod_braised_sub_tit')}</span>
-                  <h3 className="main_tit">{t('prod_braised_main_tit')}</h3>
-                </div>
-                <BrochureLink className="btn_download">
-                  <span>{t('btn_product_intro')}</span>
-                  <img src="/images/sub/download.png" alt="" />
-                </BrochureLink>
-              </div>
               <div className="product_grid">
                 {Array.from({ length: 9 }, (_, i) => {
                   const num = String(i + 1).padStart(2, '0');
@@ -186,16 +174,6 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
           </header>
           <section className="product_list_section">
             <div className="product_inner">
-              <div className="product_top_area">
-                <div className="tit_group">
-                  <span className="sub_tit">{t('prod_namul_sub_tit')}</span>
-                  <h3 className="main_tit">{t('prod_namul_main_tit')}</h3>
-                </div>
-                <BrochureLink className="btn_download">
-                  <span>{t('btn_product_intro')}</span>
-                  <img src="/images/sub/download.png" alt="" />
-                </BrochureLink>
-              </div>
               <div className="product_grid">
                 {NAMUL_ITEMS.map(({ id, rect }) => {
                   const key = `prod_namul_item${id}`;
@@ -239,16 +217,6 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
           </header>
           <section className="product_list_section">
             <div className="product_inner">
-              <div className="product_top_area">
-                <div className="tit_group">
-                  <span className="sub_tit">{t('prod_salted_sub_tit')}</span>
-                  <h3 className="main_tit">{t('prod_salted_main_tit')}</h3>
-                </div>
-                <BrochureLink className="btn_download">
-                  <span>{t('btn_product_intro')}</span>
-                  <img src="/images/sub/download.png" alt="" />
-                </BrochureLink>
-              </div>
               <div className="product_grid product_grid--salted_three">
                 {SALTED_ITEMS.map(({ id, img }) => (
                   <div className="product_card" key={id}>
@@ -293,20 +261,9 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               return (
                 <section className="product_list_section" key={secIdx}>
                   <div className="product_inner">
-                    <div className="product_top_area">
-                      <div className="sauce_top_left">
-                        <div className="tit_group">
-                          <span className="sub_tit">{t(sec.subKey)}</span>
-                          <h3 className="main_tit">{t(sec.mainKey)}</h3>
-                        </div>
-                        {note && <p className="sauce_note">{note}</p>}
-                      </div>
-                      {sec.isPack && (
-                        <BrochureLink className="btn_download">
-                          <span>{t('btn_product_intro')}</span>
-                          <img src="/images/sub/download.png" alt="" />
-                        </BrochureLink>
-                      )}
+                    <div className="sauce_subsection_head">
+                      <h3 className="main_tit">{t(sec.mainKey)}</h3>
+                      {note && <p className="sauce_note">{note}</p>}
                     </div>
                     <div className={`product_grid${sec.isPack ? ' product_grid--sauce_pack' : ''}`}>
                       {sec.ids.map((id) => {
@@ -362,16 +319,6 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
           </header>
           <section className="product_list_section">
             <div className="product_inner">
-              <div className="product_top_area">
-                <div className="tit_group">
-                  <span className="sub_tit">{t('prod_tea_sub_tit')}</span>
-                  <h3 className="main_tit">{t('prod_tea_main_tit')}</h3>
-                </div>
-                <BrochureLink className="btn_download">
-                  <span>{t('btn_product_intro')}</span>
-                  <img src="/images/sub/download.png" alt="" />
-                </BrochureLink>
-              </div>
               <div className="product_grid">
                 {TEA_ITEMS.map(({ key, img }) => (
                   <div className="product_card" key={key}>

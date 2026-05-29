@@ -1723,6 +1723,61 @@ html[lang="zh"] .dl_title {
 }
 
 /* ============================================================
+   /products 원페이지 — 상단 다운로드 바 + 카드 보임 강제 + sauce 서브 헤딩
+   ============================================================ */
+
+/* 상단 단일 상품소개서 다운로드 바 — 우측 정렬, 섹션 시작 전에 한 칸 */
+.products_top_bar {
+    width: 1580px;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 32px 0 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* IntersectionObserver(.is_visible) JS 가 안 붙어 있어서 카드가 영원히
+   opacity:0 으로 안 보이는 문제 — 강제로 보이게 override. */
+#sub_contents.product_page .product_card {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* sauce 서브 섹션 헤딩 (팩 소스 / 한식 소스 / 중식 / 동남아) */
+.sauce_subsection_head {
+    width: 100%;
+    margin: 24px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F0E6D6;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.sauce_subsection_head .main_tit {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F2937;
+    letter-spacing: -0.4px;
+}
+.sauce_subsection_head .sauce_note {
+    margin: 0;
+    font-size: 13px;
+    color: #767676;
+}
+
+@media (max-width: 1024px) {
+    .products_top_bar {
+        max-width: calc(100% - 24px);
+        padding-top: 24px;
+    }
+    .sauce_subsection_head .main_tit {
+        font-size: 20px;
+    }
+}
+
+/* ============================================================
    회사연혁 — 좌측 세로 탭 + 우측 연도 카드 그리드
    ============================================================ */
 .history_tabbed {
