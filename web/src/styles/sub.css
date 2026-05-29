@@ -1172,18 +1172,7 @@
     gap: 12px; /* var(--padding-3) */
 }
 
-/* 마지막 카드가 한 줄에 혼자 (4n+1) 일 때 중앙 정렬 — 전통식품마스터 같은 9번째 카드 */
-.cert_grid > .cert_card:last-child:nth-child(4n+1) {
-    grid-column: 2 / span 2;
-    justify-self: center;
-}
-/* 마지막 두 카드가 같은 줄에 둘만 (4n+2) 일 때 가운데 컬럼들에 정렬 */
-.cert_grid > .cert_card:last-child:nth-child(4n+2) {
-    grid-column: 3;
-}
-.cert_grid > .cert_card:nth-last-child(2):nth-child(4n+1) {
-    grid-column: 2;
-}
+/* 마지막 카드 정렬 룰 제거 — 자연스럽게 1열부터 채워 좌측 정렬 (사용자 요청) */
 
 /* 13. 이미지 박스 — 배경/보더 제거. 인증서 본체를 정중앙 정렬 */
 .cert_img_box {
