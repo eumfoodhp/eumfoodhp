@@ -1617,8 +1617,8 @@ html[lang="zh"] .dl_title {
     position: relative;
     /* anchor 클릭 시 헤더(112px)+서브헤더(~64px) 만큼 아래로 가지 않도록 보정 */
     scroll-margin-top: 188px;
-    /* 컨텐츠가 적어도 섹션이 한 viewport 정도 차지 — 시각적 안정감 */
-    min-height: 100vh !important;
+    /* 컨텐츠가 적어도 한 화면 + 여유 만큼 차지 — 시각적 안정감 */
+    min-height: 130vh !important;
     display: flex !important;
     flex-direction: column !important;
     /* 짝수 섹션은 살짝 다른 톤 배경으로 챕터 구분 */
@@ -1627,12 +1627,12 @@ html[lang="zh"] .dl_title {
 @media (max-width: 1024px) {
     .story_section {
         scroll-margin-top: 140px;
-        min-height: 90vh !important;
+        min-height: 110vh !important;
     }
 }
 @media (max-width: 640px) {
     .story_section {
-        min-height: 80vh !important;
+        min-height: 90vh !important;
     }
 }
 
