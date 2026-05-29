@@ -1551,6 +1551,13 @@ html[lang="zh"] .dl_title {
    사라지고 가운데로 점프하는 버그. 각 버튼 호버 시 본래 transform 유지. */
 .next_section_link--prev:hover {
     transform: translateX(-60px);
+    /* 사용자 요청: PREV 는 호버해도 전혀 변화 없게 */
+    background: transparent;
+}
+.next_section_link--prev:hover .next_section_icon,
+.next_section_link--prev:hover .next_section_icon--up {
+    /* PREV 아이콘 bounce 도 제거 */
+    animation: none;
 }
 .next_section > .next_section_link:not(.next_section_link--prev):hover {
     transform: translateX(calc(-50% + 60px));
