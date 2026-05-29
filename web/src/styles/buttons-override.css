@@ -1635,11 +1635,11 @@ html[lang="zh"] .dl_title {
     position: relative;
     /* anchor 클릭 시 헤더(112px)+서브헤더(~64px) 만큼 아래로 가지 않도록 보정 */
     scroll-margin-top: 188px;
-    /* 컨텐츠가 적어도 한 화면 가까이 차지 */
-    min-height: 100vh !important;
+    /* 절대 수치 — vh 단위는 줌아웃 시 viewport 비례로 같이 커져서 빈 공간이
+       비정상적으로 늘어남. 800px 픽셀 고정으로 줌과 무관하게 같은 길이. */
+    min-height: 800px;
     display: flex !important;
     flex-direction: column !important;
-    /* 짝수 섹션은 살짝 다른 톤 배경으로 챕터 구분 */
 }
 
 /* 첫 섹션 제외 — 그 외 모든 섹션 상단에 이전 섹션의 NEXT 버튼 공간 확보용 padding */
@@ -1650,12 +1650,12 @@ html[lang="zh"] .dl_title {
 @media (max-width: 1024px) {
     .story_section {
         scroll-margin-top: 140px;
-        min-height: 90vh !important;
+        min-height: 680px;
     }
 }
 @media (max-width: 640px) {
     .story_section {
-        min-height: 75vh !important;
+        min-height: 560px;
     }
 }
 
