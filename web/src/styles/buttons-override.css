@@ -1359,11 +1359,11 @@ html[lang="zh"] .dl_title {
 }
 
 .sub_header_nav_link:hover {
-    color: #F39800;
+    color: #2E8B33;
 }
 
 .sub_header_nav_link.is_active {
-    color: #F39800;
+    color: #2E8B33;
     font-weight: 700;
 }
 

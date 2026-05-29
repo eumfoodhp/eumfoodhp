@@ -14,6 +14,9 @@ type Props = {
 };
 
 export default function NextSectionLink({ nextId, nextLabel, isLast }: Props) {
+  // 마지막 섹션엔 구분선/맨위로 버튼 노출 안 함 (사용자 요청).
+  if (isLast) return null;
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isLast) {
