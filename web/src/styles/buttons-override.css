@@ -1464,18 +1464,20 @@ html[lang="zh"] .dl_title {
     gap: 32px;
 }
 
-/* 구분선 — 가운데 작은 다이아몬드 또는 단순 선 */
+/* 구분선 — 가로 풀폭(viewport 100vw) + 더 굵게 */
 .next_section_divider {
-    width: 100%;
-    height: 1px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);  /* 부모 컨테이너 밖으로 확장 */
+    height: 4px;
     background: linear-gradient(
         90deg,
         transparent 0%,
-        #E5E7EB 30%,
-        #E5E7EB 70%,
+        #E5E7EB 20%,
+        #E5E7EB 80%,
         transparent 100%
     );
     position: relative;
+    border-radius: 2px;
 }
 
 .next_section_divider span {
@@ -1718,15 +1720,18 @@ html[lang="zh"] .dl_title {
 }
 
 .next_section_divider {
-    height: 2px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 4px;
     background: linear-gradient(
         90deg,
         transparent 0%,
-        #F39800 20%,
-        #F39800 80%,
+        #F39800 15%,
+        #F39800 85%,
         transparent 100%
     );
-    opacity: 0.4;
+    opacity: 0.75;
+    border-radius: 2px;
 }
 
 .next_section_divider span {
