@@ -1,20 +1,20 @@
 /* ============================================================
    제조공정 정식 구현 — 4 카테고리 step 그리드 (Figma 541:5032)
    ============================================================ */
-#sub_contents.business_process_page .biz_pf_steps_grid {
+#sub_contents .business_process_page .biz_pf_steps_grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px 32px;
     margin-top: 16px;
 }
 
-#sub_contents.business_process_page .biz_pf_step--grid {
+#sub_contents .business_process_page .biz_pf_step--grid {
     width: 100%;
     align-items: stretch;
     gap: 8px;
 }
 
-#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_badge {
+#sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_badge {
     position: relative;
     top: auto;
     left: auto;
@@ -26,7 +26,7 @@
     margin-bottom: 8px;
 }
 
-#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_circle {
+#sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_circle {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +40,7 @@
     background: #F6F7F8;
 }
 
-#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_icon {
+#sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,14 +48,14 @@
     height: 90px;
 }
 
-#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_icon img {
+#sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
 }
 
-#sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_label {
+#sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label {
     text-align: center;
     font-size: 17px;
     font-weight: 600;
@@ -64,7 +64,7 @@
     margin: 0;
 }
 
-#sub_contents.business_process_page .biz_pf_step_desc {
+#sub_contents .business_process_page .biz_pf_step_desc {
     margin: 8px 0 0;
     color: #555;
     font-size: 14px;
@@ -73,22 +73,22 @@
 }
 
 @media (max-width: 1024px) {
-    #sub_contents.business_process_page .biz_pf_steps_grid {
+    #sub_contents .business_process_page .biz_pf_steps_grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 32px 24px;
     }
 }
 
 @media (max-width: 735px) {
-    #sub_contents.business_process_page .biz_pf_steps_grid {
+    #sub_contents .business_process_page .biz_pf_steps_grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px 16px;
     }
-    #sub_contents.business_process_page .biz_pf_step--grid .biz_pf_step_label {
+    #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label {
         font-size: 16px;
         line-height: 24px;
     }
-    #sub_contents.business_process_page .biz_pf_step_desc {
+    #sub_contents .business_process_page .biz_pf_step_desc {
         font-size: 12px;
         line-height: 18px;
     }
@@ -96,18 +96,18 @@
 
 /* 제조공정 — 서브 히어로 + 탭 */
 
-#sub_contents.business_process_page .breadcrumb_wrap {
+#sub_contents .business_process_page .breadcrumb_wrap {
     margin-bottom: 60px;
 }
 
-#sub_contents.business_process_page .sub_visual_img.business_process_hero_visual {
+#sub_contents .business_process_page .sub_visual_img.business_process_hero_visual {
     min-height: 640px;
     padding-bottom: 40px;
     background-color: #f4f4f4;
     background-image: url('/images/sub/business_process_hero.png');
 }
 
-#sub_contents.business_process_page .sub_visual_img.business_process_hero_visual::after {
+#sub_contents .business_process_page .sub_visual_img.business_process_hero_visual::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -117,12 +117,12 @@
     z-index: 1;
 }
 
-#sub_contents.business_process_page .sub_tab_container {
+#sub_contents .business_process_page .sub_tab_container {
     z-index: 2;
 }
 
 @media (max-width: 735px) {
-    #sub_contents.business_process_page .sub_visual_img.business_process_hero_visual::after {
+    #sub_contents .business_process_page .sub_visual_img.business_process_hero_visual::after {
         display: none;
     }
 }
@@ -130,17 +130,17 @@
 /* ============================================================
    제조공정 — 절임식품 공정 플로우 (Figma 553:5977)
    ============================================================ */
-#sub_contents.business_process_page .biz_process_flow_section {
+#sub_contents .business_process_page .biz_process_flow_section {
     width: 100%;
     padding: 76px 0 120px;
     background: #fff;
 }
 
-#sub_contents.business_process_page .biz_pf_inner {
+#sub_contents .business_process_page .biz_pf_inner {
     max-width: 1254px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_head {
+#sub_contents .business_process_page .biz_pf_flow_head {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -149,7 +149,7 @@
     text-align: center;
 }
 
-#sub_contents.business_process_page .biz_pf_eyebrow {
+#sub_contents .business_process_page .biz_pf_eyebrow {
     margin: 0;
     color: #F39800;
     font-size: 18px;
@@ -158,7 +158,7 @@
     letter-spacing: -0.45px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_title {
+#sub_contents .business_process_page .biz_pf_flow_title {
     margin: 0;
     color: #222;
     font-size: 42px;
@@ -167,7 +167,7 @@
     letter-spacing: -1.05px;
 }
 
-#sub_contents.business_process_page .biz_pf_pickles_flow {
+#sub_contents .business_process_page .biz_pf_pickles_flow {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -175,7 +175,7 @@
 }
 
 /* Figma 553:5976 — 스네이크 플로우 (1254×940 기준) */
-#sub_contents.business_process_page .biz_pf_diagram {
+#sub_contents .business_process_page .biz_pf_diagram {
     position: relative;
     width: 1254px;
     max-width: 100%;
@@ -183,14 +183,14 @@
     margin: 0 auto;
 }
 
-#sub_contents.business_process_page .biz_pf_snake_lines {
+#sub_contents .business_process_page .biz_pf_snake_lines {
     position: absolute;
     inset: 0;
     z-index: 0;
     pointer-events: none;
 }
 
-#sub_contents.business_process_page .biz_pf_ln {
+#sub_contents .business_process_page .biz_pf_ln {
     position: absolute;
     display: block;
     /* 가로·세로 동일: 4px 실선 + 4px 간격 (SVG stroke-dasharray 4 4 와 동일 패턴) */
@@ -200,9 +200,9 @@
 }
 
 /* 가로 점선 — repeating-linear-gradient (img/svg 혼용 시 두께·색이 달라지는 문제 방지) */
-#sub_contents.business_process_page .biz_pf_ln--h1,
-#sub_contents.business_process_page .biz_pf_ln--h2,
-#sub_contents.business_process_page .biz_pf_ln--h3 {
+#sub_contents .business_process_page .biz_pf_ln--h1,
+#sub_contents .business_process_page .biz_pf_ln--h2,
+#sub_contents .business_process_page .biz_pf_ln--h3 {
     height: 1px;
     background: repeating-linear-gradient(
         to right,
@@ -213,27 +213,27 @@
     );
 }
 
-#sub_contents.business_process_page .biz_pf_ln--h1 {
+#sub_contents .business_process_page .biz_pf_ln--h1 {
     left: 67px;
     top: 106px;
     width: 1120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--h2 {
+#sub_contents .business_process_page .biz_pf_ln--h2 {
     left: 67px;
     top: 470px;
     width: 1120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--h3 {
+#sub_contents .business_process_page .biz_pf_ln--h3 {
     left: 67px;
     top: 831px;
     width: 152px;
 }
 
 /* 세로 점선 — 동일 dash/gap 로직을 세로 방향으로 */
-#sub_contents.business_process_page .biz_pf_ln--v1,
-#sub_contents.business_process_page .biz_pf_ln--v2 {
+#sub_contents .business_process_page .biz_pf_ln--v1,
+#sub_contents .business_process_page .biz_pf_ln--v2 {
     width: 1px;
     height: 120px;
     background: repeating-linear-gradient(
@@ -245,46 +245,46 @@
     );
 }
 
-#sub_contents.business_process_page .biz_pf_ln--v1 {
+#sub_contents .business_process_page .biz_pf_ln--v1 {
     left: 1123px;
     top: 218px;
     transform: translateX(-50%);
 }
 
-#sub_contents.business_process_page .biz_pf_ln--v2 {
+#sub_contents .business_process_page .biz_pf_ln--v2 {
     left: 109px;
     top: 579px;
     transform: translateX(-50%);
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row {
+#sub_contents .business_process_page .biz_pf_flow_row {
     position: absolute;
     z-index: 1;
     display: flex;
     gap: 120px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--r1 {
+#sub_contents .business_process_page .biz_pf_flow_row--r1 {
     left: 0;
     top: 0;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--r2 {
+#sub_contents .business_process_page .biz_pf_flow_row--r2 {
     left: 0;
     top: 361px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--r3 {
+#sub_contents .business_process_page .biz_pf_flow_row--r3 {
     left: 0;
     top: 722px;
     gap: 120px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--r3 .biz_pf_step:first-child {
+#sub_contents .business_process_page .biz_pf_flow_row--r3 .biz_pf_step:first-child {
     margin-left: 1px;
 }
 
-#sub_contents.business_process_page .biz_pf_step {
+#sub_contents .business_process_page .biz_pf_step {
     position: relative;
     z-index: 2;
     display: flex;
@@ -294,7 +294,7 @@
     flex-shrink: 0;
 }
 
-#sub_contents.business_process_page .biz_pf_step_badge {
+#sub_contents .business_process_page .biz_pf_step_badge {
     position: absolute;
     top: -23px;
     left: 50%;
@@ -311,7 +311,7 @@
     white-space: nowrap;
 }
 
-#sub_contents.business_process_page .biz_pf_step_circle {
+#sub_contents .business_process_page .biz_pf_step_circle {
     box-sizing: border-box;
     display: flex;
     width: 218px;
@@ -324,7 +324,7 @@
     background: #f6f7f8;
 }
 
-#sub_contents.business_process_page .biz_pf_step_icon {
+#sub_contents .business_process_page .biz_pf_step_icon {
     display: flex;
     width: 90px;
     height: 90px;
@@ -333,7 +333,7 @@
     margin-bottom: 7px;
 }
 
-#sub_contents.business_process_page .biz_pf_step_icon img {
+#sub_contents .business_process_page .biz_pf_step_icon img {
     display: block;
     max-width: 55px;
     max-height: 50px;
@@ -343,30 +343,30 @@
 }
 
 /* Figma 553:5977 절임식품 — 아이콘 영역 90×90 */
-#sub_contents.business_process_page .biz_process_flow_section--pickles .biz_pf_step_icon img {
+#sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_step_icon img {
     max-width: 90px;
     max-height: 90px;
 }
 
 /* Figma 553:5890 조림류 — 아이콘 영역 90×90 */
-#sub_contents.business_process_page .biz_process_flow_section--braised .biz_pf_step_icon img {
+#sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_step_icon img {
     max-width: 90px;
     max-height: 90px;
 }
 
 /* Figma 553:5894 피클 — 아이콘 영역 90×90 */
-#sub_contents.business_process_page .biz_process_flow_section--pickle .biz_pf_step_icon img {
+#sub_contents .business_process_page .biz_process_flow_section--pickle .biz_pf_step_icon img {
     max-width: 90px;
     max-height: 90px;
 }
 
 /* Figma 553:5824 등 소스·혼합장·액상차 — 아이콘 영역 90×90 */
-#sub_contents.business_process_page .biz_process_flow_section--sauce .biz_pf_step_icon img {
+#sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_step_icon img {
     max-width: 90px;
     max-height: 90px;
 }
 
-#sub_contents.business_process_page .biz_pf_step_label {
+#sub_contents .business_process_page .biz_pf_step_label {
     margin: 0;
     text-align: center;
     color: #222;
@@ -379,34 +379,34 @@
 /* ============================================================
    제조공정 — 조림류 공정 (Figma 553:5890)
    ============================================================ */
-#sub_contents.business_process_page .biz_process_flow_section--braised {
+#sub_contents .business_process_page .biz_process_flow_section--braised {
     background: #fff;
 }
 
-#sub_contents.business_process_page .biz_pf_eyebrow--green {
+#sub_contents .business_process_page .biz_pf_eyebrow--green {
     color: #87c765;
 }
 
-#sub_contents.business_process_page .biz_pf_step--green .biz_pf_step_badge {
+#sub_contents .business_process_page .biz_pf_step--green .biz_pf_step_badge {
     background: #87c765;
 }
 
-#sub_contents.business_process_page .biz_pf_diagram--braised {
+#sub_contents .business_process_page .biz_pf_diagram--braised {
     height: 579px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--br1 {
+#sub_contents .business_process_page .biz_pf_flow_row--br1 {
     left: 0;
     top: 0;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--br2 {
+#sub_contents .business_process_page .biz_pf_flow_row--br2 {
     left: 0;
     top: 361px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--bh1,
-#sub_contents.business_process_page .biz_pf_ln--bh2 {
+#sub_contents .business_process_page .biz_pf_ln--bh1,
+#sub_contents .business_process_page .biz_pf_ln--bh2 {
     height: 1px;
     background: repeating-linear-gradient(
         to right,
@@ -417,19 +417,19 @@
     );
 }
 
-#sub_contents.business_process_page .biz_pf_ln--bh1 {
+#sub_contents .business_process_page .biz_pf_ln--bh1 {
     left: 67px;
     top: 106px;
     width: 1120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--bh2 {
+#sub_contents .business_process_page .biz_pf_ln--bh2 {
     left: 67px;
     top: 470px;
     width: 1120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--bv1 {
+#sub_contents .business_process_page .biz_pf_ln--bv1 {
     width: 1px;
     height: 550px;
     left: 1123px;
@@ -447,30 +447,30 @@
 /* ============================================================
    제조공정 — 피클 공정 (Figma 553:5894)
    ============================================================ */
-#sub_contents.business_process_page .biz_pf_eyebrow--orange {
+#sub_contents .business_process_page .biz_pf_eyebrow--orange {
     color: #fba437;
 }
 
-#sub_contents.business_process_page .biz_pf_step--orange .biz_pf_step_badge {
+#sub_contents .business_process_page .biz_pf_step--orange .biz_pf_step_badge {
     background: #fba437;
 }
 
-#sub_contents.business_process_page .biz_pf_diagram--pickle {
+#sub_contents .business_process_page .biz_pf_diagram--pickle {
     height: 579px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--pr1 {
+#sub_contents .business_process_page .biz_pf_flow_row--pr1 {
     left: 0;
     top: 0;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--pr2 {
+#sub_contents .business_process_page .biz_pf_flow_row--pr2 {
     left: 0;
     top: 361px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--ph1,
-#sub_contents.business_process_page .biz_pf_ln--ph2 {
+#sub_contents .business_process_page .biz_pf_ln--ph1,
+#sub_contents .business_process_page .biz_pf_ln--ph2 {
     height: 1px;
     background: repeating-linear-gradient(
         to right,
@@ -481,19 +481,19 @@
     );
 }
 
-#sub_contents.business_process_page .biz_pf_ln--ph1 {
+#sub_contents .business_process_page .biz_pf_ln--ph1 {
     left: 67px;
     top: 106px;
     width: 1120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--ph2 {
+#sub_contents .business_process_page .biz_pf_ln--ph2 {
     left: 67px;
     top: 470px;
     width: 1120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--pv1 {
+#sub_contents .business_process_page .biz_pf_ln--pv1 {
     width: 1px;
     height: 550px;
     left: 1123px;
@@ -511,31 +511,31 @@
 /* ============================================================
    제조공정 — 소스/혼합장/액상차 공정 (Figma 553:5898)
    ============================================================ */
-#sub_contents.business_process_page .biz_pf_eyebrow--blue {
+#sub_contents .business_process_page .biz_pf_eyebrow--blue {
     color: #7e9ed2;
 }
 
-#sub_contents.business_process_page .biz_pf_step--blue .biz_pf_step_badge {
+#sub_contents .business_process_page .biz_pf_step--blue .biz_pf_step_badge {
     background: #7e9ed2;
 }
 
-#sub_contents.business_process_page .biz_pf_diagram--sauce {
+#sub_contents .business_process_page .biz_pf_diagram--sauce {
     height: 579px;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--sr1 {
+#sub_contents .business_process_page .biz_pf_flow_row--sr1 {
     left: 0;
     top: 0;
 }
 
-#sub_contents.business_process_page .biz_pf_flow_row--sr2 {
+#sub_contents .business_process_page .biz_pf_flow_row--sr2 {
     left: 338px;
     top: 361px;
     gap: 120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--sh1,
-#sub_contents.business_process_page .biz_pf_ln--sh2 {
+#sub_contents .business_process_page .biz_pf_ln--sh1,
+#sub_contents .business_process_page .biz_pf_ln--sh2 {
     height: 1px;
     background: repeating-linear-gradient(
         to right,
@@ -546,19 +546,19 @@
     );
 }
 
-#sub_contents.business_process_page .biz_pf_ln--sh1 {
+#sub_contents .business_process_page .biz_pf_ln--sh1 {
     left: 67px;
     top: 106px;
     width: 1120px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--sh2 {
+#sub_contents .business_process_page .biz_pf_ln--sh2 {
     left: 405px;
     top: 470px;
     width: 782px;
 }
 
-#sub_contents.business_process_page .biz_pf_ln--sv1 {
+#sub_contents .business_process_page .biz_pf_ln--sv1 {
     width: 1px;
     height: 550px;
     left: 1123px;
@@ -574,25 +574,25 @@
 }
 
 @media (max-width: 1240px) {
-    #sub_contents.business_process_page .biz_pf_diagram {
+    #sub_contents .business_process_page .biz_pf_diagram {
         width: 100%;
         height: auto;
         min-height: 0;
     }
 
-    #sub_contents.business_process_page .biz_pf_snake_lines {
+    #sub_contents .business_process_page .biz_pf_snake_lines {
         display: none;
     }
 
-    #sub_contents.business_process_page .biz_pf_flow_row--r1,
-    #sub_contents.business_process_page .biz_pf_flow_row--r2,
-    #sub_contents.business_process_page .biz_pf_flow_row--r3,
-    #sub_contents.business_process_page .biz_pf_flow_row--br1,
-    #sub_contents.business_process_page .biz_pf_flow_row--br2,
-    #sub_contents.business_process_page .biz_pf_flow_row--pr1,
-    #sub_contents.business_process_page .biz_pf_flow_row--pr2,
-    #sub_contents.business_process_page .biz_pf_flow_row--sr1,
-    #sub_contents.business_process_page .biz_pf_flow_row--sr2 {
+    #sub_contents .business_process_page .biz_pf_flow_row--r1,
+    #sub_contents .business_process_page .biz_pf_flow_row--r2,
+    #sub_contents .business_process_page .biz_pf_flow_row--r3,
+    #sub_contents .business_process_page .biz_pf_flow_row--br1,
+    #sub_contents .business_process_page .biz_pf_flow_row--br2,
+    #sub_contents .business_process_page .biz_pf_flow_row--pr1,
+    #sub_contents .business_process_page .biz_pf_flow_row--pr2,
+    #sub_contents .business_process_page .biz_pf_flow_row--sr1,
+    #sub_contents .business_process_page .biz_pf_flow_row--sr2 {
         position: relative;
         left: auto;
         top: auto;
@@ -602,88 +602,88 @@
         margin-bottom: 48px;
     }
 
-    #sub_contents.business_process_page .biz_pf_flow_row--r3,
-    #sub_contents.business_process_page .biz_pf_flow_row--br2,
-    #sub_contents.business_process_page .biz_pf_flow_row--pr2,
-    #sub_contents.business_process_page .biz_pf_flow_row--sr2 {
+    #sub_contents .business_process_page .biz_pf_flow_row--r3,
+    #sub_contents .business_process_page .biz_pf_flow_row--br2,
+    #sub_contents .business_process_page .biz_pf_flow_row--pr2,
+    #sub_contents .business_process_page .biz_pf_flow_row--sr2 {
         margin-bottom: 0;
     }
 
-    #sub_contents.business_process_page .biz_pf_flow_row--r3 .biz_pf_step:first-child {
+    #sub_contents .business_process_page .biz_pf_flow_row--r3 .biz_pf_step:first-child {
         margin-left: 0;
     }
 
-    #sub_contents.business_process_page .biz_pf_flow_row {
+    #sub_contents .business_process_page .biz_pf_flow_row {
         gap: 48px 64px;
     }
 }
 
 @media (max-width: 735px) {
-    #sub_contents.business_process_page .biz_process_flow_section {
+    #sub_contents .business_process_page .biz_process_flow_section {
         padding: 48px 0 80px;
     }
 
-    #sub_contents.business_process_page .biz_pf_flow_head {
+    #sub_contents .business_process_page .biz_pf_flow_head {
         margin-bottom: 48px;
     }
 
-    #sub_contents.business_process_page .biz_pf_flow_title {
+    #sub_contents .business_process_page .biz_pf_flow_title {
         font-size: 28px;
         line-height: 40px;
         letter-spacing: -0.7px;
     }
 
-    #sub_contents.business_process_page .biz_pf_flow_row {
+    #sub_contents .business_process_page .biz_pf_flow_row {
         gap: 56px 32px;
     }
 
-    #sub_contents.business_process_page .biz_pf_step {
+    #sub_contents .business_process_page .biz_pf_step {
         width: 160px;
     }
 
-    #sub_contents.business_process_page .biz_pf_step_circle {
+    #sub_contents .business_process_page .biz_pf_step_circle {
         width: 160px;
         height: 160px;
         padding: 36px 24px 16px;
     }
 
-    #sub_contents.business_process_page .biz_pf_step_badge {
+    #sub_contents .business_process_page .biz_pf_step_badge {
         padding: 8px 20px;
         font-size: 14px;
         line-height: 22px;
     }
 
-    #sub_contents.business_process_page .biz_pf_step_icon {
+    #sub_contents .business_process_page .biz_pf_step_icon {
         width: 72px;
         height: 72px;
     }
 
-    #sub_contents.business_process_page .biz_pf_step_icon img {
+    #sub_contents .business_process_page .biz_pf_step_icon img {
         max-width: 72px;
         max-height: 72px;
     }
 
-    #sub_contents.business_process_page .biz_process_flow_section--pickles .biz_pf_step_icon img {
+    #sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_step_icon img {
         max-width: 72px;
         max-height: 72px;
     }
 
-    #sub_contents.business_process_page .biz_process_flow_section--braised .biz_pf_step_icon img {
+    #sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_step_icon img {
         max-width: 72px;
         max-height: 72px;
     }
 
-    #sub_contents.business_process_page .biz_process_flow_section--pickle .biz_pf_step_icon img {
+    #sub_contents .business_process_page .biz_process_flow_section--pickle .biz_pf_step_icon img {
         max-width: 72px;
         max-height: 72px;
     }
 
-    #sub_contents.business_process_page .biz_process_flow_section--sauce .biz_pf_step_icon img {
+    #sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_step_icon img {
         max-width: 72px;
         max-height: 72px;
     }
 
-    #sub_contents.business_process_page .biz_pf_step_label {
+    #sub_contents .business_process_page .biz_pf_step_label {
         font-size: 15px;
         line-height: 22px;
     }

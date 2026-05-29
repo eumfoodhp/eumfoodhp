@@ -1,16 +1,16 @@
 /* 시설현황 — Figma 541:5028 (나동 설비 그리드) */
 
-#sub_contents.business_facility_page .breadcrumb_wrap {
+#sub_contents .business_facility_page .breadcrumb_wrap {
     margin-bottom: 60px;
 }
 
-#sub_contents.business_facility_page .sub_visual_img.business_facility_hero_visual {
+#sub_contents .business_facility_page .sub_visual_img.business_facility_hero_visual {
     min-height: 640px;
     padding-bottom: 40px;
     background-image: url('/images/sub/business_facility_hero.png');
 }
 
-#sub_contents.business_facility_page .sub_visual_img.business_facility_hero_visual::after {
+#sub_contents .business_facility_page .sub_visual_img.business_facility_hero_visual::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -20,7 +20,7 @@
     z-index: 1;
 }
 
-#sub_contents.business_facility_page .sub_tab_container {
+#sub_contents .business_facility_page .sub_tab_container {
     z-index: 2;
 }
 
@@ -210,7 +210,7 @@
 }
 
 @media (max-width: 735px) {
-    #sub_contents.business_facility_page .sub_visual_img.business_facility_hero_visual::after {
+    #sub_contents .business_facility_page .sub_visual_img.business_facility_hero_visual::after {
         display: none;
     }
 }
