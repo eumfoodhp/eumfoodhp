@@ -28,12 +28,6 @@ const PERIODS = [
   { id: 'p4', label: '2011 ~ 2009', start: 2009, end: 2011 },
 ];
 
-const ORG_CHART_BY_LOCALE: Record<string, string> = {
-  ko: '/images/sub/org-chart-v3.png',
-  en: '/images/sub/org-chart-en.png',
-  zh: '/images/sub/org-chart-zh.png',
-};
-
 export const revalidate = 0;
 
 type HistoryDataItem = { year: string; list: Array<{ month: string; content: string }> };
@@ -69,10 +63,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     for (const item of list) byYear[item.year] = (byYear[item.year] ?? []).concat(item.contents);
   }
   const sortedYears = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
-
-  // ---- 조직도 ----
-  const orgChartSrc =
-    (t.raw('org_chart_image') as string | undefined) ?? ORG_CHART_BY_LOCALE[locale] ?? ORG_CHART_BY_LOCALE.ko;
 
   // ---- 오시는길 지도 URLs ----
   const mapHl = locale === 'zh' ? 'zh-CN' : locale;

@@ -102,7 +102,7 @@
     left: 50%;
     top: 100%;
     width: 1px;
-    height: calc(var(--gap-y) + 30px); /* L1 -> L2 사이 빈공간 채우기 */
+    height: var(--gap-y);
     background: var(--org-line);
     transform: translateX(-0.5px);
     z-index: 0;
