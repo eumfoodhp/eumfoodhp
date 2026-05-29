@@ -346,7 +346,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               </div>
             </div>
           </section>
-          <NextSectionLink isLast />
+          <NextSectionLink prevId="sauce" isLast />
         </div>
 
       </div>
