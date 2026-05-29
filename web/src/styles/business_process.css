@@ -133,7 +133,7 @@
 #sub_contents .business_process_page .biz_process_flow_section {
     width: 100%;
     padding: 76px 0 120px;
-    background: #fff;
+    background: transparent; /* 부모 story_section 배경 통과 */
 }
 
 #sub_contents .business_process_page .biz_pf_inner {
@@ -408,7 +408,7 @@
    제조공정 — 조림류 공정 (Figma 553:5890)
    ============================================================ */
 #sub_contents .business_process_page .biz_process_flow_section--braised {
-    background: #fff;
+    background: transparent;
 }
 
 #sub_contents .business_process_page .biz_pf_eyebrow--green {

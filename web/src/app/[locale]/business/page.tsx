@@ -87,7 +87,12 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
               <div className="biz_pf_steps_grid">
                 {Array.from({ length: cat.steps }, (_, i) => i + 1).map((n) => {
                   const nn = String(n).padStart(2, '0');
-                  const iconSrc = `/images/sub/figma/${cat.iconDir}/${nn}.png`;
+                  // 카테고리별 확장자 분기 — 절임식품 6~9 만 진짜 PNG, 나머지는 SVG.
+                  // (원본 파일들이 .png 확장자로 저장됐지만 내용이 SVG 인 경우가 많아서
+                  // .svg 로 재이름함. 절임식품 06~09 만 실제 PNG 이미지였음.)
+                  const isPngFile = cat.key === 'pickles' && n >= 6;
+                  const ext = isPngFile ? 'png' : 'svg';
+                  const iconSrc = `/images/sub/figma/${cat.iconDir}/${nn}.${ext}`;
                   const label = t(`${cat.prefix}${nn}_tit`);
                   return (
                     <div key={n} className="biz_pf_step biz_pf_step--grid">
