@@ -11,6 +11,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import NextSectionLink from '@/components/NextSectionLink';
 import FacilitySection from '@/components/FacilitySection';
+import CertGrid from '@/components/CertGrid';
 import '@/styles/sub.css';
 import '@/styles/business_facility.css';
 import '@/styles/business_process.css';
@@ -157,20 +158,9 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                 </div>
               </div>
               <div className="cert_bottom">
-                <div className="cert_grid">
-                  {CERTS.map((item) => (
-                    <div key={item.key} className="cert_card">
-                      <div className="cert_img_box">
-                        <div className="cert_img_inner">
-                          <img src={item.img} alt={t(item.key)} />
-                        </div>
-                      </div>
-                      <div className="cert_info">
-                        <p className="cert_name">{t(item.key)}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <CertGrid
+                  items={CERTS.map((c) => ({ key: c.key, img: c.img, label: t(c.key) }))}
+                />
               </div>
             </div>
           </div>

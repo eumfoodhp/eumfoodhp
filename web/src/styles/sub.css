@@ -1070,17 +1070,21 @@
 }
 .haccp_benefit ul {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 24px;
-    color: #767676;
+    flex-direction: column;        /* 4개 항목 1·2·3·4 세로 나열 */
+    gap: 12px;
+    color: #4B5563;
     font-family: 'Pretendard', sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 28px;
-    letter-spacing: -0.45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.3px;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+.haccp_benefit ul li {
+    position: relative;
+    padding-left: 0;               /* 번호가 텍스트에 이미 포함됨 */
 }
 
 /* 10. 하단 리스트 영역 */

@@ -23,6 +23,158 @@
     object-fit: contain;
 }
 
+/* ============================================================
+   인증서 카드 — 라이트박스 트리거 (버튼), 호버 시 살짝 떠오름 + 줌 힌트
+   ============================================================ */
+.cert_page .cert_card {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: zoom-in;
+    text-align: left;
+    width: 100%;
+    transition: transform 0.2s ease;
+}
+.cert_page .cert_card:hover {
+    transform: translateY(-4px);
+}
+.cert_page .cert_card .cert_img_box {
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+.cert_page .cert_card:hover .cert_img_box {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10), 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+.cert_page .cert_zoom_hint {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #F39800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+    pointer-events: none;
+}
+.cert_page .cert_card:hover .cert_zoom_hint {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ============================================================
+   라이트박스 (인증서 확대 뷰)
+   ============================================================ */
+.cert_lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    animation: certLbIn 0.2s ease-out;
+}
+@keyframes certLbIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.cert_lb_figure {
+    position: relative;
+    max-width: min(900px, 90vw);
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+}
+.cert_lb_figure img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(88vh - 56px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+.cert_lb_caption {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    text-align: center;
+}
+
+.cert_lb_nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1F2937;
+    border: 0;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+.cert_lb_nav:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.05);
+}
+.cert_lb_nav--prev { left: 32px; }
+.cert_lb_nav--next { right: 32px; }
+
+.cert_lb_close {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border: 0;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+}
+.cert_lb_close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 640px) {
+    .cert_lightbox { padding: 16px; }
+    .cert_lb_nav { width: 44px; height: 44px; font-size: 26px; }
+    .cert_lb_nav--prev { left: 12px; }
+    .cert_lb_nav--next { right: 12px; }
+    .cert_lb_close { top: 16px; right: 16px; }
+}
+
 @media (max-width: 1200px) {
     .cert_page .haccp_benefit ul {
         flex-wrap: wrap;
