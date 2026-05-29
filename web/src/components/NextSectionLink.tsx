@@ -69,7 +69,7 @@ export default function NextSectionLink({ nextId, nextLabel, isLast }: Props) {
         ) : (
           <>
             <span className="next_section_eyebrow">NEXT</span>
-            <span className="next_section_label">{nextLabel}</span>
+            {/* 다음 섹션 제목은 아래 .story_section_title 과 중복이라 제거 */}
             <svg
               width="22"
               height="22"
