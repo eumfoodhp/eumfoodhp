@@ -1,28 +1,64 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { createServerSupabase } from '@/lib/supabase-server';
+import BoardSearchForm from '@/components/BoardSearchForm';
+import BoardPagination from '@/components/BoardPagination';
+import PressHeroSlider from '@/components/PressHeroSlider';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 
 export const revalidate = 0;
 
-export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+const PAGE_SIZE = 9; // 3x3 그리드
+
+function pickStr(v: string | string[] | undefined): string {
+  if (Array.isArray(v)) return v[0] ?? '';
+  return v ?? '';
+}
+
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ [k: string]: string | string[] | undefined }>;
+}) {
   const { locale } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
-  const t = await getTranslations();
+  await getTranslations();
+
+  const q = pickStr(sp.q).trim();
+  const cat = pickStr(sp.cat).trim();
+  const pageNum = Math.max(1, parseInt(pickStr(sp.page), 10) || 1);
+  const from = (pageNum - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
 
   const supabase = await createServerSupabase();
-  const { data: list } = await supabase
-    .from('press_releases')
-    .select('id, title, source, thumbnail, view_count, created_at')
-    .order('created_at', { ascending: false })
-    .limit(60);
 
-  const total = list?.length ?? 0;
-  // 상단 히어로 슬라이드 — 최근 5건에서 첫 번째 노출 (인디케이터: 1 / N)
-  const heroItems = (list ?? []).slice(0, 5);
-  const hero = heroItems[0];
-  const gridItems = (list ?? []).slice(heroItems.length === 0 ? 0 : 0); // 전체를 카드 그리드에도 노출
+  // 페이지 1 일 때만 히어로 슬라이드 (최근 5건) 노출.
+  let heroItems: Array<{ id: number; title: string; thumbnail: string | null; created_at: string }> = [];
+  if (pageNum === 1 && !q && !cat) {
+    const { data: heroData } = await supabase
+      .from('press_releases')
+      .select('id, title, thumbnail, created_at')
+      .order('created_at', { ascending: false })
+      .limit(5);
+    heroItems = heroData ?? [];
+  }
+
+  let query = supabase
+    .from('press_releases')
+    .select('id, title, source, thumbnail, view_count, created_at', { count: 'exact' })
+    .order('created_at', { ascending: false });
+
+  if (q) query = query.ilike('title', `%${q}%`);
+  if (cat && cat !== 'all') query = query.eq('source', cat);
+
+  const { data: list, count } = await query.range(from, to);
+
+  const total = count ?? 0;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
     <main id="sub_contents" className="press_page">
@@ -32,61 +68,27 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           <h1>보도자료</h1>
         </header>
 
-        {hero && (
-          <section className="board_hero" aria-label="대표 보도자료">
-            <Link href={`/press/${hero.id}`} className="board_hero_thumb">
-              {hero.thumbnail ? (
-                <img src={hero.thumbnail} alt="" loading="eager" />
-              ) : (
-                <div className="board_hero_thumb_placeholder">
-                  <ImagePlaceholderIcon />
-                </div>
-              )}
-            </Link>
-            <div className="board_hero_body">
-              <span className="board_hero_tag">NEWS</span>
-              <h2 className="board_hero_title">
-                <Link href={`/press/${hero.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                  {hero.title}
-                </Link>
-              </h2>
-              <span className="board_hero_date">
-                {new Date(hero.created_at).toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '')}
-              </span>
-            </div>
-            <div className="board_hero_pager">
-              <span className="board_hero_indicator">
-                <b>1</b> / {heroItems.length}
-              </span>
-              <button type="button" className="board_hero_nav board_hero_nav--prev" aria-label="이전">‹</button>
-              <button type="button" className="board_hero_nav board_hero_nav--next" aria-label="다음">›</button>
-            </div>
-          </section>
-        )}
+        {heroItems.length > 0 && <PressHeroSlider items={heroItems} />}
 
         <div className="board_toolbar">
           <span className="total">Total <b>{total}</b></span>
           <span className="spacer" />
-          <select className="board_filter_select" defaultValue="all" aria-label="필터">
-            <option value="all">제목</option>
-            <option value="title">제목</option>
-            <option value="content">내용</option>
-          </select>
-          <div className="board_search">
-            <input type="search" placeholder="검색어를 입력해주세요" aria-label="검색어" />
-            <button type="button" aria-label="검색">
-              <SearchIcon />
-            </button>
-          </div>
+          <BoardSearchForm
+            initialQ={q}
+            initialCat={cat || 'all'}
+            filterPlaceholder="제목"
+          />
         </div>
 
         {total === 0 ? (
-          <div className="board_empty">등록된 보도자료가 없습니다.</div>
+          <div className="board_empty">
+            {q ? `"${q}" 에 대한 검색 결과가 없습니다.` : '등록된 보도자료가 없습니다.'}
+          </div>
         ) : (
           <ul className="board_grid">
-            {gridItems.map((p) => (
+            {list!.map((p) => (
               <li key={p.id} className="card">
-                <Link href={`/press/${p.id}`}>
+                <Link href={`/press/${p.id}` as never}>
                   <div className="thumb">
                     {p.thumbnail ? (
                       <img src={p.thumbnail} alt="" loading="lazy" />
@@ -109,32 +111,17 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           </ul>
         )}
 
-        {total > 0 && (
-          <nav className="board_pagination" aria-label="페이지 네비게이션">
-            <span className="nav" aria-hidden>‹</span>
-            <span className="active">1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>…</span>
-            <span>10</span>
-            <span className="nav" aria-hidden>›</span>
-          </nav>
-        )}
+        <BoardPagination
+          basePath="/press"
+          currentPage={pageNum}
+          totalPages={totalPages}
+          query={{ q: q || undefined, cat: cat && cat !== 'all' ? cat : undefined }}
+        />
       </div>
     </main>
   );
 }
 
-function SearchIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="11" cy="11" r="7" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
-}
 function ImagePlaceholderIcon() {
   return (
     <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
