@@ -48,20 +48,13 @@
    ============================================================ */
 .loc_card_map {
     display: block;
-    width: 100%;          /* grid track 폭에 강제 — 안 그러면 aspect-ratio 의
-                             자동 폭 계산 (min-height * 16/10) 이 더 우선해서
-                             grid cell 을 넘어 정보 영역을 침범 */
-    min-width: 0;          /* grid item wrapping 보장 */
+    width: 100%;
+    min-width: 0;
     border-radius: 18px;
     overflow: hidden;
     background: #f0f0f0;
-    aspect-ratio: 16 / 10; /* width 결정 후 height 자동 계산 */
+    aspect-ratio: 16 / 10;
     position: relative;
-    cursor: zoom-in;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-.loc_card_map:hover {
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
 }
 .loc_card_map img {
     display: block;
@@ -69,10 +62,6 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.4s ease;
-}
-.loc_card_map:hover img {
-    transform: scale(1.03);
 }
 
 /* ============================================================

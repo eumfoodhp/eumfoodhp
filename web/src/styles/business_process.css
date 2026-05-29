@@ -12,6 +12,26 @@
     width: 100%;
     align-items: stretch;
     gap: 8px;
+    position: relative;
+}
+
+/* 스텝 → 화살표 (chevron) — 다음 스텝 방향 표시 */
+#sub_contents .business_process_page .biz_pf_step--grid::after {
+    content: '';
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid #F26337;
+    border-right: 3px solid #F26337;
+    transform: translate(50%, -50%) rotate(45deg);
+    z-index: 1;
+    pointer-events: none;
+}
+/* 마지막 스텝은 화살표 숨김 */
+#sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:last-child::after {
+    display: none;
 }
 
 #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_badge {
@@ -77,12 +97,20 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 32px 24px;
     }
+    #sub_contents .business_process_page .biz_pf_step--grid::after {
+        right: -16px;
+    }
 }
 
 @media (max-width: 735px) {
     #sub_contents .business_process_page .biz_pf_steps_grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px 16px;
+    }
+    #sub_contents .business_process_page .biz_pf_step--grid::after {
+        right: -10px;
+        width: 10px;
+        height: 10px;
     }
     #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label {
         font-size: 16px;
@@ -91,6 +119,20 @@
     #sub_contents .business_process_page .biz_pf_step_desc {
         font-size: 12px;
         line-height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 모바일 1열 — 가로 화살표 → 아래 화살표 ↓ */
+    #sub_contents .business_process_page .biz_pf_steps_grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    #sub_contents .business_process_page .biz_pf_step--grid::after {
+        right: 50%;
+        top: auto;
+        bottom: -22px;
+        transform: translate(50%, 50%) rotate(135deg);
     }
 }
 

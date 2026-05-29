@@ -68,9 +68,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const factoryAddr = t('loc_factory_addr'); // 표시용
   const centerAddr = t('loc_center_addr');   // 표시용
 
-  // 카카오맵 검색 URL (이미지 클릭 시 새 탭으로 열림)
-  const factoryMapHref = `https://map.kakao.com/?q=${encodeURIComponent(factoryQuery)}`;
-  const centerMapHref = `https://map.kakao.com/?q=${encodeURIComponent(centerQuery)}`;
+  // (지도 이미지 클릭 링크는 사용자 요청으로 제거 — QR 코드만 유지)
 
   // QR 코드 (qrserver.com 동적 생성)
   const qr = (url: string) =>
@@ -270,9 +268,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             {/* 본사·공장 — 지도 LEFT / 정보 RIGHT */}
             <article className="loc_card loc_card--map_left">
               <div className="loc_card_body">
-                <a className="loc_card_map" href={factoryMapHref} target="_blank" rel="noopener noreferrer" aria-label={t('loc_map_factory_alt')}>
+                <div className="loc_card_map" role="img" aria-label={t('loc_map_factory_alt')}>
                   <img src="/images/sub/map_factory.png" alt={t('loc_map_factory_alt')} loading="lazy" />
-                </a>
+                </div>
                 <div className="loc_card_info">
                   <span className="loc_eyebrow">{t('loc_way_to_come')}</span>
                   <h3 className="loc_card_name">{t('loc_factory_title')}</h3>
@@ -355,9 +353,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </a>
                   </div>
                 </div>
-                <a className="loc_card_map" href={centerMapHref} target="_blank" rel="noopener noreferrer" aria-label={t('loc_map_center_alt')}>
+                <div className="loc_card_map" role="img" aria-label={t('loc_map_center_alt')}>
                   <img src="/images/sub/map_center.png" alt={t('loc_map_center_alt')} loading="lazy" />
-                </a>
+                </div>
               </div>
             </article>
           </div>
