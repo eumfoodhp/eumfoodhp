@@ -165,7 +165,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
             </div>
           </div>
         </section>
-        <NextSectionLink prevId="process" isLast />
+        <NextSectionLink isLast />
       </div>
 
       </div>

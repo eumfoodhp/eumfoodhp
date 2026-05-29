@@ -28,9 +28,8 @@ function scrollToSection(id: string) {
 }
 
 export default function NextSectionLink({ nextId, nextLabel, prevId, isLast }: Props) {
-  // 마지막 섹션엔 NEXT 가 없지만, PREV 가 있으면 보여줘서 이전 섹션으로 갈 수 있게.
-  // PREV·NEXT 둘 다 없으면 통째 비노출.
-  if (!prevId && (isLast || !nextId)) return null;
+  // 마지막 섹션엔 PREV/NEXT 모두 통째 비노출 (사용자 요청).
+  if (isLast) return null;
 
   const handlePrev = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

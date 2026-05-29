@@ -356,7 +356,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </article>
           </div>
         </section>
-        <NextSectionLink prevId="organization" isLast />
+        <NextSectionLink isLast />
       </div>
 
       </div>
