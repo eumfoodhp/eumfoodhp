@@ -1183,11 +1183,10 @@
 }
 
 .org_content_section {
-    padding: 100px 0 0;
+    padding: 60px 0 80px;
     position: relative;
-    background: #fff;
+    background: transparent; /* 부모 .story_section 의 베이지 그라데이션이 비치도록 */
     width: 100%;
-    overflow: hidden; /* 섹션 자체에서도 한번 더 차단 */
 }
 
 .org_container {
