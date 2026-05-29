@@ -86,17 +86,30 @@ export function matchCategory(pathname: string): Category | null {
   return null;
 }
 
-function matchCurrentItem(category: Category, pathname: string, hash: string): Item {
+function matchCurrentItem(
+  category: Category,
+  pathname: string,
+  hash: string,
+  activeId: string
+): Item {
+  // 1. 스크롤스파이로 잡힌 섹션 id 가 있으면 최우선
+  if (activeId) {
+    const byScroll = category.items.find((i) => i.href.endsWith('#' + activeId));
+    if (byScroll) return byScroll;
+  }
+  // 2. 명시적 URL hash
   if (hash) {
     const hashKey = hash.replace('#', '');
     const byHash = category.items.find((i) => i.href.endsWith('#' + hashKey));
     if (byHash) return byHash;
   }
+  // 3. 정확한 path 매치
   const byPath = category.items.find((i) => {
     const itemPath = i.href.split('#')[0];
     return pathname === itemPath;
   });
   if (byPath) return byPath;
+  // 4. prefix 매치
   const byPrefix = category.items.find((i) => {
     const itemPath = i.href.split('#')[0];
     return pathname.startsWith(itemPath) && itemPath !== '/';
@@ -109,6 +122,7 @@ export default function SubHeader() {
   const pathname = usePathname();
   const t = useTranslations();
   const [hash, setHash] = useState('');
+  const [activeId, setActiveId] = useState<string>('');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -117,6 +131,45 @@ export default function SubHeader() {
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
+
+  // 스크롤스파이 — 원페이지(/about, /business, /products)에서
+  // 현재 화면 가장 위쪽에 보이는 섹션 id 를 active 로 잡는다.
+  useEffect(() => {
+    const category = matchCategory(pathname);
+    if (!category) return;
+    const ids = category.items
+      .map((i) => i.href.split('#')[1])
+      .filter((v): v is string => Boolean(v));
+    if (ids.length === 0) {
+      setActiveId('');
+      return;
+    }
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (sections.length === 0) return;
+
+    const pickActive = () => {
+      // 헤더 높이만큼 보정한 viewport top 기준으로
+      // 그 선을 가장 최근에 통과한 섹션을 active 로.
+      const probe = 160; // 헤더+서브헤더 대략 높이
+      let current = sections[0].id;
+      for (const sec of sections) {
+        const top = sec.getBoundingClientRect().top;
+        if (top - probe <= 0) current = sec.id;
+        else break;
+      }
+      setActiveId(current);
+    };
+
+    pickActive();
+    window.addEventListener('scroll', pickActive, { passive: true });
+    window.addEventListener('resize', pickActive);
+    return () => {
+      window.removeEventListener('scroll', pickActive);
+      window.removeEventListener('resize', pickActive);
+    };
+  }, [pathname]);
 
   // 자동 숨김/노출: 페이지 안에서 마우스가 움직이거나 스크롤하면 펼침,
   // 2초간 아무 활동도 없으면 자동 닫힘. sub_header 위에 마우스 올라가 있는
@@ -174,7 +227,7 @@ export default function SubHeader() {
   const category = matchCategory(pathname);
   if (!category) return null;
 
-  const currentItem = matchCurrentItem(category, pathname, hash);
+  const currentItem = matchCurrentItem(category, pathname, hash, activeId);
 
   return (
     <nav
