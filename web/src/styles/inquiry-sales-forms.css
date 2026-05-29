@@ -1,7 +1,16 @@
 /* ============================================================
    1:1 문의 (Inquiry) — Figma 293:10206 매칭
    ============================================================ */
-.inquiry_inner { padding: 40px 0 100px; }
+/* 부모 .sub_inner 의 align-items: center 가 자식들을 작게 가운데로
+   쪼그라뜨려서 타이틀·테이블·empty 박스가 좁아 보이던 문제 → stretch 로
+   override 해서 자식들이 가로 전체를 채우도록. */
+.inquiry_inner {
+    padding: 40px 0 100px;
+    align-items: stretch !important;
+}
+.inquiry_inner > * {
+    width: 100%;
+}
 
 .inquiry_head { margin-bottom: 28px; }
 .inquiry_eyebrow {
@@ -169,8 +178,10 @@
    ============================================================ */
 .sales_inner {
     padding: 40px 0 100px;
-    max-width: 1100px;
-    margin: 0 auto;
+    align-items: stretch !important;
+}
+.sales_inner > * {
+    width: 100%;
 }
 
 .sales_head {
