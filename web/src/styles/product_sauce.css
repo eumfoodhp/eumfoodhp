@@ -216,6 +216,13 @@
     letter-spacing: -0.4px;
 }
 
+/* sauce_pack (소포장/파우치/병/말통) 카드 — 이미지 자체가 베이지 배경이라
+   .prod_img 기본 background #D9D9D9 (회색) 가 줌 변경 시 위/아래 띠로 노출.
+   카드 background 를 이미지 색과 동일한 베이지로 통일. */
+#sub_contents .product_sauce_page .product_grid--sauce_pack .product_card .prod_img {
+    background-color: #E8D6BF;
+}
+
 @media (max-width: 1600px) {
     #sub_contents .product_sauce_page .product_grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
