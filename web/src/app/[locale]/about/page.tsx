@@ -222,8 +222,56 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <section className="org_content_section">
           <div className="org_container">
             <div className="org_chart_wrap">
-              <div className="org_chart_image_wrap">
-                <img src={orgChartSrc} alt={t('org_title')} className="org_chart_image" loading="lazy" />
+              <div className="org_chart" aria-label={t('org_title')}>
+                {/* L1: 대표이사 + 우측 경리·회계·인사 분기 */}
+                <div className="org_l1">
+                  <div className="org_node org_node--ceo">{t('org_role_ceo')}</div>
+                  <div className="org_node org_node--staff org_staff_right">
+                    {t('org_staff_finance')}
+                  </div>
+                </div>
+
+                {/* L2: 총괄이사 */}
+                <div className="org_l2">
+                  <div className="org_node org_node--director">{t('org_role_director')}</div>
+                </div>
+
+                {/* L3: 8개 부서 + L4 소속팀 */}
+                <div className="org_l3">
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_production')}</div>
+                    <div className="org_node org_node--sub">{t('org_sub_production_a')}</div>
+                    <div className="org_node org_node--sub">{t('org_sub_production_b')}</div>
+                  </div>
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_research')}</div>
+                    <div className="org_node org_node--sub">{t('org_sub_rnd_dedicated')}</div>
+                  </div>
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_planning')}</div>
+                  </div>
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_purchase')}</div>
+                    <div className="org_node org_node--sub">{t('org_sub_logistics')}</div>
+                  </div>
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_safety')}</div>
+                    <div className="org_node org_node--sub">
+                      <span>{t('org_sub_safety_law')}</span>
+                      <span>{t('org_sub_safety_mgmt')}</span>
+                    </div>
+                  </div>
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_sales')}</div>
+                  </div>
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_quality')}</div>
+                    <div className="org_node org_node--sub">{t('org_sub_lab')}</div>
+                  </div>
+                  <div className="org_dept_col">
+                    <div className="org_node org_node--dept">{t('org_dept_facility')}</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="org_bg_typo">{t('org_bg_text')}</div>

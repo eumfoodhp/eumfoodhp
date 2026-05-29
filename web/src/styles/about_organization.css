@@ -1,10 +1,8 @@
-/* 조직도 — 투명 배경 PNG 이미지 */
+/* ============================================================
+   조직도 — 텍스트 + CSS 기반 차트 (배경 typo 통과)
+   ============================================================ */
 
-#sub_contents.organization_page .org_chart_wrap {
-    background: transparent;
-}
-
-.org_chart_image_wrap {
+.org_chart_wrap {
     width: 100%;
     max-width: 1580px;
     margin: 0 auto;
@@ -12,13 +10,290 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    position: relative;
+    z-index: 2;
 }
 
-.org_chart_image {
-    display: block;
+.org_chart {
+    --org-line: #C0CDE0;
+    --org-blue: #1F60A8;
+    --org-orange: #F26337;
+    --org-yellow: #FBB041;
+    --gap-y: 32px;
+    --stub-y: 28px;
+
     width: 100%;
-    max-width: 100%;
-    height: auto;
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: transparent;
-    object-fit: contain;
+    font-family: 'Pretendard', sans-serif;
+}
+
+/* --- 공통 노드 --- */
+.org_node {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.org_node--ceo {
+    background: var(--org-orange);
+    border-radius: 999px;
+    padding: 14px 38px;
+    font-size: 17px;
+    min-width: 140px;
+}
+
+.org_node--director {
+    background: var(--org-yellow);
+    border-radius: 999px;
+    padding: 14px 38px;
+    font-size: 17px;
+    min-width: 140px;
+}
+
+.org_node--staff,
+.org_node--dept {
+    background: var(--org-blue);
+    border-radius: 4px;
+    padding: 12px 18px;
+    font-size: 14px;
+    min-width: 110px;
+}
+
+.org_node--sub {
+    background: #EEF2F8;
+    color: #4C5A6E;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+}
+
+/* --- L1: 대표이사 + 우측 분기(경리·회계·인사) --- */
+.org_l1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* CEO 아래로 내려가는 수직선 (총괄이사까지 닿음) */
+.org_node--ceo::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 1px;
+    height: calc(var(--gap-y) + 30px); /* L1 -> L2 사이 빈공간 채우기 */
+    background: var(--org-line);
+    transform: translateX(-0.5px);
+    z-index: 0;
+}
+
+/* 경리·회계·인사 — CEO 의 우측 분기 */
+.org_staff_right {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 240px);
+    transform: translateY(-50%);
+}
+
+/* 경리·회계·인사 박스 좌측에서 CEO 의 수직선까지 잇는 가로선 */
+.org_staff_right::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    width: 140px;        /* CEO 수직선까지의 거리 */
+    height: 1px;
+    background: var(--org-line);
+    transform: translateY(-0.5px);
+}
+
+/* --- L2: 총괄이사 --- */
+.org_l2 {
+    position: relative;
+    margin-top: var(--gap-y);
+    display: flex;
+    justify-content: center;
+}
+
+/* 총괄이사 아래로 내려가는 수직선 (부서 가로바까지) */
+.org_node--director::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 1px;
+    height: var(--gap-y);
+    background: var(--org-line);
+    transform: translateX(-0.5px);
+    z-index: 0;
+}
+
+/* --- L3: 8개 부서 가로 균등 분포 --- */
+.org_l3 {
+    margin-top: var(--gap-y);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+    position: relative;
+    padding-top: var(--stub-y);
+}
+
+/* 부서들 위쪽 가로 커넥터 바 — 첫 칼럼 중심부터 마지막 칼럼 중심까지 */
+.org_l3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc((100% - (12px * 7)) / 16 + 0px); /* (col width)/2 = 1열 중앙 */
+    right: calc((100% - (12px * 7)) / 16 + 0px); /* 8열 중앙 */
+    height: 1px;
+    background: var(--org-line);
+}
+
+.org_dept_col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+}
+
+/* 각 부서 박스 위쪽에 가로바까지 닿는 짧은 수직 스텁 */
+.org_dept_col::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--stub-y));
+    left: 50%;
+    width: 1px;
+    height: var(--stub-y);
+    background: var(--org-line);
+    transform: translateX(-0.5px);
+}
+
+/* 부서 → 소속팀 연결 (소속팀이 있는 칼럼만) */
+.org_dept_col .org_node--dept + .org_node--sub {
+    margin-top: 4px;
+    position: relative;
+}
+.org_dept_col .org_node--dept + .org_node--sub::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    width: 1px;
+    height: 8px;
+    background: var(--org-line);
+    transform: translateX(-0.5px);
+}
+
+/* 소속팀끼리 연결 (예: 생산관리팀의 가동/나동 두 개) */
+.org_dept_col .org_node--sub + .org_node--sub {
+    position: relative;
+}
+.org_dept_col .org_node--sub + .org_node--sub::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    width: 1px;
+    height: 4px;
+    background: var(--org-line);
+    transform: translateX(-0.5px);
+}
+
+/* --- 반응형 --- */
+@media (max-width: 1280px) {
+    .org_chart {
+        max-width: 100%;
+    }
+    .org_staff_right {
+        left: auto;
+        right: 6%;
+    }
+    .org_staff_right::before {
+        width: 60px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .org_node--ceo,
+    .org_node--director {
+        font-size: 15px;
+        padding: 12px 28px;
+        min-width: 120px;
+    }
+    .org_node--staff,
+    .org_node--dept {
+        font-size: 12px;
+        padding: 10px 12px;
+        min-width: 90px;
+    }
+    .org_node--sub {
+        font-size: 11px;
+        padding: 8px 10px;
+        min-width: 90px;
+    }
+    .org_l3 {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 가로 8칸을 2x4 그리드로 줄바꿈 */
+    .org_l3 {
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 32px;
+    }
+    .org_l3::before {
+        display: none; /* 그리드 줄바꿈에선 가로바 의미 없음 */
+    }
+    .org_dept_col::before {
+        display: none;
+    }
+    .org_node--director::after {
+        height: 16px;
+    }
+    .org_staff_right {
+        position: static;
+        transform: none;
+        margin-top: 16px;
+    }
+    .org_staff_right::before {
+        display: none;
+    }
+    .org_l1 {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .org_node--ceo::after {
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .org_l3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
