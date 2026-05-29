@@ -180,27 +180,27 @@
   "main_prod_categories": [
     {
       "name": "절임식품",
-      "link": "/pages/product_pickles.php"
+      "link": "/products#pickles"
     },
     {
-      "name": "조림류",
-      "link": "/pages/product_braised.php"
+      "name": "조림",
+      "link": "/products#braised"
     },
     {
-      "name": "나물류",
-      "link": "/pages/product_namul.php"
+      "name": "나물",
+      "link": "/products#namul"
     },
     {
-      "name": "양념젓갈, 젓갈류",
-      "link": "/pages/product_salted.php"
+      "name": "젓갈",
+      "link": "/products#salted"
     },
     {
-      "name": "소스류",
-      "link": "/pages/product_sauce.php"
+      "name": "소스",
+      "link": "/products#sauce"
     },
     {
       "name": "액상차",
-      "link": "/pages/product_tea.php"
+      "link": "/products#tea"
     }
   ],
   "main_prod_list": {
@@ -238,7 +238,7 @@
         "img": "/images/main/prod-pickles-4.png"
       }
     ],
-    "조림류": [
+    "조림": [
       {
         "name": "연근조림",
         "eng": "Braised Lotus Root",
@@ -272,7 +272,7 @@
         "img": "/images/main/prod-braise-4.png"
       }
     ],
-    "나물류": [
+    "나물": [
       {
         "name": "데친고사리",
         "eng": "Blanched Bracken",
@@ -306,7 +306,7 @@
         "img": "/images/sub/namul_rect_56.png"
       }
     ],
-    "양념젓갈, 젓갈류": [
+    "젓갈": [
       {
         "name": "오징어젓",
         "eng": "Seasoned Squid Jeot",
@@ -332,7 +332,7 @@
         "img": "/images/main/prod-salted-shrimp-new.png"
       }
     ],
-    "소스류": [
+    "소스": [
       {
         "name": "짜장소스",
         "eng": "Jajang Sauce",

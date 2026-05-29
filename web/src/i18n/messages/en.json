@@ -180,27 +180,27 @@
   "main_prod_categories": [
     {
       "name": "Pickled foods",
-      "link": "/pages/product_pickles.php"
+      "link": "/products#pickles"
     },
     {
-      "name": "Braised dishes",
-      "link": "/pages/product_braised.php"
+      "name": "Braised",
+      "link": "/products#braised"
     },
     {
       "name": "Namul",
-      "link": "/pages/product_namul.php"
+      "link": "/products#namul"
     },
     {
-      "name": "Seasoned jeotgal & jeotgal",
-      "link": "/pages/product_salted.php"
+      "name": "Jeotgal",
+      "link": "/products#salted"
     },
     {
       "name": "Sauces",
-      "link": "/pages/product_sauce.php"
+      "link": "/products#sauce"
     },
     {
       "name": "Liquid tea",
-      "link": "/pages/product_tea.php"
+      "link": "/products#tea"
     }
   ],
   "main_prod_list": {
@@ -238,7 +238,7 @@
         "img": "/images/main/prod-pickles-4.png"
       }
     ],
-    "Braised dishes": [
+    "Braised": [
       {
         "name": "Braised Lotus Root",
         "eng": "Braised Lotus Root",
@@ -306,7 +306,7 @@
         "img": "/images/sub/namul_rect_56.png"
       }
     ],
-    "Seasoned jeotgal & jeotgal": [
+    "Jeotgal": [
       {
         "name": "Salted Squid Jeot",
         "eng": "Seasoned Squid Jeot",
