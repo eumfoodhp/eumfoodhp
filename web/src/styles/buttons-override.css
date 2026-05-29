@@ -333,9 +333,14 @@
 .notice_card,
 .proc_card,
 .partner_item,
-.dir_info_box,
-.facility_card {
+.dir_info_box {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+/* facility_card — 텍스트 주변 박스 (그림자) 제거. 이미지만 라운드 */
+.facility_card {
+    box-shadow: none !important;
+    background: transparent !important;
+    border: 0 !important;
 }
 .biz_card:hover,
 .notice_card:hover,

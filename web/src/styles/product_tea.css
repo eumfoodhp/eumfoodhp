@@ -1,17 +1,17 @@
 /* 액상차 — Figma 283:10508 */
 
-#sub_contents.product_tea_page .breadcrumb_wrap {
+#sub_contents .product_tea_page .breadcrumb_wrap {
     margin-bottom: 60px;
 }
 
-#sub_contents.product_tea_page .sub_visual_img.product_tea_hero_visual {
+#sub_contents .product_tea_page .sub_visual_img.product_tea_hero_visual {
     min-height: 640px;
     padding-bottom: 40px;
     background-color: #f4f4f4;
     background-image: url('/images/sub/product.png');
 }
 
-#sub_contents.product_tea_page .sub_visual_img.product_tea_hero_visual::after {
+#sub_contents .product_tea_page .sub_visual_img.product_tea_hero_visual::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -21,11 +21,11 @@
     z-index: 1;
 }
 
-#sub_contents.product_tea_page .sub_tab_container {
+#sub_contents .product_tea_page .sub_tab_container {
     z-index: 2;
 }
 
-#sub_contents.product_tea_page .sub_page_title {
+#sub_contents .product_tea_page .sub_page_title {
     font-size: 48px;
     font-weight: 700;
     line-height: 60px;
@@ -33,7 +33,7 @@
     color: #222;
 }
 
-#sub_contents.product_tea_page .sub_page_desc {
+#sub_contents .product_tea_page .sub_page_desc {
     font-size: 18px;
     font-weight: 300;
     line-height: 28px;
@@ -41,7 +41,7 @@
     color: #505050;
 }
 
-#sub_contents.product_tea_page .product_list_section {
+#sub_contents .product_tea_page .product_list_section {
     width: 100%;
     max-width: 1580px;
     margin-left: auto;
@@ -50,7 +50,7 @@
     box-sizing: border-box;
 }
 
-#sub_contents.product_tea_page .product_inner {
+#sub_contents .product_tea_page .product_inner {
     width: 100%;
     max-width: 1580px;
     margin: 0 auto;
@@ -58,7 +58,7 @@
     gap: 40px;
 }
 
-#sub_contents.product_tea_page .product_top_area {
+#sub_contents .product_tea_page .product_top_area {
     width: 100%;
     max-width: 1580px;
     margin: 0 auto 0;
@@ -66,14 +66,14 @@
     align-items: flex-end;
 }
 
-#sub_contents.product_tea_page .product_top_area .sub_tit {
+#sub_contents .product_tea_page .product_top_area .sub_tit {
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
     letter-spacing: -0.45px;
 }
 
-#sub_contents.product_tea_page .product_top_area .main_tit {
+#sub_contents .product_tea_page .product_top_area .main_tit {
     font-size: 42px;
     font-weight: 700;
     line-height: 60px;
@@ -81,13 +81,13 @@
     margin: 0;
 }
 
-#sub_contents.product_tea_page .btn_download {
+#sub_contents .product_tea_page .btn_download {
     padding: 16px 20px;
     gap: 8px;
     margin-bottom: 0;
 }
 
-#sub_contents.product_tea_page .product_grid {
+#sub_contents .product_tea_page .product_grid {
     display: grid;
     grid-template-columns: repeat(4, 374px);
     gap: 48px 28px;
@@ -95,30 +95,30 @@
     width: 100%;
 }
 
-#sub_contents.product_tea_page .product_card {
+#sub_contents .product_tea_page .product_card {
     width: 374px;
     max-width: 100%;
     flex-direction: column;
     gap: 12px;
 }
 
-#sub_contents.product_tea_page .prod_info {
+#sub_contents .product_tea_page .prod_info {
     gap: 20px;
 }
 
-#sub_contents.product_tea_page .name_group {
+#sub_contents .product_tea_page .name_group {
     flex-direction: column;
     gap: 4px;
 }
 
-#sub_contents.product_tea_page .name_row {
+#sub_contents .product_tea_page .name_row {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     gap: 4px;
 }
 
-#sub_contents.product_tea_page .name_row h4 {
+#sub_contents .product_tea_page .name_row h4 {
     margin: 0;
     color: #222;
     font-size: 20px;
@@ -127,7 +127,7 @@
     letter-spacing: -0.5px;
 }
 
-#sub_contents.product_tea_page .name_row .en {
+#sub_contents .product_tea_page .name_row .en {
     color: #767676;
     font-size: 14px;
     font-weight: 300;
@@ -135,7 +135,7 @@
     letter-spacing: -0.35px;
 }
 
-#sub_contents.product_tea_page .prod_info .desc {
+#sub_contents .product_tea_page .prod_info .desc {
     height: auto;
     min-height: 0;
     max-height: none;
@@ -147,20 +147,20 @@
     letter-spacing: -0.35px;
 }
 
-#sub_contents.product_tea_page .spec_info {
+#sub_contents .product_tea_page .spec_info {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 20px;
 }
 
-#sub_contents.product_tea_page .spec_group {
+#sub_contents .product_tea_page .spec_group {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-#sub_contents.product_tea_page .spec_group .spec_label {
+#sub_contents .product_tea_page .spec_group .spec_label {
     color: #767676;
     font-size: 16px;
     font-weight: 300;
@@ -168,7 +168,7 @@
     letter-spacing: -0.4px;
 }
 
-#sub_contents.product_tea_page .spec_group .spec_val {
+#sub_contents .product_tea_page .spec_group .spec_val {
     color: #F39800;
     font-size: 16px;
     font-weight: 500;
@@ -177,7 +177,7 @@
 }
 
 @media (max-width: 1600px) {
-    #sub_contents.product_tea_page .product_grid {
+    #sub_contents .product_tea_page .product_grid {
         grid-template-columns: repeat(4, minmax(0, 374px));
         padding: 0 16px;
     }
