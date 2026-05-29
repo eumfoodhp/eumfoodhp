@@ -1522,11 +1522,18 @@ html[lang="zh"] .dl_title {
     grid-row: 2;
 }
 .next_section > .next_section_link:not(.next_section_link--prev) {
-    /* NEXT — divider 아래, 중앙에서 우측으로 60px (PREV 와 대칭) */
-    position: absolute;
-    top: calc(100% + 16px);
-    left: 50%;
-    transform: translateX(calc(-50% + 60px));
+    /* NEXT — divider 아래, 중앙에서 우측으로 60px (PREV 와 대칭).
+       이전엔 position: absolute + top: calc(100% + 16px) 였는데,
+       다음 .story_section 의 padding-top 영역이 DOM 상 뒤에 와서
+       NEXT 위로 올라가 클릭을 차단하던 버그. normal flow grid row 3
+       으로 옮겨 자기 섹션 안에 머물도록 변경. */
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: center;
+    transform: translateX(60px);    /* 중앙에서 우측으로 60px */
+    margin-top: 16px;
+    position: relative;
+    z-index: 20;
 }
 
 /* 다음 섹션 화살표 버튼 */
@@ -1560,7 +1567,7 @@ html[lang="zh"] .dl_title {
     animation: none;
 }
 .next_section > .next_section_link:not(.next_section_link--prev):hover {
-    transform: translateX(calc(-50% + 60px));
+    transform: translateX(60px);
 }
 
 .next_section_link:hover .next_section_icon {
