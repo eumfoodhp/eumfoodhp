@@ -11,6 +11,7 @@
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import NextSectionLink from '@/components/NextSectionLink';
+import HistoryTabbed from '@/components/HistoryTabbed';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
@@ -116,39 +117,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <NextSectionLink nextId="history" nextLabel={t('sub_history')} />
       </div>
 
-      {/* ===== 2. 회사연혁 — 가로 스크롤 (snap) ===== */}
+      {/* ===== 2. 회사연혁 — 세로 탭 + 연도 카드 그리드 ===== */}
       <div id="history" className="story_section">
         <header className="story_section_head">
           <h2 className="story_section_title">{t('sub_history')}</h2>
         </header>
-        <section className="history_h_section">
-          <div className="history_h_track">
-            {PERIODS.map((p) => (
-              <article key={p.id} id={p.id} className="history_h_slide">
-                <h3 className="history_h_period">{p.label}</h3>
-                <div className="history_h_years">
-                  {sortedYears
-                    .filter((y) => Number(y) >= p.start && Number(y) <= p.end)
-                    .map((year) => (
-                      <div key={year} className="history_h_year">
-                        <h4 className="history_h_year_label">{year}</h4>
-                        <ul className="history_h_list">
-                          {byYear[year].map((c, i) => (
-                            <li key={i}>{c}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                </div>
-              </article>
-            ))}
-          </div>
-          <div className="history_h_hint" aria-hidden="true">
-            <span>←</span>
-            <span>좌우로 스크롤</span>
-            <span>→</span>
-          </div>
-        </section>
+        <HistoryTabbed periods={PERIODS} byYear={byYear} sortedYears={sortedYears} />
         <NextSectionLink nextId="area" nextLabel={t('sub_biz_area')} />
       </div>
 

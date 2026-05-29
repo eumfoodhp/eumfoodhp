@@ -1723,6 +1723,190 @@ html[lang="zh"] .dl_title {
 }
 
 /* ============================================================
+   회사연혁 — 좌측 세로 탭 + 우측 연도 카드 그리드
+   ============================================================ */
+.history_tabbed {
+    width: 1580px;
+    max-width: 95%;
+    margin: 24px auto 0;
+    background: transparent;
+}
+
+.history_tabbed_inner {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+/* 좌측 세로 탭 */
+.history_tabbed_tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: sticky;
+    top: 200px;       /* 헤더 + 서브헤더 + 약간 여유 */
+    align-self: flex-start;
+}
+
+.history_tab_btn {
+    background: transparent;
+    border: 0;
+    padding: 18px 16px;
+    text-align: left;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    color: #6B7280;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.2px;
+    border-radius: 0 8px 8px 0;
+}
+.history_tab_btn:hover {
+    background: #FFF6EC;
+    color: #111827;
+}
+.history_tab_btn.is_active {
+    background: #FFF6EC;
+    border-left-color: #F39800;
+    color: #F39800;
+    font-weight: 700;
+}
+
+.history_tab_label {
+    display: block;
+}
+
+/* 우측 카드 그리드 */
+.history_tabbed_panel {
+    min-height: 320px;
+}
+
+.history_year_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    animation: historyPanelIn 0.35s ease-out both;
+}
+
+@keyframes historyPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.history_year_card {
+    background: #fff;
+    border: 1px solid #EEF1F5;
+    border-radius: 14px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 200px;
+}
+
+.history_year_label {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 800;
+    color: #F39800;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #F0D5A8;
+}
+
+.history_year_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history_year_list li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #4B5563;
+    letter-spacing: -0.2px;
+}
+.history_year_list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #F39800;
+}
+
+.history_tabbed_empty {
+    color: #9CA3AF;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .history_tabbed_inner {
+        grid-template-columns: 200px 1fr;
+        gap: 32px;
+    }
+    .history_tab_btn {
+        font-size: 14px;
+        padding: 14px 12px;
+    }
+    .history_year_label {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 768px) {
+    .history_tabbed_inner {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    /* 모바일에선 탭을 가로 스크롤 가능한 가로 배치로 전환 */
+    .history_tabbed_tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        scrollbar-width: none;
+        position: static;
+        gap: 8px;
+        padding-bottom: 8px;
+    }
+    .history_tabbed_tabs::-webkit-scrollbar { display: none; }
+    .history_tab_btn {
+        flex: 0 0 auto;
+        border-left: 0;
+        border-bottom: 3px solid transparent;
+        border-radius: 8px 8px 0 0;
+        padding: 10px 14px;
+    }
+    .history_tab_btn.is_active {
+        border-left-color: transparent;
+        border-bottom-color: #F39800;
+    }
+    .history_year_grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 14px;
+    }
+}
+
+/* ============================================================
    QuickJumpDots — 우측 floating sticky 바로가기
    ============================================================ */
 .quick_jump_dots {
