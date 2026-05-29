@@ -86,65 +86,67 @@ export default async function Page({
           <Link href="/contact/write" className="inquiry_write_btn">글쓰기</Link>
         </form>
 
-        {!list || list.length === 0 ? (
-          <div className="public_empty">아직 등록된 문의가 없습니다.</div>
-        ) : (
-          <>
-            <table className="inquiry_table">
-              <thead>
-                <tr>
-                  <th style={{ width: 80 }}>NO</th>
-                  <th>제목</th>
-                  <th style={{ width: 140 }}>작성자</th>
-                  <th style={{ width: 140 }}>작성일</th>
-                  <th style={{ width: 120 }}>문의상태</th>
-                </tr>
-              </thead>
-              <tbody>
-                {list.map((c, idx) => {
-                  const rowNo = total - ((page - 1) * PAGE_SIZE + idx);
-                  return (
-                    <tr key={c.id}>
-                      <td>No.{rowNo}</td>
-                      <td className="inquiry_table_title">
-                        {c.is_private && <span aria-hidden="true">🔒 </span>}
-                        {c.is_private ? '비공개 글입니다.' : c.subject}
-                      </td>
-                      <td>{maskName(c.writer_name)}</td>
-                      <td>{formatDate(c.created_at)}</td>
-                      <td>
-                        {c.status === 'answered' ? (
-                          <span className="status_chip status_chip--answered">답변완료</span>
-                        ) : (
-                          <span className="status_chip status_chip--wait">답변대기</span>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-
-            {totalPages > 1 && (
-              <nav className="inquiry_pagination" aria-label="페이지">
-                <PageLink page={Math.max(1, page - 1)} sort={sort} field={field} q={q} disabled={page <= 1}>
-                  &lsaquo;
-                </PageLink>
-                {makePageList(page, totalPages).map((p, i) =>
-                  p === '...' ? (
-                    <span key={`gap-${i}`} className="inquiry_page_gap">…</span>
-                  ) : (
-                    <PageLink key={p} page={p as number} sort={sort} field={field} q={q} active={p === page}>
-                      {String(p)}
-                    </PageLink>
-                  )
-                )}
-                <PageLink page={Math.min(totalPages, page + 1)} sort={sort} field={field} q={q} disabled={page >= totalPages}>
-                  &rsaquo;
-                </PageLink>
-              </nav>
+        <table className="inquiry_table">
+          <thead>
+            <tr>
+              <th style={{ width: 80 }}>NO</th>
+              <th>제목</th>
+              <th style={{ width: 140 }}>작성자</th>
+              <th style={{ width: 140 }}>작성일</th>
+              <th style={{ width: 120 }}>문의상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            {!list || list.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="inquiry_table_empty">
+                  아직 등록된 문의가 없습니다.
+                </td>
+              </tr>
+            ) : (
+              list.map((c, idx) => {
+                const rowNo = total - ((page - 1) * PAGE_SIZE + idx);
+                return (
+                  <tr key={c.id}>
+                    <td>No.{rowNo}</td>
+                    <td className="inquiry_table_title">
+                      {c.is_private && <span aria-hidden="true">🔒 </span>}
+                      {c.is_private ? '비공개 글입니다.' : c.subject}
+                    </td>
+                    <td>{maskName(c.writer_name)}</td>
+                    <td>{formatDate(c.created_at)}</td>
+                    <td>
+                      {c.status === 'answered' ? (
+                        <span className="status_chip status_chip--answered">답변완료</span>
+                      ) : (
+                        <span className="status_chip status_chip--wait">답변대기</span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })
             )}
-          </>
+          </tbody>
+        </table>
+
+        {totalPages > 1 && (
+          <nav className="inquiry_pagination" aria-label="페이지">
+            <PageLink page={Math.max(1, page - 1)} sort={sort} field={field} q={q} disabled={page <= 1}>
+              &lsaquo;
+            </PageLink>
+            {makePageList(page, totalPages).map((p, i) =>
+              p === '...' ? (
+                <span key={`gap-${i}`} className="inquiry_page_gap">…</span>
+              ) : (
+                <PageLink key={p} page={p as number} sort={sort} field={field} q={q} active={p === page}>
+                  {String(p)}
+                </PageLink>
+              )
+            )}
+            <PageLink page={Math.min(totalPages, page + 1)} sort={sort} field={field} q={q} disabled={page >= totalPages}>
+              &rsaquo;
+            </PageLink>
+          </nav>
         )}
       </div>
     </main>

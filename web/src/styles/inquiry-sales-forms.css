@@ -132,6 +132,12 @@
     padding-left: 16px !important;
 }
 
+.inquiry_table_empty {
+    padding: 60px 8px !important;
+    color: #9CA3AF;
+    font-size: 14px;
+}
+
 .status_chip {
     display: inline-flex;
     align-items: center;
@@ -229,19 +235,23 @@
 }
 
 .sales_form {
-    max-width: 1100px;
+    max-width: none;
     padding: 0;
     gap: 0;
 }
+/* 점선 테두리 제거 — 깔끔한 섹션 구분만 */
 .sales_step {
-    border: 1px dashed #BBD3FF;
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin-bottom: 24px;
+    border: 0;
+    border-radius: 0;
+    padding: 32px 0;
+    margin-bottom: 8px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background: #fff;
+    background: transparent;
+}
+.sales_step + .sales_step {
+    border-top: 1px solid #F3F4F6;
 }
 .sales_step_head {
     display: flex;
