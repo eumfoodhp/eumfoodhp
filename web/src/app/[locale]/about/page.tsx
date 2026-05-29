@@ -64,26 +64,29 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   }
   const sortedYears = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
 
-  // ---- 오시는길 주소 ----
-  const factoryAddr = t('loc_factory_addr');
-  const centerAddr = t('loc_center_addr');
-  // 카카오맵 검색 URL (이미지 클릭 시 새 탭으로 열림)
-  const factoryMapHref = `https://map.kakao.com/?q=${encodeURIComponent(factoryAddr)}`;
-  const centerMapHref = `https://map.kakao.com/?q=${encodeURIComponent(centerAddr)}`;
+  // ---- 오시는길 — QR/지도 검색어를 주소 대신 회사 상호로 변경 ----
+  //   첫번째 카드: "이음푸드시스템", 두번째 카드: "화산푸드시스템"
+  const factoryQuery = '이음푸드시스템';
+  const centerQuery = '화산푸드시스템';
+  const factoryAddr = t('loc_factory_addr'); // 표시용
+  const centerAddr = t('loc_center_addr');   // 표시용
 
-  // ---- QR 코드: 주소를 각 지도 서비스 검색 URL 로 인코딩 → qrserver.com 으로 이미지 생성.
-  //      모바일에서 스캔 시 해당 지도 서비스의 검색 결과 페이지가 열림 (앱 설치 시 앱으로 핸드오프).
+  // 카카오맵 검색 URL (이미지 클릭 시 새 탭으로 열림)
+  const factoryMapHref = `https://map.kakao.com/?q=${encodeURIComponent(factoryQuery)}`;
+  const centerMapHref = `https://map.kakao.com/?q=${encodeURIComponent(centerQuery)}`;
+
+  // QR 코드 (qrserver.com 동적 생성)
   const qr = (url: string) =>
     `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=${encodeURIComponent(url)}`;
   const factoryQR = {
-    tmap: qr(`https://tmap.life/?q=${encodeURIComponent(factoryAddr)}`),
-    kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(factoryAddr)}`),
-    naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(factoryAddr)}`),
+    tmap: qr(`https://tmap.life/?q=${encodeURIComponent(factoryQuery)}`),
+    kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(factoryQuery)}`),
+    naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(factoryQuery)}`),
   };
   const centerQR = {
-    tmap: qr(`https://tmap.life/?q=${encodeURIComponent(centerAddr)}`),
-    kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(centerAddr)}`),
-    naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(centerAddr)}`),
+    tmap: qr(`https://tmap.life/?q=${encodeURIComponent(centerQuery)}`),
+    kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(centerQuery)}`),
+    naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`),
   };
 
   const sections = [
@@ -303,15 +306,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </li>
                   </ul>
                   <div className="loc_qr_group">
-                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(factoryAddr)}`} target="_blank" rel="noopener noreferrer">
+                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(factoryQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={factoryQR.tmap} alt={t('loc_qr_tmap')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_tmap')}</span>
                     </a>
-                    <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(factoryAddr)}`} target="_blank" rel="noopener noreferrer">
+                    <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(factoryQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={factoryQR.kakao} alt={t('loc_qr_kakao')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_kakao')}</span>
                     </a>
-                    <a className="loc_qr_item" href={`https://map.naver.com/p/search/${encodeURIComponent(factoryAddr)}`} target="_blank" rel="noopener noreferrer">
+                    <a className="loc_qr_item" href={`https://map.naver.com/p/search/${encodeURIComponent(factoryQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={factoryQR.naver} alt={t('loc_qr_naver')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_naver')}</span>
                     </a>
@@ -341,15 +344,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </li>
                   </ul>
                   <div className="loc_qr_group">
-                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(centerAddr)}`} target="_blank" rel="noopener noreferrer">
+                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(centerQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={centerQR.tmap} alt={t('loc_qr_tmap')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_tmap')}</span>
                     </a>
-                    <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(centerAddr)}`} target="_blank" rel="noopener noreferrer">
+                    <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(centerQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={centerQR.kakao} alt={t('loc_qr_kakao')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_kakao')}</span>
                     </a>
-                    <a className="loc_qr_item" href={`https://map.naver.com/p/search/${encodeURIComponent(centerAddr)}`} target="_blank" rel="noopener noreferrer">
+                    <a className="loc_qr_item" href={`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={centerQR.naver} alt={t('loc_qr_naver')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_naver')}</span>
                     </a>
