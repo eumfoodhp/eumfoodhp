@@ -67,7 +67,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
           <h2 className="story_section_title">{t('sub_facility')}</h2>
         </header>
         <FacilitySection />
-        <NextSectionLink nextId="process" nextLabel={t('sub_biz_process')} />
+        <NextSectionLink prevId="facility" nextId="process" nextLabel={t('sub_biz_process')} />
       </div>
 
       {/* ===== 2. 제조공정 ===== */}

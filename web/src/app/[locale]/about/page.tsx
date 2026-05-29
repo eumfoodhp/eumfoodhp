@@ -104,7 +104,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
-        <NextSectionLink nextId="history" nextLabel={t('sub_history')} />
+        <NextSectionLink prevId="greeting" nextId="history" nextLabel={t('sub_history')} />
       </div>
 
       {/* ===== 2. 회사연혁 — 세로 탭 + 연도 카드 그리드 ===== */}

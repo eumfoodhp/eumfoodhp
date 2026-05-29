@@ -117,7 +117,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               </div>
             </div>
           </section>
-          <NextSectionLink nextId="braised" nextLabel={t('sub_prod_braised')} />
+          <NextSectionLink prevId="pickles" nextId="braised" nextLabel={t('sub_prod_braised')} />
         </div>
 
         {/* ===== 2. 조림류 ===== */}
