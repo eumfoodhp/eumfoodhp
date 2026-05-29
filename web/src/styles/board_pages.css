@@ -578,6 +578,20 @@
    ============================================================ */
 @media (max-width: 900px) {
     .board_page_head h1 { font-size: 26px; }
+    .board_page_head .eyebrow { font-size: 12px; margin-bottom: 8px; }
+    .page_heading_block {
+        padding-top: 24px;
+        padding-bottom: 14px;
+        margin-bottom: 36px;
+    }
+    .board_view_title { font-size: 22px; line-height: 1.4; }
+    .board_view_meta {
+        flex-wrap: wrap;
+        row-gap: 6px;
+        font-size: 12px;
+    }
+    .board_view_body { font-size: 14px; padding: 18px 0 28px; }
+    .board_view_back { min-width: 100px; padding: 9px 22px; font-size: 13px; }
     .board_toolbar {
         flex-wrap: wrap;
         gap: 10px;
@@ -624,4 +638,21 @@
 }
 @media (max-width: 560px) {
     .board_grid { grid-template-columns: 1fr; }
+    .board_page_head h1 { font-size: 22px; }
+    .board_view_title { font-size: 19px; }
+    .board_view_meta {
+        gap: 6px;
+        font-size: 11px;
+    }
+    .board_view_meta .dot { height: 10px; }
+    .page_heading_block {
+        padding-top: 18px;
+        margin-bottom: 28px;
+    }
+    .board_hero {
+        padding: 14px;
+        gap: 16px;
+    }
+    .board_hero_title { font-size: 15px; line-height: 1.5; }
+    .board_hero_nav { width: 36px; height: 36px; }
 }
