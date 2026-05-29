@@ -810,9 +810,9 @@
     width: 100%;
 }
 
-/* 안녕하십니까 / 황만식입니다 두 h3 사이는 가깝게 (한 줄 약간 띄움) */
+/* 안녕하십니까 / 황만식입니다 두 h3 사이 — 한 줄 띄움 (h3 line-height 68px 근사) */
 .ceo_main_title {
-    gap: 12px;
+    gap: 68px;
 }
 
 /* 1. CEO Introduce 태그 */
