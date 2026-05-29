@@ -1642,7 +1642,12 @@ html[lang="zh"] .dl_title {
     }
 }
 
-/* 짝수 섹션 — 단색 베이지 (그라데이션 X). 섹션 경계(divider) 에서 색 깔끔히 전환 */
+/* 홀수 섹션 — 흰색 명시 (부모 inherit 으로 색 안 잡히는 거 방지) */
+.story_section:nth-of-type(odd) {
+    background: #FFFFFF;
+}
+
+/* 짝수 섹션 — 단색 베이지 */
 .story_section:nth-of-type(even) {
     background: #FFFBF5;
 }
