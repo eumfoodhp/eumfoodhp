@@ -70,6 +70,7 @@
     color: #F26337;
     padding: 14px 28px;
     font-size: 15px;
+    z-index: 5;   /* 우측 분기 점선이 박스를 통과해 보이지 않도록 위로 올림 */
 }
 .org_node--ceo:hover {
     background: #FFF6F2;
