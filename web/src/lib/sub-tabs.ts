@@ -40,7 +40,7 @@ export function newsroomTabs(t: Translator) {
   return [
     { key: 'notice', href: '/notice', label: t('sub_notice') },
     { key: 'press', href: '/press', label: t('sub_news_press') },
-    { key: 'download', href: '/download', label: t('sub_board') },
+    // download 항목 제거 (사용자 요청) — 라우트는 유지
   ];
 }
 

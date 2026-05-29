@@ -32,7 +32,7 @@ export default async function Page({
       <div className="sub_inner">
         <header className="board_page_head">
           <span className="eyebrow">NOTICE</span>
-          <h1>새로운 소식</h1>
+          <h1>공지사항</h1>
         </header>
 
         <article className="board_view">

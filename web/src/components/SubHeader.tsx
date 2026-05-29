@@ -58,7 +58,7 @@ const CATEGORIES: Category[] = [
     items: [
       { href: '/notice', key: 'sub_notice' },
       { href: '/press', key: 'sub_news_press' },
-      { href: '/download', key: 'sub_board' },
+      // download 항목 제거 (사용자 요청)
     ],
   },
   {

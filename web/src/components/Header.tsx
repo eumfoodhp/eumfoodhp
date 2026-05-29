@@ -114,7 +114,7 @@ export default async function Header() {
                 items={[
                   { href: '/notice', label: t('sub_notice') },
                   { href: '/press', label: t('sub_news_press') },
-                  { href: '/download', label: t('sub_board') },
+                  // download 항목 제거 (사용자 요청)
                 ]}
               />
               <MobileMenuGroup
