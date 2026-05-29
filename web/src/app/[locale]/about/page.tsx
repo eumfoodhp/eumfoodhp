@@ -113,7 +113,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <h2 className="story_section_title">{t('sub_history')}</h2>
         </header>
         <HistoryTabbed periods={PERIODS} byYear={byYear} sortedYears={sortedYears} />
-        <NextSectionLink nextId="area" nextLabel={t('sub_biz_area')} />
+        <NextSectionLink prevId="greeting" nextId="area" nextLabel={t('sub_biz_area')} />
       </div>
 
       {/* ===== 3. 주요 사업 ===== */}
@@ -175,7 +175,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
-        <NextSectionLink nextId="organization" nextLabel={t('sub_org')} />
+        <NextSectionLink prevId="history" nextId="organization" nextLabel={t('sub_org')} />
       </div>
 
       {/* ===== 4. 조직도 ===== */}
@@ -240,7 +240,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
-        <NextSectionLink nextId="location" nextLabel={t('sub_location')} />
+        <NextSectionLink prevId="area" nextId="location" nextLabel={t('sub_location')} />
       </div>
 
       {/* ===== 5. 오시는길 ===== */}

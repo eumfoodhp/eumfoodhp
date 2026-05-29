@@ -112,7 +112,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
             </div>
           </section>
         ))}
-        <NextSectionLink nextId="cert" nextLabel={t('sub_cert')} />
+        <NextSectionLink prevId="facility" nextId="cert" nextLabel={t('sub_cert')} />
       </div>
 
       {/* ===== 3. 인증·특허 ===== */}

@@ -1172,6 +1172,19 @@
     gap: 12px; /* var(--padding-3) */
 }
 
+/* 마지막 카드가 한 줄에 혼자 (4n+1) 일 때 중앙 정렬 — 전통식품마스터 같은 9번째 카드 */
+.cert_grid > .cert_card:last-child:nth-child(4n+1) {
+    grid-column: 2 / span 2;
+    justify-self: center;
+}
+/* 마지막 두 카드가 같은 줄에 둘만 (4n+2) 일 때 가운데 컬럼들에 정렬 */
+.cert_grid > .cert_card:last-child:nth-child(4n+2) {
+    grid-column: 3;
+}
+.cert_grid > .cert_card:nth-last-child(2):nth-child(4n+1) {
+    grid-column: 2;
+}
+
 /* 13. 이미지 박스 — 배경/보더 제거. 위쪽 정렬로 카드들 상단 라인 통일 */
 .cert_img_box {
     display: flex;

@@ -1498,6 +1498,16 @@ html[lang="zh"] .dl_title {
     box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(243, 152, 0, 0.2);
 }
 
+/* PREV / NEXT 버튼 가로 정렬 (divider 아래) */
+.next_section_actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.next_section_link--prev {
+    background: transparent;
+}
+
 /* 다음 섹션 화살표 버튼 */
 .next_section_link {
     display: inline-flex;

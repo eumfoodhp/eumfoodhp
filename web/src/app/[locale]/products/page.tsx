@@ -161,7 +161,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               </div>
             </div>
           </section>
-          <NextSectionLink nextId="namul" nextLabel={t('sub_prod_namul')} />
+          <NextSectionLink prevId="pickles" nextId="namul" nextLabel={t('sub_prod_namul')} />
         </div>
 
         {/* ===== 3. 나물류 ===== */}
@@ -204,7 +204,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               </div>
             </div>
           </section>
-          <NextSectionLink nextId="salted" nextLabel={t('sub_prod_salted')} />
+          <NextSectionLink prevId="braised" nextId="salted" nextLabel={t('sub_prod_salted')} />
         </div>
 
         {/* ===== 4. 양념젓갈·젓갈류 ===== */}
@@ -244,7 +244,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               </div>
             </div>
           </section>
-          <NextSectionLink nextId="sauce" nextLabel={t('sub_prod_sauce')} />
+          <NextSectionLink prevId="namul" nextId="sauce" nextLabel={t('sub_prod_sauce')} />
         </div>
 
         {/* ===== 5. 소스 (sub-sections 포함) ===== */}
@@ -306,7 +306,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               );
             })}
           </div>
-          <NextSectionLink nextId="tea" nextLabel={t('sub_prod_tea')} />
+          <NextSectionLink prevId="salted" nextId="tea" nextLabel={t('sub_prod_tea')} />
         </div>
 
         {/* ===== 6. 액상차 ===== */}
