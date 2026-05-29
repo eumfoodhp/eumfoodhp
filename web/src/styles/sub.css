@@ -625,7 +625,7 @@
 /* 제품소개 섹션 */
 .product_list_section {
     padding: 100px 0;
-    background: #fff;
+    background: transparent; /* 원페이지 섹션 배경(베이지) 비치도록 */
     width: 1580px;
     margin: auto;
 }
