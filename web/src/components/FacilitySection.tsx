@@ -26,10 +26,7 @@ export default function FacilitySection() {
     <section className="facility_status_section">
       <div className="facility_status_inner">
         <div className="facility_status_head">
-          <div className="facility_title_group">
-            <span className="facility_sub_tit">{t('facility_status_sub_tit')}</span>
-            <h3 className="facility_main_tit">{t('facility_status_main_tit')}</h3>
-          </div>
+          {/* 시설현황 / ㈜이음푸드시스템 시설현황 텍스트 제거 (사용자 요청) */}
           <div
             className="facility_toggle"
             role="tablist"
