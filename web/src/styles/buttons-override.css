@@ -1709,21 +1709,25 @@ html[lang="zh"] .dl_title {
     }
 }
 
-/* 타이틀 좌측 굵은 주황 막대 + 더 큰 폰트 */
+/* 타이틀 좌측 초록 점 + 가로선 마커 + 더 큰 폰트
+   (페이지 시작점을 표현하는 타임라인 챕터 마커) */
 .story_section_head .story_section_title {
     font-size: 48px;
-    padding-left: 22px;
+    padding-left: 100px;     /* 마커 80px + spacing 20px */
     position: relative;
 }
 .story_section_head .story_section_title::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 10px;
-    bottom: 10px;
-    width: 6px;
-    background: #F26337;
-    border-radius: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 14px;
+    background: transparent
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 14'><circle cx='7' cy='7' r='7' fill='%2322C55E'/><rect x='20' y='6' width='60' height='2' rx='1' fill='%2322C55E'/></svg>")
+        no-repeat center / contain;
+    border-radius: 0;
 }
 
 /* 타이틀 아래 가로선 — 제거 (사용자 요청) */
@@ -1737,22 +1741,25 @@ html[lang="zh"] .dl_title {
     }
     .story_section_head .story_section_title {
         font-size: 32px;
-        padding-left: 18px;
+        padding-left: 76px;
     }
     .story_section_head .story_section_title::before {
-        width: 5px;
-        top: 6px;
-        bottom: 6px;
+        width: 60px;
+        height: 12px;
+        /* top/bottom 은 transform: translateY(-50%) 로 대체 — reset 명시 */
+        top: 50%;
+        bottom: auto;
     }
 }
 
 @media (max-width: 640px) {
     .story_section_head .story_section_title {
         font-size: 26px;
-        padding-left: 14px;
+        padding-left: 56px;
     }
     .story_section_head .story_section_title::before {
-        width: 4px;
+        width: 44px;
+        height: 10px;
     }
 }
 
