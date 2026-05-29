@@ -32,12 +32,20 @@ const SALTED_ITEMS = [
   { id: '02', img: '/images/main/prod-salted-octopus-new.png' },
   { id: '03', img: '/images/main/prod-salted-shrimp-new.png' },
 ];
-const SAUCE_SECTIONS = [
+type SauceSection = {
+  subKey: string;
+  mainKey: string;
+  noteKey?: string;
+  ids: number[];
+  isPack?: boolean;
+};
+
+const SAUCE_SECTIONS: SauceSection[] = [
   { subKey: 'prod_sauce_pack_sub_tit', mainKey: 'prod_sauce_pack_main_tit', noteKey: 'prod_sauce_pack_note', ids: [1, 2, 3, 4], isPack: true },
   { subKey: 'prod_sauce_korean_sub_tit', mainKey: 'prod_sauce_korean_main_tit', ids: [5, 6, 7, 8, 9, 10, 11, 12, 13] },
   { subKey: 'prod_sauce_china_sub_tit', mainKey: 'prod_sauce_china_main_tit', ids: [14, 15, 17, 18, 19, 20, 21] },
   { subKey: 'prod_sauce_asia_sub_tit', mainKey: 'prod_sauce_asia_main_tit', ids: [16, 23, 24, 25, 26, 27, 28, 30, 31] },
-] as const;
+];
 const TEA_ITEMS = [
   { key: '03', img: 3 },
   { key: '01', img: 1 },
