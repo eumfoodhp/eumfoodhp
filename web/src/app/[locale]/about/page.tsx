@@ -64,12 +64,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   }
   const sortedYears = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
 
-  // ---- 오시는길 지도 URLs ----
-  const mapHl = locale === 'zh' ? 'zh-CN' : locale;
+  // ---- 오시는길 주소 ----
   const factoryAddr = t('loc_factory_addr');
   const centerAddr = t('loc_center_addr');
-  const factoryMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(factoryAddr)}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
-  const centerMapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(centerAddr)}&hl=${encodeURIComponent(mapHl)}&z=16&output=embed`;
+  // 카카오맵 검색 URL (이미지 클릭 시 새 탭으로 열림)
+  const factoryMapHref = `https://map.kakao.com/?q=${encodeURIComponent(factoryAddr)}`;
+  const centerMapHref = `https://map.kakao.com/?q=${encodeURIComponent(centerAddr)}`;
 
   // ---- QR 코드: 주소를 각 지도 서비스 검색 URL 로 인코딩 → qrserver.com 으로 이미지 생성.
   //      모바일에서 스캔 시 해당 지도 서비스의 검색 결과 페이지가 열림 (앱 설치 시 앱으로 핸드오프).
@@ -270,18 +270,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             {/* 본사·공장 — 지도 LEFT / 정보 RIGHT */}
             <article className="loc_card loc_card--map_left">
               <div className="loc_card_body">
-                <div className="loc_card_map">
-                  <iframe
-                    src={factoryMapSrc}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={t('loc_map_factory_alt')}
-                  />
-                </div>
+                <a className="loc_card_map" href={factoryMapHref} target="_blank" rel="noopener noreferrer" aria-label={t('loc_map_factory_alt')}>
+                  <img src="/images/sub/map_factory.png" alt={t('loc_map_factory_alt')} loading="lazy" />
+                </a>
                 <div className="loc_card_info">
                   <span className="loc_eyebrow">{t('loc_way_to_come')}</span>
                   <h3 className="loc_card_name">{t('loc_factory_title')}</h3>
@@ -364,18 +355,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </a>
                   </div>
                 </div>
-                <div className="loc_card_map">
-                  <iframe
-                    src={centerMapSrc}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={t('loc_map_center_alt')}
-                  />
-                </div>
+                <a className="loc_card_map" href={centerMapHref} target="_blank" rel="noopener noreferrer" aria-label={t('loc_map_center_alt')}>
+                  <img src="/images/sub/map_center.png" alt={t('loc_map_center_alt')} loading="lazy" />
+                </a>
               </div>
             </article>
           </div>
