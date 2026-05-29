@@ -1509,23 +1509,24 @@ html[lang="zh"] .dl_title {
     z-index: 10;
 }
 
-/* PREV 좌상 / divider 중 풀폭 / NEXT 우하 (대각선 배치). */
+/* PREV 점 바로 왼쪽 위, NEXT 점 바로 오른쪽 아래 — 점 가까이 대각선 배치. */
 .next_section_link--prev {
     background: transparent;
-    grid-column: 1;
+    grid-column: 1 / -1;        /* 풀폭 컨테이너로 잡고 안에서 위치만 조정 */
     grid-row: 1;
-    justify-self: center;       /* 좌측 1fr 컬럼의 중앙 ≈ viewport 25% */
+    justify-self: center;
+    margin-right: 80px;         /* 중앙에서 좌측으로 80px (점 바로 왼쪽) */
 }
 .next_section_divider {
     grid-column: 1 / -1;
     grid-row: 2;
 }
 .next_section > .next_section_link:not(.next_section_link--prev) {
-    /* NEXT — divider 아래 우측에 absolute 띄움 (section B 영역) */
+    /* NEXT — divider 바로 아래, 점 오른쪽 */
     position: absolute;
     top: calc(100% + 16px);
-    left: 75%;                  /* 우측 1fr 컬럼의 중앙 ≈ viewport 75% */
-    transform: translateX(-50%);
+    left: 50%;
+    margin-left: 80px;          /* 중앙에서 우측으로 80px (점 바로 오른쪽) */
 }
 
 /* 다음 섹션 화살표 버튼 */
