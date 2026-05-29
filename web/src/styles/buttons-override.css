@@ -1498,14 +1498,13 @@ html[lang="zh"] .dl_title {
     box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(243, 152, 0, 0.2);
 }
 
-/* PREV / NEXT 버튼 가로 정렬 (divider 아래) */
-.next_section_actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+/* PREV / NEXT 가로 위치 유지 — center 정렬 해제하고 자체 정렬 */
+.next_section_link {
+    align-self: flex-end;       /* NEXT 는 우측 */
 }
 .next_section_link--prev {
     background: transparent;
+    align-self: flex-start;     /* PREV 는 좌측 (이 룰이 위 룰을 override) */
 }
 
 /* 다음 섹션 화살표 버튼 */
