@@ -66,8 +66,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   // ---- 오시는길 — QR/지도 검색어를 주소 대신 회사 상호로 변경 ----
   //   첫번째 카드: "이음푸드시스템", 두번째 카드: "화산푸드시스템"
-  const factoryQuery = '이음푸드시스템';
-  const centerQuery = '화산푸드시스템';
+  const factoryQuery = '이음푸드시스템 (공장)';
+  const centerQuery = '화산푸드시스템 (물류센터)';
   const factoryAddr = t('loc_factory_addr'); // 표시용
   const centerAddr = t('loc_center_addr');   // 표시용
 
