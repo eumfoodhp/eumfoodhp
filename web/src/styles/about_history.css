@@ -1,0 +1,212 @@
+/* ============================================================
+   회사연혁 — 지그재그 타임라인 (가운데 세로선 + 좌/우 번갈아 카드)
+   ============================================================ */
+.history_timeline {
+    padding: 48px 0 80px;
+}
+.history_timeline_inner {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 0;
+    box-sizing: border-box;
+}
+/* 가운데 주황 그라데이션 세로선 */
+.history_timeline_inner::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        180deg,
+        rgba(242, 99, 55, 0) 0%,
+        #F26337 8%,
+        #F26337 92%,
+        rgba(242, 99, 55, 0) 100%
+    );
+    border-radius: 1px;
+}
+
+.history_timeline_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+/* 아이템 — 2열 grid (좌측 카드 / 우측 카드) */
+.history_tl_item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    align-items: start;
+}
+
+/* 가운데 세로선 위의 점 마커 */
+.history_tl_dot {
+    position: absolute;
+    left: 50%;
+    top: 32px;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    border: 4px solid #F26337;
+    box-shadow: 0 0 0 4px rgba(242, 99, 55, 0.18);
+    z-index: 2;
+}
+
+/* 카드 ↔ 가운데 점 연결 가로선 */
+.history_tl_connector {
+    position: absolute;
+    top: 30px;
+    width: calc(50% - 36px);
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        rgba(242, 99, 55, 0.0) 0%,
+        rgba(242, 99, 55, 0.6) 100%
+    );
+    z-index: 1;
+}
+.history_tl_item.is_left .history_tl_connector {
+    left: 24px;
+    background: linear-gradient(
+        90deg,
+        rgba(242, 99, 55, 0.6) 0%,
+        rgba(242, 99, 55, 0.0) 100%
+    );
+}
+.history_tl_item.is_right .history_tl_connector {
+    right: 24px;
+}
+
+/* 카드 본체 */
+.history_tl_card {
+    background: #fff;
+    border: 1px solid #F0EAE0;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.history_tl_card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+/* 좌우 번갈아 배치 */
+.history_tl_item.is_right .history_tl_card {
+    grid-column: 2;
+}
+.history_tl_item.is_left .history_tl_card {
+    grid-column: 1;
+    text-align: right;
+}
+
+.history_tl_year {
+    margin: 0 0 10px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #F26337;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+.history_tl_events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.history_tl_events li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.55;
+    letter-spacing: -0.2px;
+    word-break: keep-all;
+}
+.history_tl_events li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #F26337;
+}
+/* 좌측 카드는 bullet 우측 */
+.history_tl_item.is_left .history_tl_events li {
+    padding-left: 0;
+    padding-right: 14px;
+}
+.history_tl_item.is_left .history_tl_events li::before {
+    left: auto;
+    right: 0;
+}
+
+/* ============================================================
+   반응형 — ≤900px: 좌측 정렬 단열로 통일
+   ============================================================ */
+@media (max-width: 900px) {
+    .history_timeline { padding: 32px 0 56px; }
+    .history_timeline_inner { padding-left: 40px; }
+    .history_timeline_inner::before {
+        left: 8px;
+        transform: none;
+    }
+    .history_timeline_list { gap: 32px; }
+    .history_tl_item {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+    .history_tl_item.is_right .history_tl_card,
+    .history_tl_item.is_left .history_tl_card {
+        grid-column: 1;
+        text-align: left;
+    }
+    .history_tl_dot {
+        left: 8px;
+        transform: translate(-50%, -50%);
+    }
+    .history_tl_connector {
+        left: 16px;
+        right: auto;
+        width: 24px;
+        background: linear-gradient(
+            90deg,
+            rgba(242, 99, 55, 0.6) 0%,
+            rgba(242, 99, 55, 0.0) 100%
+        );
+    }
+    .history_tl_item.is_left .history_tl_connector {
+        left: 16px;
+        background: linear-gradient(
+            90deg,
+            rgba(242, 99, 55, 0.6) 0%,
+            rgba(242, 99, 55, 0.0) 100%
+        );
+    }
+    .history_tl_item.is_left .history_tl_events li {
+        padding-left: 14px;
+        padding-right: 0;
+    }
+    .history_tl_item.is_left .history_tl_events li::before {
+        left: 0;
+        right: auto;
+    }
+    .history_tl_card { padding: 18px 20px; border-radius: 12px; }
+    .history_tl_year { font-size: 24px; }
+    .history_tl_events li { font-size: 13px; }
+}

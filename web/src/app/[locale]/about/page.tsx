@@ -11,7 +11,7 @@
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import NextSectionLink from '@/components/NextSectionLink';
-import HistoryTabbed from '@/components/HistoryTabbed';
+import HistoryTimeline from '@/components/HistoryTimeline';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
 import '@/styles/sub.css';
@@ -19,13 +19,11 @@ import '@/styles/board_pages.css';
 import '@/styles/business_area.css';
 import '@/styles/about_organization.css';
 import '@/styles/about_location.css';
+import '@/styles/about_history.css';
 
 const STATS = [1, 2, 3, 4] as const;
 const AREAS = [1, 2, 3, 4] as const;
-const PERIODS = [
-  { id: 'p1', label: 'NOW ~ 2017', start: 2017, end: 9999 },
-  { id: 'p2', label: '2016 ~ 2009', start: 2009, end: 2016 },
-];
+// HistoryTimeline 은 PERIODS 사용 안 함 (전체 연도를 한 흐름으로 보여줌)
 
 export const revalidate = 0;
 
@@ -131,7 +129,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <header className="story_section_head">
           <h2 className="story_section_title">{t('sub_history')}</h2>
         </header>
-        <HistoryTabbed periods={PERIODS} byYear={byYear} sortedYears={sortedYears} />
+        <HistoryTimeline byYear={byYear} sortedYears={sortedYears} />
         <NextSectionLink prevId="greeting" nextId="area" nextLabel={t('sub_biz_area')} />
       </div>
 
