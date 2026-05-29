@@ -7,13 +7,8 @@
 .board_page_head {
     margin-bottom: 36px;
 }
-/* 원페이지 (about/business/products) 페이지 시작 부분 헤더 */
-.page_heading_block {
-    padding-top: 40px;
-    padding-bottom: 20px;
-    margin-bottom: 60px;
-    border-bottom: 1px solid #E5E7EB;
-}
+/* .page_heading_block 정의 제거됨 — 원페이지 상단 헤더 (ABOUT US 등)
+   가 사용자 요청으로 통째 삭제되어 클래스 자체가 더 이상 안 쓰임. */
 .board_page_head .eyebrow {
     display: block;
     font-size: 13px;
@@ -579,11 +574,6 @@
 @media (max-width: 900px) {
     .board_page_head h1 { font-size: 26px; }
     .board_page_head .eyebrow { font-size: 12px; margin-bottom: 8px; }
-    .page_heading_block {
-        padding-top: 24px;
-        padding-bottom: 14px;
-        margin-bottom: 36px;
-    }
     .board_view_title { font-size: 22px; line-height: 1.4; }
     .board_view_meta {
         flex-wrap: wrap;
@@ -645,10 +635,6 @@
         font-size: 11px;
     }
     .board_view_meta .dot { height: 10px; }
-    .page_heading_block {
-        padding-top: 18px;
-        margin-bottom: 28px;
-    }
     .board_hero {
         padding: 14px;
         gap: 16px;

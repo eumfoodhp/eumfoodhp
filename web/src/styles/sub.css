@@ -708,9 +708,9 @@
 
 /* 제품 카드 */
 .product_card { display: flex; width: 377px; flex-direction: column; gap: 12px; }
-.prod_img { 
-    height: 220px; align-self: stretch; border-radius: 12px; 
-    background-color: #D9D9D9; background-size: cover; background-position: center;
+.prod_img {
+    height: 220px; align-self: stretch; border-radius: 12px;
+    background-color: #fff; background-size: cover; background-position: center;
     background-repeat: no-repeat;
 }
 
