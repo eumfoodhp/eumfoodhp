@@ -1459,14 +1459,14 @@ html[lang="zh"] .dl_title {
 }
 
 /* NextSectionLink — 섹션 사이 구분 + 화살표 버튼.
-   grid 4칸 (1fr | PREV | NEXT | 1fr) — 양옆 1fr 가 가용공간을 다 먹어서
-   컨테이너 자체가 풀폭, divider 도 1/-1 span 으로 viewport 끝까지.
-   margin-top: auto 로 부모 .story_section (flex column) 의 맨 아래
-   = 섹션 경계에 위치. PREV·divider·NEXT 모두 경계 근처에 함께 모임. */
+   PREV(row1) / divider(row2) / NEXT(row3) 배치.
+   margin-top: auto 로 부모 .story_section 의 맨 아래 정렬.
+   margin-bottom 음수 (= NEXT 높이 + row-gap) 로 섹션 A 의 effective bottom 을
+   divider Y 까지 끌어올림. 결과: NEXT 가 자동으로 다음 섹션 배경 영역에 위치. */
 .next_section {
     width: 100%;
     max-width: none;
-    margin: auto 0 0;
+    margin: auto 0 calc(-1 * (60px + 32px));   /* -NEXT 높이 - row-gap */
     display: grid;
     grid-template-columns: 1fr auto auto 1fr;
     column-gap: 16px;
@@ -1511,19 +1511,20 @@ html[lang="zh"] .dl_title {
 }
 
 /* grid 4칸: 1fr | col2(PREV) | col3(NEXT) | 1fr.
-   PREV row1 col2 / NEXT row2 col3 / divider row3 풀폭(1/-1) — divider 가
-   섹션 끝 (= 다음 섹션과의 경계) 에 위치. */
+   PREV row1 col2 / divider row2 풀폭(1/-1) / NEXT row3 col3.
+   .next_section 의 음수 margin-bottom 이 섹션 A 경계를 divider 까지 끌어올려
+   NEXT 가 시각적으로 섹션 B 영역에 위치하게 됨. */
 .next_section_link--prev {
     background: transparent;
     grid-column: 2;
     grid-row: 1;
 }
-.next_section > .next_section_link:not(.next_section_link--prev) {
-    grid-column: 3;
-    grid-row: 2;
-}
 .next_section_divider {
     grid-column: 1 / -1;
+    grid-row: 2;
+}
+.next_section > .next_section_link:not(.next_section_link--prev) {
+    grid-column: 3;
     grid-row: 3;
 }
 
