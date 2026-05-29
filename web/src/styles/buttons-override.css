@@ -1509,24 +1509,24 @@ html[lang="zh"] .dl_title {
     z-index: 10;
 }
 
-/* PREV 점 바로 왼쪽 위, NEXT 점 바로 오른쪽 아래 — 점 가까이 대각선 배치. */
+/* PREV 점 왼쪽 위, NEXT 점 오른쪽 아래 — 둘 다 중앙에서 60px 씩 대칭. */
 .next_section_link--prev {
     background: transparent;
-    grid-column: 1 / -1;        /* 풀폭 컨테이너로 잡고 안에서 위치만 조정 */
+    grid-column: 1 / -1;
     grid-row: 1;
     justify-self: center;
-    margin-right: 80px;         /* 중앙에서 좌측으로 80px (점 바로 왼쪽) */
+    transform: translateX(-60px);    /* 중앙에서 좌측으로 60px */
 }
 .next_section_divider {
     grid-column: 1 / -1;
     grid-row: 2;
 }
 .next_section > .next_section_link:not(.next_section_link--prev) {
-    /* NEXT — divider 바로 아래, 점 오른쪽 */
+    /* NEXT — divider 아래, 중앙에서 우측으로 60px (PREV 와 대칭) */
     position: absolute;
     top: calc(100% + 16px);
     left: 50%;
-    margin-left: 80px;          /* 중앙에서 우측으로 80px (점 바로 오른쪽) */
+    transform: translateX(calc(-50% + 60px));
 }
 
 /* 다음 섹션 화살표 버튼 */
