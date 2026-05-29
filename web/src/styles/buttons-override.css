@@ -1386,9 +1386,11 @@ html[lang="zh"] .dl_title {
     .sub_header::-webkit-scrollbar { display: none; }
     .sub_header_nav_list {
         display: flex;
-        gap: 4px;
+        gap: 0;
         min-width: 100%;
-        justify-content: center;
+        /* 항목들을 폭 전체에 고르게 퍼트림 (양 끝에도 약간 여백) */
+        justify-content: space-around;
+        padding: 0 8px;
     }
     .sub_header_nav_link {
         flex-shrink: 0;
@@ -1397,7 +1399,7 @@ html[lang="zh"] .dl_title {
 }
 @media (max-width: 1024px) {
     .sub_header_nav_list {
-        justify-content: center;
+        justify-content: space-around;
     }
 }
 
