@@ -241,6 +241,7 @@
     #sub_contents .cert_page .cert_container {
         padding: 62px 20px 0;
         gap: 32px;
+        box-sizing: border-box;
     }
 
     #sub_contents .cert_page .cert_main_title {
@@ -259,18 +260,28 @@
         line-height: 22px;
     }
 
+    /* ≤735 부터 1열로 통일 — 2열 시 우측 카드가 컨테이너 밖으로 잘림 */
     #sub_contents .cert_page .cert_grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
         gap: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #sub_contents .cert_page .cert_card {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     #sub_contents .cert_page .cert_img_box {
-        height: 230px;
+        height: 280px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     #sub_contents .cert_page .cert_img_inner {
-        width: 130px;
-        height: 174px;
+        width: 180px;
+        height: 240px;
     }
 }
 

@@ -28,6 +28,29 @@
     padding: 100px 0 140px;
 }
 
+/* 가동/나동 두 블록 죽 나열 (탭 토글 폐기 후) */
+.facility_block {
+    margin-bottom: 80px;
+}
+.facility_block:last-child {
+    margin-bottom: 0;
+}
+.facility_block_title {
+    margin: 0 0 32px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1F2937;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #1F2937;
+}
+@media (max-width: 900px) {
+    .facility_block { margin-bottom: 56px; }
+    .facility_block_title { font-size: 22px; margin-bottom: 22px; }
+    .facility_status_section { padding: 60px 0 80px; }
+}
+
 .facility_status_inner {
     width: 1580px;
     max-width: 95%;

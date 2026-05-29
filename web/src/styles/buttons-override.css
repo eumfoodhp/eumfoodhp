@@ -1388,10 +1388,16 @@ html[lang="zh"] .dl_title {
         display: flex;
         gap: 4px;
         min-width: 100%;
+        justify-content: center;
     }
     .sub_header_nav_link {
         flex-shrink: 0;
         padding: 10px 14px;
+    }
+}
+@media (max-width: 1024px) {
+    .sub_header_nav_list {
+        justify-content: center;
     }
 }
 
