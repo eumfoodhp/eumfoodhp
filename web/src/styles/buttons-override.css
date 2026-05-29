@@ -1747,10 +1747,19 @@ html[lang="zh"] .dl_title {
     background-position: right center, left center;
     background-size: 14px 14px, calc(100% - 20px) 2px;
 }
-/* with_action (인증서 페이지 등 헤더 우측 버튼 있음) — 우측 라인 숨김 */
+/* with_action (상품소개서 다운로드 버튼이 헤더 우측에 있는 케이스) —
+   ::before 를 고정 폭 80px 으로 줄이고 텍스트 좌측 정렬, ::after 숨김.
+   안 그러면 ::before 가 flex: 1 로 가능한 공간 다 차지해서
+   텍스트가 우측 끝으로 밀려남. */
 .story_section_head--with_action .story_section_title {
     flex: 1;
     width: auto;
+    justify-content: flex-start;
+}
+.story_section_head--with_action .story_section_title::before {
+    flex: 0 0 80px;
+    width: 80px;
+    min-width: 80px;
 }
 .story_section_head--with_action .story_section_title::after {
     display: none;
