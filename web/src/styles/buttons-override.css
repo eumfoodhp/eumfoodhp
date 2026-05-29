@@ -1441,7 +1441,7 @@ html[lang="zh"] .dl_title {
     margin: 0 auto;
     padding: 80px 0 24px;
     text-align: left;
-    border-bottom: 1px solid #F3F4F6;
+    /* border-bottom 제거 — 아래 ::after gradient 라인만 남김 */
     margin-bottom: 8px;
 }
 
@@ -1642,8 +1642,9 @@ html[lang="zh"] .dl_title {
     }
 }
 
+/* 짝수 섹션 — 단색 베이지 (그라데이션 X). 섹션 경계(divider) 에서 색 깔끔히 전환 */
 .story_section:nth-of-type(even) {
-    background: linear-gradient(180deg, #FFFBF5 0%, #ffffff 100%);
+    background: #FFFBF5;
 }
 
 /* === 섹션 헤더 강화 === */
