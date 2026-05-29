@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 전역 버튼 라운딩 통일 — 모든 텍스트 버튼/탭을 pill 모양으로.
  * 원형(circle) 또는 아이콘 전용 버튼은 기존 형태 유지.
  *
@@ -1812,31 +1812,10 @@ html[lang="zh"] .dl_title {
 }
 
 /* 아래 기존 정의는 호환을 위해 유지하되, 위 정의가 우선 적용됨 */
-._unused_story_section_head_old {
-    width: 1580px;
-    max-width: 95%;
-    margin: 0 auto;
-    padding: 100px 0 40px;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    border-bottom: 1px solid #F3F4F6;
-    margin-bottom: 8px;
-}
 
-/* .story_section_index 제거됨 */
-
-.story_section_title {
-    margin: 0;
-    font-size: 38px;
-    font-weight: 700;
-    color: #111827;
-    letter-spacing: -0.6px;
-    line-height: 1.2;
-    position: relative;
-}
-
-/* .story_section_title::before 제거됨 */
+/* 구 story_section_head 디자인 (._unused_story_section_head_old) 제거 —
+   현재 디자인은 .story_section_head .story_section_title 의 ●━━ ━━●
+   마커로 통일됨. */
 
 /* NextSectionLink — 구분선 더 진하게 */
 .next_section {

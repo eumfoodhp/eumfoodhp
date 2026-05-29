@@ -1,6 +1,6 @@
 /**
  * Tab definitions for sub-section pages. Each function takes a `t` translator
- * and returns the tab list, ready to pass to <SubTabBar />.
+ * and returns the tab list — consumed by Header / SubHeader / mobile menu.
  */
 
 type Translator = (key: string) => string;
