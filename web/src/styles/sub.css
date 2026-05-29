@@ -295,7 +295,7 @@
     top: 34px;
     bottom: 0;
     width: 1px;
-    background: #F39800;
+    background: #F26337;
     z-index: 1;
 }
 
@@ -330,8 +330,8 @@
     border-radius: 50%;
     background-image: radial-gradient(
         circle,
-        #F39800 0%,
-        #F39800 35%,
+        #F26337 0%,
+        #F26337 35%,
         #FBEAE7 45%,
         #FBEAE7 100%
     );
@@ -359,7 +359,7 @@
 }
 
 .year_tit {
-    color: #F39800;
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 32px;
     font-weight: 700;
@@ -428,7 +428,7 @@
 /* 왼쪽 고정 타이틀 */
 .timeline_left { width: 400px; }
 .sticky_content { position: sticky; top: 120px; }
-.timeline_left .period { color: #F39800; font-size: 18px; font-weight: 500; display: block;}
+.timeline_left .period { color: #F26337; font-size: 18px; font-weight: 500; display: block;}
 .timeline_left .main_tit { font-size: 36px; color: #222; line-height: 1.4; font-weight: 700; }
 .side_img_box { margin-top: 40px; border-radius: 15px; overflow: hidden; width: 700px; }
 
@@ -457,7 +457,7 @@
 
 /* 상단 정보 영역 */
 .process_top_info { display: flex; justify-content: space-between; align-items: flex-end; align-self: stretch; margin-bottom: 60px; }
-.process_top_info .sub_tit { color: #F39800; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
+.process_top_info .sub_tit { color: #F26337; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
 .process_top_info .main_tit { color: #222; font-size: 42px; font-weight: 700; line-height: 56px; letter-spacing: -1.05px; }
 .process_top_info .desc_txt {
     width: 1030px;
@@ -477,7 +477,7 @@
 /* Step 뱃지 */
 .step_badge { 
     display: inline-flex; padding: 12px 20px; justify-content: center; align-items: center; 
-    border-radius: 4px; background: #F39800; color: #FFF; font-size: 14px; font-weight: 500; 
+    border-radius: 4px; background: #F26337; color: #FFF; font-size: 14px; font-weight: 500; 
     line-height: 22px; letter-spacing: -0.35px; z-index: 2;
 }
 
@@ -502,7 +502,7 @@
 
 /* 2. [Hover 효과] 뱃지는 주황색으로 변하되, 위치는 고정 */
 .step_item:hover .step_badge {
-    background: #F39800 !important;
+    background: #F26337 !important;
     color: #FFF !important;
     /* transform: translateY(-3px); <- 이 줄을 삭제하여 위치를 고정합니다 */
 }
@@ -513,7 +513,7 @@
 }
 
 .step_item:hover .step_tit {
-    color: #F39800; /* 제목 컬러 강조 */
+    color: #F26337; /* 제목 컬러 강조 */
 }
 
 .step_item:hover .step_img {
@@ -638,7 +638,7 @@
 }
 
 .sub_tit {
-    color: #F39800;
+    color: #F26337;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -674,7 +674,7 @@
     align-items: center;
     gap: 8px;
     border-radius: 4px;
-    background: #F39800;
+    background: #F26337;
     flex-shrink: 0; /* 버튼 형태 유지 */
     text-decoration: none;
     margin-bottom: 8px; /* 메인 타이틀 높이에 맞춰 시각적 보정 (필요시 조절) */
@@ -689,7 +689,7 @@
     padding-bottom: 20px;          /* 하단 경계선이 필요할 경우 대비 */
     box-sizing: border-box;
 }
-.product_top_area .sub_tit { color: #F39800; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
+.product_top_area .sub_tit { color: #F26337; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
 .product_top_area .main_tit { color: #222; font-size: 42px; font-weight: 700; line-height: 56px; letter-spacing: -1.05px; margin-bottom: 20px; }
 
 /* 회색 요약 박스 */
@@ -701,7 +701,7 @@
 
 /* 연락처 안내 */
 .contact_info { color: #222; font-size: 20px; font-weight: 500; line-height: 30px; letter-spacing: -0.5px; }
-.contact_info .highlight { color: #F39800; }
+.contact_info .highlight { color: #F26337; }
 
 /* 제품 그리드 */
 .product_grid { display: grid; grid-template-columns: repeat(4, 377px); gap: 60px 28px; }
@@ -731,7 +731,7 @@
 /* 보관/냉장 정보 */
 .spec_info { display: flex; align-items: center; gap: 8px; }
 .spec_info span { color: #767676; font-size: 16px; font-weight: 300; line-height: 22px; letter-spacing: -0.4px; }
-.spec_info span.orange { color: #F39800; font-weight: 500; }
+.spec_info span.orange { color: #F26337; font-weight: 500; }
 .spec_info .v_line { width: 1px; height: 14px; background: #E5E5EC; }
 
 /* 1. 스크롤 등장 초기 상태 */
@@ -769,7 +769,7 @@
 }
 
 .product_card:hover h4 {
-    color: #F39800;
+    color: #F26337;
 }
 
 .product_card:hover .prod_info {
@@ -817,7 +817,7 @@
 
 /* 1. CEO Introduce 태그 */
 .ceo_tag {
-    color: #F39800;
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 24px;
     font-weight: 500;
@@ -984,7 +984,7 @@
 
 /* 4. 카테고리 라벨 */
 .category_label {
-    color: #F39800;
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px; /* title 3 */
     font-weight: 500;
@@ -1049,7 +1049,7 @@
     top: 8px;
     bottom: 8px;
     width: 5px;
-    background: #F39800;
+    background: #F26337;
     border-radius: 3px;
 }
 
@@ -1094,7 +1094,7 @@
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: #F39800;
+    background: #F26337;
     color: #fff;
     font-size: 13px;
     font-weight: 800;
@@ -1123,7 +1123,7 @@
     transition: border-color 0.15s ease, transform 0.15s ease;
 }
 .haccp_benefit ul li:hover {
-    border-color: #F39800;
+    border-color: #F26337;
     transform: translateY(-2px);
 }
 .haccp_benefit ul li::before {
@@ -1386,7 +1386,7 @@
 }
 
 .loc_cate {
-    color: #F39800;
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -1598,7 +1598,7 @@
 }
 
 .ov_cate {
-    color: #F39800;
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -1674,7 +1674,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #F39800;
+    color: #F26337;
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
@@ -1752,7 +1752,7 @@
 }
 
 .area_cate {
-    color: #F39800;
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -1831,7 +1831,7 @@
 
 .area_text_wrap .num,
 .area_text_wrap .sub_ttl {
-    color: #F39800;
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 20px;
     font-weight: 500;

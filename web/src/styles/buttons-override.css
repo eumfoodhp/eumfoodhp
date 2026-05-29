@@ -497,15 +497,15 @@
     padding: 0 !important;
     border-radius: 12px;
     background: #fff;
-    color: #F39800 !important;
+    color: #F26337 !important;
     border: 1px solid #eee;
 }
 .mo_extra_link.mo_extra_icon_only:hover {
     background: rgba(243, 152, 0, 0.08);
-    border-color: #F39800;
+    border-color: #F26337;
 }
 .mo_extra_icon_only svg {
-    stroke: #F39800;
+    stroke: #F26337;
 }
 .mo_extra_link,
 .mo_extra_lang {
@@ -522,11 +522,11 @@
 }
 .mo_extra_link:hover {
     background: rgba(243, 152, 0, 0.08);
-    color: #F39800 !important;
+    color: #F26337 !important;
 }
 .mo_extra_icon {
     flex-shrink: 0;
-    color: #F39800;
+    color: #F26337;
 }
 .mo_extra_lang .lang_toggle_btn {
     display: inline-flex !important;
@@ -625,7 +625,7 @@
 .gnb_main_link:hover span,
 .gnb_main_link:focus-visible,
 .gnb_main_link:focus-visible span {
-    color: #F39800 !important;
+    color: #F26337 !important;
 }
 
 /* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤, GNB 와 사이즈 차이 줄임 */
@@ -637,7 +637,7 @@
 }
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
-    color: #F39800 !important;
+    color: #F26337 !important;
     text-decoration: none !important;
 }
 
@@ -861,7 +861,7 @@ html, body {
     padding: 0 !important;
     border-radius: 12px !important;
     background: #fff !important;
-    color: #F39800 !important;
+    color: #F26337 !important;
     border: 1px solid rgba(0, 0, 0, 0.04) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     text-decoration: none !important;
@@ -921,7 +921,7 @@ html, body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
 }
 .quick_menu .quick_item svg {
-    stroke: #F39800 !important;
+    stroke: #F26337 !important;
 }
 .quick_menu .quick_item.quick_lang {
     position: relative;
@@ -950,7 +950,7 @@ html, body {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    color: #F39800 !important;
+    color: #F26337 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
     text-decoration: none;
@@ -970,8 +970,8 @@ html, body {
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
     /* 기본: 주황 (자사몰/카탈로그/문의/언어). 햄버거는 아래에서 초록 override */
-    stroke: #F39800 !important;
-    color: #F39800 !important;
+    stroke: #F26337 !important;
+    color: #F26337 !important;
     width: 22px !important;
     height: 22px !important;
 }
@@ -1136,8 +1136,8 @@ html[lang="zh"] .dl_title {
 .proc_more_btn,
 .prod_more_link,
 .notice_more_link {
-    border: 1.5px solid #F39800 !important;
-    color: #F39800 !important;
+    border: 1.5px solid #F26337 !important;
+    color: #F26337 !important;
     background: #fff !important;
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
 }
@@ -1147,9 +1147,9 @@ html[lang="zh"] .dl_title {
 .proc_more_btn:hover,
 .prod_more_link:hover,
 .notice_more_link:hover {
-    background: #F39800 !important;
+    background: #F26337 !important;
     color: #fff !important;
-    border-color: #F39800 !important;
+    border-color: #F26337 !important;
 }
 
 .ov_more_btn svg,
@@ -1264,7 +1264,7 @@ html[lang="zh"] .dl_title {
 
 .about_onepage .section_header_title,
 .business_onepage .section_header_title {
-    color: #F39800 !important;
+    color: #F26337 !important;
 }
 
 /* SectionHeader 폭 정확히 강제 — 더 높은 specificity */
@@ -1284,7 +1284,7 @@ html[lang="zh"] .dl_title {
    ============================================================ */
 .gnb_main_link.is_active,
 .gnb_main_link.is_active span {
-    color: #F39800 !important;
+    color: #F26337 !important;
 }
 
 .gnb_main_link.is_active {
@@ -1299,7 +1299,7 @@ html[lang="zh"] .dl_title {
     transform: translateX(-50%);
     width: 6px;
     height: 6px;
-    background: #F39800;
+    background: #F26337;
     border-radius: 50%;
 }
 
@@ -1495,7 +1495,7 @@ html[lang="zh"] .dl_title {
     transform: translate(-50%, -50%);
     width: 8px;
     height: 8px;
-    background: #F39800;
+    background: #F26337;
     border-radius: 50%;
     box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(243, 152, 0, 0.2);
 }
@@ -1554,7 +1554,7 @@ html[lang="zh"] .dl_title {
 .next_section_eyebrow {
     font-size: 11px;
     font-weight: 700;
-    color: #F39800;
+    color: #F26337;
     letter-spacing: 0.15em;
 }
 
@@ -1567,7 +1567,7 @@ html[lang="zh"] .dl_title {
 }
 
 .next_section_icon {
-    color: #F39800;
+    color: #F26337;
     margin-top: 4px;
 }
 
@@ -1677,7 +1677,7 @@ html[lang="zh"] .dl_title {
     top: 10px;
     bottom: 10px;
     width: 6px;
-    background: #F39800;
+    background: #F26337;
     border-radius: 3px;
 }
 
@@ -1689,8 +1689,8 @@ html[lang="zh"] .dl_title {
     height: 1px;
     background: linear-gradient(
         90deg,
-        #F39800 0px,
-        #F39800 80px,
+        #F26337 0px,
+        #F26337 80px,
         #E5E7EB 80px,
         #E5E7EB 100%
     );
@@ -1759,8 +1759,8 @@ html[lang="zh"] .dl_title {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        #F39800 12%,
-        #F39800 88%,
+        #F26337 12%,
+        #F26337 88%,
         transparent 100%
     );
     opacity: 0.75;
@@ -1876,8 +1876,8 @@ html[lang="zh"] .dl_title {
 }
 .history_tab_btn.is_active {
     background: #FFF6EC;
-    border-left-color: #F39800;
-    color: #F39800;
+    border-left-color: #F26337;
+    color: #F26337;
     font-weight: 700;
 }
 
@@ -1924,7 +1924,7 @@ html[lang="zh"] .dl_title {
     margin: 0;
     font-size: 30px;
     font-weight: 800;
-    color: #F39800;
+    color: #F26337;
     letter-spacing: -0.5px;
     line-height: 1;
     padding-bottom: 12px;
@@ -1956,7 +1956,7 @@ html[lang="zh"] .dl_title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #F39800;
+    background: #F26337;
 }
 
 .history_tabbed_empty {
@@ -2004,7 +2004,7 @@ html[lang="zh"] .dl_title {
     }
     .history_tab_btn.is_active {
         border-left-color: transparent;
-        border-bottom-color: #F39800;
+        border-bottom-color: #F26337;
     }
     .history_year_grid {
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -2059,13 +2059,13 @@ html[lang="zh"] .dl_title {
 }
 
 .qjd_link:hover .qjd_dot {
-    border-color: #F39800;
+    border-color: #F26337;
     transform: scale(1.2);
 }
 
 .qjd_link.is_active .qjd_dot {
-    background: #F39800;
-    border-color: #F39800;
+    background: #F26337;
+    border-color: #F26337;
     transform: scale(1.4);
     box-shadow: 0 0 0 4px rgba(243, 152, 0, 0.15);
 }
@@ -2106,7 +2106,7 @@ html[lang="zh"] .dl_title {
 .qjd_tooltip_num {
     font-size: 11px;
     font-weight: 700;
-    color: #F39800;
+    color: #F26337;
     letter-spacing: 0.06em;
     font-variant-numeric: tabular-nums;
 }
@@ -2316,7 +2316,7 @@ html[lang="zh"] .dl_title {
     -webkit-overflow-scrolling: touch;
     padding: 8px 0 24px;
     scrollbar-width: thin;
-    scrollbar-color: #F39800 #F3F4F6;
+    scrollbar-color: #F26337 #F3F4F6;
 }
 
 .history_h_track::-webkit-scrollbar {
@@ -2327,7 +2327,7 @@ html[lang="zh"] .dl_title {
     border-radius: 4px;
 }
 .history_h_track::-webkit-scrollbar-thumb {
-    background: #F39800;
+    background: #F26337;
     border-radius: 4px;
 }
 
@@ -2356,10 +2356,10 @@ html[lang="zh"] .dl_title {
 .history_h_period {
     margin: 0 0 20px;
     padding-bottom: 14px;
-    border-bottom: 2px solid #F39800;
+    border-bottom: 2px solid #F26337;
     font-size: 20px;
     font-weight: 700;
-    color: #F39800;
+    color: #F26337;
     letter-spacing: -0.3px;
     position: sticky;
     top: 0;
@@ -2416,7 +2416,7 @@ html[lang="zh"] .dl_title {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #F39800;
+    background: #F26337;
 }
 
 /* 가로 스크롤 힌트 (좌우 화살표 + 텍스트) */

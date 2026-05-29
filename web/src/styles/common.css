@@ -230,7 +230,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 
 .gnb_main_link:hover,
 .gnb_main_link:focus-visible {
-    color: #F39800;
+    color: #F26337;
 }
 
 /* PC: Figma — 1차 좌측 정렬(Title/title-2), 서브 좌측 정렬(Title/title-3), 열 200px */
@@ -389,7 +389,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
-    color: #F39800;
+    color: #F26337;
 }
 
 .btn_inquiry {
@@ -399,7 +399,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     align-items: center;
     gap: 10px;
     border-radius: 9999px;
-    background: #F39800; /* Primary Color */
+    background: #F26337; /* Primary Color */
     text-decoration: none;
     transition: background 0.3s ease;
 }
@@ -501,12 +501,12 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 /* 호버 시 스타일 (서브메뉴와 동일한 오렌지 톤) */
 .lang_list li a:hover {
     background: #FBEAE7; /* Primary-50 */
-    color: #F39800; /* Primary-Main */
+    color: #F26337; /* Primary-Main */
 }
 
 /* 현재 선택된 언어 강조 (필요 시 클래스 추가해서 사용) */
 .lang_list li a.current {
-    color: #F39800;
+    color: #F26337;
     font-weight: 700;
 }
 /* 아래 중복 선언 제거: 상단 lang_list 정의를 사용 */
@@ -601,7 +601,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     transition: color 0.3s;
 }
 
-.menu_dep2 li a:hover { color: #F39800; }
+.menu_dep2 li a:hover { color: #F26337; }
 
 @media (min-width: 1025px) {
     /* PC만: GNB·메가 호버 시 상단 바 높이 소폭 감소(align-items:center로 요소는 계속 중앙) */
@@ -1194,7 +1194,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 
 /* 호버: 주황색 배경 + 흰 아이콘/글씨 */
 .quick_item:hover {
-    background: #F39800;
+    background: #F26337;
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(243, 152, 0, 0.3);
 }

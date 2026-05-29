@@ -76,7 +76,7 @@
 .pf_field input:focus,
 .pf_field select:focus,
 .pf_field textarea:focus {
-    border-color: #F39800;
+    border-color: #F26337;
     box-shadow: 0 0 0 3px rgba(243, 152, 0, 0.15);
 }
 
@@ -93,7 +93,7 @@
 .pf_checkbox input[type='checkbox'] {
     width: 16px;
     height: 16px;
-    accent-color: #F39800;
+    accent-color: #F26337;
 }
 
 .pf_privacy {
@@ -116,8 +116,8 @@
     font-size: 15px;
     font-weight: 600;
     color: #fff;
-    background: #F39800;
-    border: 1px solid #F39800;
+    background: #F26337;
+    border: 1px solid #F26337;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.15s ease;
@@ -312,7 +312,7 @@
 }
 
 .public_view_link a {
-    color: #F39800;
+    color: #F26337;
     font-weight: 600;
     text-decoration: none;
 }
@@ -401,7 +401,7 @@
 .press_card_source {
     padding: 2px 8px;
     background: #FFF6EC;
-    color: #F39800;
+    color: #F26337;
     border-radius: 999px;
     font-weight: 600;
 }
@@ -448,7 +448,7 @@
 }
 
 .download_item:hover {
-    border-color: #F39800;
+    border-color: #F26337;
     box-shadow: 0 4px 12px rgba(243, 152, 0, 0.08);
 }
 
@@ -462,7 +462,7 @@
     margin-bottom: 6px;
     padding: 2px 10px;
     background: #FFF6EC;
-    color: #F39800;
+    color: #F26337;
     border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
@@ -501,7 +501,7 @@
     align-items: center;
     gap: 6px;
     padding: 10px 18px;
-    background: #F39800;
+    background: #F26337;
     color: #fff;
     border: none;
     border-radius: 8px;

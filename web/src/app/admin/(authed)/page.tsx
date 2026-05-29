@@ -42,7 +42,7 @@ export default async function AdminDashboardPage() {
             }}
           >
             <div style={{ fontSize: 13, color: '#6B7280', fontWeight: 500 }}>{s.label}</div>
-            <div style={{ fontSize: 32, fontWeight: 700, marginTop: 4, color: '#F39800' }}>
+            <div style={{ fontSize: 32, fontWeight: 700, marginTop: 4, color: '#F26337' }}>
               {s.count}
             </div>
             <div style={{ fontSize: 11, color: '#9CA3AF', marginTop: 4 }}>총 항목 수</div>
