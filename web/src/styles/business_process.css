@@ -364,44 +364,11 @@
     color: #5095D2;
 }
 
-/* ============================================================
-   Zigzag — row 2 (items 5-8) 을 R→L 로 배치해 흐름이 ↩ 모양으로
-   이어지도록. Figma 디자인의 시각적 흐름 매칭.
-   ============================================================ */
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(5) { grid-column: 4; }
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(6) { grid-column: 3; }
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(7) { grid-column: 2; }
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(8) { grid-column: 1; }
-/* item 9 (절임식품만 해당) — row 3 첫 칼럼에 자연스럽게 배치 */
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(9) { grid-column: 1; }
-
-/* 카드 사이 점선 가로 커넥터 — row 1 (1→2, 2→3, 3→4) */
-#sub_contents .business_process_page .biz_pf_step--grid {
-    position: relative;
-}
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(1)::after,
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(2)::after,
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(3)::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -32px;
-    width: 32px;
-    border-top: 2px dotted #C0CDE0;
-    pointer-events: none;
-}
-/* row 2 점선 (오른쪽→왼쪽 흐름이므로 ::before 사용) */
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(6)::after,
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(7)::after,
-#sub_contents .business_process_page .biz_pf_step--grid:nth-child(8)::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -32px;
-    width: 32px;
-    border-top: 2px dotted #C0CDE0;
-    pointer-events: none;
-}
+/* Zigzag + 점선 커넥터 시도했으나 grid-column 강제 배치가 카드 정렬을 깨뜨려
+   배치가 어색해지는 문제 → 기본 4칸 grid 자동 흐름으로 복귀.
+   카드는 1열부터 4열까지 채우고 다음 줄로 자연스럽게 넘어감.
+   (sauce 7개: row1 4 + row2 3, salted/braised 8개: row1+row2 4 칸씩,
+    pickles 9개: 8개 채우고 마지막 9번이 row3 1칸) */
 
 /* Figma 553:5977 절임식품 — 아이콘 영역 90×90 */
 #sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_step_icon img {
