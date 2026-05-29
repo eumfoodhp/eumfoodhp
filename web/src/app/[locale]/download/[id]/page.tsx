@@ -1,10 +1,9 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { newsroomTabs } from '@/lib/sub-tabs';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/sub.css';
-import '@/styles/public-forms.css';
+import '@/styles/board_pages.css';
 
 export const revalidate = 0;
 
@@ -33,51 +32,64 @@ export default async function Page({
 
   if (!d) notFound();
 
+  const dateStr = new Date(d.created_at).toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '');
+
   return (
     <main id="sub_contents" className="download_view_page">
       <div className="sub_inner">
-        <article className="public_view">
-          <header className="public_view_head">
-            <div className="public_view_meta">
-              {d.category && <span className="public_view_cat">{d.category}</span>}
-              <span className="public_view_date">
-                {new Date(d.created_at).toLocaleDateString('ko-KR')}
-              </span>
-              <span className="public_view_views">다운로드 {d.download_count}회</span>
+        <header className="board_page_head">
+          <span className="eyebrow">DOWNLOAD</span>
+          <h1>자료실</h1>
+        </header>
+
+        <article className="board_view">
+          <header className="board_view_head">
+            <h2 className="board_view_title">{d.title}</h2>
+            <div className="board_view_meta">
+              <span>작성자 <b>이음푸드시스템</b></span>
+              <i className="dot" aria-hidden />
+              <span>게시일 <b>{dateStr}</b></span>
+              <i className="dot" aria-hidden />
+              <span>다운로드 <b>{d.download_count}회</b></span>
             </div>
-            <h2 className="public_view_title">{d.title}</h2>
           </header>
 
           {d.description && (
-            <div className="public_view_body">
+            <div className="board_view_body">
               {d.description.split('\n').map((line: string, i: number) => (
                 <p key={i}>{line || ' '}</p>
               ))}
             </div>
           )}
 
-          <div className="dl_detail_box">
+          <div className="board_dl_detail">
             <dl>
               <dt>형식</dt>
               <dd>{d.file_type ? d.file_type.toUpperCase() : '-'}</dd>
               <dt>크기</dt>
               <dd>{formatSize(d.file_size)}</dd>
             </dl>
-            <a href={d.file_url} download className="dl_btn dl_btn--lg" aria-label={`${d.title} 다운로드`}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
+            <a href={d.file_url} download className="board_dl_btn" aria-label={`${d.title} 다운로드`}>
+              <DownloadIcon />
               <span>다운로드</span>
             </a>
           </div>
 
-          <div className="public_view_foot">
-            <Link href="/download" className="pf_cancel">← 목록으로</Link>
+          <div className="board_view_foot">
+            <Link href="/download" className="board_view_back">목록으로</Link>
           </div>
         </article>
       </div>
     </main>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
   );
 }

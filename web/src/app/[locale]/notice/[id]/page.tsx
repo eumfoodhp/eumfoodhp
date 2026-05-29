@@ -1,10 +1,9 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { newsroomTabs } from '@/lib/sub-tabs';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/sub.css';
-import '@/styles/public-forms.css';
+import '@/styles/board_pages.css';
 
 export const revalidate = 0;
 
@@ -26,30 +25,36 @@ export default async function Page({
 
   if (!notice) notFound();
 
+  const dateStr = new Date(notice.created_at).toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '');
+
   return (
     <main id="sub_contents" className="notice_view_page">
       <div className="sub_inner">
-        <article className="public_view">
-          <header className="public_view_head">
-            <div className="public_view_meta">
-              {notice.is_pinned && <span className="status_chip status_chip--wait">공지</span>}
-              {notice.category && <span className="public_view_cat">{notice.category}</span>}
-              <span className="public_view_date">
-                {new Date(notice.created_at).toLocaleDateString('ko-KR')}
-              </span>
-              <span className="public_view_views">조회 {notice.view_count}</span>
+        <header className="board_page_head">
+          <span className="eyebrow">NOTICE</span>
+          <h1>새로운 소식</h1>
+        </header>
+
+        <article className="board_view">
+          <header className="board_view_head">
+            <h2 className="board_view_title">{notice.title}</h2>
+            <div className="board_view_meta">
+              <span>작성자 <b>이음푸드시스템</b></span>
+              <i className="dot" aria-hidden />
+              <span>게시일 <b>{dateStr}</b></span>
+              <i className="dot" aria-hidden />
+              <span>조회수 <b>{notice.view_count}회</b></span>
             </div>
-            <h2 className="public_view_title">{notice.title}</h2>
           </header>
 
-          <div className="public_view_body">
-            {notice.content.split('\n').map((line: string, i: number) => (
+          <div className="board_view_body">
+            {(notice.content ?? '').split('\n').map((line: string, i: number) => (
               <p key={i}>{line || ' '}</p>
             ))}
           </div>
 
-          <div className="public_view_foot">
-            <Link href="/notice" className="pf_cancel">← 목록으로</Link>
+          <div className="board_view_foot">
+            <Link href="/notice" className="board_view_back">목록으로</Link>
           </div>
         </article>
       </div>

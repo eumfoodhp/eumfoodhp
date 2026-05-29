@@ -1,0 +1,618 @@
+/* ============================================================
+   공지/보도/다운로드 + 상세 페이지 — Figma 105:3641 / 284:3301 /
+   293:10767 / 105:4045 디자인 적용 (히어로 배너 아래 컨텐츠만)
+   ============================================================ */
+
+/* ---------- 페이지 헤더 (eyebrow + 큰 제목) ---------- */
+.board_page_head {
+    margin-bottom: 36px;
+}
+.board_page_head .eyebrow {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #F26337;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+.board_page_head h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.6px;
+    line-height: 1.25;
+}
+
+/* ---------- Total + 필터 + 검색 툴바 ---------- */
+.board_toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 0;
+    border-top: 1px solid #1F2937;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 0;
+}
+.board_toolbar .total {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F2937;
+}
+.board_toolbar .total b {
+    color: #F26337;
+    font-weight: 700;
+    margin-left: 4px;
+}
+.board_toolbar .spacer { flex: 1; }
+
+.board_filter_select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%23374151' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat right 14px center;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 10px 38px 10px 16px;
+    font-size: 14px;
+    color: #374151;
+    min-width: 120px;
+    cursor: pointer;
+}
+
+.board_search {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+.board_search input {
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 10px 44px 10px 16px;
+    font-size: 14px;
+    color: #1F2937;
+    width: 280px;
+    background: #fff;
+}
+.board_search input::placeholder { color: #9CA3AF; }
+.board_search button {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    color: #374151;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------- 공지/다운로드 — 라인 리스트 ---------- */
+.board_line_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.board_line_list .row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto 100px;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 16px;
+    border-bottom: 1px solid #E5E7EB;
+    transition: background 0.15s ease;
+}
+.board_line_list .row:hover { background: #FAFAFA; }
+.board_line_list .row a {
+    color: inherit;
+    text-decoration: none;
+    display: contents;
+}
+.board_line_list .col_no {
+    color: #9CA3AF;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+.board_line_list .col_no.pinned {
+    color: #F26337;
+    font-weight: 700;
+}
+.board_line_list .col_title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1F2937;
+    letter-spacing: -0.3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.board_line_list .col_chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #F3F4F6;
+    border-radius: 999px;
+    color: #4B5563;
+    font-size: 12px;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+}
+.board_line_list .col_chip svg { width: 12px; height: 12px; }
+.board_line_list .col_date {
+    color: #9CA3AF;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* ---------- 보도자료 — 히어로 슬라이드 카드 ---------- */
+.board_hero {
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 36px;
+    align-items: center;
+    margin-bottom: 36px;
+    position: relative;
+}
+.board_hero_thumb {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #F3F4F6;
+}
+.board_hero_thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.board_hero_thumb_placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D1D5DB;
+}
+.board_hero_body { padding: 12px 4px; }
+.board_hero_tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #F26337;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    margin-bottom: 14px;
+}
+.board_hero_tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #F26337;
+    display: inline-block;
+}
+.board_hero_title {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1F2937;
+    letter-spacing: -0.3px;
+    line-height: 1.6;
+    word-break: keep-all;
+}
+.board_hero_date {
+    font-size: 13px;
+    color: #9CA3AF;
+}
+.board_hero_pager {
+    position: absolute;
+    bottom: 28px;
+    right: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.board_hero_indicator {
+    font-size: 14px;
+    color: #6B7280;
+    margin-right: 8px;
+}
+.board_hero_indicator b { color: #1F2937; }
+.board_hero_nav {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #E5E7EB;
+    color: #6B7280;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.board_hero_nav--next {
+    background: #F26337;
+    color: #fff;
+}
+.board_hero_nav:hover { filter: brightness(0.95); }
+
+/* ---------- 보도자료 — 3열 카드 그리드 ---------- */
+.board_grid {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+.board_grid .card {
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.board_grid .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+.board_grid .card a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.board_grid .thumb {
+    aspect-ratio: 4 / 3;
+    background: #F3F4F6;
+    overflow: hidden;
+}
+.board_grid .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.board_grid .thumb_placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D1D5DB;
+}
+.board_grid .body {
+    padding: 18px 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+.board_grid .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #F26337;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+.board_grid .tag::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #F26337;
+}
+.board_grid .title {
+    margin: 4px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F2937;
+    line-height: 1.6;
+    letter-spacing: -0.2px;
+    word-break: keep-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.board_grid .date {
+    margin-top: auto;
+    font-size: 12px;
+    color: #9CA3AF;
+    padding-top: 12px;
+}
+
+/* ---------- 다운로드 — 카드 리스트 (카테고리 칩 + Next 버튼) ---------- */
+.board_dl_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.board_dl_item {
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    gap: 24px;
+    transition: box-shadow 0.15s ease;
+}
+.board_dl_item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+.board_dl_chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    background: #FFF1EA;
+    color: #F26337;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    justify-self: start;
+}
+.board_dl_main h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2937;
+    letter-spacing: -0.2px;
+}
+.board_dl_main p {
+    margin: 0;
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+.board_dl_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: #F26337;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+.board_dl_btn:hover { background: #DE4F23; }
+.board_dl_btn svg { width: 14px; height: 14px; }
+
+/* ---------- 페이지네이션 ---------- */
+.board_pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 56px;
+}
+.board_pagination a,
+.board_pagination button,
+.board_pagination span {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6B7280;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.board_pagination .active {
+    background: #F26337;
+    color: #fff;
+    font-weight: 700;
+}
+.board_pagination a:hover,
+.board_pagination button:hover {
+    background: #F3F4F6;
+}
+.board_pagination .nav {
+    color: #9CA3AF;
+}
+
+/* ---------- 빈 상태 ---------- */
+.board_empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #9CA3AF;
+    font-size: 14px;
+}
+
+/* ============================================================
+   상세 페이지 (공지/뉴스/다운로드)
+   ============================================================ */
+.board_view {
+    max-width: 920px;
+    margin: 0 auto;
+}
+.board_view_head {
+    padding: 28px 0 24px;
+    border-top: 2px solid #1F2937;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 36px;
+}
+.board_view_title {
+    margin: 0 0 18px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1F2937;
+    letter-spacing: -0.4px;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+.board_view_meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 13px;
+    color: #6B7280;
+}
+.board_view_meta span { display: inline-flex; align-items: center; gap: 4px; }
+.board_view_meta b { color: #374151; font-weight: 500; }
+.board_view_meta .dot {
+    width: 3px;
+    height: 3px;
+    background: #D1D5DB;
+    border-radius: 50%;
+}
+.board_view_body {
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.8;
+    letter-spacing: -0.2px;
+    padding: 8px 0 40px;
+}
+.board_view_body p { margin: 0 0 8px; }
+.board_view_body p:empty { height: 16px; }
+.board_view_thumb {
+    margin: 0 0 28px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #F3F4F6;
+}
+.board_view_thumb img { display: block; width: 100%; height: auto; }
+.board_view_link {
+    margin: 0 0 28px;
+    font-size: 14px;
+}
+.board_view_link a {
+    color: #F26337;
+    text-decoration: none;
+    font-weight: 600;
+}
+.board_view_link a:hover { text-decoration: underline; }
+.board_view_foot {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+}
+.board_view_back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    padding: 14px 32px;
+    background: #F26337;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+.board_view_back:hover { background: #DE4F23; }
+
+/* 다운로드 상세 박스 */
+.board_dl_detail {
+    background: #FAFAFA;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin: 0 0 36px;
+}
+.board_dl_detail dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 16px;
+    font-size: 14px;
+}
+.board_dl_detail dt { color: #6B7280; }
+.board_dl_detail dd { margin: 0; color: #1F2937; font-weight: 500; }
+
+/* ============================================================
+   반응형
+   ============================================================ */
+@media (max-width: 900px) {
+    .board_page_head h1 { font-size: 26px; }
+    .board_toolbar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .board_toolbar .spacer { display: none; }
+    .board_search input { width: 100%; }
+    .board_search { flex: 1; min-width: 200px; }
+
+    .board_line_list .row {
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        padding: 18px 8px;
+    }
+    .board_line_list .col_no {
+        grid-column: 1 / -1;
+        text-align: left;
+        font-size: 11px;
+    }
+    .board_line_list .col_title { grid-column: 1; }
+    .board_line_list .col_chip { display: none; }
+    .board_line_list .col_date { font-size: 12px; }
+
+    .board_hero {
+        grid-template-columns: 1fr;
+        padding: 18px;
+    }
+    .board_hero_pager {
+        position: static;
+        margin-top: 12px;
+        justify-content: flex-end;
+    }
+
+    .board_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+    .board_dl_item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 20px;
+    }
+    .board_dl_btn { width: 100%; justify-content: center; }
+
+    .board_view_title { font-size: 18px; }
+    .board_view_meta { font-size: 12px; gap: 10px; flex-wrap: wrap; }
+}
+@media (max-width: 560px) {
+    .board_grid { grid-template-columns: 1fr; }
+}
