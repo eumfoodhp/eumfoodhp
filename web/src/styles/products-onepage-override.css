@@ -1,0 +1,107 @@
+/* ============================================================
+   /products 원페이지 — 모든 카테고리 컨테이너 통일
+   섹션 타이틀(story_section_head) 과 같은 width 공식, 카드 그리드
+   fluid 1fr, 카드 자체 full-width. 모든 카테고리 (pickles/braised/
+   namul/salted/sauce/tea) 의 .product_list_section / .product_inner /
+   .product_grid / .product_card 좌측 정렬 통일.
+
+   주의: 다른 .product_xxx_page CSS 이후에 import 돼야 cascade 우위.
+   ============================================================ */
+
+/* 외곽 컨테이너만 좌우 16px 가터 — 모든 컨텐츠가 페이지 가장자리에서
+   16px 떨어진 동일 edge 에서 시작. 안쪽 컨테이너는 full-width 0 padding. */
+#sub_contents.products_onepage .story_section_head,
+#sub_contents.products_onepage .products_top_bar,
+#sub_contents.products_onepage .product_list_section {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+}
+
+/* sauce_section 도 같은 가터 */
+#sub_contents.products_onepage .sauce_section {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+/* 안쪽 wrappers — padding 0 (이미 부모가 16px 잡았으므로 중복 X) */
+#sub_contents.products_onepage .product_inner,
+#sub_contents.products_onepage .sauce_subsection_head {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+}
+
+/* 그리드: 4칸 fluid 1fr, padding 제거 */
+#sub_contents.products_onepage .product_grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-content: stretch;
+    width: 100%;
+    padding: 0;
+}
+
+/* 카드 너비도 그리드 칼럼에 맞춰 fluid */
+#sub_contents.products_onepage .product_card {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* salted 3-column */
+#sub_contents.products_onepage .product_grid--salted_three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* sauce pack 2 column */
+#sub_contents.products_onepage .product_grid--sauce_pack {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* story_section_head 와 일치시키기 위해 padding 0 강제 */
+#sub_contents.products_onepage .product_list_section {
+    padding-top: 32px;
+    padding-bottom: 60px;
+}
+
+/* sauce_section 도 패딩 단순화 — 양옆 0, 상하만 */
+#sub_contents.products_onepage .sauce_section {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 60px 0;
+}
+
+/* 반응형 — 모바일/태블릿에선 3·2 칸 */
+@media (max-width: 1024px) {
+    #sub_contents.products_onepage .product_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px 20px;
+    }
+    #sub_contents.products_onepage .product_grid--salted_three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    #sub_contents.products_onepage .product_grid,
+    #sub_contents.products_onepage .product_grid--salted_three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 14px;
+    }
+}
+
+@media (max-width: 420px) {
+    #sub_contents.products_onepage .product_grid,
+    #sub_contents.products_onepage .product_grid--salted_three {
+        grid-template-columns: 1fr;
+    }
+}

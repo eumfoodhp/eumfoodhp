@@ -17,6 +17,7 @@ import '@/styles/product_namul.css';
 import '@/styles/product_salted.css';
 import '@/styles/product_sauce.css';
 import '@/styles/product_tea.css';
+import '@/styles/products-onepage-override.css';
 
 // --- 카테고리별 데이터 ---
 const PICKLES_ORDER = [9, 1, 3, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18];
