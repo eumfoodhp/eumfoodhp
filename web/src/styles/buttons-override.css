@@ -1973,8 +1973,10 @@ html[lang="zh"] .dl_title {
 
 .history_year_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+    /* 한 영역 안의 모든 연도를 세로 1열로 길게 펼침
+       (사용자 요청: 다 풀어서 세로로 길게, 두 영역으로 나눠서) */
+    grid-template-columns: 1fr;
+    gap: 16px;
     animation: historyPanelIn 0.35s ease-out both;
 }
 
@@ -2088,8 +2090,8 @@ html[lang="zh"] .dl_title {
         border-bottom-color: #F26337;
     }
     .history_year_grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 14px;
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 }
 

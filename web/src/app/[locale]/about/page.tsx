@@ -22,10 +22,8 @@ import '@/styles/about_location.css';
 const STATS = [1, 2, 3, 4] as const;
 const AREAS = [1, 2, 3, 4] as const;
 const PERIODS = [
-  { id: 'p1', label: 'NOW ~ 2022', start: 2022, end: 9999 },
-  { id: 'p2', label: '2021 ~ 2017', start: 2017, end: 2021 },
-  { id: 'p3', label: '2016 ~ 2012', start: 2012, end: 2016 },
-  { id: 'p4', label: '2011 ~ 2009', start: 2009, end: 2011 },
+  { id: 'p1', label: 'NOW ~ 2017', start: 2017, end: 9999 },
+  { id: 'p2', label: '2016 ~ 2009', start: 2009, end: 2016 },
 ];
 
 export const revalidate = 0;
