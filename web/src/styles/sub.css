@@ -1185,16 +1185,16 @@
     grid-column: 2;
 }
 
-/* 13. 이미지 박스 — 배경/보더 제거. 위쪽 정렬로 카드들 상단 라인 통일 */
+/* 13. 이미지 박스 — 배경/보더 제거. 인증서 본체를 정중앙 정렬 */
 .cert_img_box {
     display: flex;
     height: 380px;
     justify-content: center;
-    align-items: flex-start;     /* 인증서 본체를 박스 위쪽에 정렬 → 모든 카드 상단 라인 일치 */
+    align-items: center;         /* 인증서 본체 세로 중앙 — PNG 내부 content 도 박스 중앙에 위치 */
     align-self: stretch;
     background: transparent;
     border: 0;
-    padding: 8px 8px 0;          /* 위/좌/우 여백, 호버 시 떠오를 여유 공간 */
+    padding: 8px;                /* 호버 시 떠오를 여유 공간 */
 }
 
 /* 인증서 본체 — 깊은 그림자로 입체감 강조 + 확대 */
