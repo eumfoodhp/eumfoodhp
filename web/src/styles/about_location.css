@@ -4,7 +4,160 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 40px;
+}
+
+/* ============================================================
+   카드 통합형 (Office / Logistics) — 카드 안에 지도 + 정보 동시
+   ============================================================ */
+.loc_card {
+    background: #fff;
+    border: 1px solid #F0EAE0;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.03);
+    padding: 28px 32px 32px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+.loc_card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.loc_card_head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #F3F0EA;
+    margin-bottom: 24px;
+}
+.loc_card_no {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #F39800;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+.loc_card_eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6B7280;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.loc_card_body {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+}
+
+.loc_card_map {
+    border-radius: 14px;
+    overflow: hidden;
+    background: #f0f0f0;
+    min-height: 280px;
+    aspect-ratio: 16 / 11;
+}
+.loc_card_map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.loc_card_info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-top: 4px;
+}
+.loc_card_name {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.4px;
+    line-height: 1.3;
+}
+
+.loc_card_meta {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.loc_meta_row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+.loc_meta_icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #FFF6EC;
+    color: #F39800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.loc_meta_text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.loc_meta_label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9CA3AF;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+.loc_meta_value {
+    margin: 0;
+    font-size: 14px;
+    color: #1F2937;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    word-break: keep-all;
+}
+
+.loc_meta_tel_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 16px;
+    font-size: 13px;
+    color: #1F2937;
+    line-height: 1.5;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+    .loc_card_body {
+        grid-template-columns: 1fr;
+    }
+    .loc_card_map {
+        aspect-ratio: 16 / 10;
+    }
+}
+@media (max-width: 640px) {
+    .loc_card {
+        padding: 20px 22px 24px;
+        border-radius: 16px;
+    }
+    .loc_card_no { font-size: 22px; }
+    .loc_card_name { font-size: 20px; }
+    .loc_meta_tel_grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* 두 번째 row (물류센터) 좌우 배치 반전 — 카드 시각 변화 */

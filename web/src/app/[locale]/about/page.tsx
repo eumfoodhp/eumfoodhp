@@ -251,83 +251,109 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <section className="location_content_section">
           <div className="sub_inner location_inner">
             {/* 본사·공장 */}
-            <div className="location_row">
-              <div className="map_area">
-                <iframe
-                  src={factoryMapSrc}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={t('loc_map_factory_alt')}
-                />
-              </div>
-              <div className="info_area">
-                <div className="loc_heading">
-                  <span className="loc_cate">{t('loc_way_to_come')}</span>
-                  <h3 className="loc_name">{t('loc_factory_title')}</h3>
+            <article className="loc_card">
+              <header className="loc_card_head">
+                <span className="loc_card_no">01</span>
+                <span className="loc_card_eyebrow">Office &amp; Factory</span>
+              </header>
+              <div className="loc_card_body">
+                <div className="loc_card_map">
+                  <iframe
+                    src={factoryMapSrc}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={t('loc_map_factory_alt')}
+                  />
                 </div>
-                <ul className="loc_detail_list">
-                  <li className="loc_detail_row">
-                    <span className="label">{t('loc_factory_addr_label')}</span>
-                    <span className="loc_pipe" aria-hidden="true"></span>
-                    <p className="content">{t('loc_factory_addr')}</p>
-                  </li>
-                  <li className="loc_detail_row loc_detail_row--tel">
-                    <span className="label">{t('loc_factory_tel_label')}</span>
-                    <span className="loc_pipe" aria-hidden="true"></span>
-                    <div className="loc_tel_wrap">
-                      <span className="loc_tel_item">{t('loc_tel_quality')}</span>
-                      <span className="loc_tel_item">{t('loc_tel_sales')}</span>
-                      <span className="loc_tel_item">{t('loc_tel_purchase')}</span>
-                      <span className="loc_tel_item">{t('loc_tel_rd')}</span>
-                      <span className="loc_tel_item">{t('loc_tel_mgmt')}</span>
-                    </div>
-                  </li>
-                  <li className="loc_detail_row">
-                    <span className="label">{t('loc_factory_fax_label')}</span>
-                    <span className="loc_pipe" aria-hidden="true"></span>
-                    <p className="content">{t('loc_factory_fax')}</p>
-                  </li>
-                </ul>
+                <div className="loc_card_info">
+                  <h3 className="loc_card_name">{t('loc_factory_title')}</h3>
+                  <ul className="loc_card_meta">
+                    <li className="loc_meta_row">
+                      <span className="loc_meta_icon" aria-hidden="true">
+                        <PinIcon />
+                      </span>
+                      <div className="loc_meta_text">
+                        <span className="loc_meta_label">{t('loc_factory_addr_label')}</span>
+                        <p className="loc_meta_value">{t('loc_factory_addr')}</p>
+                      </div>
+                    </li>
+                    <li className="loc_meta_row">
+                      <span className="loc_meta_icon" aria-hidden="true">
+                        <PhoneIcon />
+                      </span>
+                      <div className="loc_meta_text">
+                        <span className="loc_meta_label">{t('loc_factory_tel_label')}</span>
+                        <div className="loc_meta_tel_grid">
+                          <span>{t('loc_tel_quality')}</span>
+                          <span>{t('loc_tel_sales')}</span>
+                          <span>{t('loc_tel_purchase')}</span>
+                          <span>{t('loc_tel_rd')}</span>
+                          <span>{t('loc_tel_mgmt')}</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="loc_meta_row">
+                      <span className="loc_meta_icon" aria-hidden="true">
+                        <FaxIcon />
+                      </span>
+                      <div className="loc_meta_text">
+                        <span className="loc_meta_label">{t('loc_factory_fax_label')}</span>
+                        <p className="loc_meta_value">{t('loc_factory_fax')}</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            </article>
 
             {/* 물류센터 */}
-            <div className="location_row location_row--center">
-              <div className="map_area">
-                <iframe
-                  src={centerMapSrc}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={t('loc_center_title')}
-                />
-              </div>
-              <div className="info_area">
-                <div className="loc_heading">
-                  <span className="loc_cate">{t('loc_way_to_come')}</span>
-                  <h3 className="loc_name">{t('loc_center_title')}</h3>
+            <article className="loc_card">
+              <header className="loc_card_head">
+                <span className="loc_card_no">02</span>
+                <span className="loc_card_eyebrow">Logistics Center</span>
+              </header>
+              <div className="loc_card_body">
+                <div className="loc_card_map">
+                  <iframe
+                    src={centerMapSrc}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={t('loc_center_title')}
+                  />
                 </div>
-                <ul className="loc_detail_list">
-                  <li className="loc_detail_row">
-                    <span className="label">{t('loc_factory_addr_label')}</span>
-                    <span className="loc_pipe" aria-hidden="true"></span>
-                    <p className="content">{t('loc_center_addr')}</p>
-                  </li>
-                  <li className="loc_detail_row">
-                    <span className="label">{t('loc_factory_tel_label')}</span>
-                    <span className="loc_pipe" aria-hidden="true"></span>
-                    <p className="content">{t('loc_center_tel')}</p>
-                  </li>
-                </ul>
+                <div className="loc_card_info">
+                  <h3 className="loc_card_name">{t('loc_center_title')}</h3>
+                  <ul className="loc_card_meta">
+                    <li className="loc_meta_row">
+                      <span className="loc_meta_icon" aria-hidden="true">
+                        <PinIcon />
+                      </span>
+                      <div className="loc_meta_text">
+                        <span className="loc_meta_label">{t('loc_factory_addr_label')}</span>
+                        <p className="loc_meta_value">{t('loc_center_addr')}</p>
+                      </div>
+                    </li>
+                    <li className="loc_meta_row">
+                      <span className="loc_meta_icon" aria-hidden="true">
+                        <PhoneIcon />
+                      </span>
+                      <div className="loc_meta_text">
+                        <span className="loc_meta_label">{t('loc_factory_tel_label')}</span>
+                        <p className="loc_meta_value">{t('loc_center_tel')}</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            </article>
           </div>
         </section>
         <NextSectionLink isLast />
@@ -335,5 +361,32 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       </div>
     </main>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.71 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.71A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function FaxIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polyline points="6 9 6 2 18 2 18 9" />
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+      <rect x="6" y="14" width="12" height="8" />
+    </svg>
   );
 }
