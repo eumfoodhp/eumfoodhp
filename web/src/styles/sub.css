@@ -810,14 +810,9 @@
     width: 100%;
 }
 
-/* 안녕하십니까? / 황만식입니다 두 줄 사이 공백 */
+/* 안녕하십니까 / 황만식입니다 두 줄 사이 큰 공백 (2 줄 분량) */
 .ceo_main_title {
-    gap: 16px;
-}
-
-/* desc 내부 문단 간 공백 (\n\n 으로 분리된 부분) — br 두 개 사이 간격 */
-.ceo_desc br + br {
-    line-height: 2.5;
+    gap: 40px;
 }
 
 /* 1. CEO Introduce 태그 */
