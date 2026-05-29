@@ -15,7 +15,7 @@
 }
 
 .org_chart {
-    --org-line: #B6DDB8;            /* 노드 초록 톤과 어울리는 옅은 그린 */
+    --org-line: #1F2937;            /* 검정에 가까운 진한 회색 (가독성 확보) */
     --org-line-w: 2px;              /* 커넥터 선 두께 */
     --org-blue: #1F60A8;
     --org-orange: #F26337;
@@ -111,17 +111,16 @@
     width: 100%;
 }
 
-/* CEO 아래로 내려가는 수직선 (총괄이사까지 닿음) */
+/* CEO 아래로 내려가는 수직 점선 (총괄이사까지 닿음) */
 .org_node--ceo::after {
     content: '';
     position: absolute;
     left: 50%;
     top: 100%;
-    width: var(--org-line-w);
+    width: 0;
     height: var(--gap-y);
-    background: var(--org-line);
+    border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
-    border-radius: 2px;
     z-index: 0;
 }
 
@@ -133,17 +132,17 @@
     transform: translateY(-50%);
 }
 
-/* 경리·회계·인사 박스 좌측에서 CEO 의 수직선까지 잇는 가로선 */
+/* 경리·회계·인사 박스 좌측에서 CEO 까지 잇는 가로 점선 — 거리 충분히 확보해서 연결 */
 .org_staff_right::before {
     content: '';
     position: absolute;
     right: 100%;
     top: 50%;
-    width: 140px;        /* CEO 수직선까지의 거리 */
-    height: var(--org-line-w);
-    background: var(--org-line);
+    width: 240px;        /* CEO 까지 도달하도록 충분한 길이 (CEO 박스 안으로 살짝 들어가도 무방, 박스 흰 배경이 덮음) */
+    height: 0;
+    border-top: var(--org-line-w) dotted var(--org-line);
     transform: translateY(-1px);
-    border-radius: 2px;
+    z-index: 0;
 }
 
 /* --- L2: 총괄이사 --- */
@@ -154,17 +153,16 @@
     justify-content: center;
 }
 
-/* 총괄이사 아래로 내려가는 수직선 (부서 가로바까지) */
+/* 총괄이사 아래로 내려가는 수직 점선 (부서 가로바까지) */
 .org_node--director::after {
     content: '';
     position: absolute;
     left: 50%;
     top: 100%;
-    width: var(--org-line-w);
+    width: 0;
     height: var(--gap-y);
-    background: var(--org-line);
+    border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
-    border-radius: 2px;
     z-index: 0;
 }
 
@@ -179,42 +177,40 @@
     padding-top: var(--stub-y);
 }
 
-/* 부서들 위쪽 가로 커넥터 바 — 첫 칼럼 중심부터 마지막 칼럼 중심까지 */
+/* 부서들 위쪽 가로 점선 커넥터 바 — 첫 칼럼 중심부터 마지막 칼럼 중심까지 */
 .org_l3::before {
     content: '';
     position: absolute;
     top: 0;
     left: calc((100% - (12px * 7)) / 16);   /* 1열 중앙 */
     right: calc((100% - (12px * 7)) / 16);  /* 8열 중앙 */
-    height: var(--org-line-w);
-    background: var(--org-line);
-    border-radius: 2px;
+    height: 0;
+    border-top: var(--org-line-w) dotted var(--org-line);
 }
 
 .org_dept_col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 0;                      /* 점선이 gap 을 메우게 명시 margin 으로 통일 */
     position: relative;
 }
 
-/* 각 부서 박스 위쪽에 가로바까지 닿는 짧은 수직 스텁 */
+/* 각 부서 박스 위쪽에 가로바까지 닿는 짧은 수직 점선 스텁 */
 .org_dept_col::before {
     content: '';
     position: absolute;
     top: calc(-1 * var(--stub-y));
     left: 50%;
-    width: var(--org-line-w);
+    width: 0;
     height: var(--stub-y);
-    background: var(--org-line);
+    border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
-    border-radius: 2px;
 }
 
-/* 부서 → 소속팀 연결 (소속팀이 있는 칼럼만) */
+/* 부서 → 첫 소속팀 연결 — margin 전체를 점선이 메움 */
 .org_dept_col .org_node--dept + .org_node--sub {
-    margin-top: 4px;
+    margin-top: 24px;
     position: relative;
 }
 .org_dept_col .org_node--dept + .org_node--sub::before {
@@ -222,15 +218,15 @@
     position: absolute;
     left: 50%;
     bottom: 100%;
-    width: var(--org-line-w);
-    height: 8px;
-    background: var(--org-line);
+    width: 0;
+    height: 24px;
+    border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
-    border-radius: 2px;
 }
 
-/* 소속팀끼리 연결 (예: 생산관리팀의 가동/나동 두 개) */
+/* 소속팀끼리 연결 (예: 생산관리팀의 가동/나동) — 동일 간격 */
 .org_dept_col .org_node--sub + .org_node--sub {
+    margin-top: 16px;
     position: relative;
 }
 .org_dept_col .org_node--sub + .org_node--sub::before {
@@ -238,11 +234,10 @@
     position: absolute;
     left: 50%;
     bottom: 100%;
-    width: var(--org-line-w);
-    height: 4px;
-    background: var(--org-line);
+    width: 0;
+    height: 16px;
+    border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
-    border-radius: 2px;
 }
 
 /* --- 반응형 --- */

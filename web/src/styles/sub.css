@@ -792,22 +792,32 @@
     gap: 80px;
 }
 
-/* 상단 메인 그룹 (태그 + 타이틀+본문 묶음) */
+/* 상단 메인 그룹 (태그 + 타이틀+본문 묶음) — 블록 사이 간격 늘림 */
 .ceo_main_group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 36px;
     width: 100%;
 }
 
-/* 타이틀 + 본문 묶음 */
+/* 타이틀 + 본문 묶음 — 타이틀과 본문 사이 간격 늘림 */
 .ceo_content_group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 32px;
     width: 100%;
+}
+
+/* 안녕하십니까? / 황만식입니다 두 줄 사이 공백 */
+.ceo_main_title {
+    gap: 16px;
+}
+
+/* desc 내부 문단 간 공백 (\n\n 으로 분리된 부분) — br 두 개 사이 간격 */
+.ceo_desc br + br {
+    line-height: 2.5;
 }
 
 /* 1. CEO Introduce 태그 */
