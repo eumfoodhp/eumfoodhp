@@ -626,9 +626,9 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         z-index: 11000;
     }
 
-    /* 헤더 한 줄 — 메뉴만 그 안에서 2x2 grid (buttons-override 참고) */
+    /* 2단 헤더 (사용자 요청): 1단 로고+유틸 / 2단 메인 메뉴 5열 */
     html, body {
-        padding-top: 92px;
+        padding-top: 124px;
     }
 
     .header_inner {
@@ -743,17 +743,17 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 }
 
 @media (max-width: 735px) {
-    /* 헤더 한 줄 + GNB 2×2 (buttons-override 의 ≤1024 처리 그대로 유효) */
+    /* 2단 헤더 — 작은 폰에서 폰트/패딩 더 줄임 */
     html, body {
-        padding-top: 78px;
+        padding-top: 108px;
     }
 
     .header_inner {
-        padding: 12px 16px;
+        padding: 12px 16px 6px;
     }
     .gnb_main_link {
         font-size: 11px !important;
-        padding: 2px 3px !important;
+        padding: 5px 1px !important;
     }
 
     /* 375 기준: 로고는 좌측 유지, 아이콘 2개는 우측 끝 정렬 */
