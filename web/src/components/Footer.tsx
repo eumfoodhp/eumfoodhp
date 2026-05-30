@@ -39,7 +39,7 @@ export default async function Footer() {
               {/* HACCP 인증 마크 — 법인사업자등록번호 아래로 이동 */}
               <div className="f_row cert_row">
                 <img
-                  src="/images/common/haccp.png"
+                  src="/images/common/haccp1.png"
                   alt="HACCP 인증"
                   className="cert_mark_img"
                 />
