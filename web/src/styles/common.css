@@ -756,8 +756,8 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         padding: 14px 14px 24px !important;
     }
     .gnb_main_link {
-        font-size: 13px !important;
-        padding: 9px 2px !important;
+        font-size: 12px !important;
+        padding: 7px 3px !important;
     }
 
     /* 375 기준: 로고는 좌측 유지, 아이콘 2개는 우측 끝 정렬 */
