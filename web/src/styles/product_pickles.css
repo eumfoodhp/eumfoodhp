@@ -193,10 +193,32 @@
     }
 }
 
+@media (max-width: 1024px) {
+    #sub_contents .product_pickles_page .product_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px 18px;
+        padding: 0;
+    }
+    #sub_contents .product_pickles_page .product_card {
+        width: 100%;
+    }
+}
+
 @media (max-width: 735px) {
+    #sub_contents .product_pickles_page .product_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 14px;
+    }
     #sub_contents .product_pickles_page .pickles_lead {
         font-size: 13px;
         line-height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #sub_contents .product_pickles_page .product_grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
