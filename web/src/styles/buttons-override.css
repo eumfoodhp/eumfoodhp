@@ -1327,16 +1327,10 @@ html[lang="zh"] .dl_title {
     position: relative;
 }
 
+/* 활성 카테고리 하단 동그라미 점 — 제거 (사용자 요청).
+   색상만으로 active 표시. */
 .gnb_main_link.is_active::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -8px;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    background: #F26337;
-    border-radius: 50%;
+    content: none;
 }
 
 /* ============================================================

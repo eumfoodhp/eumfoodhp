@@ -628,7 +628,10 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 
     /* 2단 헤더 (사용자 요청): 1단 로고+유틸 / 2단 메인 메뉴 5열 */
     html, body {
-        padding-top: 140px;
+        padding-top: 160px;
+    }
+    #header .header_inner {
+        padding-bottom: 14px !important;
     }
 
     .header_inner {
@@ -745,11 +748,11 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 @media (max-width: 735px) {
     /* 2단 헤더 — 작은 폰에서 폰트/패딩 약간 줄임 */
     html, body {
-        padding-top: 122px;
+        padding-top: 138px;
     }
 
     .header_inner {
-        padding: 12px 14px;
+        padding: 14px 14px 14px !important;
     }
     .gnb_main_link {
         font-size: 13px !important;
