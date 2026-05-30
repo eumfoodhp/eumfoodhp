@@ -714,7 +714,7 @@ html, body {
             "logo . util"
             "gnb gnb gnb" !important;
         column-gap: 0 !important;
-        row-gap: 20px !important;
+        row-gap: 8px !important;
         align-items: center !important;
         justify-content: stretch !important;
     }
@@ -1475,10 +1475,11 @@ html[lang="zh"] .dl_title {
     outline-offset: 2px;
 }
 
-/* 모바일 */
+/* 모바일 — sub_header sticky 해제, 스크롤과 함께 위로 움직임 */
 @media (max-width: 1024px) {
     .sub_header {
-        top: 80px;
+        position: static !important;
+        top: auto !important;
     }
 }
 
