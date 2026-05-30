@@ -702,25 +702,30 @@ html, body {
     #header { --gnb-col: min(150px, calc((100vw - 380px) / 5)) !important; }
 }
 
-/* 1024px 이하: GNB 숨김 → 내 grid가 util을 가운데로 밀어내는 문제 수정.
-   원본은 이 구간에서 display:flex + justify-content:space-between 으로 처리.
-   같은 패턴 강제 적용 + util_area는 무조건 우측 끝(margin-left:auto)으로 밀어냄.
-   (justify-content가 다른 sibling/숨김 요소 때문에 안 먹히는 경우를 대비) */
+/* 1024px 이하: 2단 헤더 구조 (사용자 요청)
+   1단: 로고(좌) + util_area(우)
+   2단: GNB 메인 메뉴 풀폭 5열 균등 분포 */
 @media (max-width: 1024px) {
     .header_inner {
         display: flex !important;
         flex-direction: row !important;
+        flex-wrap: wrap !important;     /* GNB 가 둘째 줄로 떨어지도록 */
         grid-template-columns: none !important;
         column-gap: 0 !important;
-        justify-content: flex-start !important;
+        row-gap: 6px !important;
+        justify-content: space-between !important;
         align-items: center !important;
     }
     .header_inner > .gnb_wrap {
-        display: none !important;     /* 모바일에서는 PC GNB 완전 제거 */
+        display: block !important;
+        flex-basis: 100% !important;
+        width: 100% !important;
+        order: 99 !important;
+        margin-top: 4px !important;
     }
     .header_inner > .util_area {
         justify-self: auto !important;
-        margin-left: auto !important; /* 무조건 우측으로 밀어냄 */
+        margin-left: auto !important;
     }
 }
 
