@@ -704,8 +704,7 @@ html, body {
 
 /* 1024px 이하: 2단 헤더 (grid-areas 로 명시적 배치)
    1단: [로고 ─── 쇼핑·카탈로그·햄버거·언어]
-   2단: [소개  제조  제품  소식  문의] 5열 균등
-   서브헤더 visible 일 때 1단 hide → 메뉴줄만 컴팩트. */
+   2단: [소개  제조  제품  소식  문의] 5열 균등 */
 @media (max-width: 1024px) {
     .header_inner {
         display: grid !important;
@@ -715,7 +714,7 @@ html, body {
             "logo . util"
             "gnb gnb gnb" !important;
         column-gap: 0 !important;
-        row-gap: 6px !important;
+        row-gap: 12px !important;
         align-items: center !important;
         justify-content: stretch !important;
     }
@@ -734,17 +733,23 @@ html, body {
         width: 100% !important;
         margin: 0 !important;
     }
-    .gnb_wrap > .gnb,
+    /* .gnb 는 단순 wrapper 로 사용 — grid container 는 .gnb_grid 만 */
+    .gnb_wrap > .gnb {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
     .gnb_wrap .gnb_grid {
         display: grid !important;
-        grid-template-columns: repeat(5, 1fr) !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
         grid-auto-rows: auto !important;
         gap: 0 !important;
         width: 100% !important;
+        max-width: 100% !important;
     }
     .gnb_main_link {
-        font-size: 12px !important;
-        padding: 6px 2px !important;
+        font-size: 15px !important;
+        padding: 10px 4px !important;
         white-space: nowrap !important;
         text-align: center !important;
         min-height: 0 !important;
@@ -752,17 +757,6 @@ html, body {
     }
     .gnb_main_link[href*="/contact"] {
         display: inline-flex !important;
-    }
-
-    /* SubHeader 가 보일 때 1단 (로고 + 유틸) 숨김 → 메뉴줄만 1행 */
-    body:has(.sub_header.is_visible) #header .header_inner {
-        grid-template-areas: "gnb gnb gnb" !important;
-        grid-template-rows: auto !important;
-        row-gap: 0 !important;
-    }
-    body:has(.sub_header.is_visible) #header .header_inner > .logo,
-    body:has(.sub_header.is_visible) #header .header_inner > .util_area {
-        display: none !important;
     }
 }
 
