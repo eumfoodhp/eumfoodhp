@@ -141,10 +141,11 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                       height="107"
                     />
                   </div>
+                  {/* HACCP 로고 아래로 이동 (사용자 요청) */}
+                  <h4 className="sub_bold_title">{t('cert_sub_tit')}</h4>
                 </div>
                 <div className="top_right">
                   <div className="cert_top_group">
-                    <h4 className="sub_bold_title">{t('cert_sub_tit')}</h4>
                     <p className="cert_desc">{t('cert_desc')}</p>
                   </div>
                   <div className="haccp_benefit">
