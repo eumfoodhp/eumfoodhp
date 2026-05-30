@@ -1445,6 +1445,11 @@ html[lang="zh"] .dl_title {
     }
 }
 @media (max-width: 1024px) {
+    /* 모바일에서는 sticky 해제 → 스크롤 시 헤더와 함께 위로 사라짐 */
+    .sub_header {
+        position: static !important;
+        top: auto !important;
+    }
     .sub_header_nav_list {
         justify-content: space-around;
     }
