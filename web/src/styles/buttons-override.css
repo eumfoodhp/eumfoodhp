@@ -714,7 +714,7 @@ html, body {
             "logo . util"
             "gnb gnb gnb" !important;
         column-gap: 0 !important;
-        row-gap: 12px !important;
+        row-gap: 20px !important;
         align-items: center !important;
         justify-content: stretch !important;
     }
