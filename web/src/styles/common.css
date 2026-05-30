@@ -626,15 +626,13 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         z-index: 11000;
     }
 
-    /* 2단 헤더: 로고+유틸(위) + 메인 메뉴(아래) → padding-top 늘림 */
+    /* 헤더 한 줄 — 메뉴만 그 안에서 2x2 grid (buttons-override 참고) */
     html, body {
-        padding-top: 130px;
+        padding-top: 92px;
     }
 
     .header_inner {
         display: flex;
-        flex-wrap: wrap;
-        row-gap: 6px;
         align-items: center;
         justify-content: space-between;
         align-items: center;
@@ -648,30 +646,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         height: 50px;
     }
 
-    /* 모바일 GNB — 헤더 아래쪽 풀폭 5열 (사용자 요청) */
-    .gnb_wrap {
-        display: block !important;
-        flex-basis: 100%;
-        width: 100%;
-        order: 99;
-        margin-top: 4px;
-    }
-    .gnb_wrap .gnb {
-        width: 100%;
-        padding: 0;
-    }
-    .gnb_grid {
-        display: grid !important;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0;
-    }
-    .gnb_main_link {
-        font-size: 13px !important;
-        padding: 8px 2px !important;
-        text-align: center !important;
-        white-space: nowrap;
-        min-height: 0 !important;
-    }
+    /* 모바일 GNB 2×2 — buttons-override.css 의 ≤1024 에서 강제 처리 */
 
     .mega_panel {
         display: none !important;
@@ -768,17 +743,17 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 }
 
 @media (max-width: 735px) {
-    /* 2단 헤더 — 모바일에서도 메인 메뉴 헤더 아래쪽에 노출 */
+    /* 헤더 한 줄 + GNB 2×2 (buttons-override 의 ≤1024 처리 그대로 유효) */
     html, body {
-        padding-top: 112px;
+        padding-top: 78px;
     }
 
     .header_inner {
-        padding: 12px 16px 6px;
+        padding: 12px 16px;
     }
     .gnb_main_link {
-        font-size: 12px !important;
-        padding: 7px 1px !important;
+        font-size: 11px !important;
+        padding: 2px 3px !important;
     }
 
     /* 375 기준: 로고는 좌측 유지, 아이콘 2개는 우측 끝 정렬 */
