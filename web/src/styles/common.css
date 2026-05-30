@@ -626,13 +626,14 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         z-index: 11000;
     }
 
-    /* 2단 헤더 — 모바일 컴팩트 (본문 영역 확보) */
+    /* 2단 헤더 — 모바일 컴팩트 (본문 영역 확보).
+       pill 박스 box-shadow 가 헤더 끝선 밖으로 나오지 않도록 padding 확보 */
     html, body {
-        padding-top: 152px;
+        padding-top: 172px;
     }
     #header .header_inner {
-        padding-top: 8px !important;
-        padding-bottom: 10px !important;
+        padding-top: 12px !important;
+        padding-bottom: 18px !important;
     }
 
     .header_inner {
@@ -749,11 +750,11 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 @media (max-width: 735px) {
     /* 2단 헤더 — 작은 폰에서 더 컴팩트 */
     html, body {
-        padding-top: 126px;
+        padding-top: 144px;
     }
 
     .header_inner {
-        padding: 6px 14px 8px !important;
+        padding: 10px 14px 16px !important;
     }
     .gnb_main_link {
         font-size: 12px !important;
