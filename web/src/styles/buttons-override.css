@@ -753,18 +753,24 @@ html, body {
         align-items: center !important;
         justify-content: center !important;
         font-size: 14px !important;
-        padding: 8px 6px !important;
+        padding: 10px 6px !important;
         white-space: nowrap !important;
         text-align: center !important;
-        min-height: 0 !important;
+        min-height: 40px !important;
         line-height: 1.2 !important;
-        border: 1px solid #E5E7EB !important;
-        border-radius: 999px !important;
         background: #fff !important;
+        border: none !important;
+        border-radius: 10px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+    }
+    .gnb_main_link:hover {
+        background: #FFF1EA !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
     }
     .gnb_main_link.is_active {
         background: #FFF1EA !important;
-        border-color: #F26337 !important;
     }
     .gnb_main_link[href*="/contact"] {
         display: inline-flex !important;
