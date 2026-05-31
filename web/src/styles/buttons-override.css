@@ -1477,19 +1477,16 @@ html[lang="zh"] .dl_title {
     outline-offset: 2px;
 }
 
-/* 모바일 — SubHeader 항상 펼침 + sticky 해제 + 스크롤과 함께 위로 */
+/* 모바일 — SubHeader sticky 유지 (PC 와 동일 동작).
+   top 값을 모바일 헤더 높이 (2단) 에 맞춰 조정. */
 @media (max-width: 1024px) {
-    .sub_header,
-    .sub_header.is_visible {
-        position: static !important;
-        top: auto !important;
-        max-height: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-        padding-top: 6px !important;
-        padding-bottom: 6px !important;
-        pointer-events: auto !important;
-        overflow: visible !important;
+    .sub_header {
+        top: 124px;
+    }
+}
+@media (max-width: 735px) {
+    .sub_header {
+        top: 100px;
     }
 }
 
