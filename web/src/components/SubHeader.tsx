@@ -280,14 +280,14 @@ export default function SubHeader() {
       style={
         isMobile
           ? {
-              position: 'static',
-              top: 'auto',
+              /* 모바일도 PC 처럼 sticky — 스크롤하면 헤더 아래 따라옴 */
+              position: 'sticky',
+              top: 110,
               maxHeight: 'none',
               opacity: 1,
               transform: 'none',
               pointerEvents: 'auto',
               overflow: 'visible',
-              marginTop: 0,
               paddingTop: 6,
               paddingBottom: 6,
             }
