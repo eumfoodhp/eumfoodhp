@@ -126,14 +126,27 @@ export default function SubHeader() {
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // 모바일 감지 — 모바일에서는 항상 펼친 상태 + sticky 해제 + 스크롤 따라 움직임
+  const [mobileTop, setMobileTop] = useState(188);
+
+  // 모바일 감지 + 헤더 실제 높이 측정 → SubHeader top 값 동기화
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 1024px)');
-    const update = () => setIsMobile(mq.matches);
+    const update = () => {
+      setIsMobile(mq.matches);
+      // 헤더 실제 높이로 SubHeader top 동기화 (헤더 padding 바뀌어도 자동)
+      if (mq.matches) {
+        const h = document.getElementById('header');
+        if (h) setMobileTop(h.getBoundingClientRect().height);
+      }
+    };
     update();
     if (typeof mq.addEventListener === 'function') {
       mq.addEventListener('change', update);
-      return () => mq.removeEventListener('change', update);
+      window.addEventListener('resize', update);
+      return () => {
+        mq.removeEventListener('change', update);
+        window.removeEventListener('resize', update);
+      };
     } else {
       mq.addListener(update);
       return () => mq.removeListener(update);
@@ -280,9 +293,10 @@ export default function SubHeader() {
       style={
         isMobile
           ? {
-              /* 모바일도 PC 처럼 sticky — 스크롤하면 헤더 아래 따라옴 */
+              /* 모바일도 PC 처럼 sticky — 스크롤하면 헤더 아래 따라옴.
+                 top 값은 실제 헤더 height 를 측정해서 동기화 (위 useEffect). */
               position: 'sticky',
-              top: 110,
+              top: mobileTop,
               maxHeight: 'none',
               opacity: 1,
               transform: 'none',
