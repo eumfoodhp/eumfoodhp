@@ -1844,12 +1844,20 @@ html[lang="zh"] .dl_title {
         height: 12px;
         min-width: 40px;
     }
+    /* circle radius (6) + cx (6) = 12 = box width → 정확히 박스 안에 맞음 */
     .story_section_head .story_section_title::before {
+        background-image:
+            radial-gradient(circle 6px at 6px center, #22C55E 99%, transparent 100%),
+            linear-gradient(#22C55E, #22C55E);
         background-size: 12px 12px, calc(100% - 18px) 2px;
         background-position: left center, 18px center;
     }
     .story_section_head .story_section_title::after {
+        background-image:
+            radial-gradient(circle 6px at calc(100% - 6px) center, #22C55E 99%, transparent 100%),
+            linear-gradient(#22C55E, #22C55E);
         background-size: 12px 12px, calc(100% - 18px) 2px;
+        background-position: right center, left center;
     }
 }
 
@@ -1863,12 +1871,20 @@ html[lang="zh"] .dl_title {
         height: 10px;
         min-width: 24px;
     }
+    /* circle radius (5) + cx (5) = 10 → 박스 안 (좌측 잘림 fix) */
     .story_section_head .story_section_title::before {
+        background-image:
+            radial-gradient(circle 5px at 5px center, #22C55E 99%, transparent 100%),
+            linear-gradient(#22C55E, #22C55E);
         background-size: 10px 10px, calc(100% - 16px) 2px;
         background-position: left center, 16px center;
     }
     .story_section_head .story_section_title::after {
+        background-image:
+            radial-gradient(circle 5px at calc(100% - 5px) center, #22C55E 99%, transparent 100%),
+            linear-gradient(#22C55E, #22C55E);
         background-size: 10px 10px, calc(100% - 16px) 2px;
+        background-position: right center, left center;
     }
 }
 
