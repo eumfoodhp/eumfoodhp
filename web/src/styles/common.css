@@ -626,13 +626,13 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         z-index: 11000;
     }
 
-    /* 2단 헤더 — 모바일 컴팩트 (본문 영역 확보) */
+    /* 2단 헤더 — 모바일 컴팩트, 상/하 여백 동일 */
     html, body {
-        padding-top: 210px;
+        padding-top: 174px;
     }
     #header .header_inner {
-        padding-top: 14px !important;
-        padding-bottom: 22px !important;
+        padding-top: 18px !important;
+        padding-bottom: 18px !important;
     }
 
     .header_inner {
@@ -747,13 +747,13 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 }
 
 @media (max-width: 735px) {
-    /* 2단 헤더 — 작은 폰에서 더 컴팩트 */
+    /* 2단 헤더 — 작은 폰에서 더 컴팩트, 상/하 여백 동일 */
     html, body {
-        padding-top: 182px;
+        padding-top: 150px;
     }
 
     .header_inner {
-        padding: 12px 14px 20px !important;
+        padding: 14px 14px !important;
     }
     .gnb_main_link {
         font-size: 15px !important;
