@@ -2333,14 +2333,17 @@
     }
 
     #sub_contents.cert_page .cert_top {
+        flex-direction: column;
         gap: 32px;
-        align-items: flex-start;
+        align-items: stretch;
     }
 
     #sub_contents.cert_page .top_left,
     #sub_contents.cert_page .top_right {
         width: 100%;
-        max-width: none;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
     }
 
     #sub_contents.cert_page .top_left {

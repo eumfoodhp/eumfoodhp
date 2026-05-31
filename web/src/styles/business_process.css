@@ -28,8 +28,8 @@
     pointer-events: none;
     transform: translate(0, -50%);
 }
-/* 행 마지막 스텝 (4번째) 은 점선 hide — 다음 step 이 다음 줄로 가서 옆이 비어 있음 */
-#sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(4n)::after,
+/* 전체 마지막 step 만 점선 hide. 행 마지막 (4n 등) 은 우측으로 점선 유지
+   — 다음 줄로 이어지는 느낌 (사용자 요청). */
 #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:last-child::after {
     display: none;
 }
@@ -103,15 +103,9 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 40px 24px;
     }
-    /* 3열 — 행 마지막 = 3번째 */
+    /* 3열 — 점선 width 만 column-gap 에 맞춤. hide rule 은 last-child 만 */
     #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid::after {
         width: 24px;
-    }
-    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(4n)::after {
-        display: inline; /* 4n hide rule 무효화 */
-    }
-    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(3n)::after {
-        display: none;
     }
 }
 
@@ -120,16 +114,9 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 36px 16px;
     }
-    /* 2열 — 행 마지막 = 2번째 */
+    /* 2열 — 점선 width 만 column-gap 에 맞춤. hide rule 은 last-child 만 */
     #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid::after {
         width: 16px;
-    }
-    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(4n)::after,
-    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(3n)::after {
-        display: inline;
-    }
-    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(2n)::after {
-        display: none;
     }
     #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label {
         font-size: 15px;
