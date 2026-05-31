@@ -278,17 +278,33 @@
     }
 }
 
-@media (max-width: 768px) {
-    /* 가로 8칸을 2x4 그리드로 줄바꿈 */
+@media (max-width: 900px) {
+    /* 모바일 — 부서 8개를 2열 grid 로 (이전 4열은 폭 부족) */
+    .org_chart {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 8px;
+        box-sizing: border-box;
+        overflow: visible;
+    }
     .org_l3 {
-        grid-template-columns: repeat(4, 1fr);
-        row-gap: 32px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 10px;
+        row-gap: 28px;
     }
     .org_l3::before {
-        display: none; /* 그리드 줄바꿈에선 가로바 의미 없음 */
+        display: none;
+    }
+    .org_dept_col {
+        min-width: 0;
+        align-items: stretch;
     }
     .org_dept_col::before {
         display: none;
+    }
+    .org_dept_col .org_node {
+        width: 100%;
+        min-width: 0;
     }
     .org_node--director::after {
         height: 16px;
@@ -311,8 +327,10 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 380px) {
+    /* 매우 좁은 폰 — 1열로 */
     .org_l3 {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        row-gap: 22px;
     }
 }
