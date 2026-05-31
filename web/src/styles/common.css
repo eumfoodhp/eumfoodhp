@@ -757,7 +757,8 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         padding: 10px 14px 16px !important;
     }
     .gnb_main_link {
-        font-size: 12px !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
         padding: 7px 3px !important;
     }
 
