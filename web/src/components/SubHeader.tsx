@@ -124,6 +124,22 @@ export default function SubHeader() {
   const [hash, setHash] = useState('');
   const [activeId, setActiveId] = useState<string>('');
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 모바일 감지 — 모바일에서는 항상 펼친 상태 + sticky 해제 (스크롤 따라 움직임)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1024px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', update);
+      return () => mq.removeEventListener('change', update);
+    } else {
+      // legacy Safari
+      mq.addListener(update);
+      return () => mq.removeListener(update);
+    }
+  }, []);
 
   useEffect(() => {
     setHash(window.location.hash);
@@ -259,9 +275,22 @@ export default function SubHeader() {
 
   return (
     <nav
-      className={`sub_header${visible ? ' is_visible' : ''}`}
+      className={`sub_header${visible || isMobile ? ' is_visible' : ''}`}
       role="navigation"
       aria-label="sub navigation"
+      style={
+        isMobile
+          ? {
+              position: 'static',
+              top: 'auto',
+              maxHeight: 'none',
+              opacity: 1,
+              transform: 'none',
+              pointerEvents: 'auto',
+              overflow: 'visible',
+            }
+          : undefined
+      }
     >
       <ul className="sub_header_nav_list">
         {category.items.map((item) => {
