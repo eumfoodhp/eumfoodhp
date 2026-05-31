@@ -16,19 +16,20 @@
     padding-top: 18px;
 }
 
-/* 스텝 사이 점선 연결 (가로) — 다음 스텝까지 가운데 높이로 잇기 */
+/* 스텝 사이 점선 연결 (가로) — column-gap 영역만 정확히 채움 */
 #sub_contents .business_process_page .biz_pf_step--grid::after {
     content: '';
     position: absolute;
-    right: -100%;
-    top: calc(18px + 50%);
-    width: 100%;
+    left: 100%;
+    top: 50%;
+    width: 32px;        /* 데스크탑 column-gap */
     border-top: 2px dashed #D1D5DB;
     z-index: 0;
     pointer-events: none;
     transform: translate(0, -50%);
 }
-/* 그리드 마지막 스텝은 점선 숨김 */
+/* 행 마지막 스텝 (4번째) 은 점선 hide — 다음 step 이 다음 줄로 가서 옆이 비어 있음 */
+#sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(4n)::after,
 #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:last-child::after {
     display: none;
 }
@@ -102,12 +103,33 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 40px 24px;
     }
+    /* 3열 — 행 마지막 = 3번째 */
+    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid::after {
+        width: 24px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(4n)::after {
+        display: inline; /* 4n hide rule 무효화 */
+    }
+    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(3n)::after {
+        display: none;
+    }
 }
 
 @media (max-width: 735px) {
     #sub_contents .business_process_page .biz_pf_steps_grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 36px 16px;
+    }
+    /* 2열 — 행 마지막 = 2번째 */
+    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid::after {
+        width: 16px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(4n)::after,
+    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(3n)::after {
+        display: inline;
+    }
+    #sub_contents .business_process_page .biz_pf_steps_grid > .biz_pf_step--grid:nth-child(2n)::after {
+        display: none;
     }
     #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label {
         font-size: 15px;
