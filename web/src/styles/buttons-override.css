@@ -814,7 +814,7 @@ html, body {
         width: 100% !important;
         max-width: 100% !important;
         max-height: none !important;
-        padding: 0 16px 18px !important;
+        padding: 16px 16px 18px !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         background: #fff !important;
@@ -829,8 +829,8 @@ html, body {
         align-items: center !important;
     }
     #mo_nav .mo_close_btn {
-        margin: 4px 0 !important;
-        padding: 4px 8px !important;
+        margin: 0 !important;
+        padding: 0 !important;
         line-height: 1 !important;
     }
     #mo_nav .menu_wrapper {
