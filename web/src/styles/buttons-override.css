@@ -798,18 +798,28 @@ html, body {
         width: 100% !important;
         max-width: 100% !important;
         max-height: none !important;
-        padding: 8px 16px 18px !important;
+        padding: 0 16px 18px !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         background: #fff !important;
     }
     #mo_nav .mo_nav_top {
         padding: 0 !important;
-        margin-bottom: 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+    }
+    #mo_nav .mo_close_btn {
+        margin: 4px 0 !important;
+        padding: 4px 8px !important;
+        line-height: 1 !important;
     }
     #mo_nav .menu_wrapper {
         padding-top: 0 !important;
-        margin-top: 4px !important;
+        margin-top: 0 !important;
     }
     .mo_overlay {
         display: none;
