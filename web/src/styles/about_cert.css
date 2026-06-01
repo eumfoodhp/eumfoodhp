@@ -17,18 +17,8 @@
 
 .cert_page .cert_img_inner {
     background: #fff;
-    /* 금색 그라데이션 테두리 (전통적인 황금 톤 — 짙음→밝음→짙음) */
-    border: 6px solid transparent;
-    border-image: linear-gradient(
-        135deg,
-        #8C6914 0%,
-        #C9A227 18%,
-        #F4D67A 35%,
-        #FFE9A6 50%,
-        #F4D67A 65%,
-        #C9A227 82%,
-        #8C6914 100%
-    ) 1;
+    /* 금색 단색 테두리 (가장 밝은 톤 기준) */
+    border: 6px solid #FFE9A6;
     /* 다층 box-shadow — 내부 광택 + 외부 금빛 glow + 그림자 */
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.5) inset,
