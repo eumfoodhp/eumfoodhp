@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { submitSales } from './actions';
 import '@/styles/sub.css';
 import '@/styles/public-forms.css';
@@ -14,22 +14,23 @@ export default async function Page({
   const { locale } = await params;
   const sp = (await searchParams) ?? {};
   setRequestLocale(locale);
+  const t = await getTranslations();
 
   return (
     <main id="sub_contents" className="contact_sales_page">
       <div className="sub_inner sales_inner">
         {sp.submitted === '1' ? (
           <div className="public_notice success" role="status">
-            <strong>문의가 정상적으로 접수되었습니다.</strong>
+            <strong>{t('sales_submitted_title')}</strong>
             <br />
-            담당자가 확인 후 입력하신 이메일로 회신드리겠습니다. 감사합니다.
+            {t('sales_submitted_desc')}
           </div>
         ) : (
           <>
             {/* 페이지 헤딩 */}
             <header className="sales_head">
-              <p className="sales_eyebrow">Contact us</p>
-              <h2 className="sales_title">영업문의</h2>
+              <p className="sales_eyebrow">{t('sales_label')}</p>
+              <h2 className="sales_title">{t('sales_page_title')}</h2>
               {/* 대표전화 / 주소 정보 제거 (사용자 요청) */}
             </header>
 
@@ -47,36 +48,36 @@ export default async function Page({
               <section className="sales_step">
                 <div className="sales_step_head">
                   <span className="sales_step_no">STEP 01</span>
-                  <h3 className="sales_step_title">정보를 입력해주시면 빠른 시일내에 해결해드립니다</h3>
+                  <h3 className="sales_step_title">{t('sales_step1_title')}</h3>
                 </div>
                 <div className="pf_row">
                   <div className="pf_field">
-                    <label htmlFor="company">회사 *</label>
-                    <input id="company" name="company" type="text" required placeholder="회사명을 입력해주세요" />
+                    <label htmlFor="company">{t('sales_form_company')} *</label>
+                    <input id="company" name="company" type="text" required placeholder={t('sales_form_company_ph')} />
                   </div>
                   <div className="pf_field">
-                    <label htmlFor="position">직무 *</label>
-                    <input id="position" name="position" type="text" required placeholder="직무를 입력해주세요" />
-                  </div>
-                </div>
-                <div className="pf_row">
-                  <div className="pf_field">
-                    <label htmlFor="writer_name">이름 *</label>
-                    <input id="writer_name" name="writer_name" type="text" required maxLength={50} placeholder="이름을 입력해주세요" />
-                  </div>
-                  <div className="pf_field">
-                    <label htmlFor="email">이메일 *</label>
-                    <input id="email" name="email" type="email" required placeholder="이메일을 입력해주세요" />
+                    <label htmlFor="position">{t('sales_form_position')} *</label>
+                    <input id="position" name="position" type="text" required placeholder={t('sales_form_position_ph')} />
                   </div>
                 </div>
                 <div className="pf_row">
                   <div className="pf_field">
-                    <label htmlFor="phone">연락처 *</label>
-                    <input id="phone" name="phone" type="tel" required placeholder="연락처를 입력해주세요" />
+                    <label htmlFor="writer_name">{t('sales_form_name')} *</label>
+                    <input id="writer_name" name="writer_name" type="text" required maxLength={50} placeholder={t('sales_form_name_ph')} />
                   </div>
                   <div className="pf_field">
-                    <label htmlFor="country">국가 *</label>
-                    <input id="country" name="country" type="text" required placeholder="국가를 입력해주세요" />
+                    <label htmlFor="email">{t('sales_form_email')} *</label>
+                    <input id="email" name="email" type="email" required placeholder={t('sales_form_email_ph')} />
+                  </div>
+                </div>
+                <div className="pf_row">
+                  <div className="pf_field">
+                    <label htmlFor="phone">{t('sales_form_phone')} *</label>
+                    <input id="phone" name="phone" type="tel" required placeholder={t('sales_form_phone_ph')} />
+                  </div>
+                  <div className="pf_field">
+                    <label htmlFor="country">{t('sales_form_country')} *</label>
+                    <input id="country" name="country" type="text" required placeholder={t('sales_form_country_ph')} />
                   </div>
                 </div>
               </section>
@@ -85,55 +86,55 @@ export default async function Page({
               <section className="sales_step">
                 <div className="sales_step_head">
                   <span className="sales_step_no">STEP 02</span>
-                  <h3 className="sales_step_title">정보를 입력해주시면 빠른 시일내에 해결해드립니다</h3>
+                  <h3 className="sales_step_title">{t('sales_step2_title')}</h3>
                 </div>
 
                 <div className="pf_field">
-                  <label className="pf_label_with_required">고민 컬렉 분야 *</label>
+                  <label className="pf_label_with_required">{t('sales_form_category')} *</label>
                   <div className="sales_radio_row">
                     <label className="sales_radio">
                       <input type="radio" name="category" value="product" required defaultChecked />
-                      <span>제품/브랜드 관련 분의</span>
+                      <span>{t('sales_cat_product_brand')}</span>
                     </label>
                     <label className="sales_radio">
                       <input type="radio" name="category" value="partnership" />
-                      <span>제품/영업 분의</span>
+                      <span>{t('sales_cat_partnership')}</span>
                     </label>
                     <label className="sales_radio">
                       <input type="radio" name="category" value="general" />
-                      <span>제품 일반분의</span>
+                      <span>{t('sales_cat_product_sponsorship')}</span>
                     </label>
                     <label className="sales_radio">
                       <input type="radio" name="category" value="sponsor" />
-                      <span>기업 일반 분의</span>
+                      <span>{t('sales_cat_corporate_general')}</span>
                     </label>
                   </div>
                 </div>
 
                 <div className="pf_field">
-                  <label htmlFor="content">문의하고 싶은 내용에 대해 자세히 적어주세요. *</label>
+                  <label htmlFor="content">{t('sales_form_content')} *</label>
                   <textarea
                     id="content"
                     name="content"
                     required
                     rows={8}
                     maxLength={5000}
-                    placeholder="문의내용을 입력해주세요"
+                    placeholder={t('sales_form_content_ph')}
                   />
                 </div>
 
                 <div className="pf_field">
-                  <label htmlFor="attachment">첨부파일 *</label>
+                  <label htmlFor="attachment">{t('sales_form_attach')} *</label>
                   <div className="sales_file_row">
                     <input
                       id="attachment_label"
                       name="attachment_label"
                       type="text"
                       readOnly
-                      placeholder="파일명을 입력해주세요"
+                      placeholder={t('sales_form_attach_ph')}
                       className="sales_file_display"
                     />
-                    <label htmlFor="attachment" className="sales_file_btn">파일선택</label>
+                    <label htmlFor="attachment" className="sales_file_btn">{t('sales_form_file_btn')}</label>
                     <input
                       id="attachment"
                       name="attachment"
@@ -148,36 +149,31 @@ export default async function Page({
               <section className="sales_step">
                 <div className="sales_step_head">
                   <span className="sales_step_no">STEP 03</span>
-                  <h3 className="sales_step_title">약관동의에 마무리하여 빠르게 문의를 해주세요</h3>
+                  <h3 className="sales_step_title">{t('sales_step3_title')}</h3>
                 </div>
 
                 <details className="sales_terms" open>
                   <summary className="sales_terms_summary">
                     <span className="sales_terms_check_icon" aria-hidden="true">✓</span>
-                    <span className="sales_terms_title">개인정보 수집 및 이용 동의</span>
-                    <span className="sales_terms_required">[필수]</span>
+                    <span className="sales_terms_title">{t('sales_privacy_agree')}</span>
+                    <span className="sales_terms_required">{t('sales_privacy_required')}</span>
                     <span className="sales_terms_arrow" aria-hidden="true">⌃</span>
                   </summary>
                   <div className="sales_terms_body">
-                    <p>
-                      ㈜이음푸드시스템은 개인정보 보호법 및 정보통신망 이용 촉진 및 정보 보호 등에 관한 법률(이하 &lsquo;정보통신망법&rsquo;), &lsquo;개인정보 보호법&rsquo;, 채용 등 등 관련 법에 따라 귀하로부터 개인정보를 아래와 같이 수집 및 처리합니다.
-                    </p>
-                    <p>
-                      <strong>1. 개인정보 수집·이용에 대한 동의</strong>
-                      <br />
-                      ㈜이음푸드시스템 채용에 연관되는 개인정보 수집현황·수집 항목을 투명하고 안전하게 보호·관리하며, 이에 개인정보 수집·이용에 대한 동의를 구합니다.
-                    </p>
+                    <p>{t('sales_privacy_p1')}</p>
+                    <p>{t('sales_privacy_p2')}</p>
+                    <p>{t('sales_privacy_p3')}</p>
                   </div>
                 </details>
 
                 <label className="pf_checkbox sales_terms_agree">
                   <input type="checkbox" name="privacy_agreed" required />
-                  <span>위 내용에 동의합니다. *</span>
+                  <span>{t('sales_privacy_agree')} *</span>
                 </label>
               </section>
 
               <div className="pf_actions sales_actions">
-                <button type="submit" className="pf_submit sales_submit">제출하기</button>
+                <button type="submit" className="pf_submit sales_submit">{t('sales_submit')}</button>
               </div>
             </form>
           </>

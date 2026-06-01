@@ -46,36 +46,36 @@ export default async function Page({
       <div className="sub_inner inquiry_inner">
         {sp.submitted === '1' && (
           <div className="public_notice success" role="status">
-            문의가 정상적으로 접수되었습니다. 빠른 시일 내 답변드리겠습니다.
+            {t('contact_submitted_notice')}
           </div>
         )}
 
         {/* 페이지 헤딩 */}
         <header className="inquiry_head">
-          <p className="inquiry_eyebrow">Q&amp;A</p>
-          <h2 className="inquiry_title">1:1 문의</h2>
+          <p className="inquiry_eyebrow">{t('contact_page_eyebrow')}</p>
+          <h2 className="inquiry_title">{t('contact_page_title')}</h2>
         </header>
 
         {/* 필터 바 — 정렬 / 검색 필드 / 검색어 / 글쓰기 */}
         <form className="inquiry_filter_bar" method="get">
           <div className="inquiry_filters">
             <select name="sort" defaultValue={sort} className="inquiry_select">
-              <option value="latest">최신순</option>
-              <option value="oldest">오래된순</option>
+              <option value="latest">{t('contact_sort_latest')}</option>
+              <option value="oldest">{t('contact_sort_oldest')}</option>
             </select>
             <select name="field" defaultValue={field} className="inquiry_select">
-              <option value="subject">제목</option>
-              <option value="writer">작성자</option>
+              <option value="subject">{t('contact_search_subject')}</option>
+              <option value="writer">{t('contact_search_writer')}</option>
             </select>
             <div className="inquiry_search">
               <input
                 type="text"
                 name="q"
                 defaultValue={q}
-                placeholder="검색어를 입력해주세요"
+                placeholder={t('contact_search_placeholder')}
                 className="inquiry_search_input"
               />
-              <button type="submit" className="inquiry_search_btn" aria-label="검색">
+              <button type="submit" className="inquiry_search_btn" aria-label={t('contact_search_aria')}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -83,24 +83,24 @@ export default async function Page({
               </button>
             </div>
           </div>
-          <Link href="/contact/write" className="inquiry_write_btn">글쓰기</Link>
+          <Link href="/contact/write" className="inquiry_write_btn">{t('contact_write')}</Link>
         </form>
 
         <table className="inquiry_table">
           <thead>
             <tr>
-              <th style={{ width: 80 }}>NO</th>
-              <th>제목</th>
-              <th style={{ width: 140 }}>작성자</th>
-              <th style={{ width: 140 }}>작성일</th>
-              <th style={{ width: 120 }}>문의상태</th>
+              <th style={{ width: 80 }}>{t('contact_col_no')}</th>
+              <th>{t('contact_col_title')}</th>
+              <th style={{ width: 140 }}>{t('contact_col_writer')}</th>
+              <th style={{ width: 140 }}>{t('contact_col_date')}</th>
+              <th style={{ width: 120 }}>{t('contact_col_state')}</th>
             </tr>
           </thead>
           <tbody>
             {!list || list.length === 0 ? (
               <tr>
                 <td colSpan={5} className="inquiry_table_empty">
-                  아직 등록된 문의가 없습니다.
+                  {t('contact_empty')}
                 </td>
               </tr>
             ) : (
@@ -111,15 +111,15 @@ export default async function Page({
                     <td>No.{rowNo}</td>
                     <td className="inquiry_table_title">
                       {c.is_private && <span aria-hidden="true">🔒 </span>}
-                      {c.is_private ? '비공개 글입니다.' : c.subject}
+                      {c.is_private ? t('contact_private_text') : c.subject}
                     </td>
                     <td>{maskName(c.writer_name)}</td>
                     <td>{formatDate(c.created_at)}</td>
                     <td>
                       {c.status === 'answered' ? (
-                        <span className="status_chip status_chip--answered">답변완료</span>
+                        <span className="status_chip status_chip--answered">{t('contact_state_done')}</span>
                       ) : (
-                        <span className="status_chip status_chip--wait">답변대기</span>
+                        <span className="status_chip status_chip--wait">{t('contact_state_pending')}</span>
                       )}
                     </td>
                   </tr>
@@ -130,7 +130,7 @@ export default async function Page({
         </table>
 
         {totalPages > 1 && (
-          <nav className="inquiry_pagination" aria-label="페이지">
+          <nav className="inquiry_pagination" aria-label={t('contact_pagination_aria')}>
             <PageLink page={Math.max(1, page - 1)} sort={sort} field={field} q={q} disabled={page <= 1}>
               &lsaquo;
             </PageLink>
