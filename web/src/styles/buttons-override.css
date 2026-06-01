@@ -1552,18 +1552,7 @@ html[lang="zh"] .dl_title {
     outline-offset: 2px;
 }
 
-/* 모바일 — sticky, #header + MobileMainNav 아래에 따라옴. z-index 더 위로. */
-@media (max-width: 1024px) {
-    .sub_header {
-        top: 146px;  /* 헤더 90 + MobileMainNav 56 */
-        z-index: 11001 !important;
-    }
-}
-@media (max-width: 735px) {
-    .sub_header {
-        top: 128px;  /* 헤더 76 + MobileMainNav 52 */
-    }
-}
+/* SubHeader 모바일 전용 룰 — 없음. PC 정의 (top 112) 그대로 사용. */
 
 
 

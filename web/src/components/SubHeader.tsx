@@ -123,46 +123,7 @@ export default function SubHeader() {
   const t = useTranslations();
   const [hash, setHash] = useState('');
   const [activeId, setActiveId] = useState<string>('');
-  /* visible 초기값 true — 모바일은 isMobile 분기로 항상 true 유지,
-     PC 는 mount 후 4초 idle 시 hide → mouse 활동 시 다시 show.
-     SSR/CSR hydration mismatch 없음 (둘 다 true 로 시작). */
   const [visible, setVisible] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-
-  const [mobileTop, setMobileTop] = useState(188);
-
-  // 모바일 감지 + 헤더 실제 높이 측정 → SubHeader top 동기화
-  // + 모바일은 mouseenter 트리거가 없어서 페이지 로드 시 visible 한 번 강제
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 1024px)');
-    const update = () => {
-      const m = mq.matches;
-      setIsMobile(m);
-      if (m) {
-        // SubHeader top = #header + .mobile_main_nav 높이 합
-        const h = document.getElementById('header');
-        const n = document.querySelector('.mobile_main_nav') as HTMLElement | null;
-        const sum = (h ? h.getBoundingClientRect().height : 0)
-                  + (n ? n.getBoundingClientRect().height : 0);
-        if (sum > 0) setMobileTop(sum);
-        // 첫 진입 시 visible 트리거 (PC mousemove 동등) — 이후 4초 idle 시
-        // 자동 hide, scroll/touch 시 다시 show (PC 와 동일 transition).
-        setVisible(true);
-      }
-    };
-    update();
-    if (typeof mq.addEventListener === 'function') {
-      mq.addEventListener('change', update);
-      window.addEventListener('resize', update);
-      return () => {
-        mq.removeEventListener('change', update);
-        window.removeEventListener('resize', update);
-      };
-    } else {
-      mq.addListener(update);
-      return () => mq.removeListener(update);
-    }
-  }, []);
 
   useEffect(() => {
     setHash(window.location.hash);
@@ -215,13 +176,7 @@ export default function SubHeader() {
   // 4초간 아무 활동도 없으면 자동 닫힘. sub_header 위에 마우스 올라가 있는
   // 동안엔 닫지 않음. 토글 직후엔 자기 자신이 만든 layout/scroll 이벤트를
   // 무시해서 깜빡임 방지.
-  // * 모바일은 mouse 이벤트가 없어서 4초 idle hide 가 즉시 트리거됨 → 비활성.
-  //   항상 visible 상태 유지하고 sticky 로 헤더 따라옴.
   useEffect(() => {
-    if (isMobile) {
-      setVisible(true); // 항상 펼친 상태
-      return;
-    }
     let hideTimer: ReturnType<typeof setTimeout> | null = null;
     let isMouseOverSub = false;
     let suppressUntil = 0;          // 이 시점까지 scroll/mousemove 이벤트 무시
@@ -298,7 +253,7 @@ export default function SubHeader() {
       node?.removeEventListener('mouseenter', onEnter);
       node?.removeEventListener('mouseleave', onLeave);
     };
-  }, [pathname, isMobile]);
+  }, [pathname]);
 
   const category = matchCategory(pathname);
   if (!category) return null;
@@ -310,24 +265,6 @@ export default function SubHeader() {
       className={`sub_header${visible ? ' is_visible' : ''}`}
       role="navigation"
       aria-label="sub navigation"
-      style={
-        isMobile
-          ? {
-              /* MobileMainNav 처럼 단순 sticky — 자동 hide/show transition 없이
-                 항상 펼친 상태로 헤더 따라옴. */
-              position: 'sticky',
-              top: mobileTop,
-              zIndex: 11001,
-              maxHeight: 'none',
-              opacity: 1,
-              transform: 'none',
-              padding: '8px 12px',
-              pointerEvents: 'auto',
-              overflow: 'visible',
-              marginTop: 0,
-            }
-          : undefined
-      }
     >
       <ul className="sub_header_nav_list">
         {category.items.map((item) => {
