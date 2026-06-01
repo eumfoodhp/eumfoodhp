@@ -1666,8 +1666,9 @@ html[lang="zh"] .dl_title {
     max-width: none;
     margin: auto 0 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 32px;
+    /* PREV — divider — NEXT 한 줄 배치 */
+    grid-template-columns: auto 1fr auto;
+    column-gap: 24px;
     align-items: center;
 }
 
@@ -1707,29 +1708,24 @@ html[lang="zh"] .dl_title {
     z-index: 10;
 }
 
-/* PREV 점 왼쪽 위, NEXT 점 오른쪽 아래 — 둘 다 중앙에서 60px 씩 대칭. */
+/* PREV — 좌측, divider — 가운데, NEXT — 우측 (모두 같은 행). */
 .next_section_link--prev {
     background: transparent;
-    grid-column: 1 / -1;
+    grid-column: 1;
     grid-row: 1;
-    justify-self: center;
-    transform: translateX(-60px);    /* 중앙에서 좌측으로 60px */
+    justify-self: start;
+    transform: none;
 }
 .next_section_divider {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    grid-column: 2;
+    grid-row: 1;
 }
 .next_section > .next_section_link:not(.next_section_link--prev) {
-    /* NEXT — divider 아래, 중앙에서 우측으로 60px (PREV 와 대칭).
-       이전엔 position: absolute + top: calc(100% + 16px) 였는데,
-       다음 .story_section 의 padding-top 영역이 DOM 상 뒤에 와서
-       NEXT 위로 올라가 클릭을 차단하던 버그. normal flow grid row 3
-       으로 옮겨 자기 섹션 안에 머물도록 변경. */
-    grid-column: 1 / -1;
-    grid-row: 3;
-    justify-self: center;
-    transform: translateX(60px);    /* 중앙에서 우측으로 60px */
-    margin-top: 16px;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    transform: none;
+    margin-top: 0;
     position: relative;
     z-index: 20;
 }
@@ -1751,21 +1747,18 @@ html[lang="zh"] .dl_title {
     transform: translateY(2px);
 }
 
-/* PREV / NEXT 는 absolute/grid 로 transform 으로 위치 잡혀 있어서,
-   기본 :hover { transform: translateY(2px) } 가 들어가면 좌우 offset 이
-   사라지고 가운데로 점프하는 버그. 각 버튼 호버 시 본래 transform 유지. */
+/* 한 줄 배치로 변경되어 좌우 offset transform 불필요.
+   PREV 호버 비활성 (사용자 요청 유지). */
 .next_section_link--prev:hover {
-    transform: translateX(-60px);
-    /* 사용자 요청: PREV 는 호버해도 전혀 변화 없게 */
+    transform: none;
     background: transparent;
 }
 .next_section_link--prev:hover .next_section_icon,
 .next_section_link--prev:hover .next_section_icon--up {
-    /* PREV 아이콘 bounce 도 제거 */
     animation: none;
 }
 .next_section > .next_section_link:not(.next_section_link--prev):hover {
-    transform: translateX(60px);
+    transform: translateY(2px);
 }
 
 .next_section_link:hover .next_section_icon {
