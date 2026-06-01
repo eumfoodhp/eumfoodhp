@@ -1626,7 +1626,8 @@ html[lang="zh"] .dl_title {
 .sub_header {
     width: 1580px;
     max-width: 95%;
-    margin: 8px auto 0;
+    /* 헤더와의 간격 제거 — 사용자 요청: 스크롤 후 좁아진 간격을 기본으로 */
+    margin: 0 auto;
     padding: 0 12px;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.04);
