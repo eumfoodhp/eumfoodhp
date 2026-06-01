@@ -25,7 +25,7 @@ export default async function NewsroomOnePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  await getTranslations();
+  const t = await getTranslations();
 
   const supabase = await createServerSupabase();
 
@@ -55,10 +55,10 @@ export default async function NewsroomOnePage({
 
         {/* ===== 1. 공지사항 ===== */}
         <div id="notice" className="story_section">
-          <SectionHeader title="공지사항" en="Notice" />
+          <SectionHeader title={t('sub_notice')} en="Notice" />
 
           {(!notices || notices.length === 0) ? (
-            <div className="sub_inner board_empty">등록된 공지사항이 없습니다.</div>
+            <div className="sub_inner board_empty">{t('board_empty_notice')}</div>
           ) : (
             <div className="sub_inner">
               <ul className="board_line_list">
@@ -66,19 +66,19 @@ export default async function NewsroomOnePage({
                   <li key={n.id} className="row">
                     <Link href={`/notice/${n.id}` as never}>
                       <span className={`col_no${n.is_pinned ? ' pinned' : ''}`}>
-                        {n.is_pinned ? '공지' : `No.${notices.length - idx}`}
+                        {n.is_pinned ? t('label_notice_pinned') : `No.${notices.length - idx}`}
                       </span>
                       <span className="col_title">{n.title}</span>
                       <span className="col_chip_wrap">
                         {n.file_url && (
                           <span className="col_chip">
                             <DownloadIcon />
-                            <span>다운로드</span>
+                            <span>{t('btn_download')}</span>
                           </span>
                         )}
                       </span>
                       <span className="col_date">
-                        {new Date(n.created_at).toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '')}
+                        {new Date(n.created_at).toLocaleDateString(locale).replace(/\. /g, '.').replace(/\.$/, '')}
                       </span>
                     </Link>
                   </li>
@@ -86,18 +86,18 @@ export default async function NewsroomOnePage({
               </ul>
             </div>
           )}
-          <NextSectionLink prevId="notice" nextId="press" nextLabel="보도자료" />
+          <NextSectionLink prevId="notice" nextId="press" nextLabel={t('sub_news_press')} />
         </div>
 
         {/* ===== 2. 보도자료 ===== */}
         <div id="press" className="story_section">
-          <SectionHeader title="보도자료" en="Press" />
+          <SectionHeader title={t('sub_news_press')} en="Press" />
 
           <div className="sub_inner">
             {heroItems.length > 0 && <PressHeroSlider items={heroItems} />}
 
             {(!presses || presses.length === 0) ? (
-              <div className="board_empty">등록된 보도자료가 없습니다.</div>
+              <div className="board_empty">{t('board_empty_press')}</div>
             ) : (
               <ul className="board_grid">
                 {presses.map((p) => (
@@ -116,7 +116,7 @@ export default async function NewsroomOnePage({
                         <span className="tag">NEWS</span>
                         <h3 className="title">{p.title}</h3>
                         <span className="date">
-                          {new Date(p.created_at).toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '')}
+                          {new Date(p.created_at).toLocaleDateString(locale).replace(/\. /g, '.').replace(/\.$/, '')}
                         </span>
                       </div>
                     </Link>

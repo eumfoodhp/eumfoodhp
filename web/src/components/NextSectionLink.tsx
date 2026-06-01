@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 /**
  * 옵션 C: 섹션 끝에 "PREV ↑" + "NEXT ↓" 버튼.
  * 스토리북 스타일 — 자연스럽게 이전·다음 섹션으로 흐름 유도.
@@ -28,6 +30,7 @@ function scrollToSection(id: string) {
 }
 
 export default function NextSectionLink({ nextId, nextLabel, prevId, isLast }: Props) {
+  const t = useTranslations();
   // 마지막 섹션엔 PREV/NEXT 모두 통째 비노출 (사용자 요청).
   if (isLast) return null;
 
@@ -48,7 +51,7 @@ export default function NextSectionLink({ nextId, nextLabel, prevId, isLast }: P
           href={`#${prevId}`}
           onClick={handlePrev}
           className="next_section_link next_section_link--prev"
-          aria-label="이전 섹션으로"
+          aria-label={t('aria_prev_section')}
         >
           <svg
             width="22"
@@ -78,7 +81,7 @@ export default function NextSectionLink({ nextId, nextLabel, prevId, isLast }: P
           href={`#${nextId}`}
           onClick={handleNext}
           className="next_section_link"
-          aria-label={`다음 섹션 ${nextLabel ?? ''} 으로`}
+          aria-label={`${t('aria_next_section')}${nextLabel ? ` — ${nextLabel}` : ''}`}
         >
           <span className="next_section_eyebrow">NEXT</span>
           <svg
