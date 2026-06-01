@@ -126,7 +126,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 2. 조림류 ===== */}
         <div id="braised" className="product_braised_page story_section">
-          <SectionHeader title={t('sub_prod_braised')} en="Braised" />
+          <SectionHeader title={t('sub_prod_braised')} en="Braised Dishes" />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid">
@@ -209,7 +209,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 4. 양념젓갈·젓갈류 ===== */}
         <div id="salted" className="product_salted_page story_section">
-          <SectionHeader title={t('sub_prod_salted')} en="Salted" />
+          <SectionHeader title={t('sub_prod_salted')} en="Salted Seafood" />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid product_grid--salted_three">
@@ -247,7 +247,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 5. 소스 (sub-sections 포함) ===== */}
         <div id="sauce" className="product_sauce_page story_section">
-          <SectionHeader title={t('sub_prod_sauce')} en="Sauce" />
+          <SectionHeader title={t('sub_prod_sauce')} en="Sauce & Beverage" />
           <div className="sauce_section">
             {SAUCE_SECTIONS.map((sec, secIdx) => {
               const note = sec.noteKey ? t(sec.noteKey) : '';

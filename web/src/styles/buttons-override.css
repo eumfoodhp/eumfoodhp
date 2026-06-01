@@ -1942,6 +1942,25 @@ html[lang="zh"] .dl_title {
     min-width: 0;
 }
 
+/* 제품 카드 안 한국어 + 영어 (.name_row) 도 SectionHeader 패턴과 동일하게
+   세로 stack (한국어 위, 영어 아래). 각 product_*.css 의 .name_row 가
+   flex-direction row 라서 override. */
+#sub_contents .product_card .name_row,
+#sub_contents [class*="product_"] .name_row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+}
+#sub_contents .product_card .name_row .en,
+#sub_contents [class*="product_"] .name_row .en {
+    color: #F26337 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.3 !important;
+}
+
 /* 한국어 + 영어 부제 묶음 — 세로 stack (한국어 위, 영어 아래) */
 .story_section_title_inner {
     display: inline-flex;
