@@ -929,6 +929,125 @@ html, body {
 }
 
 /* ============================================================
+   PC (≥1025px) 햄버거 메뉴 — 모바일과 동일 우측 drawer
+   (가운데 풀스크린 답답함 해소 — 사용자 요청)
+   ============================================================ */
+@media (min-width: 1025px) {
+    #mo_nav {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        justify-content: flex-end !important;
+        align-items: stretch !important;
+    }
+    #mo_nav.full_menu_overlay {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        width: 420px !important;
+        max-width: 90vw !important;
+        min-width: 320px !important;
+        height: 100vh !important;
+        background: #fff !important;
+        box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12) !important;
+        z-index: 12000 !important;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        padding-bottom: 24px !important;
+    }
+    #mo_nav.full_menu_overlay.active { transform: translateX(0); }
+
+    #mo_nav .menu_container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 18px 28px 20px !important;
+        background: #fff !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    #mo_nav .menu_wrapper {
+        flex-direction: column !important;
+        gap: 18px !important;
+        padding-bottom: 12px !important;
+    }
+    #mo_nav .menu_group {
+        width: 100% !important;
+        gap: 8px !important;
+        border: none !important;
+        border-bottom: none !important;
+    }
+    #mo_nav .menu_dep1 {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 4px 0 !important;
+        border: none !important;
+        background: transparent !important;
+        cursor: default !important;
+    }
+    #mo_nav .menu_dep1 h3 {
+        font-size: 18px !important;
+        line-height: 26px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-weight: 700 !important;
+        color: #222 !important;
+        flex-shrink: 0 !important;
+    }
+    #mo_nav .menu_dep1::after {
+        display: none !important;
+        content: none !important;
+    }
+    #mo_nav .mo_plus { display: none !important; }
+
+    #mo_nav .menu_dep2.mo_sub_menu {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+    #mo_nav .menu_dep2 li {
+        margin: 0 !important;
+        display: inline-flex !important;
+        width: auto !important;
+    }
+    #mo_nav .menu_dep2 li a {
+        display: inline-block !important;
+        font-size: 13px !important;
+        line-height: 18px !important;
+        padding: 8px 12px !important;
+        color: #F26337 !important;
+        font-weight: 600 !important;
+        background: #D1FAE5 !important;
+        border-radius: 10px !important;
+        white-space: nowrap !important;
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+    #mo_nav .menu_dep2 li a:hover {
+        background: #A7F3D0 !important;
+        color: #C53A1A !important;
+    }
+
+    #mo_nav .mo_nav_top {
+        justify-content: flex-end !important;
+        padding-bottom: 4px !important;
+    }
+    #mo_nav .mo_close_btn {
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        font-size: 28px !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+}
+
+/* ============================================================
    메가메뉴 → 메뉴별 개별 드롭다운 카드로 전환
    특정 메뉴에 마우스오버 시 해당 메뉴의 서브만 아래에 나타남
    ============================================================ */
