@@ -7,6 +7,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import NextSectionLink from '@/components/NextSectionLink';
+import SectionHeader from '@/components/SectionHeader';
 import PressHeroSlider from '@/components/PressHeroSlider';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/sub.css';
@@ -54,9 +55,7 @@ export default async function NewsroomOnePage({
 
         {/* ===== 1. 공지사항 ===== */}
         <div id="notice" className="story_section">
-          <header className="story_section_head">
-            <h2 className="story_section_title">공지사항</h2>
-          </header>
+          <SectionHeader title="공지사항" en="Notice" />
 
           {(!notices || notices.length === 0) ? (
             <div className="sub_inner board_empty">등록된 공지사항이 없습니다.</div>
@@ -92,9 +91,7 @@ export default async function NewsroomOnePage({
 
         {/* ===== 2. 보도자료 ===== */}
         <div id="press" className="story_section">
-          <header className="story_section_head">
-            <h2 className="story_section_title">보도자료</h2>
-          </header>
+          <SectionHeader title="보도자료" en="Press" />
 
           <div className="sub_inner">
             {heroItems.length > 0 && <PressHeroSlider items={heroItems} />}

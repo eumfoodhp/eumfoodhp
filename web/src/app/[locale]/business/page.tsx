@@ -10,6 +10,7 @@
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import NextSectionLink from '@/components/NextSectionLink';
+import SectionHeader from '@/components/SectionHeader';
 import FacilitySection from '@/components/FacilitySection';
 import CertGrid from '@/components/CertGrid';
 import '@/styles/sub.css';
@@ -64,18 +65,14 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
 
       {/* ===== 1. 시설현황 ===== */}
       <div id="facility" className="business_facility_page story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_facility')}</h2>
-        </header>
+        <SectionHeader title={t('sub_facility')} en="Facility" />
         <FacilitySection />
         <NextSectionLink prevId="facility" nextId="process" nextLabel={t('sub_biz_process')} />
       </div>
 
       {/* ===== 2. 제조공정 ===== */}
       <div id="process" className="business_process_page story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_biz_process')}</h2>
-        </header>
+        <SectionHeader title={t('sub_biz_process')} en="Process" />
         {CATEGORIES.map((cat) => (
           <section
             key={cat.key}
@@ -118,9 +115,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
 
       {/* ===== 3. 인증·특허 ===== */}
       <div id="cert" className="cert_page story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_cert')}</h2>
-        </header>
+        <SectionHeader title={t('sub_cert')} en="Certificate" />
         <section className="cert_content_section">
           <div className="sub_inner">
             <div className="cert_container">

@@ -9,6 +9,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import BrochureLink from '@/components/BrochureLink';
 import NextSectionLink from '@/components/NextSectionLink';
+import SectionHeader from '@/components/SectionHeader';
 import { nl2br } from '@/lib/nl2br';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
@@ -74,14 +75,16 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 1. 절임식품 ===== */}
         <div id="pickles" className="product_pickles_page story_section">
-          <header className="story_section_head story_section_head--with_action">
-            <h2 className="story_section_title">{t('sub_prod_pickles')}</h2>
-            {/* 단일 상품소개서 다운로드 — 절임식품 섹션 헤더 우측에만 노출 */}
-            <BrochureLink className="btn_download story_section_action">
-              <span>{t('btn_product_intro')}</span>
-              <img src="/images/sub/download.png" alt="" />
-            </BrochureLink>
-          </header>
+          <SectionHeader
+            title={t('sub_prod_pickles')}
+            en="Pickles"
+            action={
+              <BrochureLink className="btn_download story_section_action">
+                <span>{t('btn_product_intro')}</span>
+                <img src="/images/sub/download.png" alt="" />
+              </BrochureLink>
+            }
+          />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid">
@@ -123,9 +126,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 2. 조림류 ===== */}
         <div id="braised" className="product_braised_page story_section">
-          <header className="story_section_head">
-            <h2 className="story_section_title">{t('sub_prod_braised')}</h2>
-          </header>
+          <SectionHeader title={t('sub_prod_braised')} en="Braised" />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid">
@@ -167,9 +168,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 3. 나물류 ===== */}
         <div id="namul" className="product_namul_page story_section">
-          <header className="story_section_head">
-            <h2 className="story_section_title">{t('sub_prod_namul')}</h2>
-          </header>
+          <SectionHeader title={t('sub_prod_namul')} en="Namul" />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid">
@@ -210,9 +209,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 4. 양념젓갈·젓갈류 ===== */}
         <div id="salted" className="product_salted_page story_section">
-          <header className="story_section_head">
-            <h2 className="story_section_title">{t('sub_prod_salted')}</h2>
-          </header>
+          <SectionHeader title={t('sub_prod_salted')} en="Salted" />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid product_grid--salted_three">
@@ -250,9 +247,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 5. 소스 (sub-sections 포함) ===== */}
         <div id="sauce" className="product_sauce_page story_section">
-          <header className="story_section_head">
-            <h2 className="story_section_title">{t('sub_prod_sauce')}</h2>
-          </header>
+          <SectionHeader title={t('sub_prod_sauce')} en="Sauce" />
           <div className="sauce_section">
             {SAUCE_SECTIONS.map((sec, secIdx) => {
               const note = sec.noteKey ? t(sec.noteKey) : '';
@@ -312,9 +307,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 6. 액상차 ===== */}
         <div id="tea" className="product_tea_page story_section">
-          <header className="story_section_head">
-            <h2 className="story_section_title">{t('sub_prod_tea')}</h2>
-          </header>
+          <SectionHeader title={t('sub_prod_tea')} en="Tea" />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid">

@@ -11,6 +11,7 @@
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import NextSectionLink from '@/components/NextSectionLink';
+import SectionHeader from '@/components/SectionHeader';
 import HistoryTimeline from '@/components/HistoryTimeline';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
@@ -99,9 +100,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 1. 인사말 ===== */}
       <div id="greeting" className="story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_greeting')}</h2>
-        </header>
+        <SectionHeader title={t('sub_greeting')} en="Greeting" />
         <section className="ceo_intro_section">
           <div className="ceo_inner">
             <div className="ceo_main_group">
@@ -125,18 +124,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 2. 회사연혁 — 세로 탭 + 연도 카드 그리드 ===== */}
       <div id="history" className="story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_history')}</h2>
-        </header>
+        <SectionHeader title={t('sub_history')} en="History" />
         <HistoryTimeline byYear={byYear} sortedYears={sortedYears} />
         <NextSectionLink prevId="greeting" nextId="area" nextLabel={t('sub_biz_area')} />
       </div>
 
       {/* ===== 3. 주요 사업 ===== */}
       <div id="area" className="story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_biz_area')}</h2>
-        </header>
+        <SectionHeader title={t('sub_biz_area')} en="Business" />
         <section className="biz_overview_section">
           <div className="sub_inner biz_ov_inner">
             <div className="ov_left">
@@ -196,9 +191,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 4. 조직도 ===== */}
       <div id="organization" className="story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_org')}</h2>
-        </header>
+        <SectionHeader title={t('sub_org')} en="Organization" />
         <section className="org_content_section">
           <div className="org_container">
             <div className="org_chart_wrap">
@@ -261,9 +254,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
       {/* ===== 5. 오시는길 ===== */}
       <div id="location" className="story_section">
-        <header className="story_section_head">
-          <h2 className="story_section_title">{t('sub_location')}</h2>
-        </header>
+        <SectionHeader title={t('sub_location')} en="Location" />
         <section className="location_content_section">
           <div className="sub_inner location_inner">
             {/* 본사·공장 — 지도 LEFT / 정보 RIGHT */}

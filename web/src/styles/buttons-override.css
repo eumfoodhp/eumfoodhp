@@ -1935,6 +1935,32 @@ html[lang="zh"] .dl_title {
     min-width: 0;
 }
 
+/* 한국어 + 영어 부제 묶음 (가운데 텍스트 wrapper) */
+.story_section_title_inner {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+.story_section_title_en {
+    font-style: normal;
+    font-size: 0.42em;
+    font-weight: 700;
+    color: #F26337;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+@media (max-width: 1024px) {
+    .story_section_title_inner { gap: 10px; }
+    .story_section_title_en { font-size: 0.45em; }
+}
+@media (max-width: 640px) {
+    .story_section_title_inner { gap: 8px; }
+    .story_section_title_en { font-size: 0.5em; letter-spacing: 0.05em; }
+}
+
 /* 타이틀 아래 가로선 — 제거 (사용자 요청) */
 .story_section_head::after {
     content: none;
