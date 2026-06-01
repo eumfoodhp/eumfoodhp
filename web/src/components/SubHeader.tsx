@@ -208,7 +208,13 @@ export default function SubHeader() {
   // 4초간 아무 활동도 없으면 자동 닫힘. sub_header 위에 마우스 올라가 있는
   // 동안엔 닫지 않음. 토글 직후엔 자기 자신이 만든 layout/scroll 이벤트를
   // 무시해서 깜빡임 방지.
+  // * 모바일은 mouse 이벤트가 없어서 4초 idle hide 가 즉시 트리거됨 → 비활성.
+  //   항상 visible 상태 유지하고 sticky 로 헤더 따라옴.
   useEffect(() => {
+    if (isMobile) {
+      setVisible(true); // 항상 펼친 상태
+      return;
+    }
     let hideTimer: ReturnType<typeof setTimeout> | null = null;
     let isMouseOverSub = false;
     let suppressUntil = 0;          // 이 시점까지 scroll/mousemove 이벤트 무시
@@ -282,7 +288,7 @@ export default function SubHeader() {
       node?.removeEventListener('mouseenter', onEnter);
       node?.removeEventListener('mouseleave', onLeave);
     };
-  }, [pathname]);
+  }, [pathname, isMobile]);
 
   const category = matchCategory(pathname);
   if (!category) return null;
