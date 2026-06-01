@@ -15,7 +15,7 @@
 }
 
 .org_chart {
-    --org-line: #1F2937;            /* 검정에 가까운 진한 회색 (가독성 확보) */
+    --org-line: #D1D5DB;            /* 옅은 회색 — 사용자 요청으로 검정 점선 제거 */
     --org-line-w: 2px;              /* 커넥터 선 두께 */
     --org-blue: #1F60A8;
     --org-orange: #F26337;
