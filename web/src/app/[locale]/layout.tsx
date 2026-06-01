@@ -51,7 +51,6 @@ export default async function LocaleLayout({
       <body style={{ backgroundColor: '#ffffff', color: '#222222' }}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Header />
-          <MobileMainNav />
           <SubHeader />
           {children}
           <Footer />

@@ -626,9 +626,9 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         z-index: 11000;
     }
 
-    /* 모바일: 헤더(80) + 서브1(56) + 서브2(56) 합 */
+    /* 모바일: 헤더(80) + 서브2(56) 합 */
     html, body {
-        padding-top: 204px;
+        padding-top: 140px;
     }
 
     .header_inner {
@@ -743,9 +743,9 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 }
 
 @media (max-width: 735px) {
-    /* 모바일 작은 폰: 헤더(72) + 서브1(50) + 서브2(50) */
+    /* 모바일 작은 폰: 헤더(72) + 서브2(50) */
     html, body {
-        padding-top: 180px;
+        padding-top: 124px;
     }
 
     .header_inner {
