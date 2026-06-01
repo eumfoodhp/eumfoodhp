@@ -753,26 +753,24 @@ html, body {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 8px;
     }
-    /* SubHeader 항목과 같은 pill 디자인 — 통일감 */
+    /* SubHeader 항목과 같은 pill 디자인 — 통일감, 테두리로 외곽 표시 */
     .mobile_main_nav_link {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 500;
         color: #222;
         text-decoration: none;
-        padding: 10px 6px;
+        padding: 9px 4px;
         text-align: center;
         white-space: nowrap;
         line-height: 1.2;
         background: #fff !important;
-        border: none !important;
+        border: 1px solid #E5E7EB !important;
         border-radius: 999px !important;
-        box-shadow:
-            0 4px 12px rgba(0, 0, 0, 0.05),
-            0 1px 3px rgba(0, 0, 0, 0.03) !important;
-        transition: color 0.2s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+        transition: color 0.2s ease, border-color 0.2s ease;
         outline: none !important;
     }
     .mobile_main_nav_link:focus,
@@ -782,6 +780,7 @@ html, body {
     .mobile_main_nav_link:hover,
     .mobile_main_nav_link.is_active {
         color: #F26337;
+        border-color: #F26337 !important;
     }
 }
 @media (max-width: 735px) {
@@ -1450,12 +1449,17 @@ html[lang="zh"] .dl_title {
         scrollbar-width: none;
     }
     .sub_header::-webkit-scrollbar { display: none; }
-    /* SubHeader 자체 박스 제거 (각 항목만 pill — 그림처럼) */
-    .sub_header {
+    /* SubHeader 자체 박스 강제 제거 — body / nav / .is_visible 모든 케이스 */
+    body .sub_header,
+    nav.sub_header,
+    .sub_header,
+    .sub_header.is_visible {
         background: transparent !important;
+        background-color: transparent !important;
         border: none !important;
         box-shadow: none !important;
         border-radius: 0 !important;
+        padding: 0 !important;
     }
     .sub_header_nav_list {
         display: grid;
@@ -1468,23 +1472,23 @@ html[lang="zh"] .dl_title {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 10px 6px;
-        background: #fff;
-        border-radius: 999px;
-        font-size: 14px;
+        padding: 9px 4px;
+        background: #fff !important;
+        border: 1px solid #E5E7EB !important;
+        border-radius: 999px !important;
+        font-size: 13px;
         font-weight: 500;
         color: #222;
         text-align: center;
         white-space: nowrap;
-        box-shadow:
-            0 4px 12px rgba(0, 0, 0, 0.05),
-            0 1px 3px rgba(0, 0, 0, 0.03);
-        transition: color 0.15s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+        transition: color 0.15s ease, border-color 0.15s ease;
         outline: none !important;
     }
     .sub_header_nav_link.is_active,
     .sub_header_nav_link:hover {
         color: #F26337;
+        border-color: #F26337 !important;
     }
 }
 @media (max-width: 1024px) {
