@@ -202,14 +202,27 @@
     }
 
     #sub_contents .cert_page .cert_top {
+        flex-direction: column !important;
         gap: 32px;
-        align-items: flex-start;
+        align-items: stretch !important;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     #sub_contents .cert_page .top_left,
     #sub_contents .cert_page .top_right {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* cert_container 도 폭/overflow 보장 */
+    #sub_contents .cert_page .cert_container {
         width: 100%;
-        max-width: none;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 
     #sub_contents .cert_page .cert_main_title {
