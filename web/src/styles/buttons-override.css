@@ -798,10 +798,18 @@ html, body {
         width: 100% !important;
         max-width: 100% !important;
         max-height: none !important;
-        padding: 18px 16px !important;
+        padding: 8px 16px 18px !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         background: #fff !important;
+    }
+    #mo_nav .mo_nav_top {
+        padding: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    #mo_nav .menu_wrapper {
+        padding-top: 0 !important;
+        margin-top: 4px !important;
     }
     .mo_overlay {
         display: none;
