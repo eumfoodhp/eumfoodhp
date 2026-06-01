@@ -102,6 +102,18 @@
     transform: translateY(-3px);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
+
+/* item 호버 시 카드뿐만 아니라 점 + 가로 connector 도 같이 위로 이동 */
+.history_tl_item:hover .history_tl_dot {
+    transform: translate(-50%, calc(-50% - 3px));
+}
+.history_tl_item:hover .history_tl_connector {
+    transform: translate(0, calc(-50% - 3px));
+}
+.history_tl_dot,
+.history_tl_connector {
+    transition: transform 0.2s ease;
+}
 /* 좌우 번갈아 배치 */
 .history_tl_item.is_right .history_tl_card {
     grid-column: 2;
