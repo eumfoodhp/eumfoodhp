@@ -279,7 +279,7 @@
 }
 
 @media (max-width: 900px) {
-    /* 모바일 — 부서 8개를 2열 grid 로 (이전 4열은 폭 부족) */
+    /* 모바일 — 세로형 (1열) 으로 통일. 8 부서 → 1열 세로 스택 */
     .org_chart {
         width: 100%;
         max-width: 100%;
@@ -287,11 +287,20 @@
         box-sizing: border-box;
         overflow: visible;
     }
-    .org_l3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 10px;
-        row-gap: 28px;
+    /* 노드 모바일에서 줄바꿈 허용 (긴 부서명 잘림 방지) */
+    .org_node {
+        white-space: normal;
+        word-break: keep-all;
+        min-width: 0;
+        text-align: center;
+        line-height: 1.35;
     }
+    .org_l3 {
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+        padding-top: 16px;
+    }
+    /* 부서 가로 점선 바 — 세로형엔 의미 없음, 대신 수직선으로 */
     .org_l3::before {
         display: none;
     }
@@ -299,7 +308,13 @@
         min-width: 0;
         align-items: stretch;
     }
+    /* 부서 박스 위 짧은 수직 점선 → 세로형에선 부서 사이 점선 */
     .org_dept_col::before {
+        top: -14px;
+        height: 14px;
+    }
+    /* 첫 부서 위 점선은 director::after 와 연결되니 유지, 나머지 부서간 점선만 */
+    .org_dept_col:first-child::before {
         display: none;
     }
     .org_dept_col .org_node {
@@ -324,13 +339,5 @@
     }
     .org_node--ceo::after {
         height: 16px;
-    }
-}
-
-@media (max-width: 380px) {
-    /* 매우 좁은 폰 — 1열로 */
-    .org_l3 {
-        grid-template-columns: 1fr;
-        row-gap: 22px;
     }
 }
