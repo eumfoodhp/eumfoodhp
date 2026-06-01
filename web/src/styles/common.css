@@ -566,7 +566,15 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     padding: 20px 0;
     align-items: center;
     align-self: stretch;
-    border-bottom: 1px solid #222;
+    gap: 12px;
+    /* border-bottom 제거 (사용자 요청). 옆 가로선만 (::after) */
+}
+.menu_dep1 h3 { flex-shrink: 0; }
+.menu_dep1::after {
+    content: '';
+    flex: 1 1 auto;
+    height: 1px;
+    background: #F26337;
 }
 
 .menu_dep1 h3 {

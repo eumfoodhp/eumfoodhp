@@ -829,7 +829,7 @@ html, body {
         content: '' !important;
         flex: 1 1 auto !important;
         height: 1px !important;
-        background: #E5E7EB !important;
+        background: #F26337 !important;
     }
     #mo_nav .mo_plus { display: none !important; }
     /* 서브메뉴 — 가로 wrap chip(pill) 박스 (한 화면 컴팩트 노출) */
