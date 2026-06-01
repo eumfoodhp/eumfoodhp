@@ -626,13 +626,9 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         z-index: 11000;
     }
 
-    /* 2단 헤더 — 모바일 컴팩트, 상/하 여백 동일 */
+    /* 헤더 1단 (로고 + 유틸) — GNB 는 별도 MobileMainNav 로 분리 */
     html, body {
-        padding-top: 188px;
-    }
-    #header .header_inner {
-        padding-top: 18px !important;
-        padding-bottom: 32px !important;
+        padding-top: 90px;
     }
 
     .header_inner {
@@ -747,15 +743,15 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 }
 
 @media (max-width: 735px) {
-    /* 2단 헤더 — 작은 폰에서 더 컴팩트 */
+    /* 헤더 1단 — 작은 폰에서 더 컴팩트 */
     html, body {
-        padding-top: 164px;
+        padding-top: 76px;
     }
 
     .header_inner {
-        padding: 14px 14px 28px !important;
+        padding: 14px 16px;
     }
-    .gnb_main_link {
+    .gnb_main_link_unused {
         font-size: 15px !important;
         font-weight: 700 !important;
         padding: 7px 3px !important;

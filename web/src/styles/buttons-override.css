@@ -702,80 +702,67 @@ html, body {
     #header { --gnb-col: min(150px, calc((100vw - 380px) / 5)) !important; }
 }
 
-/* 1024px 이하: 2단 헤더 (grid-areas 로 명시적 배치)
-   1단: [로고 ─── 쇼핑·카탈로그·햄버거·언어]
-   2단: [소개  제조  제품  소식  문의] 5열 균등 */
+/* 1024px 이하: GNB 는 헤더에서 hide → 별도 MobileMainNav 로 분리.
+   헤더는 PC 와 같은 한 줄 (로고 + 유틸). */
 @media (max-width: 1024px) {
-    .header_inner {
-        display: grid !important;
-        grid-template-columns: auto 1fr auto !important;
-        grid-template-rows: auto auto !important;
-        grid-template-areas:
-            "logo . util"
-            "gnb gnb gnb" !important;
-        column-gap: 0 !important;
-        row-gap: 18px !important;
-        align-items: center !important;
-        justify-content: stretch !important;
-    }
-    .header_inner > .logo {
-        grid-area: logo !important;
-        justify-self: start !important;
-    }
-    .header_inner > .util_area {
-        grid-area: util !important;
-        justify-self: end !important;
-        margin-left: 0 !important;
-    }
     .header_inner > .gnb_wrap {
-        display: block !important;
-        grid-area: gnb !important;
-        width: 100% !important;
-        margin: 0 !important;
+        display: none !important;
     }
-    /* .gnb 는 단순 wrapper 로 사용 — grid container 는 .gnb_grid 만 */
-    .gnb_wrap > .gnb {
-        display: block !important;
-        width: 100% !important;
-        padding: 0 !important;
+}
+
+/* ============================================================
+   MobileMainNav (서브1) — 모바일 전용 메인 메뉴 sticky 바
+   ============================================================ */
+.mobile_main_nav {
+    display: none; /* 기본 hide. ≤1024 에서만 노출 */
+}
+@media (max-width: 1024px) {
+    .mobile_main_nav {
+        display: block;
+        position: sticky;
+        top: 90px; /* 헤더 1단 높이 */
+        z-index: 11002; /* 헤더(11000) + SubHeader(11001) 위 */
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #F0F0F0;
+        padding: 8px 12px;
+        box-sizing: border-box;
     }
-    .gnb_wrap .gnb_grid {
-        display: grid !important;
-        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-        grid-auto-rows: auto !important;
-        gap: 0 6px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-top: 4px !important;
+    .mobile_main_nav_list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0;
     }
-    .gnb_main_link {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        font-size: 17px !important;
-        font-weight: 700 !important;
-        color: #222 !important;
-        padding: 10px 6px !important;
-        white-space: nowrap !important;
-        text-align: center !important;
-        min-height: 40px !important;
-        line-height: 1.2 !important;
-        background: transparent !important;
-        border: none !important;
-        border-radius: 8px !important;
-        box-shadow: none !important;
-        transition: background 0.2s ease, color 0.2s ease !important;
+    .mobile_main_nav_link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: 700;
+        color: #222;
+        text-decoration: none;
+        padding: 10px 4px;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 1.2;
+        transition: color 0.15s ease;
     }
-    .gnb_main_link:hover {
-        background: transparent !important;
-        color: #F26337 !important;
+    .mobile_main_nav_link:hover,
+    .mobile_main_nav_link.is_active {
+        color: #F26337;
     }
-    .gnb_main_link.is_active {
-        background: transparent !important;
-        color: #F26337 !important;
+}
+@media (max-width: 735px) {
+    .mobile_main_nav {
+        top: 76px;
+        padding: 6px 10px;
     }
-    .gnb_main_link[href*="/contact"] {
-        display: inline-flex !important;
+    .mobile_main_nav_link {
+        font-size: 13px;
+        padding: 8px 2px;
     }
 }
 
@@ -1477,16 +1464,16 @@ html[lang="zh"] .dl_title {
     outline-offset: 2px;
 }
 
-/* 모바일 — sticky + 헤더보다 z-index 더 크게 (가림 방지) */
+/* 모바일 — sticky, #header + MobileMainNav 아래에 따라옴. z-index 더 위로. */
 @media (max-width: 1024px) {
     .sub_header {
-        top: 188px;
-        z-index: 11001 !important;  /* #header z-index 11000 보다 위 */
+        top: 146px;  /* 헤더 90 + MobileMainNav 56 */
+        z-index: 11001 !important;
     }
 }
 @media (max-width: 735px) {
     .sub_header {
-        top: 164px;
+        top: 128px;  /* 헤더 76 + MobileMainNav 52 */
     }
 }
 

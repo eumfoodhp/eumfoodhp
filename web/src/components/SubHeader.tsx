@@ -139,8 +139,12 @@ export default function SubHeader() {
       const m = mq.matches;
       setIsMobile(m);
       if (m) {
+        // SubHeader top = #header + .mobile_main_nav 높이 합
         const h = document.getElementById('header');
-        if (h) setMobileTop(h.getBoundingClientRect().height);
+        const n = document.querySelector('.mobile_main_nav') as HTMLElement | null;
+        const sum = (h ? h.getBoundingClientRect().height : 0)
+                  + (n ? n.getBoundingClientRect().height : 0);
+        if (sum > 0) setMobileTop(sum);
         // 첫 진입 시 visible 트리거 (PC mousemove 동등) — 이후 4초 idle 시
         // 자동 hide, scroll/touch 시 다시 show (PC 와 동일 transition).
         setVisible(true);
