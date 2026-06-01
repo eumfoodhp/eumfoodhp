@@ -728,6 +728,11 @@ html, body {
     #mo_nav .menu_group {
         width: 100% !important;
         gap: 4px !important;
+        border: none !important;
+        border-bottom: none !important;
+    }
+    #mo_nav .menu_group:last-child {
+        border: none !important;
     }
     /* 카테고리 헤더 — 텍스트 옆에 가로 구분선 한 줄 (아래선 없음) */
     #mo_nav .menu_dep1 {
