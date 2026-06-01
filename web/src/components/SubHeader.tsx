@@ -128,15 +128,19 @@ export default function SubHeader() {
 
   const [mobileTop, setMobileTop] = useState(188);
 
-  // 모바일 감지 + 헤더 실제 높이 측정 → SubHeader top 값 동기화
+  // 모바일 감지 + 헤더 실제 높이 측정 → SubHeader top 동기화
+  // + 모바일은 mouseenter 트리거가 없어서 페이지 로드 시 visible 한 번 강제
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 1024px)');
     const update = () => {
-      setIsMobile(mq.matches);
-      // 헤더 실제 높이로 SubHeader top 동기화 (헤더 padding 바뀌어도 자동)
-      if (mq.matches) {
+      const m = mq.matches;
+      setIsMobile(m);
+      if (m) {
         const h = document.getElementById('header');
         if (h) setMobileTop(h.getBoundingClientRect().height);
+        // 첫 진입 시 visible 트리거 (PC mousemove 동등) — 이후 4초 idle 시
+        // 자동 hide, scroll/touch 시 다시 show (PC 와 동일 transition).
+        setVisible(true);
       }
     };
     update();
@@ -287,20 +291,16 @@ export default function SubHeader() {
 
   return (
     <nav
-      className={`sub_header${visible || isMobile ? ' is_visible' : ''}`}
+      className={`sub_header${visible ? ' is_visible' : ''}`}
       role="navigation"
       aria-label="sub navigation"
       style={
         isMobile
           ? {
-              /* 모바일은 mouse 이벤트가 없어서 PC visible 트리거가 동작 안 함.
-                 inline 으로 펼친 상태 유지 + sticky + 실시간 헤더 높이 동기화. */
+              /* PC 동작 그대로 위임 — 자동 hide/show transition 그대로.
+                 top 값만 실시간 헤더 높이로 동기화. */
               position: 'sticky',
               top: mobileTop,
-              maxHeight: 80,
-              opacity: 1,
-              transform: 'none',
-              pointerEvents: 'auto',
             }
           : undefined
       }
