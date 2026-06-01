@@ -702,164 +702,58 @@ html, body {
     #header { --gnb-col: min(150px, calc((100vw - 380px) / 5)) !important; }
 }
 
-/* 1024px 이하: 한 줄 헤더 [로고] [메인 메뉴 5개] [유틸 아이콘들] */
+/* 1024px 이하: 모바일 = PC 와 동일 헤더 + GNB 숨김 (햄버거로 접근) */
 @media (max-width: 1024px) {
-    #header {
-        background: transparent !important;
-        border: none !important;
-        border-bottom: none !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-    }
-    #header .header_inner {
-        background: #fff !important;
-        border-radius: 0 !important;
-        box-shadow:
-            0 4px 12px rgba(0, 0, 0, 0.05) !important;
-        padding: 10px 14px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-        /* 로고는 좌측 한 영역 (세로 2줄), 우측은 메뉴(위) / 아이콘(아래) 두 줄 */
-        display: grid !important;
-        grid-template-columns: auto 1fr !important;
-        grid-template-rows: auto auto !important;
-        grid-template-areas:
-            "logo nav"
-            "logo util" !important;
-        column-gap: 12px !important;
-        row-gap: 8px !important;
-        align-items: center !important;
-        justify-content: stretch !important;
-    }
-    #header .logo {
-        grid-area: logo !important;
-        justify-self: start !important;
-        align-self: center !important;
-        width: 90px !important;
-        height: auto !important;
-    }
-    /* GNB — 우측 위 한 줄 */
     .header_inner > .gnb_wrap {
-        display: block !important;
-        grid-area: nav !important;
-        justify-self: end !important;
-        width: 100% !important;
-        margin: 0 !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-    .gnb_wrap > .gnb,
-    .gnb_wrap .gnb_grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        grid-auto-rows: auto !important;
-        justify-items: end !important;
-        gap: 4px 14px !important;
-        width: 100% !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    .gnb_main_link {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        color: #222 !important;
-        letter-spacing: -0.3px !important;
-        padding: 4px 2px !important;
-        min-height: 0 !important;
-        line-height: 1.2 !important;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        white-space: nowrap !important;
-        outline: none !important;
-    }
-    .gnb_main_link:hover,
-    .gnb_main_link.is_active {
-        color: #F26337 !important;
-    }
-    /* 유틸 — 우측 아래 2x2 (아이콘 2개씩 2줄) */
-    #header .util_area {
-        grid-area: util !important;
-        justify-self: end !important;
-        margin-left: 0 !important;
-        display: grid !important;
-        grid-template-columns: repeat(2, auto) !important;
-        grid-auto-rows: auto !important;
-        gap: 6px !important;
+        display: none !important;
     }
 }
 
+/* MobileMainNav 사용 안 함 (사용자 요청으로 제거) */
+.mobile_main_nav { display: none !important; }
+
 /* ============================================================
-   MobileMainNav (서브1) — 모바일 전용 메인 메뉴 sticky 바
+   모바일 햄버거 메뉴 → 우측 drawer (화면의 절반만 슬라이드)
    ============================================================ */
-.mobile_main_nav {
-    display: none; /* 기본 hide. ≤1024 에서만 노출 */
-}
 @media (max-width: 1024px) {
-    .mobile_main_nav {
-        display: block;
-        position: sticky;
-        top: 90px;
-        z-index: 11002;
-        width: 100%;
-        background: transparent;
-        padding: 8px 10px;
-        box-sizing: border-box;
-    }
-    .mobile_main_nav_list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 8px;
-    }
-    /* SubHeader 항목과 같은 pill 디자인 — 통일감, 테두리로 외곽 표시 */
-    .mobile_main_nav_link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 13px;
-        font-weight: 500;
-        color: #222;
-        text-decoration: none;
-        padding: 9px 4px;
-        text-align: center;
-        white-space: nowrap;
-        line-height: 1.2;
+    #mo_nav.full_menu_overlay {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        width: 50vw !important;
+        max-width: 320px !important;
+        min-width: 240px !important;
+        height: 100vh !important;
         background: #fff !important;
-        border: 1px solid #E5E7EB !important;
-        border-radius: 999px !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
-        transition: color 0.2s ease, border-color 0.2s ease;
-        outline: none !important;
+        box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12) !important;
+        z-index: 12000 !important;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        padding-bottom: 24px !important;
     }
-    .mobile_main_nav_link:focus,
-    .mobile_main_nav_link:focus-visible {
-        outline: none !important;
+    #mo_nav.full_menu_overlay.active {
+        transform: translateX(0);
     }
-    .mobile_main_nav_link:hover,
-    .mobile_main_nav_link.is_active {
-        color: #F26337;
-        border-color: #F26337 !important;
+    #mo_nav .menu_container {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        padding: 20px 22px !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #fff !important;
     }
-}
-@media (max-width: 735px) {
-    .mobile_main_nav {
-        top: 76px;
-        padding: 6px 8px;
+    .mo_overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 11999;
     }
-    .mobile_main_nav_list { gap: 6px; }
-    .mobile_main_nav_link {
-        font-size: 13px;
-        padding: 9px 2px;
+    .mo_overlay.active {
+        display: block;
     }
 }
 
