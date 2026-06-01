@@ -720,6 +720,41 @@ html, body {
    모바일 햄버거 메뉴 → 우측 drawer (화면의 절반만 슬라이드)
    ============================================================ */
 @media (max-width: 1024px) {
+    /* 햄버거 메뉴: 간격 최소화 + + 버튼 제거 */
+    #mo_nav .menu_wrapper {
+        gap: 12px !important;
+        padding-bottom: 8px !important;
+    }
+    #mo_nav .menu_group {
+        width: 100% !important;
+        gap: 4px !important;
+    }
+    #mo_nav .menu_dep1 {
+        display: block !important;
+        padding: 6px 0 4px !important;
+        border-bottom: 1px solid #F0F0F0 !important;
+        cursor: default !important;
+    }
+    #mo_nav .menu_dep1 h3 {
+        font-size: 16px !important;
+        line-height: 22px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-weight: 700 !important;
+        color: #222 !important;
+    }
+    #mo_nav .mo_plus { display: none !important; }
+    #mo_nav .menu_dep2.mo_sub_menu {
+        gap: 2px !important;
+        margin-top: 4px !important;
+        padding: 0 0 0 6px !important;
+    }
+    #mo_nav .menu_dep2 li a {
+        font-size: 14px !important;
+        line-height: 20px !important;
+        padding: 4px 0 !important;
+        color: #555 !important;
+    }
     #mo_nav.full_menu_overlay {
         position: fixed !important;
         top: 0 !important;
@@ -744,7 +779,7 @@ html, body {
         width: 100% !important;
         max-width: 100% !important;
         max-height: none !important;
-        padding: 20px 22px !important;
+        padding: 18px 16px !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         background: #fff !important;

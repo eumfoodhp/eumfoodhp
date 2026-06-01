@@ -143,10 +143,9 @@ function MobileMenuGroup({
 }) {
   return (
     <div className="menu_group">
-      <button type="button" className="menu_dep1 mo_menu_title" aria-expanded="false">
+      <div className="menu_dep1">
         <h3>{title}</h3>
-        <span className="mo_plus" aria-hidden="true">+</span>
-      </button>
+      </div>
       <ul className="menu_dep2 mo_sub_menu">
         {items.map((item) => (
           <li key={item.href}>
