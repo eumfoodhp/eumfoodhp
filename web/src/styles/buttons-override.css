@@ -717,6 +717,78 @@ html, body {
 .mobile_main_nav { display: none !important; }
 
 /* ============================================================
+   메인 페이지 모바일 — 제품 섹션 정리
+   ============================================================ */
+@media (max-width: 1024px) {
+    .product_section .product_inner {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .product_section .prod_header {
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .product_section .prod_sub {
+        font-size: 14px !important;
+        margin-bottom: 8px !important;
+    }
+    .product_section .prod_title {
+        font-size: 22px !important;
+        line-height: 30px !important;
+        letter-spacing: -0.4px !important;
+        word-break: keep-all !important;
+    }
+    /* 카테고리 6개 — 한 줄에 안 들어가면 wrap 으로 떨어짐 */
+    .product_section .prod_nav_wrap {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 14px !important;
+        margin-top: 18px !important;
+    }
+    .product_section .prod_categories {
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        gap: 6px 8px !important;
+        width: 100% !important;
+        overflow: visible !important;
+    }
+    .product_section .prod_cate_btn {
+        flex: 0 0 auto !important;
+        padding: 8px 14px !important;
+        font-size: 13px !important;
+        line-height: 20px !important;
+    }
+    /* '더 알아보기' 우측 정렬 */
+    .product_section .prod_more_link {
+        align-self: flex-end !important;
+        margin: 0 !important;
+    }
+    .product_section .prod_grid.active {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        margin-top: 20px !important;
+    }
+}
+@media (max-width: 735px) {
+    .product_section .product_inner {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+    .product_section .prod_title {
+        font-size: 20px !important;
+        line-height: 28px !important;
+    }
+    .product_section .prod_cate_btn {
+        padding: 7px 12px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* ============================================================
    모바일 햄버거 메뉴 → 우측 drawer (화면의 절반만 슬라이드)
    ============================================================ */
 @media (max-width: 1024px) {
