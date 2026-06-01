@@ -1746,18 +1746,16 @@ html[lang="zh"] .dl_title {
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
-/* PREV 기준 통일 — NEXT 도 호버 시 배경/변형/bounce 효과 없음 */
-.next_section_link:hover,
-.next_section_link--prev:hover,
-.next_section > .next_section_link:not(.next_section_link--prev):hover {
-    background: transparent;
-    transform: none;
+/* 호버 시 PREV/NEXT 통일 — 배경 + 살짝 떠오름 + 화살표 bounce */
+.next_section_link:hover {
+    background: #FFF6EC;
+    transform: translateY(-2px);
 }
-.next_section_link:hover .next_section_icon,
-.next_section_link:hover .next_section_icon--up,
-.next_section_link--prev:hover .next_section_icon,
-.next_section_link--prev:hover .next_section_icon--up {
-    animation: none;
+.next_section_link:hover .next_section_icon {
+    animation: bounceDown 0.8s ease-in-out infinite;
+}
+.next_section_link:hover .next_section_icon--up {
+    animation: bounceUp 0.8s ease-in-out infinite;
 }
 
 @keyframes bounceDown {

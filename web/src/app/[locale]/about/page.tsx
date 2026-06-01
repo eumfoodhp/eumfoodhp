@@ -271,7 +271,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div className="loc_card_body">
                 <div className="loc_card_map">
                   <iframe
-                    src={`https://map.naver.com/p/search/${encodeURIComponent(factoryQuery)}`}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(factoryQuery)}&output=embed`}
                     title={t('loc_map_factory_alt')}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
@@ -362,7 +362,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 </div>
                 <div className="loc_card_map">
                   <iframe
-                    src={`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(centerQuery)}&output=embed`}
                     title={t('loc_map_center_alt')}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"

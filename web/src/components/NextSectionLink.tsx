@@ -50,6 +50,7 @@ export default function NextSectionLink({ nextId, nextLabel, prevId, isLast }: P
           className="next_section_link next_section_link--prev"
           aria-label="이전 섹션으로"
         >
+          <span className="next_section_eyebrow">PREV</span>
           <svg
             width="22"
             height="22"
@@ -65,7 +66,6 @@ export default function NextSectionLink({ nextId, nextLabel, prevId, isLast }: P
             <line x1="12" y1="19" x2="12" y2="5" />
             <polyline points="5 12 12 5 19 12" />
           </svg>
-          <span className="next_section_eyebrow">PREV</span>
         </a>
       )}
 
