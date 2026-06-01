@@ -17,7 +17,44 @@
 
 .cert_page .cert_img_inner {
     background: #fff;
+    /* 금색 그라데이션 테두리 (전통적인 황금 톤 — 짙음→밝음→짙음) */
+    border: 6px solid transparent;
+    border-image: linear-gradient(
+        135deg,
+        #8C6914 0%,
+        #C9A227 18%,
+        #F4D67A 35%,
+        #FFE9A6 50%,
+        #F4D67A 65%,
+        #C9A227 82%,
+        #8C6914 100%
+    ) 1;
+    /* 다층 box-shadow — 내부 광택 + 외부 금빛 glow + 그림자 */
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+        0 0 18px rgba(245, 214, 122, 0.55),
+        0 0 42px rgba(201, 162, 39, 0.30),
+        0 12px 26px rgba(0, 0, 0, 0.12);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: cert_gold_glow 3.2s ease-in-out infinite;
+}
+
+/* 부드럽게 숨쉬는 금빛 glow 펄스 */
+@keyframes cert_gold_glow {
+    0%, 100% {
+        box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+            0 0 18px rgba(245, 214, 122, 0.55),
+            0 0 42px rgba(201, 162, 39, 0.30),
+            0 12px 26px rgba(0, 0, 0, 0.12);
+    }
+    50% {
+        box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+            0 0 28px rgba(255, 233, 166, 0.75),
+            0 0 64px rgba(201, 162, 39, 0.45),
+            0 12px 26px rgba(0, 0, 0, 0.12);
+    }
 }
 
 /* 인증서 이미지 — contain + 중앙 (object-position 보정 제거,
@@ -53,13 +90,15 @@
     box-shadow: none;
 }
 
-/* 호버 시 인증서 본체 (cert_img_inner) 가 살짝 떠오르며 그림자 강화 */
+/* 호버 시 떠오르면서 금빛 glow 더 강하게 (펄스 정지) */
 .cert_page .cert_card:hover .cert_img_inner {
     transform: translateY(-6px);
+    animation: none;
     box-shadow:
-        0 28px 48px -10px rgba(34, 34, 34, 0.32),
-        0 12px 24px -8px rgba(34, 34, 34, 0.22),
-        0 2px 4px rgba(34, 34, 34, 0.08);
+        0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+        0 0 32px rgba(255, 233, 166, 0.85),
+        0 0 72px rgba(201, 162, 39, 0.55),
+        0 22px 40px rgba(0, 0, 0, 0.22);
 }
 .cert_page .cert_zoom_hint {
     position: absolute;
