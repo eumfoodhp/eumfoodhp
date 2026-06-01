@@ -313,11 +313,18 @@ export default function SubHeader() {
       style={
         isMobile
           ? {
-              /* PC 동작 그대로 위임 — 자동 hide/show transition 그대로.
-                 top 값만 실시간 헤더 높이로 동기화. z-index 헤더보다 위로. */
+              /* MobileMainNav 처럼 단순 sticky — 자동 hide/show transition 없이
+                 항상 펼친 상태로 헤더 따라옴. */
               position: 'sticky',
               top: mobileTop,
               zIndex: 11001,
+              maxHeight: 'none',
+              opacity: 1,
+              transform: 'none',
+              padding: '8px 12px',
+              pointerEvents: 'auto',
+              overflow: 'visible',
+              marginTop: 0,
             }
           : undefined
       }
