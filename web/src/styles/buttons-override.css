@@ -799,7 +799,10 @@ html, body {
         max-width: 320px !important;
         min-width: 240px !important;
         height: 100vh !important;
-        background: #fff !important;
+        /* 반투명 흰색 + blur 로 뒤 컨텐츠 살짝 비침 */
+        background: rgba(255, 255, 255, 0.82) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
         box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12) !important;
         z-index: 12000 !important;
         transform: translateX(100%);
@@ -820,7 +823,7 @@ html, body {
         padding: 16px 16px 18px !important;
         border-radius: 0 !important;
         box-shadow: none !important;
-        background: #fff !important;
+        background: transparent !important;
     }
     #mo_nav .mo_nav_top {
         padding: 0 !important;
