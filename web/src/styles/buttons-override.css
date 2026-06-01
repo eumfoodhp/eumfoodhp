@@ -782,7 +782,7 @@ html, body {
         padding: 5px 11px !important;
         color: #444 !important;
         background: #F3F4F6 !important;
-        border-radius: 999px !important;
+        border-radius: 18px !important;
         white-space: nowrap !important;
         transition: background 0.15s ease, color 0.15s ease;
     }
@@ -800,13 +800,11 @@ html, body {
         min-width: 240px !important;
         height: 100vh !important;
         background: #fff !important;
-        border-radius: 18px 0 0 18px !important;
         box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12) !important;
         z-index: 12000 !important;
         transform: translateX(100%);
         transition: transform 0.3s ease;
         overflow-y: auto;
-        overflow-x: hidden;
         padding-bottom: 24px !important;
     }
     #mo_nav.full_menu_overlay.active {
@@ -817,7 +815,7 @@ html, body {
         max-width: 100% !important;
         max-height: none !important;
         padding: 16px 16px 18px !important;
-        border-radius: 18px 0 0 18px !important;
+        border-radius: 0 !important;
         box-shadow: none !important;
         background: #fff !important;
     }
