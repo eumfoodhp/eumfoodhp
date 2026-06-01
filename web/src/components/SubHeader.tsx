@@ -287,16 +287,20 @@ export default function SubHeader() {
 
   return (
     <nav
-      className={`sub_header${visible ? ' is_visible' : ''}`}
+      className={`sub_header${visible || isMobile ? ' is_visible' : ''}`}
       role="navigation"
       aria-label="sub navigation"
       style={
         isMobile
           ? {
-              /* PC 동작 (sticky + 자동 hide/show transition) 그대로 위임.
-                 top 값만 실제 헤더 높이로 동기화. */
+              /* 모바일은 mouse 이벤트가 없어서 PC visible 트리거가 동작 안 함.
+                 inline 으로 펼친 상태 유지 + sticky + 실시간 헤더 높이 동기화. */
               position: 'sticky',
               top: mobileTop,
+              maxHeight: 80,
+              opacity: 1,
+              transform: 'none',
+              pointerEvents: 'auto',
             }
           : undefined
       }
