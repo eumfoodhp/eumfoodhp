@@ -702,8 +702,7 @@ html, body {
     #header { --gnb-col: min(150px, calc((100vw - 380px) / 5)) !important; }
 }
 
-/* 1024px 이하: GNB 는 헤더에서 hide → 별도 MobileMainNav 로 분리.
-   헤더는 둥근 박스 (양옆 margin + border-radius + 그림자) */
+/* 1024px 이하: GNB hide + 헤더 자체가 둥근 박스 (단일 박스, 겹침 X) */
 @media (max-width: 1024px) {
     .header_inner > .gnb_wrap {
         display: none !important;
@@ -711,19 +710,21 @@ html, body {
     #header {
         background: transparent !important;
         border: none !important;
-        padding: 8px 12px 0 !important;
+        border-bottom: none !important;
+        padding: 8px 10px 0 !important;
+        box-shadow: none !important;
     }
     #header .header_inner {
-        background: #fff;
-        border-radius: 18px;
+        background: #fff !important;
+        border-radius: 18px !important;
         box-shadow:
             0 8px 24px rgba(0, 0, 0, 0.06),
-            0 2px 6px rgba(0, 0, 0, 0.04);
+            0 2px 6px rgba(0, 0, 0, 0.04) !important;
         padding: 12px 18px !important;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        box-sizing: border-box;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
     }
 }
 
@@ -741,7 +742,7 @@ html, body {
         z-index: 11002;
         width: 100%;
         background: transparent;
-        padding: 8px 12px;
+        padding: 8px 10px;
         box-sizing: border-box;
     }
     .mobile_main_nav_list {
@@ -752,17 +753,16 @@ html, body {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 8px;
     }
-    /* 각 메뉴 항목 = 둥근 pill 박스 */
+    /* SubHeader 항목과 같은 pill 디자인 — 통일감 */
     .mobile_main_nav_link {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 500;
         color: #222;
-        letter-spacing: -0.3px;
         text-decoration: none;
-        padding: 10px 4px;
+        padding: 10px 6px;
         text-align: center;
         white-space: nowrap;
         line-height: 1.2;
@@ -771,8 +771,8 @@ html, body {
         border-radius: 999px !important;
         box-shadow:
             0 4px 12px rgba(0, 0, 0, 0.05),
-            0 1px 3px rgba(0, 0, 0, 0.03);
-        transition: color 0.2s ease, box-shadow 0.2s ease;
+            0 1px 3px rgba(0, 0, 0, 0.03) !important;
+        transition: color 0.2s ease;
         outline: none !important;
     }
     .mobile_main_nav_link:focus,
@@ -787,7 +787,7 @@ html, body {
 @media (max-width: 735px) {
     .mobile_main_nav {
         top: 76px;
-        padding: 6px 10px;
+        padding: 6px 8px;
     }
     .mobile_main_nav_list { gap: 6px; }
     .mobile_main_nav_link {
@@ -1450,23 +1450,40 @@ html[lang="zh"] .dl_title {
         scrollbar-width: none;
     }
     .sub_header::-webkit-scrollbar { display: none; }
+    /* SubHeader 자체 박스 제거 (각 항목만 pill — 그림처럼) */
+    .sub_header {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
     .sub_header_nav_list {
-        display: flex;
-        gap: 6px;
+        display: grid;
+        grid-template-columns: repeat(var(--mob-sub-cols, 5), minmax(0, 1fr));
+        gap: 8px;
         min-width: 100%;
-        justify-content: space-around;
-        padding: 0 8px;
+        padding: 0 10px;
     }
     .sub_header_nav_link {
-        flex-shrink: 0;
-        padding: 8px 14px;
-        background: #F3F4F6;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 6px;
+        background: #fff;
         border-radius: 999px;
-        transition: background 0.15s ease, color 0.15s ease;
+        font-size: 14px;
+        font-weight: 500;
+        color: #222;
+        text-align: center;
+        white-space: nowrap;
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.05),
+            0 1px 3px rgba(0, 0, 0, 0.03);
+        transition: color 0.15s ease;
+        outline: none !important;
     }
     .sub_header_nav_link.is_active,
     .sub_header_nav_link:hover {
-        background: #FFF1EA;
         color: #F26337;
     }
 }
