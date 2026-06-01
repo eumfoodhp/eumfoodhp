@@ -49,44 +49,23 @@
     align-items: start;
 }
 
-/* 가운데 세로선 위의 점 마커 */
+/* 가운데 세로선 위의 점 마커 — 작게 */
 .history_tl_dot {
     position: absolute;
     left: 50%;
     top: 32px;
     transform: translate(-50%, -50%);
-    width: 18px;
-    height: 18px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: #fff;
-    border: 4px solid #F26337;
-    box-shadow: 0 0 0 4px rgba(242, 99, 55, 0.18);
+    background: #F26337;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(242, 99, 55, 0.25);
     z-index: 2;
 }
 
-/* 카드 ↔ 가운데 점 연결 가로선 */
+/* connector 가로선 사용 안 함 */
 .history_tl_connector {
-    position: absolute;
-    top: 30px;
-    width: calc(50% - 64px);
-    height: 2px;
-    background: linear-gradient(
-        90deg,
-        rgba(242, 99, 55, 0.0) 0%,
-        rgba(242, 99, 55, 0.6) 100%
-    );
-    z-index: 1;
-}
-.history_tl_item.is_left .history_tl_connector {
-    left: 24px;
-    background: linear-gradient(
-        90deg,
-        rgba(242, 99, 55, 0.6) 0%,
-        rgba(242, 99, 55, 0.0) 100%
-    );
-}
-.history_tl_item.is_right .history_tl_connector {
-    right: 24px;
+    display: none !important;
 }
 
 /* 카드 본체 */
@@ -103,15 +82,11 @@
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
-/* item 호버 시 카드뿐만 아니라 점 + 가로 connector 도 같이 위로 이동 */
+/* item 호버 시 점도 같이 위로 (connector 제거됨) */
 .history_tl_item:hover .history_tl_dot {
     transform: translate(-50%, calc(-50% - 3px));
 }
-.history_tl_item:hover .history_tl_connector {
-    transform: translate(0, calc(-50% - 3px));
-}
-.history_tl_dot,
-.history_tl_connector {
+.history_tl_dot {
     transition: transform 0.2s ease;
 }
 /* 좌우 번갈아 배치 */
