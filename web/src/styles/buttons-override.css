@@ -1477,11 +1477,11 @@ html[lang="zh"] .dl_title {
     outline-offset: 2px;
 }
 
-/* 모바일 — PC 동작 (sticky + 자동 hide/show transition) 그대로,
-   top 값만 모바일 헤더 실제 높이로 (body padding-top 과 동일). */
+/* 모바일 — sticky + 헤더보다 z-index 더 크게 (가림 방지) */
 @media (max-width: 1024px) {
     .sub_header {
         top: 188px;
+        z-index: 11001 !important;  /* #header z-index 11000 보다 위 */
     }
 }
 @media (max-width: 735px) {

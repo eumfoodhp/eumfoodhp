@@ -304,9 +304,10 @@ export default function SubHeader() {
         isMobile
           ? {
               /* PC 동작 그대로 위임 — 자동 hide/show transition 그대로.
-                 top 값만 실시간 헤더 높이로 동기화. */
+                 top 값만 실시간 헤더 높이로 동기화. z-index 헤더보다 위로. */
               position: 'sticky',
               top: mobileTop,
+              zIndex: 11001,
             }
           : undefined
       }
