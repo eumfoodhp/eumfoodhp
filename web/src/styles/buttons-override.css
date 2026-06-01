@@ -1724,10 +1724,12 @@ html[lang="zh"] .dl_title {
    ============================================================ */
 .sub_header {
     position: sticky;
-    /* 헤더 bottom(~100px) 아래 약 4px. negative margin 으로 자연
-       위치 = sticky top 으로 맞춰 페이지 진입 직후도 동일 위치. */
-    top: 104px;
-    margin-top: -3px;
+    /* 자연 위치(107-5=102) = sticky top(102) 으로 맞춤.
+       → 스크롤 0 시도, 스크롤 다운 시도 항상 viewport 102.
+       헤더 bottom(~100) 아래 약 2px. 사용자 의도: 기본값 조금 줄임 +
+       스크롤 시 값 변화 없음. */
+    top: 102px;
+    margin-top: -5px;
     z-index: 90;
 }
 
