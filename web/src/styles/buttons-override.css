@@ -753,10 +753,11 @@ html, body {
     }
     .gnb_wrap > .gnb,
     .gnb_wrap .gnb_grid {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: flex-end !important;
-        gap: 12px !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-auto-rows: auto !important;
+        justify-items: end !important;
+        gap: 4px 14px !important;
         width: 100% !important;
         background: transparent !important;
         box-shadow: none !important;
@@ -784,12 +785,15 @@ html, body {
     .gnb_main_link.is_active {
         color: #F26337 !important;
     }
-    /* 유틸 — 우측 아래 한 줄 */
+    /* 유틸 — 우측 아래 2x2 (아이콘 2개씩 2줄) */
     #header .util_area {
         grid-area: util !important;
         justify-self: end !important;
         margin-left: 0 !important;
-        gap: 8px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, auto) !important;
+        grid-auto-rows: auto !important;
+        gap: 6px !important;
     }
 }
 
