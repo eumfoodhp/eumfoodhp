@@ -718,22 +718,16 @@ input, textarea { outline: none; font-family: var(--pretendard); }
         gap: 14px;
     }
 
+    /* 햄버거 메뉴: 서브메뉴 항상 펼침 (사용자 요청) */
     .mo_sub_menu {
         display: flex;
-        overflow: hidden;
-        max-height: 0;
-        opacity: 0;
-        gap: 10px;
-        margin-top: 0;
-        pointer-events: none;
-        transition: max-height 0.32s ease, opacity 0.22s ease, margin-top 0.22s ease;
-    }
-
-    .mo_sub_menu.open {
-        max-height: 320px;
-        opacity: 1;
-        margin-top: 8px;
-        pointer-events: auto;
+        flex-direction: column;
+        gap: 8px;
+        max-height: none !important;
+        opacity: 1 !important;
+        margin-top: 8px !important;
+        pointer-events: auto !important;
+        overflow: visible !important;
     }
 
     .menu_dep2 li a {

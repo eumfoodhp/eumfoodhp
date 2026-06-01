@@ -707,6 +707,10 @@ html, body {
     .header_inner > .gnb_wrap {
         display: none !important;
     }
+    /* SubHeader 모바일에서 제거 (사용자 요청) */
+    .sub_header {
+        display: none !important;
+    }
 }
 
 /* MobileMainNav 사용 안 함 (사용자 요청으로 제거) */
