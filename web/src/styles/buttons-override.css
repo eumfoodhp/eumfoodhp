@@ -1746,10 +1746,10 @@ html[lang="zh"] .dl_title {
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
-/* 호버 시 PREV/NEXT 통일 — 배경 + 살짝 떠오름 + 화살표 bounce */
+/* 호버 — 배경 제거, 화살표 bounce 만 (transform 없음) */
 .next_section_link:hover {
-    background: #FFF6EC;
-    transform: translateY(-2px);
+    background: transparent;
+    transform: none;
 }
 .next_section_link:hover .next_section_icon {
     animation: bounceDown 0.8s ease-in-out infinite;
@@ -1786,6 +1786,13 @@ html[lang="zh"] .dl_title {
 .next_section_icon {
     color: #F26337;
     margin-top: 4px;
+}
+/* PREV ↑ — SVG 내부 화살표가 박스 위쪽 1/5 에 머리가 있어서
+   NEXT ↓ 보다 시각적으로 선에 가까워 보임.
+   margin-top 제거 + margin-bottom 추가로 NEXT 와 대칭. */
+.next_section_icon--up {
+    margin-top: 0;
+    margin-bottom: 8px;
 }
 
 /* 모바일 */
