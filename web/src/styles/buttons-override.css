@@ -806,6 +806,9 @@ html, body {
         transition: transform 0.3s ease;
         overflow-y: auto;
         padding-bottom: 24px !important;
+        /* 자식 menu_container 를 위에 붙임 (기본 center → 세로 가운데로 가서 X 위 큰 공백 발생) */
+        justify-content: flex-start !important;
+        align-items: stretch !important;
     }
     #mo_nav.full_menu_overlay.active {
         transform: translateX(0);
