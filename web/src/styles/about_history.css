@@ -45,7 +45,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 64px;
+    column-gap: 120px;
     align-items: start;
 }
 
@@ -68,7 +68,7 @@
 .history_tl_connector {
     position: absolute;
     top: 30px;
-    width: calc(50% - 36px);
+    width: calc(50% - 64px);
     height: 2px;
     background: linear-gradient(
         90deg,
