@@ -247,7 +247,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 5. 소스 (sub-sections 포함) ===== */}
         <div id="sauce" className="product_sauce_page story_section">
-          <SectionHeader title={t('sub_prod_sauce')} en="Sauce & Beverage" />
+          <SectionHeader title={t('sub_prod_sauce')} en="Sauce" />
           <div className="sauce_section">
             {SAUCE_SECTIONS.map((sec, secIdx) => {
               const note = sec.noteKey ? t(sec.noteKey) : '';

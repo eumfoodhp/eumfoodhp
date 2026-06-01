@@ -50,7 +50,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
     { key: 'pickles', modKey: 'pickles', prefix: 'proc_pickles_step', label: t('sub_prod_pickles'), eyebrow: 'Pickles',          steps: 9, iconDir: 'biz-pf-pickles-5535977' },
     { key: 'braised', modKey: 'braised', prefix: 'proc_braised_step', label: t('sub_prod_braised'), eyebrow: 'Braised Dishes',   steps: 8, iconDir: 'biz-pf-braised-5535890' },
     { key: 'salted',  modKey: 'pickle',  prefix: 'proc_salted_step',  label: t('sub_prod_salted'),  eyebrow: 'Salted Seafood',   steps: 8, iconDir: 'biz-pf-pickle-5535894' },
-    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('sub_prod_sauce'),   eyebrow: 'Sauce & Beverage', steps: 7, iconDir: 'biz-pf-sauce-flow' },
+    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('biz_proc_cat_sauce'), eyebrow: 'Sauce & Beverage', steps: 7, iconDir: 'biz-pf-sauce-flow' },
   ];
 
   const sections = [
