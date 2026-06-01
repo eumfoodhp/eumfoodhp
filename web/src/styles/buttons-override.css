@@ -736,21 +736,30 @@ html, body {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 0;
     }
-    /* PC GNB 스타일 통일 (20px/500/#222, hover/active 주황) */
+    /* PC GNB 와 동일 디자인 — 단순 텍스트, 박스/테두리 없음 */
     .mobile_main_nav_link {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 17px;
+        font-size: 18px;
         font-weight: 500;
         color: #222;
-        letter-spacing: -0.3px;
+        letter-spacing: -0.4px;
         text-decoration: none;
         padding: 10px 4px;
         text-align: center;
         white-space: nowrap;
         line-height: 1.2;
         transition: color 0.2s ease;
+        outline: none !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    .mobile_main_nav_link:focus,
+    .mobile_main_nav_link:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
     }
     .mobile_main_nav_link:hover,
     .mobile_main_nav_link.is_active {
@@ -763,7 +772,7 @@ html, body {
         padding: 6px 10px;
     }
     .mobile_main_nav_link {
-        font-size: 14px;
+        font-size: 15px;
         padding: 8px 2px;
     }
 }
