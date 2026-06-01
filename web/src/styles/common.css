@@ -570,14 +570,8 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     /* border-bottom 제거 (사용자 요청). 옆 가로선만 (::after) */
 }
 .menu_dep1 h3 { flex-shrink: 0; }
-.menu_dep1::after {
-    content: '';
-    flex: 1 1 auto;
-    height: 1px;
-    background: #F26337;
-}
-/* PC 햄버거 메뉴 카테고리 아래 가로선 제거 (사용자 요청) */
-#mo_nav .menu_dep1::after { display: none; }
+/* 카테고리 옆 가로선 ::after 제거 (PC + 모바일 통째 — 사용자 요청) */
+.menu_dep1::after { display: none !important; content: none !important; }
 
 .menu_dep1 h3 {
     color: #222;
