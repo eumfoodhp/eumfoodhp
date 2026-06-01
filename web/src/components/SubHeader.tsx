@@ -123,7 +123,10 @@ export default function SubHeader() {
   const t = useTranslations();
   const [hash, setHash] = useState('');
   const [activeId, setActiveId] = useState<string>('');
-  const [visible, setVisible] = useState(false);
+  /* visible 초기값 true — 모바일은 isMobile 분기로 항상 true 유지,
+     PC 는 mount 후 4초 idle 시 hide → mouse 활동 시 다시 show.
+     SSR/CSR hydration mismatch 없음 (둘 다 true 로 시작). */
+  const [visible, setVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   const [mobileTop, setMobileTop] = useState(188);
@@ -278,6 +281,9 @@ export default function SubHeader() {
     };
     node?.addEventListener('mouseenter', onEnter);
     node?.addEventListener('mouseleave', onLeave);
+
+    // PC mount 시 4초 idle hide 시작 (visible 초기값 true 와 일관)
+    scheduleHide();
 
     return () => {
       if (hideTimer) clearTimeout(hideTimer);
