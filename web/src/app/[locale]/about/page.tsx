@@ -268,8 +268,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             {/* 본사·공장 — 지도 LEFT / 정보 RIGHT */}
             <article className="loc_card loc_card--map_left">
               <div className="loc_card_body">
-                <div className="loc_card_map" role="img" aria-label={t('loc_map_factory_alt')}>
-                  <img src="/images/sub/map_factory.png" alt={t('loc_map_factory_alt')} loading="lazy" />
+                <div className="loc_card_map">
+                  <iframe
+                    src={`https://map.naver.com/p/search/${encodeURIComponent(factoryQuery)}`}
+                    title={t('loc_map_factory_alt')}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
                 </div>
                 <div className="loc_card_info">
                   <span className="loc_eyebrow">{t('loc_way_to_come')}</span>
@@ -353,8 +359,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </a>
                   </div>
                 </div>
-                <div className="loc_card_map" role="img" aria-label={t('loc_map_center_alt')}>
-                  <img src="/images/sub/map_center.png" alt={t('loc_map_center_alt')} loading="lazy" />
+                <div className="loc_card_map">
+                  <iframe
+                    src={`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`}
+                    title={t('loc_map_center_alt')}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
                 </div>
               </div>
             </article>
