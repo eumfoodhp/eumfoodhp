@@ -47,10 +47,10 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
   const t = await getTranslations();
 
   const CATEGORIES: Cat[] = [
-    { key: 'pickles', modKey: 'pickles', prefix: 'proc_pickles_step', label: t('sub_prod_pickles'), eyebrow: 'Pickled Food',                  steps: 9, iconDir: 'biz-pf-pickles-5535977' },
-    { key: 'braised', modKey: 'braised', prefix: 'proc_braised_step', label: t('sub_prod_braised'), eyebrow: 'Braised Food',                  steps: 8, iconDir: 'biz-pf-braised-5535890' },
-    { key: 'salted',  modKey: 'pickle',  prefix: 'proc_salted_step',  label: t('sub_prod_salted'),  eyebrow: 'Pickle',                        steps: 8, iconDir: 'biz-pf-pickle-5535894' },
-    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('sub_prod_sauce'),   eyebrow: 'Sauce, Mixing Sauce, Liquid Tea', steps: 7, iconDir: 'biz-pf-sauce-flow' },
+    { key: 'pickles', modKey: 'pickles', prefix: 'proc_pickles_step', label: t('sub_prod_pickles'), eyebrow: 'Pickles',          steps: 9, iconDir: 'biz-pf-pickles-5535977' },
+    { key: 'braised', modKey: 'braised', prefix: 'proc_braised_step', label: t('sub_prod_braised'), eyebrow: 'Braised Dishes',   steps: 8, iconDir: 'biz-pf-braised-5535890' },
+    { key: 'salted',  modKey: 'pickle',  prefix: 'proc_salted_step',  label: t('sub_prod_salted'),  eyebrow: 'Salted Seafood',   steps: 8, iconDir: 'biz-pf-pickle-5535894' },
+    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('sub_prod_sauce'),   eyebrow: 'Sauce & Beverage', steps: 7, iconDir: 'biz-pf-sauce-flow' },
   ];
 
   const sections = [
@@ -80,8 +80,8 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
           >
             <div className="sub_inner biz_pf_inner">
               <div className="biz_pf_flow_head">
-                <p className="biz_pf_eyebrow">{cat.eyebrow}</p>
                 <h2 className="biz_pf_flow_title">{cat.label}</h2>
+                <p className="biz_pf_eyebrow">{cat.eyebrow}</p>
               </div>
               <div className="biz_pf_steps_grid">
                 {Array.from({ length: cat.steps }, (_, i) => i + 1).map((n) => {
