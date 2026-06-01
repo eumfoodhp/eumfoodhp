@@ -1918,8 +1918,9 @@ html[lang="zh"] .dl_title {
     gap: 16px;
 }
 .story_section_action {
-    align-self: flex-end;       /* 우측 정렬 */
-    order: -1;                  /* DOM 상 타이틀 다음이지만 시각적으로 타이틀 위 */
+    align-self: flex-end !important;  /* 우측 정렬 (모바일도 보장) */
+    margin-left: auto !important;     /* flex item 우측으로 push */
+    order: -1;                        /* DOM 상 타이틀 다음이지만 시각적으로 타이틀 위 */
     flex-shrink: 0;
 }
 
