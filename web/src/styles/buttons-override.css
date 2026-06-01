@@ -832,6 +832,12 @@ html, body {
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1 !important;
+        font-size: 24px !important;
+        height: 24px !important;
+        width: 24px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     #mo_nav .menu_wrapper {
         padding-top: 0 !important;
