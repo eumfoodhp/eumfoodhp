@@ -64,9 +64,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   // ---- 오시는길 — QR/지도 검색어를 주소 대신 회사 상호로 변경 ----
   //   첫번째 카드: "이음푸드시스템", 두번째 카드: "화산푸드시스템"
-  // 네이버지도 검색 쿼리 — 괄호 포함하면 검색 매칭 실패하므로 회사 상호만.
+  // 지도/QR/외부링크 검색 쿼리.
+  // factory: 회사 상호로 정상 매칭.
+  // center: 회사명만으론 Google Maps 가 잘못된 위치 잡음 → 주소로 검색.
   const factoryQuery = '이음푸드시스템';
-  const centerQuery = '화산푸드시스템';
+  const centerQuery = '경기도 안성시 양성면 이현리 265';
   const factoryAddr = t('loc_factory_addr'); // 표시용
   const centerAddr = t('loc_center_addr');   // 표시용
 
