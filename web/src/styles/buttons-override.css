@@ -744,16 +744,35 @@ html, body {
         color: #222 !important;
     }
     #mo_nav .mo_plus { display: none !important; }
+    /* 서브메뉴 — 가로 wrap chip(pill) 박스 (한 화면 컴팩트 노출) */
     #mo_nav .menu_dep2.mo_sub_menu {
-        gap: 2px !important;
-        margin-top: 4px !important;
-        padding: 0 0 0 6px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+    #mo_nav .menu_dep2 li {
+        margin: 0 !important;
+        display: inline-flex !important;
+        width: auto !important;
     }
     #mo_nav .menu_dep2 li a {
-        font-size: 14px !important;
-        line-height: 20px !important;
-        padding: 4px 0 !important;
-        color: #555 !important;
+        display: inline-block !important;
+        font-size: 13px !important;
+        line-height: 18px !important;
+        padding: 5px 11px !important;
+        color: #444 !important;
+        background: #F3F4F6 !important;
+        border-radius: 999px !important;
+        white-space: nowrap !important;
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+    #mo_nav .menu_dep2 li a:hover {
+        background: #FFF1EA !important;
+        color: #F26337 !important;
     }
     #mo_nav.full_menu_overlay {
         position: fixed !important;
