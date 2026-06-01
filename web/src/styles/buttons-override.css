@@ -1724,7 +1724,11 @@ html[lang="zh"] .dl_title {
    ============================================================ */
 .sub_header {
     position: sticky;
-    top: 112px;
+    /* 헤더 실제 height(약 96~100) 와 맞춰 헤더 바로 아래에 stick.
+       기본도 같은 위치 유지하기 위해 negative margin-top 으로
+       body padding-top(107) 와 sticky top 차이를 흡수. */
+    top: 96px;
+    margin-top: -11px;
     z-index: 90;
 }
 
