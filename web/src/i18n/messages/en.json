@@ -193,7 +193,7 @@
   ],
   "main_prod_more_text": "Learn more",
   "main_prod_sub": "Product",
-  "main_prod_title": "Products of Eum Food System Co., Ltd.",
+  "main_prod_title": "Products",
   "main_prod_label_storage": "Storage",
   "main_prod_label_package": "Packaging",
   "main_prod_categories": [
@@ -473,7 +473,7 @@
     }
   ],
   "main_notice_sub": "NOTICE",
-  "main_notice_title": "Notices & Resources",
+  "main_notice_title": "News",
   "main_notice_more": "Learn more",
   "main_notice_card_label": "NEWS",
   "main_notice_card_desc": "A board offering information about ㈜EUM Food System notices and various resources.",

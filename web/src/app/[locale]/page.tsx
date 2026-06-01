@@ -102,8 +102,8 @@ export default async function HomePage({
           <div className="business_inner">
             <div className="biz_header">
               <div className="title_group">
-                <span className="biz_sub">{t('main_biz_sub')}</span>
                 <h2 className="biz_title">{t('main_biz_title')}</h2>
+                <span className="biz_sub">{t('main_biz_sub')}</span>
               </div>
               <Link href="/about#area" className="biz_more_btn">
                 <span>{t('main_biz_more')}</span>
@@ -155,8 +155,8 @@ export default async function HomePage({
         <section className="product_section">
           <div className="product_inner">
             <div className="prod_header">
-              <span className="prod_sub">{t('main_prod_sub')}</span>
               <h2 className="prod_title">{t('main_prod_title')}</h2>
+              <span className="prod_sub">{t('main_prod_sub')}</span>
             </div>
 
             <div className="prod_nav_wrap">
@@ -224,8 +224,8 @@ export default async function HomePage({
         <section className="partner_section partner_section--3d">
           <div className="partner_inner">
             <div className="partner_text_box">
-              <span className="partner_sub">{t('main_partner_sub')}</span>
               <h2 className="partner_title">{nl2br(t('main_partner_title'))}</h2>
+              <span className="partner_sub">{t('main_partner_sub')}</span>
             </div>
 
             <div className="carousel_stage">
@@ -264,8 +264,8 @@ export default async function HomePage({
           <div className="notice_inner">
             <div className="notice_header">
               <div className="notice_title_group">
-                <span className="notice_sub">{t('main_notice_sub')}</span>
                 <h2 className="notice_title">{t('main_notice_title')}</h2>
+                <span className="notice_sub">{t('main_notice_sub')}</span>
               </div>
               <Link href="/notice" className="notice_more_link">
                 <span>{t('main_notice_more')}</span>

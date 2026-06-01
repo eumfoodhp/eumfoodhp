@@ -193,7 +193,7 @@
   ],
   "main_prod_more_text": "더 알아보기",
   "main_prod_sub": "Product",
-  "main_prod_title": "㈜이음푸드시스템의 제품",
+  "main_prod_title": "제품",
   "main_prod_label_storage": "보관",
   "main_prod_label_package": "포장",
   "main_prod_categories": [
@@ -473,7 +473,7 @@
     }
   ],
   "main_notice_sub": "NOTICE",
-  "main_notice_title": "공지사항 및 자료실",
+  "main_notice_title": "소식",
   "main_notice_more": "더 알아보기",
   "main_notice_card_label": "NEWS",
   "main_notice_card_desc": "㈜이음푸드시스템과 관련된 공지사항과 다양한 자료를 확인할 수 있는 공간으로 필요한 정보를 제공하는 게시판입니다.",
