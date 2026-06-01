@@ -1665,11 +1665,11 @@ html[lang="zh"] .dl_title {
     width: 100%;
     max-width: none;
     margin: auto 0 0;
-    display: grid;
-    /* PREV — divider — NEXT 한 줄 배치 */
-    grid-template-columns: auto 1fr auto;
-    column-gap: 24px;
+    /* PREV ─ ● ─ NEXT 한 줄, 가운데 점 기준 좌우 대칭 */
+    display: flex;
+    justify-content: center;
     align-items: center;
+    column-gap: 96px;       /* PREV-NEXT 사이 점이 보이는 간격 */
 }
 
 /* 구분선 — 부모 풀폭 따라 자동으로 viewport 끝까지.
@@ -1708,26 +1708,30 @@ html[lang="zh"] .dl_title {
     z-index: 10;
 }
 
-/* PREV — 좌측, divider — 가운데, NEXT — 우측 (모두 같은 행). */
+/* PREV/NEXT — flex 안에서 점 좌우 대칭, divider 는 풀폭 absolute */
 .next_section_link--prev {
     background: transparent;
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
+    order: 1;
+    position: relative;
+    z-index: 20;
     transform: none;
 }
 .next_section_divider {
-    grid-column: 2;
-    grid-row: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
 }
 .next_section > .next_section_link:not(.next_section_link--prev) {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: end;
-    transform: none;
-    margin-top: 0;
+    order: 2;
     position: relative;
     z-index: 20;
+    transform: none;
+    margin-top: 0;
 }
 
 /* 다음 섹션 화살표 버튼 */
