@@ -722,35 +722,41 @@ html, body {
         max-width: 100% !important;
         margin: 0 !important;
         box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
+        /* 로고는 좌측 한 영역 (세로 2줄), 우측은 메뉴(위) / 아이콘(아래) 두 줄 */
+        display: grid !important;
+        grid-template-columns: auto 1fr !important;
+        grid-template-rows: auto auto !important;
+        grid-template-areas:
+            "logo nav"
+            "logo util" !important;
+        column-gap: 12px !important;
+        row-gap: 8px !important;
         align-items: center !important;
-        gap: 8px !important;
-        column-gap: 8px !important;
-        grid-template-columns: none !important;
+        justify-content: stretch !important;
     }
-    /* 로고 컴팩트 */
     #header .logo {
-        flex-shrink: 0 !important;
-        width: 74px !important;
+        grid-area: logo !important;
+        justify-self: start !important;
+        align-self: center !important;
+        width: 90px !important;
         height: auto !important;
     }
-    /* GNB 헤더 안에서 노출 — 가운데 flex 1 */
+    /* GNB — 우측 위 한 줄 */
     .header_inner > .gnb_wrap {
-        display: flex !important;
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        margin: 0 6px !important;
-        order: 1 !important;
+        display: block !important;
+        grid-area: nav !important;
+        justify-self: end !important;
+        width: 100% !important;
+        margin: 0 !important;
         background: transparent !important;
         box-shadow: none !important;
     }
     .gnb_wrap > .gnb,
     .gnb_wrap .gnb_grid {
-        display: grid !important;
-        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-        gap: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
         width: 100% !important;
         background: transparent !important;
         box-shadow: none !important;
@@ -761,7 +767,7 @@ html, body {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        font-size: 12px !important;
+        font-size: 13px !important;
         font-weight: 500 !important;
         color: #222 !important;
         letter-spacing: -0.3px !important;
@@ -778,12 +784,12 @@ html, body {
     .gnb_main_link.is_active {
         color: #F26337 !important;
     }
-    /* 유틸 영역 우측 */
+    /* 유틸 — 우측 아래 한 줄 */
     #header .util_area {
-        flex-shrink: 0 !important;
-        order: 2 !important;
+        grid-area: util !important;
+        justify-self: end !important;
         margin-left: 0 !important;
-        gap: 6px !important;
+        gap: 8px !important;
     }
 }
 
