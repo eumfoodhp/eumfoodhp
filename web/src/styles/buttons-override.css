@@ -1790,16 +1790,15 @@ html[lang="zh"] .dl_title {
     column-gap: 96px;       /* PREV-NEXT 사이 점이 보이는 간격 */
 }
 
-/* 구분선 — 부모 풀폭 따라 자동으로 viewport 끝까지.
-   z-index 높여서 다음 섹션 배경에 가려지지 않게. */
+/* 구분선 — 파란 톤 그라데이션 (사용자 요청, 주황 → 파랑 전환) */
 .next_section_divider {
     width: 100%;
     height: 4px;
     background: linear-gradient(
         90deg,
         transparent 0%,
-        #E5E7EB 20%,
-        #E5E7EB 80%,
+        #93C5FD 20%,
+        #93C5FD 80%,
         transparent 100%
     );
     position: relative;
@@ -1814,9 +1813,9 @@ html[lang="zh"] .dl_title {
     transform: translate(-50%, -50%);
     width: 8px;
     height: 8px;
-    background: #F26337;
+    background: #2563EB;
     border-radius: 50%;
-    box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(243, 152, 0, 0.2);
+    box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(37, 99, 235, 0.25);
     z-index: 11;
 }
 
@@ -1889,7 +1888,7 @@ html[lang="zh"] .dl_title {
 .next_section_eyebrow {
     font-size: 11px;
     font-weight: 700;
-    color: #F26337;
+    color: #2563EB;
     letter-spacing: 0.15em;
 }
 
@@ -1902,7 +1901,7 @@ html[lang="zh"] .dl_title {
 }
 
 .next_section_icon {
-    color: #F26337;
+    color: #2563EB;
     margin-top: 4px;
 }
 /* PREV ↑ — SVG 내부 화살표가 박스 위쪽 1/5 에 머리가 있어서
