@@ -12,7 +12,7 @@
     padding: 16px 0;
     box-sizing: border-box;
 }
-/* 가운데 파란 그라데이션 세로선 */
+/* 가운데 주황 그라데이션 세로선 — 사용자 요청으로 다시 주황 복원 */
 .history_timeline_inner::before {
     content: '';
     position: absolute;
@@ -23,10 +23,10 @@
     transform: translateX(-50%);
     background: linear-gradient(
         180deg,
-        rgba(59, 130, 246, 0) 0%,
-        #3B82F6 8%,
-        #3B82F6 92%,
-        rgba(59, 130, 246, 0) 100%
+        rgba(242, 99, 55, 0) 0%,
+        #F26337 8%,
+        #F26337 92%,
+        rgba(242, 99, 55, 0) 100%
     );
     border-radius: 1px;
 }
