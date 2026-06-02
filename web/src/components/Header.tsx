@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import CatalogButton from './CatalogButton';
 import GnbNav from './GnbNav';
+import MobileMenuGroup from './MobileMenuGroup';
 
 export default async function Header() {
   const t = await getTranslations();
@@ -134,25 +135,4 @@ export default async function Header() {
   );
 }
 
-function MobileMenuGroup({
-  title,
-  items,
-}: {
-  title: string;
-  items: { href: string; label: string }[];
-}) {
-  return (
-    <div className="menu_group">
-      <div className="menu_dep1">
-        <h3>{title}</h3>
-      </div>
-      <ul className="menu_dep2 mo_sub_menu">
-        {items.map((item) => (
-          <li key={item.href}>
-            <Link href={item.href}>{item.label}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+// MobileMenuGroup 은 client component (./MobileMenuGroup.tsx) 로 분리.
