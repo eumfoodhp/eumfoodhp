@@ -1645,6 +1645,20 @@
     letter-spacing: -1.05px;
 }
 
+/* 모바일 — biz_overview 텍스트 크기 축소 (사용자 요청) */
+@media (max-width: 768px) {
+    .ov_title .ov_line--bold,
+    .ov_title .ov_line--light {
+        font-size: 22px;
+        line-height: 32px;
+        letter-spacing: -0.4px;
+    }
+    /* HACCP 인증현황 → 모바일에서 '인증현황' 만 숨김 (HACCP 만 노출) */
+    .stat_label_extra {
+        display: none;
+    }
+}
+
 .ov_title .ov_line--light {
     color: #222;
     font-size: 42px;

@@ -149,7 +149,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   <div key={n} className="stat_item">
                     <div className="stat_label">
                       <img src={`/images/sub/bus-icon${n}.png`} alt="icon" />
-                      <span>{t(`biz_stat_label${n}`)}</span>
+                      {n === 4 ? (
+                        <span>
+                          HACCP
+                          <span className="stat_label_extra"> 인증현황</span>
+                        </span>
+                      ) : (
+                        <span>{t(`biz_stat_label${n}`)}</span>
+                      )}
                     </div>
                     <div className="stat_value">
                       <strong>{t(`biz_stat_value${n}`)}</strong>
