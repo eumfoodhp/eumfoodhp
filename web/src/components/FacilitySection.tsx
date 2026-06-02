@@ -24,7 +24,10 @@ export default function FacilitySection() {
     <section className="facility_status_section">
       <div className="facility_status_inner">
         <div className="facility_block">
-          <h3 className="facility_block_title">{t('facility_tab_ga')}</h3>
+          <h3 className="facility_block_title">
+            <span>{t('facility_tab_ga')}</span>
+            <span className="facility_block_title_en">Plant A</span>
+          </h3>
           <FacilityGrid
             prefix="ga"
             numbers={GA_NUMS}
@@ -35,7 +38,10 @@ export default function FacilitySection() {
         </div>
 
         <div className="facility_block">
-          <h3 className="facility_block_title">{t('facility_tab_na')}</h3>
+          <h3 className="facility_block_title">
+            <span>{t('facility_tab_na')}</span>
+            <span className="facility_block_title_en">Plant B</span>
+          </h3>
           <FacilityGrid
             prefix="na"
             numbers={NA_NUMS}
