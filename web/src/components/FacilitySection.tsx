@@ -83,8 +83,7 @@ function FacilityGrid({
           </div>
           <div className="facility_info">
             <div className="facility_name_row">
-              <span className="facility_name_label">{t('facility_name_label')}</span>
-              <span className="divider"></span>
+              {/* '설비명 |' 라벨 + divider 제거, 설비명만 주황 볼드 표시 */}
               <span className="facility_name">{t(nameKey(num))}</span>
             </div>
             <p

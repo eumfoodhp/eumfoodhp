@@ -204,12 +204,13 @@
 .facility_name {
     flex: 1;
     min-width: 0;
-    color: #222;
+    /* 설비명 — 주황 볼드 강조 (사용자 요청) */
+    color: #F26337;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     line-height: 28px;
     letter-spacing: -0.45px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .facility_desc {
