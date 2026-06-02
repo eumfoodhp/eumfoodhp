@@ -405,19 +405,18 @@
    - 피클(salted=pickle modKey): 주황 #F26337
    - 소스/혼합장/액상차(sauce): 파랑 #5095D2
    ============================================================ */
+/* 모든 카테고리 색상 주황 #F26337 로 통일 (사용자 요청) */
 #sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_step_badge {
-    background: #5BBE5F;
+    background: #F26337;
 }
 #sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_step_badge {
-    background: #5095D2;
+    background: #F26337;
 }
-
-/* eyebrow 텍스트도 배지와 동일한 톤으로 통일 */
 #sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_eyebrow {
-    color: #5BBE5F;
+    color: #F26337;
 }
 #sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_eyebrow {
-    color: #5095D2;
+    color: #F26337;
 }
 
 /* Zigzag + 점선 커넥터 시도했으나 grid-column 강제 배치가 카드 정렬을 깨뜨려
@@ -468,11 +467,11 @@
 }
 
 #sub_contents .business_process_page .biz_pf_eyebrow--green {
-    color: #87c765;
+    color: #F26337;
 }
 
 #sub_contents .business_process_page .biz_pf_step--green .biz_pf_step_badge {
-    background: #87c765;
+    background: #F26337;
 }
 
 #sub_contents .business_process_page .biz_pf_diagram--braised {
@@ -532,11 +531,11 @@
    제조공정 — 피클 공정 (Figma 553:5894)
    ============================================================ */
 #sub_contents .business_process_page .biz_pf_eyebrow--orange {
-    color: #fba437;
+    color: #F26337;
 }
 
 #sub_contents .business_process_page .biz_pf_step--orange .biz_pf_step_badge {
-    background: #fba437;
+    background: #F26337;
 }
 
 #sub_contents .business_process_page .biz_pf_diagram--pickle {
@@ -596,11 +595,11 @@
    제조공정 — 소스/혼합장/액상차 공정 (Figma 553:5898)
    ============================================================ */
 #sub_contents .business_process_page .biz_pf_eyebrow--blue {
-    color: #7e9ed2;
+    color: #F26337;
 }
 
 #sub_contents .business_process_page .biz_pf_step--blue .biz_pf_step_badge {
-    background: #7e9ed2;
+    background: #F26337;
 }
 
 #sub_contents .business_process_page .biz_pf_diagram--sauce {
