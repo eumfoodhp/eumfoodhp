@@ -165,40 +165,40 @@
    ============================================================ */
 @media (max-width: 1024px) {
     .partner_section--3d {
-        padding: 70px 0 110px;
+        padding: 60px 0 90px;
     }
-    .carousel_stage {
-        height: 460px;
-        perspective: 1000px;
-    }
-    .carousel_ring {
-        width: 220px;
-        height: 300px;
-    }
-    .carousel_card {
-        --radius: 320px;
-    }
-    .orbit_guide {
-        width: 680px;
-        height: 680px;
-    }
-}
-
-@media (max-width: 640px) {
     .carousel_stage {
         height: 380px;
-        perspective: 800px;
+        perspective: 900px;
     }
     .carousel_ring {
-        width: 180px;
-        height: 240px;
+        width: 170px;
+        height: 230px;
     }
     .carousel_card {
         --radius: 240px;
     }
     .orbit_guide {
-        width: 500px;
-        height: 500px;
+        width: 520px;
+        height: 520px;
+    }
+}
+
+@media (max-width: 640px) {
+    .carousel_stage {
+        height: 300px;
+        perspective: 700px;
+    }
+    .carousel_ring {
+        width: 130px;
+        height: 175px;
+    }
+    .carousel_card {
+        --radius: 175px;
+    }
+    .orbit_guide {
+        width: 380px;
+        height: 380px;
     }
     .carousel_card .card_label {
         font-size: 11px;
