@@ -46,35 +46,15 @@
     align-self: stretch;
 }
 @media (max-width: 900px) {
-    /* 모바일 전체 가운데 정렬 (사용자 요청) */
-    .cert_page .cert_container {
-        align-items: center !important;
-    }
+    /* 모바일 — 좌측 정렬 + 인증서 2열 (사용자 요청) */
     .cert_page .cert_title_row {
         flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        text-align: center;
+        align-items: flex-start;
+        gap: 16px;
     }
     .cert_page .cert_promise {
         font-size: 17px;
         padding: 0;
-        text-align: center;
-    }
-    .cert_page .cert_main_title {
-        text-align: center;
-    }
-    .cert_page .haccp_benefit {
-        text-align: center;
-    }
-    .cert_page .cert_group_title {
-        text-align: center;
-        width: 100%;
-    }
-    .cert_page .cert_card,
-    .cert_page .cert_img_box {
-        align-items: center !important;
-        justify-content: center !important;
     }
 }
 
@@ -379,12 +359,13 @@
         line-height: 22px;
     }
 
-    /* ≤735 부터 1열로 통일 — 2열 시 우측 카드가 컨테이너 밖으로 잘림 */
+    /* ≤735 모바일 — 2열 (사용자 요청) */
     #sub_contents .cert_page .cert_grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 16px;
         width: 100%;
         box-sizing: border-box;
+        justify-content: stretch;
     }
 
     #sub_contents .cert_page .cert_card {
@@ -447,8 +428,8 @@
     }
 
     #sub_contents .cert_page .cert_grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
 
     #sub_contents .cert_page .cert_img_box {
