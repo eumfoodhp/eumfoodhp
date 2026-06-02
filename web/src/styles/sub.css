@@ -1922,19 +1922,38 @@
 }
 
 @media (max-width: 1024px) {
-    .area_item, .area_item.reverse { flex-direction: column; gap: 24px; }
+    .area_item, .area_item.reverse { flex-direction: column; gap: 16px; }
     .area_img, .area_text_wrap { width: 100%; height: auto; padding: 0; }
     .area_img { aspect-ratio: 16/9; order: 2; }
-    /* 주황 라벨 (01. ...) 을 사진 위로 (사용자 요청) — display: contents
-       로 자식 (head + desc) 를 area_item flex 흐름에 직접 편입 */
+    /* 라벨만 사진 위, 제목은 사진 아래 — display: contents 로 자식 직접 노출 */
     .area_text_wrap {
         display: contents;
     }
     .area_text_head {
+        display: contents;
+    }
+    .area_text_wrap .area_label_row {
         order: 1;
     }
-    .area_text_wrap .desc {
+    .area_text_wrap .main_ttl {
         order: 3;
+    }
+    .area_text_wrap .desc {
+        order: 4;
+    }
+    /* 숫자 (01, 02, ...) 모두 제거 (사용자 요청) */
+    .area_text_wrap .num {
+        display: none;
+    }
+    /* 케이터링/HMR 등 main_ttl 모바일 폰트 축소 */
+    .area_text_wrap .main_ttl {
+        font-size: 24px !important;
+        line-height: 32px !important;
+        letter-spacing: -0.4px !important;
+    }
+    .area_text_wrap .sub_ttl {
+        font-size: 14px !important;
+        line-height: 20px !important;
     }
 }
 
