@@ -899,22 +899,18 @@
 @media (max-width: 768px) {
     .ceo_intro_section { padding: 80px 0; }
     .ceo_inner { gap: 40px; }
-    /* 인사말 3 라인 한 줄로 합침, 볼드 제거, 본문보다 살짝 큼 (사용자 요청) */
-    .ceo_main_title h3 {
-        display: inline;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.6;
-    }
-    .ceo_main_title h3.light + h3::before {
-        content: ', ';
-    }
-    .ceo_main_title h3.bold + h3.bold::before {
-        content: ' ';
+    /* 인사말 윗부분 (안녕하세요 ~ 황만식입니다.) 모바일 숨김 (사용자 요청) */
+    .ceo_main_title {
+        display: none;
     }
     .ceo_tag { font-size: 20px; }
     .ceo_desc { font-size: 15px; line-height: 1.6; }
     .ceo_main_group { gap: 14px; }
+    /* '㈜이음푸드시스템 대표 황만식' 시그니처 우측 정렬 */
+    .ceo_signature {
+        align-self: flex-end !important;
+        text-align: right;
+    }
 }
 
 
