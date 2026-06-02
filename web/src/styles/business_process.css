@@ -167,20 +167,13 @@
 }
 
 @media (max-width: 480px) {
-    /* 모바일 1열 — 가로 점선 → 세로 점선 */
+    /* 모바일 2열 유지 (사용자 요청, 너무 길어짐 방지) */
     #sub_contents .business_process_page .biz_pf_steps_grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 12px;
     }
     #sub_contents .business_process_page .biz_pf_step--grid::after {
-        right: 50%;
-        top: auto;
-        bottom: -28px;
-        width: 0;
-        height: 24px;
-        border-top: none;
-        border-left: 2px dotted #D1D5DB;
-        transform: translate(50%, 0);
+        width: 12px;
     }
 }
 

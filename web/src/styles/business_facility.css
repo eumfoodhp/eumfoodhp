@@ -168,8 +168,10 @@
 .facility_img {
     position: relative;
     overflow: hidden;
-    /* 사진 크기 축소 (사용자 요청) */
-    height: 280px;
+    /* 사진 비율 유지 — 원래 510x414 (≈ 1.23:1) */
+    width: 100%;
+    aspect-ratio: 510 / 414;
+    height: auto;
     border-radius: 16px;
     background: #f3f4f8;
 }
