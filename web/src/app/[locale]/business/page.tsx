@@ -157,7 +157,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                 </ul>
               </div>
               <div className="cert_bottom">
-                <h4 className="cert_group_title">HACCP</h4>
+                {/* HACCP 라벨 제거 (사용자 요청) */}
                 <CertGrid
                   items={HACCP_CERTS.map((c) => ({ key: c.key, img: c.img, label: t(c.key) }))}
                 />
