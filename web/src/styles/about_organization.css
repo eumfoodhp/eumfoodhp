@@ -340,39 +340,42 @@
     .org_node--director::after {
         left: 50% !important;
     }
+    /* CEO ↔ staff 가로 점선이 작동하려면 staff 가 positioned ancestor */
     .org_staff_right {
-        position: static !important;
+        position: relative !important;
         left: auto !important;
         right: auto !important;
         transform: none !important;
         margin-top: 0 !important;
     }
-    /* CEO ↔ staff 가로 점선 — staff 박스 왼쪽 시작 */
+    /* CEO ↔ staff 가로 점선 — staff 박스 왼쪽 끝에서 좌측으로 16px */
     .org_staff_right::before {
         display: block !important;
+        content: '' !important;
         position: absolute !important;
-        right: calc(100% + 4px) !important;
+        right: calc(100% + 2px) !important;
         top: 50% !important;
-        width: 12px !important;
+        width: 16px !important;
         border-top: var(--org-line-w) dotted var(--org-line) !important;
         transform: translateY(-1px) !important;
+        z-index: 1;
     }
-    /* L3 = 부서들 — 1열 세로 stack, 좌측 들여쓰기 (트렁크 X 위치는 총괄이사 박스 가운데) */
+    /* L3 = 부서들 — 1열 세로 stack, 좌측 들여쓰기 */
     .org_l3 {
         grid-template-columns: 1fr;
         row-gap: 14px;
-        padding-top: 20px;
+        padding-top: 40px;
         padding-left: 60px;
         position: relative;
+        margin-top: 16px;
     }
-    /* 좌측 세로 점선 bar (트렁크) — 위→아래 통째, 마지막 박스 가운데까지 */
+    /* 좌측 세로 점선 bar (트렁크) — L3 padding 아래에서 시작 */
     .org_l3::before {
         display: block;
         content: '';
         position: absolute;
         left: 24px;
-        top: 0;
-        /* 마지막 박스 (공무팀) 가운데 (박스 height ~48 의 절반) — 위 빈공간 없게 */
+        top: 20px;
         bottom: 24px;
         width: 0;
         border-left: var(--org-line-w) dotted var(--org-line);
