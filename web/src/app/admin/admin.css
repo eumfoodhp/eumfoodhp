@@ -21,26 +21,25 @@
 }
 
 .admin_brand {
-    padding: 0 20px 18px;
-    margin: 0 0 12px;
+    padding: 0 16px 18px;
+    margin: 0 0 10px;
     border-bottom: 1px solid #F1F2F4;
 }
 .admin_brand_top {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;     /* 로고 위 / ADMIN 아래 */
+    align-items: stretch;
+    gap: 2px;
 }
 .admin_brand_logo {
-    height: 60px;
+    height: 54px;
     width: auto;
+    align-self: flex-start;
     display: block;
 }
 .admin_brand_badge {
-    display: inline-flex;
-    align-items: center;
-    margin-left: auto;        /* 우측 정렬 */
-    padding: 0;
-    background: transparent;   /* 배경 제거 */
+    align-self: flex-end;       /* ADMIN 아래 우측 */
+    background: transparent;
     color: #F26337;
     font-size: 12px;
     font-weight: 800;
@@ -50,7 +49,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    margin: 12px 0 0;
+    margin: 10px 0 0;
     padding: 7px 10px;
     background: #F7F8FA;
     border-radius: 8px;
@@ -69,14 +68,16 @@
 .admin_nav {
     display: flex;
     flex-direction: column;
-    padding: 4px 12px;
+    padding: 4px 10px;
     gap: 2px;
     flex: 1;
 }
 .admin_nav_item {
-    position: relative;
+    display: block;             /* 인라인 폭 변동 방지 → 전 메뉴 동일 폭 */
+    box-sizing: border-box;
+    width: 100%;
     color: #4B5563;
-    padding: 11px 16px;
+    padding: 11px 14px;
     border-radius: 9px;
     text-decoration: none;
     font-size: 14px;
@@ -94,7 +95,7 @@
 }
 
 .admin_logout_form {
-    padding: 12px 16px 0;
+    padding: 12px 10px 0;
     margin-top: auto;
 }
 .admin_logout_btn {
