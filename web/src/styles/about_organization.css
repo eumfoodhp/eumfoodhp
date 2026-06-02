@@ -128,14 +128,14 @@
     width: 100%;
 }
 
-/* CEO 아래로 내려가는 수직 점선 (총괄이사까지 닿음) */
+/* CEO 아래로 내려가는 수직 점선 — 박스에서 6px 떨어져 시작, 끝도 6px 일찍 */
 .org_node--ceo::after {
     content: '';
     position: absolute;
     left: 50%;
-    top: 100%;
+    top: calc(100% + 6px);
     width: 0;
-    height: var(--gap-y);
+    height: calc(var(--gap-y) - 12px);
     border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
     z-index: 0;
@@ -149,13 +149,13 @@
     transform: translateY(-50%);
 }
 
-/* 경리·회계·인사 박스 좌측에서 CEO 까지 잇는 가로 점선 — 거리 충분히 확보해서 연결 */
+/* 경리·회계·인사 박스 좌측에서 CEO 까지 가로 점선 — 박스에서 6px 떨어져 시작 */
 .org_staff_right::before {
     content: '';
     position: absolute;
-    right: 100%;
+    right: calc(100% + 6px);
     top: 50%;
-    width: 240px;        /* CEO 까지 도달하도록 충분한 길이 (CEO 박스 안으로 살짝 들어가도 무방, 박스 흰 배경이 덮음) */
+    width: 228px;        /* 240 - 12 (양쪽 6px 여백) */
     height: 0;
     border-top: var(--org-line-w) dotted var(--org-line);
     transform: translateY(-1px);
@@ -170,14 +170,14 @@
     justify-content: center;
 }
 
-/* 총괄이사 아래로 내려가는 수직 점선 (부서 가로바까지) */
+/* 총괄이사 아래로 내려가는 수직 점선 — 박스에서 6px 떨어져 */
 .org_node--director::after {
     content: '';
     position: absolute;
     left: 50%;
-    top: 100%;
+    top: calc(100% + 6px);
     width: 0;
-    height: var(--gap-y);
+    height: calc(var(--gap-y) - 12px);
     border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
     z-index: 0;
@@ -217,10 +217,11 @@
 .org_dept_col::before {
     content: '';
     position: absolute;
-    top: calc(-1 * var(--stub-y));
+    /* 박스 위에서 6px 떨어져 시작 — 박스와 점선 겹침 방지 */
+    top: calc(-1 * var(--stub-y) + 6px);
     left: 50%;
     width: 0;
-    height: var(--stub-y);
+    height: calc(var(--stub-y) - 12px);
     border-left: var(--org-line-w) dotted var(--org-line);
     transform: translateX(-1px);
 }
