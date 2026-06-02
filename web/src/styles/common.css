@@ -860,6 +860,10 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     justify-content: space-between;
     align-items: center;
 }
+/* PC 기본 — 모바일 전용 HACCP 마크 숨김 (모바일 미디어쿼리에서만 show) */
+.cert_mark_img--mobile {
+    display: none;
+}
 
 .f_logo {
     width: 120px; /* 로고 크기 조정 */
@@ -1002,9 +1006,19 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     }
     
     .footer_top {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         gap: 20px;
+    }
+    /* 모바일: HACCP 로고 footer_top 우측 노출 + 기존 info_box 안 cert_row 숨김 */
+    .cert_mark_img--mobile {
+        display: block;
+        width: 60px;
+        height: auto;
+    }
+    #footer .info_box .cert_row {
+        display: none;
     }
     
     .f_util {

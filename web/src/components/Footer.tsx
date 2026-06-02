@@ -21,6 +21,12 @@ export default async function Footer() {
             {/* 새 로고 — 푸터에서는 CSS filter 로 그레이 톤 처리 */}
             <img src="/images/common/newlogo.png" alt="㈜이음푸드시스템" />
           </div>
+          {/* 모바일 전용 HACCP 로고 — 로고 옆 우측 정렬 */}
+          <img
+            src="/images/common/haccp1.png"
+            alt="HACCP 인증"
+            className="cert_mark_img cert_mark_img--mobile"
+          />
         </div>
 
         <div className="footer_bottom">
