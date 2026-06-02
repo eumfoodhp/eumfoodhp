@@ -1958,15 +1958,27 @@
     .area_text_wrap .num {
         display: none;
     }
-    /* 케이터링/HMR 등 main_ttl 모바일 폰트 축소 */
-    .area_text_wrap .main_ttl {
-        font-size: 24px !important;
-        line-height: 32px !important;
-        letter-spacing: -0.4px !important;
-    }
+    /* 모바일 텍스트 위계 정리 (사용자 요청: 크기 들쭉날쭉/이미지와 동떨어짐 해소).
+       라벨(주황) 14 → 제목 21 → 본문 15. breakpoint 무관 일관되게 !important. */
     .area_text_wrap .sub_ttl {
         font-size: 14px !important;
         line-height: 20px !important;
+        font-weight: 600 !important;
+    }
+    .area_text_wrap .main_ttl {
+        font-size: 21px !important;
+        line-height: 30px !important;
+        letter-spacing: -0.4px !important;
+        margin-top: 2px !important;
+    }
+    .area_text_wrap .desc {
+        font-size: 15px !important;
+        line-height: 24px !important;
+        margin-top: 2px !important;
+    }
+    /* 라벨↔이미지↔제목↔본문 간격 축소 — 이미지와 텍스트 묶음 느낌 */
+    .area_item, .area_item.reverse {
+        gap: 12px !important;
     }
 }
 
