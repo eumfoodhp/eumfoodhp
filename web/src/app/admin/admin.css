@@ -4,7 +4,7 @@
 
 .admin_root {
     display: grid;
-    grid-template-columns: 248px 1fr;
+    grid-template-columns: 208px 1fr;
     min-height: 100vh;
     background: #F7F8FA;
     font-family: 'Pretendard', -apple-system, sans-serif;
@@ -27,20 +27,18 @@
 }
 .admin_brand_top {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;       /* 로고 위, ADMIN 아래 */
+    align-items: stretch;
+    gap: 4px;
 }
 .admin_brand_logo {
-    height: 60px;
-    width: auto;
+    width: 100%;                  /* 사이드바 폭 꽉 채움 */
+    height: auto;
     display: block;
 }
 .admin_brand_badge {
-    display: inline-flex;
-    align-items: center;
-    margin-left: auto;        /* 우측 정렬 */
-    padding: 0;
-    background: transparent;   /* 배경 제거 */
+    align-self: flex-end;         /* 로고 아래 우측 정렬 */
+    background: transparent;
     color: #F26337;
     font-size: 12px;
     font-weight: 800;
@@ -394,8 +392,10 @@ a.admin_card:hover {
         z-index: 50;
     }
     .admin_brand { border-bottom: none; padding: 0; margin: 0; flex-shrink: 0; }
-    .admin_brand_logo { height: 38px; }
-    .admin_brand_badge { font-size: 11px; }
+    /* 모바일 상단 바 — 로고 가로 고정폭(꽉참 해제), ADMIN 옆 */
+    .admin_brand_top { flex-direction: row; align-items: center; gap: 8px; }
+    .admin_brand_logo { width: auto; height: 34px; }
+    .admin_brand_badge { align-self: center; font-size: 11px; }
     .admin_brand .admin_user { display: none; }
     .admin_nav {
         flex-direction: row;
