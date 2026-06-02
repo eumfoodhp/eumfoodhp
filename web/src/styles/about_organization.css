@@ -353,14 +353,15 @@
         padding-left: 60px;
         position: relative;
     }
-    /* 좌측 세로 점선 bar (트렁크) — 마지막 부서 가운데에서 끝 */
+    /* 좌측 세로 점선 bar (트렁크) — 위→아래 통째, 마지막 박스 가운데까지 */
     .org_l3::before {
         display: block;
         content: '';
         position: absolute;
         left: 24px;
         top: 0;
-        bottom: 28px;
+        /* 마지막 박스 (공무팀) 가운데 (박스 height ~48 의 절반) — 위 빈공간 없게 */
+        bottom: 24px;
         width: 0;
         border-left: var(--org-line-w) dotted var(--org-line);
         height: auto;
@@ -371,10 +372,18 @@
         min-width: 0;
         position: relative;
         display: grid !important;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: 120px 1fr;
         column-gap: 28px;
         row-gap: 8px;
         align-items: center;
+    }
+    /* 부서 박스 크기 통일 (사용자 요청) */
+    .org_dept_col .org_node--dept {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px;
+        box-sizing: border-box;
+        justify-self: stretch;
     }
     .org_dept_col::before {
         content: '';
