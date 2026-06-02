@@ -899,9 +899,21 @@
 @media (max-width: 768px) {
     .ceo_intro_section { padding: 80px 0; }
     .ceo_inner { gap: 40px; }
-    .ceo_main_title h3 { font-size: 30px; line-height: 1.2; }
+    /* 인사말 3 라인 한 줄로 합침, 볼드 제거, 본문보다 살짝 큼 (사용자 요청) */
+    .ceo_main_title h3 {
+        display: inline;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.6;
+    }
+    .ceo_main_title h3.light + h3::before {
+        content: ', ';
+    }
+    .ceo_main_title h3.bold + h3.bold::before {
+        content: ' ';
+    }
     .ceo_tag { font-size: 20px; }
-    .ceo_desc { font-size: 16px; line-height: 1.6; }
+    .ceo_desc { font-size: 15px; line-height: 1.6; }
     .ceo_main_group { gap: 14px; }
 }
 
