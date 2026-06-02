@@ -1935,51 +1935,66 @@
 }
 
 @media (max-width: 1024px) {
-    .area_item, .area_item.reverse { flex-direction: column; gap: 16px; }
-    .area_img, .area_text_wrap { width: 100%; height: auto; padding: 0; }
-    .area_img { aspect-ratio: 16/9; order: 2; }
-    /* 라벨만 사진 위, 제목은 사진 아래 — display: contents 로 자식 직접 노출 */
+    /* 모바일 — 각 주요사업을 카드 형태로 (이미지 상단 + 텍스트 본문).
+       이전 display:contents 방식은 창 크기마다 글씨 늘어짐 → 카드로 안정화. */
+    .area_item, .area_item.reverse {
+        flex-direction: column;
+        gap: 0 !important;
+        background: #fff;
+        border: 1px solid #F0EAE0;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+    .area_img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 10 !important;
+        order: 1;
+        border-radius: 0 !important;
+        padding: 0 !important;
+    }
+    /* 텍스트 묶음 — 카드 본문 (display:contents 해제) */
     .area_text_wrap {
-        display: contents;
+        display: flex !important;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        order: 2;
+        padding: 20px 20px 24px !important;
+        gap: 8px !important;
+        box-sizing: border-box;
     }
     .area_text_head {
-        display: contents;
+        display: flex !important;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        width: 100%;
+        max-width: 100%;
     }
-    .area_text_wrap .area_label_row {
-        order: 1;
-    }
-    .area_text_wrap .main_ttl {
-        order: 3;
-    }
-    .area_text_wrap .desc {
-        order: 4;
-    }
-    /* 숫자 (01, 02, ...) 모두 제거 (사용자 요청) */
-    .area_text_wrap .num {
-        display: none;
-    }
-    /* 모바일 텍스트 위계 정리 (사용자 요청: 크기 들쭉날쭉/이미지와 동떨어짐 해소).
-       라벨(주황) 14 → 제목 21 → 본문 15. breakpoint 무관 일관되게 !important. */
+    .area_text_wrap .num { display: none; }
+    /* 위계: 주황 라벨 13 → 제목 20 → 본문 15. 고정 크기로 안정 */
     .area_text_wrap .sub_ttl {
-        font-size: 14px !important;
+        font-size: 13px !important;
         line-height: 20px !important;
         font-weight: 600 !important;
+        max-width: 100%;
     }
     .area_text_wrap .main_ttl {
-        font-size: 21px !important;
-        line-height: 30px !important;
+        font-size: 20px !important;
+        line-height: 28px !important;
         letter-spacing: -0.4px !important;
-        margin-top: 2px !important;
+        margin: 0 !important;
     }
     .area_text_wrap .desc {
         font-size: 15px !important;
         line-height: 24px !important;
-        margin-top: 2px !important;
+        margin: 0 !important;
+        max-width: 100%;
     }
-    /* 라벨↔이미지↔제목↔본문 간격 축소 — 이미지와 텍스트 묶음 느낌 */
-    .area_item, .area_item.reverse {
-        gap: 12px !important;
-    }
+    /* 카드 사이 간격 */
+    .biz_area_list { gap: 24px; }
 }
 
 /* ============================================================
