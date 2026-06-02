@@ -164,7 +164,9 @@
         text-align: left;
     }
     .history_tl_dot {
-        left: 8px;
+        /* li 좌측이 inner padding 40 만큼 안쪽이므로,
+           세로선(inner::before left:8) 위에 놓이려면 li 기준 left: -32 */
+        left: -32px;
         transform: translate(-50%, -50%);
     }
     .history_tl_connector {
