@@ -372,6 +372,14 @@
     line-height: 24px;
 }
 
+/* Supply/Formula/Safe 영어 옆에 더 알아보기 버튼 (사용자 요청) */
+.process_section--cards .proc_card_meta_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
 .process_section--cards .proc_card_title {
     color: #222;
     font-family: 'Pretendard';

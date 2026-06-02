@@ -139,12 +139,14 @@ export default async function HomePage({
                   />
                   <div className="proc_card_body">
                     <h3 className="proc_card_title">{nl2br(item.title)}</h3>
-                    <span className="proc_card_tag">{item.tag}</span>
+                    <div className="proc_card_meta_row">
+                      <span className="proc_card_tag">{item.tag}</span>
+                      <Link href={item.link} className="proc_card_link">
+                        <span>{t('common_more')}</span>
+                        <ArrowIcon />
+                      </Link>
+                    </div>
                     <p className="proc_card_desc">{item.desc}</p>
-                    <Link href={item.link} className="proc_card_link">
-                      <span>{t('common_more')}</span>
-                      <ArrowIcon />
-                    </Link>
                   </div>
                 </article>
               ))}
