@@ -849,18 +849,17 @@ html, body {
         font-size: 12px !important;
         line-height: 16px !important;
         padding: 7px 11px !important;
-        /* 박스: 사이트 메인 초록(#22C55E) 의 옅은 버전.
-           텍스트: 일반 색 (주황 X — 사용자 요청) */
+        /* 초록 배경 제거 — 사용자 요청 */
         color: #222 !important;
         font-weight: 500 !important;
-        background: #BBF7D0 !important;
+        background: transparent !important;
         border-radius: 10px !important;
         white-space: nowrap !important;
         transition: background 0.15s ease, color 0.15s ease;
     }
     #mo_nav .menu_dep2 li a:hover {
-        background: #86EFAC !important;
-        color: #111 !important;
+        background: transparent !important;
+        color: #F26337 !important;
     }
     #mo_nav.full_menu_overlay {
         position: fixed !important;
