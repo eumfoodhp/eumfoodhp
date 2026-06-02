@@ -138,8 +138,8 @@ export default async function HomePage({
                     style={{ backgroundImage: `url('/images/main/section4-${idx + 1}.png')` }}
                   />
                   <div className="proc_card_body">
-                    <span className="proc_card_tag">{item.tag}</span>
                     <h3 className="proc_card_title">{nl2br(item.title)}</h3>
+                    <span className="proc_card_tag">{item.tag}</span>
                     <p className="proc_card_desc">{item.desc}</p>
                     <Link href={item.link} className="proc_card_link">
                       <span>{t('common_more')}</span>
