@@ -539,3 +539,87 @@
     }
     .org_dept_col .org_node--sub { grid-column: 2; }
 }
+
+/* ============================================================
+   모바일 ≤900px — PC 배치 그대로 + 박스 축소 + 가로 스크롤 (사용자 요청)
+   (앞의 모바일 세로/2열 블록들을 최종 override)
+   ============================================================ */
+@media (max-width: 900px) {
+    .org_chart_wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+        justify-content: flex-start;
+    }
+    .org_chart {
+        min-width: 680px !important;
+        max-width: 680px !important;
+        align-items: center !important;
+        padding: 0 !important;
+    }
+    /* 박스 전부 축소 통일 */
+    .org_chart .org_node {
+        width: 76px !important;
+        min-width: 76px !important;
+        max-width: 76px !important;
+        min-height: 40px !important;
+        height: auto !important;
+        padding: 6px 4px !important;
+        font-size: 10px !important;
+        line-height: 1.25 !important;
+        border-radius: 7px !important;
+        border-width: 1.5px !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        text-align: center;
+    }
+    .org_node_en { display: none !important; }
+
+    /* L1: 대표이사 가운데 + 경리 우측 분기 (PC 동일) */
+    .org_l1 {
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 0 !important;
+        padding-left: 0 !important;
+    }
+    .org_staff_right {
+        position: absolute !important;
+        top: 8px !important;
+        left: calc(50% + 110px) !important;
+        right: auto !important;
+        transform: none !important;
+        margin: 0 !important;
+    }
+    /* L2: 총괄이사 가운데 (PC 동일) */
+    .org_l2 {
+        justify-content: center !important;
+        margin-top: 18px !important;
+        padding-left: 0 !important;
+    }
+    /* L3: 8부서 가로 한 줄 (PC 동일) */
+    .org_l3 {
+        display: grid !important;
+        grid-template-columns: repeat(8, 1fr) !important;
+        gap: 8px !important;
+        padding-top: 20px !important;
+        margin-top: 18px !important;
+    }
+    /* 부서 세로 stack (부서 → 소속팀 아래로, PC 동일) */
+    .org_dept_col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    .org_dept_col .org_node--dept {
+        grid-row: auto !important;
+        grid-column: auto !important;
+        align-self: center !important;
+    }
+    .org_dept_col .org_node--sub {
+        grid-column: auto !important;
+        margin: 0 !important;
+        max-width: 76px !important;
+    }
+}
