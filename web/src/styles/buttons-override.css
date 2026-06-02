@@ -1785,7 +1785,9 @@ html[lang="zh"] .dl_title {
     position: relative;
     width: 100%;
     max-width: none;
-    margin: auto 0 0;
+    /* 좌우 auto 로 가운데 정렬 (이전 margin: auto 0 0 은 좌우 0 이라
+       부모 좁아질 때 좌측 쏠림) */
+    margin: auto auto 0;
     /* PREV ─ ● ─ NEXT 한 줄, 가운데 점 기준 좌우 대칭 */
     display: flex;
     justify-content: center;
@@ -1912,8 +1914,9 @@ html[lang="zh"] .dl_title {
         font-size: 30px;
     }
     .next_section {
-        margin-top: 60px;
+        margin: 60px auto 0;
         max-width: calc(100% - 24px);
+        column-gap: 48px;        /* 모바일은 좁아서 96 → 48 */
         gap: 24px;
     }
     .next_section_label {
