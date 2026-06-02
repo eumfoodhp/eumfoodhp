@@ -459,3 +459,21 @@
         transform: translateY(-1px);
     }
 }
+
+/* ============================================================
+   조직도 점선 전부 제거 (PC + 모바일) — 사용자 요청.
+   모든 connector pseudo-element 일괄 숨김 (파일 맨 끝 = 최우선).
+   ============================================================ */
+.org_node--ceo::after,
+.org_node--director::after,
+.org_staff_right::before,
+.org_l3::before,
+.org_dept_col::before,
+.org_dept_col .org_node--dept::before,
+.org_dept_col .org_node--sub::before,
+.org_dept_col .org_node--dept + .org_node--sub::before,
+.org_dept_col .org_node--sub + .org_node--sub::before {
+    display: none !important;
+    content: none !important;
+    border: 0 !important;
+}
