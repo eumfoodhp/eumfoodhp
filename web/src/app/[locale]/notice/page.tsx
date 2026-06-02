@@ -8,10 +8,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import NextSectionLink from '@/components/NextSectionLink';
 import SectionHeader from '@/components/SectionHeader';
-import PressHeroSlider from '@/components/PressHeroSlider';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
+import '@/styles/inquiry-sales-forms.css';
 
 export const revalidate = 0;
 
@@ -38,116 +38,90 @@ export default async function NewsroomOnePage({
 
   const { data: presses } = await supabase
     .from('press_releases')
-    .select('id, title, source, thumbnail, view_count, created_at')
+    .select('id, title, source, created_at')
     .order('created_at', { ascending: false })
     .limit(PRESS_LIMIT);
 
-  const { data: heroData } = await supabase
-    .from('press_releases')
-    .select('id, title, thumbnail, created_at')
-    .order('created_at', { ascending: false })
-    .limit(5);
-  const heroItems = heroData ?? [];
+  const fmtDate = (s: string) =>
+    new Date(s).toLocaleDateString(locale).replace(/\. /g, '.').replace(/\.$/, '');
 
   return (
     <main id="sub_contents" className="newsroom_onepage onepage_story">
       <div className="onepage_content">
 
-        {/* ===== 1. 공지사항 ===== */}
+        {/* ===== 1. 공지사항 ===== 문의 페이지 테이블 UI 통일 */}
         <div id="notice" className="story_section">
           <SectionHeader title={t('sub_notice')} en="Notice" />
 
-          {(!notices || notices.length === 0) ? (
-            <div className="sub_inner board_empty">{t('board_empty_notice')}</div>
-          ) : (
-            <div className="sub_inner">
-              <ul className="board_line_list">
-                {notices.map((n, idx) => (
-                  <li key={n.id} className="row">
-                    <Link href={`/notice/${n.id}` as never}>
-                      <span className={`col_no${n.is_pinned ? ' pinned' : ''}`}>
-                        {n.is_pinned ? t('label_notice_pinned') : `No.${notices.length - idx}`}
-                      </span>
-                      <span className="col_title">{n.title}</span>
-                      <span className="col_chip_wrap">
-                        {Array.isArray(n.attachments) && n.attachments.length > 0 && (
-                          <span className="col_chip">
-                            <DownloadIcon />
-                            <span>{t('btn_download')}</span>
-                          </span>
-                        )}
-                      </span>
-                      <span className="col_date">
-                        {new Date(n.created_at).toLocaleDateString(locale).replace(/\. /g, '.').replace(/\.$/, '')}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div className="sub_inner">
+            <table className="inquiry_table">
+              <thead>
+                <tr>
+                  <th style={{ width: 90 }}>{t('contact_col_no')}</th>
+                  <th>{t('contact_col_title')}</th>
+                  <th style={{ width: 150 }}>{t('contact_col_date')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {!notices || notices.length === 0 ? (
+                  <tr>
+                    <td colSpan={3} className="inquiry_table_empty">{t('board_empty_notice')}</td>
+                  </tr>
+                ) : (
+                  notices.map((n, idx) => (
+                    <tr key={n.id}>
+                      <td>{n.is_pinned ? t('label_notice_pinned') : `No.${notices.length - idx}`}</td>
+                      <td className="inquiry_table_title">
+                        <Link href={`/notice/${n.id}` as never}>{n.title}</Link>
+                      </td>
+                      <td>{fmtDate(n.created_at)}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
           <NextSectionLink prevId="notice" nextId="press" nextLabel={t('sub_news_press')} />
         </div>
 
-        {/* ===== 2. 보도자료 ===== */}
+        {/* ===== 2. 보도자료 ===== 동일 테이블 UI */}
         <div id="press" className="story_section">
           <SectionHeader title={t('sub_news_press')} en="Press" />
 
           <div className="sub_inner">
-            {heroItems.length > 0 && <PressHeroSlider items={heroItems} />}
-
-            {(!presses || presses.length === 0) ? (
-              <div className="board_empty">{t('board_empty_press')}</div>
-            ) : (
-              <ul className="board_grid">
-                {presses.map((p) => (
-                  <li key={p.id} className="card">
-                    <Link href={`/press/${p.id}` as never}>
-                      <div className="thumb">
-                        {p.thumbnail ? (
-                          <img src={p.thumbnail} alt="" loading="lazy" />
-                        ) : (
-                          <div className="thumb_placeholder">
-                            <ImagePlaceholderIcon />
-                          </div>
-                        )}
-                      </div>
-                      <div className="body">
-                        <span className="tag">NEWS</span>
-                        <h3 className="title">{p.title}</h3>
-                        <span className="date">
-                          {new Date(p.created_at).toLocaleDateString(locale).replace(/\. /g, '.').replace(/\.$/, '')}
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <table className="inquiry_table">
+              <thead>
+                <tr>
+                  <th style={{ width: 90 }}>{t('contact_col_no')}</th>
+                  <th>{t('contact_col_title')}</th>
+                  <th style={{ width: 160 }}>{t('press_col_source')}</th>
+                  <th style={{ width: 150 }}>{t('contact_col_date')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {!presses || presses.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="inquiry_table_empty">{t('board_empty_press')}</td>
+                  </tr>
+                ) : (
+                  presses.map((p, idx) => (
+                    <tr key={p.id}>
+                      <td>{`No.${presses.length - idx}`}</td>
+                      <td className="inquiry_table_title">
+                        <Link href={`/press/${p.id}` as never}>{p.title}</Link>
+                      </td>
+                      <td>{p.source || '-'}</td>
+                      <td>{fmtDate(p.created_at)}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
           </div>
           <NextSectionLink isLast />
         </div>
 
       </div>
     </main>
-  );
-}
-
-function DownloadIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
-    </svg>
-  );
-}
-function ImagePlaceholderIcon() {
-  return (
-    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="16" rx="2" />
-      <circle cx="8.5" cy="9.5" r="1.5" />
-      <polyline points="21 15 16 10 5 21" />
-    </svg>
   );
 }

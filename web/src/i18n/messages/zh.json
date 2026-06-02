@@ -1243,5 +1243,6 @@
   "proc_sauce_step06_tit": "金属检测",
   "proc_sauce_step06_desc": "",
   "proc_sauce_step07_tit": "外包装/出库",
-  "proc_sauce_step07_desc": ""
+  "proc_sauce_step07_desc": "",
+  "press_col_source": "来源"
 }

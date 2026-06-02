@@ -1243,5 +1243,6 @@
   "proc_sauce_step06_tit": "Metal Detection",
   "proc_sauce_step06_desc": "",
   "proc_sauce_step07_tit": "Outer Packing/Shipping",
-  "proc_sauce_step07_desc": ""
+  "proc_sauce_step07_desc": "",
+  "press_col_source": "Source"
 }

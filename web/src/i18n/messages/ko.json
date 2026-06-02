@@ -1243,5 +1243,6 @@
   "proc_sauce_step06_tit": "금속검출",
   "proc_sauce_step06_desc": "",
   "proc_sauce_step07_tit": "외포장/출하",
-  "proc_sauce_step07_desc": ""
+  "proc_sauce_step07_desc": "",
+  "press_col_source": "출처"
 }
