@@ -235,8 +235,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_safety')}</div>
                     <div className="org_node org_node--sub">
-                      <span>{t('org_sub_safety_law')}</span>
-                      <span>{t('org_sub_safety_mgmt')}</span>
+                      {t('org_sub_safety_law')} {t('org_sub_safety_mgmt')}
                     </div>
                   </div>
                   <div className="org_dept_col">

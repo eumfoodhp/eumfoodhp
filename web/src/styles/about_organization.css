@@ -387,7 +387,7 @@
         min-width: 0;
         position: relative;
         display: grid !important;
-        grid-template-columns: 120px 1fr;
+        grid-template-columns: 120px minmax(0, max-content);
         column-gap: 28px;
         row-gap: 8px;
         align-items: center;
@@ -417,11 +417,16 @@
         grid-row: 1 / -1;
         align-self: center;
     }
-    /* sub 박스 — 우측 column, 위에서부터 stack */
+    /* sub 박스 — 우측 column, 위에서부터 stack, 가로 폭 제한 */
     .org_dept_col .org_node--sub {
         grid-column: 2;
         position: relative;
         margin: 0 !important;
+        max-width: 180px;
+        width: auto;
+        flex-direction: row;
+        white-space: normal;
+        word-break: keep-all;
     }
     /* 부서 ↔ sub 첫 줄 가로 점선 stub */
     .org_dept_col .org_node--sub::before {
