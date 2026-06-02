@@ -3,13 +3,12 @@
  * 기본 레이아웃은 sub.css .cert_* 참고
  */
 
-/* 약속 텍스트 — 크게/진하게/주황 (사용자 요청) */
+/* 약속 텍스트 — 크게/진하게/주황 (배경 제거) */
 .cert_page .cert_promise {
     width: 100%;
     margin: 0;
-    padding: 20px 28px;
-    background: #FFF6EC;
-    border-radius: 12px;
+    padding: 0;
+    background: transparent;
     color: #F26337;
     font-size: 26px;
     font-weight: 800;

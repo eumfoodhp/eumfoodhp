@@ -1155,10 +1155,10 @@
     align-self: stretch;
 }
 
-/* 11. 그리드 레이아웃 — 한 줄 5개, 간격 줄임 (사용자 요청) */
+/* 11. 그리드 레이아웃 — 한 줄 4개, gap 24px */
 .cert_grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     width: 100%;
 }
