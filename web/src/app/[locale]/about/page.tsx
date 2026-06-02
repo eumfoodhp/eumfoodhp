@@ -163,10 +163,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
         <section className="biz_area_detail_section">
           <div className="sub_inner biz_area_container">
-            <div className="biz_area_header">
-              <span className="area_cate">{t('biz_area_cate')}</span>
-              <h2 className="area_title">{t('biz_area_title')}</h2>
-            </div>
+            {/* biz_area_header (Core Business / 주요 사업 텍스트) 제거 — 사용자 요청 */}
             <div className="biz_area_list">
               {AREAS.map((n) => (
                 <div key={n} className={`area_item${n % 2 === 0 ? ' reverse' : ''}`}>
