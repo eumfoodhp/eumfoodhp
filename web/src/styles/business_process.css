@@ -54,10 +54,8 @@
 
 #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_circle {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     width: 100%;
     max-width: 160px;
     height: auto;
@@ -68,6 +66,16 @@
     background: #F6F7F8;
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
+}
+/* 원 밖 라벨 — 원 아래 가운데 (피그마 디자인) */
+#sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label {
+    margin: 12px 0 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2937;
+    line-height: 1.4;
 }
 
 #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_icon {
