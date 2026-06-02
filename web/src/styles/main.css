@@ -356,7 +356,8 @@
     position: relative;
 }
 
-/* 더 알아보기 — 이미지 우측 상단 떠있는 pill (PC, 사용자 요청) */
+/* 더 알아보기 — 이미지 우측 상단. 상단 .biz_more_btn 과 동일 톤
+   (흰 배경 + 보더 + 라운드 rect, 사용자 요청) */
 .process_section--cards .proc_card_link--float {
     position: absolute;
     top: 16px;
@@ -364,21 +365,25 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
-    color: #F26337;
+    padding: 9px 14px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #e5e5ec;
+    color: #222;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    transition: background 0.2s ease, color 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     z-index: 2;
 }
+.process_section--cards .proc_card_link--float svg { color: #F26337; }
 .process_section--cards .proc_card_link--float:hover {
     background: #F26337;
+    border-color: #F26337;
     color: #fff;
 }
+.process_section--cards .proc_card_link--float:hover svg { color: #fff; }
 .process_section--cards .proc_card_link--float svg {
     width: 16px;
     height: 16px;
