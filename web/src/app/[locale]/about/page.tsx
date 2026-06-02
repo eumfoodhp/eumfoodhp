@@ -213,25 +213,39 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <div className="org_l3">
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_production')}</div>
-                    <div className="org_node org_node--sub">{t('org_sub_production_a')}</div>
-                    <div className="org_node org_node--sub">{t('org_sub_production_b')}</div>
+                    <div className="org_node org_node--sub">
+                      <span>{t('org_sub_production_a')}</span>
+                      <span className="org_node_en">Plant A Production</span>
+                    </div>
+                    <div className="org_node org_node--sub">
+                      <span>{t('org_sub_production_b')}</span>
+                      <span className="org_node_en">Plant B Production</span>
+                    </div>
                   </div>
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_research')}</div>
-                    <div className="org_node org_node--sub">{t('org_sub_rnd_dedicated')}</div>
+                    <div className="org_node org_node--sub">
+                      <span>{t('org_sub_rnd_dedicated')}</span>
+                      <span className="org_node_en">Dedicated R&amp;D Unit</span>
+                    </div>
                   </div>
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_planning')}</div>
                   </div>
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_purchase')}</div>
-                    <div className="org_node org_node--sub">{t('org_sub_logistics')}</div>
+                    <div className="org_node org_node--sub">
+                      <span>{t('org_sub_logistics')}</span>
+                      <span className="org_node_en">Logistics</span>
+                    </div>
                   </div>
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_safety')}</div>
                     <div className="org_node org_node--sub">
                       <span>{t('org_sub_safety_law')}</span>
+                      <span className="org_node_en">Serious Accidents Act</span>
                       <span>{t('org_sub_safety_mgmt')}</span>
+                      <span className="org_node_en">Administrative Work</span>
                     </div>
                   </div>
                   <div className="org_dept_col">
@@ -239,7 +253,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   </div>
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_quality')}</div>
-                    <div className="org_node org_node--sub">{t('org_sub_lab')}</div>
+                    <div className="org_node org_node--sub">
+                      <span>{t('org_sub_lab')}</span>
+                      <span className="org_node_en">Laboratory</span>
+                    </div>
                   </div>
                   <div className="org_dept_col">
                     <div className="org_node org_node--dept">{t('org_dept_facility')}</div>
