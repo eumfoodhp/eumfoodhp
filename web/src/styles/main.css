@@ -966,9 +966,17 @@
 /* 카드 리스트 레이아웃 */
 .notice_content {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
+    /* 4개 카드 (공지 2 + 보도 2) 한 줄 — 모바일은 별도 grid 정의 */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
     width: 100%;
+}
+
+/* notice_card 자체가 Link 로 감싸지므로 Link 의 underline/color 제거 */
+.notice_card_link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .notice_card {

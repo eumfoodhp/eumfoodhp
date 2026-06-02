@@ -274,27 +274,34 @@ export default async function HomePage({
             </div>
 
             <div className="notice_content">
-              {/* Figma 디자인: ex1/2/3.png 이미지 + NEWS 라벨 + 본문 + 날짜
-                  DB 연결 전까지는 동일 placeholder 본문을 3개 노출. */}
-              {[1, 2, 3].map((i) => (
-                <article key={i} className="notice_card">
-                  <div
-                    className="card_img"
-                    style={{ backgroundImage: `url('/images/main/ex${i}.png')` }}
-                  ></div>
-                  <div className="card_info">
-                    <div className="card_top_group">
-                      <div className="card_cate_group">
-                        <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
-                          <circle cx="3" cy="3" r="3" fill="#FF5D27" />
-                        </svg>
-                        <span className="card_cate">{t('main_notice_card_label')}</span>
+              {/* 공지 2개 + 보도자료 2개 — 임시 더미 텍스트, 카드 클릭 시 해당
+                  notice 페이지 anchor 로 이동. DB 연동 전까지 임시. */}
+              {[
+                { label: '공지', cate: 'notice', title: '신제품 출시 안내 — 5월 신상 라인업 공개', date: '2026.05.30', href: '/notice#notice', img: 1 },
+                { label: '공지', cate: 'notice', title: '하절기 휴무일 변경 안내', date: '2026.05.20', href: '/notice#notice', img: 2 },
+                { label: 'NEWS', cate: 'press', title: '㈜이음푸드시스템, HMR 시장 매출 30% 성장', date: '2026.05.15', href: '/notice#press', img: 3 },
+                { label: 'NEWS', cate: 'press', title: 'HACCP 인증 갱신 완료 — 안전·신선 강화', date: '2026.05.10', href: '/notice#press', img: 1 },
+              ].map((item, i) => (
+                <Link key={i} href={item.href as never} className="notice_card_link">
+                  <article className="notice_card">
+                    <div
+                      className="card_img"
+                      style={{ backgroundImage: `url('/images/main/ex${item.img}.png')` }}
+                    ></div>
+                    <div className="card_info">
+                      <div className="card_top_group">
+                        <div className="card_cate_group">
+                          <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
+                            <circle cx="3" cy="3" r="3" fill="#FF5D27" />
+                          </svg>
+                          <span className="card_cate">{item.label}</span>
+                        </div>
+                        <p className="card_title">{item.title}</p>
                       </div>
-                      <p className="card_title">{t('main_notice_card_desc')}</p>
+                      <span className="card_date">{item.date}</span>
                     </div>
-                    <span className="card_date">{t('main_notice_card_date')}</span>
-                  </div>
-                </article>
+                  </article>
+                </Link>
               ))}
             </div>
           </div>
