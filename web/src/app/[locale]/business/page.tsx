@@ -100,10 +100,10 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                       <div className="biz_pf_step_badge">Step {nn}</div>
                       <div className="biz_pf_step_circle">
                         <div className="biz_pf_step_icon">
-                          <img src={iconSrc} alt={label} width={90} height={90} loading="lazy" />
+                          <img src={iconSrc} alt={label} width={62} height={62} loading="lazy" />
                         </div>
+                        <p className="biz_pf_step_label">{label}</p>
                       </div>
-                      <p className="biz_pf_step_label">{label}</p>
                       <p className="biz_pf_step_desc">{t(`${cat.prefix}${nn}_desc`)}</p>
                     </div>
                   );
