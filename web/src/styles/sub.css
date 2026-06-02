@@ -1167,7 +1167,8 @@
 .cert_card {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* 좌측 정렬 — 라벨(HACCP/기타) 텍스트 좌측 끝과 인증서 좌측 끝 정렬 (사용자 요청) */
+    align-items: flex-start;
     gap: 12px; /* var(--padding-3) */
 }
 
@@ -1177,8 +1178,9 @@
 .cert_img_box {
     display: flex;
     height: 380px;
-    justify-content: center;
-    align-items: center;         /* 인증서 본체 세로 중앙 — PNG 내부 content 도 박스 중앙에 위치 */
+    /* 좌측 정렬 — 라벨 좌측 끝과 인증서 이미지 좌측 끝 정렬 */
+    justify-content: flex-start;
+    align-items: center;
     align-self: stretch;
     background: transparent;
     border: 0;
