@@ -92,17 +92,6 @@
     color: #F26337;
     font-weight: 700;
 }
-.admin_nav_item.active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 18px;
-    border-radius: 2px;
-    background: #F26337;
-}
 
 .admin_logout_form {
     padding: 12px 16px 0;
