@@ -307,6 +307,12 @@
         padding: 0 8px;
         box-sizing: border-box;
         overflow: visible;
+        /* 모든 자식 좌측 정렬 (트리 일관성) — 부모 default center 해제 */
+        align-items: flex-start !important;
+    }
+    .org_l1, .org_l2, .org_l3 {
+        align-self: flex-start !important;
+        width: 100% !important;
     }
     .org_node {
         white-space: normal;
