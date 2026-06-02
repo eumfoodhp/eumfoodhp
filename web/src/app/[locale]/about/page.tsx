@@ -296,10 +296,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </li>
                   </ul>
                   <div className="loc_qr_group">
-                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(factoryQuery)}`} target="_blank" rel="noopener noreferrer">
-                      <img src={factoryQR.tmap} alt={t('loc_qr_tmap')} width={120} height={120} />
-                      <span className="loc_qr_label">{t('loc_qr_tmap')}</span>
-                    </a>
+                    {/* 티맵 QR 제거 (사용자 요청) */}
                     <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(factoryQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={factoryQR.kakao} alt={t('loc_qr_kakao')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_kakao')}</span>
@@ -334,10 +331,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </li>
                   </ul>
                   <div className="loc_qr_group">
-                    <a className="loc_qr_item" href={`https://tmap.life/?q=${encodeURIComponent(centerQuery)}`} target="_blank" rel="noopener noreferrer">
-                      <img src={centerQR.tmap} alt={t('loc_qr_tmap')} width={120} height={120} />
-                      <span className="loc_qr_label">{t('loc_qr_tmap')}</span>
-                    </a>
+                    {/* 티맵 QR 제거 (사용자 요청) */}
                     <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(centerQuery)}`} target="_blank" rel="noopener noreferrer">
                       <img src={centerQR.kakao} alt={t('loc_qr_kakao')} width={120} height={120} />
                       <span className="loc_qr_label">{t('loc_qr_kakao')}</span>
