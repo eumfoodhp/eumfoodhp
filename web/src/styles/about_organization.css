@@ -299,92 +299,101 @@
     }
 }
 
+/* ============================================================
+   모바일 ≤900px — 트리 들여쓰기 (단일 spine X = 28px)
+   대표이사·총괄이사·부서 트렁크 수직 점선이 모두 x=28 한 줄.
+   ============================================================ */
 @media (max-width: 900px) {
-    /* 모바일 — 트리 들여쓰기 (사용자 요청 A 옵션) */
     .org_chart {
         width: 100%;
         max-width: 100%;
         padding: 0 8px;
         box-sizing: border-box;
         overflow: visible;
-        /* 모든 자식 좌측 정렬 (트리 일관성) — 부모 default center 해제 */
         align-items: flex-start !important;
     }
     .org_l1, .org_l2, .org_l3 {
         align-self: flex-start !important;
         width: 100% !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
     }
     .org_node {
         white-space: normal;
         word-break: keep-all;
-        min-width: 0;
         text-align: center;
         line-height: 1.35;
     }
-    /* 대표이사 + 경리회계인사 한 줄, 부서 박스 X 와 정렬 (트렁크와 동일 X) */
+
+    /* --- L1: 대표이사 + 경리회계인사 한 줄 --- */
     .org_l1 {
         flex-direction: row !important;
         justify-content: flex-start !important;
         align-items: center !important;
-        gap: 24px !important;
-        padding-left: 60px !important;
+        gap: 28px !important;
     }
-    /* 총괄이사 — 부서 박스 X 와 정렬 */
-    .org_l2 {
-        justify-content: flex-start !important;
-        padding-left: 60px !important;
-        margin-left: 0 !important;
+    /* 대표이사 ↔ 총괄이사 수직 점선 — spine x=28 (박스 좌측에서 28px) */
+    .org_node--ceo::after {
+        left: 28px !important;
+        top: calc(100% + 4px) !important;
+        height: 18px !important;
     }
-    /* 대표이사·총괄이사 수직 점선 — 박스 좌측 끝에서 내려옴 (트렁크와 X 일치) */
-    .org_node--ceo::after,
-    .org_node--director::after {
-        left: 0 !important;
-    }
-    /* CEO ↔ staff 가로 점선이 작동하려면 staff 가 positioned ancestor */
+    /* 경리회계인사 — 정적 배치 + CEO 와 가로 점선 */
     .org_staff_right {
         position: relative !important;
         left: auto !important;
         right: auto !important;
         transform: none !important;
-        margin-top: 0 !important;
+        margin: 0 !important;
     }
-    /* CEO ↔ staff 가로 점선 — staff 박스 왼쪽 끝에서 좌측으로 16px */
     .org_staff_right::before {
         display: block !important;
         content: '' !important;
         position: absolute !important;
-        right: calc(100% + 2px) !important;
+        right: 100% !important;
         top: 50% !important;
-        width: 16px !important;
+        width: 28px !important;
         border-top: var(--org-line-w) dotted var(--org-line) !important;
         transform: translateY(-1px) !important;
-        z-index: 1;
+        z-index: 0;
     }
-    /* L3 = 부서들 — 1열 세로 stack, 부서 박스 X = 60 (CEO/총괄이사와 일치) */
+
+    /* --- L2: 총괄이사 --- */
+    .org_l2 {
+        justify-content: flex-start !important;
+        margin-top: 18px !important;
+    }
+    /* 총괄이사 → 부서 트렁크 수직 점선 — spine x=28 */
+    .org_node--director::after {
+        left: 28px !important;
+        top: calc(100% + 4px) !important;
+        height: 24px !important;
+    }
+
+    /* --- L3: 부서 8개 세로 stack. 박스 x=60, 트렁크 x=28 --- */
     .org_l3 {
         grid-template-columns: 1fr;
-        row-gap: 14px;
-        padding-top: 40px;
+        row-gap: 16px;
+        padding-top: 8px;
         padding-left: 60px;
         position: relative;
-        margin-top: 16px;
     }
-    /* 트렁크 — X 60 (.org_l3 padding 좌측 끝 = 박스 좌측 X) */
+    /* 트렁크 — spine x=28, 위(총괄이사 점선 끝)에서 마지막 부서 가운데까지 */
     .org_l3::before {
         display: block;
         content: '';
         position: absolute;
-        left: 60px;
-        top: 20px;
+        left: 28px;
+        top: -24px;
         bottom: 24px;
         width: 0;
         border-left: var(--org-line-w) dotted var(--org-line);
-        height: auto;
         border-top: none;
+        height: auto;
     }
-    /* 각 부서 — 좌측 들여쓰기 + 가로 점선 stub + 우측 sub stack */
+
+    /* 각 부서 행 — 부서 박스(좌) + sub stack(우) grid */
     .org_dept_col {
-        min-width: 0;
         position: relative;
         display: grid !important;
         grid-template-columns: 120px minmax(0, max-content);
@@ -392,46 +401,42 @@
         row-gap: 8px;
         align-items: center;
     }
-    /* 부서 박스 크기 통일 (사용자 요청) */
-    .org_dept_col .org_node--dept {
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px;
-        box-sizing: border-box;
-        justify-self: stretch;
-    }
+    /* org_dept_col 자체 ::before 비활성 (스텁은 부서 박스에 직접) */
     .org_dept_col::before {
-        /* L3 padding-left 60 안 0 위치이고 트렁크 X = 60 (chart 기준).
-           부서 박스 좌측이 chart 60 (padding 시작) 라면 트렁크와 박스 좌측 X 동일.
-           stub 길이 0 — 박스 좌측이 곧 트렁크 → stub 안 보임. */
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 24px;
-        width: 0;
-        height: 0;
-        border-top: none;
-        border-left: none;
-        transform: none;
+        display: none !important;
     }
-    /* 부서 박스 — 좌측 column, sub 가 여러 줄이면 세로 가운데 정렬 */
+    /* 부서 박스 — 좌측 col, 폭 통일 120, sub 여러줄이면 세로 가운데 */
     .org_dept_col .org_node--dept {
         grid-column: 1;
         grid-row: 1 / -1;
         align-self: center;
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+        box-sizing: border-box;
     }
-    /* sub 박스 — 우측 column, 위에서부터 stack, 가로 폭 제한 */
+    /* 트렁크(x=28) → 부서 박스 좌측(x=60) 가로 stub — 박스 세로 중앙 */
+    .org_dept_col .org_node--dept::before {
+        content: '';
+        position: absolute;
+        left: -32px;
+        top: 50%;
+        width: 32px;
+        height: 0;
+        border-top: var(--org-line-w) dotted var(--org-line);
+        transform: translateY(-1px);
+    }
+    /* sub 박스 — 우측 col stack, 폭 제한 */
     .org_dept_col .org_node--sub {
         grid-column: 2;
         position: relative;
         margin: 0 !important;
-        max-width: 180px;
         width: auto;
-        flex-direction: row;
+        max-width: 180px;
         white-space: normal;
         word-break: keep-all;
     }
-    /* 부서 ↔ sub 첫 줄 가로 점선 stub */
+    /* 부서 박스 ↔ sub 가로 점선 stub */
     .org_dept_col .org_node--sub::before {
         content: '';
         position: absolute;
@@ -441,25 +446,5 @@
         height: 0;
         border-top: var(--org-line-w) dotted var(--org-line);
         transform: translateY(-1px);
-    }
-    .org_dept_col:first-child::before {
-        display: block;
-    }
-    /* 부서 박스 — 자기 폭 (왼쪽 정렬) */
-    .org_dept_col .org_node--dept {
-        align-self: flex-start;
-        width: auto;
-    }
-    /* 부서 아래 하위팀 — 한 단계 더 들여쓰기 */
-    .org_dept_col .org_node--sub {
-        align-self: flex-start;
-        margin-left: 24px !important;
-        width: auto;
-    }
-    .org_node--director::after {
-        height: 16px;
-    }
-    .org_node--ceo::after {
-        height: 16px;
     }
 }
