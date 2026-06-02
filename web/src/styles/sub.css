@@ -1891,9 +1891,20 @@
 }
 
 @media (max-width: 1024px) {
-    .area_item, .area_item.reverse { flex-direction: column; gap: 40px; }
+    .area_item, .area_item.reverse { flex-direction: column; gap: 24px; }
     .area_img, .area_text_wrap { width: 100%; height: auto; padding: 0; }
-    .area_img { aspect-ratio: 16/9; }
+    .area_img { aspect-ratio: 16/9; order: 2; }
+    /* 주황 라벨 (01. ...) 을 사진 위로 (사용자 요청) — display: contents
+       로 자식 (head + desc) 를 area_item flex 흐름에 직접 편입 */
+    .area_text_wrap {
+        display: contents;
+    }
+    .area_text_head {
+        order: 1;
+    }
+    .area_text_wrap .desc {
+        order: 3;
+    }
 }
 
 /* ============================================================
