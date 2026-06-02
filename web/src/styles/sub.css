@@ -906,10 +906,22 @@
     .ceo_tag { font-size: 20px; }
     .ceo_desc { font-size: 15px; line-height: 1.6; }
     .ceo_main_group { gap: 14px; }
-    /* '㈜이음푸드시스템 대표 황만식' 시그니처 우측 정렬 */
+    /* 시그니처 좌측 정렬 + 전체 볼드 (사용자 요청) */
     .ceo_signature {
-        align-self: flex-end !important;
-        text-align: right;
+        align-self: flex-start !important;
+        text-align: left;
+    }
+    .ceo_label,
+    .ceo_name {
+        color: #222 !important;
+        font-weight: 700 !important;
+    }
+    /* 인사말 SectionHeader 와 본문 사이 간격 축소 */
+    .ceo_intro_section {
+        padding: 24px 0 60px !important;
+    }
+    .ceo_inner {
+        gap: 24px !important;
     }
 }
 
