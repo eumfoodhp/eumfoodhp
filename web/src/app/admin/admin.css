@@ -31,20 +31,20 @@
     gap: 10px;
 }
 .admin_brand_logo {
-    height: 44px;
+    height: 60px;
     width: auto;
     display: block;
 }
 .admin_brand_badge {
     display: inline-flex;
     align-items: center;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: #FFF1EB;
+    margin-left: auto;        /* 우측 정렬 */
+    padding: 0;
+    background: transparent;   /* 배경 제거 */
     color: #F26337;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
 }
 .admin_brand .admin_user {
     display: flex;
@@ -394,8 +394,8 @@ a.admin_card:hover {
         z-index: 50;
     }
     .admin_brand { border-bottom: none; padding: 0; margin: 0; flex-shrink: 0; }
-    .admin_brand_logo { height: 30px; }
-    .admin_brand_badge { font-size: 10px; padding: 2px 6px; }
+    .admin_brand_logo { height: 38px; }
+    .admin_brand_badge { font-size: 11px; }
     .admin_brand .admin_user { display: none; }
     .admin_nav {
         flex-direction: row;
