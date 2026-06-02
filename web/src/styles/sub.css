@@ -1897,7 +1897,7 @@
 }
 
 .area_text_wrap .num {
-    flex-shrink: 0;
+    display: none;   /* 01/02/03 숫자 제거 (PC+모바일, 사용자 요청) */
 }
 
 .area_text_wrap .sub_ttl {
