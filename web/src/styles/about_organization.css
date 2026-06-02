@@ -477,3 +477,65 @@
     content: none !important;
     border: 0 !important;
 }
+
+/* ============================================================
+   모바일 ≤900px — 박스 크기 전부 통일 + 점선 없이 부서|팀 2열 그리드
+   ============================================================ */
+@media (max-width: 900px) {
+    /* 모든 노드 동일 크기 (132 × min 46, 긴 텍스트는 줄바꿈) */
+    .org_chart .org_node {
+        width: 132px !important;
+        min-width: 132px !important;
+        max-width: 132px !important;
+        min-height: 48px !important;
+        height: auto !important;
+        padding: 8px 10px !important;
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        text-align: center;
+    }
+    .org_node_en { display: none; }   /* 영문 부제 숨김 (좁아서) */
+
+    /* L1: 대표이사 + 경리 한 줄 / L2: 총괄이사 — 좌측 정렬 */
+    .org_l1 {
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+        padding-left: 0 !important;
+    }
+    .org_l2 {
+        justify-content: flex-start !important;
+        margin-top: 14px !important;
+        padding-left: 0 !important;
+    }
+    .org_staff_right {
+        position: static !important;
+        transform: none !important;
+        margin: 0 !important;
+        left: auto !important; right: auto !important;
+    }
+
+    /* L3: 부서(좌) | 팀(우) 2열 그리드, 큰 간격으로 그룹 구분 */
+    .org_l3 {
+        grid-template-columns: 1fr;
+        row-gap: 22px;
+        padding: 28px 0 0;
+        margin-top: 14px;
+    }
+    .org_dept_col {
+        display: grid !important;
+        grid-template-columns: 132px 132px !important;
+        column-gap: 16px !important;
+        row-gap: 10px !important;
+        align-items: center;
+    }
+    .org_dept_col .org_node--dept {
+        grid-column: 1;
+        grid-row: 1 / -1;
+        align-self: center;
+    }
+    .org_dept_col .org_node--sub { grid-column: 2; }
+}
