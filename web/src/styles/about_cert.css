@@ -3,6 +3,47 @@
  * 기본 레이아웃은 sub.css .cert_* 참고
  */
 
+/* 새 레이아웃 — 약속 풀폭, 제목/마크 좌우, 이점 풀폭, 인증서 그리드 */
+.cert_page .cert_promise {
+    width: 100%;
+    margin: 0;
+    padding: 18px 24px;
+    background: #FFF6EC;
+    border-radius: 12px;
+    color: #1F2937;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: -0.3px;
+    align-self: stretch;
+    box-sizing: border-box;
+}
+.cert_page .cert_title_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+    align-self: stretch;
+}
+.cert_page .cert_title_row .haccp_icon_wrap {
+    flex-shrink: 0;
+}
+.cert_page .haccp_benefit {
+    width: 100%;
+    align-self: stretch;
+}
+@media (max-width: 900px) {
+    .cert_page .cert_title_row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .cert_page .cert_promise {
+        font-size: 15px;
+        padding: 14px 18px;
+    }
+}
+
 .cert_main_title_l1 {
     font-weight: 300;
 }

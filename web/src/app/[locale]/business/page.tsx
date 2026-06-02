@@ -119,39 +119,36 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
         <section className="cert_content_section">
           <div className="sub_inner">
             <div className="cert_container">
-              <div className="cert_top">
-                <div className="top_left">
-                  {/* category_label (위해요소 관리 시스템) 제거 — 사용자 요청 */}
-                  <h3 className="cert_main_title">
-                    <span className="cert_main_title_l1">{t('cert_main_tit_1')}</span>
-                    <br />
-                    <span className="cert_main_title_l2">{t('cert_main_tit_2')}</span>
-                  </h3>
-                  <div className="haccp_icon_wrap">
-                    <img
-                      src="/images/sub/cert/cert-haccp-mark.png"
-                      alt="HACCP MAFRA 인증 마크"
-                      className="haccp_icon"
-                      width="107"
-                      height="107"
-                    />
-                  </div>
-                  {/* sub_bold_title (위해요소를 미리 분석하여 제거) 제거 — 사용자 요청 */}
+              {/* 1. 약속 텍스트 — 풀폭 상단 */}
+              <p className="cert_promise">{t('cert_desc')}</p>
+
+              {/* 2. 제목 (좌) / HACCP 마크 (우) */}
+              <div className="cert_title_row">
+                <h3 className="cert_main_title">
+                  <span className="cert_main_title_l1">{t('cert_main_tit_1')}</span>
+                  <br />
+                  <span className="cert_main_title_l2">{t('cert_main_tit_2')}</span>
+                </h3>
+                <div className="haccp_icon_wrap">
+                  <img
+                    src="/images/sub/cert/cert-haccp-mark.png"
+                    alt="HACCP MAFRA 인증 마크"
+                    className="haccp_icon"
+                    width="107"
+                    height="107"
+                  />
                 </div>
-                <div className="top_right">
-                  <div className="cert_top_group">
-                    <p className="cert_desc">{t('cert_desc')}</p>
-                  </div>
-                  <div className="haccp_benefit">
-                    <h5 className="benefit_title">{t('cert_benefit_tit')}</h5>
-                    <ul>
-                      <li>{t('cert_benefit_1')}</li>
-                      <li>{t('cert_benefit_2')}</li>
-                      <li>{t('cert_benefit_3')}</li>
-                      <li>{t('cert_benefit_4')}</li>
-                    </ul>
-                  </div>
-                </div>
+              </div>
+
+              {/* 3. HACCP 인증 이점 4가지 — 풀폭 */}
+              <div className="haccp_benefit">
+                <h5 className="benefit_title">{t('cert_benefit_tit')}</h5>
+                <ul>
+                  <li>{t('cert_benefit_1')}</li>
+                  <li>{t('cert_benefit_2')}</li>
+                  <li>{t('cert_benefit_3')}</li>
+                  <li>{t('cert_benefit_4')}</li>
+                </ul>
               </div>
               <div className="cert_bottom">
                 <CertGrid
