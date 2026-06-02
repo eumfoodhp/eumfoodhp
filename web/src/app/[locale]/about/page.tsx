@@ -107,9 +107,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               {/* ceo_tag (CEO Introduce 영문 eyebrow) 제거 (사용자 요청) */}
               <div className="ceo_content_group">
                 <div className="ceo_main_title">
-                  <h3 className="light">{t('greeting_hello_1')}</h3>
-                  <h3 className="bold">{t('greeting_hello_2')}</h3>
-                  <h3 className="bold">{t('greeting_hello_3')}</h3>
+                  {/* '안녕하십니까' 한 줄만 (회사명/대표 부분 제거 — 사용자 요청) */}
+                  <h3 className="bold">{t('greeting_hello_1')}</h3>
                 </div>
                 <p className="ceo_desc">{nl2br(t('greeting_ceo_text'))}</p>
               </div>
