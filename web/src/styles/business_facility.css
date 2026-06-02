@@ -31,6 +31,11 @@
 /* 가동/나동 두 블록 죽 나열 (탭 토글 폐기 후) */
 .facility_block {
     margin-bottom: 80px;
+    /* 가동/나동 제목 좌측, 사진 그리드 우측 (사용자 요청) */
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    column-gap: 40px;
+    align-items: flex-start;
 }
 .facility_block:last-child {
     margin-bottom: 0;
@@ -58,8 +63,13 @@
     text-transform: uppercase;
 }
 @media (max-width: 900px) {
-    .facility_block { margin-bottom: 56px; }
-    .facility_block_title { font-size: 22px; margin-bottom: 22px; }
+    /* 모바일 — 좌/우 grid 풀고 위/아래 stack */
+    .facility_block {
+        margin-bottom: 56px;
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+    }
+    .facility_block_title { font-size: 22px; margin-bottom: 0; }
     .facility_status_section { padding: 60px 0 80px; }
 }
 
@@ -141,9 +151,10 @@
 
 .facility_grid {
     display: grid;
+    /* 사진 크기 축소 — 3열 그대로지만 column 자체가 좁아져서 카드 작아짐 */
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 28px;
-    row-gap: 48px;
+    column-gap: 22px;
+    row-gap: 36px;
     width: 100%;
 }
 
@@ -157,8 +168,9 @@
 .facility_img {
     position: relative;
     overflow: hidden;
-    height: 414px;
-    border-radius: 20px;
+    /* 사진 크기 축소 (사용자 요청) */
+    height: 280px;
+    border-radius: 16px;
     background: #f3f4f8;
 }
 
