@@ -309,7 +309,7 @@
         text-align: center;
         line-height: 1.35;
     }
-    /* 대표이사 + 경리회계인사 한 줄, 좌측 정렬 (트리 일관성) */
+    /* 대표이사 + 경리회계인사 한 줄, 좌측 정렬 */
     .org_l1 {
         flex-direction: row !important;
         justify-content: flex-start !important;
@@ -317,10 +317,16 @@
         gap: 16px !important;
         padding-left: 0 !important;
     }
-    /* 총괄이사 좌측 정렬 */
+    /* 총괄이사 — 대표이사와 같은 좌측 들여쓰기 (트렁크 X 좌표와 일치) */
     .org_l2 {
         justify-content: flex-start !important;
         padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+    /* 대표이사 ↔ 총괄이사 수직 점선 — 박스 가운데에서 시작 (좌측 점선 X) */
+    .org_node--ceo::after,
+    .org_node--director::after {
+        left: 50% !important;
     }
     .org_staff_right {
         position: static !important;
@@ -329,7 +335,7 @@
         transform: none !important;
         margin-top: 0 !important;
     }
-    /* CEO ↔ staff 가로 점선 */
+    /* CEO ↔ staff 가로 점선 — staff 박스 왼쪽 시작 */
     .org_staff_right::before {
         display: block !important;
         position: absolute !important;
@@ -339,28 +345,28 @@
         border-top: var(--org-line-w) dotted var(--org-line) !important;
         transform: translateY(-1px) !important;
     }
-    /* L3 = 부서들 — 1열 세로 stack, 좌측 들여쓰기 */
+    /* L3 = 부서들 — 1열 세로 stack, 좌측 들여쓰기 (트렁크 X 위치는 총괄이사 박스 가운데) */
     .org_l3 {
         grid-template-columns: 1fr;
         row-gap: 14px;
         padding-top: 20px;
-        padding-left: 36px;
+        padding-left: 60px;
         position: relative;
     }
-    /* 좌측 세로 점선 bar (트리의 trunk) */
+    /* 좌측 세로 점선 bar (트렁크) — 마지막 부서 가운데에서 끝 */
     .org_l3::before {
         display: block;
         content: '';
         position: absolute;
-        left: 12px;
+        left: 24px;
         top: 0;
-        bottom: 14px;
+        bottom: 28px;
         width: 0;
         border-left: var(--org-line-w) dotted var(--org-line);
         height: auto;
         border-top: none;
     }
-    /* 각 부서 — 좌측 들여쓰기 + 가로 점선 stub (트리의 branch) */
+    /* 각 부서 — 좌측 들여쓰기 + 가로 점선 stub (트렁크에서 박스 좌측까지) */
     .org_dept_col {
         min-width: 0;
         align-items: flex-start;
@@ -369,9 +375,9 @@
     .org_dept_col::before {
         content: '';
         position: absolute;
-        left: -24px;
-        top: 18px;
-        width: 24px;
+        left: -36px;
+        top: 24px;
+        width: 36px;
         height: 0;
         border-top: var(--org-line-w) dotted var(--org-line);
         border-left: none;
