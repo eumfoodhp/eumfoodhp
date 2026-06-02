@@ -13,6 +13,9 @@ import NextSectionLink from '@/components/NextSectionLink';
 import SectionHeader from '@/components/SectionHeader';
 import FacilitySection from '@/components/FacilitySection';
 import CertGrid from '@/components/CertGrid';
+import enMessages from '@/i18n/messages/en.json';
+
+const EN = enMessages as unknown as Record<string, string>;
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 import '@/styles/business_facility.css';
@@ -103,6 +106,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                           <img src={iconSrc} alt={label} width={62} height={62} loading="lazy" />
                         </div>
                         <p className="biz_pf_step_label">{label}</p>
+                        <p className="biz_pf_step_label_en">{EN[`${cat.prefix}${nn}_tit`] ?? ''}</p>
                       </div>
                       <p className="biz_pf_step_desc">{t(`${cat.prefix}${nn}_desc`)}</p>
                     </div>
