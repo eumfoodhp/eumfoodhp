@@ -1155,11 +1155,11 @@
     align-self: stretch;
 }
 
-/* 11. 그리드 레이아웃 — 카드 사이 간격 늘려 cert_top 폭과 시각적 정렬 */
+/* 11. 그리드 레이아웃 — 한 줄 5개, 간격 줄임 (사용자 요청) */
 .cert_grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 80px;          /* 28 → 80 (사용자 요청: 카드 사이 늘려 전체 폭 맞춤) */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
     width: 100%;
 }
 

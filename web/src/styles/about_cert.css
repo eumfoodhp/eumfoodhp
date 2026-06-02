@@ -3,17 +3,18 @@
  * 기본 레이아웃은 sub.css .cert_* 참고
  */
 
-/* 새 레이아웃 — 약속 풀폭, 제목/마크 좌우, 이점 풀폭, 인증서 그리드 */
+/* 약속 텍스트 — 크게/진하게/주황 (사용자 요청) */
 .cert_page .cert_promise {
     width: 100%;
     margin: 0;
-    padding: 18px 24px;
+    padding: 20px 28px;
     background: #FFF6EC;
     border-radius: 12px;
-    color: #1F2937;
-    font-size: 18px;
-    line-height: 1.6;
-    letter-spacing: -0.3px;
+    color: #F26337;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: -0.4px;
     align-self: stretch;
     box-sizing: border-box;
 }
@@ -50,6 +51,8 @@
 
 .cert_main_title_l2 {
     font-weight: 700;
+    /* 글씨 크기 줄임 (사용자 요청) — l1 보다 작게 */
+    font-size: 0.78em;
 }
 
 .cert_page .cert_info {
