@@ -109,6 +109,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <div className="ceo_main_title">
                   <h3 className="light">{t('greeting_hello_1')}</h3>
                   <h3 className="bold">{t('greeting_hello_2')}</h3>
+                  <h3 className="bold">{t('greeting_hello_3')}</h3>
                 </div>
                 <p className="ceo_desc">{nl2br(t('greeting_ceo_text'))}</p>
               </div>
