@@ -229,7 +229,7 @@
     }
     .loc_qr_group {
         gap: 18px;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
     .loc_qr_item img {
         width: 92px;
