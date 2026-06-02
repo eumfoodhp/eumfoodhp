@@ -121,7 +121,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
             <div className="cert_container">
               <div className="cert_top">
                 <div className="top_left">
-                  <span className="category_label">{t('cert_cate_label')}</span>
+                  {/* category_label (위해요소 관리 시스템) 제거 — 사용자 요청 */}
                   <h3 className="cert_main_title">
                     <span className="cert_main_title_l1">{t('cert_main_tit_1')}</span>
                     <br />
@@ -136,8 +136,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                       height="107"
                     />
                   </div>
-                  {/* HACCP 로고 아래로 이동 (사용자 요청) */}
-                  <h4 className="sub_bold_title">{t('cert_sub_tit')}</h4>
+                  {/* sub_bold_title (위해요소를 미리 분석하여 제거) 제거 — 사용자 요청 */}
                 </div>
                 <div className="top_right">
                   <div className="cert_top_group">
