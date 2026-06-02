@@ -840,6 +840,14 @@
     line-height: 68px;
     letter-spacing: -1.25px;
     margin: 0;
+    /* PC — 3 라인 한 줄로 합침, 사이 자동 구분 (사용자 요청) */
+    display: inline;
+}
+.ceo_main_title h3.light + h3::before {
+    content: ', ';
+}
+.ceo_main_title h3.bold + h3.bold::before {
+    content: ' ';
 }
 
 .ceo_main_title h3.light { 
