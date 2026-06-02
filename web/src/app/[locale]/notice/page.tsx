@@ -31,7 +31,7 @@ export default async function NewsroomOnePage({
 
   const { data: notices } = await supabase
     .from('notices')
-    .select('id, title, category, is_pinned, view_count, created_at, file_url')
+    .select('id, title, category, is_pinned, view_count, created_at, attachments')
     .order('is_pinned', { ascending: false })
     .order('created_at', { ascending: false })
     .limit(NOTICE_LIMIT);
@@ -70,7 +70,7 @@ export default async function NewsroomOnePage({
                       </span>
                       <span className="col_title">{n.title}</span>
                       <span className="col_chip_wrap">
-                        {n.file_url && (
+                        {Array.isArray(n.attachments) && n.attachments.length > 0 && (
                           <span className="col_chip">
                             <DownloadIcon />
                             <span>{t('btn_download')}</span>
