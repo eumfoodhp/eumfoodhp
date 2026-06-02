@@ -15,7 +15,7 @@
 }
 
 .org_chart {
-    --org-line: #D1D5DB;            /* 옅은 회색 — 사용자 요청으로 검정 점선 제거 */
+    --org-line: #6B7280;            /* 진한 회색 (사용자 요청 — 점선 진하게) */
     --org-line-w: 2px;              /* 커넥터 선 두께 */
     --org-blue: #1F60A8;
     --org-orange: #F26337;
@@ -366,11 +366,15 @@
         height: auto;
         border-top: none;
     }
-    /* 각 부서 — 좌측 들여쓰기 + 가로 점선 stub (트렁크에서 박스 좌측까지) */
+    /* 각 부서 — 좌측 들여쓰기 + 가로 점선 stub + 우측 sub stack */
     .org_dept_col {
         min-width: 0;
-        align-items: flex-start;
         position: relative;
+        display: grid !important;
+        grid-template-columns: auto 1fr;
+        column-gap: 28px;
+        row-gap: 8px;
+        align-items: center;
     }
     .org_dept_col::before {
         content: '';
@@ -382,6 +386,29 @@
         border-top: var(--org-line-w) dotted var(--org-line);
         border-left: none;
         transform: none;
+    }
+    /* 부서 박스 — 좌측 column, sub 가 여러 줄이면 세로 가운데 정렬 */
+    .org_dept_col .org_node--dept {
+        grid-column: 1;
+        grid-row: 1 / -1;
+        align-self: center;
+    }
+    /* sub 박스 — 우측 column, 위에서부터 stack */
+    .org_dept_col .org_node--sub {
+        grid-column: 2;
+        position: relative;
+        margin: 0 !important;
+    }
+    /* 부서 ↔ sub 첫 줄 가로 점선 stub */
+    .org_dept_col .org_node--sub::before {
+        content: '';
+        position: absolute;
+        left: -28px;
+        top: 50%;
+        width: 28px;
+        height: 0;
+        border-top: var(--org-line-w) dotted var(--org-line);
+        transform: translateY(-1px);
     }
     .org_dept_col:first-child::before {
         display: block;
