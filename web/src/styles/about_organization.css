@@ -321,24 +321,24 @@
         text-align: center;
         line-height: 1.35;
     }
-    /* 대표이사 + 경리회계인사 한 줄, 좌측 정렬 */
+    /* 대표이사 + 경리회계인사 한 줄, 부서 박스 X 와 정렬 (트렁크와 동일 X) */
     .org_l1 {
         flex-direction: row !important;
         justify-content: flex-start !important;
         align-items: center !important;
-        gap: 16px !important;
-        padding-left: 0 !important;
+        gap: 24px !important;
+        padding-left: 60px !important;
     }
-    /* 총괄이사 — 대표이사와 같은 좌측 들여쓰기 (트렁크 X 좌표와 일치) */
+    /* 총괄이사 — 부서 박스 X 와 정렬 */
     .org_l2 {
         justify-content: flex-start !important;
-        padding-left: 0 !important;
+        padding-left: 60px !important;
         margin-left: 0 !important;
     }
-    /* 대표이사 ↔ 총괄이사 수직 점선 — 박스 가운데에서 시작 (좌측 점선 X) */
+    /* 대표이사·총괄이사 수직 점선 — 박스 좌측 끝에서 내려옴 (트렁크와 X 일치) */
     .org_node--ceo::after,
     .org_node--director::after {
-        left: 50% !important;
+        left: 0 !important;
     }
     /* CEO ↔ staff 가로 점선이 작동하려면 staff 가 positioned ancestor */
     .org_staff_right {
@@ -360,7 +360,7 @@
         transform: translateY(-1px) !important;
         z-index: 1;
     }
-    /* L3 = 부서들 — 1열 세로 stack, 좌측 들여쓰기 */
+    /* L3 = 부서들 — 1열 세로 stack, 부서 박스 X = 60 (CEO/총괄이사와 일치) */
     .org_l3 {
         grid-template-columns: 1fr;
         row-gap: 14px;
@@ -369,12 +369,12 @@
         position: relative;
         margin-top: 16px;
     }
-    /* 좌측 세로 점선 bar (트렁크) — L3 padding 아래에서 시작 */
+    /* 트렁크 — X 60 (.org_l3 padding 좌측 끝 = 박스 좌측 X) */
     .org_l3::before {
         display: block;
         content: '';
         position: absolute;
-        left: 24px;
+        left: 60px;
         top: 20px;
         bottom: 24px;
         width: 0;
@@ -401,13 +401,16 @@
         justify-self: stretch;
     }
     .org_dept_col::before {
+        /* L3 padding-left 60 안 0 위치이고 트렁크 X = 60 (chart 기준).
+           부서 박스 좌측이 chart 60 (padding 시작) 라면 트렁크와 박스 좌측 X 동일.
+           stub 길이 0 — 박스 좌측이 곧 트렁크 → stub 안 보임. */
         content: '';
         position: absolute;
-        left: -36px;
+        left: 0;
         top: 24px;
-        width: 36px;
+        width: 0;
         height: 0;
-        border-top: var(--org-line-w) dotted var(--org-line);
+        border-top: none;
         border-left: none;
         transform: none;
     }
