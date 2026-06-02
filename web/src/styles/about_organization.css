@@ -54,6 +54,8 @@
     z-index: 1;
     box-sizing: border-box;
     min-width: 120px;
+    /* 박스 높이 통일 (사용자 요청) */
+    min-height: 48px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -307,12 +309,18 @@
         text-align: center;
         line-height: 1.35;
     }
-    /* 대표이사 + 경리회계인사 한 줄 (사용자 요청) */
+    /* 대표이사 + 경리회계인사 한 줄, 좌측 정렬 (트리 일관성) */
     .org_l1 {
         flex-direction: row !important;
-        justify-content: center !important;
+        justify-content: flex-start !important;
         align-items: center !important;
         gap: 16px !important;
+        padding-left: 0 !important;
+    }
+    /* 총괄이사 좌측 정렬 */
+    .org_l2 {
+        justify-content: flex-start !important;
+        padding-left: 0 !important;
     }
     .org_staff_right {
         position: static !important;
