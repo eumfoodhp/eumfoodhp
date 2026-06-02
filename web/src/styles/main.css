@@ -1687,13 +1687,35 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     }
 
     .prod_nav_wrap {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 18px;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
     }
     .prod_categories {
-        width: 100%;
+        flex: 1 1 auto;
         flex-wrap: wrap;
+        gap: 6px;
+    }
+    /* 더 알아보기 버튼 카테고리 옆 한 줄 (사용자 요청) — 작게 */
+    .prod_more_link {
+        min-height: 38px !important;
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        gap: 4px !important;
+        min-width: 0 !important;
+        width: auto !important;
+        flex: 0 0 auto;
+    }
+    .prod_more_link svg {
+        width: 16px;
+        height: 16px;
+    }
+    /* 카테고리 버튼 좀 더 컴팩트 */
+    .prod_cate_btn {
+        padding: 8px 10px !important;
+        font-size: 12px !important;
+        line-height: 18px !important;
     }
     .prod_grid.active {
         display: grid;
