@@ -147,7 +147,13 @@ function recalcOverviewMaxShift() {
     const wrapper = overviewWrapperEl || document.querySelector('.sticky_wrapper');
     const leftTitle = overviewLeftTitleEl || document.querySelector('.ov_title.left');
     const rightTitle = overviewRightTitleEl || document.querySelector('.ov_title.right');
-    if (!wrapper || !leftTitle || !rightTitle || window.innerWidth <= 1024) {
+    if (!wrapper || !leftTitle || !rightTitle) {
+        overviewMaxShift = 0;
+        return;
+    }
+    // 모바일: layout 이 column 이라 transform 안 함 (maxShift 0).
+    // blend 변수만 스크롤 따라 변화.
+    if (window.innerWidth <= 1024) {
         overviewMaxShift = 0;
         return;
     }
@@ -215,13 +221,9 @@ function updateOverviewAnimation() {
 
     if (!section || !wrapper) return;
 
-    if (window.innerWidth <= 1024) {
-        wrapper.classList.add('active');
-        wrapper.style.setProperty('--ov-blend', '1');
-        if (leftTitle) leftTitle.style.transform = '';
-        if (rightTitle) rightTitle.style.transform = '';
-        return;
-    }
+    // 모바일도 스크롤 기반 blend 애니메이션 활성화 (사용자 요청)
+    // translate 효과는 모바일 layout 에서 어색하므로 비활성 — maxShift 0 으로
+    // 처리해 blend 변수 (CSS 의 손 이미지 변화) 만 스크롤 따라 변화.
 
     const rect = section.getBoundingClientRect();
     const sectionHeight = rect.height;
