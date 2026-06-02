@@ -260,15 +260,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             {/* 본사·공장 — 지도 LEFT / 정보 RIGHT */}
             <article className="loc_card loc_card--map_left">
               <div className="loc_card_body">
-                <div className="loc_card_map">
-                  <iframe
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(factoryQuery)}&output=embed`}
-                    title={t('loc_map_factory_alt')}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                  />
-                </div>
+                <a
+                  href={`https://map.naver.com/p/search/${encodeURIComponent(factoryQuery)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="loc_card_map"
+                  aria-label={t('loc_map_factory_alt')}
+                >
+                  <img src="/images/sub/map_factory.png" alt={t('loc_map_factory_alt')} width={726} height={454} loading="lazy" />
+                </a>
                 <div className="loc_card_info">
                   <span className="loc_eyebrow">{t('loc_way_to_come')}</span>
                   <h3 className="loc_card_name">{t('loc_factory_title')}</h3>
@@ -351,15 +351,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </a>
                   </div>
                 </div>
-                <div className="loc_card_map">
-                  <iframe
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(centerQuery)}&output=embed`}
-                    title={t('loc_map_center_alt')}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                  />
-                </div>
+                <a
+                  href={`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="loc_card_map"
+                  aria-label={t('loc_map_center_alt')}
+                >
+                  <img src="/images/sub/map_center.png" alt={t('loc_map_center_alt')} width={726} height={454} loading="lazy" />
+                </a>
               </div>
             </article>
           </div>
