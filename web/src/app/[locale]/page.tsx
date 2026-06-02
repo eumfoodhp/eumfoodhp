@@ -68,8 +68,6 @@ export default async function HomePage({
 
             <div className="ov_content">
               <div className="ov_stack">
-                <span className="ov_sub">{t('main_ov_sub')}</span>
-
                 <div className="ov_hero_row">
                   <div className="ov_title_wrap">
                     <div className="ov_title_cell ov_title_cell--left">
@@ -85,6 +83,8 @@ export default async function HomePage({
                     </div>
                   </div>
                 </div>
+
+                <span className="ov_sub">{t('main_ov_sub')}</span>
 
                 <div className="ov_bottom_group">
                   <p className="ov_desc">{nl2br(t('main_ov_desc'))}</p>
