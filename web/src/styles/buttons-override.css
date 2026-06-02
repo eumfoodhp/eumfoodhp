@@ -994,7 +994,8 @@ html, body {
         margin: 0 !important;
         padding: 0 !important;
         font-weight: 700 !important;
-        color: #222 !important;
+        /* 메인 텍스트 주황색 (모바일과 통일) */
+        color: #F26337 !important;
         flex-shrink: 0 !important;
     }
     #mo_nav .menu_dep1::after {
@@ -1022,16 +1023,17 @@ html, body {
         font-size: 13px !important;
         line-height: 18px !important;
         padding: 8px 12px !important;
-        color: #F26337 !important;
-        font-weight: 600 !important;
-        background: #D1FAE5 !important;
+        /* 서브 텍스트 검정 + 박스 제거 (모바일과 통일) */
+        color: #222 !important;
+        font-weight: 500 !important;
+        background: transparent !important;
         border-radius: 10px !important;
         white-space: nowrap !important;
         transition: background 0.15s ease, color 0.15s ease;
     }
     #mo_nav .menu_dep2 li a:hover {
-        background: #A7F3D0 !important;
-        color: #C53A1A !important;
+        background: transparent !important;
+        color: #F26337 !important;
     }
 
     #mo_nav .mo_nav_top {
