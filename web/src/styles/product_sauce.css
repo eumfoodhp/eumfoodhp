@@ -41,12 +41,11 @@
     color: #505050;
 }
 
-/* .sauce_section 을 .story_section_head 와 동일한 width 공식으로 맞춤.
-   1580/95% 공식이라 wide 뷰포트에서도 sub-section 헤더·카드가
-   section title "소스" 와 같은 좌측 edge 에서 시작. */
+/* 나물 등 다른 카테고리와 동일 width 공식 (width 100% / max 1580) 으로 통일
+   — 이전 1580/95% 라 좁은 뷰포트에서 다른 섹션보다 좁게 보이던 문제 해결. */
 #sub_contents .product_sauce_page .sauce_section {
-    width: 1580px;
-    max-width: 95%;
+    width: 100%;
+    max-width: 1580px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
