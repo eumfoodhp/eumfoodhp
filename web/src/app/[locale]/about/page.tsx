@@ -110,7 +110,18 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   {/* '안녕하십니까' 한 줄만 (회사명/대표 부분 제거 — 사용자 요청) */}
                   <h3 className="bold">{t('greeting_hello_1')}</h3>
                 </div>
-                <p className="ceo_desc">{nl2br(t('greeting_ceo_text'))}</p>
+                {/* 본문 + 마지막 닫는 줄 분리 (\n\n\n 기준) — 모바일에서 마지막 줄 위 한 줄 더 */}
+                {(() => {
+                  const parts = t('greeting_ceo_text').split(/\n{3,}/);
+                  const body = parts[0];
+                  const closing = parts.slice(1).join('\n').trim();
+                  return (
+                    <>
+                      <p className="ceo_desc">{nl2br(body)}</p>
+                      {closing && <p className="ceo_desc ceo_desc--closing">{nl2br(closing)}</p>}
+                    </>
+                  );
+                })()}
               </div>
             </div>
             <div className="ceo_signature">
