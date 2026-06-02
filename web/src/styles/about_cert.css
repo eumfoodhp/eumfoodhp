@@ -46,14 +46,35 @@
     align-self: stretch;
 }
 @media (max-width: 900px) {
+    /* 모바일 전체 가운데 정렬 (사용자 요청) */
+    .cert_page .cert_container {
+        align-items: center !important;
+    }
     .cert_page .cert_title_row {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 20px;
+        text-align: center;
     }
     .cert_page .cert_promise {
-        font-size: 15px;
-        padding: 14px 18px;
+        font-size: 17px;
+        padding: 0;
+        text-align: center;
+    }
+    .cert_page .cert_main_title {
+        text-align: center;
+    }
+    .cert_page .haccp_benefit {
+        text-align: center;
+    }
+    .cert_page .cert_group_title {
+        text-align: center;
+        width: 100%;
+    }
+    .cert_page .cert_card,
+    .cert_page .cert_img_box {
+        align-items: center !important;
+        justify-content: center !important;
     }
 }
 

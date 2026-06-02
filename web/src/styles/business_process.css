@@ -153,12 +153,21 @@
         width: 16px;
     }
     #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label {
-        font-size: 15px;
-        line-height: 22px;
+        font-size: 13px;
+        line-height: 18px;
     }
+    /* 모바일 — padding 비례 유지 + 아이콘 size 축소 (아이콘이 원 위로 튀어나가는 문제 해결) */
     #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_circle {
         max-width: 140px;
-        padding: 18px;
+        padding: 28px 14px 14px;
+        gap: 6px;
+    }
+    #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_icon {
+        width: 48px;
+        height: 48px;
+    }
+    #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_label_en {
+        font-size: 9px;
     }
     #sub_contents .business_process_page .biz_pf_step--grid .biz_pf_step_badge {
         font-size: 12px;
