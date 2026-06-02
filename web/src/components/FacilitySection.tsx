@@ -1,6 +1,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import enMessages from '@/i18n/messages/en.json';
+
+const EN = enMessages as unknown as Record<string, string>;
 
 const JPG_AVAILABLE = new Set(['ga-02', 'ga-03', 'ga-07', 'ga-11']);
 function facilityImg(prefix: 'ga' | 'na', num: string) {
@@ -83,8 +86,8 @@ function FacilityGrid({
           </div>
           <div className="facility_info">
             <div className="facility_name_row">
-              {/* '설비명 |' 라벨 + divider 제거, 설비명만 주황 볼드 표시 */}
               <span className="facility_name">{t(nameKey(num))}</span>
+              <span className="facility_name_en">{EN[nameKey(num)] ?? ''}</span>
             </div>
             <p
               className="facility_desc"
