@@ -467,6 +467,15 @@
         font-size: 13px;
         line-height: 18px;
     }
+    /* 모바일 — tag/더 알아보기 숨김 + 제목을 주황 링크로 (사용자 요청) */
+    .process_section--cards .proc_card_meta_row {
+        display: none !important;
+    }
+    .process_section--cards .proc_card_title a,
+    .process_section--cards .proc_card_title_link {
+        color: #F26337 !important;
+        text-decoration: none;
+    }
 }
 
 .process_inner {

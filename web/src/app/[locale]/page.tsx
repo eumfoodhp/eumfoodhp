@@ -138,7 +138,11 @@ export default async function HomePage({
                     style={{ backgroundImage: `url('/images/main/section4-${idx + 1}.png')` }}
                   />
                   <div className="proc_card_body">
-                    <h3 className="proc_card_title">{nl2br(item.title)}</h3>
+                    <h3 className="proc_card_title">
+                      <Link href={item.link} className="proc_card_title_link">
+                        {nl2br(item.title)}
+                      </Link>
+                    </h3>
                     <div className="proc_card_meta_row">
                       <span className="proc_card_tag">{item.tag}</span>
                       <Link href={item.link} className="proc_card_link">
