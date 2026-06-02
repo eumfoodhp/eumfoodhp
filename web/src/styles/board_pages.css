@@ -154,6 +154,16 @@
     white-space: nowrap;
 }
 
+/* 부모 .sub_inner 가 flex column + align-items center 라 grid/flex 자식이
+   콘텐츠 폭으로 줄어듦 → board 요소 전부 풀폭 강제 (사용자: 디자인 틀 잡기) */
+.board_hero,
+.board_toolbar,
+.board_grid {
+    width: 100% !important;
+    align-self: stretch !important;
+    box-sizing: border-box;
+}
+
 /* ---------- 보도자료 — 히어로 슬라이드 카드 ---------- */
 .board_hero {
     background: #fff;
