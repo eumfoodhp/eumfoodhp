@@ -170,6 +170,8 @@
     font-weight: 700;
     line-height: 60px;
     letter-spacing: -1.05px;
+    /* 한국어 어절 단위 줄바꿈 (모바일 좁은 폭에서 '한 끼' 만 잘리는 현상 해소) */
+    word-break: keep-all;
 }
 
 /* 더 알아보기 공통 — Figma 581-5511 (Caption/caption 2, 아이콘 24×24) */
@@ -1834,9 +1836,14 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
 
     .biz_header,
     .notice_header {
-        align-items: flex-start;
+        align-items: stretch;
         flex-direction: column;
         gap: 16px;
+    }
+    /* 더 알아보기 버튼 모바일 우측 정렬 (사용자 요청) */
+    .biz_header .biz_more_btn,
+    .notice_header .notice_more_link {
+        align-self: flex-end;
     }
     .biz_title,
     .prod_title,
