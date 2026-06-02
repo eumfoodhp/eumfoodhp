@@ -20,8 +20,9 @@
     --org-blue: #1F60A8;
     --org-orange: #F26337;
     --org-yellow: #FBB041;
-    --gap-y: 36px;
-    --stub-y: 32px;
+    /* 점선과 박스 사이 여백 확보 (이전 36/32 → 48/44) */
+    --gap-y: 48px;
+    --stub-y: 44px;
 
     width: 100%;
     max-width: 1180px;
@@ -268,6 +269,23 @@
     }
     .org_l3 {
         gap: 8px;
+    }
+    /* 모바일/태블릿 — staff_right (경리·회계·인사) 절대 위치 해제,
+       CEO 아래에 정적 흐름으로 배치 (우측 잘림 방지) */
+    .org_staff_right {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin-top: 12px !important;
+    }
+    .org_staff_right::before {
+        display: none !important;
+    }
+    .org_l1 {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
     }
 }
 
