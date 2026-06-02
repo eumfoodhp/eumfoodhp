@@ -128,14 +128,15 @@
 
 #sub_contents .product_sauce_page .product_grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    /* 나물 기준 통일 — 고정 374px (minmax/1fr 제거: 좁은 뷰포트에서 줄던 것 해결) */
+    grid-template-columns: repeat(4, 374px);
     gap: 48px 28px;
-    justify-content: stretch;       /* 카드가 좌측 edge 부터 균일 분포 */
+    justify-content: start;
     width: 100%;
 }
 
 #sub_contents .product_sauce_page .product_card {
-    width: 100%;
+    width: 374px;
     max-width: 100%;
     flex-direction: column;
     gap: 12px;
