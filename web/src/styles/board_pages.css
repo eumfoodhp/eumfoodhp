@@ -652,3 +652,9 @@
     .board_hero_title { font-size: 15px; line-height: 1.5; }
     .board_hero_nav { width: 36px; height: 36px; }
 }
+
+/* 소식 페이지 — 마지막(보도자료) 섹션 ↔ 푸터 사이 여백 (사용자 요청) */
+.newsroom_onepage .onepage_content { padding-bottom: 120px; }
+@media (max-width: 768px) {
+    .newsroom_onepage .onepage_content { padding-bottom: 72px; }
+}
