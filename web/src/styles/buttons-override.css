@@ -557,15 +557,10 @@
     }
 }
 
-/* GNB 메뉴 — common.css의 --gnb-col 변수가 min(180px, ...) 강제라
-   buttons-override.css에서 grid-template-columns 직접 명시(변수 안 거침). */
+/* GNB 메뉴 5열 grid — 위치(static/중앙)는 아래 .header_inner 블록에서 단일 정의.
+   여기선 내부 5열 그리드만 (absolute 제거 — 로고/아이콘 사이 중앙정렬 위해). */
 .gnb_wrap {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
     z-index: 5 !important;
-    margin: 0 !important;
     grid-template-columns: repeat(5, 96px) !important;
     column-gap: 8px !important;
 }
