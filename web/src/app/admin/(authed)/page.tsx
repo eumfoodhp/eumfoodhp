@@ -6,10 +6,9 @@ export default async function AdminDashboardPage() {
   const supabase = await createServerSupabase();
 
   // 각 테이블 카운트
-  const [notices, press, downloads, contacts, sales, history] = await Promise.all([
+  const [notices, press, contacts, sales, history] = await Promise.all([
     supabase.from('notices').select('*', { count: 'exact', head: true }),
     supabase.from('press_releases').select('*', { count: 'exact', head: true }),
-    supabase.from('downloads').select('*', { count: 'exact', head: true }),
     supabase.from('contacts').select('*', { count: 'exact', head: true }),
     supabase.from('sales_inquiries').select('*', { count: 'exact', head: true }),
     supabase.from('history_entries').select('*', { count: 'exact', head: true }),
@@ -18,7 +17,6 @@ export default async function AdminDashboardPage() {
   const stats = [
     { label: '공지사항', count: notices.count ?? 0, href: '/admin/notices' },
     { label: '보도자료', count: press.count ?? 0, href: '/admin/press' },
-    { label: '다운로드', count: downloads.count ?? 0, href: '/admin/downloads' },
     { label: '1:1 문의', count: contacts.count ?? 0, href: '/admin/contacts' },
     { label: '영업 문의', count: sales.count ?? 0, href: '/admin/sales' },
     { label: '회사 연혁', count: history.count ?? 0, href: '/admin/history' },

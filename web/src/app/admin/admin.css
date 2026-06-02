@@ -51,8 +51,9 @@
     color: #fff;
 }
 .admin_nav_item.active {
-    background: #F39800;
+    background: #F26337;
     color: #fff;
+    font-weight: 700;
 }
 
 .admin_logout_form {
@@ -94,29 +95,54 @@
 .admin_btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 10px 18px;
-    background: #F39800;
+    background: #F26337;
     color: #fff;
     border: none;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
+    line-height: 1;
     cursor: pointer;
     text-decoration: none;
+    white-space: nowrap;
     transition: background 0.15s ease;
 }
-.admin_btn:hover { background: #D88500; }
+.admin_btn:hover { background: #D94E25; }
 .admin_btn.secondary { background: #6B7280; }
 .admin_btn.secondary:hover { background: #4B5563; }
 .admin_btn.danger { background: #EF4444; }
 .admin_btn.danger:hover { background: #DC2626; }
+.admin_btn.outline {
+    background: #fff;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+}
+.admin_btn.outline:hover { background: #F9FAFB; border-color: #9CA3AF; }
+/* 테이블 행 액션용 작은 버튼 (수정/삭제 등) */
+.admin_btn.sm {
+    padding: 7px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+}
 
 .admin_card {
     background: #fff;
     border-radius: 12px;
     padding: 24px;
+    border: 1px solid #EEF0F2;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+/* 대시보드 카드 (링크) hover 부상 */
+a.admin_card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+a.admin_card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: #F26337;
 }
 
 .admin_table {
@@ -148,7 +174,15 @@
     display: flex;
     gap: 6px;
     justify-content: flex-end;
+    align-items: center;
 }
+/* 테이블 행 안 버튼은 전부 작게 (수정/삭제 등 — 페이지 수정 없이 일괄) */
+.admin_table .col_actions .admin_btn {
+    padding: 7px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+.admin_table .col_actions form { display: inline-flex; margin: 0; }
 
 .admin_form {
     display: flex;
@@ -179,8 +213,8 @@
 .admin_field textarea:focus,
 .admin_field select:focus {
     outline: none;
-    border-color: #F39800;
-    box-shadow: 0 0 0 3px rgba(243, 152, 0, 0.15);
+    border-color: #F26337;
+    box-shadow: 0 0 0 3px rgba(242, 99, 55, 0.15);
 }
 .admin_field textarea { min-height: 200px; resize: vertical; }
 
@@ -234,22 +268,49 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
     }
+    /* 사이드바 → 상단 고정 바 */
     .admin_sidebar {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
         padding: 12px 16px;
-        gap: 8px;
+        gap: 8px 10px;
+        position: sticky;
+        top: 0;
+        z-index: 50;
     }
-    .admin_brand { border-bottom: none; padding: 0; }
+    .admin_brand { border-bottom: none; padding: 0; flex-shrink: 0; }
     .admin_brand h1 { font-size: 16px; }
+    .admin_brand .admin_user { display: none; }
     .admin_nav {
         flex-direction: row;
         flex-wrap: wrap;
         padding: 0;
-        gap: 4px;
+        gap: 6px;
+        flex: 1 1 100%;
+        order: 3;
     }
-    .admin_nav_item { padding: 6px 10px; font-size: 12px; border-radius: 6px; }
+    .admin_nav_item { padding: 7px 12px; font-size: 13px; border-radius: 6px; }
     .admin_logout_form { margin-left: auto; padding: 0; }
+    .admin_logout_btn { width: auto; padding: 8px 14px; }
     .admin_main { padding: 16px; }
+
+    /* 페이지 헤더 — 제목 + 버튼 줄바꿈 허용 */
+    .admin_page_header {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+    .admin_page_title { font-size: 20px; }
+
+    /* 테이블 — 가로 스크롤 + 셀 패딩 축소 */
+    .admin_table { font-size: 13px; min-width: 560px; }
+    .admin_table th, .admin_table td { padding: 10px 12px; }
+    .admin_table .col_actions { gap: 4px; }
+    .admin_table .col_actions .admin_btn { padding: 6px 10px; font-size: 12px; }
+
+    .admin_card { padding: 18px; }
+    .admin_form { gap: 16px; }
+    .admin_field textarea { min-height: 160px; }
+    .admin_form_actions { flex-wrap: wrap; }
 }
