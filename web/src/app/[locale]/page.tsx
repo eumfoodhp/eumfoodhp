@@ -4,9 +4,12 @@ import Script from 'next/script';
 import { Link } from '@/i18n/navigation';
 import HeroSwiper from '@/components/HeroSwiper';
 import { nl2br } from '@/lib/nl2br';
+import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/main.css';
 import '@/styles/partners-carousel.css';
 import 'swiper/css';
+
+export const revalidate = 0;
 
 type ProcTab = { tag: string; title: string; link: string; desc: string };
 type ProdCategory = { name: string; link: string };
@@ -39,6 +42,27 @@ export default async function HomePage({
   const prodList = t.raw('main_prod_list') as Record<string, ProdItem[]>;
   const partners = t.raw('main_partner_logos') as Array<{ img: string; name: string }>;
   // dirTabs / DirTab / mapFactorySrc 제거 — 지도 섹션 통째로 footer 로 이관됨.
+
+  // ---- 소식 섹션: 공지사항 2 + 보도자료 2 (Supabase 실데이터) ----
+  type NewsCard = { label: string; title: string; date: string; href: string; img: number };
+  let newsCards: NewsCard[] = [];
+  try {
+    const supabase = await createServerSupabase();
+    const [{ data: notices }, { data: presses }] = await Promise.all([
+      supabase.from('notices').select('id, title, created_at').order('created_at', { ascending: false }).limit(2),
+      supabase.from('press_releases').select('id, title, created_at').order('created_at', { ascending: false }).limit(2),
+    ]);
+    const fmt = (s: string) => new Date(s).toLocaleDateString(locale).replace(/\. /g, '.').replace(/\.$/, '');
+    const noticeCards: NewsCard[] = (notices ?? []).map((n, i) => ({
+      label: t('sub_notice'), title: n.title, date: fmt(n.created_at), href: '/notice#notice', img: (i % 3) + 1,
+    }));
+    const pressCards: NewsCard[] = (presses ?? []).map((p, i) => ({
+      label: 'NEWS', title: p.title, date: fmt(p.created_at), href: '/notice#press', img: ((i + 2) % 3) + 1,
+    }));
+    newsCards = [...noticeCards, ...pressCards];
+  } catch {
+    /* DB 실패 시 빈 배열 → 섹션 카드 미노출 */
+  }
 
   return (
     <>
@@ -136,20 +160,19 @@ export default async function HomePage({
                   <div
                     className="proc_card_img"
                     style={{ backgroundImage: `url('/images/main/section4-${idx + 1}.png')` }}
-                  />
+                  >
+                    {/* 더 알아보기 — 이미지 우측 상단 (사용자 요청, PC) */}
+                    <Link href={item.link} className="proc_card_link proc_card_link--float">
+                      <span>{t('common_more')}</span>
+                      <ArrowIcon />
+                    </Link>
+                  </div>
                   <div className="proc_card_body">
                     <h3 className="proc_card_title">
                       <Link href={item.link} className="proc_card_title_link">
                         {nl2br(item.title)}
                       </Link>
                     </h3>
-                    <div className="proc_card_meta_row">
-                      <span className="proc_card_tag">{item.tag}</span>
-                      <Link href={item.link} className="proc_card_link">
-                        <span>{t('common_more')}</span>
-                        <ArrowIcon />
-                      </Link>
-                    </div>
                     <p className="proc_card_desc">{item.desc}</p>
                   </div>
                 </article>
@@ -280,14 +303,8 @@ export default async function HomePage({
             </div>
 
             <div className="notice_content">
-              {/* 공지 2개 + 보도자료 2개 — 임시 더미 텍스트, 카드 클릭 시 해당
-                  notice 페이지 anchor 로 이동. DB 연동 전까지 임시. */}
-              {[
-                { label: '공지', cate: 'notice', title: '신제품 출시 안내 — 5월 신상 라인업 공개', date: '2026.05.30', href: '/notice#notice', img: 1 },
-                { label: '공지', cate: 'notice', title: '하절기 휴무일 변경 안내', date: '2026.05.20', href: '/notice#notice', img: 2 },
-                { label: 'NEWS', cate: 'press', title: '㈜이음푸드시스템, HMR 시장 매출 30% 성장', date: '2026.05.15', href: '/notice#press', img: 3 },
-                { label: 'NEWS', cate: 'press', title: 'HACCP 인증 갱신 완료 — 안전·신선 강화', date: '2026.05.10', href: '/notice#press', img: 1 },
-              ].map((item, i) => (
+              {/* 공지 2 + 보도 2 — Supabase 실데이터 (newsCards). 없으면 미노출. */}
+              {newsCards.map((item, i) => (
                 <Link key={i} href={item.href as never} className="notice_card_link">
                   <article className="notice_card">
                     <div
