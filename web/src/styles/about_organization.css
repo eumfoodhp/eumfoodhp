@@ -440,14 +440,21 @@
         white-space: normal;
         word-break: keep-all;
     }
-    /* 부서 박스 ↔ sub 가로 점선 stub */
+    /* 부서 박스 ↔ sub 가로 점선 stub.
+       PC 의 'dept + sub::before' / 'sub + sub::before' (수직, specificity 0,0,3,1)
+       가 모바일을 이기므로, 동일 selector 들을 모두 가로선으로 재정의 (수직 reset). */
+    .org_dept_col .org_node--dept + .org_node--sub::before,
+    .org_dept_col .org_node--sub + .org_node--sub::before,
     .org_dept_col .org_node--sub::before {
         content: '';
         position: absolute;
         left: -28px;
+        right: auto;
         top: 50%;
+        bottom: auto;
         width: 28px;
         height: 0;
+        border-left: none;
         border-top: var(--org-line-w) dotted var(--org-line);
         transform: translateY(-1px);
     }
