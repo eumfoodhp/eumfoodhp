@@ -423,7 +423,19 @@
     .sales_step { padding: 20px 18px; }
     .sales_radio_row { flex-direction: column; gap: 12px; }
     .inquiry_filter_bar { flex-direction: column; align-items: stretch; gap: 10px; }
-    .inquiry_write_btn { align-self: stretch; width: 100%; }
+    .inquiry_filters { flex-wrap: nowrap; gap: 6px; width: 100%; }
+    .inquiry_select {
+        min-width: 0;
+        flex: 0 0 auto;
+        height: 40px;
+        padding: 0 24px 0 10px;
+        font-size: 12px;
+        background-position: calc(100% - 12px) 50%, calc(100% - 8px) 50%;
+    }
+    .inquiry_search { flex: 1 1 auto; min-width: 0; height: 40px; }
+    .inquiry_search_input { height: 38px; padding: 0 8px; }
+    .inquiry_search_btn { width: 38px; height: 38px; }
+    .inquiry_write_btn { align-self: stretch; width: 100%; justify-content: center; }
     .sales_file_row { flex-direction: column; gap: 10px; align-items: stretch; }
     .sales_file_btn { width: 100%; text-align: center; }
     .sales_terms_summary { flex-wrap: wrap; gap: 8px; }

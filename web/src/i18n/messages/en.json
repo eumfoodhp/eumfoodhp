@@ -176,19 +176,19 @@
       "tag": "Supply",
       "title": "Group meals & catering B2B specialist partner",
       "desc": "Working with leading food companies, we have proven large-scale supply for group meals and catering. Systematic logistics and high-volume refrigerated production help partners grow with confidence.",
-      "link": "/pages/business_supply.php"
+      "link": "/about#area"
     },
     {
       "tag": "Formula",
       "title": "Franchise-exclusive sauces & product development (R&D)",
       "desc": "Beyond simple manufacturing, we specialize in franchise-specific sauces and signature menus. Trend-aware custom recipes strengthen your brand.",
-      "link": "/pages/business_rnd.php"
+      "link": "/business#process"
     },
     {
       "tag": "Safe",
       "title": "HACCP certification & quality management",
       "desc": "HACCP across the line—from ingredients to packaging—means clean, trustworthy food for partners. Strict QC keeps freshness at its best.",
-      "link": "/pages/business_safe.php"
+      "link": "/business#cert"
     }
   ],
   "main_prod_more_text": "Learn more",

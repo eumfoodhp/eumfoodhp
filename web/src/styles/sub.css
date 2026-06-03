@@ -1697,6 +1697,24 @@
         width: 16px !important;
         height: 16px !important;
     }
+    /* 주요사업 overview — 텍스트 + 설립연도 통계 중앙정렬 (모바일, 사용자 요청) */
+    .ov_left {
+        align-items: center;
+        text-align: center;
+    }
+    .ov_title {
+        align-items: center;
+    }
+    .stat_grid {
+        justify-items: center;
+    }
+    .stat_item {
+        align-items: center;
+    }
+    .stat_label,
+    .stat_value {
+        justify-content: center;
+    }
 }
 
 .ov_title .ov_line--light {
@@ -1959,9 +1977,11 @@
         display: flex !important;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         width: 100%;
+        height: auto !important;
         order: 2;
-        padding: 20px 20px 24px !important;
+        padding: 16px 20px 18px !important;
         gap: 8px !important;
         box-sizing: border-box;
     }

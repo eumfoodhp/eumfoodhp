@@ -322,12 +322,17 @@
     }
 
     #sub_contents .cert_page .cert_img_box {
-        height: 260px;
+        height: auto;
     }
 
     #sub_contents .cert_page .cert_img_inner {
-        width: 150px;
-        height: 200px;
+        width: 100%;
+        max-width: 180px;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        margin-left: auto;
+        margin-right: auto;
+        border-width: 4px;
     }
 }
 
@@ -374,14 +379,18 @@
     }
 
     #sub_contents .cert_page .cert_img_box {
-        height: 280px;
+        height: auto;
         width: 100%;
         box-sizing: border-box;
+        padding: 4px;
     }
 
     #sub_contents .cert_page .cert_img_inner {
-        width: 180px;
-        height: 240px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        border-width: 4px;
     }
 }
 
@@ -433,17 +442,21 @@
     }
 
     #sub_contents .cert_page .cert_img_box {
-        height: 200px;
+        height: auto;
+        padding: 3px;
     }
 
     #sub_contents .cert_page .cert_img_inner {
-        width: 108px;
-        height: 144px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        border-width: 3px;
     }
 
     #sub_contents .cert_page .cert_name {
-        font-size: 14px;
-        line-height: 20px;
+        font-size: 13px;
+        line-height: 18px;
     }
 
     #sub_contents .cert_page .cert_date {

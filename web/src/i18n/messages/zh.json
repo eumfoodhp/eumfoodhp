@@ -176,19 +176,19 @@
       "tag": "Supply",
       "title": "团餐与配餐 B2B专业伙伴",
       "desc": "与国内领先食品企业协作，在大规模团餐与配餐领域验证稳定供应能力, 以系统化物流与大产能冷藏生产，助力伙伴业务成长。",
-      "link": "/pages/business_supply.php"
+      "link": "/about#area"
     },
     {
       "tag": "Formula",
       "title": "加盟专用调味酱与 产品研发（R&D）",
       "desc": "不止于代工，我们专注加盟专用酱料与招牌菜研发, 结合趋势提供定制配方，提升品牌竞争力。",
-      "link": "/pages/business_rnd.php"
+      "link": "/business#process"
     },
     {
       "tag": "Safe",
       "title": "HACCP认证与 质量管理",
       "desc": "从原料甄选到包装全程贯彻HACCP, 承诺洁净, 可信赖的餐桌, 以严格品控保持最佳鲜度。",
-      "link": "/pages/business_safe.php"
+      "link": "/business#cert"
     }
   ],
   "main_prod_more_text": "了解更多",

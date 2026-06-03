@@ -150,7 +150,7 @@
   "main_ov_desc": "서로의 신뢰를 잇는 정다운 소통이 우리 모두를 행복한 성장으로 이끕니다.\n언제나 믿음직한 품질로 보답하며, 당신과 함께 더 따뜻한 미래를 그려 나가겠습니다.",
   "main_ov_more": "더 알아보기",
   "main_biz_sub": "FOOD SOLUTION",
-  "main_biz_title": "일상의 식탁을 풍성하게, 이음의 정갈한 한 끼",
+  "main_biz_title": "일상의 식탁을 풍성하게,\n이음의 정갈한 한 끼",
   "main_biz_more": "더 알아보기",
   "main_biz_items": [
     {
@@ -176,19 +176,19 @@
       "tag": "Supply",
       "title": "단체급식 및 케이터링 B2B 전문 파트너",
       "desc": "국내 유수의 식품 기업들과 협업하며 대규모 단체급식 및 케이터링 분야에서 검증된 공급 능력을 입증했습니다. 체계적인 물류 시스템과 대용량 냉장 생산 최적화를 통해 파트너사의 비즈니스 성장을 지원합니다.",
-      "link": "/pages/business_supply.php"
+      "link": "/about#area"
     },
     {
       "tag": "Formula",
       "title": "프랜차이즈 전용 소스 및 제품 개발(R&D)",
       "desc": "단순 제조를 넘어 프랜차이즈 전용 소스 및 시그니처 메뉴 개발에 특화된 R&D 역량을 보유하고 있습니다. 최신 트렌드를 반영한 맞춤형 레시피 제안을 통해 파트너사의 브랜드 경쟁력을 한 단계 더 높여드립니다.",
-      "link": "/pages/business_rnd.php"
+      "link": "/business#process"
     },
     {
       "tag": "Safe",
       "title": "HACCP 인증 및 품질 경영",
       "desc": "원료 선별부터 포장까지 전 공정 HACCP 인증을 바탕으로, 파트너사가 믿고 맡길 수 있는 가장 깨끗하고 정직한 먹거리를 약속합니다. 엄격한 품질 관리 시스템을 통해 최상의 신선도를 유지합니다.",
-      "link": "/pages/business_safe.php"
+      "link": "/business#cert"
     }
   ],
   "main_prod_more_text": "더 알아보기",

@@ -126,7 +126,7 @@ export default async function HomePage({
           <div className="business_inner">
             <div className="biz_header">
               <div className="title_group">
-                <h2 className="biz_title">{t('main_biz_title')}</h2>
+                <h2 className="biz_title">{nl2br(t('main_biz_title'))}</h2>
                 <span className="biz_sub">{t('main_biz_sub')}</span>
               </div>
               <Link href="/about#area" className="biz_more_btn">
