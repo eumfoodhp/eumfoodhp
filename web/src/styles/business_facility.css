@@ -267,6 +267,14 @@
     .facility_grid {
         grid-template-columns: 1fr;
     }
+    /* 각 설비 영문 표기 크기 축소 (사용자 요청) */
+    .facility_name_en {
+        font-size: 11px;
+        letter-spacing: 0.03em;
+    }
+    .facility_block_title_en {
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 735px) {

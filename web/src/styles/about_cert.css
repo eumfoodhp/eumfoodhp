@@ -283,7 +283,7 @@
 
 @media (max-width: 1024px) {
     #sub_contents .cert_page .cert_container {
-        padding: 84px 32px 0;
+        padding: 84px 32px 64px;
         gap: 44px;
     }
 
@@ -416,7 +416,7 @@
     }
 
     #sub_contents .cert_page .cert_container {
-        padding: 48px 14px 0;
+        padding: 48px 14px 48px;
         gap: 24px;
     }
 
