@@ -1576,15 +1576,17 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     /* 모바일도 PC처럼 스크롤 구동 blend 애니메이션(배경 크로스페이드 + 텍스트색)
        이 재생되도록 sticky 핀 + 스크롤 여유(200vh) 복원. 좌우 타이틀 슬라이드는
        maxShift=0 으로 생략(세로 stack 레이아웃이라). */
+    /* 상하 길이 축소(사용자 요청) — 스크롤 영역 200→150vh, 핀/이미지 영역
+       100→82vh 로 그림 높이도 줄임(자르기). */
     .overview_section {
-        height: 200vh;
+        height: 150vh;
         padding: 0;
     }
     .sticky_wrapper {
         position: sticky;
         top: 0;
-        height: 100vh;
-        min-height: 100vh;
+        height: 82vh;
+        min-height: 82vh;
         align-items: stretch;
         --ov-gap-stack-top: 0;
         --ov-gap-stack-mid: 0;
@@ -1598,8 +1600,8 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         max-width: none;
         width: 100%;
         height: auto;
-        min-height: 560px;
-        padding: 88px 32px;
+        min-height: auto;
+        padding: 40px 32px;
         justify-content: center;
         pointer-events: auto;
     }
@@ -2101,25 +2103,28 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         padding-bottom: 0;
     }
     .overview_section .sticky_wrapper {
-        min-height: 100vh;
-        height: 100vh;
+        min-height: 82vh;
+        height: 82vh;
     }
     .overview_section .ov_content {
-        min-height: 100vh;
+        min-height: 82vh;
         height: 100%;
-        padding-top: 24px;
-        padding-bottom: 24px;
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
     .overview_section .ov_stack {
         height: 100%;
         justify-content: center;
-        gap: 20px;
+        gap: 14px;
     }
     .overview_section .ov_title_wrap {
-        gap: 8px;
+        gap: 10px;
     }
+    /* hex(육각 손 이미지) — PC 처럼 모바일에서도 노출(스택형 타이틀 사이),
+       작게. 스크롤하면 PC와 동일하게 페이드아웃되고 풀스크린 배경이 차오름. */
     .overview_section .ov_hex_cell {
-        display: none;
+        display: flex;
+        --ov-hex-size: min(150px, 38vw);
     }
     .overview_section .ov_title_cell {
         width: auto;

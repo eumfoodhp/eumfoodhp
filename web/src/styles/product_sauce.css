@@ -131,7 +131,7 @@
     /* 나물 기준 통일 — 고정 374px (minmax/1fr 제거: 좁은 뷰포트에서 줄던 것 해결) */
     grid-template-columns: repeat(4, 374px);
     gap: 48px 28px;
-    justify-content: start;
+    justify-content: center;   /* 다른 카테고리와 동일 — 좌측 쏠림 수정 */
     width: 100%;
 }
 
