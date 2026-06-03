@@ -21,6 +21,9 @@ export default function MobileMenuGroup({
     document.querySelector('.mo_overlay')?.classList.remove('active');
     document.body.classList.remove('menu_open');
     document.documentElement.classList.remove('menu_open');
+    // common.js 가 햄버거 열 때 body.style.overflow='hidden' 으로 스크롤 잠금.
+    // Link 이동 시 그 잠금이 안 풀려 스크롤 불가 → 여기서 복구.
+    document.body.style.overflow = '';
   };
 
   return (
