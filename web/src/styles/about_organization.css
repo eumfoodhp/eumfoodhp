@@ -300,17 +300,11 @@
     .org_l3 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
     .org_node { font-size: 13px; }
     .org_node--ceo, .org_node--director { font-size: 14px; }
-}
-
-@media (max-width: 560px) {
-    /* 4 → 2열 (4줄) */
-    .org_l3 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 22px 12px; }
-    .org_node { font-size: 12px; min-height: 44px; }
-    /* L1: 대표이사 + 경리 — 절대배치 해제하고 한 줄 가운데 */
+    /* L1: 대표이사 가운데 + 경리·회계·인사는 한 줄 내려 우측정렬 (사용자 요청) */
     .org_l1 {
-        flex-direction: row !important;
-        justify-content: center !important;
-        gap: 12px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
     }
     .org_staff_right {
         position: static !important;
@@ -318,5 +312,26 @@
         right: auto !important;
         transform: none !important;
         margin: 0 !important;
+        align-self: flex-end !important;
+    }
+}
+
+@media (max-width: 560px) {
+    /* 4 → 2열 (4줄) */
+    .org_l3 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 22px 12px; }
+    .org_node { font-size: 12px; min-height: 44px; }
+    /* L1: 대표이사 가운데 + 경리·회계·인사 한 줄 내려 우측정렬 (사용자 요청) */
+    .org_l1 {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    .org_staff_right {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin: 0 !important;
+        align-self: flex-end !important;
     }
 }

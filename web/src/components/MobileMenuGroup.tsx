@@ -11,9 +11,12 @@ import { Link } from '@/i18n/navigation';
  */
 export default function MobileMenuGroup({
   title,
+  titleHref,
   items,
 }: {
   title: string;
+  /** 그룹 제목(메인 텍스트) 클릭 시 이동할 섹션 경로. 없으면 텍스트만(비링크). */
+  titleHref?: string;
   items: { href: string; label: string }[];
 }) {
   const closeMenu = () => {
@@ -29,7 +32,19 @@ export default function MobileMenuGroup({
   return (
     <div className="menu_group">
       <div className="menu_dep1">
-        <h3>{title}</h3>
+        {titleHref ? (
+          <h3>
+            <Link
+              href={titleHref as never}
+              onClick={closeMenu}
+              style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}
+            >
+              {title}
+            </Link>
+          </h3>
+        ) : (
+          <h3>{title}</h3>
+        )}
       </div>
       <ul className="menu_dep2 mo_sub_menu">
         {items.map((item) => (

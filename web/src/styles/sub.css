@@ -916,8 +916,8 @@
     }
     .ceo_tag { font-size: 20px; }
     .ceo_desc { font-size: 15px; line-height: 1.6; }
-    /* 닫는 줄 — 모바일에서 한 줄 더 띄움 (사용자 요청) */
-    .ceo_desc--closing { margin-top: 80px; }
+    /* 닫는 줄 — 본문과의 간격 축소 (이전 80px 너무 넓었음, 사용자 요청) */
+    .ceo_desc--closing { margin-top: 24px; }
     .ceo_main_group { gap: 14px; }
     /* 시그니처 좌측 정렬 + 전체 볼드 (사용자 요청) */
     .ceo_signature {
@@ -1697,8 +1697,11 @@
         width: 16px !important;
         height: 16px !important;
     }
-    /* 주요사업 overview — 텍스트 + 설립연도 통계 중앙정렬 (모바일, 사용자 요청) */
+    /* 주요사업 overview — 텍스트 + 설립연도 통계 중앙정렬 (모바일, 사용자 요청).
+       biz_ov_inner 가 column+align-items:flex-start 라 ov_left 가 콘텐츠폭으로
+       좌측에 붙어 text-align:center 가 무의미했음 → width:100% 로 풀폭 확보. */
     .ov_left {
+        width: 100%;
         align-items: center;
         text-align: center;
     }

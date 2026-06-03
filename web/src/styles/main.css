@@ -501,9 +501,8 @@
         font-size: 13px;
         line-height: 18px;
     }
-    /* 모바일 — tag/더 알아보기 숨김 + 제목을 주황 링크로 (사용자 요청) */
-    .process_section--cards .proc_card_meta_row,
-    .process_section--cards .proc_card_link--float {
+    /* 모바일 — meta_row(미사용) 만 숨김. 더 알아보기(float) 는 다시 노출 (사용자 요청) */
+    .process_section--cards .proc_card_meta_row {
         display: none !important;
     }
     .process_section--cards .proc_card_title a,
@@ -1729,14 +1728,11 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         margin-top: 40px;
     }
 
-    /* 모바일 — 더 알아보기 버튼을 제품 헤더 우측으로 absolute 배치 (사용자 요청) */
-    .product_section .product_inner {
-        position: relative;
-    }
+    /* 모바일 — 더 알아보기 버튼을 카테고리 줄에 맞춰 같은 행 우측 배치 (사용자 요청).
+       제목 높이로 떠 있던 absolute 제거 → 카테고리와 한 줄. */
     .prod_more_link {
-        position: absolute !important;
-        top: 0 !important;
-        right: 0 !important;
+        position: static !important;
+        flex-shrink: 0;
         min-height: 38px !important;
         padding: 8px 12px !important;
         font-size: 12px !important;
@@ -1750,12 +1746,14 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         height: 16px;
     }
     .prod_nav_wrap {
-        align-items: flex-start;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         gap: 10px;
     }
     .prod_categories {
-        width: 100%;
+        flex: 1;
+        min-width: 0;
         flex-wrap: wrap;
         gap: 6px;
     }

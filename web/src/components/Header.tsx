@@ -83,6 +83,7 @@ export default async function Header() {
             <div className="menu_wrapper">
               <MobileMenuGroup
                 title={t('menu_about')}
+                titleHref="/about"
                 items={[
                   { href: '/about#greeting', label: t('sub_greeting') },
                   { href: '/about#history', label: t('sub_history') },
@@ -93,6 +94,7 @@ export default async function Header() {
               />
               <MobileMenuGroup
                 title={t('menu_business')}
+                titleHref="/business"
                 items={[
                   { href: '/business#facility', label: t('sub_facility') },
                   { href: '/business#process', label: t('sub_biz_process') },
@@ -101,6 +103,7 @@ export default async function Header() {
               />
               <MobileMenuGroup
                 title={t('menu_product')}
+                titleHref="/products"
                 items={[
                   { href: '/products#pickles', label: t('sub_prod_pickles') },
                   { href: '/products#braised', label: t('sub_prod_braised') },
@@ -112,6 +115,7 @@ export default async function Header() {
               />
               <MobileMenuGroup
                 title={t('menu_news')}
+                titleHref="/notice"
                 items={[
                   { href: '/notice#notice', label: t('sub_notice') },
                   { href: '/notice#press', label: t('sub_news_press') },
@@ -120,6 +124,7 @@ export default async function Header() {
               />
               <MobileMenuGroup
                 title={t('menu_inquiry')}
+                titleHref="/contact"
                 items={[
                   { href: '/contact', label: t('sub_inquiry_1to1') },
                   { href: '/contact/sales', label: t('sub_inquiry_sales') },

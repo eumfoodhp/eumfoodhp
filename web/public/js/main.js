@@ -1,21 +1,10 @@
-// Patch: this file is loaded via Next.js <Script strategy="afterInteractive">,
-// which runs AFTER the document's DOMContentLoaded event has already fired.
-// Without this shim, DOMContentLoaded listeners added below would never run,
-// leaving #main > section{ opacity:0 } sections permanently invisible.
-(function () {
-    if (document.readyState !== 'loading') {
-        const origAddEventListener = document.addEventListener.bind(document);
-        document.addEventListener = function (type, listener, options) {
-            if (type === 'DOMContentLoaded' && typeof listener === 'function') {
-                queueMicrotask(listener);
-            } else {
-                origAddEventListener(type, listener, options);
-            }
-        };
-    }
-})();
+// 이 파일은 Next.js <Script strategy="afterInteractive" onReady={...}> 로 로드된다.
+// onReady 는 최초 로드 + SPA 재마운트(타 페이지 → 메인 복귀)마다 호출되므로,
+// 모든 셋업을 window.__eumfoodSetupMain() 한 곳에 모아 매 마운트마다 재실행한다.
+// (예전 DOMContentLoaded 방식은 SPA 복귀 시 재실행되지 않아 #main>section{opacity:0}
+//  섹션이 .active 를 못 받아 영영 안 보이던 버그가 있었음 — 타페이지 방문 후 메인 복귀.)
 
-document.addEventListener('DOMContentLoaded', () => {
+function __eumfoodSetupTabs() {
     /**
      * Section 4: Process Tab Interaction
      * 숫자 탭 클릭 시 이미지, 텍스트, 그리고 상세페이지 링크 변경
@@ -75,9 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
+}
 
-// Section 8: Directions Tab
+// Section 8: Directions Tab (지도 섹션은 footer 로 이관 — 메인엔 보통 없음/no-op,
+// 있더라도 footer 는 layout 에 있어 SPA 내비게이션에도 DOM 유지되므로 1회 바인딩으로 충분)
 const dirBtns = document.querySelectorAll('.dir_tab_btn');
 const dirGroups = document.querySelectorAll('.dir_detail_group');
 const dirMapImg = document.getElementById('dir_map_img'); // 지도 이미지 요소 선택
@@ -332,7 +322,9 @@ function applyOverviewMode() {
     startOverviewAnimation();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+let __eumfoodResizeBound = false;
+function __eumfoodSetupOverview() {
+    stopOverviewAnimation();   // 이전 마운트의 rAF 취소 (재마운트 중복 방지)
     cacheOverviewElements();
     applyOverviewMode();
     if (document.fonts && document.fonts.ready) {
@@ -340,39 +332,52 @@ document.addEventListener('DOMContentLoaded', () => {
             recalcOverviewMaxShift();
         });
     }
+    // resize 리스너는 window 에 1회만 (window 는 SPA 내비게이션에도 유지됨)
+    if (!__eumfoodResizeBound) {
+        __eumfoodResizeBound = true;
+        let overviewResizeTimer = null;
+        window.addEventListener('resize', () => {
+            if (overviewResizeTimer) clearTimeout(overviewResizeTimer);
+            overviewResizeTimer = setTimeout(() => {
+                applyOverviewMode();
+            }, 120);
+        });
+    }
+}
 
-    let overviewResizeTimer = null;
-    window.addEventListener('resize', () => {
-        if (overviewResizeTimer) clearTimeout(overviewResizeTimer);
-        overviewResizeTimer = setTimeout(() => {
-            applyOverviewMode();
-        }, 120);
-    });
-});
+function __eumfoodSetupReveal() {
+    // 이전 마운트의 옵저버 해제 (재마운트 누수/중복 방지)
+    if (window.__eumfoodRevealObs) window.__eumfoodRevealObs.disconnect();
 
-document.addEventListener("DOMContentLoaded", function() {
-    // 감시할 섹션들 모두 선택
     const revealSections = document.querySelectorAll("#main > section");
-
     const revealOption = {
-        root: null, // 뷰포트 기준
+        root: null,        // 뷰포트 기준
         rootMargin: '0px',
-        threshold: 0.15 // 섹션이 15% 정도 보였을 때 실행
+        threshold: 0.15    // 섹션이 15% 정도 보였을 때 실행
     };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // 화면에 들어오면 'active' 클래스 추가
                 entry.target.classList.add("active");
-                // 한 번 나타난 뒤에는 다시 감시할 필요 없으면 아래 줄 활성화 (선택)
-                // observer.unobserve(entry.target); 
             }
         });
     }, revealOption);
+    revealSections.forEach(section => revealObserver.observe(section));
+    window.__eumfoodRevealObs = revealObserver;
+}
 
-    // 각 섹션 감시 시작
-    revealSections.forEach(section => {
-        revealObserver.observe(section);
-    });
-});
+// ── 최초 로드 + SPA 재마운트마다 <Script onReady> 가 호출 → 전체 재셋업 ──
+window.__eumfoodSetupMain = function () {
+    __eumfoodSetupTabs();
+    __eumfoodSetupOverview();
+    __eumfoodSetupReveal();
+};
+
+// 메인 페이지를 떠날 때(컴포넌트 unmount) 정리 — detached 노드 대상 rAF/옵저버 중단
+window.__eumfoodStopMain = function () {
+    stopOverviewAnimation();
+    if (window.__eumfoodRevealObs) {
+        window.__eumfoodRevealObs.disconnect();
+        window.__eumfoodRevealObs = null;
+    }
+};

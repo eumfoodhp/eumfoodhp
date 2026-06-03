@@ -1,8 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Script from 'next/script';
 
 import { Link } from '@/i18n/navigation';
 import HeroSwiper from '@/components/HeroSwiper';
+import MainScript from '@/components/MainScript';
 import { nl2br } from '@/lib/nl2br';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/main.css';
@@ -333,7 +333,7 @@ export default async function HomePage({
         {/* 지도 섹션 통째 footer 로 이동 — 페이지 하단 정리 */}
       </main>
 
-      <Script src="/js/main.js" strategy="afterInteractive" />
+      <MainScript />
     </>
   );
 }
