@@ -870,17 +870,18 @@
     transform: translateY(0);
     transform-origin: center center;
     transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                background-size 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    background-size: 100%;
+                box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    /* cover: 이미지가 박스(374×220 등)를 가득 채움 → 위/아래 회색 띠(여백) 없음 +
+       둥근 모서리가 이미지에 그대로 적용(각진 현상 해결). 이전 100% 는 가로만 맞춰
+       세로에 띠가 생겼음. (사용자 요청) */
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 }
 
-/* 4. 카드 전체 호버 인터랙션 */
+/* 4. 카드 전체 호버 인터랙션 — cover 유지(호버 시에도 띠 없음) + 살짝 떠오름 */
 .product_card:hover .prod_img {
     transform: translateY(-2px);
-    background-size: 108%;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
 }
 
