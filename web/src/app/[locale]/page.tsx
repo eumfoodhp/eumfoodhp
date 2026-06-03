@@ -161,8 +161,9 @@ export default async function HomePage({
                     className="proc_card_img"
                     style={{ backgroundImage: `url('/images/main/section4-${idx + 1}.png')` }}
                   >
-                    {/* 더 알아보기 — 이미지 우측 상단 (사용자 요청, PC) */}
-                    <Link href={item.link} className="proc_card_link proc_card_link--float">
+                    {/* 더 알아보기 — 이미지 우측 상단. proc_card_link(주황 pill 배경) 클래스는
+                        빼고 --float(투명 + 흰색 아웃라인 텍스트)만 사용 (사용자 요청) */}
+                    <Link href={item.link} className="proc_card_link--float">
                       <span>{t('common_more')}</span>
                       <ArrowIcon />
                     </Link>

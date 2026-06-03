@@ -1742,7 +1742,7 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     .prod_more_link {
         position: absolute !important;
         top: 0 !important;
-        right: 0 !important;
+        right: 20px !important;   /* 0 이면 product_inner 패딩 바깥(뷰포트 끝)이라 여백 0 → 콘텐츠 우측에 맞춤 */
         min-height: 30px !important;
         padding: 5px 12px !important;
         font-size: 12px !important;
@@ -1752,6 +1752,24 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         margin: 0 !important;
     }
     .prod_more_link svg {
+        width: 15px;
+        height: 15px;
+    }
+    /* 소식 더 알아보기 — 제품(2번)처럼 작게 + 제목 옆 우상단 absolute (사용자 요청) */
+    .notice_section .notice_inner { position: relative; }
+    .notice_more_link {
+        position: absolute !important;
+        top: 0 !important;
+        right: 20px !important;
+        min-height: 30px !important;
+        min-width: 0 !important;
+        width: auto !important;
+        padding: 5px 12px !important;
+        font-size: 12px !important;
+        gap: 4px !important;
+        margin: 0 !important;
+    }
+    .notice_more_link svg {
         width: 15px;
         height: 15px;
     }

@@ -1,65 +1,67 @@
-const langToggleBtn = document.querySelector('.lang_toggle_btn');
-const langList = document.querySelector('.lang_list');
-const moBtn = document.querySelector('.mo_menu_btn');
-const moClose = document.querySelector('.mo_close_btn');
-const moNav = document.querySelector('#mo_nav');
-const moOverlay = document.querySelector('.mo_overlay');
-const moTitles = document.querySelectorAll('.mo_menu_title');
-const langLinks = document.querySelectorAll('.lang_list a, .mo_lang_area a');
+// 언어 토글 / 모바일 햄버거 메뉴 — 이벤트 위임(document)으로 처리.
+// 직접 querySelector + addEventListener 는 헤더가 SPA 내비게이션·로케일 전환으로
+// 리렌더되면 캡처한 노드가 stale 돼 클릭이 안 먹는 문제가 있었음(햄버거 작동 안 함).
+// document 는 영속이므로 위임하면 헤더가 몇 번 리렌더돼도 항상 동작한다.
 
-if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', (e) => {
+function closeMobileNav() {
+    const moNav = document.querySelector('#mo_nav');
+    const moOverlay = document.querySelector('.mo_overlay');
+    if (moNav) moNav.classList.remove('active');
+    if (moOverlay) moOverlay.classList.remove('active');
+    document.body.style.overflow = 'unset';
+}
+
+document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+
+    // 언어 토글 버튼
+    if (target.closest('.lang_toggle_btn')) {
         e.stopPropagation();
-        langList.classList.toggle('active');
-    });
-}
-
-document.addEventListener('click', () => {
-    if (langList) langList.classList.remove('active');
-});
-
-if (moBtn) {
-    moBtn.addEventListener('click', () => {
-        moNav.classList.add('active');
-        moOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-}
-
-const closeNav = () => {
-    if (moNav) {
-        moNav.classList.remove('active');
-        moOverlay.classList.remove('active');
-        document.body.style.overflow = 'unset';
+        const langList = document.querySelector('.lang_list');
+        if (langList) langList.classList.toggle('active');
+        return;
     }
-};
 
-if (moClose) moClose.addEventListener('click', closeNav);
-if (moOverlay) moOverlay.addEventListener('click', closeNav);
+    // 햄버거 — 모바일 메뉴 열기
+    if (target.closest('.mo_menu_btn')) {
+        const moNav = document.querySelector('#mo_nav');
+        const moOverlay = document.querySelector('.mo_overlay');
+        if (moNav) moNav.classList.add('active');
+        if (moOverlay) moOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        return;
+    }
 
-moTitles.forEach((title) => {
-    title.addEventListener('click', function () {
-        if (window.innerWidth > 1024) return;
+    // 닫기 — 닫기 버튼 또는 오버레이(배경) 클릭
+    if (target.closest('.mo_close_btn') || target.classList.contains('mo_overlay')) {
+        closeMobileNav();
+        return;
+    }
 
-        const subMenu = this.nextElementSibling;
-        if (!subMenu || !subMenu.classList.contains('mo_sub_menu')) return;
-
-        const isOpen = this.classList.contains('open');
-
-        moTitles.forEach((t) => {
-            t.classList.remove('open');
-            t.setAttribute('aria-expanded', 'false');
-        });
-        document.querySelectorAll('.mo_sub_menu').forEach((s) => {
-            s.classList.remove('open');
-        });
-
-        if (!isOpen) {
-            this.classList.add('open');
-            this.setAttribute('aria-expanded', 'true');
-            subMenu.classList.add('open');
+    // 모바일 메뉴 타이틀 아코디언 (.mo_menu_title 이 있을 때만)
+    const moTitle = target.closest('.mo_menu_title');
+    if (moTitle && window.innerWidth <= 1024) {
+        const subMenu = moTitle.nextElementSibling;
+        if (subMenu && subMenu.classList.contains('mo_sub_menu')) {
+            const isOpen = moTitle.classList.contains('open');
+            document.querySelectorAll('.mo_menu_title').forEach((t) => {
+                t.classList.remove('open');
+                t.setAttribute('aria-expanded', 'false');
+            });
+            document.querySelectorAll('.mo_sub_menu').forEach((s) => s.classList.remove('open'));
+            if (!isOpen) {
+                moTitle.classList.add('open');
+                moTitle.setAttribute('aria-expanded', 'true');
+                subMenu.classList.add('open');
+            }
         }
-    });
+        return;
+    }
+
+    // 그 외 클릭 — 열려 있던 언어 리스트 닫기
+    const langList = document.querySelector('.lang_list');
+    if (langList) langList.classList.remove('active');
 });
 
 // [제거됨] PHP 시절 ?lang=xx 쿼리 기반 언어 전환 로직.
