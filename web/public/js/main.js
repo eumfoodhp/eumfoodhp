@@ -297,25 +297,6 @@ function updateOverviewAnimation() {
     overviewRafId = requestAnimationFrame(updateOverviewAnimation);
 }
 
-function setOverviewMobileState() {
-    const wrapper = overviewWrapperEl || document.querySelector('.sticky_wrapper');
-    const leftTitle = overviewLeftTitleEl || document.querySelector('.ov_title.left');
-    const rightTitle = overviewRightTitleEl || document.querySelector('.ov_title.right');
-    if (wrapper) {
-        wrapper.classList.add('active');
-        overviewActiveClassOn = true;
-        wrapper.style.setProperty('--ov-blend', '1');
-        wrapper.style.removeProperty('--ov-title-col-gap');
-        wrapper.style.removeProperty('--ov-gap-stack-top');
-        wrapper.style.removeProperty('--ov-gap-stack-mid');
-        wrapper.style.removeProperty('--ov-gap-stack-inner');
-        wrapper.style.removeProperty('--ov-pinch-sub-y');
-        wrapper.style.removeProperty('--ov-pinch-bottom-y');
-    }
-    if (leftTitle) leftTitle.style.transform = '';
-    if (rightTitle) rightTitle.style.transform = '';
-}
-
 function startOverviewAnimation() {
     if (overviewAnimating) return;
     overviewAnimating = true;
@@ -336,21 +317,19 @@ function applyOverviewMode() {
     const wrapper = overviewWrapperEl;
     if (!wrapper) return;
 
-    if (window.innerWidth > 1024) {
-        wrapper.classList.remove('active');
-        overviewActiveClassOn = false;
-        wrapper.style.removeProperty('--ov-blend');
-        blendDisplay = 0;
+    // PC·모바일 모두 스크롤 기반 blend 애니메이션 실행.
+    // 모바일은 recalcOverviewMaxShift() 가 maxShift=0 으로 잡아 좌우 타이틀
+    // 슬라이드만 생략하고, --ov-blend(배경 크로스페이드) · .active(텍스트색)
+    // 는 PC와 동일하게 스크롤에 맞춰 구동된다.
+    wrapper.classList.remove('active');
+    overviewActiveClassOn = false;
+    wrapper.style.removeProperty('--ov-blend');
+    blendDisplay = 0;
+    recalcOverviewMaxShift();
+    requestAnimationFrame(() => {
         recalcOverviewMaxShift();
-        requestAnimationFrame(() => {
-            recalcOverviewMaxShift();
-        });
-        startOverviewAnimation();
-        return;
-    }
-
-    stopOverviewAnimation();
-    setOverviewMobileState();
+    });
+    startOverviewAnimation();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

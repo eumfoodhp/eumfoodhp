@@ -1568,15 +1568,18 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         line-height: 62px;
     }
 
+    /* 모바일도 PC처럼 스크롤 구동 blend 애니메이션(배경 크로스페이드 + 텍스트색)
+       이 재생되도록 sticky 핀 + 스크롤 여유(200vh) 복원. 좌우 타이틀 슬라이드는
+       maxShift=0 으로 생략(세로 stack 레이아웃이라). */
     .overview_section {
-        height: auto;
-        padding: 88px 0;
+        height: 200vh;
+        padding: 0;
     }
     .sticky_wrapper {
-        position: relative;
-        top: auto;
-        height: auto;
-        min-height: 560px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        min-height: 100vh;
         align-items: stretch;
         --ov-gap-stack-top: 0;
         --ov-gap-stack-mid: 0;
@@ -1584,9 +1587,7 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         --ov-pinch-sub-y: 0px;
         --ov-pinch-bottom-y: 0px;
     }
-    .ov_after {
-        opacity: 1;
-    }
+    /* .ov_after opacity 는 --ov-blend(JS) 가 구동 — 끝상태 고정 제거 */
     .ov_content {
         position: relative;
         max-width: none;
@@ -1649,16 +1650,9 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         font-size: 16px;
         line-height: 26px;
     }
-    .ov_sub,
-    .ov_title,
-    .ov_desc,
-    .ov_more_btn {
-        color: #fff;
-    }
-    .ov_more_btn {
-        border-color: #fff;
-        background: transparent;
-    }
+    /* 텍스트·버튼 색은 무조건 흰색이 아니라, blend 0(흰 배경)=어두운색 →
+       blend↑(.active, 어두운 배경)=흰색 으로 전환되게 base + .active 에 위임.
+       (모바일 스크롤 애니메이션 색 전환 활성화) */
     .business_section,
     .process_section,
     .product_section,
