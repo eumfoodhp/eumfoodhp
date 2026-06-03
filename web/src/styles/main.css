@@ -358,35 +358,41 @@
 
 /* 더 알아보기 — 이미지 우측 상단. 상단 .biz_more_btn 과 동일 톤
    (흰 배경 + 보더 + 라운드 rect, 사용자 요청) */
+/* 박스(흰 배경/보더/라운드/그림자) 제거 — 텍스트 자체에 흰색 아웃라인을 줘
+   사진 위 가시성 확보 (PC·모바일 공통, 사용자 요청) */
 .process_section--cards .proc_card_link--float {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 14px;
+    right: 14px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 9px 14px;
-    border-radius: 8px;
-    background: #fff;
-    border: 1px solid #e5e5ec;
-    color: #222;
-    font-size: 13px;
-    font-weight: 500;
+    gap: 4px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
     text-decoration: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    /* 흰색 테두리(아웃라인) — 다방향 text-shadow 로 글자 외곽선 효과 */
+    text-shadow:
+        0 0 2px #fff, 0 0 3px #fff,
+        1px 1px 1px #fff, -1px -1px 1px #fff,
+        1px -1px 1px #fff, -1px 1px 1px #fff;
+    transition: color 0.2s ease;
     z-index: 2;
 }
-.process_section--cards .proc_card_link--float svg { color: #F26337; }
-.process_section--cards .proc_card_link--float:hover {
-    background: #F26337;
-    border-color: #F26337;
-    color: #fff;
-}
-.process_section--cards .proc_card_link--float:hover svg { color: #fff; }
 .process_section--cards .proc_card_link--float svg {
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
+    color: #F26337;
+    /* 화살표에도 흰색 외곽선 */
+    filter: drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff);
+}
+.process_section--cards .proc_card_link--float:hover {
+    color: #F26337;
 }
 
 .process_section--cards .proc_card_body {
@@ -1728,13 +1734,17 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         margin-top: 40px;
     }
 
-    /* 모바일 — 더 알아보기 버튼을 카테고리 줄에 맞춰 같은 행 우측 배치 (사용자 요청).
-       제목 높이로 떠 있던 absolute 제거 → 카테고리와 한 줄. */
+    /* 모바일 — 더 알아보기: 제품 제목(주요 제품) 옆 우상단에 두고, 제목 텍스트와
+       시작점(top)·높이를 맞춤 (사용자 요청). product_inner 기준 absolute,
+       prod_title margin-top 0 으로 둘 다 top:0 에서 시작. */
+    .product_section .product_inner { position: relative; }
+    .prod_title { margin-top: 0 !important; }
     .prod_more_link {
-        position: static !important;
-        flex-shrink: 0;
-        min-height: 38px !important;
-        padding: 8px 12px !important;
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        min-height: 30px !important;
+        padding: 5px 12px !important;
         font-size: 12px !important;
         gap: 4px !important;
         min-width: 0 !important;
@@ -1742,26 +1752,28 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         margin: 0 !important;
     }
     .prod_more_link svg {
-        width: 16px;
-        height: 16px;
+        width: 15px;
+        height: 15px;
     }
     .prod_nav_wrap {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
     }
+    /* 카테고리 버튼 — 사이 간격을 넓혀(space-between) 한 줄 가득 채움 (사용자 요청) */
     .prod_categories {
-        flex: 1;
-        min-width: 0;
+        width: 100%;
         flex-wrap: wrap;
-        gap: 6px;
+        justify-content: space-between;
+        gap: 8px;
+        overflow-x: visible;
     }
-    /* 카테고리 버튼 컴팩트 */
     .prod_cate_btn {
-        padding: 8px 10px !important;
+        flex: 0 0 auto;
+        padding: 9px 8px !important;
         font-size: 12px !important;
         line-height: 18px !important;
+        white-space: nowrap;
     }
     .prod_grid.active {
         display: grid;
@@ -1961,15 +1973,17 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     }
 
     .prod_categories {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 2px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        overflow-x: visible;
+        gap: 8px;
     }
     .prod_cate_btn {
         flex: 0 0 auto;
-        padding: 10px 14px;
-        font-size: 13px;
-        line-height: 20px;
+        padding: 9px 8px;
+        font-size: 12px;
+        line-height: 18px;
+        white-space: nowrap;
     }
     .prod_grid.active {
         grid-template-columns: 1fr;
