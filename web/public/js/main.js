@@ -269,9 +269,18 @@ function updateOverviewAnimation() {
     const colGap = colGapStart + (colGapEnd - colGapStart) * blend;
     wrapper.style.setProperty('--ov-title-col-gap', `${colGap.toFixed(2)}px`);
 
-    const shift = blend * overviewMaxShift;
-    if (leftTitle) leftTitle.style.transform = `translate3d(${shift.toFixed(2)}px,0,0)`;
-    if (rightTitle) rightTitle.style.transform = `translate3d(${(-shift).toFixed(2)}px,0,0)`;
+    if (vw <= 735) {
+        // 모바일 — 좌/우 타이틀(세로 stack)이 양옆에서 가운데로 슬라이드되며 등장.
+        // PC의 좌우 수렴을 폰 레이아웃에 맞춰 재현 (사진이 양쪽에서 들어오는 효과, 사용자 요청).
+        // blend 0(진입)→ 좌 -slideX / 우 +slideX 로 벌어져 있다가, blend↑ 하며 0(가운데)로.
+        const slideX = Math.min(72, vw * 0.18) * (1 - blend);
+        if (leftTitle) leftTitle.style.transform = `translate3d(${(-slideX).toFixed(2)}px,0,0)`;
+        if (rightTitle) rightTitle.style.transform = `translate3d(${slideX.toFixed(2)}px,0,0)`;
+    } else {
+        const shift = blend * overviewMaxShift;
+        if (leftTitle) leftTitle.style.transform = `translate3d(${shift.toFixed(2)}px,0,0)`;
+        if (rightTitle) rightTitle.style.transform = `translate3d(${(-shift).toFixed(2)}px,0,0)`;
+    }
 
     // 임계값 히스테리시스: 경계 구간에서 active 토글 떨림 방지
     const activeOnThreshold = 0.46;

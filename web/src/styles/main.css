@@ -371,16 +371,16 @@
     background: transparent;
     border: 0;
     box-shadow: none;
-    color: #1a1a1a;
+    color: #F26337;   /* 주황색 폰트 (사용자 요청) */
     font-size: 15px;
     font-weight: 700;
     letter-spacing: -0.2px;
     text-decoration: none;
-    /* 흰색 테두리(아웃라인) — 다방향 text-shadow 로 글자 외곽선 효과 */
+    /* 흰색 테두리(아웃라인) — 더 두껍게: 8방향 2px + 글로우 (사용자 요청) */
     text-shadow:
-        0 0 2px #fff, 0 0 3px #fff,
-        1px 1px 1px #fff, -1px -1px 1px #fff,
-        1px -1px 1px #fff, -1px 1px 1px #fff;
+        -2px -2px 1px #fff, 2px -2px 1px #fff, -2px 2px 1px #fff, 2px 2px 1px #fff,
+        0 -2px 1px #fff, 0 2px 1px #fff, -2px 0 1px #fff, 2px 0 1px #fff,
+        0 0 5px #fff;
     transition: color 0.2s ease;
     z-index: 2;
 }
@@ -388,8 +388,8 @@
     width: 17px;
     height: 17px;
     color: #F26337;
-    /* 화살표에도 흰색 외곽선 */
-    filter: drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff);
+    /* 화살표에도 흰색 외곽선 더 두껍게 */
+    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 1px #fff);
 }
 .process_section--cards .proc_card_link--float:hover {
     color: #F26337;

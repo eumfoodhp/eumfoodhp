@@ -740,12 +740,15 @@ html, body {
         letter-spacing: -0.4px !important;
         word-break: keep-all !important;
     }
-    /* 카테고리 6개 — 한 줄에 안 들어가면 wrap 으로 떨어짐 */
+    /* 카테고리 영역 — 제목/이미지와의 상하 여백 축소 (사용자 요청) */
+    .product_section .product_inner {
+        gap: 14px !important;
+    }
     .product_section .prod_nav_wrap {
         flex-direction: column !important;
         align-items: stretch !important;
-        gap: 14px !important;
-        margin-top: 18px !important;
+        gap: 8px !important;
+        margin-top: 2px !important;
     }
     .product_section .prod_categories {
         flex-wrap: wrap !important;
@@ -766,9 +769,9 @@ html, body {
         margin: 0 !important;
     }
     .product_section .prod_grid.active {
-        grid-template-columns: 1fr !important;
-        gap: 18px !important;
-        margin-top: 20px !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;   /* 한 줄에 2개 (사용자 요청) */
+        gap: 20px 12px !important;
+        margin-top: 6px !important;
     }
 }
 @media (max-width: 735px) {
