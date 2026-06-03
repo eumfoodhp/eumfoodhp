@@ -714,19 +714,49 @@
     background-repeat: no-repeat;
 }
 
-/* [제품 사진 비율 통일] 카테고리/모바일/PC 별로 고정 height(150·200·220px)가
-   제각각이라 사진 크기가 달라 보였음 → 카드 폭에 비례하는 동일 aspect-ratio 로
-   통일. specificity (0,1,3,0) 로 카테고리별 height 오버라이드를 모두 누름. (사용자 요청) */
-#sub_contents.product_page .product_card .prod_img {
-    height: auto;
-    aspect-ratio: 377 / 220;
+/* ============================================================
+   [제품 페이지 전 카테고리 통일 — 조림(braised) 기준]
+   절임/나물/젓갈/소스/액상차의 그리드·카드·사진·텍스트·스펙 UI 를 braised 와
+   동일하게. namul/pickles/sauce/tea 는 모바일 카드 UI 블록이 없어 제각각이었음.
+   selector 에 .product_list_section (+1 class) 을 더해 per-category 규칙
+   (0,1,2~3,0) 을 (0,1,3~4,0) 으로 일괄 덮음. PC 열수는 품목 수에 따라 자율
+   (4열/젓갈 3열), 정렬/카드/사진/폰트는 모두 동일. (사용자 요청)
+   ============================================================ */
+/* --- PC 카드 UI (조림 base 값) --- */
+#sub_contents.product_page .product_list_section .product_card {
+    width: 374px;
+    max-width: 100%;
+    flex-direction: column;
+    gap: 12px;
+}
+#sub_contents.product_page .product_list_section .prod_img {
+    height: 220px;
+    border-radius: 12px;
+}
+#sub_contents.product_page .product_list_section .prod_info { gap: 20px; }
+#sub_contents.product_page .product_list_section .name_group { flex-direction: column; gap: 4px; }
+#sub_contents.product_page .product_list_section .name_row h4 {
+    margin: 0; color: #222; font-size: 20px; font-weight: 500; line-height: 30px; letter-spacing: -0.5px;
+}
+#sub_contents.product_page .product_list_section .name_row .en {
+    color: #767676; font-size: 14px; font-weight: 300; line-height: 22px; letter-spacing: -0.35px;
+}
+#sub_contents.product_page .product_list_section .prod_info .desc {
+    height: auto; min-height: 0; max-height: none; overflow: visible;
+    color: #767676; font-size: 14px; font-weight: 300; line-height: 22px; letter-spacing: -0.35px;
+}
+#sub_contents.product_page .product_list_section .spec_info {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
+}
+#sub_contents.product_page .product_list_section .spec_group { display: flex; align-items: center; gap: 8px; }
+#sub_contents.product_page .product_list_section .spec_group .spec_label {
+    color: #767676; font-size: 16px; font-weight: 300; line-height: 26px; letter-spacing: -0.4px;
+}
+#sub_contents.product_page .product_list_section .spec_group .spec_val {
+    color: #F26337; font-size: 16px; font-weight: 500; line-height: 26px; letter-spacing: -0.4px;
 }
 
-/* [제품 페이지 배치 통일] 조림(braised) 기준으로 모든 카테고리(절임/나물/젓갈/소스/
-   액상차)의 그리드 열수·간격을 동일하게. 카테고리별로 ≤480 에서 1열로 떨어지거나
-   2번째 블록 유무로 제각각이던 것을 일괄 통일. specificity (0,1,4,0) 로 per-category
-   (0,1,2~3,0) 규칙을 모두 누름. PC(>1024) 열수는 카테고리 자율(절임/조림/나물 4열,
-   젓갈 3열 등) 유지하고 정렬/간격만 동일. (사용자 요청) */
+/* --- ≤1024 : 3열 --- */
 @media (max-width: 1024px) {
     #sub_contents.product_page .product_list_section .product_inner .product_grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -734,13 +764,70 @@
         justify-content: center;
         padding: 0;
     }
+    #sub_contents.product_page .product_list_section .product_card { width: 100%; }
 }
+
+/* --- ≤735 : 2열 + 조림 모바일 카드 UI --- */
 @media (max-width: 735px) {
     #sub_contents.product_page .product_list_section .product_inner .product_grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px 14px;
+        gap: 26px 12px;
         justify-content: center;
+        width: 100%;
     }
+    #sub_contents.product_page .product_list_section .product_card {
+        flex-direction: column;
+        height: 100%;
+        gap: 10px;
+    }
+    #sub_contents.product_page .product_list_section .prod_img {
+        height: 150px;
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+    #sub_contents.product_page .product_list_section .prod_info { gap: 10px; flex: 1; min-width: 0; }
+    #sub_contents.product_page .product_list_section .name_row {
+        flex-direction: column; align-items: flex-start; gap: 2px;
+    }
+    #sub_contents.product_page .product_list_section .name_row h4 {
+        font-size: 14px; line-height: 20px; letter-spacing: -0.3px;
+        word-break: keep-all; overflow-wrap: break-word;
+    }
+    #sub_contents.product_page .product_list_section .name_row .en {
+        font-size: 11px; line-height: 16px;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    #sub_contents.product_page .product_list_section .prod_info .desc {
+        font-size: 12px; line-height: 18px;
+        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        min-height: 0; max-height: none;
+    }
+    #sub_contents.product_page .product_list_section .spec_info { flex-wrap: wrap; gap: 6px 12px; margin-top: auto; }
+    #sub_contents.product_page .product_list_section .spec_group { gap: 6px; }
+    #sub_contents.product_page .product_list_section .spec_group .v_line { height: 12px; }
+    #sub_contents.product_page .product_list_section .spec_group .spec_label,
+    #sub_contents.product_page .product_list_section .spec_group .spec_val {
+        font-size: 11px; line-height: 16px; letter-spacing: -0.2px;
+    }
+}
+
+/* --- ≤400 --- */
+@media (max-width: 400px) {
+    #sub_contents.product_page .product_list_section .product_inner .product_grid { gap: 20px 10px; }
+    #sub_contents.product_page .product_list_section .prod_img { height: 128px; border-radius: 8px; }
+    #sub_contents.product_page .product_list_section .name_row h4 { font-size: 13px; line-height: 18px; }
+    #sub_contents.product_page .product_list_section .name_row .en { font-size: 10px; line-height: 14px; }
+    #sub_contents.product_page .product_list_section .prod_info .desc { font-size: 11px; line-height: 16px; }
+    #sub_contents.product_page .product_list_section .spec_group { flex-wrap: wrap; row-gap: 2px; }
+    #sub_contents.product_page .product_list_section .spec_info { gap: 4px 8px; }
+    #sub_contents.product_page .product_list_section .spec_group .spec_label,
+    #sub_contents.product_page .product_list_section .spec_group .spec_val { font-size: 10px; line-height: 14px; }
+}
+
+/* --- ≤360 --- */
+@media (max-width: 360px) {
+    #sub_contents.product_page .product_list_section .product_inner .product_grid { gap: 16px 8px; }
+    #sub_contents.product_page .product_list_section .prod_img { height: 118px; }
 }
 
 /* 제품 텍스트 */
