@@ -4742,3 +4742,34 @@
         color: #fff;
     }
 }
+
+/* ============================================================
+   [전역 모바일 안전망] — 서브페이지 전용 (#sub_contents). 메인(#main) 미적용.
+   목적: 콘텐츠가 SectionHeader 초록선(●━━ 제목 ━━●, 폭 max-width:95%) 을
+   넘어가면 무조건 줄바꿈/축소. 모든 모바일 가로폭(≤1024)에 한 번에 대응.
+
+   핵심: :where() 로 specificity 0 → 페이지별로 의도한 폭 제약
+   (max-width:95%/90% 등, 초록선 정렬)은 그대로 두고, 제약이 없어
+   넘칠 수 있는 요소만 100% 로 잡는다. (단순 #sub_contents * 는 의도된
+   95% 정렬까지 덮어써 오히려 초록선 밖으로 밀어내므로 금지.)
+   ============================================================ */
+@media (max-width: 1024px) {
+    /* 1) 페이지 가로 스크롤·넘침 원천 차단.
+          overflow:clip 사용 — hidden 과 달리 스크롤 컨테이너를 만들지 않아
+          내부 position:sticky 를 깨지 않음. */
+    #sub_contents {
+        overflow-x: clip;
+    }
+
+    /* 2) 폭 제약 없는 요소가 부모(=콘텐츠 경계)보다 넓어지지 않게 (specificity 0) */
+    :where(#sub_contents *:not(svg):not(svg *)) {
+        max-width: 100%;
+    }
+
+    /* 3) 긴 텍스트는 줄바꿈 — 한국어 단어는 유지(keep-all),
+          끊을 데 없는 초장문 토큰(URL·영문 등)만 분할(break-word). */
+    :where(#sub_contents) :is(h1, h2, h3, h4, h5, h6, p, li, a, span, em, strong, dt, dd, td, th, figcaption, label, button) {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+}

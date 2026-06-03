@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(`.proc_info_group[data-proc="${id}"]`)?.classList.add('active');
             document.querySelector(`.proc_desc[data-proc="${id}"]`)?.classList.add('active');
 
-            // 더 알아보기: 메인에서는 사업영역 소개(business_area.php)로 고정
+            // 더 알아보기 링크는 React 컴포넌트(item.link, 예: /about#area)에서 처리
         });
     });
 
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cateBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const targetCate = btn.getAttribute('data-cate');
-            const targetLink = btn.getAttribute('data-link'); // ko.php에서 넘어온 링크
+            const targetLink = btn.getAttribute('data-link'); // 카테고리별 제품 앵커 (i18n messages 의 link)
 
             // 1. 카테고리 버튼 활성화
             cateBtns.forEach(b => b.classList.remove('active'));
