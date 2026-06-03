@@ -148,7 +148,8 @@
    ============================================================ */
 @media (max-width: 900px) {
     .history_timeline { padding: 32px 0 56px; }
-    .history_timeline_inner { padding-left: 40px; }
+    /* SectionHeader 초록선(폭 95%) 안으로 들어오게 폭 제한 (사용자 요청) */
+    .history_timeline_inner { padding-left: 40px; width: 92%; max-width: 92%; }
     .history_timeline_inner::before {
         left: 8px;
         transform: none;

@@ -343,7 +343,7 @@
     }
 
     #sub_contents .cert_page .cert_container {
-        padding: 62px 20px 0;
+        padding: 62px 20px 56px;   /* 하단 0 → 56px: 기타 인증서 끝과 푸터 사이 여백 (사용자 요청) */
         gap: 32px;
         box-sizing: border-box;
     }

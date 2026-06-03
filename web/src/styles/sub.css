@@ -722,6 +722,27 @@
     aspect-ratio: 377 / 220;
 }
 
+/* [제품 페이지 배치 통일] 조림(braised) 기준으로 모든 카테고리(절임/나물/젓갈/소스/
+   액상차)의 그리드 열수·간격을 동일하게. 카테고리별로 ≤480 에서 1열로 떨어지거나
+   2번째 블록 유무로 제각각이던 것을 일괄 통일. specificity (0,1,4,0) 로 per-category
+   (0,1,2~3,0) 규칙을 모두 누름. PC(>1024) 열수는 카테고리 자율(절임/조림/나물 4열,
+   젓갈 3열 등) 유지하고 정렬/간격만 동일. (사용자 요청) */
+@media (max-width: 1024px) {
+    #sub_contents.product_page .product_list_section .product_inner .product_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px 18px;
+        justify-content: center;
+        padding: 0;
+    }
+}
+@media (max-width: 735px) {
+    #sub_contents.product_page .product_list_section .product_inner .product_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 14px;
+        justify-content: center;
+    }
+}
+
 /* 제품 텍스트 */
 .prod_info {
     display: flex; flex-direction: column; gap: 12px; align-self: stretch;
@@ -2000,7 +2021,7 @@
         display: flex !important;
         flex-direction: column;
         align-items: flex-start;
-        gap: 4px;
+        gap: 16px;   /* 주황 라벨(sub_ttl) 아래 한 줄 띄움 (사용자 요청) */
         width: 100%;
         max-width: 100%;
     }
