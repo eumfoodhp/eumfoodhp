@@ -58,7 +58,7 @@
 .facility_block_title_en {
     font-size: 13px;
     font-weight: 600;
-    color: #F26337;
+    color: #22C55E;   /* Plant A/B 영어 → 초록 (사용자 요청) */
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -227,8 +227,8 @@
     font-weight: 700;
 }
 .facility_name_en {
-    /* 영문 설비명 — 주황 작은 볼드 uppercase */
-    color: #F26337;
+    /* 영문 설비명 — 초록 작은 볼드 uppercase (사용자 요청) */
+    color: #22C55E;
     font-family: 'Pretendard', sans-serif;
     font-size: 13px;
     line-height: 1.4;

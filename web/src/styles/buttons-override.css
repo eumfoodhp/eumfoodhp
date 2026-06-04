@@ -1806,9 +1806,9 @@ html[lang="zh"] .dl_title {
     transform: translate(-50%, -50%);
     width: 8px;
     height: 8px;
-    background: #2563EB;
+    background: #22C55E;
     border-radius: 50%;
-    box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(34, 197, 94, 0.25);
     z-index: 11;
 }
 
@@ -1881,7 +1881,7 @@ html[lang="zh"] .dl_title {
 .next_section_eyebrow {
     font-size: 11px;
     font-weight: 700;
-    color: #2563EB;
+    color: #22C55E;   /* prev/next 파랑 → 초록 (사용자 요청) */
     letter-spacing: 0.15em;
 }
 
@@ -1894,7 +1894,7 @@ html[lang="zh"] .dl_title {
 }
 
 .next_section_icon {
-    color: #2563EB;
+    color: #22C55E;   /* prev/next 화살표 파랑 → 초록 (사용자 요청) */
     margin-top: 4px;
 }
 /* PREV ↑ — SVG 내부 화살표가 박스 위쪽 1/5 에 머리가 있어서
@@ -2064,7 +2064,7 @@ html[lang="zh"] .dl_title {
 }
 #sub_contents .product_card .name_row .en,
 #sub_contents [class*="product_"] .name_row .en {
-    color: #F26337 !important;
+    color: #22C55E !important;   /* 제품 카드 영문 서브 주황 → 초록 (사용자 요청) */
     font-weight: 600 !important;
     font-size: 12px !important;
     letter-spacing: 0.05em;
@@ -2072,12 +2072,12 @@ html[lang="zh"] .dl_title {
     line-height: 1.3 !important;
 }
 
-/* 한국어 + 영어 부제 묶음 — 세로 stack (한국어 위, 영어 아래) */
+/* 한국어 + 영어 부제 — 나란히(가로) 배치 (사용자 요청) */
 .story_section_title_inner {
     display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
     flex-shrink: 0;
     white-space: nowrap;
     line-height: 1;
@@ -2086,7 +2086,7 @@ html[lang="zh"] .dl_title {
     font-style: normal;
     font-size: 0.32em;
     font-weight: 700;
-    color: #22C55E;   /* 영문 서브텍스트 주황 → 초록 (사용자 요청, 구분선과 색 교체) */
+    color: #F26337;   /* 영문 부제 초록 → 주황 (사용자 요청) */
     letter-spacing: 0.12em;
     text-transform: uppercase;
     line-height: 1;
@@ -2176,7 +2176,7 @@ html[lang="zh"] .dl_title {
 .next_section_divider {
     width: 100%;
     height: 4px;
-    background-image: radial-gradient(circle, #3B82F6 1.6px, transparent 1.8px);
+    background-image: radial-gradient(circle, #22C55E 1.6px, transparent 1.8px);
     background-size: 12px 4px;
     background-repeat: repeat-x;
     background-position: center;
