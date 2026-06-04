@@ -2228,8 +2228,10 @@ html[lang="zh"] .dl_title {
 .sauce_subsection_head {
     width: 100%;
     margin: 24px 0 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #F0E6D6;
+    /* 구분선(border-bottom)·하단 패딩 제거, 좌측 들여쓰기 없이 카드와 같은 시작선 (사용자 요청) */
+    padding: 0;
+    margin-left: 0;
+    border-bottom: 0;
     display: flex;
     align-items: baseline;
     gap: 16px;
@@ -2237,6 +2239,7 @@ html[lang="zh"] .dl_title {
 }
 .sauce_subsection_head .main_tit {
     margin: 0;
+    padding-left: 0;
     font-size: 24px;
     font-weight: 700;
     color: #1F2937;
