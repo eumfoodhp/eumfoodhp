@@ -89,10 +89,11 @@ function FacilityGrid({
               <span className="facility_name">{t(nameKey(num))}</span>
               <span className="facility_name_en">{EN[nameKey(num)] ?? ''}</span>
             </div>
-            <p
-              className="facility_desc"
-              dangerouslySetInnerHTML={{ __html: t(descKey(num)) }}
-            />
+            {/* <br> 제거 — 넓어진 카드에서 수동 줄바꿈이 마지막 단어를 3번째 줄로 밀어
+                2번째 줄에 빈 공간이 남던 문제. 공백 치환 후 자연 줄바꿈 (사용자 요청) */}
+            <p className="facility_desc">
+              {t(descKey(num)).replace(/<br\s*\/?>/gi, ' ')}
+            </p>
           </div>
         </article>
       ))}

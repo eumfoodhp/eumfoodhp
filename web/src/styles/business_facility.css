@@ -245,6 +245,7 @@
     letter-spacing: -0.4px;
     font-weight: 300;
     margin: 0;
+    text-wrap: pretty;   /* 마지막 줄 외톨이 단어 방지 — 줄바꿈 자연스럽게 */
 }
 
 @media (max-width: 1200px) {
