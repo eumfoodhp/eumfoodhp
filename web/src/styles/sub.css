@@ -904,30 +904,33 @@
     max-width: 95%;
     margin: 0 auto;
     position: relative;
+    isolation: isolate;   /* 시설 사진을 글씨 뒤로(z-index:-1) 보내기 위한 stacking context */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 80px;
 }
 
-/* 인사말 우측 — 생산 시설 사진(factorymain) + 캡션. 콘텐츠 경계(주황 점) 안 우측에
-   배치(전엔 화면 끝까지 삐져나갔음). 본문은 좌측 컬럼으로 폭 제한해 겹침 방지 (사용자 요청) */
+/* 인사말 — 생산 시설 사진(factorymain)을 글씨 뒤 배경으로(우측, 콘텐츠 경계 안).
+   z-index:-1 로 본문 뒤에 깔리고, 투명 PNG 라 깔끔하게 보임 (사용자 요청) */
 .ceo_facility {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: min(560px, 40%);
+    width: min(560px, 42%);
     margin: 0;
+    z-index: -1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
+    pointer-events: none;
 }
 .ceo_facility_img {
     width: 100%;
     height: auto;
     display: block;
+    opacity: 0.7;   /* 0.2 워터마크가 너무 희미하다 하여 선명하게 (사용자 요청) */
 }
 .ceo_facility_caption {
     margin: 0;
@@ -947,7 +950,6 @@
     align-items: flex-start;
     gap: 36px;
     width: 100%;
-    max-width: 58%;   /* 우측 시설 사진 figure 와 겹치지 않게 본문 폭 제한 (사용자 요청) */
 }
 
 /* 타이틀 묶음 ↔ 본문 사이 — 두 줄 분량 공백 (h3 line-height 68 × 2 = 136 근사) */
@@ -1087,18 +1089,14 @@
     }
 }
 
-/* 인사말 시설 사진 — 좁은 화면(≤1024)에선 본문 아래로 스택 (사용자 요청) */
+/* 인사말 시설 사진 — 모바일에선 더 작게(글씨 가독성). 글씨 뒤 배경 유지 */
 @media (max-width: 1024px) {
-    .ceo_main_group { max-width: 100%; }
     .ceo_facility {
-        position: static;
-        transform: none;
-        width: 100%;
-        max-width: 420px;
-        margin: 8px 0 0;
-        align-items: flex-start;
+        width: min(360px, 56%);
     }
-    .ceo_facility_caption { text-align: left; }
+    .ceo_facility_img {
+        opacity: 0.5;
+    }
 }
 
 
