@@ -128,10 +128,12 @@
 
 #sub_contents .product_sauce_page .product_grid {
     display: grid;
-    /* 나물 기준 통일 — 고정 374px (minmax/1fr 제거: 좁은 뷰포트에서 줄던 것 해결) */
-    grid-template-columns: repeat(4, 374px);
+    /* minmax 로 컨테이너 폭에 맞춰 축소 — 고정 374px 면 그리드(4×374+gap=1580)가
+       product_inner(95%≈1501)보다 넓어 center 시 카드가 좌측으로 ~39.5px 넘쳐(overflow),
+       헤딩(inner 좌측)이 우측 들여쓰기처럼 보였음. minmax 로 넘침 제거 → 헤딩과 좌측선 일치 (사용자 요청) */
+    grid-template-columns: repeat(4, minmax(0, 374px));
     gap: 48px 28px;
-    justify-content: center;   /* 다른 카테고리와 동일 — 좌측 쏠림 수정 */
+    justify-content: start;
     width: 100%;
 }
 
