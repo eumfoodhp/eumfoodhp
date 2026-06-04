@@ -772,7 +772,7 @@
 .prod_marquee {
     width: 100%;
     overflow: hidden;
-    margin-top: 8px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 16px;

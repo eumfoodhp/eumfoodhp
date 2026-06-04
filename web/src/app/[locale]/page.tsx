@@ -160,9 +160,10 @@ export default async function HomePage({
                 <ArrowIcon />
               </Link>
             </div>
+          </div>
 
-            {/* 제품 — 3줄 가로 마퀴, 줄마다 반대 방향으로 흐름 (사용자 요청) */}
-            <div className="prod_marquee">
+          {/* 제품 — 3줄 가로 마퀴 (좌우 풀사이즈) — 줄마다 반대 방향 (사용자 요청) */}
+          <div className="prod_marquee">
             {(() => {
               const flat = prodCategories.flatMap((cate) =>
                 (prodList[cate.name] ?? []).map((item) => ({
@@ -203,7 +204,6 @@ export default async function HomePage({
               ));
             })()}
             </div>
-          </div>
         </section>
 
         <section className="partner_section partner_section--3d">

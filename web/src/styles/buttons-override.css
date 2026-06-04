@@ -1516,9 +1516,16 @@ html[lang="zh"] .dl_title {
     width: 18px !important;
     height: 18px !important;
 }
-#main .prod_header,
 #main .notice_header {
     align-items: center !important;
+}
+/* 제품 헤더 — 긴 제목이 여러 줄로 wrap 될 때 버튼이 세로 중앙으로 떠 보이던 문제 →
+   상단 정렬로 고정(항상 첫 줄 옆 우측 상단), 첫 줄과 맞춰 살짝 내림 (사용자 요청) */
+#main .prod_header {
+    align-items: flex-start !important;
+}
+#main .prod_header .proc_cards_more {
+    margin-top: 6px !important;
 }
 
 /* overview는 스크롤 시 다크 배경으로 전환되므로 active 상태에서 흰색 톤 유지 */
