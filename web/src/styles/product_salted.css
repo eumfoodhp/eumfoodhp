@@ -207,7 +207,7 @@
 @media (max-width: 1600px) {
     #sub_contents .product_salted_page .product_grid {
         grid-template-columns: repeat(4, minmax(0, 374px));
-        padding: 0 16px;
+        padding: 0;   /* 좌우 16px 제거 — 카드가 왼쪽 끝부터 (사용자 요청) */
     }
 
     #sub_contents .product_salted_page .product_grid.product_grid--salted_three {
