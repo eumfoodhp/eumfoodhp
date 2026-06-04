@@ -1534,12 +1534,23 @@ html[lang="zh"] .dl_title {
 @media (max-width: 735px) {
     #main .notice_header {
         flex-direction: row !important;
+        flex-wrap: nowrap !important;
         align-items: center !important;
         justify-content: space-between !important;
         gap: 12px !important;
     }
-    #main .notice_header .notice_title_group { align-items: flex-start !important; text-align: left !important; }
-    #main .notice_more_link { align-self: center !important; }
+    #main .notice_header .notice_title_group {
+        align-items: flex-start !important;
+        text-align: left !important;
+        min-width: 0 !important;   /* 공간 부족 시 제목 그룹이 줄고 버튼은 유지 */
+    }
+    #main .notice_more_link {
+        align-self: center !important;
+        flex-shrink: 0 !important;      /* 버튼은 줄지 않음 */
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important; /* '더 알아보기' 한 줄 고정 */
+    }
+    #main .notice_more_link span { white-space: nowrap !important; }
 }
 
 /* overview는 스크롤 시 다크 배경으로 전환되므로 active 상태에서 흰색 톤 유지 */
