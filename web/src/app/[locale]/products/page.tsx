@@ -257,6 +257,8 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
                     <div className="pkg_subhead">
                       <h3 className="pkg_subhead_tit">{t(sec.mainKey)}</h3>
                       {note && <span className="pkg_subhead_note">{note}</span>}
+                      {/* 영문 부제 — 초록 대문자, 제목 하단 (사용자 요청) */}
+                      <span className="pkg_subhead_en">{t(sec.subKey)}</span>
                     </div>
                     <div className={`product_grid${sec.isPack ? ' product_grid--sauce_pack' : ''}`}>
                       {sec.ids.map((id) => {
