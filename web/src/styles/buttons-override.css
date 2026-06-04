@@ -19,6 +19,7 @@
 .proc_more_btn,
 .prod_more_link,
 .notice_more_link,
+.proc_cards_more,
 .lang_list li a,
 .period_tab {
     border-radius: 12px !important;
@@ -1461,6 +1462,7 @@ html[lang="zh"] .dl_title {
 .ov_more_btn,
 .biz_more_btn,
 .proc_more_btn,
+.proc_cards_more,
 .prod_more_link,
 .notice_more_link {
     border: 1.5px solid #F26337 !important;
@@ -1472,6 +1474,7 @@ html[lang="zh"] .dl_title {
 .ov_more_btn:hover,
 .biz_more_btn:hover,
 .proc_more_btn:hover,
+.proc_cards_more:hover,
 .prod_more_link:hover,
 .notice_more_link:hover {
     background: #F26337 !important;
@@ -1482,6 +1485,7 @@ html[lang="zh"] .dl_title {
 .ov_more_btn svg,
 .biz_more_btn svg,
 .proc_more_btn svg,
+.proc_cards_more svg,
 .prod_more_link svg,
 .notice_more_link svg {
     stroke: currentColor;
