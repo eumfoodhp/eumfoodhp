@@ -1525,6 +1525,7 @@ html[lang="zh"] .dl_title {
     align-items: flex-start !important;
 }
 #main .prod_header .proc_cards_more {
+    align-self: flex-start !important;   /* 통일 규칙의 align-self:center 를 덮어 상단 고정 */
     margin-top: 6px !important;
 }
 
