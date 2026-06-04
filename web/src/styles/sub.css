@@ -753,7 +753,7 @@
     color: #767676; font-size: 16px; font-weight: 300; line-height: 26px; letter-spacing: -0.4px;
 }
 #sub_contents.product_page .product_list_section .spec_group .spec_val {
-    color: #F26337; font-size: 16px; font-weight: 500; line-height: 26px; letter-spacing: -0.4px;
+    color: #22C55E; font-size: 16px; font-weight: 500; line-height: 26px; letter-spacing: -0.4px;   /* 보관/1KG 스펙값 주황→초록 (사용자 요청) */
 }
 
 /* --- ≤1024 : 3열 --- */

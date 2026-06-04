@@ -212,7 +212,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
           <SectionHeader title={t('sub_prod_salted')} en="Salted Seafood" />
           <section className="product_list_section">
             <div className="product_inner">
-              <div className="product_grid product_grid--salted_three">
+              <div className="product_grid">
                 {SALTED_ITEMS.map(({ id, img }) => (
                   <div className="product_card" key={id}>
                     <div className="prod_img" style={{ backgroundImage: `url('${img}')` }}></div>
