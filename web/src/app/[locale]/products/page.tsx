@@ -254,9 +254,9 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
               return (
                 <section className="product_list_section" key={secIdx}>
                   <div className="product_inner">
-                    <div className="sauce_subsection_head">
-                      <h3 className="main_tit">{t(sec.mainKey)}</h3>
-                      {note && <p className="sauce_note">{note}</p>}
+                    <div className="pkg_subhead">
+                      <h3 className="pkg_subhead_tit">{t(sec.mainKey)}</h3>
+                      {note && <span className="pkg_subhead_note">{note}</span>}
                     </div>
                     <div className={`product_grid${sec.isPack ? ' product_grid--sauce_pack' : ''}`}>
                       {sec.ids.map((id) => {
