@@ -256,20 +256,37 @@
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
-/* 카드 하단 텍스트 (블러 처리) */
+/* 카드 하단 그라데이션 — 검은 박스 대신 사진 아래쪽만 자연스럽게 어둡게 (사용자 요청) */
+.biz_card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 72%;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.80) 0%,
+        rgba(0, 0, 0, 0.50) 26%,
+        rgba(0, 0, 0, 0.15) 52%,
+        rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 카드 하단 텍스트 — 박스/블러 제거, 그라데이션 위에 흰 글씨 */
 .card_text_area {
     display: flex;
-    padding: 24px;
+    padding: 4px;
     flex-direction: column;
     align-items: flex-start;
     gap: 9px;
     align-self: stretch;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.40);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 2;
 }
 
 .card_main_txt {
