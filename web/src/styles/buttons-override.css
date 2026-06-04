@@ -2210,6 +2210,12 @@ html[lang="zh"] .dl_title {
     order: -1;                        /* DOM 상 타이틀 다음이지만 시각적으로 타이틀 위 */
     flex-shrink: 0;
 }
+/* PC — 제품 소개서 버튼을 위로 조금 올려 타이틀 위 여백의 수직 중앙에 배치 (사용자 요청) */
+@media (min-width: 1025px) {
+    .story_section_action {
+        margin-top: -36px;
+    }
+}
 
 /* IntersectionObserver(.is_visible) JS 가 안 붙어 있어서 카드가 영원히
    opacity:0 으로 안 보이는 문제 — 강제로 보이게 override. */
