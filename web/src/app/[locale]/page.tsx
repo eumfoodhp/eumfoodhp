@@ -157,17 +157,11 @@ export default async function HomePage({
             <div className="proc_card_grid">
               {procTabs.map((item, idx) => (
                 <article key={idx} className="proc_card">
+                  {/* 사진 안 '더 알아보기' float 버튼 제거 (사용자 요청) — 카드 제목 링크로 이동 */}
                   <div
                     className="proc_card_img"
                     style={{ backgroundImage: `url('/images/main/section4-${idx + 1}.png')` }}
-                  >
-                    {/* 더 알아보기 — 이미지 우측 상단. proc_card_link(주황 pill 배경) 클래스는
-                        빼고 --float(투명 + 흰색 아웃라인 텍스트)만 사용 (사용자 요청) */}
-                    <Link href={item.link} className="proc_card_link--float">
-                      <span>{t('common_more')}</span>
-                      <ArrowIcon />
-                    </Link>
-                  </div>
+                  ></div>
                   <div className="proc_card_body">
                     <h3 className="proc_card_title">
                       <Link href={item.link} className="proc_card_title_link">
