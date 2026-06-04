@@ -731,6 +731,18 @@
     margin-top: 8px;
 }
 
+/* 제품 섹션 리드 문구 (사용자 요청) */
+.prod_lead {
+    margin-top: 16px;
+    max-width: 760px;
+    color: #555;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.4px;
+    word-break: keep-all;
+}
+
 .prod_nav_wrap {
     display: flex;
     justify-content: space-between;
@@ -1800,16 +1812,19 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     /* 카테고리 버튼 — 사이 간격을 넓혀(space-between) 한 줄 가득 채움 (사용자 요청) */
     .prod_categories {
         width: 100%;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-between;
-        gap: 8px;
+        gap: 6px;
         overflow-x: visible;
     }
+    /* 카테고리 버튼 6개 균등 분할 → 아래 카드와 같은 폭으로 좌우 꽉차게 (사용자 요청) */
     .prod_cate_btn {
-        flex: 0 0 auto;
-        padding: 9px 8px !important;
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        padding: 9px 5px !important;
         font-size: 12px !important;
         line-height: 18px !important;
+        text-align: center;
         white-space: nowrap;
     }
     .prod_grid.active {
@@ -2010,17 +2025,31 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     }
 
     .prod_categories {
-        flex-wrap: wrap;
+        width: 100%;
+        flex-wrap: nowrap;
         justify-content: space-between;
         overflow-x: visible;
-        gap: 8px;
+        gap: 5px;
     }
     .prod_cate_btn {
-        flex: 0 0 auto;
-        padding: 9px 8px;
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 9px 4px;
         font-size: 12px;
         line-height: 18px;
+        text-align: center;
         white-space: nowrap;
+    }
+    /* 카드 제목 — 영어를 한글 아래 줄로 줄바꿈 (사용자 요청) */
+    .prod_name_group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    /* 제품 섹션 리드 문구 — 모바일 크기 */
+    .prod_lead {
+        font-size: 14px;
+        margin-top: 10px;
     }
     /* 제품 — 모바일 한 줄에 2개 (사용자 요청). 고정 height 대신 비율로
        2열 좁은 카드에서도 사진이 세로로 길어지지 않게. */
@@ -2235,8 +2264,8 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
     }
 
     .prod_cate_btn {
-        padding: 8px 12px;
-        font-size: 12px;
+        padding: 8px 3px !important;
+        font-size: 11px !important;
     }
     .prod_img {
         height: auto;
