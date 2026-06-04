@@ -2030,8 +2030,8 @@ html[lang="zh"] .dl_title {
 /* 좌측: 점 (왼쪽 끝) + 선 (점 우측 ~ 우측 끝) */
 .story_section_head .story_section_title::before {
     background-image:
-        radial-gradient(circle 7px at 7px center, #22C55E 99%, transparent 100%),
-        linear-gradient(#22C55E, #22C55E);
+        radial-gradient(circle 7px at 7px center, #F26337 99%, transparent 100%),
+        linear-gradient(#F26337, #F26337);
     background-repeat: no-repeat, no-repeat;
     background-position: left center, 20px center;
     background-size: 14px 14px, calc(100% - 20px) 2px;
@@ -2039,8 +2039,8 @@ html[lang="zh"] .dl_title {
 /* 우측: 선 (좌측 ~ 점 좌측) + 점 (오른쪽 끝) */
 .story_section_head .story_section_title::after {
     background-image:
-        radial-gradient(circle 7px at calc(100% - 7px) center, #22C55E 99%, transparent 100%),
-        linear-gradient(#22C55E, #22C55E);
+        radial-gradient(circle 7px at calc(100% - 7px) center, #F26337 99%, transparent 100%),
+        linear-gradient(#F26337, #F26337);
     background-repeat: no-repeat, no-repeat;
     background-position: right center, left center;
     background-size: 14px 14px, calc(100% - 20px) 2px;
@@ -2086,7 +2086,7 @@ html[lang="zh"] .dl_title {
     font-style: normal;
     font-size: 0.32em;
     font-weight: 700;
-    color: #F26337;
+    color: #22C55E;   /* 영문 서브텍스트 주황 → 초록 (사용자 요청, 구분선과 색 교체) */
     letter-spacing: 0.12em;
     text-transform: uppercase;
     line-height: 1;
@@ -2121,15 +2121,15 @@ html[lang="zh"] .dl_title {
     /* circle radius (6) + cx (6) = 12 = box width → 정확히 박스 안에 맞음 */
     .story_section_head .story_section_title::before {
         background-image:
-            radial-gradient(circle 6px at 6px center, #22C55E 99%, transparent 100%),
-            linear-gradient(#22C55E, #22C55E);
+            radial-gradient(circle 6px at 6px center, #F26337 99%, transparent 100%),
+            linear-gradient(#F26337, #F26337);
         background-size: 12px 12px, calc(100% - 18px) 2px;
         background-position: left center, 18px center;
     }
     .story_section_head .story_section_title::after {
         background-image:
-            radial-gradient(circle 6px at calc(100% - 6px) center, #22C55E 99%, transparent 100%),
-            linear-gradient(#22C55E, #22C55E);
+            radial-gradient(circle 6px at calc(100% - 6px) center, #F26337 99%, transparent 100%),
+            linear-gradient(#F26337, #F26337);
         background-size: 12px 12px, calc(100% - 18px) 2px;
         background-position: right center, left center;
     }
@@ -2148,15 +2148,15 @@ html[lang="zh"] .dl_title {
     /* circle radius (5) + cx (5) = 10 → 박스 안 (좌측 잘림 fix) */
     .story_section_head .story_section_title::before {
         background-image:
-            radial-gradient(circle 5px at 5px center, #22C55E 99%, transparent 100%),
-            linear-gradient(#22C55E, #22C55E);
+            radial-gradient(circle 5px at 5px center, #F26337 99%, transparent 100%),
+            linear-gradient(#F26337, #F26337);
         background-size: 10px 10px, calc(100% - 16px) 2px;
         background-position: left center, 16px center;
     }
     .story_section_head .story_section_title::after {
         background-image:
-            radial-gradient(circle 5px at calc(100% - 5px) center, #22C55E 99%, transparent 100%),
-            linear-gradient(#22C55E, #22C55E);
+            radial-gradient(circle 5px at calc(100% - 5px) center, #F26337 99%, transparent 100%),
+            linear-gradient(#F26337, #F26337);
         background-size: 10px 10px, calc(100% - 16px) 2px;
         background-position: right center, left center;
     }
@@ -2210,10 +2210,10 @@ html[lang="zh"] .dl_title {
     order: -1;                        /* DOM 상 타이틀 다음이지만 시각적으로 타이틀 위 */
     flex-shrink: 0;
 }
-/* PC — 제품 소개서 버튼을 위로 조금 올려 타이틀 위 여백의 수직 중앙에 배치 (사용자 요청) */
+/* PC — 제품 소개서 버튼을 위로 더 올림 (사용자 요청) */
 @media (min-width: 1025px) {
     .story_section_action {
-        margin-top: -36px;
+        margin-top: -72px;
     }
 }
 
