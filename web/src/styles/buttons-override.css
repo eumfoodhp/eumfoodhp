@@ -2217,25 +2217,8 @@ html[lang="zh"] .dl_title {
     }
 }
 
-/* ============================================================
-   [제품 페이지 좌측 여백 제거 — 사용자 요청]
-   max-width:1580 + margin:0 auto(중앙정렬) 때문에 와이드 모니터(>1580px)에서
-   SectionHeader·카드·소스 서브헤딩(포장방식/한식소스 등) 왼쪽에 큰 여백(중앙정렬
-   마진)이 생겼음. → 와이드에서만 왼쪽 40px 거터로 좌측정렬. 헤더·카드·헤딩이 같은
-   시작선에 맞음(줄 맞춤). (≤1620 화면은 콘텐츠가 거의 풀폭이라 건드리지 않음 —
-   margin 주면 width:100% 와 겹쳐 오버플로우 나므로) */
-@media (min-width: 1660px) {
-    #sub_contents.product_page .story_section_head,
-    #sub_contents.product_page .product_list_section,
-    #sub_contents.product_page .sauce_section {
-        margin-left: 40px !important;
-        margin-right: auto !important;
-    }
-    /* sauce: 내부 product_list_section 은 이미 sauce_section(40px) 안 → 추가 들여쓰기 방지 */
-    #sub_contents.product_page .sauce_section .product_list_section {
-        margin-left: 0 !important;
-    }
-}
+/* [제품 페이지] 와이드에서 좌측정렬했던 규칙 제거 — 전부 중앙정렬 유지 (사용자 요청).
+   max-width:1580 + margin:0 auto 기본 중앙정렬을 그대로 둠. */
 
 /* IntersectionObserver(.is_visible) JS 가 안 붙어 있어서 카드가 영원히
    opacity:0 으로 안 보이는 문제 — 강제로 보이게 override. */

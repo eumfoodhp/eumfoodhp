@@ -109,18 +109,18 @@
     margin-bottom: 0;
 }
 
-/* 나물 기준 통일 — 카드 374 고정, 좌측 정렬 (center/minmax 제거) */
+/* 카드 374 고정. 다른 카테고리(justify-content:center)와 동일하게 중앙정렬 (사용자 요청) */
 #sub_contents .product_salted_page .product_grid {
     display: grid;
     grid-template-columns: repeat(4, 374px);
     gap: 48px 28px;
-    justify-content: start;   /* 다른 카테고리처럼 항목이 왼쪽부터 시작 (3개라 가운데 두면 떠 보임, 사용자 요청) */
+    justify-content: center;   /* 다른 카테고리와 동일 중앙정렬 — 젓갈만 왼쪽 쏠리던 것 수정 */
     width: 100%;
 }
-/* 3종 전용 — 동일 374 고정, 왼쪽 정렬(다른 그리드 시작점과 일치) */
+/* 3종 전용 — 3칸 그룹을 컨테이너 가운데 배치 (왼쪽 쏠림 제거) */
 #sub_contents .product_salted_page .product_grid.product_grid--salted_three {
     grid-template-columns: repeat(3, 374px);
-    justify-content: start;
+    justify-content: center;
 }
 
 #sub_contents .product_salted_page .product_card {
@@ -212,7 +212,7 @@
 
     #sub_contents .product_salted_page .product_grid.product_grid--salted_three {
         grid-template-columns: repeat(3, minmax(0, 374px));
-        justify-content: start;
+        justify-content: center;
     }
 }
 
