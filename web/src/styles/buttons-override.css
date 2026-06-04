@@ -1491,6 +1491,36 @@ html[lang="zh"] .dl_title {
     stroke: currentColor;
 }
 
+/* ============================================================
+   메인 '더 알아보기' 버튼 — 전 섹션·전 화면폭 동일 크기/높이로 통일하고,
+   제목과 수직 중앙 정렬(튀어나옴 방지). 흐름 배치로 통일 (사용자 요청).
+   ============================================================ */
+#main .ov_more_btn,
+#main .proc_cards_more,
+#main .prod_more_link,
+#main .notice_more_link {
+    position: static !important;
+    width: auto !important;
+    min-width: 124px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 0 18px !important;
+    font-size: 14px !important;
+    gap: 8px !important;
+    align-self: center !important;
+}
+#main .ov_more_btn svg,
+#main .proc_cards_more svg,
+#main .prod_more_link svg,
+#main .notice_more_link svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+#main .prod_header,
+#main .notice_header {
+    align-items: center !important;
+}
+
 /* overview는 스크롤 시 다크 배경으로 전환되므로 active 상태에서 흰색 톤 유지 */
 .sticky_wrapper.active .ov_more_btn {
     border-color: #fff !important;
