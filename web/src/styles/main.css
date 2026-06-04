@@ -360,6 +360,7 @@
 
 /* Figma 413:9521 — 3카드 가로 디자인 (Supply/Formula/Safe) */
 .process_section--cards .process_inner {
+    display: block;   /* 기본 process_inner 의 flex-row 상속 끊기 → 버튼(헤더)·카드 세로 배치 (사용자 요청) */
     padding: 0 32px;
 }
 
@@ -745,7 +746,16 @@
     letter-spacing: -0.45px;
 }
 
+/* 제품 헤더 — 소식 섹션처럼 [제목 좌 + 더알아보기 버튼 우] (사용자 요청) */
+.prod_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+}
 .prod_title {
+    flex: 1;
+    min-width: 0;
     color: #222;
     font-size: 42px;
     font-weight: 700;
@@ -762,7 +772,7 @@
 .prod_marquee {
     width: 100%;
     overflow: hidden;
-    margin-top: 44px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     gap: 16px;

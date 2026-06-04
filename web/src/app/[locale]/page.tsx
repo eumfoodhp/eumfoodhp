@@ -155,11 +155,14 @@ export default async function HomePage({
           <div className="product_inner">
             <div className="prod_header">
               <h2 className="prod_title">{t('main_prod_title')}</h2>
+              <Link href="/products" className="proc_cards_more">
+                <span>{t('common_more')}</span>
+                <ArrowIcon />
+              </Link>
             </div>
-          </div>
 
-          {/* 제품 — 3줄 가로 마퀴, 줄마다 반대 방향으로 흐름 (사용자 요청) */}
-          <div className="prod_marquee">
+            {/* 제품 — 3줄 가로 마퀴, 줄마다 반대 방향으로 흐름 (사용자 요청) */}
+            <div className="prod_marquee">
             {(() => {
               const flat = prodCategories.flatMap((cate) =>
                 (prodList[cate.name] ?? []).map((item) => ({
@@ -199,6 +202,7 @@ export default async function HomePage({
                 </div>
               ));
             })()}
+            </div>
           </div>
         </section>
 
