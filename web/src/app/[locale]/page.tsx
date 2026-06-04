@@ -123,6 +123,12 @@ export default async function HomePage({
 
         <section className="process_section process_section--cards">
           <div className="process_inner">
+            <div className="proc_cards_head">
+              <Link href="/about#area" className="proc_cards_more">
+                <span>{t('common_more')}</span>
+                <ArrowIcon />
+              </Link>
+            </div>
             <div className="proc_card_grid">
               {procTabs.map((item, idx) => (
                 <article key={idx} className="proc_card">
@@ -150,24 +156,28 @@ export default async function HomePage({
             <div className="prod_header">
               <h2 className="prod_title">{t('main_prod_title')}</h2>
             </div>
+          </div>
 
-            {/* 카테고리 벤토 그리드 — 사업영역 카드 대체 (사용자 요청) */}
-            <div className="prod_bento">
-              {prodCategories.map((cate, idx) => {
+          {/* 제품 — 가로 무한 스크롤 띠 (사용자 요청). 카테고리 2벌 복제로 끊김 없는 루프 */}
+          <div className="prod_marquee">
+            <div className="prod_marquee_track">
+              {[...prodCategories, ...prodCategories].map((cate, i) => {
                 const img = prodList[cate.name]?.[0]?.img ?? '';
+                const dup = i >= prodCategories.length;
                 return (
                   <Link
-                    key={cate.name}
+                    key={i}
                     href={cate.link}
-                    className={`bento_tile bento_tile--${idx}`}
+                    className="marquee_tile"
+                    aria-hidden={dup || undefined}
+                    tabIndex={dup ? -1 : undefined}
                   >
                     <div
-                      className="bento_img"
+                      className="marquee_img"
                       style={{ backgroundImage: `url('${productImageUrl(img)}')` }}
                     ></div>
-                    <div className="bento_overlay">
-                      <span className="bento_name">{cate.name}</span>
-                      <ArrowIcon />
+                    <div className="marquee_overlay">
+                      <span className="marquee_name">{cate.name}</span>
                     </div>
                   </Link>
                 );

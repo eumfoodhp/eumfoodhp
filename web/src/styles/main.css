@@ -188,6 +188,7 @@
 .ov_more_btn,
 .biz_more_btn,
 .proc_more_btn,
+.proc_cards_more,
 .prod_more_link,
 .notice_more_link {
     display: inline-flex;
@@ -221,11 +222,19 @@
 /* 사업영역·공정·제품·공지 더보기 — notice와 동일한 은은한 호버 */
 .biz_more_btn:hover,
 .proc_more_btn:hover,
+.proc_cards_more:hover,
 .prod_more_link:hover,
 .notice_more_link:hover {
     background: #f6f7fb;
     border-color: #ccc;
     color: #222;
+}
+
+/* 공정 카드 영역 상단 우측 '더 알아보기'(주요사업) (사용자 요청) */
+.proc_cards_head {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 28px;
 }
 
 .ov_more_btn:hover {
@@ -742,92 +751,71 @@
 }
 
 /* ============================================================
-   제품 — 카테고리 벤토 그리드 (사업영역 카드 대체, 사용자 요청)
-   6개 카테고리를 비대칭 타일로. 호버 시 사진 줌 + 화살표 슬라이드 인.
+   제품 — 가로 무한 스크롤 띠 (마퀴, 사용자 요청)
+   카테고리 타일을 가로로 끊임없이 흐르게. 호버 시 정지 + 사진 줌.
+   카테고리 2벌 복제 → translateX(-50%) 로 끊김 없는 루프.
    ============================================================ */
-.prod_bento {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 280px;
-    gap: 16px;
-    grid-template-areas:
-        "a a b c"
-        "d d e f";
+.prod_marquee {
     width: 100%;
-}
-.bento_tile {
-    position: relative;
     overflow: hidden;
+    margin-top: 44px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
+}
+.prod_marquee_track {
+    display: flex;
+    width: max-content;
+    animation: prodMarquee 38s linear infinite;
+}
+.prod_marquee:hover .prod_marquee_track {
+    animation-play-state: paused;
+}
+@keyframes prodMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+.marquee_tile {
+    position: relative;
+    flex: 0 0 360px;
+    height: 260px;
+    margin-right: 16px;
     border-radius: 16px;
+    overflow: hidden;
     text-decoration: none;
     background: #efe9e2;
 }
-.bento_tile--0 { grid-area: a; }
-.bento_tile--1 { grid-area: b; }
-.bento_tile--2 { grid-area: c; }
-.bento_tile--3 { grid-area: e; }
-.bento_tile--4 { grid-area: d; }
-.bento_tile--5 { grid-area: f; }
-.bento_img {
+.marquee_img {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.bento_tile:hover .bento_img { transform: scale(1.07); }
-.bento_overlay {
+.marquee_tile:hover .marquee_img { transform: scale(1.06); }
+.marquee_overlay {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: flex-end;
-    gap: 8px;
-    padding: 24px 26px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.12) 42%, transparent 72%);
+    padding: 20px 22px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 45%, transparent 70%);
 }
-.bento_name {
+.marquee_name {
     color: #fff;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.6px;
-    line-height: 1.2;
+    letter-spacing: -0.5px;
 }
-.bento_overlay svg {
-    width: 22px;
-    height: 22px;
-    color: #fff;
-    flex-shrink: 0;
-    margin-bottom: 5px;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: opacity 0.35s, transform 0.35s;
+@media (prefers-reduced-motion: reduce) {
+    .prod_marquee_track { animation: none; }
+    .prod_marquee { overflow-x: auto; }
 }
-.bento_tile:hover .bento_overlay svg {
-    opacity: 1;
-    transform: translateX(0);
-}
-@media (max-width: 1024px) {
-    .prod_bento {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 200px;
-        gap: 12px;
-        grid-template-areas:
-            "a a"
-            "b c"
-            "d d"
-            "e f";
-    }
-    .bento_name { font-size: 20px; }
-    .bento_overlay { padding: 18px; }
-}
-@media (max-width: 600px) {
-    .prod_bento {
-        grid-auto-rows: 150px;
-        gap: 10px;
-    }
-    .bento_name { font-size: 16px; }
-    .bento_overlay { padding: 13px 14px; }
-    .bento_overlay svg { width: 17px; height: 17px; margin-bottom: 3px; }
+@media (max-width: 768px) {
+    .prod_marquee { margin-top: 28px; }
+    .marquee_tile { flex-basis: 250px; height: 188px; margin-right: 12px; }
+    .marquee_name { font-size: 17px; }
+    .marquee_overlay { padding: 14px 16px; }
+    .prod_marquee_track { animation-duration: 26s; }
 }
 
 .prod_nav_wrap {
