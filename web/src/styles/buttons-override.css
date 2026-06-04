@@ -2254,6 +2254,20 @@ html[lang="zh"] .dl_title {
     color: #767676;
 }
 
+/* [재발 방지] 소스 하위 섹션 헤딩(포장방식 및 중량 / 한식소스 등)을 카드·사진과
+   완전히 같은 좌측 시작선으로 강제. 저특이성 규칙이 어딘가에서 덮여 들여쓰기가
+   남던 문제 → 고특이성 + !important 로 margin/padding/text-indent 전부 0 (사용자 요청). */
+#sub_contents.product_page .sauce_section .product_list_section .sauce_subsection_head,
+#sub_contents.product_page .sauce_section .product_list_section .sauce_subsection_head .main_tit {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-indent: 0 !important;
+}
+#sub_contents.product_page .sauce_section .product_list_section .sauce_subsection_head {
+    align-self: stretch !important;
+    width: 100% !important;
+}
+
 @media (max-width: 1024px) {
     .sauce_subsection_head .main_tit {
         font-size: 20px;
