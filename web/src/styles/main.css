@@ -230,16 +230,15 @@
     color: #222;
 }
 
-/* 공정 카드 영역 — '더 알아보기'(주요사업) 버튼을 카드 사진 위 우측 상단에 올림 (사용자 요청) */
-.process_section--cards .process_inner {
-    position: relative;
+/* 공정 카드 영역 — '더 알아보기'(주요사업) 버튼을 카드와 분리해 위쪽 우측에,
+   위(손잡기 overview)·아래(카드) 간격 넓게 (사용자 요청) */
+.process_section--cards {
+    padding-top: 184px;
 }
 .proc_cards_head {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    margin: 0;
-    z-index: 5;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 56px;
 }
 
 .ov_more_btn:hover {
@@ -817,10 +816,6 @@
     font-weight: 600;
     letter-spacing: -0.4px;
     line-height: 1.25;
-}
-@media (prefers-reduced-motion: reduce) {
-    .prod_marquee_row.is-ltr .prod_marquee_track,
-    .prod_marquee_row.is-rtl .prod_marquee_track { animation: none; }
 }
 @media (max-width: 768px) {
     .prod_marquee { margin-top: 28px; gap: 12px; }
