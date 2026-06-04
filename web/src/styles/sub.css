@@ -901,18 +901,18 @@
     overflow: hidden;
 }
 
-/* 인사말 배경 — 공장 사진(factorymain) 하단 중앙에 옅게 (사용자 요청).
+/* 인사말 배경 — 공장 사진(factorymain) 우측 중앙에 아주 옅게 (사용자 요청).
    본문이 어두운 좌측정렬이라 opacity 낮춰 가독성 유지, 콘텐츠는 위에 띄움. */
 .ceo_intro_section::after {
     content: '';
     position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     width: min(1180px, 92%);
     aspect-ratio: 3246 / 1312;
     background: url('/images/sub/factorymain.png') center / contain no-repeat;
-    opacity: 0.35;
+    opacity: 0.2;
     z-index: 0;
     pointer-events: none;
 }
