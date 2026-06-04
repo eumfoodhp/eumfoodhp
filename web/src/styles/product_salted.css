@@ -114,13 +114,13 @@
     display: grid;
     grid-template-columns: repeat(4, 374px);
     gap: 48px 28px;
-    justify-content: center;   /* 다른 카테고리(절임/조림/나물/액상차)와 동일 — 좌측 쏠림 수정 */
+    justify-content: start;   /* 다른 카테고리처럼 항목이 왼쪽부터 시작 (3개라 가운데 두면 떠 보임, 사용자 요청) */
     width: 100%;
 }
-/* 3종 전용 — 동일 374 고정, 가운데 정렬 */
+/* 3종 전용 — 동일 374 고정, 왼쪽 정렬(다른 그리드 시작점과 일치) */
 #sub_contents .product_salted_page .product_grid.product_grid--salted_three {
     grid-template-columns: repeat(3, 374px);
-    justify-content: center;
+    justify-content: start;
 }
 
 #sub_contents .product_salted_page .product_card {
@@ -212,7 +212,7 @@
 
     #sub_contents .product_salted_page .product_grid.product_grid--salted_three {
         grid-template-columns: repeat(3, minmax(0, 374px));
-        justify-content: center;
+        justify-content: start;
     }
 }
 
