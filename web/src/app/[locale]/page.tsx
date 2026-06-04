@@ -181,7 +181,6 @@ export default async function HomePage({
             <div className="prod_header">
               <h2 className="prod_title">{t('main_prod_title')}</h2>
               <span className="prod_sub">{t('main_prod_sub')}</span>
-              <p className="prod_lead">{t('main_prod_lead')}</p>
             </div>
 
             <div className="prod_nav_wrap">
