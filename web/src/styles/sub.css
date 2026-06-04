@@ -2012,7 +2012,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 28px;   /* 주황 eyebrow(sub_ttl) 다음 한 줄 띄움 (PC, 사용자 요청, 4개 영역 공통) */
     width: 100%;
     max-width: 499px;
 }
