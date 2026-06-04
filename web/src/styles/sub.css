@@ -894,15 +894,35 @@
 }
 
 /* CEO 인사말 섹션 공통 */
-.ceo_intro_section { 
-    padding: 120px 0; 
-    background: #fff; 
+.ceo_intro_section {
+    padding: 120px 0;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
 }
 
-.ceo_inner { 
-    width: 1580px; 
-    max-width: 95%; 
-    margin: 0 auto; 
+/* 인사말 배경 — 공장 사진(factorymain) 하단 중앙에 옅게 (사용자 요청).
+   본문이 어두운 좌측정렬이라 opacity 낮춰 가독성 유지, 콘텐츠는 위에 띄움. */
+.ceo_intro_section::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(1180px, 92%);
+    aspect-ratio: 3246 / 1312;
+    background: url('/images/sub/factorymain.png') center / contain no-repeat;
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.ceo_inner {
+    width: 1580px;
+    max-width: 95%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
