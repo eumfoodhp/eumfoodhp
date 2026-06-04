@@ -128,6 +128,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <span className="ceo_label">{t('greeting_ceo_label')}</span>
               <strong className="ceo_name">{t('greeting_ceo_name')}</strong>
             </div>
+            <figure className="ceo_facility">
+              <img className="ceo_facility_img" src="/images/sub/factorymain.png" alt="이음푸드시스템 생산 시설" />
+              <figcaption className="ceo_facility_caption">{t('greeting_facility_caption')}</figcaption>
+            </figure>
           </div>
         </section>
         <NextSectionLink prevId="greeting" nextId="history" nextLabel={t('sub_history')} />

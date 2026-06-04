@@ -897,24 +897,6 @@
 .ceo_intro_section {
     padding: 120px 0;
     background: #fff;
-    position: relative;
-    overflow: hidden;
-}
-
-/* 인사말 배경 — 공장 사진(factorymain) 우측 중앙에 아주 옅게 (사용자 요청).
-   본문이 어두운 좌측정렬이라 opacity 낮춰 가독성 유지, 콘텐츠는 위에 띄움. */
-.ceo_intro_section::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: min(1180px, 92%);
-    aspect-ratio: 3246 / 1312;
-    background: url('/images/sub/factorymain.png') center / contain no-repeat;
-    opacity: 0.2;
-    z-index: 0;
-    pointer-events: none;
 }
 
 .ceo_inner {
@@ -922,11 +904,40 @@
     max-width: 95%;
     margin: 0 auto;
     position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 80px;
+}
+
+/* 인사말 우측 — 생산 시설 사진(factorymain) + 캡션. 콘텐츠 경계(주황 점) 안 우측에
+   배치(전엔 화면 끝까지 삐져나갔음). 본문은 좌측 컬럼으로 폭 제한해 겹침 방지 (사용자 요청) */
+.ceo_facility {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(560px, 40%);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+.ceo_facility_img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.ceo_facility_caption {
+    margin: 0;
+    color: #505050;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.4px;
+    text-align: center;
+    word-break: keep-all;
 }
 
 /* 상단 메인 그룹 (태그 + 타이틀+본문 묶음) — 블록 사이 간격 늘림 */
@@ -936,6 +947,7 @@
     align-items: flex-start;
     gap: 36px;
     width: 100%;
+    max-width: 58%;   /* 우측 시설 사진 figure 와 겹치지 않게 본문 폭 제한 (사용자 요청) */
 }
 
 /* 타이틀 묶음 ↔ 본문 사이 — 두 줄 분량 공백 (h3 line-height 68 × 2 = 136 근사) */
@@ -1073,6 +1085,20 @@
     .ceo_inner {
         gap: 24px !important;
     }
+}
+
+/* 인사말 시설 사진 — 좁은 화면(≤1024)에선 본문 아래로 스택 (사용자 요청) */
+@media (max-width: 1024px) {
+    .ceo_main_group { max-width: 100%; }
+    .ceo_facility {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 420px;
+        margin: 8px 0 0;
+        align-items: flex-start;
+    }
+    .ceo_facility_caption { text-align: left; }
 }
 
 
