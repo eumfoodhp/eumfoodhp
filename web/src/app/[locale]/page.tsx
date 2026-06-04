@@ -37,6 +37,8 @@ export default async function HomePage({
   const t = await getTranslations();
 
   const bizItems = t.raw('main_biz_items') as Array<{ title: string; desc: string }>;
+  // 카드 배경: 양식소스(idx 1)는 한식 반찬 사진이 안 어울려 소스 이미지로 교체 (사용자 요청)
+  const bizBg = ['biz-area-1', 'prod-sauce-2', 'biz-area-3', 'biz-area-4'];
   const procTabs = t.raw('main_proc_tabs') as ProcTab[];
   const prodCategories = t.raw('main_prod_categories') as ProdCategory[];
   const prodList = t.raw('main_prod_list') as Record<string, ProdItem[]>;
@@ -140,7 +142,7 @@ export default async function HomePage({
                 <article
                   key={idx}
                   className="biz_card"
-                  style={{ backgroundImage: `url('/images/main/biz-area-${idx + 1}.png')` }}
+                  style={{ backgroundImage: `url('/images/main/${bizBg[idx]}.png')` }}
                 >
                   <div className="card_text_area">
                     <h3 className="card_main_txt">{item.title}</h3>
