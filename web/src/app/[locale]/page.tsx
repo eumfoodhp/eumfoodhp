@@ -36,9 +36,6 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  const bizItems = t.raw('main_biz_items') as Array<{ title: string; desc: string }>;
-  // 카드 배경: 양식소스(idx 1)는 한식 반찬 사진이 안 어울려 소스 이미지로 교체 (사용자 요청)
-  const bizBg = ['biz-area-1', 'prod-sauce-2', 'biz-area-3', 'biz-area-4'];
   const procTabs = t.raw('main_proc_tabs') as ProcTab[];
   const prodCategories = t.raw('main_prod_categories') as ProdCategory[];
   const prodList = t.raw('main_prod_list') as Record<string, ProdItem[]>;
@@ -124,36 +121,6 @@ export default async function HomePage({
           </div>
         </section>
 
-        <section className="business_section">
-          <div className="business_inner">
-            <div className="biz_header">
-              <div className="title_group">
-                <h2 className="biz_title">{nl2br(t('main_biz_title'))}</h2>
-                <span className="biz_sub">{t('main_biz_sub')}</span>
-              </div>
-              <Link href="/about#area" className="biz_more_btn">
-                <span>{t('main_biz_more')}</span>
-                <ArrowIcon />
-              </Link>
-            </div>
-
-            <div className="biz_grid">
-              {bizItems.map((item, idx) => (
-                <article
-                  key={idx}
-                  className="biz_card"
-                  style={{ backgroundImage: `url('/images/main/${bizBg[idx]}.png')` }}
-                >
-                  <div className="card_text_area">
-                    <h3 className="card_main_txt">{item.title}</h3>
-                    <div className="card_sub_txt">{nl2br(item.desc)}</div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="process_section process_section--cards">
           <div className="process_inner">
             <div className="proc_card_grid">
@@ -182,67 +149,29 @@ export default async function HomePage({
           <div className="product_inner">
             <div className="prod_header">
               <h2 className="prod_title">{t('main_prod_title')}</h2>
-              <span className="prod_sub">{t('main_prod_sub')}</span>
             </div>
 
-            <div className="prod_nav_wrap">
-              <div className="prod_categories">
-                {prodCategories.map((cate, idx) => (
-                  <button
+            {/* 카테고리 벤토 그리드 — 사업영역 카드 대체 (사용자 요청) */}
+            <div className="prod_bento">
+              {prodCategories.map((cate, idx) => {
+                const img = prodList[cate.name]?.[0]?.img ?? '';
+                return (
+                  <Link
                     key={cate.name}
-                    type="button"
-                    className={`prod_cate_btn${idx === 0 ? ' active' : ''}`}
-                    data-cate={cate.name}
-                    data-link={cate.link}
+                    href={cate.link}
+                    className={`bento_tile bento_tile--${idx}`}
                   >
-                    {cate.name}
-                  </button>
-                ))}
-              </div>
-
-              <a
-                href={prodCategories[0]?.link ?? '#'}
-                id="prod_more_link"
-                className="prod_more_link"
-              >
-                <span>{t('main_prod_more_text')}</span>
-                <ArrowIcon />
-              </a>
-            </div>
-
-            <div className="prod_content">
-              {Object.entries(prodList).map(([cateName, items]) => (
-                <div
-                  key={cateName}
-                  className={`prod_grid${cateName === prodCategories[0]?.name ? ' active' : ''}`}
-                  data-cate={cateName}
-                >
-                  {items.map((item, idx) => (
-                    <div className="prod_card" key={idx}>
-                      <div
-                        className="prod_img"
-                        style={{ backgroundImage: `url('${productImageUrl(item.img)}')` }}
-                      ></div>
-                      <div className="prod_info">
-                        <div className="prod_name_group">
-                          <h3 className="prod_name">{item.name}</h3>
-                          <span className="prod_eng">{item.eng}</span>
-                        </div>
-                        <p className="prod_desc">{item.desc}</p>
-                        {!item.hide_meta && (
-                          <div className="prod_meta">
-                            <span className="meta_label">{t('main_prod_label_storage')}</span>
-                            <span className="meta_val highlight">{item.storage}</span>
-                            <i className="v_line"></i>
-                            <span className="meta_label">{t('main_prod_label_package')}</span>
-                            <span className="meta_val highlight">{item.weight}</span>
-                          </div>
-                        )}
-                      </div>
+                    <div
+                      className="bento_img"
+                      style={{ backgroundImage: `url('${productImageUrl(img)}')` }}
+                    ></div>
+                    <div className="bento_overlay">
+                      <span className="bento_name">{cate.name}</span>
+                      <ArrowIcon />
                     </div>
-                  ))}
-                </div>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
