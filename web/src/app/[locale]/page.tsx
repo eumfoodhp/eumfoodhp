@@ -158,31 +158,47 @@ export default async function HomePage({
             </div>
           </div>
 
-          {/* 제품 — 가로 무한 스크롤 띠 (사용자 요청). 카테고리 2벌 복제로 끊김 없는 루프 */}
+          {/* 제품 — 3줄 가로 마퀴, 줄마다 반대 방향으로 흐름 (사용자 요청) */}
           <div className="prod_marquee">
-            <div className="prod_marquee_track">
-              {[...prodCategories, ...prodCategories].map((cate, i) => {
-                const img = prodList[cate.name]?.[0]?.img ?? '';
-                const dup = i >= prodCategories.length;
-                return (
-                  <Link
-                    key={i}
-                    href={cate.link}
-                    className="marquee_tile"
-                    aria-hidden={dup || undefined}
-                    tabIndex={dup ? -1 : undefined}
-                  >
-                    <div
-                      className="marquee_img"
-                      style={{ backgroundImage: `url('${productImageUrl(img)}')` }}
-                    ></div>
-                    <div className="marquee_overlay">
-                      <span className="marquee_name">{cate.name}</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+            {(() => {
+              const flat = prodCategories.flatMap((cate) =>
+                (prodList[cate.name] ?? []).map((item) => ({
+                  name: item.name,
+                  img: item.img,
+                  link: cate.link,
+                }))
+              );
+              const rows = [0, 1, 2].map((r) => flat.filter((_, i) => i % 3 === r));
+              return rows.map((items, r) => (
+                <div
+                  key={r}
+                  className={`prod_marquee_row ${r % 2 === 1 ? 'is-rtl' : 'is-ltr'}`}
+                >
+                  <div className="prod_marquee_track">
+                    {[...items, ...items].map((p, i) => {
+                      const dup = i >= items.length;
+                      return (
+                        <Link
+                          key={i}
+                          href={p.link}
+                          className="marquee_tile"
+                          aria-hidden={dup || undefined}
+                          tabIndex={dup ? -1 : undefined}
+                        >
+                          <div
+                            className="marquee_img"
+                            style={{ backgroundImage: `url('${productImageUrl(p.img)}')` }}
+                          ></div>
+                          <div className="marquee_overlay">
+                            <span className="marquee_name">{p.name}</span>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ));
+            })()}
           </div>
         </section>
 

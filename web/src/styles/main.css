@@ -230,11 +230,16 @@
     color: #222;
 }
 
-/* 공정 카드 영역 상단 우측 '더 알아보기'(주요사업) (사용자 요청) */
+/* 공정 카드 영역 — '더 알아보기'(주요사업) 버튼을 카드 사진 위 우측 상단에 올림 (사용자 요청) */
+.process_section--cards .process_inner {
+    position: relative;
+}
 .proc_cards_head {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 28px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    margin: 0;
+    z-index: 5;
 }
 
 .ov_more_btn:hover {
@@ -751,35 +756,41 @@
 }
 
 /* ============================================================
-   제품 — 가로 무한 스크롤 띠 (마퀴, 사용자 요청)
-   카테고리 타일을 가로로 끊임없이 흐르게. 호버 시 정지 + 사진 줌.
-   카테고리 2벌 복제 → translateX(-50%) 로 끊김 없는 루프.
+   제품 — 3줄 가로 마퀴 (사용자 요청)
+   줄마다 반대 방향으로 끊임없이 흐름(1·3줄 좌, 2줄 우). 호버 시 해당 줄 정지 + 사진 줌.
+   각 줄 아이템 2벌 복제 → translateX 50% 로 이음새 없는 루프.
    ============================================================ */
 .prod_marquee {
     width: 100%;
     overflow: hidden;
     margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
 }
 .prod_marquee_track {
     display: flex;
     width: max-content;
-    animation: prodMarquee 38s linear infinite;
 }
-.prod_marquee:hover .prod_marquee_track {
-    animation-play-state: paused;
-}
-@keyframes prodMarquee {
+.prod_marquee_row.is-ltr .prod_marquee_track { animation: prodMarqueeLeft 44s linear infinite; }
+.prod_marquee_row.is-rtl .prod_marquee_track { animation: prodMarqueeRight 50s linear infinite; }
+.prod_marquee_row:hover .prod_marquee_track { animation-play-state: paused; }
+@keyframes prodMarqueeLeft {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
 }
+@keyframes prodMarqueeRight {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
 .marquee_tile {
     position: relative;
-    flex: 0 0 360px;
-    height: 260px;
+    flex: 0 0 280px;
+    height: 176px;
     margin-right: 16px;
-    border-radius: 16px;
+    border-radius: 14px;
     overflow: hidden;
     text-decoration: none;
     background: #efe9e2;
@@ -797,25 +808,26 @@
     inset: 0;
     display: flex;
     align-items: flex-end;
-    padding: 20px 22px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 45%, transparent 70%);
+    padding: 14px 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.08) 52%, transparent 74%);
 }
 .marquee_name {
     color: #fff;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    line-height: 1.25;
 }
 @media (prefers-reduced-motion: reduce) {
-    .prod_marquee_track { animation: none; }
-    .prod_marquee { overflow-x: auto; }
+    .prod_marquee_row.is-ltr .prod_marquee_track,
+    .prod_marquee_row.is-rtl .prod_marquee_track { animation: none; }
 }
 @media (max-width: 768px) {
-    .prod_marquee { margin-top: 28px; }
-    .marquee_tile { flex-basis: 250px; height: 188px; margin-right: 12px; }
-    .marquee_name { font-size: 17px; }
-    .marquee_overlay { padding: 14px 16px; }
-    .prod_marquee_track { animation-duration: 26s; }
+    .prod_marquee { margin-top: 28px; gap: 12px; }
+    .marquee_tile { flex-basis: 200px; height: 128px; margin-right: 12px; }
+    .marquee_name { font-size: 14px; }
+    .prod_marquee_row.is-ltr .prod_marquee_track { animation-duration: 32s; }
+    .prod_marquee_row.is-rtl .prod_marquee_track { animation-duration: 36s; }
 }
 
 .prod_nav_wrap {
