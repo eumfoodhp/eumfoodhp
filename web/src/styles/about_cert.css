@@ -464,3 +464,24 @@
         line-height: 18px;
     }
 }
+
+/* ============================================================
+   제조 원페이지(/business#cert) 인증 섹션 — 모바일/태블릿 간격 보정 (사용자 요청)
+   buttons-override 의 .cert_container{padding:0!important} 가 about_cert 패딩을
+   덮어써 콘텐츠가 구분선·푸터에 바짝 붙던 문제 → 더 높은 특이도+!important 로 복구.
+   ============================================================ */
+@media (max-width: 1024px) {
+    /* 1) SectionHeader 구분선 ↔ 시작 텍스트, 2) 콘텐츠 ↔ 푸터 여백 복구 */
+    .business_onepage .cert_page .cert_container {
+        padding-top: 40px !important;
+        padding-bottom: 56px !important;
+    }
+    /* 3) '기타' 제목 ↔ 인증서 간격 축소 (위쪽 분리감은 유지) */
+    .business_onepage .cert_page .cert_bottom {
+        gap: 16px;
+    }
+    .business_onepage .cert_page .cert_group_title--other {
+        margin-top: 28px;
+        margin-bottom: 4px;
+    }
+}
