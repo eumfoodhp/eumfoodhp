@@ -1830,6 +1830,12 @@ html[lang="zh"] .dl_title {
     }
 }
 
+/* 소식: 섹션 헤더(공지사항/보도자료) ↔ 아래 내용 간격 (사용자 요청)
+   .sub_inner 가 위 통합규칙에서 margin:0 auto !important 라 !important 필요 */
+.newsroom_onepage .story_section > .sub_inner {
+    margin-top: 20px !important;
+}
+
 /* 각 섹션 시작 헤더: 큰 인덱스 번호 + 큰 타이틀 */
 .story_section_head {
     width: 1580px;
