@@ -63,9 +63,12 @@
 }
 
 #sub_contents .product_sauce_page .product_inner {
-    width: 100%;
-    max-width: none;
-    margin: 0;
+    /* buttons-override 통합규칙(.product_inner{max-width:95% !important})이 95% 로 강제해
+       소스 콘텐츠가 들여써지던 것 → !important 로 풀폭(1580) 강제.
+       그래야 그리드 풀폭 + 헤딩(포장방식/중량)도 같은 좌측선 정렬 (사용자 요청) */
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
     padding: 0;
     gap: 40px;
 }
