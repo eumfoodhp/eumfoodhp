@@ -13,14 +13,49 @@ import NextSectionLink from '@/components/NextSectionLink';
 import SectionHeader from '@/components/SectionHeader';
 import FacilitySection from '@/components/FacilitySection';
 import CertGrid from '@/components/CertGrid';
-import enMessages from '@/i18n/messages/en.json';
-
-const EN = enMessages as unknown as Record<string, string>;
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 import '@/styles/business_facility.css';
 import '@/styles/business_process.css';
 import '@/styles/about_cert.css';
+
+// 카테고리별 스네이크 흐름도 배치 — 행은 자연순서(1,2,3,4 / 5,6,7,8 / 9)로 렌더.
+// 데스크탑 CSS 에서 짝수행(row2)을 row-reverse 로 시각 반전 → 스네이크.
+// (모바일 세로 스택 시 자연순서 그대로라 역순 방지)
+const FLOW_CONFIG: Record<
+  string,
+  { flowMod: string; diagramMod: string; lines: string[]; rows: { cls: string; ids: number[] }[] }
+> = {
+  pickles: {
+    flowMod: '', diagramMod: '', lines: ['h1', 'h2', 'v1', 'v2'],
+    rows: [
+      { cls: 'r1', ids: [1, 2, 3, 4] },
+      { cls: 'r2', ids: [5, 6, 7, 8] },
+      { cls: 'r3', ids: [9] },
+    ],
+  },
+  braised: {
+    flowMod: 'braised', diagramMod: 'braised', lines: ['bh1', 'bh2', 'bv1'],
+    rows: [
+      { cls: 'br1', ids: [1, 2, 3, 4] },
+      { cls: 'br2', ids: [5, 6, 7, 8] },
+    ],
+  },
+  salted: {
+    flowMod: 'pickle', diagramMod: 'pickle', lines: ['ph1', 'ph2', 'pv1'],
+    rows: [
+      { cls: 'pr1', ids: [1, 2, 3, 4] },
+      { cls: 'pr2', ids: [5, 6, 7, 8] },
+    ],
+  },
+  sauce: {
+    flowMod: 'sauce', diagramMod: 'sauce', lines: ['sh1', 'sh2', 'sv1'],
+    rows: [
+      { cls: 'sr1', ids: [1, 2, 3, 4] },
+      { cls: 'sr2', ids: [5, 6, 7] },
+    ],
+  },
+};
 
 type Cat = {
   key: string;
@@ -78,44 +113,62 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
       {/* ===== 2. 제조공정 ===== */}
       <div id="process" className="business_process_page story_section">
         <SectionHeader title={t('sub_biz_process')} en="Process" />
-        {CATEGORIES.map((cat) => (
-          <section
-            key={cat.key}
-            className={`biz_process_flow_section biz_process_flow_section--${cat.modKey}`}
-          >
-            <div className="sub_inner biz_pf_inner">
-              <div className="biz_pf_flow_head">
-                <h2 className="biz_pf_flow_title">{cat.label}</h2>
-                <p className="biz_pf_eyebrow">{cat.eyebrow}</p>
+        {CATEGORIES.map((cat) => {
+          const flow = FLOW_CONFIG[cat.key];
+          // 스텝 1개 — 아이콘 + 라벨 (브로셔처럼 Step배지·영문·설명 없음)
+          const renderStep = (n: number) => {
+            const nn = String(n).padStart(2, '0');
+            // 절임식품 06~09 만 실제 PNG, 나머지는 SVG (원본 파일 확장자 이슈)
+            const ext = cat.key === 'pickles' && n >= 6 ? 'png' : 'svg';
+            const iconSrc = `/images/sub/figma/${cat.iconDir}/${nn}.${ext}`;
+            const label = t(`${cat.prefix}${nn}_tit`);
+            return (
+              <div key={n} className="biz_pf_step">
+                <div className="biz_pf_step_circle">
+                  <div className="biz_pf_step_icon">
+                    <img src={iconSrc} alt={label} width={90} height={90} loading="lazy" />
+                  </div>
+                  <p className="biz_pf_step_label">{label}</p>
+                </div>
               </div>
-              <div className="biz_pf_steps_grid">
-                {Array.from({ length: cat.steps }, (_, i) => i + 1).map((n) => {
-                  const nn = String(n).padStart(2, '0');
-                  // 카테고리별 확장자 분기 — 절임식품 6~9 만 진짜 PNG, 나머지는 SVG.
-                  // (원본 파일들이 .png 확장자로 저장됐지만 내용이 SVG 인 경우가 많아서
-                  // .svg 로 재이름함. 절임식품 06~09 만 실제 PNG 이미지였음.)
-                  const isPngFile = cat.key === 'pickles' && n >= 6;
-                  const ext = isPngFile ? 'png' : 'svg';
-                  const iconSrc = `/images/sub/figma/${cat.iconDir}/${nn}.${ext}`;
-                  const label = t(`${cat.prefix}${nn}_tit`);
-                  return (
-                    <div key={n} className="biz_pf_step biz_pf_step--grid">
-                      <div className="biz_pf_step_badge">Step {nn}</div>
-                      <div className="biz_pf_step_circle">
-                        <div className="biz_pf_step_icon">
-                          <img src={iconSrc} alt={label} width={62} height={62} loading="lazy" />
-                        </div>
-                        <p className="biz_pf_step_label">{label}</p>
-                        <p className="biz_pf_step_label_en">{EN[`${cat.prefix}${nn}_tit`] ?? ''}</p>
-                      </div>
-                      <p className="biz_pf_step_desc">{t(`${cat.prefix}${nn}_desc`)}</p>
+            );
+          };
+          return (
+            <section
+              key={cat.key}
+              className={`biz_process_flow_section biz_process_flow_section--${cat.modKey}`}
+            >
+              <div className="sub_inner biz_pf_inner">
+                <div className="biz_pf_flow_head">
+                  <h2 className="biz_pf_flow_title">{cat.label}</h2>
+                  <p className="biz_pf_eyebrow">{cat.eyebrow}</p>
+                </div>
+                {/* 스네이크 흐름도 — 데스크탑 절대좌표 / 모바일 세로 스택(CSS) */}
+                <div
+                  className={`biz_pf_pickles_flow${flow.flowMod ? ` biz_pf_pickles_flow--${flow.flowMod}` : ''}`}
+                >
+                  <div
+                    className={`biz_pf_diagram${flow.diagramMod ? ` biz_pf_diagram--${flow.diagramMod}` : ''}`}
+                  >
+                    <div className="biz_pf_snake_lines" aria-hidden="true">
+                      {flow.lines.map((ln) => (
+                        <span key={ln} className={`biz_pf_ln biz_pf_ln--${ln}`}></span>
+                      ))}
                     </div>
-                  );
-                })}
+                    {flow.rows.map((row) => (
+                      <div
+                        key={row.cls}
+                        className={`biz_pf_flow_row biz_pf_flow_row--${row.cls}`}
+                      >
+                        {row.ids.map(renderStep)}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </section>
-        ))}
+            </section>
+          );
+        })}
         <NextSectionLink prevId="facility" nextId="cert" nextLabel={t('sub_cert')} />
       </div>
 

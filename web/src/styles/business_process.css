@@ -698,6 +698,17 @@
     );
 }
 
+/* row2(짝수행)만 데스크탑에서 시각 반전 → 스네이크 흐름. DOM 은 자연순서(5,6,7,8)라
+   모바일(≤1240) 세로 스택 시 순서 정상 유지 (사용자 요청 흐름도 #2) */
+@media (min-width: 1241px) {
+    #sub_contents .business_process_page .biz_pf_flow_row--r2,
+    #sub_contents .business_process_page .biz_pf_flow_row--br2,
+    #sub_contents .business_process_page .biz_pf_flow_row--pr2,
+    #sub_contents .business_process_page .biz_pf_flow_row--sr2 {
+        flex-direction: row-reverse;
+    }
+}
+
 @media (max-width: 1240px) {
     #sub_contents .business_process_page .biz_pf_diagram {
         width: 100%;
