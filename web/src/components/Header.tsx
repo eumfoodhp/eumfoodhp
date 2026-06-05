@@ -127,7 +127,7 @@ export default async function Header() {
                 titleHref="/contact"
                 items={[
                   { href: '/contact', label: t('sub_inquiry_1to1') },
-                  { href: '/contact/sales', label: t('sub_inquiry_sales') },
+                  { href: '/contact#sales', label: t('sub_inquiry_sales') },
                 ]}
               />
 

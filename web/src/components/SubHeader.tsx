@@ -66,7 +66,7 @@ const CATEGORIES: Category[] = [
     labelKey: 'menu_inquiry',
     items: [
       { href: '/contact', key: 'sub_inquiry_1to1' },
-      { href: '/contact/sales', key: 'sub_inquiry_sales' },
+      { href: '/contact#sales', key: 'sub_inquiry_sales' },
     ],
   },
 ];

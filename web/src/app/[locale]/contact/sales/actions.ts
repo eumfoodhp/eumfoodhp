@@ -48,5 +48,5 @@ export async function submitSales(formData: FormData) {
   if (error) throw new Error('문의 등록에 실패했습니다. 잠시 후 다시 시도해주세요.');
 
   revalidatePath('/admin/sales');
-  redirect('/contact/sales?submitted=1');
+  redirect('/contact?sales_submitted=1#sales');
 }
