@@ -65,7 +65,7 @@ export default async function EditPressPage({
       <form
         action={deletePress}
         className="admin_card"
-        style={{ marginTop: 24, borderLeft: '4px solid #EF4444' }}
+        style={{ marginTop: 24 }}
       >
         <input type="hidden" name="id" value={press.id} />
         <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 보도자료를 영구 삭제합니다.</p>

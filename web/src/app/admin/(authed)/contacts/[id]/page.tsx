@@ -74,7 +74,7 @@ export default async function ContactDetailPage({
       <form
         action={deleteContact}
         className="admin_card"
-        style={{ marginTop: 24, borderLeft: '4px solid #EF4444' }}
+        style={{ marginTop: 24 }}
       >
         <input type="hidden" name="id" value={c.id} />
         <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 문의를 영구 삭제합니다.</p>

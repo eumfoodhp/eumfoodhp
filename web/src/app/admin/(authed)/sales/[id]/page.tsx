@@ -90,7 +90,7 @@ export default async function SalesDetailPage({
       <form
         action={deleteSales}
         className="admin_card"
-        style={{ marginTop: 24, borderLeft: '4px solid #EF4444' }}
+        style={{ marginTop: 24 }}
       >
         <input type="hidden" name="id" value={s.id} />
         <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 영업 문의를 영구 삭제합니다.</p>

@@ -67,7 +67,7 @@ export default async function EditNoticePage({
       <form
         action={deleteNotice}
         className="admin_card"
-        style={{ marginTop: 24, borderLeft: '4px solid #EF4444' }}
+        style={{ marginTop: 24 }}
       >
         <input type="hidden" name="id" value={notice.id} />
         <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 공지사항을 영구 삭제합니다.</p>
