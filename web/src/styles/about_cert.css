@@ -473,6 +473,14 @@
 /* 인증서를 좌로 밀기 (사용자 요청):
    ① cert_container 만 가진 좌우 20px 추가 패딩 제거 → 위 섹션(공정/시설)과 좌측선 정렬
    ② 그리드 좌측 정렬 — 데스크탑 4열 space-between 의 좌우 벌어짐 대신 좌로 붙임 */
+/* 인증서 콘텐츠 풀폭(0 기준 꽉차게) — 소스와 동일하게 .sub_inner 의 95% 잠금만 해제.
+   buttons-override 가 .sub_inner{max-width:95% !important} 로 좌우 들여쓰기 → 해제해 좌로 이동.
+   width:100% + max-width:1580 이라 좁아지면 뷰포트로 캡 → 0선 overflow 안 생김 (사용자 요청) */
+.business_onepage .cert_page .sub_inner {
+    width: 100% !important;
+    max-width: 1580px !important;
+    margin: 0 auto !important;
+}
 .business_onepage .cert_page .cert_container {
     padding-left: 0;
     padding-right: 0;
