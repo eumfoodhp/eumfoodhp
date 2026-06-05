@@ -27,9 +27,10 @@
 }
 .admin_brand_top {
     display: flex;
-    flex-direction: column;     /* 로고 위 / ADMIN 아래 */
-    align-items: stretch;
-    gap: 2px;
+    flex-direction: row;             /* 로고 | ADMIN 같은 레벨(가로) (사용자 요청) */
+    align-items: flex-end;           /* ADMIN 을 로고 하단선에 맞춤 (하단 유지) */
+    justify-content: space-between;  /* ADMIN 우측 유지 */
+    gap: 8px;
 }
 .admin_brand_logo {
     height: 54px;
@@ -38,7 +39,7 @@
     display: block;
 }
 .admin_brand_badge {
-    align-self: flex-end;       /* ADMIN 아래 우측 */
+    align-self: flex-end;       /* 로고 하단선에 맞춤 (row 라 flex-end=하단) */
     background: transparent;
     color: #F26337;
     font-size: 12px;
