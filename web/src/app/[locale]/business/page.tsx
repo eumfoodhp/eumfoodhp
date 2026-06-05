@@ -22,12 +22,16 @@ import '@/styles/about_cert.css';
 // 카테고리별 스네이크 흐름도 배치 — 행은 자연순서(1,2,3,4 / 5,6,7,8 / 9)로 렌더.
 // 데스크탑 CSS 에서 짝수행(row2)을 row-reverse 로 시각 반전 → 스네이크.
 // (모바일 세로 스택 시 자연순서 그대로라 역순 방지)
+// 스네이크 연결선 = 카테고리별 컬러 SVG 곡선(path). 좌표계는 diagram(1254 × h)와 동일.
+// 원 중심(x: 109/447/785/1123, y: r1=109·r2=470·r3=831)을 잇고, 좌우 꺾임은 베지어로
+// 바깥으로 부풀려 원 사이 빈공간에서 곡선이 보이게 함. 색은 CSS(섹션 modKey)에서 지정.
 const FLOW_CONFIG: Record<
   string,
-  { flowMod: string; diagramMod: string; lines: string[]; rows: { cls: string; ids: number[] }[] }
+  { flowMod: string; diagramMod: string; h: number; path: string; rows: { cls: string; ids: number[] }[] }
 > = {
   pickles: {
-    flowMod: '', diagramMod: '', lines: ['h1', 'h2', 'v1', 'v2'],
+    flowMod: '', diagramMod: '', h: 940,
+    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H109 C40 470 40 831 109 831',
     rows: [
       { cls: 'r1', ids: [1, 2, 3, 4] },
       { cls: 'r2', ids: [5, 6, 7, 8] },
@@ -35,21 +39,24 @@ const FLOW_CONFIG: Record<
     ],
   },
   braised: {
-    flowMod: 'braised', diagramMod: 'braised', lines: ['bh1', 'bh2', 'bv1'],
+    flowMod: 'braised', diagramMod: 'braised', h: 579,
+    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H109',
     rows: [
       { cls: 'br1', ids: [1, 2, 3, 4] },
       { cls: 'br2', ids: [5, 6, 7, 8] },
     ],
   },
   salted: {
-    flowMod: 'pickle', diagramMod: 'pickle', lines: ['ph1', 'ph2', 'pv1'],
+    flowMod: 'pickle', diagramMod: 'pickle', h: 579,
+    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H109',
     rows: [
       { cls: 'pr1', ids: [1, 2, 3, 4] },
       { cls: 'pr2', ids: [5, 6, 7, 8] },
     ],
   },
   sauce: {
-    flowMod: 'sauce', diagramMod: 'sauce', lines: ['sh1', 'sh2', 'sv1'],
+    flowMod: 'sauce', diagramMod: 'sauce', h: 579,
+    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H447',
     rows: [
       { cls: 'sr1', ids: [1, 2, 3, 4] },
       { cls: 'sr2', ids: [5, 6, 7] },
@@ -150,11 +157,16 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                   <div
                     className={`biz_pf_diagram${flow.diagramMod ? ` biz_pf_diagram--${flow.diagramMod}` : ''}`}
                   >
-                    <div className="biz_pf_snake_lines" aria-hidden="true">
-                      {flow.lines.map((ln) => (
-                        <span key={ln} className={`biz_pf_ln biz_pf_ln--${ln}`}></span>
-                      ))}
-                    </div>
+                    <svg
+                      className="biz_pf_snake_svg"
+                      width="1254"
+                      height={flow.h}
+                      viewBox={`0 0 1254 ${flow.h}`}
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path d={flow.path} />
+                    </svg>
                     {flow.rows.map((row) => (
                       <div
                         key={row.cls}

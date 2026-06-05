@@ -288,6 +288,28 @@
     pointer-events: none;
 }
 
+/* 스네이크 연결선 — 카테고리별 컬러 곡선 SVG (브로셔 곡선 컬러선, 사용자 요청) */
+#sub_contents .business_process_page .biz_pf_snake_svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+#sub_contents .business_process_page .biz_pf_snake_svg path {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-dasharray: 5 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+/* 브로셔 색: 절임=주황 / 조림=초록 / 피클(젓갈)=주황 / 소스=파랑 */
+#sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_snake_svg path { stroke: #F26337; }
+#sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_snake_svg path { stroke: #5BBE5F; }
+#sub_contents .business_process_page .biz_process_flow_section--pickle  .biz_pf_snake_svg path { stroke: #F26337; }
+#sub_contents .business_process_page .biz_process_flow_section--sauce   .biz_pf_snake_svg path { stroke: #5095D2; }
+
 #sub_contents .business_process_page .biz_pf_ln {
     position: absolute;
     display: block;
@@ -716,9 +738,27 @@
         min-height: 0;
     }
 
-    #sub_contents .business_process_page .biz_pf_snake_lines {
+    #sub_contents .business_process_page .biz_pf_snake_lines,
+    #sub_contents .business_process_page .biz_pf_snake_svg {
         display: none;
     }
+
+    /* 태블릿: 데스크탑 원(218) → 축소해 한 줄에 4개 유지, 넘치면 중앙 wrap */
+    #sub_contents .business_process_page .biz_pf_step { width: 184px; }
+    #sub_contents .business_process_page .biz_pf_step_circle {
+        width: 184px;
+        height: 184px;
+        padding: 40px 28px 18px;
+    }
+    #sub_contents .business_process_page .biz_pf_step_icon { width: 78px; height: 78px; }
+    #sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_step_icon img,
+    #sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_step_icon img,
+    #sub_contents .business_process_page .biz_process_flow_section--pickle .biz_pf_step_icon img,
+    #sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_step_icon img {
+        max-width: 78px;
+        max-height: 78px;
+    }
+    #sub_contents .business_process_page .biz_pf_step_label { font-size: 16px; line-height: 24px; }
 
     #sub_contents .business_process_page .biz_pf_flow_row--r1,
     #sub_contents .business_process_page .biz_pf_flow_row--r2,
@@ -750,7 +790,7 @@
     }
 
     #sub_contents .business_process_page .biz_pf_flow_row {
-        gap: 48px 64px;
+        gap: 36px 44px;
     }
 }
 
