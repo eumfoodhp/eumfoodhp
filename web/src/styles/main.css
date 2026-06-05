@@ -2110,6 +2110,8 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         /* 한국어 어절 단위 줄바꿈 — '온' 만 외롭게 잘리는 현상 방지 */
         word-break: keep-all;
     }
+    /* 메인 제품 제목(긴 문장)만 더 작게 → 모바일에서 2줄 (사용자 요청) */
+    #main .prod_title { font-size: 18px; line-height: 26px; }
     .biz_card {
         height: 360px;
         padding: 16px;
@@ -2348,6 +2350,8 @@ section.active .reveal_item:nth-child(3) { transition-delay: 0.6s; opacity: 1; t
         line-height: 32px;
         letter-spacing: -0.5px;
     }
+    /* 메인 제품 제목(긴 문장)만 더 작게 → 2줄 유지 (사용자 요청) */
+    #main .prod_title { font-size: 16px; line-height: 24px; }
 
     .biz_card {
         height: 320px;
