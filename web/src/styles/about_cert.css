@@ -486,7 +486,8 @@
     padding-right: 0;
 }
 .business_onepage .cert_page .cert_grid {
-    justify-content: start;
+    /* start(좌측 몰림) → space-between: 카드가 0~끝까지 꽉 차게 분배 (사용자 요청) */
+    justify-content: space-between;
 }
 /* '기타' 제목 ↔ 인증서 간격 축소 (모든 폭) — 위쪽(HACCP↔기타) 분리감은 유지 */
 .business_onepage .cert_page .cert_bottom {
