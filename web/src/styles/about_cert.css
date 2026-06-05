@@ -493,7 +493,11 @@
 @media (max-width: 1024px) {
     .business_onepage .cert_page .cert_container {
         padding-top: 40px !important;
-        padding-bottom: 56px !important;
+        padding-bottom: 76px !important;   /* 마지막 인증서 ↔ 푸터 더 벌림 (사용자) */
+        gap: 44px !important;              /* 각 영역(약속/제목/이점/인증서) 구분감 (사용자) */
+    }
+    .business_onepage .cert_page .cert_title_row {
+        gap: 24px;                          /* 제목 ↔ HACCP 아이콘 */
     }
     .business_onepage .cert_page .cert_group_title--other {
         margin-top: 28px;

@@ -1820,6 +1820,16 @@ html[lang="zh"] .dl_title {
     padding-top: 32px;
 }
 
+/* 제품 원페이지 마지막 섹션(액상차) ↔ 푸터 간격 (사용자 요청) */
+.products_onepage .onepage_content {
+    padding-bottom: 56px;
+}
+@media (max-width: 735px) {
+    .products_onepage .onepage_content {
+        padding-bottom: 44px;
+    }
+}
+
 /* 각 섹션 시작 헤더: 큰 인덱스 번호 + 큰 타이틀 */
 .story_section_head {
     width: 1580px;
