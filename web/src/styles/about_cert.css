@@ -470,18 +470,32 @@
    buttons-override 의 .cert_container{padding:0!important} 가 about_cert 패딩을
    덮어써 콘텐츠가 구분선·푸터에 바짝 붙던 문제 → 더 높은 특이도+!important 로 복구.
    ============================================================ */
+/* 인증서를 좌로 밀기 (사용자 요청):
+   ① cert_container 만 가진 좌우 20px 추가 패딩 제거 → 위 섹션(공정/시설)과 좌측선 정렬
+   ② 그리드 좌측 정렬 — 데스크탑 4열 space-between 의 좌우 벌어짐 대신 좌로 붙임 */
+.business_onepage .cert_page .cert_container {
+    padding-left: 0;
+    padding-right: 0;
+}
+.business_onepage .cert_page .cert_grid {
+    justify-content: start;
+}
+/* '기타' 제목 ↔ 인증서 간격 축소 (모든 폭) — 위쪽(HACCP↔기타) 분리감은 유지 */
+.business_onepage .cert_page .cert_bottom {
+    gap: 20px;
+}
+.business_onepage .cert_page .cert_group_title--other {
+    margin-top: 40px;
+    margin-bottom: 4px;
+}
+/* 모바일/태블릿: buttons-override 의 .cert_container{padding:0!important} 가 콘텐츠를
+   구분선·푸터에 바짝 붙이던 것 복구 (특이도↑ + !important) */
 @media (max-width: 1024px) {
-    /* 1) SectionHeader 구분선 ↔ 시작 텍스트, 2) 콘텐츠 ↔ 푸터 여백 복구 */
     .business_onepage .cert_page .cert_container {
         padding-top: 40px !important;
         padding-bottom: 56px !important;
     }
-    /* 3) '기타' 제목 ↔ 인증서 간격 축소 (위쪽 분리감은 유지) */
-    .business_onepage .cert_page .cert_bottom {
-        gap: 16px;
-    }
     .business_onepage .cert_page .cert_group_title--other {
         margin-top: 28px;
-        margin-bottom: 4px;
     }
 }
