@@ -485,9 +485,22 @@
     padding-left: 0;
     padding-right: 0;
 }
+/* 인증서 카드를 폭에 맞춰 꽉 채움(0기준·풀사이즈) — 조림/소스처럼 4칸이 폭을 채우게.
+   몰림(start)·벌어짐(space-between) 으로는 260px 카드가 폭을 못 채워서, 컬럼을 1fr 로
+   늘리고 이미지가 컬럼 폭을 채우게(비율 유지). ≤1024 모바일 사이징이 우선. (사용자 요청) */
 .business_onepage .cert_page .cert_grid {
-    /* start(좌측 몰림) → space-between: 카드가 0~끝까지 꽉 차게 분배 (사용자 요청) */
-    justify-content: space-between;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.business_onepage .cert_page .cert_img_box {
+    width: 100%;
+    height: auto;
+}
+.business_onepage .cert_page .cert_img_inner {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 260 / 348;
 }
 /* '기타' 제목 ↔ 인증서 간격 축소 (모든 폭) — 위쪽(HACCP↔기타) 분리감은 유지 */
 .business_onepage .cert_page .cert_bottom {
