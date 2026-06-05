@@ -154,7 +154,7 @@ export default async function HomePage({
         <section className="product_section">
           <div className="product_inner">
             <div className="prod_header">
-              <h2 className="prod_title">{t('main_prod_title')}</h2>
+              {/* 제목(선진설비~) 삭제 (사용자 요청) — 더보기 링크만 우측 유지 */}
               <Link href="/products" className="proc_cards_more">
                 <span>{t('common_more')}</span>
                 <ArrowIcon />
@@ -248,10 +248,7 @@ export default async function HomePage({
         <section className="notice_section">
           <div className="notice_inner">
             <div className="notice_header">
-              <div className="notice_title_group">
-                <h2 className="notice_title">{t('main_notice_title')}</h2>
-                <span className="notice_sub">{t('main_notice_sub')}</span>
-              </div>
+              {/* 소식/NOTICE 제목 텍스트 삭제 (사용자 요청) — 더보기 링크만 우측 유지 */}
               <Link href="/notice" className="notice_more_link">
                 <span>{t('main_notice_more')}</span>
                 <ArrowIcon />

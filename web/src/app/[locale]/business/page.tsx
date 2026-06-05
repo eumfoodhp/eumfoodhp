@@ -13,57 +13,18 @@ import NextSectionLink from '@/components/NextSectionLink';
 import SectionHeader from '@/components/SectionHeader';
 import FacilitySection from '@/components/FacilitySection';
 import CertGrid from '@/components/CertGrid';
+import BizProcessSnake from '@/components/BizProcessSnake';
+import enMessages from '@/i18n/messages/en.json';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 import '@/styles/business_facility.css';
 import '@/styles/business_process.css';
 import '@/styles/about_cert.css';
 
-// 카테고리별 스네이크 흐름도 배치 — 행은 자연순서(1,2,3,4 / 5,6,7,8 / 9)로 렌더.
-// 데스크탑 CSS 에서 짝수행(row2)을 row-reverse 로 시각 반전 → 스네이크.
-// (모바일 세로 스택 시 자연순서 그대로라 역순 방지)
-// 스네이크 연결선 = 카테고리별 컬러 SVG 곡선(path). 좌표계는 diagram(1254 × h)와 동일.
-// 원 중심(x: 109/447/785/1123, y: r1=109·r2=470·r3=831)을 잇고, 좌우 꺾임은 베지어로
-// 바깥으로 부풀려 원 사이 빈공간에서 곡선이 보이게 함. 색은 CSS(섹션 modKey)에서 지정.
-const FLOW_CONFIG: Record<
-  string,
-  { flowMod: string; diagramMod: string; h: number; path: string; rows: { cls: string; ids: number[] }[] }
-> = {
-  pickles: {
-    flowMod: '', diagramMod: '', h: 940,
-    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H109 C40 470 40 831 109 831',
-    rows: [
-      { cls: 'r1', ids: [1, 2, 3, 4] },
-      { cls: 'r2', ids: [5, 6, 7, 8] },
-      { cls: 'r3', ids: [9] },
-    ],
-  },
-  braised: {
-    flowMod: 'braised', diagramMod: 'braised', h: 579,
-    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H109',
-    rows: [
-      { cls: 'br1', ids: [1, 2, 3, 4] },
-      { cls: 'br2', ids: [5, 6, 7, 8] },
-    ],
-  },
-  salted: {
-    flowMod: 'pickle', diagramMod: 'pickle', h: 579,
-    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H109',
-    rows: [
-      { cls: 'pr1', ids: [1, 2, 3, 4] },
-      { cls: 'pr2', ids: [5, 6, 7, 8] },
-    ],
-  },
-  sauce: {
-    flowMod: 'sauce', diagramMod: 'sauce', h: 579,
-    path: 'M109 109 H1123 C1192 109 1192 470 1123 470 H447',
-    rows: [
-      { cls: 'sr1', ids: [1, 2, 3, 4] },
-      { cls: 'sr2', ids: [5, 6, 7] },
-    ],
-  },
-};
+const EN = enMessages as unknown as Record<string, string>;
 
+// 공정 흐름 = 번호 배지 + 원형 스텝을 자연 줄바꿈 그리드로 (PC4·태블릿3·모바일2).
+// 스네이크 절대배치/연결선은 제거 — 순서는 번호로 표시해 어느 화면에서도 좌→우·위→아래로 읽힘.
 type Cat = {
   key: string;
   modKey: string;
@@ -121,25 +82,19 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
       <div id="process" className="business_process_page story_section">
         <SectionHeader title={t('sub_biz_process')} en="Process" />
         {CATEGORIES.map((cat) => {
-          const flow = FLOW_CONFIG[cat.key];
-          // 스텝 1개 — 아이콘 + 라벨 (브로셔처럼 Step배지·영문·설명 없음)
-          const renderStep = (n: number) => {
+          // 스텝 데이터(직렬화 가능 값)만 만들어 클라이언트 스네이크 컴포넌트로 전달.
+          const steps = Array.from({ length: cat.steps }, (_, i) => {
+            const n = i + 1;
             const nn = String(n).padStart(2, '0');
             // 절임식품 06~09 만 실제 PNG, 나머지는 SVG (원본 파일 확장자 이슈)
             const ext = cat.key === 'pickles' && n >= 6 ? 'png' : 'svg';
-            const iconSrc = `/images/sub/figma/${cat.iconDir}/${nn}.${ext}`;
-            const label = t(`${cat.prefix}${nn}_tit`);
-            return (
-              <div key={n} className="biz_pf_step">
-                <div className="biz_pf_step_circle">
-                  <div className="biz_pf_step_icon">
-                    <img src={iconSrc} alt={label} width={90} height={90} loading="lazy" />
-                  </div>
-                  <p className="biz_pf_step_label">{label}</p>
-                </div>
-              </div>
-            );
-          };
+            return {
+              n,
+              iconSrc: `/images/sub/figma/${cat.iconDir}/${nn}.${ext}`,
+              label: t(`${cat.prefix}${nn}_tit`),
+              en: EN[`${cat.prefix}${nn}_tit`] ?? '',
+            };
+          });
           return (
             <section
               key={cat.key}
@@ -150,33 +105,8 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                   <h2 className="biz_pf_flow_title">{cat.label}</h2>
                   <p className="biz_pf_eyebrow">{cat.eyebrow}</p>
                 </div>
-                {/* 스네이크 흐름도 — 데스크탑 절대좌표 / 모바일 세로 스택(CSS) */}
-                <div
-                  className={`biz_pf_pickles_flow${flow.flowMod ? ` biz_pf_pickles_flow--${flow.flowMod}` : ''}`}
-                >
-                  <div
-                    className={`biz_pf_diagram${flow.diagramMod ? ` biz_pf_diagram--${flow.diagramMod}` : ''}`}
-                  >
-                    <svg
-                      className="biz_pf_snake_svg"
-                      width="1254"
-                      height={flow.h}
-                      viewBox={`0 0 1254 ${flow.h}`}
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path d={flow.path} />
-                    </svg>
-                    {flow.rows.map((row) => (
-                      <div
-                        key={row.cls}
-                        className={`biz_pf_flow_row biz_pf_flow_row--${row.cls}`}
-                      >
-                        {row.ids.map(renderStep)}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                {/* 반응형 스네이크 흐름 — 열수 계산/줄 묶기는 클라이언트에서 */}
+                <BizProcessSnake steps={steps} />
               </div>
             </section>
           );

@@ -11,6 +11,7 @@ import BrochureLink from '@/components/BrochureLink';
 import NextSectionLink from '@/components/NextSectionLink';
 import SectionHeader from '@/components/SectionHeader';
 import { nl2br } from '@/lib/nl2br';
+import enMessages from '@/i18n/messages/en.json';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 import '@/styles/product_pickles.css';
@@ -19,6 +20,11 @@ import '@/styles/product_namul.css';
 import '@/styles/product_salted.css';
 import '@/styles/product_sauce.css';
 import '@/styles/product_tea.css';
+// ↑ 카테고리별 CSS 들. ↓ 그 위에 덮어쓰는 "그리드 단일 소스" (반드시 마지막).
+import '@/styles/product_grid_unified.css';
+
+// 영문(장식용) 텍스트 — en.json 직접 참조 (locale 무관 동일 표기)
+const EN = enMessages as unknown as Record<string, string>;
 
 // --- 카테고리별 데이터 ---
 const PICKLES_ORDER = [9, 1, 3, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18];
@@ -257,8 +263,13 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
                     <div className="pkg_subhead">
                       <h3 className="pkg_subhead_tit">{t(sec.mainKey)}</h3>
                       {note && <span className="pkg_subhead_note">{note}</span>}
-                      {/* 영문 부제 — 초록 대문자, 제목 하단 (사용자 요청) */}
-                      <span className="pkg_subhead_en">{t(sec.subKey)}</span>
+                      {/* 영문 부제(초록) + note 영문(연한 초록) inline — 한글(제목+note) 패턴과 동일 (사용자 요청) */}
+                      <span className="pkg_subhead_en">
+                        {t(sec.subKey)}
+                        {sec.noteKey && EN[sec.noteKey] ? (
+                          <span className="pkg_subhead_note_en">{EN[sec.noteKey]}</span>
+                        ) : null}
+                      </span>
                     </div>
                     <div className={`product_grid${sec.isPack ? ' product_grid--sauce_pack' : ''}`}>
                       {sec.ids.map((id) => {

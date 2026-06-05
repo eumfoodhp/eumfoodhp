@@ -749,7 +749,7 @@
 /* 제품 헤더 — 소식 섹션처럼 [제목 좌 + 더알아보기 버튼 우] (사용자 요청) */
 .prod_header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;   /* 제목 삭제 → 더보기 링크 우측 유지 (사용자 요청) */
     align-items: flex-end;
     gap: 24px;
 }
@@ -1136,7 +1136,7 @@
 .notice_header {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;   /* 소식 제목 삭제 → 더보기 링크 우측 유지 (사용자 요청) */
     align-items: flex-end;
 }
 

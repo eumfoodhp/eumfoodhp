@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useMessages } from 'next-intl';
 import enMessages from '@/i18n/messages/en.json';
 
 const EN = enMessages as unknown as Record<string, string>;
@@ -22,6 +22,9 @@ const NA_NUMS = Array.from({ length: 11 }, (_, i) => String(i + 1).padStart(2, '
  */
 export default function FacilitySection() {
   const t = useTranslations();
+  // 설명문은 ICU 파싱을 거치지 않은 raw 메시지로 직접 읽는다.
+  // (메시지에 <br> 가 있어 t() 로 읽으면 next-intl ICU 파서가 UNCLOSED_TAG 로 throw)
+  const messages = useMessages() as unknown as Record<string, string>;
 
   return (
     <section className="facility_status_section">
@@ -35,6 +38,7 @@ export default function FacilitySection() {
             prefix="ga"
             numbers={GA_NUMS}
             t={t}
+            messages={messages}
             nameKey={(n) => `facility_ga_item_${n}_name`}
             descKey={(n) => `facility_ga_item_${n}_desc`}
           />
@@ -49,6 +53,7 @@ export default function FacilitySection() {
             prefix="na"
             numbers={NA_NUMS}
             t={t}
+            messages={messages}
             nameKey={(n) => `facility_item_${n}_name`}
             descKey={(n) => `facility_item_${n}_desc`}
           />
@@ -62,12 +67,14 @@ function FacilityGrid({
   prefix,
   numbers,
   t,
+  messages,
   nameKey,
   descKey,
 }: {
   prefix: 'ga' | 'na';
   numbers: string[];
   t: (k: string) => string;
+  messages: Record<string, string>;
   nameKey: (n: string) => string;
   descKey: (n: string) => string;
 }) {
@@ -90,9 +97,10 @@ function FacilityGrid({
               <span className="facility_name_en">{EN[nameKey(num)] ?? ''}</span>
             </div>
             {/* <br> 제거 — 넓어진 카드에서 수동 줄바꿈이 마지막 단어를 3번째 줄로 밀어
-                2번째 줄에 빈 공간이 남던 문제. 공백 치환 후 자연 줄바꿈 (사용자 요청) */}
+                2번째 줄에 빈 공간이 남던 문제. raw 메시지에서 <br> 공백 치환 후 자연 줄바꿈.
+                (t() 로 읽으면 ICU 파서가 <br> 에서 throw 하므로 useMessages raw 사용) */}
             <p className="facility_desc">
-              {t(descKey(num)).replace(/<br\s*\/?>/gi, ' ')}
+              {(messages[descKey(num)] ?? '').replace(/<br\s*\/?>/gi, ' ')}
             </p>
           </div>
         </article>

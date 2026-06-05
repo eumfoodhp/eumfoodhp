@@ -1963,7 +1963,7 @@ html[lang="zh"] .dl_title {
 .next_section_eyebrow {
     font-size: 11px;
     font-weight: 700;
-    color: #22C55E;   /* prev/next 파랑 → 초록 (사용자 요청) */
+    color: #1a1a1a;   /* prev/next 초록 → 검정 (사용자 요청) */
     letter-spacing: 0.15em;
 }
 
@@ -1976,7 +1976,7 @@ html[lang="zh"] .dl_title {
 }
 
 .next_section_icon {
-    color: #22C55E;   /* prev/next 화살표 파랑 → 초록 (사용자 요청) */
+    color: #1a1a1a;   /* prev/next 화살표 초록 → 검정 (사용자 요청) */
     margin-top: 4px;
 }
 /* PREV ↑ — SVG 내부 화살표가 박스 위쪽 1/5 에 머리가 있어서
@@ -2299,6 +2299,19 @@ html[lang="zh"] .dl_title {
     }
 }
 
+/* 모바일/태블릿 — 제품소개서 버튼을 위로 올려 구분선과 상단 중간쯤에 (사용자 요청).
+   버튼은 order:-1 로 타이틀 위 flex item. 헤더 상단패딩(64)을 줄인 만큼 버튼↔구분선 gap 을
+   늘려서 → 버튼만 위로 이동, 구분선 위치는 유지(padding-top + gap 합이 일정).
+   #sub_contents 붙여 (1,1,0) → 뒤쪽 .story_section_head(0,1,0) 미디어쿼리를 이김. */
+@media (max-width: 1024px) {
+    #sub_contents .story_section_head--with_action {
+        padding-top: 24px;
+        gap: 56px;
+    }
+}
+
+/* (제품 섹션 ↔ 제품 그리드 상단 간격은 product_grid_unified.css 로 일원화 — 여기서 제거) */
+
 /* [제품 페이지] 와이드에서 좌측정렬했던 규칙 제거 — 전부 중앙정렬 유지 (사용자 요청).
    max-width:1580 + margin:0 auto 기본 중앙정렬을 그대로 둠. */
 
@@ -2375,7 +2388,7 @@ html[lang="zh"] .dl_title {
     text-indent: 0;
     font-size: 24px;
     font-weight: 700;
-    color: #1F2937;
+    color: #595959;   /* 검정 → 회색 (사용자 요청) */
     letter-spacing: -0.4px;
     vertical-align: middle;
 }
@@ -2398,8 +2411,19 @@ html[lang="zh"] .dl_title {
     line-height: 28px;
     text-transform: none;
 }
+/* note 영문 — 연한 초록, 영문 라인(pkg_subhead_en)에 inline. 한글 note(회색)의 영문판.
+   (사용자 요청: "포장시…" note 영문을 연한 초록으로 추가, 초록 영문 패턴처럼) */
+#sub_contents.product_page .sauce_section .pkg_subhead_note_en {
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #80CFA0;
+    letter-spacing: -0.2px;
+    vertical-align: middle;
+}
 @media (max-width: 768px) {
     #sub_contents.product_page .sauce_section .pkg_subhead_en { font-size: 15px; line-height: 24px; }
+    #sub_contents.product_page .sauce_section .pkg_subhead_note_en { font-size: 11px; margin-left: 8px; }
 }
 @media (max-width: 1024px) {
     #sub_contents.product_page .sauce_section .pkg_subhead_tit { font-size: 20px; }

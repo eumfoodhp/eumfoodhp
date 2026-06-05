@@ -1,0 +1,139 @@
+/* ============================================================
+   product_grid_unified.css  —  제품 그리드/레이아웃 단일 소스
+   ------------------------------------------------------------
+   문제: 절임/조림/나물/젓갈/소스/액상차 가 각자 product_*.css 를 갖고
+        같은 클래스(.product_grid 등)인데 브레이크포인트 값이 제각각이라
+        (예: 절임은 ≤735 에서 1열, 조림은 2열) 모바일↔PC 가 따로 놀았음.
+        게다가 sub.css 공용 규칙까지 겹쳐 캐스케이드가 꼬임.
+   해결: "조림(braised)" 을 기준으로, .products_onepage 스코프에서 전부 동일 강제.
+        !important = 카테고리별 규칙(소스의 .sauce_section / --sauce_pack 포함)과
+        sub.css 공용 규칙까지 제압. → 이 파일이 제품 그리드의 단일 소스.
+        값을 바꾸려면 "여기만" 고치면 전 카테고리·전 화면에 일괄 적용됨.
+
+   그리드 사다리 (조림 기준):
+     기본    4열 × 374px (가운데 정렬)
+     ≤1600  4열 × minmax(0,374px) + 좌우 16
+     ≤1024  3열 × 1fr
+     ≤735   2열 × 1fr
+     ≤480   1열
+   ============================================================ */
+
+/* ===== 기본(데스크탑) ===== */
+#sub_contents.products_onepage .product_grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 374px) !important;
+    gap: 48px 28px !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+#sub_contents.products_onepage .product_card {
+    width: 374px !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+}
+#sub_contents.products_onepage .product_inner {
+    width: 1580px !important;
+    max-width: 95% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 40px !important;
+    box-sizing: border-box !important;
+}
+#sub_contents.products_onepage .product_list_section {
+    width: 100% !important;
+    max-width: 1580px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 100px 0 !important;
+    box-sizing: border-box !important;
+}
+/* 소스 전용 래퍼 무력화 — 소스를 "따로" 취급하지 않기 위함.
+   .sauce_section 의 자체 gap/padding/max-width 를 없애 투명 passthrough 로 만들면,
+   안의 각 sub-section(.product_list_section)이 일반 카테고리 섹션과 100% 동일하게 동작
+   (각자 1580 가운데 정렬 + 표준 패딩). 부제목(.pkg_subhead)만 그리드 위에 얹힘. */
+#sub_contents.products_onepage .sauce_section {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+}
+
+/* ===== ≤1600: 카드 폭 상한 유지(374) + 좌우 여백 ===== */
+@media (max-width: 1600px) {
+    #sub_contents.products_onepage .product_grid {
+        grid-template-columns: repeat(4, minmax(0, 374px)) !important;
+        padding: 0 16px !important;
+    }
+}
+
+/* ===== ≤1024: 3열 + 구분선↔제품 상단여백 축소(100→64) ===== */
+@media (max-width: 1024px) {
+    #sub_contents.products_onepage .product_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 32px 18px !important;
+        padding: 0 !important;
+    }
+    #sub_contents.products_onepage .product_card {
+        width: 100% !important;
+    }
+    #sub_contents.products_onepage .product_list_section {
+        padding: 64px 0 !important;
+    }
+}
+
+/* ===== ≤735: 2열 (절임이 1열로 튀던 것 → 2열로 통일) + 카드/여백 모바일화 ===== */
+@media (max-width: 735px) {
+    #sub_contents.products_onepage .product_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 26px 12px !important;
+        padding: 0 !important;
+    }
+    #sub_contents.products_onepage .product_card {
+        gap: 10px !important;
+    }
+    #sub_contents.products_onepage .product_inner {
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 20px !important;
+    }
+    #sub_contents.products_onepage .product_list_section {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 48px 16px 56px !important;
+    }
+    #sub_contents.products_onepage .prod_img {
+        height: 150px !important;
+    }
+}
+
+/* ===== ≤480: 1열 ===== */
+@media (max-width: 480px) {
+    #sub_contents.products_onepage .product_grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+/* ===== ≤400 / ≤360: 세부 여백·이미지 높이 ===== */
+@media (max-width: 400px) {
+    #sub_contents.products_onepage .product_grid {
+        gap: 20px 10px !important;
+    }
+    #sub_contents.products_onepage .product_list_section {
+        padding: 40px 12px 48px !important;
+    }
+    #sub_contents.products_onepage .prod_img {
+        height: 128px !important;
+    }
+}
+@media (max-width: 360px) {
+    #sub_contents.products_onepage .product_grid {
+        gap: 16px 8px !important;
+    }
+    #sub_contents.products_onepage .prod_img {
+        height: 118px !important;
+    }
+}

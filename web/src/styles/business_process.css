@@ -251,13 +251,13 @@
 }
 
 #sub_contents .business_process_page .biz_pf_flow_title {
-    /* 공정 카테고리 제목 → 초록 알약(pill) 라벨 (사용자 요청, Figma/브로셔 기준) */
+    /* 알약 제거 → 검은 글씨 (사용자 요청) */
     display: inline-block;
     margin: 0;
-    padding: 10px 28px;
-    background: #22C55E;
-    color: #fff;
-    border-radius: 999px;
+    padding: 0;
+    background: transparent;
+    color: #1a1a1a;
+    border-radius: 0;
     font-size: 22px;
     font-weight: 700;
     line-height: 1.25;
@@ -521,6 +521,40 @@
     font-weight: 500;
     line-height: 28px;
     letter-spacing: -0.45px;
+}
+
+/* 스네이크 스텝 — 아이콘 비율 유지(늘어남 방지) + 아이콘/한글/영어(초록) 3요소 중앙 정렬 (사용자 요청)
+   img 의 width/height 강제 제거 + auto/contain 로 원본 비율 유지. category override(90px 정사각) 보다
+   뒤·!important 로 우선. */
+#sub_contents .business_process_page .biz_pf_step .biz_pf_step_circle {
+    padding: 18px 14px;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+#sub_contents .business_process_page .biz_pf_step .biz_pf_step_icon {
+    width: 100%;
+    height: auto;
+    margin-bottom: 3px;
+}
+#sub_contents .business_process_page .biz_pf_step .biz_pf_step_icon img {
+    /* 아이콘은 90×90 프레임에 자연 비율로 디자인됨. 정사각 박스에 contain →
+       비율 유지 + 아이콘 간 상대 크기 일관. (SVG 의 preserveAspectRatio="none" 는 파일에서 제거함)
+       !important 제거 — 아래 .biz_pf_steps 스코프 규칙이 정상 캐스케이드로 모바일 축소되게. */
+    width: auto;
+    height: auto;
+    max-width: 78px;
+    max-height: 78px;
+    object-fit: contain;
+}
+#sub_contents .business_process_page .biz_pf_step .biz_pf_step_label_en {
+    margin: 0;
+    text-align: center;
+    color: #22C55E;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
 }
 
 /* ============================================================
@@ -805,7 +839,7 @@
 
     #sub_contents .business_process_page .biz_pf_flow_title {
         font-size: 17px;
-        padding: 8px 20px;
+        padding: 0;
         line-height: 1.25;
         letter-spacing: -0.4px;
     }
@@ -865,4 +899,342 @@
         line-height: 22px;
     }
 
+}
+
+/* ============================================================
+   제조공정 — 노드 흐름 (사용자 요청: 노드 형태 + 순서감)
+   각 스텝 = 노드(아이콘 원 + 좌상단 번호 배지) + 라벨. 같은 줄 노드끼리 화살표로 연결.
+   화살표는 줄 끝(행 마지막 칸)·전체 마지막엔 숨김 → 줄 넘는 어색한 연결 없음.
+   커넥터 폭 calc 은 1fr 균등 셀 기준: 이 원 우측끝 → 다음 원 좌측끝.
+   .biz_pf_steps 스코프 + 파일 최하단 → 위쪽 규칙 이김.
+   ============================================================ */
+#sub_contents .business_process_page .biz_pf_steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px 24px;
+    width: 100%;
+    margin-top: 8px;
+}
+/* 노드 셀 — 투명(카드 아님), 세로 스택 가운데, 커넥터 기준 relative */
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px 6px 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+/* 노드 = 원 + 번호 묶음 (높이 = 원, 커넥터 세로 기준점) */
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_node {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+}
+/* 아이콘 원 */
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step_circle {
+    width: 96px;
+    height: 96px;
+    max-width: none;
+    aspect-ratio: auto;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: #EDEFF1;   /* 연그린 → 회색 (사용자 요청: 초록 과함) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+/* 번호 배지 — 노드 좌상단 (흰 테두리로 원과 분리) */
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step_num {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: #1a1a1a;   /* 초록 → 검정 (사용자 요청) */
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+}
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step_icon {
+    width: auto;
+    height: auto;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step_icon img {
+    max-width: 54px;
+    max-height: 54px;
+}
+/* 커넥터 화살표 — 같은 줄 다음 노드로. 칼럼 갭 가로지름, 원 세로중앙. */
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step::after {
+    content: '';
+    position: absolute;
+    top: 56px;                 /* padding-top 8 + 원 반지름 48 */
+    left: calc(50% + 48px);    /* 이 원 우측 끝 */
+    width: calc(100% - 72px);  /* 다음 원 좌측 끝까지: 100% + gap(24) - 2*48 */
+    height: 11px;
+    transform: translateY(-50%);
+    background: #AEB6B1;   /* 초록 → 회색 화살표 (사용자 요청: 초록 과함) */
+    clip-path: polygon(0 41%, calc(100% - 9px) 41%, calc(100% - 9px) 12%, 100% 50%, calc(100% - 9px) 88%, calc(100% - 9px) 59%, 0 59%);
+    pointer-events: none;
+}
+/* 라벨 */
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step_label {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+    color: #1f2328;
+}
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step_label_en {
+    margin: 4px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    color: #22C55E;
+}
+/* 줄 끝(4n)·전체 마지막 → 화살표 숨김 */
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step:nth-child(4n)::after { display: none; }
+#sub_contents .business_process_page .biz_pf_steps .biz_pf_step:last-child::after { display: none; }
+
+@media (max-width: 1240px) {
+    #sub_contents .business_process_page .biz_pf_steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px 20px;
+    }
+    /* 3열: 4n 다시 보이고 3n 숨김 */
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:nth-child(4n)::after { display: block; }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:nth-child(3n)::after { display: none; }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:last-child::after { display: none; }
+    /* 갭 20 → width = 100% + 20 - 96 */
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step::after { width: calc(100% - 76px); }
+}
+@media (max-width: 735px) {
+    #sub_contents .business_process_page .biz_pf_steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 14px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_node {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 10px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step_circle {
+        width: 72px;
+        height: 72px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step_icon img {
+        max-width: 42px;
+        max-height: 42px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step_num {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step_label {
+        font-size: 13px;
+    }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step_label_en {
+        font-size: 10px;
+    }
+    /* 2열: 3n·4n 다시 보이고 2n 숨김 (순서 중요: show → hide → last) */
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:nth-child(4n)::after { display: block; }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:nth-child(3n)::after { display: block; }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:nth-child(2n)::after { display: none; }
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:last-child::after { display: none; }
+    /* 원 72 → top = padding8 + 36; left = 50% + 36; width = 100% + 14 - 72 */
+    #sub_contents .business_process_page .biz_pf_steps .biz_pf_step::after {
+        top: 44px;
+        left: calc(50% + 36px);
+        width: calc(100% - 58px);
+    }
+}
+
+/* ============================================================
+   제조공정 — 반응형 스네이크 (사용자 선택안 B).  ↑ 위 .biz_pf_steps 블록은 미사용(대체됨).
+   클라이언트 컴포넌트(BizProcessSnake)가 열수 계산+줄묶기+짝수줄 역순/우측정렬을 담당.
+   여기선 줄(그리드)·노드·화살표만. 화살표 calc 은 1fr 균등셀 기준(열수 무관, colgap 만 영향):
+   이 원 우측끝(50%+48) → 다음 원 좌측끝(150%+colgap-48) = width calc(100% + colgap - 96).
+   ============================================================ */
+#sub_contents .business_process_page .biz_pf_snake {
+    display: flex;
+    flex-direction: column;
+    gap: 66px;            /* 줄 사이 (아래 화살표 자리 포함) */
+    width: 100%;
+    margin-top: 8px;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_snake_row {
+    position: relative;
+    display: grid;
+    column-gap: 24px;
+    /* grid-template-columns 는 컴포넌트 인라인 style: repeat(cols, minmax(0,1fr)) */
+}
+/* 노드 셀 (기존 .biz_pf_step 베이스 width:218 등 덮어씀) */
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step {
+    position: relative;
+    width: auto;
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px 4px 0;
+    background: none;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step.is-empty { visibility: hidden; }
+/* 노드(원+번호) */
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_node {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step_circle {
+    width: 96px;
+    height: 96px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: #EDEFF1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step_num {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step_icon {
+    width: auto;
+    height: auto;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step_icon img {
+    max-width: 54px;
+    max-height: 54px;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step_label {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+    color: #1f2328;
+}
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step_label_en {
+    margin: 4px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    color: #22C55E;
+}
+/* 줄 안 화살표 (오른쪽으로) */
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step.has-arrow::after {
+    content: '';
+    position: absolute;
+    top: 56px;                 /* padding-top 8 + 원 반지름 48 */
+    left: calc(50% + 48px);
+    width: calc(100% - 72px);  /* 100% + colgap(24) - 2*48 */
+    height: 11px;
+    transform: translateY(-50%);
+    background: #AEB6B1;
+    clip-path: polygon(0 41%, calc(100% - 9px) 41%, calc(100% - 9px) 12%, 100% 50%, calc(100% - 9px) 88%, calc(100% - 9px) 59%, 0 59%);
+    pointer-events: none;
+}
+/* 짝수 줄 — 왼쪽으로 */
+#sub_contents .business_process_page .biz_pf_snake .is-rev .biz_pf_step.has-arrow::after {
+    left: auto;
+    right: calc(50% + 48px);
+    transform: translateY(-50%) scaleX(-1);
+}
+/* 줄 끝 → 아래 화살표 (다음 줄로) */
+#sub_contents .business_process_page .biz_pf_snake .biz_pf_step.has-down::after {
+    content: '';
+    position: absolute;
+    top: 100%;                 /* 노드(라벨 포함) 아래 = 줄 사이 갭 */
+    left: 50%;
+    margin-top: 14px;
+    width: 11px;
+    height: 34px;
+    transform: translateX(-50%);
+    background: #AEB6B1;
+    clip-path: polygon(41% 0, 41% calc(100% - 9px), 12% calc(100% - 9px), 50% 100%, 88% calc(100% - 9px), 59% calc(100% - 9px), 59% 0);
+    pointer-events: none;
+}
+
+@media (max-width: 1240px) {
+    /* 3열: colgap 20 → width = 100% + 20 - 96 */
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_snake_row { column-gap: 20px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step.has-arrow::after { width: calc(100% - 76px); }
+}
+@media (max-width: 735px) {
+    /* 2열: 원 72, colgap 14 */
+    #sub_contents .business_process_page .biz_pf_snake { gap: 52px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_snake_row { column-gap: 14px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_node { width: 72px; height: 72px; margin-bottom: 10px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_circle { width: 72px; height: 72px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_icon img { max-width: 42px; max-height: 42px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_num { width: 24px; height: 24px; font-size: 12px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_label { font-size: 13px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_label_en { font-size: 10px; }
+    /* 원 72 → top = 8 + 36; left/right = 50% + 36; width = 100% + 14 - 72 */
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step.has-arrow::after {
+        top: 44px;
+        left: calc(50% + 36px);
+        width: calc(100% - 58px);
+    }
+    #sub_contents .business_process_page .biz_pf_snake .is-rev .biz_pf_step.has-arrow::after {
+        left: auto;
+        right: calc(50% + 36px);
+    }
 }
