@@ -2738,6 +2738,15 @@ html[lang="zh"] .dl_title {
     box-sizing: border-box !important;
 }
 
+/* 제조 원페이지: 인증서만 sub_inner(95%) 안에 cert_container(또 95%) 로 이중 중첩돼
+   90.25%(≈1501px)로 위 섹션(시설·공정, 단일 95%=1580)보다 좌우 39.5px 더 들여써졌음.
+   안쪽 cert_container 는 풀폭으로 → sub_inner 단일 95% 만 적용해 타 섹션·헤더와 동일 정렬 (사용자 요청) */
+.business_onepage .cert_container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
 @media (max-width: 1024px) {
     .sub_inner,
     .product_inner,
