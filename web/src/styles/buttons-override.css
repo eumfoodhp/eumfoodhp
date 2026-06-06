@@ -2375,11 +2375,34 @@ html[lang="zh"] .dl_title {
    block + 모든 좌측 오프셋 0 → 카드·주황 점과 동일한 좌측 시작선 (사용자 요청).
    ============================================================ */
 #sub_contents.product_page .sauce_section .pkg_subhead {
+    /* 그리드(repeat(4,374px)=1580 고정)가 95% 이너(≈1501)보다 넓어 justify-center 로 좌우로
+       넘침 → 카드 좌측이 이너 좌측보다 왼쪽에 있음. 서브헤더만 동일한 1580 폭 + 같은 음수
+       좌측여백(이너폭에 맞춰 자가보정)으로 옮겨 카드 좌측 시작점과 일치. 이미지·이너 안 건드림. */
     display: block;
-    width: 100%;
-    margin: 28px 0 18px;
+    width: 1580px;
+    margin-top: 28px;
+    margin-bottom: 18px;
+    margin-right: 0;
+    margin-left: calc((100% - 1580px) / 2);
     padding: 0;
     text-indent: 0;
+    box-sizing: border-box;
+}
+/* ≤1600: 그리드가 minmax 로 이너에 맞춰 줄고 좌우 16 패딩 → 서브헤더도 100%+16 패딩 */
+@media (max-width: 1600px) {
+    #sub_contents.product_page .sauce_section .pkg_subhead {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+/* ≤1024: 그리드 좌우 패딩 0 → 서브헤더도 0 */
+@media (max-width: 1024px) {
+    #sub_contents.product_page .sauce_section .pkg_subhead {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 #sub_contents.product_page .sauce_section .pkg_subhead_tit {
     display: inline;
