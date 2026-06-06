@@ -1151,16 +1151,20 @@
     border: 2px solid #fff;
 }
 #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_icon {
-    width: auto;
-    height: auto;
+    /* 고정 박스 → img 가 concrete 크기를 가져 항상 렌더(viewBox-only SVG 가 0×0 으로
+       찌부되는 Chrome 버그 회피). object-fit:contain 으로 비율 유지. */
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_icon img {
-    max-width: 54px;
-    max-height: 54px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_label {
     margin: 0;
@@ -1223,7 +1227,7 @@
     #sub_contents .business_process_page .biz_pf_snake .biz_pf_snake_row { column-gap: 14px; }
     #sub_contents .business_process_page .biz_pf_snake .biz_pf_node { width: 72px; height: 72px; margin-bottom: 10px; }
     #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_circle { width: 72px; height: 72px; }
-    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_icon img { max-width: 42px; max-height: 42px; }
+    #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_icon { width: 42px; height: 42px; }
     #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_num { width: 24px; height: 24px; font-size: 12px; }
     #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_label { font-size: 13px; }
     #sub_contents .business_process_page .biz_pf_snake .biz_pf_step_label_en { font-size: 10px; }
