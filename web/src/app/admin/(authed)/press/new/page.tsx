@@ -15,6 +15,15 @@ export default function NewPressPage() {
           <input id="title" type="text" name="title" required />
         </div>
 
+        <div className="admin_field">
+          <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <input type="checkbox" name="is_pinned" /> 상단 고정{' '}
+            <span style={{ fontWeight: 400, color: '#888', fontSize: 13 }}>
+              (보도자료는 1개만 — 켜면 기존 고정 자동 해제)
+            </span>
+          </label>
+        </div>
+
         <div style={{ display: 'flex', gap: 16 }}>
           <div className="admin_field" style={{ flex: 1 }}>
             <label htmlFor="source">매체</label>

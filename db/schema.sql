@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS public.press_releases (
   source      TEXT,                    -- 매체명 (예: 매일경제, 식품저널)
   link_url    TEXT,                    -- 원본 기사 URL
   thumbnail   TEXT,                    -- 썸네일 이미지 URL
+  is_pinned   BOOLEAN DEFAULT FALSE,   -- 상단 고정 (보도자료는 1개만 — 앱에서 단일 보장)
   view_count  INTEGER DEFAULT 0,
   created_at  TIMESTAMPTZ DEFAULT NOW(),
   updated_at  TIMESTAMPTZ DEFAULT NOW(),

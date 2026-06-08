@@ -51,15 +51,21 @@ export async function createPress(formData: FormData) {
   const source = String(formData.get('source') ?? '').trim() || null;
   const link_url = String(formData.get('link_url') ?? '').trim() || null;
   const thumbRaw = String(formData.get('thumbnail') ?? '').trim();
+  const is_pinned = formData.get('is_pinned') === 'on';
 
   if (!title || !content) throw new Error('제목과 내용을 입력해주세요.');
 
   // 썸네일: 입력값(이미지/기사 주소) 또는 원본 기사 URL → 대표이미지 자동 해석 (사용자 요청 B)
   const thumbnail = (await resolveOgImage(thumbRaw || link_url || '')) || null;
 
+  // 보도자료 고정은 1개만 — 새 글을 고정하면 기존 고정 전부 해제
+  if (is_pinned) {
+    await supabase.from('press_releases').update({ is_pinned: false }).eq('is_pinned', true);
+  }
+
   const { error } = await supabase
     .from('press_releases')
-    .insert({ title, content, source, link_url, thumbnail });
+    .insert({ title, content, source, link_url, thumbnail, is_pinned });
   if (error) throw new Error(error.message);
 
   revalidatePath('/admin/press');
@@ -75,15 +81,21 @@ export async function updatePress(formData: FormData) {
   const source = String(formData.get('source') ?? '').trim() || null;
   const link_url = String(formData.get('link_url') ?? '').trim() || null;
   const thumbRaw = String(formData.get('thumbnail') ?? '').trim();
+  const is_pinned = formData.get('is_pinned') === 'on';
 
   if (!id || !title || !content) throw new Error('필수 항목 누락.');
 
   // 썸네일: 입력값(이미지/기사 주소) 또는 원본 기사 URL → 대표이미지 자동 해석 (사용자 요청 B)
   const thumbnail = (await resolveOgImage(thumbRaw || link_url || '')) || null;
 
+  // 보도자료 고정은 1개만 — 이 글을 고정하면 다른 글의 고정 해제
+  if (is_pinned) {
+    await supabase.from('press_releases').update({ is_pinned: false }).eq('is_pinned', true).neq('id', id);
+  }
+
   const { error } = await supabase
     .from('press_releases')
-    .update({ title, content, source, link_url, thumbnail })
+    .update({ title, content, source, link_url, thumbnail, is_pinned })
     .eq('id', id);
   if (error) throw new Error(error.message);
 
@@ -102,4 +114,26 @@ export async function deletePress(formData: FormData) {
 
   revalidatePath('/admin/press');
   revalidatePath('/press');
+}
+
+/**
+ * 목록에서 체크박스로 고정 토글.
+ * 보도자료 고정은 1개만 — 켜면 다른 글 전부 해제하고 이 글만 고정.
+ */
+export async function togglePressPin(formData: FormData) {
+  const supabase = await createServerSupabase();
+  const id = Number(formData.get('id'));
+  const pinned = formData.get('pinned') === '1';
+  if (!id) throw new Error('id 누락.');
+
+  if (pinned) {
+    await supabase.from('press_releases').update({ is_pinned: false }).neq('id', id);
+    const { error } = await supabase.from('press_releases').update({ is_pinned: true }).eq('id', id);
+    if (error) throw new Error(error.message);
+  } else {
+    const { error } = await supabase.from('press_releases').update({ is_pinned: false }).eq('id', id);
+    if (error) throw new Error(error.message);
+  }
+
+  revalidatePath('/admin/press');
 }

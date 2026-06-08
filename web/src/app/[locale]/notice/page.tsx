@@ -39,7 +39,8 @@ export default async function NewsroomOnePage({
 
   const { data: presses, count: pressCount } = await supabase
     .from('press_releases')
-    .select('id, title, source, thumbnail, created_at', { count: 'exact' })
+    .select('id, title, source, thumbnail, is_pinned, created_at', { count: 'exact' })
+    .order('is_pinned', { ascending: false })
     .order('created_at', { ascending: false })
     .limit(PRESS_LIMIT);
 
@@ -121,7 +122,7 @@ export default async function NewsroomOnePage({
                           )}
                         </div>
                         <div className="body">
-                          <span className="tag">NEWS</span>
+                          <span className="tag">{p.is_pinned ? '고정' : 'NEWS'}</span>
                           <h3 className="title">{p.title}</h3>
                           <span className="date">{fmtDate(p.created_at)}</span>
                         </div>

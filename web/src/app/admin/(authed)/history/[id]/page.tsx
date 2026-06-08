@@ -24,7 +24,7 @@ export default async function EditHistoryPage({
   return (
     <>
       <div className="admin_page_header">
-        <h2 className="admin_page_title">연혁 — 수정</h2>
+        <h2 className="admin_page_title">연혁 관리 — 수정</h2>
         <Link href="/admin/history" className="admin_btn secondary">← 목록</Link>
       </div>
 

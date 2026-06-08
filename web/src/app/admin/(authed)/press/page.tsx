@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createServerSupabase } from '@/lib/supabase-server';
-import { deletePress } from './actions';
+import { deletePress, togglePressPin } from './actions';
+import PressPinToggle from './PressPinToggle';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,7 +9,8 @@ export default async function PressListPage() {
   const supabase = await createServerSupabase();
   const { data: list } = await supabase
     .from('press_releases')
-    .select('id, title, source, view_count, created_at')
+    .select('id, title, source, is_pinned, view_count, created_at')
+    .order('is_pinned', { ascending: false })
     .order('created_at', { ascending: false });
 
   return (
@@ -24,18 +26,23 @@ export default async function PressListPage() {
         <table className="admin_table">
           <thead>
             <tr>
+              <th style={{ width: 56, textAlign: 'center' }}>고정</th>
               <th>제목</th>
               <th style={{ width: 140 }}>매체</th>
-              <th style={{ width: 80 }}>조회</th>
+              <th style={{ width: 70 }}>조회</th>
               <th style={{ width: 120 }}>등록일</th>
-              <th style={{ width: 180 }}></th>
+              <th style={{ width: 160 }}></th>
             </tr>
           </thead>
           <tbody>
             {list.map((p) => (
               <tr key={p.id}>
+                <td style={{ textAlign: 'center' }}>
+                  <PressPinToggle id={p.id} pinned={!!p.is_pinned} action={togglePressPin} />
+                </td>
                 <td>
                   <Link href={`/admin/press/${p.id}`} style={{ color: '#111827', fontWeight: 500, textDecoration: 'none' }}>
+                    {p.is_pinned ? <span title="상단 고정" style={{ marginRight: 6 }}>📌</span> : null}
                     {p.title}
                   </Link>
                 </td>

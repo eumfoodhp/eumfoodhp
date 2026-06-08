@@ -52,6 +52,7 @@ export type PressRelease = {
   source: string | null;
   link_url: string | null;
   thumbnail: string | null;
+  is_pinned: boolean;
   view_count: number;
   created_at: string;
   updated_at: string;
