@@ -27,8 +27,13 @@ export default function NewPressPage() {
         </div>
 
         <div className="admin_field">
-          <label htmlFor="thumbnail">썸네일 이미지 URL</label>
-          <input id="thumbnail" type="url" name="thumbnail" placeholder="https://..." />
+          <label htmlFor="thumbnail">
+            썸네일 이미지 URL{' '}
+            <span style={{ fontWeight: 400, color: '#888', fontSize: 13 }}>
+              — 기사 주소를 넣으면 대표이미지 자동 추출 / 비우면 위 원본 기사 URL 에서 자동
+            </span>
+          </label>
+          <input id="thumbnail" type="url" name="thumbnail" placeholder="이미지 주소 또는 기사 주소 (자동 추출)" />
         </div>
 
         <div className="admin_field">

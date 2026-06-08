@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createServerSupabase } from '@/lib/supabase-server';
 import { updateSalesStatus, deleteSales } from '../actions';
+import AdminDeleteButton from '../../AdminDeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -84,17 +85,8 @@ export default async function SalesDetailPage({
         </div>
         <div className="admin_form_actions">
           <button type="submit" className="admin_btn">상태 저장</button>
+          <AdminDeleteButton action={deleteSales} message="이 영업 문의를 삭제할까요? 되돌릴 수 없습니다." />
         </div>
-      </form>
-
-      <form
-        action={deleteSales}
-        className="admin_card"
-        style={{ marginTop: 24 }}
-      >
-        <input type="hidden" name="id" value={s.id} />
-        <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 영업 문의를 영구 삭제합니다.</p>
-        <button type="submit" className="admin_btn danger">삭제</button>
       </form>
     </>
   );

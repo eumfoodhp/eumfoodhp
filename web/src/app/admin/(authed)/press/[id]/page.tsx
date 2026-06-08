@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createServerSupabase } from '@/lib/supabase-server';
 import { updatePress, deletePress } from '../actions';
+import AdminDeleteButton from '../../AdminDeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,8 +48,13 @@ export default async function EditPressPage({
         </div>
 
         <div className="admin_field">
-          <label htmlFor="thumbnail">썸네일 이미지 URL</label>
-          <input id="thumbnail" type="url" name="thumbnail" defaultValue={press.thumbnail ?? ''} />
+          <label htmlFor="thumbnail">
+            썸네일 이미지 URL{' '}
+            <span style={{ fontWeight: 400, color: '#888', fontSize: 13 }}>
+              — 기사 주소를 넣고 저장하면 대표이미지 자동 추출 / 비우면 위 원본 기사 URL 에서 자동
+            </span>
+          </label>
+          <input id="thumbnail" type="url" name="thumbnail" defaultValue={press.thumbnail ?? ''} placeholder="이미지 주소 또는 기사 주소 (자동 추출)" />
         </div>
 
         <div className="admin_field">
@@ -58,18 +64,9 @@ export default async function EditPressPage({
 
         <div className="admin_form_actions">
           <button type="submit" className="admin_btn">수정 저장</button>
+          <AdminDeleteButton action={deletePress} message="이 보도자료를 삭제할까요? 되돌릴 수 없습니다." />
           <Link href="/admin/press" className="admin_btn secondary">취소</Link>
         </div>
-      </form>
-
-      <form
-        action={deletePress}
-        className="admin_card"
-        style={{ marginTop: 24 }}
-      >
-        <input type="hidden" name="id" value={press.id} />
-        <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 보도자료를 영구 삭제합니다.</p>
-        <button type="submit" className="admin_btn danger">이 글 삭제</button>
       </form>
     </>
   );

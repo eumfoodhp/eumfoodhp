@@ -2811,6 +2811,10 @@ html[lang="zh"] .dl_title {
 }
 
 @media (max-width: 1024px) {
+    /* 헤더 구분선(점)을 콘텐츠와 같은 폭으로 맞춤 — 태블릿에서 콘텐츠가 점을 넘어가던 문제 해결.
+       헤더는 전역 95% !important 라 여기서 같은 calc 로 덮어써 콘텐츠 가장자리와 일치 (사용자 요청). */
+    #sub_contents .story_section_head,
+    .story_section .story_section_head,
     .sub_inner,
     .product_inner,
     .footer_inner,

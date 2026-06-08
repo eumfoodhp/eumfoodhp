@@ -431,3 +431,113 @@ a.admin_card:hover {
     .admin_field textarea { min-height: 160px; }
     .admin_form_actions { flex-wrap: wrap; }
 }
+
+/* ============================================================
+   회사 연혁 — 연도별 그룹 보기 (간단·직관 관리)
+   평면 테이블(연도 매 행 반복) → 연도 카드 안에 그 해 이벤트 나열.
+   ============================================================ */
+.hist_groups {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.hist_year_group {
+    padding: 16px 20px 8px;
+}
+.hist_year_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #EEF0F2;
+}
+.hist_year {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1F2937;
+    letter-spacing: -0.5px;
+}
+.hist_year_count {
+    font-size: 13px;
+    font-weight: 600;
+    color: #9CA3AF;
+}
+.hist_year_head .admin_btn {
+    padding: 7px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+.hist_items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.hist_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 2px;
+    border-bottom: 1px solid #F4F5F6;
+}
+.hist_item:last-child {
+    border-bottom: none;
+}
+.hist_item_title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+    font-size: 15px;
+    color: #1F2937;
+    flex-wrap: wrap;
+}
+.hist_item_month {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: #F26337;
+}
+.hist_item_link {
+    color: #1F2937;
+    text-decoration: none;
+}
+.hist_item_link:hover {
+    color: #F26337;
+    text-decoration: underline;
+}
+.hist_item_desc {
+    color: #9CA3AF;
+    font-size: 13px;
+}
+.hist_item_actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.hist_item_actions .admin_btn {
+    padding: 6px 11px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+.hist_item_actions form {
+    display: inline-flex;
+    margin: 0;
+}
+@media (max-width: 600px) {
+    .hist_item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .hist_item_actions {
+        align-self: flex-end;
+    }
+}

@@ -4,6 +4,15 @@ import { deleteHistory } from './actions';
 
 export const dynamic = 'force-dynamic';
 
+type Entry = {
+  id: number;
+  year: number;
+  month: number | null;
+  title: string;
+  description: string | null;
+  sort_order: number;
+};
+
 export default async function HistoryListPage() {
   const supabase = await createServerSupabase();
   const { data: list } = await supabase
@@ -13,6 +22,14 @@ export default async function HistoryListPage() {
     .order('month', { ascending: false, nullsFirst: false })
     .order('sort_order', { ascending: true });
 
+  // 연도별로 묶기 (내림차순)
+  const byYear = new Map<number, Entry[]>();
+  for (const h of (list ?? []) as Entry[]) {
+    if (!byYear.has(h.year)) byYear.set(h.year, []);
+    byYear.get(h.year)!.push(h);
+  }
+  const years = [...byYear.keys()].sort((a, b) => b - a);
+
   return (
     <>
       <div className="admin_page_header">
@@ -20,45 +37,43 @@ export default async function HistoryListPage() {
         <Link href="/admin/history/new" className="admin_btn">+ 연혁 추가</Link>
       </div>
 
-      {!list || list.length === 0 ? (
+      {years.length === 0 ? (
         <div className="admin_card">등록된 연혁이 없습니다.</div>
       ) : (
-        <table className="admin_table">
-          <thead>
-            <tr>
-              <th style={{ width: 80 }}>연도</th>
-              <th style={{ width: 60 }}>월</th>
-              <th>제목</th>
-              <th>설명</th>
-              <th style={{ width: 70 }}>정렬</th>
-              <th style={{ width: 180 }}></th>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((h) => (
-              <tr key={h.id}>
-                <td style={{ fontWeight: 600 }}>{h.year}</td>
-                <td>{h.month ? `${h.month}월` : '-'}</td>
-                <td>
-                  <Link href={`/admin/history/${h.id}`} style={{ color: '#111827', fontWeight: 500, textDecoration: 'none' }}>
-                    {h.title}
-                  </Link>
-                </td>
-                <td style={{ color: '#6B7280', fontSize: 13 }}>
-                  {h.description ? (h.description.length > 50 ? h.description.slice(0, 50) + '…' : h.description) : '-'}
-                </td>
-                <td>{h.sort_order}</td>
-                <td className="col_actions">
-                  <Link href={`/admin/history/${h.id}`} className="admin_btn secondary">수정</Link>
-                  <form action={deleteHistory}>
-                    <input type="hidden" name="id" value={h.id} />
-                    <button type="submit" className="admin_btn danger">삭제</button>
-                  </form>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="hist_groups">
+          {years.map((y) => (
+            <div key={y} className="hist_year_group admin_card">
+              <div className="hist_year_head">
+                <h3 className="hist_year">
+                  {y}
+                  <span className="hist_year_count">{byYear.get(y)!.length}건</span>
+                </h3>
+                <Link href={`/admin/history/new?year=${y}`} className="admin_btn secondary">
+                  + 이 해에 추가
+                </Link>
+              </div>
+
+              <ul className="hist_items">
+                {byYear.get(y)!.map((h) => (
+                  <li key={h.id} className="hist_item">
+                    <span className="hist_item_title">
+                      {h.month ? <span className="hist_item_month">{h.month}월</span> : null}
+                      <Link href={`/admin/history/${h.id}`} className="hist_item_link">{h.title}</Link>
+                      {h.description ? <span className="hist_item_desc">— {h.description}</span> : null}
+                    </span>
+                    <span className="hist_item_actions">
+                      <Link href={`/admin/history/${h.id}`} className="admin_btn secondary">수정</Link>
+                      <form action={deleteHistory}>
+                        <input type="hidden" name="id" value={h.id} />
+                        <button type="submit" className="admin_btn danger">삭제</button>
+                      </form>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       )}
     </>
   );

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createServerSupabase } from '@/lib/supabase-server';
 import { answerContact, reopenContact, deleteContact } from '../actions';
+import AdminDeleteButton from '../../AdminDeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -63,22 +64,12 @@ export default async function ContactDetailPage({
             {c.status === 'answered' ? '답변 수정' : '답변 등록'}
           </button>
           {c.status === 'answered' && (
-            <form action={reopenContact} style={{ display: 'inline' }}>
-              <input type="hidden" name="id" value={c.id} />
-              <button type="submit" className="admin_btn secondary">대기 상태로 변경</button>
-            </form>
+            <button type="submit" formAction={reopenContact} formNoValidate className="admin_btn secondary">
+              대기 상태로 변경
+            </button>
           )}
+          <AdminDeleteButton action={deleteContact} message="이 문의를 삭제할까요? 되돌릴 수 없습니다." />
         </div>
-      </form>
-
-      <form
-        action={deleteContact}
-        className="admin_card"
-        style={{ marginTop: 24 }}
-      >
-        <input type="hidden" name="id" value={c.id} />
-        <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 문의를 영구 삭제합니다.</p>
-        <button type="submit" className="admin_btn danger">삭제</button>
       </form>
     </>
   );

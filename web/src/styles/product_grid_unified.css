@@ -109,11 +109,11 @@
     }
 }
 
-/* ===== ≤480: 1열 ===== */
+/* ===== ≤480: 2열 (모바일도 한 줄에 2개 — 사용자 요청) ===== */
 @media (max-width: 480px) {
     #sub_contents.products_onepage .product_grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 18px 10px !important;
     }
 }
 

@@ -16,8 +16,7 @@ export type SnakeStep = { n: number; iconSrc: string; label: string; en: string 
 function colsForWidth(w: number) {
   if (w >= 1241) return 4;
   if (w >= 736) return 3;
-  if (w >= 481) return 2;
-  return 1;
+  return 2; // 모바일(≤735)은 전부 2열 (사용자 요청) — 작은 화면도 1열 아님
 }
 
 export default function BizProcessSnake({ steps }: { steps: SnakeStep[] }) {

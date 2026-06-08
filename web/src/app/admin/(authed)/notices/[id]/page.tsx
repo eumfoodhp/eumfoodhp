@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createServerSupabase } from '@/lib/supabase-server';
 import { updateNotice, deleteNotice } from '../actions';
+import AdminDeleteButton from '../../AdminDeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -60,18 +61,9 @@ export default async function EditNoticePage({
 
         <div className="admin_form_actions">
           <button type="submit" className="admin_btn">수정 저장</button>
+          <AdminDeleteButton action={deleteNotice} message="이 공지사항을 삭제할까요? 되돌릴 수 없습니다." />
           <Link href="/admin/notices" className="admin_btn secondary">취소</Link>
         </div>
-      </form>
-
-      <form
-        action={deleteNotice}
-        className="admin_card"
-        style={{ marginTop: 24 }}
-      >
-        <input type="hidden" name="id" value={notice.id} />
-        <p style={{ margin: '0 0 12px', color: '#6B7280' }}>이 공지사항을 영구 삭제합니다.</p>
-        <button type="submit" className="admin_btn danger">이 글 삭제</button>
       </form>
     </>
   );

@@ -1956,8 +1956,9 @@
     }
 }
 
-/* 태블릿 이하: 이때부터 상하로 배치 */
-@media (max-width: 1200px) {
+/* 태블릿 이하: 상하 스택 + 중앙정렬. 좌우 배치가 ~1380 부터 우측(통계) 잘려서
+   스택 전환을 1200 → 1380 으로 올림(잘리기 전에 미리 내려감 — 사용자 요청). */
+@media (max-width: 1380px) {
     .biz_ov_inner {
         flex-direction: column !important;
         width: 90%;
@@ -1968,6 +1969,22 @@
     }
     .stat_grid {
         column-gap: 40px;
+        justify-items: center;
+    }
+    .ov_left {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    .ov_title {
+        align-items: center;
+    }
+    .stat_item {
+        align-items: center;
+    }
+    .stat_label,
+    .stat_value {
+        justify-content: center;
     }
 }
 
