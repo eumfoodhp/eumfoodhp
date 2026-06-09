@@ -17,7 +17,7 @@ export default async function PressListPage() {
     <>
       <div className="admin_page_header">
         <h2 className="admin_page_title">보도자료</h2>
-        <Link href="/admin/press/new" className="admin_btn">+ 새 글 작성</Link>
+        <Link href="/admin/press/new" className="admin_btn">추가</Link>
       </div>
 
       {!list || list.length === 0 ? (

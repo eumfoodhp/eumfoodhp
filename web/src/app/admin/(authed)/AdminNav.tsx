@@ -7,7 +7,7 @@ const ITEMS = [
   { href: '/admin', label: '대시보드' },
   { href: '/admin/notices', label: '공지사항' },
   { href: '/admin/press', label: '보도자료' },
-  { href: '/admin/history', label: '연혁 관리' },
+  { href: '/admin/history', label: '연혁' },
   { href: '/admin/contacts', label: '1:1 문의' },
   { href: '/admin/sales', label: '영업 문의' },
 ];

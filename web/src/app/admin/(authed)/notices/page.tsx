@@ -16,7 +16,7 @@ export default async function NoticesListPage() {
     <>
       <div className="admin_page_header">
         <h2 className="admin_page_title">공지사항</h2>
-        <Link href="/admin/notices/new" className="admin_btn">+ 새 글 작성</Link>
+        <Link href="/admin/notices/new" className="admin_btn">추가</Link>
       </div>
 
       {!notices || notices.length === 0 ? (

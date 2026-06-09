@@ -17,7 +17,7 @@ export default async function AdminDashboardPage() {
   const content = [
     { label: '공지사항', count: notices.count ?? 0, href: '/admin/notices', icon: <NoticeIcon /> },
     { label: '보도자료', count: press.count ?? 0, href: '/admin/press', icon: <PressIcon /> },
-    { label: '연혁 관리', count: history.count ?? 0, href: '/admin/history', icon: <HistoryIcon /> },
+    { label: '연혁', count: history.count ?? 0, href: '/admin/history', icon: <HistoryIcon /> },
   ];
   const inquiry = [
     { label: '1:1 문의', count: contacts.count ?? 0, href: '/admin/contacts', icon: <ChatIcon /> },
@@ -29,7 +29,6 @@ export default async function AdminDashboardPage() {
       <div className="admin_page_header">
         <div>
           <h2 className="admin_page_title">대시보드</h2>
-          <p className="admin_page_desc">㈜이음푸드시스템 콘텐츠·문의 관리</p>
         </div>
       </div>
 

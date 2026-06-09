@@ -33,8 +33,8 @@ export default async function HistoryListPage() {
   return (
     <>
       <div className="admin_page_header">
-        <h2 className="admin_page_title">연혁 관리</h2>
-        <Link href="/admin/history/new" className="admin_btn">+ 추가</Link>
+        <h2 className="admin_page_title">연혁</h2>
+        <Link href="/admin/history/new" className="admin_btn">추가</Link>
       </div>
 
       {years.length === 0 ? (
@@ -49,7 +49,7 @@ export default async function HistoryListPage() {
                   <span className="hist_year_count">{byYear.get(y)!.length}건</span>
                 </h3>
                 <Link href={`/admin/history/new?year=${y}`} className="admin_btn secondary">
-                  + 추가
+                  추가
                 </Link>
               </div>
 
