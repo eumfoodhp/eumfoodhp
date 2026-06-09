@@ -21,7 +21,7 @@ export default async function AdminAuthedLayout({ children }: { children: ReactN
       <aside className="admin_sidebar">
         <div className="admin_brand">
           <div className="admin_brand_top">
-            <img src="/images/common/newlogo.png" alt="㈜이음푸드시스템" className="admin_brand_logo" />
+            <img src="/images/common/logo.png" alt="㈜이음푸드시스템" className="admin_brand_logo" />
             <span className="admin_brand_badge">ADMIN</span>
           </div>
           <p className="admin_user">

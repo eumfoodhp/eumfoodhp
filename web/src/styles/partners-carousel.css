@@ -16,7 +16,7 @@
     position: relative;
     overflow: hidden;
     padding: 100px 0 160px;
-    background: linear-gradient(180deg, #fff 0%, #FFF6EC 100%);
+    background: #fff;
 }
 
 .partner_section--3d .partner_inner {
@@ -58,12 +58,6 @@
     height: 540px;
     perspective: 1400px;
     perspective-origin: 50% 30%;
-    /* 우주 공간 느낌의 배경 - 가운데가 살짝 어둡게 */
-    background: radial-gradient(
-        ellipse at center 60%,
-        rgba(243, 152, 0, 0.06) 0%,
-        transparent 60%
-    );
 }
 
 /* ============================================================
@@ -77,14 +71,14 @@
     height: 880px;
     transform: translate(-50%, -50%) rotateX(78deg);
     transform-style: preserve-3d;
-    border: 1px dashed rgba(243, 152, 0, 0.25);
+    border: 1px dashed rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     pointer-events: none;
-    /* 안쪽 점선도 한 줄 더 → 풍성한 궤도 느낌 */
+    /* 안쪽 점선도 한 줄 더 → 풍성한 궤도 느낌 (주황 → 회색) */
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0),
         inset 0 0 0 60px transparent,
-        inset 0 0 0 61px rgba(243, 152, 0, 0.1);
+        inset 0 0 0 61px rgba(0, 0, 0, 0.05);
 }
 
 /* ============================================================
