@@ -35,7 +35,7 @@
 .partner_section--3d .partner_sub {
     display: inline-block;
     margin-bottom: 8px;
-    color: #F26337;
+    color: #F39800;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -92,8 +92,9 @@
    ============================================================ */
 .carousel_ring {
     position: relative;
-    width: 260px;
-    height: 360px;
+    /* 카드 크기 ~15% 축소 (클라이언트 요청: 네모가 로고에 비해 큼) */
+    width: 220px;
+    height: 255px;            /* 세로 길이 축소 (사용자 요청) — cover로 위아래 건물 잘려 중앙 로고 강조 */
     margin: 60px auto 0;
     transform-style: preserve-3d;
     animation: ringSpin 32s linear infinite;
@@ -118,7 +119,7 @@
     --i: 0;
     --N: 9;
     --angle: calc(var(--i) * (360deg / var(--N)));
-    --radius: 420px;
+    --radius: 358px;
 
     position: absolute;
     top: 0;
@@ -158,6 +159,19 @@
     object-fit: cover;
     z-index: 0;
     background-color: #f3f4f6;  /* 이미지 로딩 전 fallback */
+    /* 배경 더 밝게 + 로고 대비/채도 ↑ (사용자 요청) */
+    filter: brightness(1.16) contrast(1.1) saturate(1.14);
+}
+
+/* 중앙 로고 강조 — 가장자리(건물 사진) 비네트로 어둡게 해서 로고가 또렷하게 (사용자 요청) */
+.carousel_card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 82% 62% at 50% 54%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.14) 100%);
 }
 
 /* ============================================================
@@ -172,11 +186,11 @@
         perspective: 900px;
     }
     .carousel_ring {
-        width: 170px;
-        height: 230px;
+        width: 145px;
+        height: 164px;
     }
     .carousel_card {
-        --radius: 240px;
+        --radius: 205px;
     }
     .orbit_guide {
         width: 520px;
@@ -190,11 +204,11 @@
         perspective: 700px;
     }
     .carousel_ring {
-        width: 130px;
-        height: 175px;
+        width: 111px;
+        height: 124px;
     }
     .carousel_card {
-        --radius: 175px;
+        --radius: 150px;
     }
     .orbit_guide {
         width: 380px;

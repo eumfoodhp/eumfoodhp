@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import HeroSwiper from '@/components/HeroSwiper';
 import MainScript from '@/components/MainScript';
+import RevealOnScroll from '@/components/RevealOnScroll';
 import { nl2br } from '@/lib/nl2br';
 import { createServerSupabase } from '@/lib/supabase-server';
 import '@/styles/main.css';
@@ -12,20 +13,6 @@ import 'swiper/css';
 export const revalidate = 0;
 
 type ProcTab = { tag: string; title: string; link: string; desc: string };
-type ProdCategory = { name: string; link: string };
-type ProdItem = {
-  img: string;
-  name: string;
-  eng: string;
-  desc: string;
-  storage?: string;
-  weight?: string;
-  hide_meta?: boolean;
-};
-function productImageUrl(img: string) {
-  if (img.startsWith('/') || /^https?:\/\//i.test(img)) return img;
-  return `/images/main/${img}`;
-}
 
 export default async function HomePage({
   params,
@@ -37,8 +24,6 @@ export default async function HomePage({
   const t = await getTranslations();
 
   const procTabs = t.raw('main_proc_tabs') as ProcTab[];
-  const prodCategories = t.raw('main_prod_categories') as ProdCategory[];
-  const prodList = t.raw('main_prod_list') as Record<string, ProdItem[]>;
   const partners = t.raw('main_partner_logos') as Array<{ img: string; name: string }>;
   // dirTabs / DirTab / mapFactorySrc 제거 — 지도 섹션 통째로 footer 로 이관됨.
 
@@ -151,59 +136,52 @@ export default async function HomePage({
           </div>
         </section>
 
-        <section className="product_section">
+        <section className="product_section product_gallery">
+          <RevealOnScroll className="gallery_reveal">
           <div className="product_inner">
-            <div className="prod_header">
-              {/* 제목(선진설비~) 삭제 (사용자 요청) — 더보기 링크만 우측 유지 */}
-              <Link href="/products" className="proc_cards_more">
-                <span>{t('common_more')}</span>
-                <ArrowIcon />
-              </Link>
+            <div className="product_gallery_head">
+              <h2 className="product_gallery_title">{nl2br(t('main_prod_gallery_title'))}</h2>
+              <p className="product_gallery_desc">{t('main_prod_gallery_desc')}</p>
             </div>
           </div>
 
-          {/* 제품 — 3줄 가로 마퀴 (좌우 풀사이즈) — 줄마다 반대 방향 (사용자 요청) */}
-          <div className="prod_marquee">
+          {/* 제품 — goods1~9 9장 1줄 가로 마퀴 (사용자 요청) */}
+          <div className="prod_marquee prod_marquee--single">
             {(() => {
-              const flat = prodCategories.flatMap((cate) =>
-                (prodList[cate.name] ?? []).map((item) => ({
-                  name: item.name,
-                  img: item.img,
-                  link: cate.link,
-                }))
-              );
-              const rows = [0, 1, 2].map((r) => flat.filter((_, i) => i % 3 === r));
-              return rows.map((items, r) => (
-                <div
-                  key={r}
-                  className={`prod_marquee_row ${r % 2 === 1 ? 'is-rtl' : 'is-ltr'}`}
-                >
+              const goods = Array.from({ length: 9 }, (_, i) => `/images/main/goods${i + 1}.png`);
+              return (
+                <div className="prod_marquee_row is-ltr">
                   <div className="prod_marquee_track">
-                    {[...items, ...items].map((p, i) => {
-                      const dup = i >= items.length;
+                    {[...goods, ...goods].map((src, i) => {
+                      const dup = i >= goods.length;
                       return (
                         <Link
                           key={i}
-                          href={p.link}
+                          href="/products"
                           className="marquee_tile"
                           aria-hidden={dup || undefined}
                           tabIndex={dup ? -1 : undefined}
                         >
                           <div
                             className="marquee_img"
-                            style={{ backgroundImage: `url('${productImageUrl(p.img)}')` }}
+                            style={{ backgroundImage: `url('${src}')` }}
                           ></div>
-                          <div className="marquee_overlay">
-                            <span className="marquee_name">{p.name}</span>
-                          </div>
                         </Link>
                       );
                     })}
                   </div>
                 </div>
-              ));
+              );
             })()}
             </div>
+
+          <div className="product_gallery_more">
+            <Link href="/products" className="proc_cards_more">
+              <span>{t('common_more')}</span>
+              <ArrowIcon />
+            </Link>
+          </div>
+          </RevealOnScroll>
         </section>
 
         <section className="partner_section partner_section--3d">

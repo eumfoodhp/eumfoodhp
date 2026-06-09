@@ -3,7 +3,7 @@
     width: 100%;
     max-width: 1580px;
     height: 800px;
-    margin: 0 auto;
+    margin: 24px auto 0;        /* 헤더 ↔ 히어로 간격 살짝 (사용자 요청) */
     border-radius: 20px;
     overflow: hidden;
     position: relative; /* 자식 요소들의 기준점 */
@@ -156,7 +156,7 @@
 
 .biz_sub {
     display: block;
-    color: #F26337;
+    color: #F39800;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -242,8 +242,8 @@
 }
 
 .ov_more_btn:hover {
-    border-color: #F26337;
-    color: #F26337;
+    border-color: #F39800;
+    color: #F39800;
 }
 
 .sticky_wrapper.active .ov_more_btn:hover {
@@ -412,7 +412,7 @@
     background: transparent;
     border: 0;
     box-shadow: none;
-    color: #F26337;   /* 주황색 폰트 (사용자 요청) */
+    color: #F39800;   /* 주황색 폰트 (사용자 요청) */
     font-size: 15px;
     font-weight: 700;
     letter-spacing: -0.2px;
@@ -428,12 +428,12 @@
 .process_section--cards .proc_card_link--float svg {
     width: 17px;
     height: 17px;
-    color: #F26337;
+    color: #F39800;
     /* 화살표에도 흰색 외곽선 더 두껍게 */
     filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 1px #fff);
 }
 .process_section--cards .proc_card_link--float:hover {
-    color: #F26337;
+    color: #F39800;
 }
 
 .process_section--cards .proc_card_body {
@@ -445,7 +445,7 @@
 }
 
 .process_section--cards .proc_card_tag {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard';
     font-size: 16px;
     font-weight: 500;
@@ -490,7 +490,7 @@
     padding: 10px 18px;
     border-radius: 999px;
     background: rgba(243, 152, 0, 0.08);
-    color: #F26337;
+    color: #F39800;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -498,7 +498,7 @@
 }
 
 .process_section--cards .proc_card_link:hover {
-    background: #F26337;
+    background: #F39800;
     color: #fff;
 }
 
@@ -554,7 +554,7 @@
     }
     .process_section--cards .proc_card_title a,
     .process_section--cards .proc_card_title_link {
-        color: #F26337 !important;
+        color: #F39800 !important;
         text-decoration: none;
     }
 }
@@ -624,7 +624,7 @@
 }
 
 .proc_tag {
-    color: #F26337;
+    color: #F39800;
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
@@ -663,7 +663,7 @@
 }
 
 .proc_tab_btn.active {
-    background: #F26337;
+    background: #F39800;
     color: #fff;
 }
 
@@ -729,6 +729,64 @@
     background: #fff;
 }
 
+/* ===== 제품 갤러리 — 사진 강조(전시 느낌): 따뜻한 배경 + 제목/소개 + 여백 (사용자 요청) ===== */
+.product_section.product_gallery {
+    background: linear-gradient(180deg, #FFFBF5 0%, #FAF3E9 100%);
+    padding: 110px 0 120px;
+}
+.product_gallery_head {
+    text-align: center;
+    margin-bottom: 52px;
+}
+.product_gallery_sub {
+    display: inline-block;
+    margin-top: 16px;        /* 이제 맨 아래 (제목·소개 다음, 사용자 요청) */
+    color: #F39800;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+.product_gallery_title {
+    margin: 0;
+    color: #1A1A1A;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: -0.5px;
+    white-space: nowrap;        /* 한 줄 고정 (사용자 요청) */
+}
+.product_gallery_desc {
+    margin: 18px 0 0;
+    color: #6B7280;
+    font-size: clamp(15px, 1.3vw, 18px);
+    line-height: 1.6;
+    white-space: nowrap;        /* 한 줄 고정 */
+}
+/* 아주 좁은 화면은 가로 넘침 방지 위해 줄바꿈 허용 */
+@media (max-width: 520px) {
+    .product_gallery_title,
+    .product_gallery_desc { white-space: normal; }
+}
+.product_gallery_more {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+/* 스크롤 등장 — 갤러리가 화면에 들어오면 아래에서 페이드·업 (RevealOnScroll, 사용자 요청) */
+.gallery_reveal {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.85s ease, transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery_reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+    .gallery_reveal { opacity: 1; transform: none; transition: none; }
+}
+
 .product_inner {
     width: 100%;
     max-width: 1580px;
@@ -739,7 +797,7 @@
 }
 
 .prod_sub {
-    color: #F26337;
+    color: #F39800;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -796,10 +854,11 @@
 }
 .marquee_tile {
     position: relative;
-    flex: 0 0 280px;
-    height: 176px;
-    margin-right: 16px;
-    border-radius: 14px;
+    /* goods 이미지(374x472 세로형). 카드 ~2배 확대 (사용자 요청) */
+    flex: 0 0 400px;
+    height: 504px;
+    margin-right: 24px;
+    border-radius: 18px;
     overflow: hidden;
     text-decoration: none;
     background: #efe9e2;
@@ -851,7 +910,7 @@
 .marquee_tile:hover .marquee_name::after { transform: translateX(-50%) scaleX(1); }
 @media (max-width: 768px) {
     .prod_marquee { margin-top: 28px; gap: 12px; }
-    .marquee_tile { flex-basis: 200px; height: 128px; margin-right: 12px; }
+    .marquee_tile { flex-basis: 300px; height: 378px; margin-right: 18px; }
     .marquee_name { font-size: 14px; }
     .prod_marquee_row.is-ltr .prod_marquee_track { animation-duration: 40s; }
     .prod_marquee_row.is-rtl .prod_marquee_track { animation-duration: 46s; }
@@ -884,8 +943,8 @@
 }
 
 .prod_cate_btn.active {
-    background: #F26337;
-    border-color: #F26337;
+    background: #F39800;
+    border-color: #F39800;
     color: #fff;
 }
 
@@ -967,7 +1026,7 @@
 }
 
 .meta_val.highlight {
-    color: #F26337;
+    color: #F39800;
     font-size: 16px;
     font-weight: 500;
 }
@@ -991,7 +1050,7 @@
     margin: 120px 0;
     padding: 120px 0;
     /* 가이드 그라데이션 적용 */
-    background: linear-gradient(0deg, #FFCDBD 0.7%, #FFAD93 48.56%, #F26337 100.26%);
+    background: linear-gradient(0deg, #FFCDBD 0.7%, #FFAD93 48.56%, #F39800 100.26%);
     overflow: hidden; /* 흐르는 로고가 브라우저 가로 스크롤을 만들지 않도록 설정 */
     display: flex;
     flex-direction: column;
@@ -1147,7 +1206,7 @@
 }
 
 .notice_sub {
-    color: #F26337;
+    color: #F39800;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -1241,7 +1300,7 @@
 }
 
 .card_cate {
-    color: #F26337;
+    color: #F39800;
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
@@ -1321,7 +1380,7 @@
 }
 
 .dir_sub {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard';
     font-size: 18px;
     font-weight: 500;
@@ -1378,7 +1437,7 @@
 
 /* 선택(Default) 상태 */
 .dir_tab_btn.active {
-    background: #F26337;
+    background: #F39800;
     color: #FFF;
 }
 
@@ -1541,7 +1600,7 @@
 }
 
 .ov_sub {
-    color: #F26337;
+    color: #F39800;
     font-size: 24px;
     font-weight: 500;
     line-height: 34px;

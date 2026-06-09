@@ -2,8 +2,9 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import CatalogButton from './CatalogButton';
-import GnbNav from './GnbNav';
+import MegaMenu from './MegaMenu';
 import MobileMenuGroup from './MobileMenuGroup';
+import '@/styles/mega-menu.css';
 
 export default async function Header() {
   const t = await getTranslations();
@@ -13,17 +14,12 @@ export default async function Header() {
       <div className="header_inner">
         <h1 className="logo">
           <Link href="/">
-            <img src="/images/common/newlogo.png" alt="㈜이음푸드시스템 로고" />
+            <img src="/images/common/logo.png" alt="㈜이음푸드시스템 로고" />
           </Link>
         </h1>
 
-        <div className="gnb_wrap">
-          <nav className="gnb" aria-label="PC navigation">
-            {/* GnbNav (Client) — usePathname 으로 active 카테고리 주황 포인트 */}
-            <GnbNav />
-          </nav>
-          {/* 메가 드롭다운 제거 — 헤더 아래 sticky SubHeader 가 대체 */}
-        </div>
+        {/* PC GNB + 메가메뉴 — 신규 MegaMenu (클라이언트, mm_* 독립 클래스, 기존 CSS 충돌 차단) */}
+        <MegaMenu />
 
         <div className="util_area">
           {/* 쇼핑몰 → 카탈로그 → 메뉴(햄버거) → 언어 순서로 원위치.

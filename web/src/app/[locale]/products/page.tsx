@@ -215,7 +215,7 @@ export default async function ProductsOnePage({ params }: { params: Promise<{ lo
 
         {/* ===== 4. 양념젓갈·젓갈류 ===== */}
         <div id="salted" className="product_salted_page story_section">
-          <SectionHeader title={t('sub_prod_salted')} en="Salted Seafood" />
+          <SectionHeader title={t('sub_prod_salted')} en="Seasoned & Salted Seafood" />
           <section className="product_list_section">
             <div className="product_inner">
               <div className="product_grid">

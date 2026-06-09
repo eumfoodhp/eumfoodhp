@@ -45,7 +45,7 @@
     font-weight: 700;
     line-height: 1.4;
     margin: 0;
-    background: #F26337;
+    background: #F39800;
     color: #fff;
     border-radius: 999px;
     z-index: 2;
@@ -98,7 +98,7 @@
     text-align: center;
     font-size: 10px;
     font-weight: 700;
-    color: #F26337;
+    color: #F39800;
     line-height: 1.25;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -243,7 +243,7 @@
 
 #sub_contents .business_process_page .biz_pf_eyebrow {
     margin: 0;
-    color: #22C55E;   /* 영어 eyebrow(Pickles/Braised…) 주황 → 초록 (사용자 요청) */
+    color: #90C41F;   /* 영어 eyebrow(Pickles/Braised…) 주황 → 초록 (사용자 요청) */
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -305,9 +305,9 @@
     stroke-linejoin: round;
 }
 /* 브로셔 색: 절임=주황 / 조림=초록 / 피클(젓갈)=주황 / 소스=파랑 */
-#sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_snake_svg path { stroke: #F26337; }
+#sub_contents .business_process_page .biz_process_flow_section--pickles .biz_pf_snake_svg path { stroke: #F39800; }
 #sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_snake_svg path { stroke: #5BBE5F; }
-#sub_contents .business_process_page .biz_process_flow_section--pickle  .biz_pf_snake_svg path { stroke: #F26337; }
+#sub_contents .business_process_page .biz_process_flow_section--pickle  .biz_pf_snake_svg path { stroke: #F39800; }
 #sub_contents .business_process_page .biz_process_flow_section--sauce   .biz_pf_snake_svg path { stroke: #5095D2; }
 
 #sub_contents .business_process_page .biz_pf_ln {
@@ -422,7 +422,7 @@
     z-index: 1;
     padding: 12px 36px;
     border-radius: 999px;
-    background: #F26337;
+    background: #F39800;
     color: #fff;
     font-size: 18px;
     font-weight: 500;
@@ -464,23 +464,23 @@
 
 /* ============================================================
    카테고리별 배지 색상 — Figma 디자인 (283:6856) 매칭
-   - 절임식품(pickles): 주황 #F26337 (기본)
+   - 절임식품(pickles): 주황 #F39800 (기본)
    - 조림류(braised): 초록 #5BBE5F
-   - 피클(salted=pickle modKey): 주황 #F26337
+   - 피클(salted=pickle modKey): 주황 #F39800
    - 소스/혼합장/액상차(sauce): 파랑 #5095D2
    ============================================================ */
-/* 모든 카테고리 색상 주황 #F26337 로 통일 (사용자 요청) */
+/* 모든 카테고리 색상 주황 #F39800 로 통일 (사용자 요청) */
 #sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_step_badge {
-    background: #F26337;
+    background: #F39800;
 }
 #sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_step_badge {
-    background: #F26337;
+    background: #F39800;
 }
 #sub_contents .business_process_page .biz_process_flow_section--braised .biz_pf_eyebrow {
-    color: #22C55E;
+    color: #90C41F;
 }
 #sub_contents .business_process_page .biz_process_flow_section--sauce .biz_pf_eyebrow {
-    color: #22C55E;
+    color: #90C41F;
 }
 
 /* Zigzag + 점선 커넥터 시도했으나 grid-column 강제 배치가 카드 정렬을 깨뜨려
@@ -550,7 +550,7 @@
 #sub_contents .business_process_page .biz_pf_step .biz_pf_step_label_en {
     margin: 0;
     text-align: center;
-    color: #22C55E;
+    color: #90C41F;
     font-size: 12px;
     font-weight: 600;
     line-height: 1.35;
@@ -565,11 +565,11 @@
 }
 
 #sub_contents .business_process_page .biz_pf_eyebrow--green {
-    color: #22C55E;
+    color: #90C41F;
 }
 
 #sub_contents .business_process_page .biz_pf_step--green .biz_pf_step_badge {
-    background: #F26337;
+    background: #F39800;
 }
 
 #sub_contents .business_process_page .biz_pf_diagram--braised {
@@ -629,11 +629,11 @@
    제조공정 — 피클 공정 (Figma 553:5894)
    ============================================================ */
 #sub_contents .business_process_page .biz_pf_eyebrow--orange {
-    color: #22C55E;
+    color: #90C41F;
 }
 
 #sub_contents .business_process_page .biz_pf_step--orange .biz_pf_step_badge {
-    background: #F26337;
+    background: #F39800;
 }
 
 #sub_contents .business_process_page .biz_pf_diagram--pickle {
@@ -693,11 +693,11 @@
    제조공정 — 소스/혼합장/액상차 공정 (Figma 553:5898)
    ============================================================ */
 #sub_contents .business_process_page .biz_pf_eyebrow--blue {
-    color: #22C55E;
+    color: #90C41F;
 }
 
 #sub_contents .business_process_page .biz_pf_step--blue .biz_pf_step_badge {
-    background: #F26337;
+    background: #F39800;
 }
 
 #sub_contents .business_process_page .biz_pf_diagram--sauce {
@@ -1016,7 +1016,7 @@
     font-weight: 600;
     line-height: 1.35;
     letter-spacing: 0.02em;
-    color: #22C55E;
+    color: #90C41F;
 }
 /* 줄 끝(4n)·전체 마지막 → 화살표 숨김 */
 #sub_contents .business_process_page .biz_pf_steps .biz_pf_step:nth-child(4n)::after { display: none; }
@@ -1180,7 +1180,7 @@
     font-weight: 600;
     line-height: 1.35;
     letter-spacing: 0.02em;
-    color: #22C55E;
+    color: #90C41F;
 }
 /* 줄 안 화살표 (오른쪽으로) */
 #sub_contents .business_process_page .biz_pf_snake .biz_pf_step.has-arrow::after {
@@ -1190,7 +1190,7 @@
     left: calc(50% + 48px);
     width: calc(100% - 72px);  /* 100% + colgap(24) - 2*48 */
     height: 11px;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scaleX(0.5);   /* 화살표 길이 절반 (가운데 기준, 사용자 요청) */
     background: #AEB6B1;
     clip-path: polygon(0 41%, calc(100% - 9px) 41%, calc(100% - 9px) 12%, 100% 50%, calc(100% - 9px) 88%, calc(100% - 9px) 59%, 0 59%);
     pointer-events: none;
@@ -1199,7 +1199,7 @@
 #sub_contents .business_process_page .biz_pf_snake .is-rev .biz_pf_step.has-arrow::after {
     left: auto;
     right: calc(50% + 48px);
-    transform: translateY(-50%) scaleX(-1);
+    transform: translateY(-50%) scaleX(-0.5);   /* 화살표 길이 절반 (역방향) */
 }
 /* 줄 끝 → 아래 화살표 (다음 줄로) */
 #sub_contents .business_process_page .biz_pf_snake .biz_pf_step.has-down::after {

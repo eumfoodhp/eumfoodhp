@@ -14,14 +14,71 @@ import SectionHeader from '@/components/SectionHeader';
 import FacilitySection from '@/components/FacilitySection';
 import CertGrid from '@/components/CertGrid';
 import BizProcessSnake from '@/components/BizProcessSnake';
-import enMessages from '@/i18n/messages/en.json';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 import '@/styles/business_facility.css';
 import '@/styles/business_process.css';
 import '@/styles/about_cert.css';
 
-const EN = enMessages as unknown as Record<string, string>;
+// 제조공정 — 카테고리별 스텝(한/영/중 + 아이콘 prefix). 아이콘: /images/sub/process/{iconPrefix}{n}.png
+const PROCESS = [
+  {
+    key: 'pickles', modKey: 'pickles', iconPrefix: 'pf',
+    ko: '절임식품', zh: '腌制食品', en: 'Pickled Food',
+    steps: [
+      { ko: '입고', en: 'Inbound', zh: '入库' },
+      { ko: '원재료 검사', en: 'Raw Material Inspection', zh: '原料检验' },
+      { ko: '불림', en: 'Soaking', zh: '浸泡' },
+      { ko: '세척', en: 'Washing', zh: '清洗' },
+      { ko: '배합(무침)', en: 'Mixing', zh: '配料(拌制)' },
+      { ko: '내포장', en: 'Inner Packaging', zh: '内包装' },
+      { ko: '금속검출', en: 'Metal Detection', zh: '金属检测' },
+      { ko: 'X-ray', en: 'X-ray', zh: 'X光检测' },
+      { ko: '외포장/출하', en: 'Outer Packaging / Shipping', zh: '外包装/出货' },
+    ],
+  },
+  {
+    key: 'braised', modKey: 'braised', iconPrefix: 'sf',
+    ko: '조림류', zh: '炖煮类', en: 'Stewed Food',
+    steps: [
+      { ko: '입고', en: 'Inbound', zh: '入库' },
+      { ko: '원재료 검사', en: 'Raw Material Inspection', zh: '原料检验' },
+      { ko: '선별', en: 'Sorting', zh: '筛选' },
+      { ko: '가열(조림)', en: 'Heating (Stewing)', zh: '加热(炖煮)' },
+      { ko: '내포장', en: 'Inner Packaging', zh: '内包装' },
+      { ko: '금속검출', en: 'Metal Detection', zh: '金属检测' },
+      { ko: 'X-ray', en: 'X-ray', zh: 'X光检测' },
+      { ko: '외포장/출하', en: 'Outer Packaging / Shipping', zh: '外包装/出货' },
+    ],
+  },
+  {
+    key: 'pickle', modKey: 'pickle', iconPrefix: 'p',
+    ko: '피클', zh: '泡菜', en: 'Pickle',
+    steps: [
+      { ko: '입고', en: 'Inbound', zh: '入库' },
+      { ko: '원재료 검사', en: 'Raw Material Inspection', zh: '原料检验' },
+      { ko: '선별', en: 'Sorting', zh: '筛选' },
+      { ko: '세척', en: 'Washing', zh: '清洗' },
+      { ko: '절단', en: 'Cutting', zh: '切割' },
+      { ko: '내포장', en: 'Inner Packaging', zh: '内包装' },
+      { ko: '금속검출', en: 'Metal Detection', zh: '金属检测' },
+      { ko: '외포장/출하', en: 'Outer Packaging / Shipping', zh: '外包装/出货' },
+    ],
+  },
+  {
+    key: 'sauce', modKey: 'sauce', iconPrefix: 'sml',
+    ko: '소스& 혼합장& 액상차', zh: '酱料& 混合酱& 液态茶', en: 'Sauce& Mixing Sauce& Liquid Tea',
+    steps: [
+      { ko: '입고', en: 'Inbound', zh: '入库' },
+      { ko: '원재료 검사', en: 'Raw Material Inspection', zh: '原料检验' },
+      { ko: '계량', en: 'Weighing', zh: '计量' },
+      { ko: '가열 후 냉각', en: 'Heating & Cooling', zh: '加热后冷却' },
+      { ko: '내포장', en: 'Inner Packaging', zh: '内包装' },
+      { ko: '금속검출', en: 'Metal Detection', zh: '金属检测' },
+      { ko: '외포장/출하', en: 'Outer Packaging / Shipping', zh: '外包装/出货' },
+    ],
+  },
+];
 
 // 공정 흐름 = 번호 배지 + 원형 스텝을 자연 줄바꿈 그리드로 (PC4·태블릿3·모바일2).
 // 스네이크 절대배치/연결선은 제거 — 순서는 번호로 표시해 어느 화면에서도 좌→우·위→아래로 읽힘.
@@ -54,12 +111,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  const CATEGORIES: Cat[] = [
-    { key: 'pickles', modKey: 'pickles', prefix: 'proc_pickles_step', label: t('sub_prod_pickles'), eyebrow: 'Pickles',          steps: 9, iconDir: 'biz-pf-pickles-5535977' },
-    { key: 'braised', modKey: 'braised', prefix: 'proc_braised_step', label: t('sub_prod_braised'), eyebrow: 'Braised Dishes',   steps: 8, iconDir: 'biz-pf-braised-5535890' },
-    { key: 'salted',  modKey: 'pickle',  prefix: 'proc_salted_step',  label: t('sub_prod_salted'),  eyebrow: 'Salted Seafood',   steps: 8, iconDir: 'biz-pf-pickle-5535894' },
-    { key: 'sauce',   modKey: 'sauce',   prefix: 'proc_sauce_step',   label: t('biz_proc_cat_sauce'), eyebrow: 'Sauce & Beverage', steps: 7, iconDir: 'biz-pf-sauce-flow' },
-  ];
+  const isZh = locale === 'zh';
 
   const sections = [
     { id: 'facility', label: t('sub_facility') },
@@ -81,20 +133,13 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
       {/* ===== 2. 제조공정 ===== */}
       <div id="process" className="business_process_page story_section">
         <SectionHeader title={t('sub_biz_process')} en="Process" />
-        {CATEGORIES.map((cat) => {
-          // 스텝 데이터(직렬화 가능 값)만 만들어 클라이언트 스네이크 컴포넌트로 전달.
-          const steps = Array.from({ length: cat.steps }, (_, i) => {
-            const n = i + 1;
-            const nn = String(n).padStart(2, '0');
-            // 절임식품 06~09 만 실제 PNG, 나머지는 SVG (원본 파일 확장자 이슈)
-            const ext = cat.key === 'pickles' && n >= 6 ? 'png' : 'svg';
-            return {
-              n,
-              iconSrc: `/images/sub/figma/${cat.iconDir}/${nn}.${ext}`,
-              label: t(`${cat.prefix}${nn}_tit`),
-              en: EN[`${cat.prefix}${nn}_tit`] ?? '',
-            };
-          });
+        {PROCESS.map((cat) => {
+          const steps = cat.steps.map((s, i) => ({
+            n: i + 1,
+            iconSrc: `/images/sub/process/${cat.iconPrefix}${i + 1}.png`,
+            label: isZh ? s.zh : s.ko,
+            en: s.en,
+          }));
           return (
             <section
               key={cat.key}
@@ -102,8 +147,8 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
             >
               <div className="sub_inner biz_pf_inner">
                 <div className="biz_pf_flow_head">
-                  <h2 className="biz_pf_flow_title">{cat.label}</h2>
-                  <p className="biz_pf_eyebrow">{cat.eyebrow}</p>
+                  <h2 className="biz_pf_flow_title">{isZh ? cat.zh : cat.ko}</h2>
+                  <p className="biz_pf_eyebrow">{cat.en}</p>
                 </div>
                 {/* 반응형 스네이크 흐름 — 열수 계산/줄 묶기는 클라이언트에서 */}
                 <BizProcessSnake steps={steps} />
@@ -156,7 +201,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                 <CertGrid
                   items={HACCP_CERTS.map((c) => ({ key: c.key, img: c.img, label: t(c.key) }))}
                 />
-                <h4 className="cert_group_title cert_group_title--other">기타</h4>
+                <h4 className="cert_group_title cert_group_title--other">{t('cert_group_other')}</h4>
                 <CertGrid
                   items={OTHER_CERTS.map((c) => ({ key: c.key, img: c.img, label: t(c.key) }))}
                 />

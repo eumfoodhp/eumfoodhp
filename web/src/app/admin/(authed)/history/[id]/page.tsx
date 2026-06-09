@@ -52,8 +52,18 @@ export default async function EditHistoryPage({
         </div>
 
         <div className="admin_field">
+          <label htmlFor="title_zh">제목 (中文)</label>
+          <input id="title_zh" type="text" name="title_zh" defaultValue={h.title_zh ?? ''} placeholder="중문 제목 — 비우면 중문 페이지에 한글 표시" />
+        </div>
+
+        <div className="admin_field">
           <label htmlFor="description">설명</label>
           <textarea id="description" name="description" rows={3} defaultValue={h.description ?? ''} />
+        </div>
+
+        <div className="admin_field">
+          <label htmlFor="description_zh">설명 (中文)</label>
+          <textarea id="description_zh" name="description_zh" rows={3} defaultValue={h.description_zh ?? ''} placeholder="중문 설명 (선택)" />
         </div>
 
         <div className="admin_form_actions">

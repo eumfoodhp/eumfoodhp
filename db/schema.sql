@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS public.notices (
   id          BIGSERIAL PRIMARY KEY,
   title       TEXT NOT NULL,
   content     TEXT NOT NULL,
+  title_zh    TEXT,                    -- 중문 제목 (없으면 한글 fallback)
+  content_zh  TEXT,                    -- 중문 내용
   category    TEXT,                    -- 분류 (예: 일반, 채용, 공지)
   is_pinned   BOOLEAN DEFAULT FALSE,   -- 상단 고정
   view_count  INTEGER DEFAULT 0,
@@ -34,6 +36,8 @@ CREATE TABLE IF NOT EXISTS public.press_releases (
   id          BIGSERIAL PRIMARY KEY,
   title       TEXT NOT NULL,
   content     TEXT NOT NULL,
+  title_zh    TEXT,                    -- 중문 제목 (없으면 한글 fallback)
+  content_zh  TEXT,                    -- 중문 내용
   source      TEXT,                    -- 매체명 (예: 매일경제, 식품저널)
   link_url    TEXT,                    -- 원본 기사 URL
   thumbnail   TEXT,                    -- 썸네일 이미지 URL
@@ -122,6 +126,8 @@ CREATE TABLE IF NOT EXISTS public.history_entries (
   month       INTEGER,                  -- 1-12, NULL이면 연도만 표시
   title       TEXT NOT NULL,
   description TEXT,
+  title_zh        TEXT,                 -- 중문 제목 (없으면 한글 fallback)
+  description_zh  TEXT,                 -- 중문 설명
   sort_order  INTEGER DEFAULT 0,        -- 같은 연/월 안 정렬
   created_at  TIMESTAMPTZ DEFAULT NOW()
 );

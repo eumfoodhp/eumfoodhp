@@ -11,6 +11,8 @@ export async function createHistory(formData: FormData) {
   const month = monthRaw ? Number(monthRaw) : null;
   const title = String(formData.get('title') ?? '').trim();
   const description = String(formData.get('description') ?? '').trim() || null;
+  const title_zh = String(formData.get('title_zh') ?? '').trim() || null;
+  const description_zh = String(formData.get('description_zh') ?? '').trim() || null;
   const sort_order = Number(formData.get('sort_order') ?? 0) || 0;
 
   if (!year || !title) throw new Error('연도와 제목은 필수입니다.');
@@ -18,7 +20,7 @@ export async function createHistory(formData: FormData) {
 
   const { error } = await supabase
     .from('history_entries')
-    .insert({ year, month, title, description, sort_order });
+    .insert({ year, month, title, description, title_zh, description_zh, sort_order });
   if (error) throw new Error(error.message);
 
   revalidatePath('/admin/history');
@@ -37,12 +39,14 @@ export async function createHistoryBatch(formData: FormData) {
   const titles = formData.getAll('title').map((v) => String(v).trim());
   const months = formData.getAll('month').map((v) => String(v).trim());
   const descs = formData.getAll('description').map((v) => String(v).trim());
+  const titlesZh = formData.getAll('title_zh').map((v) => String(v).trim());
 
   const rows: {
     year: number;
     month: number | null;
     title: string;
     description: string | null;
+    title_zh: string | null;
     sort_order: number;
   }[] = [];
   for (let i = 0; i < titles.length; i++) {
@@ -50,7 +54,7 @@ export async function createHistoryBatch(formData: FormData) {
     if (!title) continue; // 제목 빈 줄은 건너뜀
     const month = months[i] ? Number(months[i]) : null;
     if (month !== null && (month < 1 || month > 12)) throw new Error('월은 1~12 사이여야 합니다.');
-    rows.push({ year, month, title, description: descs[i] || null, sort_order: rows.length });
+    rows.push({ year, month, title, description: descs[i] || null, title_zh: titlesZh[i] || null, sort_order: rows.length });
   }
   if (rows.length === 0) throw new Error('제목을 한 줄 이상 입력하세요.');
 
@@ -70,13 +74,15 @@ export async function updateHistory(formData: FormData) {
   const month = monthRaw ? Number(monthRaw) : null;
   const title = String(formData.get('title') ?? '').trim();
   const description = String(formData.get('description') ?? '').trim() || null;
+  const title_zh = String(formData.get('title_zh') ?? '').trim() || null;
+  const description_zh = String(formData.get('description_zh') ?? '').trim() || null;
   const sort_order = Number(formData.get('sort_order') ?? 0) || 0;
 
   if (!id || !year || !title) throw new Error('필수 항목 누락.');
 
   const { error } = await supabase
     .from('history_entries')
-    .update({ year, month, title, description, sort_order })
+    .update({ year, month, title, description, title_zh, description_zh, sort_order })
     .eq('id', id);
   if (error) throw new Error(error.message);
 

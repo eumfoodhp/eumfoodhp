@@ -37,6 +37,11 @@ export default async function EditPressPage({
         </div>
 
         <div className="admin_field">
+          <label htmlFor="title_zh">제목 (中文)</label>
+          <input id="title_zh" type="text" name="title_zh" defaultValue={press.title_zh ?? ''} placeholder="중문 제목 — 비우면 한글 표시" />
+        </div>
+
+        <div className="admin_field">
           <label style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             <input type="checkbox" name="is_pinned" defaultChecked={press.is_pinned} /> 상단 고정{' '}
             <span style={{ fontWeight: 400, color: '#888', fontSize: 13 }}>
@@ -69,6 +74,11 @@ export default async function EditPressPage({
         <div className="admin_field">
           <label htmlFor="content">내용 *</label>
           <textarea id="content" name="content" required defaultValue={press.content} />
+        </div>
+
+        <div className="admin_field">
+          <label htmlFor="content_zh">내용 (中文)</label>
+          <textarea id="content_zh" name="content_zh" defaultValue={press.content_zh ?? ''} placeholder="중문 내용 — 비우면 한글 표시" />
         </div>
 
         <div className="admin_form_actions">

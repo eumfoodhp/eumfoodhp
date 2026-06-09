@@ -24,8 +24,8 @@
     background: linear-gradient(
         180deg,
         rgba(242, 99, 55, 0) 0%,
-        #F26337 8%,
-        #F26337 92%,
+        #F39800 8%,
+        #F39800 92%,
         rgba(242, 99, 55, 0) 100%
     );
     border-radius: 1px;
@@ -58,7 +58,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #F26337;
+    background: #F39800;
     box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(242, 99, 55, 0.25);
     z-index: 2;
 }
@@ -102,7 +102,7 @@
     margin: 0 0 10px;
     font-size: 28px;
     font-weight: 800;
-    color: #F26337;
+    color: #F39800;
     letter-spacing: -0.5px;
     line-height: 1;
 }
@@ -131,7 +131,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #F26337;
+    background: #F39800;
 }
 /* 좌측 카드는 bullet 우측 */
 .history_tl_item.is_left .history_tl_events li {

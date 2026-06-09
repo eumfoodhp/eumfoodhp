@@ -29,23 +29,24 @@ export default async function NewsroomOnePage({
   const t = await getTranslations();
 
   const supabase = await createServerSupabase();
+  const zh = locale === 'zh';   // 중문이면 *_zh 우선 (없으면 한글 fallback)
 
   const { data: notices } = await supabase
     .from('notices')
-    .select('id, title, category, is_pinned, view_count, created_at, attachments')
+    .select('*')   // * — ZH 컬럼 추가 전(ALTER 미실행)에도 에러 없이 한글 표시 (title_zh undefined → fallback)
     .order('is_pinned', { ascending: false })
     .order('created_at', { ascending: false })
     .limit(NOTICE_LIMIT);
 
   const { data: presses, count: pressCount } = await supabase
     .from('press_releases')
-    .select('id, title, source, thumbnail, is_pinned, created_at', { count: 'exact' })
+    .select('*', { count: 'exact' })
     .order('is_pinned', { ascending: false })
     .order('created_at', { ascending: false })
     .limit(PRESS_LIMIT);
 
-  // hero 슬라이더용 — 최신 5개 (featured)
-  const heroItems = (presses ?? []).slice(0, 5);
+  // hero 슬라이더용 — 최신 5개 (featured). 중문이면 제목 치환.
+  const heroItems = (presses ?? []).slice(0, 5).map((p) => ({ ...p, title: zh && p.title_zh ? p.title_zh : p.title }));
 
   const fmtDate = (s: string) =>
     new Date(s).toLocaleDateString(locale).replace(/\. /g, '.').replace(/\.$/, '');
@@ -77,7 +78,7 @@ export default async function NewsroomOnePage({
                     <tr key={n.id}>
                       <td>{n.is_pinned ? t('label_notice_pinned') : `No.${notices.length - idx}`}</td>
                       <td className="inquiry_table_title">
-                        <Link href={`/notice/${n.id}` as never}>{n.title}</Link>
+                        <Link href={`/notice/${n.id}` as never}>{zh && n.title_zh ? n.title_zh : n.title}</Link>
                       </td>
                       <td>{fmtDate(n.created_at)}</td>
                     </tr>
@@ -123,7 +124,7 @@ export default async function NewsroomOnePage({
                         </div>
                         <div className="body">
                           <span className="tag">{p.is_pinned ? '고정' : 'NEWS'}</span>
-                          <h3 className="title">{p.title}</h3>
+                          <h3 className="title">{zh && p.title_zh ? p.title_zh : p.title}</h3>
                           <span className="date">{fmtDate(p.created_at)}</span>
                         </div>
                       </Link>

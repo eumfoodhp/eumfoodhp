@@ -35,6 +35,8 @@ export type Notice = {
   id: number;
   title: string;
   content: string;
+  title_zh: string | null;
+  content_zh: string | null;
   category: string | null;
   is_pinned: boolean;
   view_count: number;
@@ -49,6 +51,8 @@ export type PressRelease = {
   id: number;
   title: string;
   content: string;
+  title_zh: string | null;
+  content_zh: string | null;
   source: string | null;
   link_url: string | null;
   thumbnail: string | null;

@@ -27,6 +27,12 @@ html, body {
     word-break: keep-all;
 }
 
+/* 모바일 메뉴 등 overflow:hidden 스크롤락 시 스크롤바가 사라지며 콘텐츠가 우측으로
+   밀리는 현상 방지 — 스크롤바 거터를 항상 예약해 폭 변화 없게 (사용자: 햄버거 누르면 우측 이동) */
+html {
+    scrollbar-gutter: stable;
+}
+
 ul, ol, li { list-style: none; }
 a { text-decoration: none; color: inherit; cursor: pointer; }
 img { max-width: 100%; display: block; border: 0; }
@@ -119,9 +125,11 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     margin: 0 auto;
 }
 
-/* PC + subgrid: gnb_wrap이 5열 마스터 → 메인·서브 같은 열 너비(서브 긴 라벨 기준) */
+/* [비활성화] PC subgrid 정렬 — position:absolute 메가패널은 subgrid 불가라
+   호버 시 한 열(문의)만 뜨던 문제 발생. 아래 fallback(.mega_panel_inner: repeat(5,var(--gnb-col)))이
+   top 메뉴와 같은 --gnb-col 로 5열을 동일 정렬하므로 이 블록은 끔(@supports 조건을 거짓으로). (사용자 보고) */
 @media (min-width: 1025px) {
-    @supports (grid-template-columns: subgrid) {
+    @supports (grid-template-columns: subgrid) and (grid-template-columns: _disabled_) {
         .gnb_wrap {
             display: grid;
             grid-template-columns: repeat(5, var(--gnb-col));
@@ -231,7 +239,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 
 .gnb_main_link:hover,
 .gnb_main_link:focus-visible {
-    color: #F26337;
+    color: #F39800;
 }
 
 /* PC: Figma — 1차 좌측 정렬(Title/title-2), 서브 좌측 정렬(Title/title-3), 열 200px */
@@ -390,7 +398,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
-    color: #F26337;
+    color: #F39800;
 }
 
 .btn_inquiry {
@@ -400,7 +408,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     align-items: center;
     gap: 10px;
     border-radius: 9999px;
-    background: #F26337; /* Primary Color */
+    background: #F39800; /* Primary Color */
     text-decoration: none;
     transition: background 0.3s ease;
 }
@@ -502,12 +510,12 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 /* 호버 시 스타일 (서브메뉴와 동일한 오렌지 톤) */
 .lang_list li a:hover {
     background: #FBEAE7; /* Primary-50 */
-    color: #F26337; /* Primary-Main */
+    color: #F39800; /* Primary-Main */
 }
 
 /* 현재 선택된 언어 강조 (필요 시 클래스 추가해서 사용) */
 .lang_list li a.current {
-    color: #F26337;
+    color: #F39800;
     font-weight: 700;
 }
 /* 아래 중복 선언 제거: 상단 lang_list 정의를 사용 */
@@ -606,7 +614,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
     transition: color 0.3s;
 }
 
-.menu_dep2 li a:hover { color: #F26337; }
+.menu_dep2 li a:hover { color: #F39800; }
 
 @media (min-width: 1025px) {
     /* PC만: GNB·메가 호버 시 상단 바 높이 소폭 감소(align-items:center로 요소는 계속 중앙) */
@@ -1213,7 +1221,7 @@ input, textarea { outline: none; font-family: var(--pretendard); }
 
 /* 호버: 주황색 배경 + 흰 아이콘/글씨 */
 .quick_item:hover {
-    background: #F26337;
+    background: #F39800;
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(243, 152, 0, 0.3);
 }

@@ -6,7 +6,8 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 
 // 메인 히어로 슬라이드 — 이미지 폴더의 음식 톤 png를 일관성 있게 노출
-const HERO_SLIDES = ['main', 'main1', 'main2', 'main3'];
+// (main.png 는 클라이언트 요청으로 히어로에서 제외)
+const HERO_SLIDES = ['main1', 'main2', 'main3'];
 
 export default function HeroSwiper() {
   return (

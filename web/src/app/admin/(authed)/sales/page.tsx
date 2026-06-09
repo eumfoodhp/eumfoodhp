@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 const STATUS_LABEL: Record<string, { text: string; color: string }> = {
   pending: { text: '대기', color: '#EF4444' },
-  contacted: { text: '연락중', color: '#F26337' },
+  contacted: { text: '연락중', color: '#F39800' },
   closed: { text: '완료', color: '#10B981' },
 };
 

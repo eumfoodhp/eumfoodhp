@@ -295,7 +295,7 @@
     top: 34px;
     bottom: 0;
     width: 1px;
-    background: #F26337;
+    background: #F39800;
     z-index: 1;
 }
 
@@ -330,8 +330,8 @@
     border-radius: 50%;
     background-image: radial-gradient(
         circle,
-        #F26337 0%,
-        #F26337 35%,
+        #F39800 0%,
+        #F39800 35%,
         #FBEAE7 45%,
         #FBEAE7 100%
     );
@@ -359,7 +359,7 @@
 }
 
 .year_tit {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 32px;
     font-weight: 700;
@@ -428,7 +428,7 @@
 /* 왼쪽 고정 타이틀 */
 .timeline_left { width: 400px; }
 .sticky_content { position: sticky; top: 120px; }
-.timeline_left .period { color: #F26337; font-size: 18px; font-weight: 500; display: block;}
+.timeline_left .period { color: #F39800; font-size: 18px; font-weight: 500; display: block;}
 .timeline_left .main_tit { font-size: 36px; color: #222; line-height: 1.4; font-weight: 700; }
 .side_img_box { margin-top: 40px; border-radius: 15px; overflow: hidden; width: 700px; }
 
@@ -457,7 +457,7 @@
 
 /* 상단 정보 영역 */
 .process_top_info { display: flex; justify-content: space-between; align-items: flex-end; align-self: stretch; margin-bottom: 60px; }
-.process_top_info .sub_tit { color: #F26337; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
+.process_top_info .sub_tit { color: #F39800; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
 .process_top_info .main_tit { color: #222; font-size: 42px; font-weight: 700; line-height: 56px; letter-spacing: -1.05px; }
 .process_top_info .desc_txt {
     width: 1030px;
@@ -477,7 +477,7 @@
 /* Step 뱃지 */
 .step_badge { 
     display: inline-flex; padding: 12px 20px; justify-content: center; align-items: center; 
-    border-radius: 4px; background: #F26337; color: #FFF; font-size: 14px; font-weight: 500; 
+    border-radius: 4px; background: #F39800; color: #FFF; font-size: 14px; font-weight: 500; 
     line-height: 22px; letter-spacing: -0.35px; z-index: 2;
 }
 
@@ -502,7 +502,7 @@
 
 /* 2. [Hover 효과] 뱃지는 주황색으로 변하되, 위치는 고정 */
 .step_item:hover .step_badge {
-    background: #F26337 !important;
+    background: #F39800 !important;
     color: #FFF !important;
     /* transform: translateY(-3px); <- 이 줄을 삭제하여 위치를 고정합니다 */
 }
@@ -513,7 +513,7 @@
 }
 
 .step_item:hover .step_tit {
-    color: #F26337; /* 제목 컬러 강조 */
+    color: #F39800; /* 제목 컬러 강조 */
 }
 
 .step_item:hover .step_img {
@@ -638,7 +638,7 @@
 }
 
 .sub_tit {
-    color: #F26337;
+    color: #F39800;
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -674,7 +674,7 @@
     align-items: center;
     gap: 8px;
     border-radius: 4px;
-    background: #F26337;
+    background: #F39800;
     flex-shrink: 0; /* 버튼 형태 유지 */
     text-decoration: none;
     margin-bottom: 8px; /* 메인 타이틀 높이에 맞춰 시각적 보정 (필요시 조절) */
@@ -689,7 +689,7 @@
     padding-bottom: 20px;          /* 하단 경계선이 필요할 경우 대비 */
     box-sizing: border-box;
 }
-.product_top_area .sub_tit { color: #F26337; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
+.product_top_area .sub_tit { color: #F39800; font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.45px; }
 .product_top_area .main_tit { color: #222; font-size: 42px; font-weight: 700; line-height: 56px; letter-spacing: -1.05px; margin-bottom: 20px; }
 
 /* 회색 요약 박스 */
@@ -701,7 +701,7 @@
 
 /* 연락처 안내 */
 .contact_info { color: #222; font-size: 20px; font-weight: 500; line-height: 30px; letter-spacing: -0.5px; }
-.contact_info .highlight { color: #F26337; }
+.contact_info .highlight { color: #F39800; }
 
 /* 제품 그리드 */
 .product_grid { display: grid; grid-template-columns: repeat(4, 377px); gap: 60px 28px; }
@@ -753,7 +753,7 @@
     color: #767676; font-size: 16px; font-weight: 300; line-height: 26px; letter-spacing: -0.4px;
 }
 #sub_contents.product_page .product_list_section .spec_group .spec_val {
-    color: #22C55E; font-size: 16px; font-weight: 500; line-height: 26px; letter-spacing: -0.4px;   /* 보관/1KG 스펙값 주황→초록 (사용자 요청) */
+    color: #F39800; font-size: 16px; font-weight: 500; line-height: 26px; letter-spacing: -0.4px;   /* 보관/1KG 스펙값 → 주황 (사용자 요청) */
 }
 
 /* --- ≤1024 : 3열 --- */
@@ -847,7 +847,7 @@
 /* 보관/냉장 정보 */
 .spec_info { display: flex; align-items: center; gap: 8px; }
 .spec_info span { color: #767676; font-size: 16px; font-weight: 300; line-height: 22px; letter-spacing: -0.4px; }
-.spec_info span.orange { color: #F26337; font-weight: 500; }
+.spec_info span.orange { color: #F39800; font-weight: 500; }
 .spec_info .v_line { width: 1px; height: 14px; background: #E5E5EC; }
 
 /* 1. 스크롤 등장 초기 상태 */
@@ -886,7 +886,7 @@
 }
 
 .product_card:hover h4 {
-    color: #F26337;
+    color: #F39800;
 }
 
 .product_card:hover .prod_info {
@@ -968,7 +968,7 @@
 
 /* 1. CEO Introduce 태그 */
 .ceo_tag {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 24px;
     font-weight: 500;
@@ -1177,7 +1177,7 @@
 
 /* 4. 카테고리 라벨 */
 .category_label {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px; /* title 3 */
     font-weight: 500;
@@ -1242,7 +1242,7 @@
     top: 8px;
     bottom: 8px;
     width: 5px;
-    background: #F26337;
+    background: #F39800;
     border-radius: 3px;
 }
 
@@ -1287,7 +1287,7 @@
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: #F26337;
+    background: #F39800;
     color: #fff;
     font-size: 13px;
     font-weight: 800;
@@ -1316,7 +1316,7 @@
     transition: border-color 0.15s ease, transform 0.15s ease;
 }
 .haccp_benefit ul li:hover {
-    border-color: #F26337;
+    border-color: #F39800;
     transform: translateY(-2px);
 }
 .haccp_benefit ul li::before {
@@ -1352,7 +1352,7 @@
 /* 11. 그리드 레이아웃 — 한 줄 4개, 좌우 끝까지 (이점 박스 폭과 정렬) */
 .cert_grid {
     display: grid;
-    grid-template-columns: repeat(4, 260px);
+    grid-template-columns: repeat(4, 240px);   /* 인증서 살짝 축소 (사용자 요청) */
     justify-content: space-between;
     gap: 30px;
     width: 100%;
@@ -1372,7 +1372,7 @@
 /* 13. 이미지 박스 — 배경/보더 제거. 인증서 본체를 정중앙 정렬 */
 .cert_img_box {
     display: flex;
-    height: 380px;
+    height: 352px;
     /* 좌측 정렬 — 라벨 좌측 끝과 인증서 이미지 좌측 끝 정렬 */
     justify-content: flex-start;
     align-items: center;
@@ -1384,8 +1384,8 @@
 
 /* 인증서 본체 — 깊은 그림자로 입체감 강조 + 확대 */
 .cert_img_inner {
-    width: 260px;
-    height: 348px;
+    width: 240px;
+    height: 320px;
     border-radius: 4px;
     box-shadow:
         0 18px 36px -8px rgba(34, 34, 34, 0.28),
@@ -1571,7 +1571,7 @@
 }
 
 .loc_cate {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -1783,7 +1783,7 @@
 }
 
 .ov_cate {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -1913,7 +1913,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #F26337;
+    color: #F39800;
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
@@ -2008,7 +2008,7 @@
 }
 
 .area_cate {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -2087,7 +2087,7 @@
 
 .area_text_wrap .num,
 .area_text_wrap .sub_ttl {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 20px;
     font-weight: 500;

@@ -13,7 +13,7 @@
     display: block;
     font-size: 13px;
     font-weight: 700;
-    color: #F26337;
+    color: #F39800;
     letter-spacing: 0.4px;
     text-transform: uppercase;
     margin-bottom: 12px;
@@ -43,7 +43,7 @@
     color: #1F2937;
 }
 .board_toolbar .total b {
-    color: #F26337;
+    color: #F39800;
     font-weight: 700;
     margin-left: 4px;
 }
@@ -120,7 +120,7 @@
     text-align: center;
 }
 .board_line_list .col_no.pinned {
-    color: #F26337;
+    color: #F39800;
     font-weight: 700;
 }
 .board_line_list .col_title {
@@ -202,7 +202,7 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    color: #F26337;
+    color: #F39800;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.4px;
@@ -213,7 +213,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #F26337;
+    background: #F39800;
     display: inline-block;
 }
 .board_hero_title {
@@ -257,7 +257,7 @@
     transition: background 0.15s ease, color 0.15s ease;
 }
 .board_hero_nav--next {
-    background: #F26337;
+    background: #F39800;
     color: #fff;
 }
 .board_hero_nav:hover { filter: brightness(0.95); }
@@ -321,7 +321,7 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    color: #F26337;
+    color: #F39800;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.4px;
@@ -331,7 +331,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #F26337;
+    background: #F39800;
 }
 .board_grid .title {
     margin: 4px 0 0;
@@ -382,7 +382,7 @@
     justify-content: center;
     padding: 6px 14px;
     background: #FFF1EA;
-    color: #F26337;
+    color: #F39800;
     border-radius: 999px;
     font-size: 12px;
     font-weight: 700;
@@ -408,7 +408,7 @@
     align-items: center;
     gap: 8px;
     padding: 12px 22px;
-    background: #F26337;
+    background: #F39800;
     color: #fff;
     border-radius: 8px;
     font-size: 14px;
@@ -448,7 +448,7 @@
     padding: 0 10px;
 }
 .board_pagination .active {
-    background: #F26337;
+    background: #F39800;
     color: #fff;
     font-weight: 700;
 }
@@ -528,7 +528,7 @@
     font-size: 14px;
 }
 .board_view_link a {
-    color: #F26337;
+    color: #F39800;
     text-decoration: none;
     font-weight: 600;
 }
@@ -544,7 +544,7 @@
     justify-content: center;
     min-width: 120px;
     padding: 10px 28px;
-    background: #F26337;
+    background: #F39800;
     color: #fff;
     border-radius: 6px;
     font-size: 14px;

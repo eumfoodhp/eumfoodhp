@@ -379,7 +379,7 @@
     transform: none !important;
     width: 1580px !important;
     max-width: 95% !important;
-    margin: 16px auto 24px !important;
+    margin: 16px auto 40px !important;     /* 하단 마진↑ — 헤더↔히어로 간격 더 (사용자 요청) */
     padding: 0 !important;
     border-radius: 18px !important;
     border: 1px solid rgba(0, 0, 0, 0.04) !important;
@@ -443,6 +443,13 @@
     }
 }
 
+/* 햄버거 메뉴 열린 상태 — 햄버거 버튼을 메뉴 오버레이(#mo_nav z-index 3000) 위로 올려서
+   다시 누르면 닫히게(토글). 메뉴가 햄버거를 덮어 클릭이 안 먹던 문제 해결. */
+body.menu_open .mo_menu_btn {
+    position: relative !important;
+    z-index: 3001 !important;
+}
+
 /* 모바일 GNB는 common.css 1024px↓에서 display:none. 우측 아이콘은 그대로 모두 표시 */
 
 /* 풀메뉴 = 요즘 스타일 단일 컬럼, 4그룹 컬럼 배치 강제 해제 */
@@ -498,15 +505,15 @@
     padding: 0 !important;
     border-radius: 12px;
     background: #fff;
-    color: #F26337 !important;
+    color: #F39800 !important;
     border: 1px solid #eee;
 }
 .mo_extra_link.mo_extra_icon_only:hover {
     background: rgba(243, 152, 0, 0.08);
-    border-color: #F26337;
+    border-color: #F39800;
 }
 .mo_extra_icon_only svg {
-    stroke: #F26337;
+    stroke: #F39800;
 }
 .mo_extra_link,
 .mo_extra_lang {
@@ -523,11 +530,11 @@
 }
 .mo_extra_link:hover {
     background: rgba(243, 152, 0, 0.08);
-    color: #F26337 !important;
+    color: #F39800 !important;
 }
 .mo_extra_icon {
     flex-shrink: 0;
-    color: #F26337;
+    color: #F39800;
 }
 .mo_extra_lang .lang_toggle_btn {
     display: inline-flex !important;
@@ -621,7 +628,7 @@
 .gnb_main_link:hover span,
 .gnb_main_link:focus-visible,
 .gnb_main_link:focus-visible span {
-    color: #F26337 !important;
+    color: #F39800 !important;
 }
 
 /* 메가 서브메뉴 텍스트 — 흰 카드 위로 옅은 톤, GNB 와 사이즈 차이 줄임 */
@@ -633,7 +640,7 @@
 }
 .mega_sub_list a:hover,
 .mega_sub_list a:focus-visible {
-    color: #F26337 !important;
+    color: #F39800 !important;
     text-decoration: none !important;
 }
 
@@ -825,7 +832,7 @@ html, body {
         padding: 0 !important;
         font-weight: 700 !important;
         /* 메인 텍스트 주황색 (사용자 요청) */
-        color: #F26337 !important;
+        color: #F39800 !important;
         flex-shrink: 0 !important;
     }
     /* 모바일 카테고리 옆 가로선 제거 (사용자 요청) */
@@ -861,7 +868,7 @@ html, body {
     }
     #mo_nav .menu_dep2 li a:hover {
         background: transparent !important;
-        color: #F26337 !important;
+        color: #F39800 !important;
     }
     #mo_nav.full_menu_overlay {
         position: fixed !important;
@@ -997,7 +1004,7 @@ html, body {
         padding: 0 !important;
         font-weight: 700 !important;
         /* 메인 텍스트 주황색 (모바일과 통일) */
-        color: #F26337 !important;
+        color: #F39800 !important;
         flex-shrink: 0 !important;
     }
     #mo_nav .menu_dep1::after {
@@ -1035,7 +1042,7 @@ html, body {
     }
     #mo_nav .menu_dep2 li a:hover {
         background: transparent !important;
-        color: #F26337 !important;
+        color: #F39800 !important;
     }
 
     #mo_nav .mo_nav_top {
@@ -1189,7 +1196,7 @@ html, body {
     padding: 0 !important;
     border-radius: 12px !important;
     background: #fff !important;
-    color: #F26337 !important;
+    color: #F39800 !important;
     border: 1px solid rgba(0, 0, 0, 0.04) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
     text-decoration: none !important;
@@ -1207,7 +1214,7 @@ html, body {
     background: #fff !important;
     border: none !important;
     border-radius: 50% !important;
-    color: #2563EB !important;
+    color: #F39800 !important;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10), 0 2px 4px rgba(0, 0, 0, 0.04) !important;
     text-decoration: none !important;
@@ -1219,8 +1226,8 @@ html, body {
 }
 .quick_menu .quick_contact svg,
 .quick_menu .quick_contact svg path {
-    stroke: #2563EB !important;
-    color: #2563EB !important;
+    stroke: #F39800 !important;
+    color: #F39800 !important;
     fill: none !important;
 }
 
@@ -1249,7 +1256,7 @@ html, body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
 }
 .quick_menu .quick_item svg {
-    stroke: #F26337 !important;
+    stroke: #F39800 !important;
 }
 .quick_menu .quick_item.quick_lang {
     position: relative;
@@ -1278,7 +1285,7 @@ html, body {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    color: #F26337 !important;
+    color: #F39800 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
     text-decoration: none;
@@ -1298,8 +1305,8 @@ html, body {
 .lang_toggle_btn svg,
 .mo_menu_btn svg {
     /* 기본: 주황 (자사몰/카탈로그/문의/언어). 햄버거는 아래에서 초록 override */
-    stroke: #F26337 !important;
-    color: #F26337 !important;
+    stroke: #F39800 !important;
+    color: #F39800 !important;
     width: 22px !important;
     height: 22px !important;
 }
@@ -1308,8 +1315,8 @@ html, body {
 .mo_menu_btn,
 .mo_menu_btn svg,
 .mo_menu_btn svg line {
-    stroke: #4CAF50 !important;
-    color: #4CAF50 !important;
+    stroke: #90C41F !important;
+    color: #90C41F !important;
 }
 
 .util_area {
@@ -1465,8 +1472,8 @@ html[lang="zh"] .dl_title {
 .proc_cards_more,
 .prod_more_link,
 .notice_more_link {
-    border: 1.5px solid #F26337 !important;
-    color: #F26337 !important;
+    border: 1.5px solid #F39800 !important;
+    color: #F39800 !important;
     background: #fff !important;
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
 }
@@ -1477,9 +1484,9 @@ html[lang="zh"] .dl_title {
 .proc_cards_more:hover,
 .prod_more_link:hover,
 .notice_more_link:hover {
-    background: #F26337 !important;
+    background: #F39800 !important;
     color: #fff !important;
-    border-color: #F26337 !important;
+    border-color: #F39800 !important;
 }
 
 .ov_more_btn svg,
@@ -1657,7 +1664,7 @@ html[lang="zh"] .dl_title {
 
 .about_onepage .section_header_title,
 .business_onepage .section_header_title {
-    color: #F26337 !important;
+    color: #F39800 !important;
 }
 
 /* SectionHeader 폭 정확히 강제 — 더 높은 specificity */
@@ -1677,7 +1684,7 @@ html[lang="zh"] .dl_title {
    ============================================================ */
 .gnb_main_link.is_active,
 .gnb_main_link.is_active span {
-    color: #F26337 !important;
+    color: #F39800 !important;
 }
 
 .gnb_main_link.is_active {
@@ -1888,7 +1895,7 @@ html[lang="zh"] .dl_title {
     transform: translate(-50%, -50%);
     width: 8px;
     height: 8px;
-    background: #22C55E;
+    background: #90C41F;
     border-radius: 50%;
     box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(34, 197, 94, 0.25);
     z-index: 11;
@@ -2112,8 +2119,8 @@ html[lang="zh"] .dl_title {
 /* 좌측: 점 (왼쪽 끝) + 선 (점 우측 ~ 우측 끝) */
 .story_section_head .story_section_title::before {
     background-image:
-        radial-gradient(circle 7px at 7px center, #F26337 99%, transparent 100%),
-        linear-gradient(#F26337, #F26337);
+        radial-gradient(circle 7px at 7px center, #F39800 99%, transparent 100%),
+        linear-gradient(#F39800, #F39800);
     background-repeat: no-repeat, no-repeat;
     background-position: left center, 20px center;
     background-size: 14px 14px, calc(100% - 20px) 2px;
@@ -2121,8 +2128,8 @@ html[lang="zh"] .dl_title {
 /* 우측: 선 (좌측 ~ 점 좌측) + 점 (오른쪽 끝) */
 .story_section_head .story_section_title::after {
     background-image:
-        radial-gradient(circle 7px at calc(100% - 7px) center, #F26337 99%, transparent 100%),
-        linear-gradient(#F26337, #F26337);
+        radial-gradient(circle 7px at calc(100% - 7px) center, #F39800 99%, transparent 100%),
+        linear-gradient(#F39800, #F39800);
     background-repeat: no-repeat, no-repeat;
     background-position: right center, left center;
     background-size: 14px 14px, calc(100% - 20px) 2px;
@@ -2140,13 +2147,14 @@ html[lang="zh"] .dl_title {
    flex-direction row 라서 override. */
 #sub_contents .product_card .name_row,
 #sub_contents [class*="product_"] .name_row {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 2px !important;
+    flex-direction: row !important;        /* 영문명을 한글명 옆으로 (사용자 요청) */
+    align-items: baseline !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
 }
 #sub_contents .product_card .name_row .en,
 #sub_contents [class*="product_"] .name_row .en {
-    color: #22C55E !important;   /* 제품 카드 영문 서브 주황 → 초록 (사용자 요청) */
+    color: #767676 !important;   /* 제품 카드 영문 서브 초록 → 회색 (사용자 요청) */
     font-weight: 600 !important;
     font-size: 12px !important;
     letter-spacing: 0.05em;
@@ -2168,7 +2176,7 @@ html[lang="zh"] .dl_title {
     font-style: normal;
     font-size: 0.32em;
     font-weight: 700;
-    color: #F26337;   /* 영문 부제 초록 → 주황 (사용자 요청) */
+    color: #F39800;   /* 영문 부제 초록 → 주황 (사용자 요청) */
     letter-spacing: 0.12em;
     text-transform: uppercase;
     line-height: 1;
@@ -2180,6 +2188,16 @@ html[lang="zh"] .dl_title {
 @media (max-width: 640px) {
     .story_section_title_inner { gap: 4px; }
     .story_section_title_en { font-size: 0.42em; letter-spacing: 0.08em; }
+}
+
+/* 제품 페이지 — 영어 부제(주황)를 한글 아래로 (세로 배치, 사용자 요청) */
+#sub_contents.product_page .story_section_title_inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+#sub_contents.product_page .story_section_title_en {
+    font-size: 0.4em;
 }
 
 /* 타이틀 아래 가로선 — 제거 (사용자 요청) */
@@ -2203,15 +2221,15 @@ html[lang="zh"] .dl_title {
     /* circle radius (6) + cx (6) = 12 = box width → 정확히 박스 안에 맞음 */
     .story_section_head .story_section_title::before {
         background-image:
-            radial-gradient(circle 6px at 6px center, #F26337 99%, transparent 100%),
-            linear-gradient(#F26337, #F26337);
+            radial-gradient(circle 6px at 6px center, #F39800 99%, transparent 100%),
+            linear-gradient(#F39800, #F39800);
         background-size: 12px 12px, calc(100% - 18px) 2px;
         background-position: left center, 18px center;
     }
     .story_section_head .story_section_title::after {
         background-image:
-            radial-gradient(circle 6px at calc(100% - 6px) center, #F26337 99%, transparent 100%),
-            linear-gradient(#F26337, #F26337);
+            radial-gradient(circle 6px at calc(100% - 6px) center, #F39800 99%, transparent 100%),
+            linear-gradient(#F39800, #F39800);
         background-size: 12px 12px, calc(100% - 18px) 2px;
         background-position: right center, left center;
     }
@@ -2230,15 +2248,15 @@ html[lang="zh"] .dl_title {
     /* circle radius (5) + cx (5) = 10 → 박스 안 (좌측 잘림 fix) */
     .story_section_head .story_section_title::before {
         background-image:
-            radial-gradient(circle 5px at 5px center, #F26337 99%, transparent 100%),
-            linear-gradient(#F26337, #F26337);
+            radial-gradient(circle 5px at 5px center, #F39800 99%, transparent 100%),
+            linear-gradient(#F39800, #F39800);
         background-size: 10px 10px, calc(100% - 16px) 2px;
         background-position: left center, 16px center;
     }
     .story_section_head .story_section_title::after {
         background-image:
-            radial-gradient(circle 5px at calc(100% - 5px) center, #F26337 99%, transparent 100%),
-            linear-gradient(#F26337, #F26337);
+            radial-gradient(circle 5px at calc(100% - 5px) center, #F39800 99%, transparent 100%),
+            linear-gradient(#F39800, #F39800);
         background-size: 10px 10px, calc(100% - 16px) 2px;
         background-position: right center, left center;
     }
@@ -2258,7 +2276,7 @@ html[lang="zh"] .dl_title {
 .next_section_divider {
     width: 100%;
     height: 4px;
-    background-image: radial-gradient(circle, #22C55E 1.6px, transparent 1.8px);
+    background-image: radial-gradient(circle, #90C41F 1.6px, transparent 1.8px);
     background-size: 12px 4px;
     background-repeat: repeat-x;
     background-position: center;
@@ -2427,7 +2445,7 @@ html[lang="zh"] .dl_title {
 #sub_contents.product_page .sauce_section .pkg_subhead_en {
     display: block;
     margin-top: 4px;
-    color: #22C55E;
+    color: #767676;        /* 소스 영문 부제 초록 → 회색(제품명 영문과 동일, 사용자 요청) */
     font-weight: 500;
     font-size: 18px;
     letter-spacing: -0.45px;
@@ -2440,7 +2458,7 @@ html[lang="zh"] .dl_title {
     margin-left: 10px;
     font-size: 13px;
     font-weight: 400;
-    color: #80CFA0;
+    color: #767676;        /* note 영문도 회색 통일 (사용자 요청) */
     letter-spacing: -0.2px;
     vertical-align: middle;
 }
@@ -2500,8 +2518,8 @@ html[lang="zh"] .dl_title {
 }
 .history_tab_btn.is_active {
     background: #FFF6EC;
-    border-left-color: #F26337;
-    color: #F26337;
+    border-left-color: #F39800;
+    color: #F39800;
     font-weight: 700;
 }
 
@@ -2550,7 +2568,7 @@ html[lang="zh"] .dl_title {
     margin: 0;
     font-size: 30px;
     font-weight: 800;
-    color: #F26337;
+    color: #F39800;
     letter-spacing: -0.5px;
     line-height: 1;
     padding-bottom: 12px;
@@ -2582,7 +2600,7 @@ html[lang="zh"] .dl_title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #F26337;
+    background: #F39800;
 }
 
 .history_tabbed_empty {
@@ -2630,7 +2648,7 @@ html[lang="zh"] .dl_title {
     }
     .history_tab_btn.is_active {
         border-left-color: transparent;
-        border-bottom-color: #F26337;
+        border-bottom-color: #F39800;
     }
     .history_year_grid {
         grid-template-columns: 1fr;
@@ -2685,13 +2703,13 @@ html[lang="zh"] .dl_title {
 }
 
 .qjd_link:hover .qjd_dot {
-    border-color: #F26337;
+    border-color: #F39800;
     transform: scale(1.2);
 }
 
 .qjd_link.is_active .qjd_dot {
-    background: #F26337;
-    border-color: #F26337;
+    background: #F39800;
+    border-color: #F39800;
     transform: scale(1.4);
     box-shadow: 0 0 0 4px rgba(243, 152, 0, 0.15);
 }
@@ -2732,7 +2750,7 @@ html[lang="zh"] .dl_title {
 .qjd_tooltip_num {
     font-size: 11px;
     font-weight: 700;
-    color: #F26337;
+    color: #F39800;
     letter-spacing: 0.06em;
     font-variant-numeric: tabular-nums;
 }
@@ -2955,7 +2973,7 @@ html[lang="zh"] .dl_title {
     -webkit-overflow-scrolling: touch;
     padding: 8px 0 24px;
     scrollbar-width: thin;
-    scrollbar-color: #F26337 #F3F4F6;
+    scrollbar-color: #F39800 #F3F4F6;
 }
 
 .history_h_track::-webkit-scrollbar {
@@ -2966,7 +2984,7 @@ html[lang="zh"] .dl_title {
     border-radius: 4px;
 }
 .history_h_track::-webkit-scrollbar-thumb {
-    background: #F26337;
+    background: #F39800;
     border-radius: 4px;
 }
 
@@ -2995,10 +3013,10 @@ html[lang="zh"] .dl_title {
 .history_h_period {
     margin: 0 0 20px;
     padding-bottom: 14px;
-    border-bottom: 2px solid #F26337;
+    border-bottom: 2px solid #F39800;
     font-size: 20px;
     font-weight: 700;
-    color: #F26337;
+    color: #F39800;
     letter-spacing: -0.3px;
     position: sticky;
     top: 0;
@@ -3055,7 +3073,7 @@ html[lang="zh"] .dl_title {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #F26337;
+    background: #F39800;
 }
 
 /* 가로 스크롤 힌트 (좌우 화살표 + 텍스트) */
@@ -3100,4 +3118,99 @@ html[lang="zh"] .dl_title {
     .history_h_list li {
         font-size: 13px;
     }
+}
+
+/* ============================================================
+   메가메뉴 재구성 (clean rebuild) — 풀폭 5열 드롭다운.
+   기존 subgrid/abspos/max-height 꼬임을 #header 스코프 + !important 로 전부 덮어씀.
+   한 열만 뜨던 문제 → 패널을 100vw 풀폭으로 강제, inner 는 repeat(5,1fr) 가운데. (사용자 요청)
+   ============================================================ */
+@media (min-width: 1025px) {
+    #header .gnb_wrap { position: relative !important; }
+
+    #header .mega_panel {
+        position: absolute !important;
+        top: 100% !important;
+        left: 50% !important;
+        right: auto !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 100vw !important;
+        margin: 0 0 0 -50vw !important;       /* 풀 뷰포트, 가운데 정렬 */
+        transform: none !important;
+        display: block !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: #fff !important;
+        border-top: 1px solid #ECECEC !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.10) !important;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.22s ease, visibility 0s linear 0.22s !important;
+        z-index: 80 !important;
+    }
+    #header:has(.gnb_wrap:hover) .mega_panel,
+    #header:has(.mega_panel:hover) .mega_panel {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transition: opacity 0.22s ease !important;
+    }
+    #header .mega_menu_backdrop { display: none !important; }
+
+    #header .mega_panel_inner {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        column-gap: 32px !important;
+        row-gap: 0 !important;
+        width: auto !important;
+        max-width: 1180px !important;
+        margin: 0 auto !important;
+        padding: 34px 40px 42px !important;
+    }
+    #header .mega_col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+    }
+    #header .mega_col_title {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 16px !important;
+        padding-bottom: 12px !important;
+        border-bottom: 2px solid #F39800 !important;
+        color: #1a1a1a !important;
+        font-size: 17px !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.3px !important;
+        text-decoration: none !important;
+    }
+    #header .mega_col_title:hover { color: #F39800 !important; }
+    #header .mega_sub_list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 13px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        width: 100% !important;
+    }
+    #header .mega_sub_list li { width: 100% !important; }
+    #header .mega_sub_list a {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        color: #595959 !important;
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        line-height: 1.4 !important;
+        letter-spacing: -0.3px !important;
+        text-decoration: none !important;
+        transition: color 0.15s ease !important;
+    }
+    #header .mega_sub_list a:hover { color: #F39800 !important; }
 }

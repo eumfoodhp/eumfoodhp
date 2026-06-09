@@ -10,12 +10,14 @@ export async function createNotice(formData: FormData) {
   const content = String(formData.get('content') ?? '').trim();
   const category = String(formData.get('category') ?? '').trim() || null;
   const is_pinned = formData.get('is_pinned') === 'on';
+  const title_zh = String(formData.get('title_zh') ?? '').trim() || null;
+  const content_zh = String(formData.get('content_zh') ?? '').trim() || null;
 
   if (!title || !content) throw new Error('제목과 내용을 입력해주세요.');
 
   const { error } = await supabase
     .from('notices')
-    .insert({ title, content, category, is_pinned });
+    .insert({ title, content, category, is_pinned, title_zh, content_zh });
   if (error) throw new Error(error.message);
 
   revalidatePath('/admin/notices');
@@ -30,12 +32,14 @@ export async function updateNotice(formData: FormData) {
   const content = String(formData.get('content') ?? '').trim();
   const category = String(formData.get('category') ?? '').trim() || null;
   const is_pinned = formData.get('is_pinned') === 'on';
+  const title_zh = String(formData.get('title_zh') ?? '').trim() || null;
+  const content_zh = String(formData.get('content_zh') ?? '').trim() || null;
 
   if (!id || !title || !content) throw new Error('필수 항목 누락.');
 
   const { error } = await supabase
     .from('notices')
-    .update({ title, content, category, is_pinned })
+    .update({ title, content, category, is_pinned, title_zh, content_zh })
     .eq('id', id);
   if (error) throw new Error(error.message);
 

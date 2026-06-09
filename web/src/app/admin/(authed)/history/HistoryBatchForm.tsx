@@ -59,10 +59,17 @@ export default function HistoryBatchForm({ initialYear }: { initialYear?: number
               />
               <input
                 type="text"
+                name="title_zh"
+                placeholder="제목 (中文, 선택)"
+                aria-label="제목 中文"
+                style={{ flex: 2, minWidth: 0 }}
+              />
+              <input
+                type="text"
                 name="description"
                 placeholder="설명 (선택)"
                 aria-label="설명(선택)"
-                style={{ flex: 2, minWidth: 0 }}
+                style={{ flex: 1, minWidth: 0 }}
               />
               <button
                 type="button"

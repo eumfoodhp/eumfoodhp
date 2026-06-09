@@ -58,7 +58,7 @@
 .facility_block_title_en {
     font-size: 13px;
     font-weight: 600;
-    color: #22C55E;   /* Plant A/B 영어 → 초록 (사용자 요청) */
+    color: #90C41F;   /* Plant A/B 영어 → 초록 (사용자 요청) */
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -97,7 +97,7 @@
 }
 
 .facility_sub_tit {
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     line-height: 28px;
@@ -139,8 +139,8 @@
 }
 
 .fac_tab_item.active {
-    background: #F26337;
-    border-color: #F26337;
+    background: #F39800;
+    border-color: #F39800;
     color: #fff;
     cursor: default;
 }
@@ -201,7 +201,7 @@
 .facility_name_label {
     flex-shrink: 0;
     min-width: 48px;
-    color: #F26337;
+    color: #F39800;
     font-family: 'Pretendard', sans-serif;
     font-size: 18px;
     line-height: 28px;
@@ -228,7 +228,7 @@
 }
 .facility_name_en {
     /* 영문 설비명 — 초록 작은 볼드 uppercase (사용자 요청) */
-    color: #22C55E;
+    color: #90C41F;
     font-family: 'Pretendard', sans-serif;
     font-size: 13px;
     line-height: 1.4;

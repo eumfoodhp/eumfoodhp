@@ -73,7 +73,7 @@
 .section_header_title {
     font-size: 28px;
     font-weight: 700;
-    color: #F26337;
+    color: #F39800;
     letter-spacing: -0.6px;
     line-height: 1.2;
     text-align: left;
@@ -91,7 +91,7 @@
 }
 
 .section_header_link:hover {
-    color: #F26337;
+    color: #F39800;
 }
 
 /* 태블릿 */

@@ -42,13 +42,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     const supabase = getSupabase();
     const { data: entries } = await supabase
       .from('history_entries')
-      .select('year, month, title, sort_order')
+      .select('*')   // * — ZH 컬럼 추가 전에도 에러 없이 DB 한글 로드 (title_zh undefined → fallback)
       .order('year', { ascending: false })
       .order('sort_order', { ascending: true });
     if (entries && entries.length > 0) {
-      for (const e of entries as Array<{ year: number; title: string }>) {
+      for (const e of entries as Array<{ year: number; title: string; title_zh: string | null }>) {
         const y = String(e.year);
-        byYear[y] = (byYear[y] ?? []).concat(e.title);
+        // 중문 페이지면 title_zh (없으면 한글 fallback)
+        byYear[y] = (byYear[y] ?? []).concat(locale === 'zh' && e.title_zh ? e.title_zh : e.title);
       }
     }
   } catch {
@@ -66,9 +67,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   //   첫번째 카드: "이음푸드시스템", 두번째 카드: "화산푸드시스템"
   // 지도/QR/외부링크 검색 쿼리 — 회사 상호만으로 매칭.
   const factoryQuery = '이음푸드시스템';
-  const centerQuery = '화산푸드시스템';
   const factoryAddr = t('loc_factory_addr'); // 표시용
-  const centerAddr = t('loc_center_addr');   // 표시용
+  // 물류센터(화산푸드시스템) 카드 삭제 (사용자 요청) — 관련 query/QR 제거
 
   // (지도 이미지 클릭 링크는 사용자 요청으로 제거 — QR 코드만 유지)
 
@@ -79,11 +79,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     tmap: qr(`https://tmap.life/?q=${encodeURIComponent(factoryQuery)}`),
     kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(factoryQuery)}`),
     naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(factoryQuery)}`),
-  };
-  const centerQR = {
-    tmap: qr(`https://tmap.life/?q=${encodeURIComponent(centerQuery)}`),
-    kakao: qr(`https://map.kakao.com/?q=${encodeURIComponent(centerQuery)}`),
-    naver: qr(`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`),
   };
 
   const sections = [
@@ -324,50 +319,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     </a>
                   </div>
                 </div>
-              </div>
-            </article>
-
-            {/* 물류센터 — 정보 LEFT / 지도 RIGHT (반전) */}
-            <article className="loc_card loc_card--map_right">
-              <div className="loc_card_body">
-                <div className="loc_card_info">
-                  <span className="loc_eyebrow">{t('loc_way_to_come')}</span>
-                  <h3 className="loc_card_name">{t('loc_center_title')}</h3>
-                  <ul className="loc_card_meta">
-                    <li className="loc_meta_row">
-                      <span className="loc_meta_icon" aria-hidden="true"><PinIcon /></span>
-                      <div className="loc_meta_text">
-                        <p className="loc_meta_value">{t('loc_center_addr')}</p>
-                      </div>
-                    </li>
-                    <li className="loc_meta_row">
-                      <span className="loc_meta_icon" aria-hidden="true"><PhoneIcon /></span>
-                      <div className="loc_meta_text">
-                        <p className="loc_meta_value">TEL. {t('loc_center_tel')}</p>
-                      </div>
-                    </li>
-                  </ul>
-                  <div className="loc_qr_group">
-                    {/* 티맵 QR 제거 (사용자 요청) */}
-                    <a className="loc_qr_item" href={`https://map.kakao.com/?q=${encodeURIComponent(centerQuery)}`} target="_blank" rel="noopener noreferrer">
-                      <img src={centerQR.kakao} alt={t('loc_qr_kakao')} width={120} height={120} />
-                      <span className="loc_qr_label">{t('loc_qr_kakao')}</span>
-                    </a>
-                    <a className="loc_qr_item" href={`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`} target="_blank" rel="noopener noreferrer">
-                      <img src={centerQR.naver} alt={t('loc_qr_naver')} width={120} height={120} />
-                      <span className="loc_qr_label">{t('loc_qr_naver')}</span>
-                    </a>
-                  </div>
-                </div>
-                <a
-                  href={`https://map.naver.com/p/search/${encodeURIComponent(centerQuery)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="loc_card_map"
-                  aria-label={t('loc_map_center_alt')}
-                >
-                  <img src="/images/sub/map_center.png" alt={t('loc_map_center_alt')} width={726} height={454} loading="lazy" />
-                </a>
               </div>
             </article>
           </div>

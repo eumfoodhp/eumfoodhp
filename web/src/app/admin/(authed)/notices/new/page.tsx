@@ -15,6 +15,11 @@ export default function NewNoticePage() {
           <input id="title" type="text" name="title" required />
         </div>
 
+        <div className="admin_field">
+          <label htmlFor="title_zh">제목 (中文)</label>
+          <input id="title_zh" type="text" name="title_zh" placeholder="중문 제목 — 비우면 중문 페이지에 한글 표시" />
+        </div>
+
         <div style={{ display: 'flex', gap: 16 }}>
           <div className="admin_field" style={{ flex: 1 }}>
             <label htmlFor="category">분류</label>
@@ -30,6 +35,11 @@ export default function NewNoticePage() {
         <div className="admin_field">
           <label htmlFor="content">내용 *</label>
           <textarea id="content" name="content" required />
+        </div>
+
+        <div className="admin_field">
+          <label htmlFor="content_zh">내용 (中文)</label>
+          <textarea id="content_zh" name="content_zh" placeholder="중문 내용 — 비우면 중문 페이지에 한글 표시" />
         </div>
 
         <div className="admin_form_actions">

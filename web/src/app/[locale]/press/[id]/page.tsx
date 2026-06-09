@@ -15,6 +15,7 @@ export default async function Page({
   const { locale, id } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const zh = locale === 'zh';
 
   const supabase = await createServerSupabase();
   const { data: press } = await supabase
@@ -32,12 +33,12 @@ export default async function Page({
       <div className="sub_inner">
         <header className="board_page_head">
           <span className="eyebrow">PRESS RELEASE</span>
-          <h1>보도자료</h1>
+          <h1>{t('sub_news_press')}</h1>
         </header>
 
         <article className="board_view">
           <header className="board_view_head">
-            <h2 className="board_view_title">{press.title}</h2>
+            <h2 className="board_view_title">{zh && press.title_zh ? press.title_zh : press.title}</h2>
             <div className="board_view_meta">
               <span>작성자</span>
               <i className="dot" aria-hidden />
@@ -60,7 +61,7 @@ export default async function Page({
           )}
 
           <div className="board_view_body">
-            {(press.content ?? '').split('\n').map((line: string, i: number) => (
+            {((zh && press.content_zh ? press.content_zh : press.content) ?? '').split('\n').map((line: string, i: number) => (
               <p key={i}>{line || ' '}</p>
             ))}
           </div>
@@ -72,7 +73,7 @@ export default async function Page({
           )}
 
           <div className="board_view_foot">
-            <Link href="/press" className="board_view_back">목록으로</Link>
+            <Link href="/press" className="board_view_back">{t('contact_back_list')}</Link>
           </div>
         </article>
       </div>

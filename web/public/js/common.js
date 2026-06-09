@@ -8,6 +8,7 @@ function closeMobileNav() {
     const moOverlay = document.querySelector('.mo_overlay');
     if (moNav) moNav.classList.remove('active');
     if (moOverlay) moOverlay.classList.remove('active');
+    document.body.classList.remove('menu_open');
     document.body.style.overflow = 'unset';
 }
 
@@ -23,18 +24,30 @@ document.addEventListener('click', (e) => {
         return;
     }
 
-    // 햄버거 — 모바일 메뉴 열기
+    // 햄버거 — 모바일 메뉴 토글 (열려 있으면 닫기)
     if (target.closest('.mo_menu_btn')) {
         const moNav = document.querySelector('#mo_nav');
+        if (moNav && moNav.classList.contains('active')) {
+            closeMobileNav();   // 토글: 이미 열려 있으면 닫기
+            return;
+        }
         const moOverlay = document.querySelector('.mo_overlay');
         if (moNav) moNav.classList.add('active');
         if (moOverlay) moOverlay.classList.add('active');
+        document.body.classList.add('menu_open');
         document.body.style.overflow = 'hidden';
         return;
     }
 
-    // 닫기 — 닫기 버튼 또는 오버레이(배경) 클릭
-    if (target.closest('.mo_close_btn') || target.classList.contains('mo_overlay')) {
+    // 닫기 — 메뉴 오버레이(#mo_nav) 안에서 "링크(a)가 아닌 곳"을 누르면 어디든 닫기.
+    //   흰 박스(.menu_container)가 화면 대부분을 덮으므로, 박스 안 빈 영역/배경/닫기버튼(×)
+    //   어디를 눌러도 닫힘. 링크는 이동+자동닫힘이 처리, 아코디언 타이틀은 제외.
+    if (
+        target.classList.contains('mo_overlay') ||
+        (target.closest('#mo_nav') &&
+            !target.closest('a') &&
+            !target.closest('.mo_menu_title'))
+    ) {
         closeMobileNav();
         return;
     }

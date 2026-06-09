@@ -19,9 +19,9 @@
   "sub_facility": "시설",
   "sub_biz_process": "공정",
   "sub_prod_pickles": "절임식품",
-  "sub_prod_namul": "나물",
-  "sub_prod_braised": "조림",
-  "sub_prod_salted": "젓갈",
+  "sub_prod_namul": "나물류",
+  "sub_prod_braised": "조림류",
+  "sub_prod_salted": "양념젓갈·젓갈류",
   "sub_prod_sauce": "소스",
   "biz_proc_cat_sauce": "소스 및 액상차",
   "sub_prod_tea": "액상차",
@@ -203,15 +203,15 @@
       "link": "/products#pickles"
     },
     {
-      "name": "조림",
+      "name": "조림류",
       "link": "/products#braised"
     },
     {
-      "name": "나물",
+      "name": "나물류",
       "link": "/products#namul"
     },
     {
-      "name": "젓갈",
+      "name": "양념젓갈·젓갈류",
       "link": "/products#salted"
     },
     {
@@ -429,6 +429,8 @@
       }
     ]
   },
+  "main_prod_gallery_title": "정성으로 차린 이음푸드의 식탁",
+  "main_prod_gallery_desc": "직접 만들어 차린 이음푸드의 제품을 만나보세요.",
   "main_partner_sub": "Partner Company",
   "main_partner_title": "신뢰와 협력을 바탕으로 함께 성장해 온 주요 파트너사를 소개합니다.",
   "main_partner_logos": [
@@ -482,34 +484,6 @@
   "main_dir_sub": "Directions",
   "main_dir_title": "㈜이음푸드시스템 찾아오시는 길",
   "main_dir_desc": "진정성있는 소통으로 모두가 함께 성장하는 기업이 되겠습니다.",
-  "main_dir_tabs": {
-    "factory": {
-      "name": "㈜이음푸드시스템",
-      "addr_label": "주소",
-      "address": "경기도 용인시 처인구 이동읍 화산로 191",
-      "phone_label": "번호",
-      "phones": {
-        "품질": "031-334-6810",
-        "영업": "070-4334-5206",
-        "구매": "070-4334-5207",
-        "연구개발팀": "070-7733-5887",
-        "회계": "070-4334-5205"
-      },
-      "fax_label": "팩스",
-      "fax": "031-321-6810 / 031-334-6811"
-    },
-    "logistics": {
-      "name": "물류센터",
-      "addr_label": "주소",
-      "address": "경기도 안성시 양성로 이현리 265 B1",
-      "phone_label": "번호",
-      "phones": {
-        "대표": "031-673-1225"
-      },
-      "fax_label": "팩스",
-      "fax": "031-321-6810 / 031-334-6811"
-    }
-  },
   "main_notice_none": "새로운 소식을 준비 중입니다.",
   "main_notice_coming": "COMING SOON",
   "sub_banner_history_desc": "진정성있는 소통으로 모두가 함께 성장하는 기업이 되겠습니다.",
@@ -597,7 +571,7 @@
   "ft_tel_dev": "(연구개발팀) 070-7733-5887",
   "ft_tel_acc": "(회계) 070-4334-5205",
   "ft_fax": "FAX 031-321-6810 / 031-334-6811",
-  "ft_copyright": "Copyrights &copy; ㈜이음푸드시스템. All rights reserved.",
+  "ft_copyright": "Copyright © ㈜이음푸드시스템. All rights reserved.",
   "proc_braised_top_sub": "Operational Excellence",
   "proc_braised_top_main": "기술적측면",
   "proc_braised_top_desc": "조림식품 제조 노하우를 바탕으로 철저한 위생관리 하에 안전하게 제품을 생산하며,\n최첨단 검출 장비를 통해 이물질을 완벽하게 제어하여 신뢰할 수 있는 먹거리를 제공합니다.",
@@ -951,6 +925,7 @@
   "cert_sub_tit": "위해요소를 미리 분석하여 제거",
   "cert_desc": "보이지 않는 곳까지 정성을 다해, 고객이 믿고 찾을 수 있는 가장 안전한 식탁을 약속합니다.",
   "cert_benefit_tit": "HACCP(해썹) 인증 제조회사의 이점",
+  "cert_group_other": "기타",
   "cert_benefit_1": "1. 기본에 충실한 위생관리",
   "cert_benefit_2": "2. 검증된 식품안정성 확보",
   "cert_benefit_3": "3. 일관된 품질보증시스템",
@@ -991,7 +966,7 @@
   "loc_sub_banner_desc": "안전하고 신선한 먹거리를 전해드리기 위한 ㈜이음푸드시스템의 위치를 안내합니다.",
   "sub_tab_location": "오시는 길",
   "loc_way_to_come": "찾아오는길",
-  "loc_factory_title": "이음푸드시스템 (공장)",
+  "loc_factory_title": "㈜이음푸드시스템",
   "loc_factory_addr_label": "주소",
   "loc_factory_addr": "경기도 용인시 처인구 이동읍 화산로 191",
   "loc_factory_tel_label": "번호",
@@ -1003,15 +978,11 @@
   "loc_tel_mgmt": "회계 : 070-4334-5205",
   "loc_factory_fax_label": "팩스",
   "loc_factory_fax": "031-321-6810 / 031-334-6811",
-  "loc_center_title": "화산푸드시스템 (물류센터)",
-  "loc_center_addr": "경기도 안성시 양성로 이현리 265 B1",
-  "loc_center_tel": "031-673-1225",
   "loc_qr_label": "QR",
   "loc_qr_tmap": "티맵",
   "loc_qr_kakao": "카카오맵",
   "loc_qr_naver": "네이버지도",
   "loc_map_factory_alt": "㈜이음푸드시스템 위치 지도",
-  "loc_map_center_alt": "물류센터 위치 지도",
   "biz_title": "주요 사업",
   "biz_sub_desc": "진정성있는 소통으로 모두가 함께 성장하는 기업이 되겠습니다.",
   "biz_ov_cate": "",

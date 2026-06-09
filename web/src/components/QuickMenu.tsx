@@ -40,7 +40,11 @@ export default function QuickMenu() {
         }}
         aria-label={t('quick_top')}
       >
-        <img src="/images/common/top.png" alt="" />
+        {/* 윗화살표 — 초록(잎색) SVG (사용자 요청: 화살표 초록) */}
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#90C41F" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <line x1="12" y1="19" x2="12" y2="5" />
+          <polyline points="5 12 12 5 19 12" />
+        </svg>
       </span>
     </div>
   );

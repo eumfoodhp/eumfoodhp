@@ -52,6 +52,8 @@ export async function createPress(formData: FormData) {
   const link_url = String(formData.get('link_url') ?? '').trim() || null;
   const thumbRaw = String(formData.get('thumbnail') ?? '').trim();
   const is_pinned = formData.get('is_pinned') === 'on';
+  const title_zh = String(formData.get('title_zh') ?? '').trim() || null;
+  const content_zh = String(formData.get('content_zh') ?? '').trim() || null;
 
   if (!title || !content) throw new Error('제목과 내용을 입력해주세요.');
 
@@ -65,7 +67,7 @@ export async function createPress(formData: FormData) {
 
   const { error } = await supabase
     .from('press_releases')
-    .insert({ title, content, source, link_url, thumbnail, is_pinned });
+    .insert({ title, content, source, link_url, thumbnail, is_pinned, title_zh, content_zh });
   if (error) throw new Error(error.message);
 
   revalidatePath('/admin/press');
@@ -82,6 +84,8 @@ export async function updatePress(formData: FormData) {
   const link_url = String(formData.get('link_url') ?? '').trim() || null;
   const thumbRaw = String(formData.get('thumbnail') ?? '').trim();
   const is_pinned = formData.get('is_pinned') === 'on';
+  const title_zh = String(formData.get('title_zh') ?? '').trim() || null;
+  const content_zh = String(formData.get('content_zh') ?? '').trim() || null;
 
   if (!id || !title || !content) throw new Error('필수 항목 누락.');
 
@@ -95,7 +99,7 @@ export async function updatePress(formData: FormData) {
 
   const { error } = await supabase
     .from('press_releases')
-    .update({ title, content, source, link_url, thumbnail, is_pinned })
+    .update({ title, content, source, link_url, thumbnail, is_pinned, title_zh, content_zh })
     .eq('id', id);
   if (error) throw new Error(error.message);
 
