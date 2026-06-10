@@ -101,10 +101,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="ceo_main_group">
               {/* ceo_tag (CEO Introduce 영문 eyebrow) 제거 (사용자 요청) */}
               <div className="ceo_content_group">
-                <div className="ceo_main_title">
-                  {/* '안녕하십니까' 한 줄만 (회사명/대표 부분 제거 — 사용자 요청) */}
-                  <h3 className="bold">{t('greeting_hello_1')}</h3>
-                </div>
+                {/* 인사말 제목 '안녕하십니까' 제거 (사용자 요청) */}
                 {/* 본문 + 마지막 닫는 줄 분리 (\n\n\n 기준) — 모바일에서 마지막 줄 위 한 줄 더 */}
                 {(() => {
                   const parts = t('greeting_ceo_text').split(/\n{3,}/);
