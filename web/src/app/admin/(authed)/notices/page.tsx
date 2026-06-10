@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createServerSupabase } from '@/lib/supabase-server';
-import { deleteNotice } from './actions';
+import { deleteNotice, toggleNoticePin } from './actions';
+import NoticePinToggle from './NoticePinToggle';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,7 +26,7 @@ export default async function NoticesListPage() {
         <table className="admin_table">
           <thead>
             <tr>
-              <th style={{ width: 60 }}>고정</th>
+              <th style={{ width: 56, textAlign: 'center' }}>고정</th>
               <th>제목</th>
               <th style={{ width: 120 }}>분류</th>
               <th style={{ width: 80 }}>조회</th>
@@ -36,9 +37,12 @@ export default async function NoticesListPage() {
           <tbody>
             {notices.map((n) => (
               <tr key={n.id}>
-                <td>{n.is_pinned ? '📌' : ''}</td>
+                <td style={{ textAlign: 'center' }}>
+                  <NoticePinToggle id={n.id} pinned={!!n.is_pinned} action={toggleNoticePin} />
+                </td>
                 <td>
                   <Link href={`/admin/notices/${n.id}`} style={{ color: '#111827', fontWeight: 500, textDecoration: 'none' }}>
+                    {n.is_pinned ? <span title="상단 고정" style={{ marginRight: 6 }}>📌</span> : null}
                     {n.title}
                   </Link>
                 </td>

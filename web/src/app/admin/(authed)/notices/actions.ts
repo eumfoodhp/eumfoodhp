@@ -59,3 +59,19 @@ export async function deleteNotice(formData: FormData) {
   revalidatePath('/admin/notices');
   revalidatePath('/notice');
 }
+
+/**
+ * 목록에서 체크박스로 고정 토글 (공지는 여러 개 고정 가능 — 보도자료는 1개만).
+ */
+export async function toggleNoticePin(formData: FormData) {
+  const supabase = await createServerSupabase();
+  const id = Number(formData.get('id'));
+  const pinned = formData.get('pinned') === '1';
+  if (!id) throw new Error('id 누락.');
+
+  const { error } = await supabase.from('notices').update({ is_pinned: pinned }).eq('id', id);
+  if (error) throw new Error(error.message);
+
+  revalidatePath('/admin/notices');
+  revalidatePath('/notice');
+}

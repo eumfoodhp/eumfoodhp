@@ -37,7 +37,7 @@ export default function HistoryBatchForm({ initialYear }: { initialYear?: number
       </div>
 
       <div className="admin_field">
-        <label>항목 — 제목을 한 줄씩 추가 (위에서부터 순서대로 저장됨)</label>
+        <label>항목</label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {rows.map((id) => (
             <div key={id} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -85,7 +85,7 @@ export default function HistoryBatchForm({ initialYear }: { initialYear?: number
           ))}
         </div>
         <button type="button" className="admin_btn secondary" onClick={addRow} style={{ marginTop: 10 }}>
-          + 줄 추가
+          + 내용 추가
         </button>
       </div>
 
