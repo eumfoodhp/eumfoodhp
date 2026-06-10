@@ -42,7 +42,6 @@ function toRow(e: Init): Row {
 
 export default function HistoryManager({ initial }: { initial: Init[] }) {
   const [rows, setRows] = useState<Row[]>(() => initial.map(toRow));
-  const [newYear, setNewYear] = useState('');
   const rowsRef = useRef<Row[]>(rows);
   rowsRef.current = rows;
 
@@ -88,10 +87,15 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
       { key: newKey(), id: null, year, month: '', title: '', description: '', status: 'idle', dirty: false },
     ]);
 
-  const addYear = () => {
-    const y = Number(newYear);
-    if (!y || y < 1900 || y > 2099) return;
-    setNewYear('');
+  // 연도 추가 — 버튼 클릭 시 팝업으로 연도 입력받기 (사용자 요청)
+  const addYearPrompt = () => {
+    const input = window.prompt('추가할 연도를 입력하세요 (예: 2027)');
+    if (input == null) return; // 취소
+    const y = Number(input.trim());
+    if (!y || y < 1900 || y > 2099) {
+      alert('1900~2099 사이의 연도를 입력해 주세요.');
+      return;
+    }
     addItem(y);
   };
 
@@ -100,22 +104,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
   return (
     <div className="hist_mgr">
       <div className="hist_mgr_addyear">
-        <input
-          type="number"
-          min="1900"
-          max="2099"
-          placeholder="연도 (예: 2027)"
-          value={newYear}
-          onChange={(e) => setNewYear(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              addYear();
-            }
-          }}
-          style={{ width: 170 }}
-        />
-        <button type="button" className="admin_btn" onClick={addYear}>
+        <button type="button" className="admin_btn" onClick={addYearPrompt}>
           + 연도 추가
         </button>
       </div>
@@ -132,25 +121,21 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                   {year}
                   <span className="hist_year_count">{groupRows.length}건</span>
                 </h3>
-                <button type="button" className="admin_btn secondary" onClick={() => addItem(year)}>
-                  + 항목
+                <button
+                  type="button"
+                  className="admin_btn secondary"
+                  onClick={() => addItem(year)}
+                  title="항목 추가"
+                  aria-label="항목 추가"
+                  style={{ padding: '8px 12px' }}
+                >
+                  +
                 </button>
               </div>
 
               <div className="hist_mgr_rows">
                 {groupRows.map((row) => (
                   <div key={row.key} className="hist_mgr_row">
-                    <input
-                      type="number"
-                      min="1"
-                      max="12"
-                      placeholder="월"
-                      aria-label="월(선택)"
-                      value={row.month}
-                      onChange={(e) => update(row.key, { month: e.target.value, dirty: true, status: 'idle' })}
-                      onBlur={() => saveRow(row.key)}
-                      style={{ width: 64, flexShrink: 0 }}
-                    />
                     <input
                       type="text"
                       placeholder="제목 (예: 신공장 준공)"

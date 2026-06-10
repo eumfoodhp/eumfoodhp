@@ -529,7 +529,7 @@ a.admin_card:hover {
    연혁 — 원페이지 인라인 관리 (HistoryManager)
    ============================================================ */
 .hist_mgr { display: flex; flex-direction: column; gap: 14px; }
-.hist_mgr_addyear { display: flex; gap: 8px; align-items: center; }
+.hist_mgr_addyear { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
 .hist_mgr_rows { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
 .hist_mgr_row { display: flex; gap: 8px; align-items: center; }
 .hist_mgr input {
