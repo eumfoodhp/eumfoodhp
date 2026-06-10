@@ -70,7 +70,7 @@ export default async function EditNoticePage({
         </div>
 
         <div className="admin_form_actions">
-          <button type="submit" className="admin_btn">수정 저장</button>
+          <button type="submit" className="admin_btn">저장</button>
           <AdminDeleteButton action={deleteNotice} message="이 공지사항을 삭제할까요? 되돌릴 수 없습니다." />
           <Link href="/admin/notices" className="admin_btn secondary">취소</Link>
         </div>

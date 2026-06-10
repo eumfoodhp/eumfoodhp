@@ -895,7 +895,7 @@
 
 /* CEO 인사말 섹션 공통 */
 .ceo_intro_section {
-    padding: 120px 0;
+    padding: 160px 0 120px;        /* 헤더 ↔ 본문 사이 간격↑ (사용자 요청) */
     background: #fff;
 }
 
@@ -1009,7 +1009,7 @@
 
 /* 닫는 줄 — 본문과 분리, 기본은 기존 \n\n\n 만큼 간격 (PC 동일) */
 .ceo_desc--closing {
-    margin-top: 56px;
+    margin-top: -40px;     /* 본문↔닫는줄 간격 축소 — content_group gap(120px) 일부 상쇄 → 약 80px (사용자 요청) */
 }
 
 /* 3. 인사말 본문 내용 */

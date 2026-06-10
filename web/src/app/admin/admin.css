@@ -1,116 +1,127 @@
 /* ============================================================
-   Admin 페이지 전용 스타일
+   Admin — 모던 리뉴얼 (2026)
+   다크 사이드바 + 그린 액센트 + 모던 카드/폼/버튼/테이블
    ============================================================ */
 
-/* 어드민은 common.css(사이트 reset)를 안 불러서 body 기본 여백(margin 8px)이 남음
-   → 전체 페이지 주변 여백 제거 (사용자 요청) */
-html, body {
-    margin: 0;
-    padding: 0;
-}
+/* 어드민은 common.css(사이트 reset) 미로드 → body 기본 여백 제거 */
+html, body { margin: 0; padding: 0; }
 
 .admin_root {
     display: grid;
-    grid-template-columns: 248px 1fr;
+    grid-template-columns: 256px 1fr;
     min-height: 100vh;
-    background: #F7F8FA;
-    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: #F4F5F7;
+    color: #101828;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-/* 밝은 사이드바 — 흰 배경 + 주황 포인트 (사이트 톤앤매너) */
+/* ============================================================
+   사이드바 (다크)
+   ============================================================ */
 .admin_sidebar {
-    background: #fff;
-    border-right: 1px solid #ECEEF1;
-    color: #1F2937;
+    background: #0F1729;
+    color: #C4CBD8;
     display: flex;
     flex-direction: column;
-    padding: 24px 0;
+    padding: 20px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .admin_brand {
-    padding: 0 16px 18px;
-    margin: 0 0 10px;
-    border-bottom: 1px solid #F1F2F4;
+    padding: 4px 4px 18px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .admin_brand_top {
     display: flex;
-    flex-direction: row;             /* 로고 | ADMIN 같은 레벨(가로) (사용자 요청) */
-    align-items: flex-end;           /* ADMIN 을 로고 하단선에 맞춤 (하단 유지) */
-    justify-content: space-between;  /* ADMIN 우측 유지 */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 8px;
 }
+/* 컬러 로고를 흰 칩 안에 → 다크 배경에서도 또렷 */
 .admin_brand_logo {
-    height: 54px;
+    height: 32px;
     width: auto;
-    align-self: flex-start;
     display: block;
+    background: #fff;
+    padding: 8px 11px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 .admin_brand_badge {
-    align-self: flex-end;       /* 로고 하단선에 맞춤 (row 라 flex-end=하단) */
-    background: transparent;
-    color: #F39800;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
+    background: rgba(34, 197, 94, 0.16);
+    color: #4ADE80;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    padding: 4px 9px;
+    border-radius: 6px;
 }
 .admin_brand .admin_user {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin: 10px 0 0;
-    padding: 7px 10px;
-    background: #F7F8FA;
-    border-radius: 8px;
-    color: #6B7280;
+    gap: 7px;
+    margin: 14px 0 0;
+    padding: 9px 11px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 9px;
+    color: #98A2B3;
     font-size: 12px;
     word-break: break-all;
 }
-.admin_brand .admin_user svg {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    color: #9CA3AF;
-}
+.admin_brand .admin_user svg { width: 14px; height: 14px; flex-shrink: 0; color: #667085; }
 .admin_brand .admin_user span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .admin_nav {
     display: flex;
     flex-direction: column;
-    padding: 4px 10px;
-    gap: 2px;
+    padding: 0;
+    gap: 3px;
     flex: 1;
 }
 .admin_nav_item {
-    display: block;             /* 인라인 폭 변동 방지 → 전 메뉴 동일 폭 */
+    display: flex;
+    align-items: center;
+    gap: 11px;
     box-sizing: border-box;
     width: 100%;
-    color: #4B5563;
-    padding: 11px 14px;
-    border-radius: 9px;
+    color: #98A2B3;
+    padding: 10px 12px;
+    border-radius: 10px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     transition: background 0.15s ease, color 0.15s ease;
 }
+.admin_nav_icon { display: inline-flex; flex-shrink: 0; }
+.admin_nav_item svg { width: 18px; height: 18px; }
 .admin_nav_item:hover {
-    background: #FFF6F2;
-    color: #F39800;
+    background: rgba(255, 255, 255, 0.06);
+    color: #F9FAFB;
 }
 .admin_nav_item.active {
-    background: #FFF1EB;
-    color: #F39800;
-    font-weight: 700;
+    background: linear-gradient(135deg, #16A34A, #15803D);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
 }
 
 .admin_logout_form {
-    padding: 12px 10px 0;
-    margin-top: auto;
+    padding-top: 14px;
+    margin-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .admin_logout_btn {
     width: 100%;
     padding: 11px;
-    background: #F3F4F6;
-    color: #4B5563;
+    background: rgba(255, 255, 255, 0.05);
+    color: #C4CBD8;
     border: none;
     border-radius: 9px;
     cursor: pointer;
@@ -119,12 +130,15 @@ html, body {
     transition: background 0.15s ease, color 0.15s ease;
 }
 .admin_logout_btn:hover {
-    background: #FEE2E2;
-    color: #DC2626;
+    background: rgba(217, 45, 32, 0.16);
+    color: #FCA5A5;
 }
 
+/* ============================================================
+   메인 영역
+   ============================================================ */
 .admin_main {
-    padding: 32px;
+    padding: 32px 36px;
     overflow-x: auto;
 }
 
@@ -132,270 +146,297 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 26px;
 }
+/* 폼(수정/추가) 페이지: 헤더를 폼 박스(800px) 폭에 맞춤 → '← 목록'이 박스 우측과 정렬 */
+.admin_page_header:has(+ .admin_form) { max-width: 800px; }
 .admin_page_title {
-    font-size: 24px;
-    font-weight: 800;
-    color: #111827;
+    font-size: 26px;
+    font-weight: 700;
+    color: #101828;
     margin: 0;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.6px;
 }
 .admin_page_desc {
-    margin: 4px 0 0;
-    font-size: 13px;
-    color: #9CA3AF;
+    margin: 5px 0 0;
+    font-size: 13.5px;
+    color: #98A2B3;
 }
 
-/* ===== 대시보드 ===== */
+/* ============================================================
+   대시보드
+   ============================================================ */
 .admin_dash_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+    margin-bottom: 34px;
 }
 .admin_stat {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
     background: #fff;
-    border: 1px solid #EEF0F2;
+    border: 1px solid #EAECF0;
     border-radius: 16px;
     padding: 22px;
     text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
 }
 .admin_stat:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
-    border-color: #FFD2C2;
+    box-shadow: 0 12px 28px rgba(16, 24, 40, 0.08);
+    border-color: #BBF7D0;
 }
 .admin_stat_icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #FFF1EB;
-    color: #F39800;
-    font-size: 22px;
+    background: #F0FDF4;
+    color: #16A34A;
 }
-.admin_stat_icon svg { width: 22px; height: 22px; }
+.admin_stat_icon svg { width: 23px; height: 23px; }
 .admin_stat_body { display: flex; align-items: baseline; justify-content: space-between; }
-.admin_stat_label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #374151;
-}
+.admin_stat_label { font-size: 14px; font-weight: 600; color: #475467; }
 .admin_stat_count {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 800;
-    color: #111827;
+    color: #101828;
     line-height: 1;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.6px;
 }
 .admin_stat_count em {
     font-size: 13px;
     font-weight: 500;
     font-style: normal;
-    color: #9CA3AF;
+    color: #98A2B3;
     margin-left: 3px;
 }
-/* 문의 계열 카드 — 파란 톤 포인트 */
-.admin_stat--inquiry .admin_stat_icon { background: #EAF1FE; color: #2563EB; }
-.admin_stat--inquiry:hover { border-color: #BFD3FA; }
+/* 문의 계열 카드 — 블루 포인트 */
+.admin_stat--inquiry .admin_stat_icon { background: #EFF8FF; color: #1570EF; }
+.admin_stat--inquiry:hover { border-color: #B2DDFF; }
 
 .admin_section_label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    color: #9CA3AF;
-    letter-spacing: 0.04em;
+    color: #98A2B3;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     margin: 0 0 14px;
 }
 
+/* ============================================================
+   버튼
+   ============================================================ */
 .admin_btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
     padding: 10px 18px;
-    background: #65A30D;
+    background: #16A34A;
     color: #fff;
-    border: none;
-    border-radius: 8px;
+    border: 1px solid #16A34A;
+    border-radius: 9px;
+    box-sizing: border-box;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
-.admin_btn:hover { background: #4D7C0F; }
-.admin_btn.secondary { background: #65A30D; }
-.admin_btn.secondary:hover { background: #4D7C0F; }
-.admin_btn.danger { background: #EF4444; }
-.admin_btn.danger:hover { background: #DC2626; }
+.admin_btn:hover { background: #15803D; border-color: #15803D; box-shadow: 0 5px 14px rgba(22, 163, 74, 0.28); }
+/* 보조 = 중립 고스트 (목록 등) */
+.admin_btn.secondary {
+    background: #fff;
+    color: #344054;
+    border-color: #D0D5DD;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+.admin_btn.secondary:hover { background: #F9FAFB; border-color: #98A2B3; box-shadow: none; }
+/* 위험 = 레드 고스트 (삭제) */
+.admin_btn.danger {
+    background: #fff;
+    color: #D92D20;
+    border-color: #FDA29B;
+    box-shadow: none;
+}
+.admin_btn.danger:hover { background: #FEF3F2; border-color: #D92D20; }
 .admin_btn.outline {
     background: #fff;
-    color: #374151;
-    border: 1px solid #D1D5DB;
+    color: #344054;
+    border-color: #D0D5DD;
 }
-.admin_btn.outline:hover { background: #F9FAFB; border-color: #9CA3AF; }
-/* 테이블 행 액션용 작은 버튼 (수정/삭제 등) */
-.admin_btn.sm {
-    padding: 7px 12px;
-    font-size: 13px;
-    border-radius: 6px;
-}
+.admin_btn.outline:hover { background: #F9FAFB; border-color: #98A2B3; }
+.admin_btn.sm { padding: 7px 13px; font-size: 13px; border-radius: 7px; }
 
+/* 편집 폼: 취소 = 다크 중립 + 우측으로 분리 (저장·삭제 ←──→ 취소) */
+.admin_form_actions .admin_btn.secondary {
+    color: #1D2939;
+    border-color: #D0D5DD;
+    margin-left: auto;
+}
+.admin_form_actions .admin_btn.secondary:hover { background: #F9FAFB; border-color: #98A2B3; }
+
+/* ============================================================
+   카드
+   ============================================================ */
 .admin_card {
     background: #fff;
-    border-radius: 12px;
-    padding: 24px;
-    border: 1px solid #EEF0F2;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+    padding: 26px;
+    border: 1px solid #EAECF0;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
 }
-/* 대시보드 카드 (링크) hover 부상 */
-a.admin_card {
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
+a.admin_card { transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; }
 a.admin_card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-color: #F39800;
+    box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+    border-color: #BBF7D0;
 }
 
+/* ============================================================
+   테이블
+   ============================================================ */
 .admin_table {
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    border: 1px solid #EAECF0;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
 }
 .admin_table th {
-    background: #F3F4F6;
-    padding: 14px 16px;
+    background: #F9FAFB;
+    padding: 13px 18px;
     text-align: left;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    color: #374151;
-    border-bottom: 1px solid #E5E7EB;
+    color: #667085;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid #EAECF0;
 }
 .admin_table td {
-    padding: 14px 16px;
-    border-bottom: 1px solid #F3F4F6;
+    padding: 15px 18px;
+    border-bottom: 1px solid #F2F4F7;
     font-size: 14px;
-    color: #1F2937;
+    color: #344054;
 }
 .admin_table tr:last-child td { border-bottom: none; }
-.admin_table tr:hover td { background: #F9FAFB; }
+.admin_table tr:hover td { background: #FCFCFD; }
 .admin_table .col_actions {
     display: flex;
-    gap: 6px;
+    gap: 7px;
     justify-content: flex-end;
     align-items: center;
 }
-/* 테이블 행 안 버튼은 전부 작게 (수정/삭제 등 — 페이지 수정 없이 일괄) */
-.admin_table .col_actions .admin_btn {
-    padding: 7px 12px;
-    font-size: 13px;
-    border-radius: 6px;
-}
+.admin_table .col_actions .admin_btn { padding: 7px 13px; font-size: 13px; border-radius: 7px; }
 .admin_table .col_actions form { display: inline-flex; margin: 0; }
 
+/* ============================================================
+   폼
+   ============================================================ */
 .admin_form {
     display: flex;
     flex-direction: column;
     gap: 20px;
     max-width: 800px;
 }
-.admin_field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.admin_field label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #374151;
-}
+.admin_field { display: flex; flex-direction: column; gap: 7px; }
+.admin_field label { font-size: 13px; font-weight: 600; color: #344054; }
 .admin_field input,
 .admin_field textarea,
 .admin_field select {
-    padding: 10px 12px;
-    border: 1px solid #D1D5DB;
-    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #D0D5DD;
+    border-radius: 9px;
     font-size: 14px;
+    color: #101828;
     background: #fff;
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
+.admin_field input::placeholder, .admin_field textarea::placeholder { color: #98A2B3; }
 .admin_field input:focus,
 .admin_field textarea:focus,
 .admin_field select:focus {
     outline: none;
-    border-color: #F39800;
-    box-shadow: 0 0 0 3px rgba(242, 99, 55, 0.15);
+    border-color: #16A34A;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.13);
 }
-.admin_field textarea { min-height: 200px; resize: vertical; }
+.admin_field textarea { min-height: 200px; resize: vertical; line-height: 1.6; }
 
 .admin_form_actions {
     display: flex;
-    gap: 8px;
-    margin-top: 16px;
+    gap: 10px;
+    margin-top: 18px;
 }
 
-/* 로그인 페이지 */
+/* ============================================================
+   로그인
+   ============================================================ */
 .admin_login_root {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #F3F4F6;
+    background: radial-gradient(1100px 560px at 50% -8%, #E7F8EE 0%, #F4F5F7 55%);
+    padding: 20px;
 }
 .admin_login_card {
     width: 100%;
-    max-width: 400px;
+    max-width: 410px;
     background: #fff;
-    padding: 40px 32px;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    padding: 40px 34px;
+    border-radius: 18px;
+    border: 1px solid #EAECF0;
+    box-shadow: 0 20px 50px rgba(16, 24, 40, 0.1);
 }
 .admin_login_card h1 {
     font-size: 22px;
     font-weight: 700;
     text-align: center;
     margin: 0 0 8px;
-    color: #111827;
+    color: #101828;
 }
 .admin_login_card p.subtitle {
     text-align: center;
-    color: #6B7280;
-    font-size: 13px;
+    color: #667085;
+    font-size: 13.5px;
     margin: 0 0 28px;
 }
 .admin_login_card .error {
-    background: #FEF2F2;
-    color: #B91C1C;
-    padding: 10px 14px;
-    border-radius: 8px;
+    background: #FEF3F2;
+    color: #B42318;
+    padding: 11px 14px;
+    border-radius: 9px;
     font-size: 13px;
     margin-top: 12px;
 }
-.admin_login_card .admin_btn { width: 100%; justify-content: center; }
+.admin_login_card .admin_btn { width: 100%; justify-content: center; padding: 12px; }
 
+/* ============================================================
+   반응형 — 모바일 (사이드바 → 상단 바)
+   ============================================================ */
 @media (max-width: 768px) {
     .admin_root {
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
     }
-    /* 사이드바 → 상단 고정 바 */
     .admin_sidebar {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
+        height: auto;
         padding: 12px 16px;
         gap: 8px 10px;
         position: sticky;
@@ -403,8 +444,8 @@ a.admin_card:hover {
         z-index: 50;
     }
     .admin_brand { border-bottom: none; padding: 0; margin: 0; flex-shrink: 0; }
-    .admin_brand_logo { height: 38px; }
-    .admin_brand_badge { font-size: 11px; }
+    .admin_brand_logo { height: 26px; padding: 6px 9px; }
+    .admin_brand_badge { display: none; }
     .admin_brand .admin_user { display: none; }
     .admin_nav {
         flex-direction: row;
@@ -414,25 +455,17 @@ a.admin_card:hover {
         flex: 1 1 100%;
         order: 3;
     }
-    .admin_nav_item { padding: 7px 12px; font-size: 13px; border-radius: 6px; }
-    .admin_logout_form { margin-left: auto; padding: 0; }
+    .admin_nav_item { padding: 8px 12px; font-size: 13px; border-radius: 8px; gap: 7px; }
+    .admin_nav_item svg { width: 16px; height: 16px; }
+    .admin_logout_form { margin: 0 0 0 auto; padding: 0; border: none; }
     .admin_logout_btn { width: auto; padding: 8px 14px; }
-    .admin_main { padding: 16px; }
-
-    /* 페이지 헤더 — 제목 + 버튼 줄바꿈 허용 */
-    .admin_page_header {
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 18px;
-    }
-    .admin_page_title { font-size: 20px; }
-
-    /* 테이블 — 가로 스크롤 + 셀 패딩 축소 */
+    .admin_main { padding: 18px 16px; }
+    .admin_page_header { flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+    .admin_page_title { font-size: 21px; }
     .admin_table { font-size: 13px; min-width: 560px; }
-    .admin_table th, .admin_table td { padding: 10px 12px; }
-    .admin_table .col_actions { gap: 4px; }
-    .admin_table .col_actions .admin_btn { padding: 6px 10px; font-size: 12px; }
-
+    .admin_table th, .admin_table td { padding: 11px 13px; }
+    .admin_table .col_actions { gap: 5px; }
+    .admin_table .col_actions .admin_btn { padding: 6px 11px; font-size: 12px; }
     .admin_card { padding: 18px; }
     .admin_form { gap: 16px; }
     .admin_field textarea { min-height: 160px; }
@@ -440,25 +473,18 @@ a.admin_card:hover {
 }
 
 /* ============================================================
-   회사 연혁 — 연도별 그룹 보기 (간단·직관 관리)
-   평면 테이블(연도 매 행 반복) → 연도 카드 안에 그 해 이벤트 나열.
+   회사 연혁 — 연도별 그룹 보기
    ============================================================ */
-.hist_groups {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-.hist_year_group {
-    padding: 16px 20px 8px;
-}
+.hist_groups { display: flex; flex-direction: column; gap: 14px; }
+.hist_year_group { padding: 18px 22px 10px; }
 .hist_year_head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 13px;
     margin-bottom: 4px;
-    border-bottom: 1px solid #EEF0F2;
+    border-bottom: 1px solid #EAECF0;
 }
 .hist_year {
     display: flex;
@@ -467,84 +493,38 @@ a.admin_card:hover {
     margin: 0;
     font-size: 22px;
     font-weight: 800;
-    color: #1F2937;
+    color: #101828;
     letter-spacing: -0.5px;
 }
-.hist_year_count {
-    font-size: 13px;
-    font-weight: 600;
-    color: #9CA3AF;
-}
-.hist_year_head .admin_btn {
-    padding: 7px 12px;
-    font-size: 13px;
-    border-radius: 6px;
-}
-.hist_items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+.hist_year_count { font-size: 13px; font-weight: 600; color: #98A2B3; }
+.hist_year_head .admin_btn { padding: 7px 13px; font-size: 13px; border-radius: 7px; }
+.hist_items { list-style: none; margin: 0; padding: 0; }
 .hist_item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 11px 2px;
-    border-bottom: 1px solid #F4F5F6;
+    padding: 13px 2px;
+    border-bottom: 1px solid #F2F4F7;
 }
-.hist_item:last-child {
-    border-bottom: none;
-}
+.hist_item:last-child { border-bottom: none; }
 .hist_item_title {
     display: flex;
     align-items: baseline;
     gap: 8px;
     min-width: 0;
     font-size: 15px;
-    color: #1F2937;
+    color: #344054;
     flex-wrap: wrap;
 }
-.hist_item_month {
-    flex-shrink: 0;
-    font-size: 12px;
-    font-weight: 700;
-    color: #F39800;
-}
-.hist_item_link {
-    color: #1F2937;
-    text-decoration: none;
-}
-.hist_item_link:hover {
-    color: #F39800;
-    text-decoration: underline;
-}
-.hist_item_desc {
-    color: #9CA3AF;
-    font-size: 13px;
-}
-.hist_item_actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-}
-.hist_item_actions .admin_btn {
-    padding: 6px 11px;
-    font-size: 13px;
-    border-radius: 6px;
-}
-.hist_item_actions form {
-    display: inline-flex;
-    margin: 0;
-}
+.hist_item_month { flex-shrink: 0; font-size: 12px; font-weight: 700; color: #16A34A; }
+.hist_item_link { color: #344054; text-decoration: none; }
+.hist_item_link:hover { color: #16A34A; text-decoration: underline; }
+.hist_item_desc { color: #98A2B3; font-size: 13px; }
+.hist_item_actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.hist_item_actions .admin_btn { padding: 6px 12px; font-size: 13px; border-radius: 7px; }
+.hist_item_actions form { display: inline-flex; margin: 0; }
 @media (max-width: 600px) {
-    .hist_item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    .hist_item_actions {
-        align-self: flex-end;
-    }
+    .hist_item { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .hist_item_actions { align-self: flex-end; }
 }
