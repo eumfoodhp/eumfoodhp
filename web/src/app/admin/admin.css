@@ -2,6 +2,13 @@
    Admin 페이지 전용 스타일
    ============================================================ */
 
+/* 어드민은 common.css(사이트 reset)를 안 불러서 body 기본 여백(margin 8px)이 남음
+   → 전체 페이지 주변 여백 제거 (사용자 요청) */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .admin_root {
     display: grid;
     grid-template-columns: 248px 1fr;
