@@ -102,3 +102,68 @@ export async function deleteHistory(formData: FormData) {
   revalidatePath('/admin/history');
   revalidatePath('/about#history');
 }
+
+/* ============================================================
+   원페이지 인라인 관리용 — 리다이렉트 없이 줄 단위로 저장/삭제
+   (중국어 컬럼 title_zh/description_zh 는 건드리지 않음 → 기존 값 보존)
+   ============================================================ */
+
+// id 있으면 수정, 없으면 생성 후 새 id 반환. 줄 blur 시 호출.
+export async function saveHistoryEntry(data: {
+  id: number | null;
+  year: number;
+  month: number | null;
+  title: string;
+  description: string | null;
+}): Promise<{ id: number }> {
+  const supabase = await createServerSupabase();
+  const year = Number(data.year);
+  const title = (data.title ?? '').trim();
+  const month = data.month != null && String(data.month) !== '' ? Number(data.month) : null;
+  const description = (data.description ?? '').trim() || null;
+
+  if (!year) throw new Error('연도는 필수입니다.');
+  if (!title) throw new Error('제목은 필수입니다.');
+  if (month !== null && (month < 1 || month > 12)) throw new Error('월은 1~12 사이여야 합니다.');
+
+  if (data.id) {
+    const { error } = await supabase
+      .from('history_entries')
+      .update({ year, month, title, description })
+      .eq('id', data.id);
+    if (error) throw new Error(error.message);
+    revalidatePath('/admin/history');
+    revalidatePath('/about#history');
+    return { id: data.id };
+  }
+
+  // 새 항목: 같은 연도의 마지막 sort_order + 1
+  const { data: last } = await supabase
+    .from('history_entries')
+    .select('sort_order')
+    .eq('year', year)
+    .order('sort_order', { ascending: false })
+    .limit(1);
+  const sort_order = (last?.[0]?.sort_order ?? -1) + 1;
+
+  const { data: inserted, error } = await supabase
+    .from('history_entries')
+    .insert({ year, month, title, description, sort_order })
+    .select('id')
+    .single();
+  if (error) throw new Error(error.message);
+
+  revalidatePath('/admin/history');
+  revalidatePath('/about#history');
+  return { id: inserted!.id };
+}
+
+// 줄 삭제 (id 기준). 저장 안 된 새 줄은 클라이언트에서 그냥 제거.
+export async function deleteHistoryEntry(id: number): Promise<void> {
+  const supabase = await createServerSupabase();
+  if (!id) return;
+  const { error } = await supabase.from('history_entries').delete().eq('id', id);
+  if (error) throw new Error(error.message);
+  revalidatePath('/admin/history');
+  revalidatePath('/about#history');
+}
