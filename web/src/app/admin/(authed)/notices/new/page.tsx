@@ -5,8 +5,8 @@ export default function NewNoticePage() {
   return (
     <>
       <div className="admin_page_header">
-        <h2 className="admin_page_title">공지사항 — 새 글</h2>
-        <Link href="/admin/notices" className="admin_btn secondary">← 목록</Link>
+        <h2 className="admin_page_title">공지사항</h2>
+        <Link href="/admin/notices" className="admin_btn secondary">←</Link>
       </div>
 
       <form action={createNotice} className="admin_form admin_card">

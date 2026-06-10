@@ -25,7 +25,7 @@ export default async function EditNoticePage({
     <>
       <div className="admin_page_header">
         <h2 className="admin_page_title">공지사항 — 수정</h2>
-        <Link href="/admin/notices" className="admin_btn secondary">← 목록</Link>
+        <Link href="/admin/notices" className="admin_btn secondary">←</Link>
       </div>
 
       <form action={updateNotice} className="admin_form admin_card">

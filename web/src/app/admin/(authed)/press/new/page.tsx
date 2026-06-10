@@ -5,8 +5,8 @@ export default function NewPressPage() {
   return (
     <>
       <div className="admin_page_header">
-        <h2 className="admin_page_title">보도자료 — 새 글</h2>
-        <Link href="/admin/press" className="admin_btn secondary">← 목록</Link>
+        <h2 className="admin_page_title">보도자료</h2>
+        <Link href="/admin/press" className="admin_btn secondary">←</Link>
       </div>
 
       <form action={createPress} className="admin_form admin_card">

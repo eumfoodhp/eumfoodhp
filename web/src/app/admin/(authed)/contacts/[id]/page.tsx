@@ -25,7 +25,7 @@ export default async function ContactDetailPage({
     <>
       <div className="admin_page_header">
         <h2 className="admin_page_title">1:1 문의 상세</h2>
-        <Link href="/admin/contacts" className="admin_btn secondary">← 목록</Link>
+        <Link href="/admin/contacts" className="admin_btn secondary">←</Link>
       </div>
 
       {/* 문의 본문 */}

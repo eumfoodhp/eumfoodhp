@@ -143,8 +143,9 @@ html, body { margin: 0; padding: 0; }
     align-items: center;
     margin-bottom: 26px;
 }
-/* 폼(수정/추가) 페이지: 헤더를 폼 박스(800px) 폭에 맞춤 → '← 목록'이 박스 우측과 정렬 */
-.admin_page_header:has(+ .admin_form) { max-width: 800px; }
+/* 폼(수정/추가) 페이지: 헤더 폭 = 폼 박스 외곽(admin_form 800 + admin_card 패딩/보더 54)
+   → '← 목록'이 박스 우측 끝과 정렬 (사용자 요청) */
+.admin_page_header:has(+ .admin_form) { max-width: 854px; }
 .admin_page_title {
     font-size: 26px;
     font-weight: 700;

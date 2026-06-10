@@ -29,7 +29,7 @@ export default async function SalesDetailPage({
     <>
       <div className="admin_page_header">
         <h2 className="admin_page_title">영업 문의 상세</h2>
-        <Link href="/admin/sales" className="admin_btn secondary">← 목록</Link>
+        <Link href="/admin/sales" className="admin_btn secondary">←</Link>
       </div>
 
       <div className="admin_card">

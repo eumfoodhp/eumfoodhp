@@ -25,7 +25,7 @@ export default async function EditPressPage({
     <>
       <div className="admin_page_header">
         <h2 className="admin_page_title">보도자료 — 수정</h2>
-        <Link href="/admin/press" className="admin_btn secondary">← 목록</Link>
+        <Link href="/admin/press" className="admin_btn secondary">←</Link>
       </div>
 
       <form action={updatePress} className="admin_form admin_card">

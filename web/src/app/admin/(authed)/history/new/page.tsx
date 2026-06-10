@@ -13,8 +13,8 @@ export default async function NewHistoryPage({
   return (
     <>
       <div className="admin_page_header">
-        <h2 className="admin_page_title">연혁 — 추가</h2>
-        <Link href="/admin/history" className="admin_btn secondary">← 목록</Link>
+        <h2 className="admin_page_title">연혁</h2>
+        <Link href="/admin/history" className="admin_btn secondary">←</Link>
       </div>
 
       <HistoryBatchForm initialYear={initialYear} />
