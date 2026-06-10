@@ -40,47 +40,64 @@ export default function HistoryBatchForm({ initialYear }: { initialYear?: number
         <label>항목</label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {rows.map((id) => (
-            <div key={id} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-              <input
-                type="number"
-                name="month"
-                min="1"
-                max="12"
-                placeholder="월"
-                aria-label="월(선택)"
-                style={{ width: 72, flexShrink: 0 }}
-              />
-              <input
-                type="text"
-                name="title"
-                placeholder="제목 (예: 신공장 준공)"
-                aria-label="제목"
-                style={{ flex: 2, minWidth: 0 }}
-              />
-              <input
-                type="text"
-                name="title_zh"
-                placeholder="제목 (中文, 선택)"
-                aria-label="제목 中文"
-                style={{ flex: 2, minWidth: 0 }}
-              />
-              <input
-                type="text"
-                name="description"
-                placeholder="설명 (선택)"
-                aria-label="설명(선택)"
-                style={{ flex: 1, minWidth: 0 }}
-              />
-              <button
-                type="button"
-                className="admin_btn secondary"
-                onClick={() => removeRow(id)}
-                aria-label="이 줄 삭제"
-                title="이 줄 삭제"
-                style={{ flexShrink: 0, padding: '8px 12px' }}
-              >
-                ✕
-              </button>
+            <div
+              key={id}
+              style={{
+                border: '1px solid #E5E7EB',
+                borderRadius: 10,
+                padding: 12,
+                background: '#FAFBFC',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 8,
+              }}
+            >
+              {/* 윗줄: 월 · 제목(한글) · 삭제 */}
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                <input
+                  type="number"
+                  name="month"
+                  min="1"
+                  max="12"
+                  placeholder="월"
+                  aria-label="월(선택)"
+                  style={{ width: 64, flexShrink: 0 }}
+                />
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="제목 (예: 신공장 준공)"
+                  aria-label="제목"
+                  style={{ flex: 1, minWidth: 0 }}
+                />
+                <button
+                  type="button"
+                  className="admin_btn secondary"
+                  onClick={() => removeRow(id)}
+                  aria-label="이 항목 삭제"
+                  title="이 항목 삭제"
+                  style={{ flexShrink: 0, padding: '8px 12px' }}
+                >
+                  ✕
+                </button>
+              </div>
+              {/* 아랫줄: 제목(中文) · 설명 — 선택 항목 따로 아래 (사용자 요청) */}
+              <div style={{ display: 'flex', gap: 8 }}>
+                <input
+                  type="text"
+                  name="title_zh"
+                  placeholder="제목 (中文, 선택)"
+                  aria-label="제목 中文"
+                  style={{ flex: 1, minWidth: 0 }}
+                />
+                <input
+                  type="text"
+                  name="description"
+                  placeholder="설명 (선택)"
+                  aria-label="설명(선택)"
+                  style={{ flex: 1, minWidth: 0 }}
+                />
+              </div>
             </div>
           ))}
         </div>
