@@ -158,15 +158,6 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                         autoFocus
                         onChange={(e) => update(row.key, { title: e.target.value, dirty: true, status: 'idle' })}
                         onBlur={() => saveRow(row.key)}
-                        style={{ flex: 2, minWidth: 0 }}
-                      />
-                      <input
-                        type="text"
-                        placeholder="설명 (선택)"
-                        aria-label="설명(선택)"
-                        value={row.description}
-                        onChange={(e) => update(row.key, { description: e.target.value, dirty: true, status: 'idle' })}
-                        onBlur={() => saveRow(row.key)}
                         style={{ flex: 1, minWidth: 0 }}
                       />
                       <span className="hist_mgr_status">
@@ -195,10 +186,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                     </div>
                   ) : (
                     <div key={row.key} className="hist_mgr_row hist_mgr_row--view">
-                      <span className="hist_mgr_text">
-                        {row.title}
-                        {row.description ? <span className="hist_mgr_text_desc"> — {row.description}</span> : null}
-                      </span>
+                      <span className="hist_mgr_text">{row.title}</span>
                       <button
                         type="button"
                         className="admin_btn secondary"
