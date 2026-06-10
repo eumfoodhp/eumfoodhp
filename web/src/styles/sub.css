@@ -1024,6 +1024,10 @@
     word-break: keep-all;
 }
 
+/* 본문 문단별 분리 — 문단 사이 간격을 CSS로 조절 (사용자 요청). 폰트는 .ceo_desc 에서 상속 */
+.ceo_desc_body { display: flex; flex-direction: column; gap: 28px; }
+.ceo_para { margin: 0; }
+
 /* 4. 하단 서명 영역: 가로 배치, 하단 정렬 */
 .ceo_signature {
     display: flex;
@@ -1072,6 +1076,8 @@
     .ceo_main_group { gap: 14px; }
     /* 본문(최선을~) ↔ 닫는줄(고객 여러분의) 간격 축소 — 모바일은 제목 숨김이라 content_group gap이 본문↔closing만 좌우 (사용자 요청) */
     .ceo_content_group { gap: 56px; }
+    /* 본문 문단 사이 한 칸씩 더 띄움 (모바일, 사용자 요청) */
+    .ceo_desc_body { gap: 48px; }
     /* 시그니처 좌측 정렬 + 전체 볼드 (사용자 요청) */
     .ceo_signature {
         align-self: flex-start !important;
@@ -1082,9 +1088,9 @@
         color: #222 !important;
         font-weight: 700 !important;
     }
-    /* 인사말 SectionHeader ↔ 첫문장 사이 간격 — 모바일에서 ↑ (사용자 요청) */
+    /* 인사말 헤더↔첫문장 간격 ↑ + 인사말 아래 한 줄 더 (모바일, 사용자 요청) */
     .ceo_intro_section {
-        padding: 64px 0 60px !important;
+        padding: 64px 0 84px !important;
     }
     .ceo_inner {
         gap: 24px !important;

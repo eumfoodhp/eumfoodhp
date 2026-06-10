@@ -109,7 +109,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   const closing = parts.slice(1).join('\n').trim();
                   return (
                     <>
-                      <p className="ceo_desc">{nl2br(body)}</p>
+                      <div className="ceo_desc ceo_desc_body">
+                        {body.split(/\n{2,}/).map((para, i) => (
+                          <p key={i} className="ceo_para">{nl2br(para.trim())}</p>
+                        ))}
+                      </div>
                       {closing && <p className="ceo_desc ceo_desc--closing">{nl2br(closing)}</p>}
                     </>
                   );
