@@ -895,7 +895,7 @@
 
 /* CEO 인사말 섹션 공통 */
 .ceo_intro_section {
-    padding: 160px 0 120px;        /* 헤더 ↔ 본문 사이 간격↑ (사용자 요청) */
+    padding: 120px 0;
     background: #fff;
 }
 
@@ -1009,7 +1009,7 @@
 
 /* 닫는 줄 — 본문과 분리, 기본은 기존 \n\n\n 만큼 간격 (PC 동일) */
 .ceo_desc--closing {
-    margin-top: -40px;     /* 본문↔닫는줄 간격 축소 — content_group gap(120px) 일부 상쇄 → 약 80px (사용자 요청) */
+    margin-top: 56px;
 }
 
 /* 3. 인사말 본문 내용 */
@@ -1070,6 +1070,8 @@
     /* 닫는 줄 — 위 여백 제거(본문과 이어지게) + 아래 2줄 여백 추가 (사용자 요청) */
     .ceo_desc--closing { margin-top: 0 !important; margin-bottom: 30px !important; }
     .ceo_main_group { gap: 14px; }
+    /* 본문(최선을~) ↔ 닫는줄(고객 여러분의) 간격 축소 — 모바일은 제목 숨김이라 content_group gap이 본문↔closing만 좌우 (사용자 요청) */
+    .ceo_content_group { gap: 56px; }
     /* 시그니처 좌측 정렬 + 전체 볼드 (사용자 요청) */
     .ceo_signature {
         align-self: flex-start !important;
@@ -1080,9 +1082,9 @@
         color: #222 !important;
         font-weight: 700 !important;
     }
-    /* 인사말 SectionHeader 와 본문 사이 간격 축소 */
+    /* 인사말 SectionHeader ↔ 첫문장 사이 간격 — 모바일에서 ↑ (사용자 요청) */
     .ceo_intro_section {
-        padding: 24px 0 60px !important;
+        padding: 64px 0 60px !important;
     }
     .ceo_inner {
         gap: 24px !important;
