@@ -127,14 +127,26 @@ export async function saveHistoryEntry(data: {
   if (!title) throw new Error('제목은 필수입니다.');
   if (month !== null && (month < 1 || month > 12)) throw new Error('월은 1~12 사이여야 합니다.');
 
-  // 제목 한글 → 중문 자동 번역 (무료, 실패 시 null → 중문 페이지 한글 fallback)
-  const title_zh = await translateKoToZh(title);
-
   if (data.id) {
-    const { error } = await supabase
+    // 기존 항목 — 제목 그대로 + 이미 번역돼 있으면 재번역 생략(캐싱).
+    // 번역 실패 시 title_zh 를 patch 에 넣지 않아 기존 번역 보존 (번역기 에러 대비)
+    const { data: existing } = await supabase
       .from('history_entries')
-      .update({ year, month, title, description, title_zh })
-      .eq('id', data.id);
+      .select('title, title_zh')
+      .eq('id', data.id)
+      .single();
+    const patch: {
+      year: number;
+      month: number | null;
+      title: string;
+      description: string | null;
+      title_zh?: string;
+    } = { year, month, title, description };
+    if (!existing || existing.title !== title || !existing.title_zh) {
+      const zh = await translateKoToZh(title);
+      if (zh) patch.title_zh = zh; // 성공할 때만 갱신
+    }
+    const { error } = await supabase.from('history_entries').update(patch).eq('id', data.id);
     if (error) throw new Error(error.message);
     revalidatePath('/admin/history');
     revalidatePath('/about#history');
@@ -150,9 +162,10 @@ export async function saveHistoryEntry(data: {
     .limit(1);
   const sort_order = (last?.[0]?.sort_order ?? -1) + 1;
 
+  const titleZh = await translateKoToZh(title); // 새 항목 — 실패하면 null(중문 페이지 한글 fallback)
   const { data: inserted, error } = await supabase
     .from('history_entries')
-    .insert({ year, month, title, description, title_zh, sort_order })
+    .insert({ year, month, title, description, title_zh: titleZh, sort_order })
     .select('id')
     .single();
   if (error) throw new Error(error.message);
