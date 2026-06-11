@@ -36,9 +36,9 @@ const NAMUL_ITEMS = [
   { id: '04', rect: 61 },
 ];
 const SALTED_ITEMS = [
-  { id: '01', img: '/images/main/prod-salted-squid-new.png' },
-  { id: '02', img: '/images/main/prod-salted-octopus-new.png' },
-  { id: '03', img: '/images/main/prod-salted-shrimp-new.png' },
+  { id: '01', img: '/images/sub/salted_rect_40.png' }, // 오징어젓
+  { id: '02', img: '/images/sub/salted_rect_41.png' }, // 낙지젓
+  { id: '03', img: '/images/sub/salted_rect_42.png' }, // 새우젓
 ];
 type SauceSection = {
   subKey: string;
