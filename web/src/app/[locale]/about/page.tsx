@@ -47,11 +47,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       .order('year', { ascending: false })
       .order('sort_order', { ascending: true });
     if (entries && entries.length > 0) {
-      for (const e of entries as Array<{ year: number; title: string }>) {
+      for (const e of entries as Array<{ year: number; title: string; description: string | null }>) {
         const y = String(e.year);
-        // 중문 페이지면 코드 번역 맵 사용 (DB에 title_zh 컬럼이 없어 코드에서 매핑, 없으면 한글)
-        const zh = locale === 'zh' ? HISTORY_ZH[e.title] : null;
-        byYear[y] = (byYear[y] ?? []).concat(zh ?? e.title);
+        // 중문: description 컬럼(중문 저장용으로 사용) 우선 → 코드 맵 → 한글 순
+        const zh = locale === 'zh' ? (String(e.description ?? '').trim() || HISTORY_ZH[e.title]) : null;
+        byYear[y] = (byYear[y] ?? []).concat(zh || e.title);
       }
     }
   } catch {

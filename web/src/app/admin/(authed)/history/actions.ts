@@ -109,7 +109,8 @@ export async function deleteHistory(formData: FormData) {
    ============================================================ */
 
 // id 있으면 수정, 없으면 생성 후 새 id 반환. 줄 blur 시 호출.
-// 중문(title_zh)은 DB 컬럼이 없어 저장하지 않음 — 공개 페이지는 lib/history-zh.ts 맵으로 표시.
+// 중문 제목은 description 컬럼에 저장 (title_zh 컬럼을 못 만들어 미사용 description 컬럼 전용).
+// 공개 about(zh)가 description 우선 표시. HistoryManager 의 '中文' 입력칸 = 이 description.
 export async function saveHistoryEntry(data: {
   id: number | null;
   year: number;

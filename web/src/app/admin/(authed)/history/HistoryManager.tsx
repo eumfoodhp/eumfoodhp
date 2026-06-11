@@ -167,6 +167,15 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                         onBlur={() => saveRow(row.key)}
                         style={{ flex: 1, minWidth: 0 }}
                       />
+                      <input
+                        type="text"
+                        placeholder="中文 (중문 제목)"
+                        aria-label="중문 제목"
+                        value={row.description}
+                        onChange={(e) => update(row.key, { description: e.target.value, dirty: true, status: 'idle' })}
+                        onBlur={() => saveRow(row.key)}
+                        style={{ flex: 1, minWidth: 0 }}
+                      />
                       <span className="hist_mgr_status">
                         {row.status === 'saving' ? '…' : row.status === 'saved' ? '✓' : row.status === 'error' ? '⚠' : ''}
                       </span>
@@ -193,7 +202,10 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                     </div>
                   ) : (
                     <div key={row.key} className="hist_mgr_row hist_mgr_row--view">
-                      <span className="hist_mgr_text">{row.title}</span>
+                      <span className="hist_mgr_text">
+                        {row.title}
+                        {row.description ? <span className="hist_mgr_text_zh"> · {row.description}</span> : null}
+                      </span>
                       <button
                         type="button"
                         className="admin_btn secondary"
@@ -226,7 +238,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
         })
       )}
 
-      <p className="hist_mgr_hint">수정(✎)을 눌러 편집하고, 칸 밖을 클릭하면 자동 저장돼요. ✓로 편집 완료.</p>
+      <p className="hist_mgr_hint">수정(✎) → 제목·中文 입력 → 칸 밖 클릭 시 자동 저장. ✓로 완료.</p>
     </div>
   );
 }
