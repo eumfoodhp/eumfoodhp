@@ -120,10 +120,9 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
     setTranslating(true);
     try {
       const r = await autoTranslateHistoryBatch();
-      if (r.remaining > 0) alert(`${r.done}건 번역 완료, ${r.remaining}건 남음 — 한 번 더 눌러주세요.`);
-      else alert(`중문 일괄번역 완료 (${r.done}건).`);
+      alert(`중문 적용 완료: ${r.done}건 반영${r.skipped ? ` (번역 맵에 없는 ${r.skipped}건은 그대로 — 알려주면 추가할게요)` : ''}`);
     } catch {
-      alert('일부만 번역됐을 수 있어요. 다시 눌러 이어서 번역해주세요.');
+      alert('적용 중 오류가 났어요. 다시 시도해주세요.');
     } finally {
       setTranslating(false);
     }
