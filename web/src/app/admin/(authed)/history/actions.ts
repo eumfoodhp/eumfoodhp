@@ -3,6 +3,7 @@
 import { createServerSupabase } from '@/lib/supabase-server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { translateKoToZh } from '@/lib/translate';
 
 export async function createHistory(formData: FormData) {
   const supabase = await createServerSupabase();
@@ -126,10 +127,13 @@ export async function saveHistoryEntry(data: {
   if (!title) throw new Error('제목은 필수입니다.');
   if (month !== null && (month < 1 || month > 12)) throw new Error('월은 1~12 사이여야 합니다.');
 
+  // 제목 한글 → 중문 자동 번역 (무료, 실패 시 null → 중문 페이지 한글 fallback)
+  const title_zh = await translateKoToZh(title);
+
   if (data.id) {
     const { error } = await supabase
       .from('history_entries')
-      .update({ year, month, title, description })
+      .update({ year, month, title, description, title_zh })
       .eq('id', data.id);
     if (error) throw new Error(error.message);
     revalidatePath('/admin/history');
@@ -148,7 +152,7 @@ export async function saveHistoryEntry(data: {
 
   const { data: inserted, error } = await supabase
     .from('history_entries')
-    .insert({ year, month, title, description, sort_order })
+    .insert({ year, month, title, description, title_zh, sort_order })
     .select('id')
     .single();
   if (error) throw new Error(error.message);
@@ -166,4 +170,26 @@ export async function deleteHistoryEntry(id: number): Promise<void> {
   if (error) throw new Error(error.message);
   revalidatePath('/admin/history');
   revalidatePath('/about#history');
+}
+
+// 기존 연혁 중 중문(title_zh) 없는 항목 일괄 자동 번역. 재실행 가능(번역된 건 건너뜀).
+// 타임아웃으로 중간에 끊겨도 완료분은 저장돼 다시 누르면 이어서 번역됨.
+export async function autoTranslateHistoryBatch(): Promise<{ done: number; remaining: number }> {
+  const supabase = await createServerSupabase();
+  const { data: rows } = await supabase
+    .from('history_entries')
+    .select('id, title, title_zh')
+    .is('title_zh', null);
+  const list = (rows ?? []) as Array<{ id: number; title: string }>;
+  let done = 0;
+  for (const r of list) {
+    const zh = await translateKoToZh(r.title);
+    if (zh) {
+      await supabase.from('history_entries').update({ title_zh: zh }).eq('id', r.id);
+      done += 1;
+    }
+  }
+  revalidatePath('/admin/history');
+  revalidatePath('/about#history');
+  return { done, remaining: list.length - done };
 }

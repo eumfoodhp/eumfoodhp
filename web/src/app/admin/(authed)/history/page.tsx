@@ -2,6 +2,7 @@ import { createServerSupabase } from '@/lib/supabase-server';
 import HistoryManager from './HistoryManager';
 
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 export default async function HistoryListPage() {
   const supabase = await createServerSupabase();

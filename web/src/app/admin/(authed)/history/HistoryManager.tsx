@@ -8,7 +8,7 @@
  * - 월/중국어는 제외 (기존 데이터는 보존)
  */
 import { useRef, useState } from 'react';
-import { saveHistoryEntry, deleteHistoryEntry } from './actions';
+import { saveHistoryEntry, deleteHistoryEntry, autoTranslateHistoryBatch } from './actions';
 
 type Init = { id: number; year: number; month: number | null; title: string; description: string | null };
 
@@ -43,6 +43,7 @@ function toRow(e: Init): Row {
 
 export default function HistoryManager({ initial }: { initial: Init[] }) {
   const [rows, setRows] = useState<Row[]>(() => initial.map(toRow));
+  const [translating, setTranslating] = useState(false);
   const rowsRef = useRef<Row[]>(rows);
   rowsRef.current = rows;
 
@@ -112,11 +113,30 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
     addItem(y);
   };
 
+  // 기존 항목 중문 일괄 자동번역 (재실행 가능 — 남으면 다시 누름)
+  const runTranslate = async () => {
+    if (translating) return;
+    if (!confirm('기존 연혁 항목을 중문으로 일괄 자동번역할까요? (조금 걸릴 수 있어요)')) return;
+    setTranslating(true);
+    try {
+      const r = await autoTranslateHistoryBatch();
+      if (r.remaining > 0) alert(`${r.done}건 번역 완료, ${r.remaining}건 남음 — 한 번 더 눌러주세요.`);
+      else alert(`중문 일괄번역 완료 (${r.done}건).`);
+    } catch {
+      alert('일부만 번역됐을 수 있어요. 다시 눌러 이어서 번역해주세요.');
+    } finally {
+      setTranslating(false);
+    }
+  };
+
   const years = [...new Set(rows.map((r) => r.year))].sort((a, b) => b - a);
 
   return (
     <div className="hist_mgr">
       <div className="hist_mgr_addyear">
+        <button type="button" className="admin_btn secondary" onClick={runTranslate} disabled={translating}>
+          {translating ? '번역 중…' : '기존 중문 일괄번역'}
+        </button>
         <button type="button" className="admin_btn" onClick={addYearPrompt}>
           + 연도 추가
         </button>
