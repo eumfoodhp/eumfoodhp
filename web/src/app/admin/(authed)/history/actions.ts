@@ -109,21 +109,19 @@ export async function deleteHistory(formData: FormData) {
    ============================================================ */
 
 // id 있으면 수정, 없으면 생성 후 새 id 반환. 줄 blur 시 호출.
-// title_zh(중문)는 입력칸 값 그대로 저장(비우면 null). 기존 53건 중문은 db/zh_content.sql 로 채움.
+// 중문(title_zh)은 DB 컬럼이 없어 저장하지 않음 — 공개 페이지는 lib/history-zh.ts 맵으로 표시.
 export async function saveHistoryEntry(data: {
   id: number | null;
   year: number;
   month: number | null;
   title: string;
   description: string | null;
-  title_zh?: string | null;
 }): Promise<{ id: number }> {
   const supabase = await createServerSupabase();
   const year = Number(data.year);
   const title = (data.title ?? '').trim();
   const month = data.month != null && String(data.month) !== '' ? Number(data.month) : null;
   const description = (data.description ?? '').trim() || null;
-  const title_zh = (data.title_zh ?? '').trim() || null;
 
   if (!year) throw new Error('연도는 필수입니다.');
   if (!title) throw new Error('제목은 필수입니다.');
@@ -132,7 +130,7 @@ export async function saveHistoryEntry(data: {
   if (data.id) {
     const { error } = await supabase
       .from('history_entries')
-      .update({ year, month, title, description, title_zh })
+      .update({ year, month, title, description })
       .eq('id', data.id);
     if (error) throw new Error(error.message);
     revalidatePath('/admin/history');
@@ -151,7 +149,7 @@ export async function saveHistoryEntry(data: {
 
   const { data: inserted, error } = await supabase
     .from('history_entries')
-    .insert({ year, month, title, description, title_zh, sort_order })
+    .insert({ year, month, title, description, sort_order })
     .select('id')
     .single();
   if (error) throw new Error(error.message);

@@ -67,7 +67,6 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
         year: row.year,
         month: row.month === '' ? null : Number(row.month),
         title: row.title,
-        title_zh: row.title_zh,
         description: row.description,
       });
       update(key, { id: res.id, status: 'saved', dirty: false });
@@ -168,15 +167,6 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                         onBlur={() => saveRow(row.key)}
                         style={{ flex: 1, minWidth: 0 }}
                       />
-                      <input
-                        type="text"
-                        placeholder="제목 (中文, 비우면 자동)"
-                        aria-label="제목 중문"
-                        value={row.title_zh}
-                        onChange={(e) => update(row.key, { title_zh: e.target.value, dirty: true, status: 'idle' })}
-                        onBlur={() => saveRow(row.key)}
-                        style={{ flex: 1, minWidth: 0 }}
-                      />
                       <span className="hist_mgr_status">
                         {row.status === 'saving' ? '…' : row.status === 'saved' ? '✓' : row.status === 'error' ? '⚠' : ''}
                       </span>
@@ -203,10 +193,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                     </div>
                   ) : (
                     <div key={row.key} className="hist_mgr_row hist_mgr_row--view">
-                      <span className="hist_mgr_text">
-                        {row.title}
-                        {row.title_zh ? <span className="hist_mgr_text_zh"> · {row.title_zh}</span> : null}
-                      </span>
+                      <span className="hist_mgr_text">{row.title}</span>
                       <button
                         type="button"
                         className="admin_btn secondary"
@@ -239,7 +226,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
         })
       )}
 
-      <p className="hist_mgr_hint">수정(✎) → 제목·중문 입력 → 칸 밖 클릭 시 자동 저장. 중문을 비우면 번역이 자동 채워져요.</p>
+      <p className="hist_mgr_hint">수정(✎)을 눌러 편집하고, 칸 밖을 클릭하면 자동 저장돼요. ✓로 편집 완료.</p>
     </div>
   );
 }

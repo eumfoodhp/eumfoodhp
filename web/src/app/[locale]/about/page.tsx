@@ -15,6 +15,7 @@ import SectionHeader from '@/components/SectionHeader';
 import HistoryTimeline from '@/components/HistoryTimeline';
 import { nl2br } from '@/lib/nl2br';
 import { getSupabase } from '@/lib/supabase';
+import { HISTORY_ZH } from '@/lib/history-zh';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 import '@/styles/business_area.css';
@@ -46,10 +47,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       .order('year', { ascending: false })
       .order('sort_order', { ascending: true });
     if (entries && entries.length > 0) {
-      for (const e of entries as Array<{ year: number; title: string; title_zh: string | null }>) {
+      for (const e of entries as Array<{ year: number; title: string }>) {
         const y = String(e.year);
-        // 중문 페이지면 title_zh (없으면 한글 fallback)
-        byYear[y] = (byYear[y] ?? []).concat(locale === 'zh' && e.title_zh ? e.title_zh : e.title);
+        // 중문 페이지면 코드 번역 맵 사용 (DB에 title_zh 컬럼이 없어 코드에서 매핑, 없으면 한글)
+        const zh = locale === 'zh' ? HISTORY_ZH[e.title] : null;
+        byYear[y] = (byYear[y] ?? []).concat(zh ?? e.title);
       }
     }
   } catch {
