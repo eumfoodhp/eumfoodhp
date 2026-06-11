@@ -1,16 +1,22 @@
 'use client';
 
 /**
- * 연혁 원페이지 인라인 관리.
- * - 기본은 읽기(텍스트) 표시, 수정(✎) 아이콘을 누르면 그 줄이 입력칸으로 전환 (사용자 요청)
- * - 편집 중 칸 밖 클릭(blur) 시 자동 저장 (신규 생성/기존 수정), ✓ 로 편집 완료
- * - '+ 항목'(빈 줄, 바로 편집), '+ 연도 추가'(팝업으로 연도 입력), ✕ 즉시 삭제
- * - 월/중국어는 제외 (기존 데이터는 보존)
+ * 연혁 원페이지 인라인 관리 (제목 + 중문 제목).
+ * - 읽기 표시, 수정(✎)으로 편집 전환. 칸 밖 클릭 시 자동 저장, ✓로 완료.
+ * - 중문(title_zh)은 직접 입력 가능. 비우고 저장하면 번역 맵(zh-map)이 자동 적용.
+ * - 페이지 로드 시 빈 중문은 서버에서 맵으로 채워짐(history/page.tsx).
  */
 import { useRef, useState } from 'react';
-import { saveHistoryEntry, deleteHistoryEntry, autoTranslateHistoryBatch } from './actions';
+import { saveHistoryEntry, deleteHistoryEntry } from './actions';
 
-type Init = { id: number; year: number; month: number | null; title: string; description: string | null };
+type Init = {
+  id: number;
+  year: number;
+  month: number | null;
+  title: string;
+  description: string | null;
+  title_zh: string | null;
+};
 
 type Row = {
   key: string;
@@ -18,6 +24,7 @@ type Row = {
   year: number;
   month: string;
   title: string;
+  title_zh: string;
   description: string;
   status: 'idle' | 'saving' | 'saved' | 'error';
   dirty: boolean;
@@ -34,6 +41,7 @@ function toRow(e: Init): Row {
     year: e.year,
     month: e.month != null ? String(e.month) : '',
     title: e.title,
+    title_zh: e.title_zh ?? '',
     description: e.description ?? '',
     status: 'idle',
     dirty: false,
@@ -43,7 +51,6 @@ function toRow(e: Init): Row {
 
 export default function HistoryManager({ initial }: { initial: Init[] }) {
   const [rows, setRows] = useState<Row[]>(() => initial.map(toRow));
-  const [translating, setTranslating] = useState(false);
   const rowsRef = useRef<Row[]>(rows);
   rowsRef.current = rows;
 
@@ -60,6 +67,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
         year: row.year,
         month: row.month === '' ? null : Number(row.month),
         title: row.title,
+        title_zh: row.title_zh,
         description: row.description,
       });
       update(key, { id: res.id, status: 'saved', dirty: false });
@@ -74,7 +82,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
     if (!row) return;
     if (!row.title.trim()) {
       if (!row.id) setRows((rs) => rs.filter((r) => r.key !== key));
-      return; // 기존 줄인데 제목 비면 편집 유지 (제목 필수)
+      return;
     }
     void saveRow(key);
     update(key, { editing: false });
@@ -98,10 +106,9 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
   const addItem = (year: number) =>
     setRows((rs) => [
       ...rs,
-      { key: newKey(), id: null, year, month: '', title: '', description: '', status: 'idle', dirty: false, editing: true },
+      { key: newKey(), id: null, year, month: '', title: '', title_zh: '', description: '', status: 'idle', dirty: false, editing: true },
     ]);
 
-  // 연도 추가 — 버튼 클릭 시 팝업으로 연도 입력받기 (사용자 요청)
   const addYearPrompt = () => {
     const input = window.prompt('추가할 연도를 입력하세요 (예: 2027)');
     if (input == null) return;
@@ -113,29 +120,11 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
     addItem(y);
   };
 
-  // 기존 항목 중문 일괄 자동번역 (재실행 가능 — 남으면 다시 누름)
-  const runTranslate = async () => {
-    if (translating) return;
-    if (!confirm('기존 연혁 항목을 중문으로 일괄 자동번역할까요? (조금 걸릴 수 있어요)')) return;
-    setTranslating(true);
-    try {
-      const r = await autoTranslateHistoryBatch();
-      alert(`중문 적용 완료: ${r.done}건 반영${r.skipped ? ` (번역 맵에 없는 ${r.skipped}건은 그대로 — 알려주면 추가할게요)` : ''}`);
-    } catch {
-      alert('적용 중 오류가 났어요. 다시 시도해주세요.');
-    } finally {
-      setTranslating(false);
-    }
-  };
-
   const years = [...new Set(rows.map((r) => r.year))].sort((a, b) => b - a);
 
   return (
     <div className="hist_mgr">
       <div className="hist_mgr_addyear">
-        <button type="button" className="admin_btn secondary" onClick={runTranslate} disabled={translating}>
-          {translating ? '번역 중…' : '기존 중문 일괄번역'}
-        </button>
         <button type="button" className="admin_btn" onClick={addYearPrompt}>
           + 연도 추가
         </button>
@@ -179,6 +168,15 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                         onBlur={() => saveRow(row.key)}
                         style={{ flex: 1, minWidth: 0 }}
                       />
+                      <input
+                        type="text"
+                        placeholder="제목 (中文, 비우면 자동)"
+                        aria-label="제목 중문"
+                        value={row.title_zh}
+                        onChange={(e) => update(row.key, { title_zh: e.target.value, dirty: true, status: 'idle' })}
+                        onBlur={() => saveRow(row.key)}
+                        style={{ flex: 1, minWidth: 0 }}
+                      />
                       <span className="hist_mgr_status">
                         {row.status === 'saving' ? '…' : row.status === 'saved' ? '✓' : row.status === 'error' ? '⚠' : ''}
                       </span>
@@ -205,7 +203,10 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
                     </div>
                   ) : (
                     <div key={row.key} className="hist_mgr_row hist_mgr_row--view">
-                      <span className="hist_mgr_text">{row.title}</span>
+                      <span className="hist_mgr_text">
+                        {row.title}
+                        {row.title_zh ? <span className="hist_mgr_text_zh"> · {row.title_zh}</span> : null}
+                      </span>
                       <button
                         type="button"
                         className="admin_btn secondary"
@@ -238,7 +239,7 @@ export default function HistoryManager({ initial }: { initial: Init[] }) {
         })
       )}
 
-      <p className="hist_mgr_hint">수정(✎)을 눌러 편집하고, 칸 밖을 클릭하면 자동 저장돼요. ✓로 편집 완료.</p>
+      <p className="hist_mgr_hint">수정(✎) → 제목·중문 입력 → 칸 밖 클릭 시 자동 저장. 중문을 비우면 번역이 자동 채워져요.</p>
     </div>
   );
 }

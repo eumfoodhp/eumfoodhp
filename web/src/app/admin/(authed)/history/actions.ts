@@ -3,7 +3,6 @@
 import { createServerSupabase } from '@/lib/supabase-server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { HISTORY_ZH } from './zh-map';
 
 export async function createHistory(formData: FormData) {
   const supabase = await createServerSupabase();
@@ -110,35 +109,31 @@ export async function deleteHistory(formData: FormData) {
    ============================================================ */
 
 // id 있으면 수정, 없으면 생성 후 새 id 반환. 줄 blur 시 호출.
+// title_zh(중문)는 입력칸 값 그대로 저장(비우면 null). 기존 53건 중문은 db/zh_content.sql 로 채움.
 export async function saveHistoryEntry(data: {
   id: number | null;
   year: number;
   month: number | null;
   title: string;
   description: string | null;
+  title_zh?: string | null;
 }): Promise<{ id: number }> {
   const supabase = await createServerSupabase();
   const year = Number(data.year);
   const title = (data.title ?? '').trim();
   const month = data.month != null && String(data.month) !== '' ? Number(data.month) : null;
   const description = (data.description ?? '').trim() || null;
+  const title_zh = (data.title_zh ?? '').trim() || null;
 
   if (!year) throw new Error('연도는 필수입니다.');
   if (!title) throw new Error('제목은 필수입니다.');
   if (month !== null && (month < 1 || month > 12)) throw new Error('월은 1~12 사이여야 합니다.');
 
   if (data.id) {
-    // 번역 맵에 중문이 있으면 적용, 없으면 기존 title_zh 보존(덮어쓰지 않음)
-    const patch: {
-      year: number;
-      month: number | null;
-      title: string;
-      description: string | null;
-      title_zh?: string;
-    } = { year, month, title, description };
-    const zh = HISTORY_ZH[title];
-    if (zh) patch.title_zh = zh;
-    const { error } = await supabase.from('history_entries').update(patch).eq('id', data.id);
+    const { error } = await supabase
+      .from('history_entries')
+      .update({ year, month, title, description, title_zh })
+      .eq('id', data.id);
     if (error) throw new Error(error.message);
     revalidatePath('/admin/history');
     revalidatePath('/about#history');
@@ -156,7 +151,7 @@ export async function saveHistoryEntry(data: {
 
   const { data: inserted, error } = await supabase
     .from('history_entries')
-    .insert({ year, month, title, description, title_zh: HISTORY_ZH[title] ?? null, sort_order })
+    .insert({ year, month, title, description, title_zh, sort_order })
     .select('id')
     .single();
   if (error) throw new Error(error.message);
@@ -174,27 +169,4 @@ export async function deleteHistoryEntry(id: number): Promise<void> {
   if (error) throw new Error(error.message);
   revalidatePath('/admin/history');
   revalidatePath('/about#history');
-}
-
-// 기존 연혁 중 중문(title_zh) 없는 항목 일괄 자동 번역. 재실행 가능(번역된 건 건너뜀).
-// 타임아웃으로 중간에 끊겨도 완료분은 저장돼 다시 누르면 이어서 번역됨.
-export async function autoTranslateHistoryBatch(): Promise<{ done: number; skipped: number }> {
-  const supabase = await createServerSupabase();
-  const { data: rows } = await supabase.from('history_entries').select('id, title, title_zh');
-  const list = (rows ?? []) as Array<{ id: number; title: string; title_zh: string | null }>;
-  let done = 0;
-  let skipped = 0;
-  for (const r of list) {
-    const zh = HISTORY_ZH[r.title];
-    if (!zh) {
-      skipped += 1; // 맵에 없는 제목 (새 항목 등)
-      continue;
-    }
-    if (r.title_zh === zh) continue; // 이미 동일
-    await supabase.from('history_entries').update({ title_zh: zh }).eq('id', r.id);
-    done += 1;
-  }
-  revalidatePath('/admin/history');
-  revalidatePath('/about#history');
-  return { done, skipped };
 }

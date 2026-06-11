@@ -552,6 +552,7 @@ a.admin_card:hover {
 .hist_mgr_status { width: 16px; flex-shrink: 0; text-align: center; font-size: 14px; color: #16A34A; }
 .hist_mgr_text { flex: 1; min-width: 0; padding: 7px 2px; font-size: 14px; color: #344054; }
 .hist_mgr_text_desc { color: #98A2B3; }
+.hist_mgr_text_zh { color: #98A2B3; font-size: 13px; }
 .hist_mgr_hint { margin: 4px 0 0; font-size: 13px; color: #98A2B3; }
 @media (max-width: 600px) {
     .hist_mgr_row { flex-wrap: wrap; }
