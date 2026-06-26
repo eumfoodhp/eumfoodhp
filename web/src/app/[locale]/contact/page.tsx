@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import NextSectionLink from '@/components/NextSectionLink';
 import SectionHeader from '@/components/SectionHeader';
-import { createServerSupabase } from '@/lib/supabase-server';
+import { getSupabaseServiceRole } from '@/lib/supabase';
 import { submitSales } from './sales/actions';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
@@ -41,7 +41,10 @@ export default async function ContactOnePage({
   const field = sp.field ?? 'subject';
   const q = (sp.q ?? '').trim();
 
-  const supabase = await createServerSupabase();
+  // contacts RLS 가 anon 을 전부 차단하므로(공개 목록 0건 버그) service key 로 읽음 — 서버 전용.
+  // ⚠️ 반드시 안전 컬럼만 select. content/email/phone/password/answer 추가 절대 금지(공개 노출됨).
+  // 비밀글은 아래 렌더에서 제목 숨김(🔒) + 작성자명 마스킹 처리.
+  const supabase = getSupabaseServiceRole();
   let query = supabase
     .from('contacts')
     .select('id, writer_name, subject, status, is_private, created_at', { count: 'exact' });
