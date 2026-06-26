@@ -558,3 +558,16 @@ a.admin_card:hover {
     .hist_mgr_row { flex-wrap: wrap; }
     .hist_mgr_row input[type="text"] { flex: 1 1 100%; }
 }
+
+/* ── 인증서 관리 ── */
+.cert_admin_hint { margin: 0 0 16px; font-size: 13px; line-height: 1.6; color: #667085; }
+.cert_admin_group { margin-bottom: 16px; }
+.cert_admin_group_title { margin: 0 0 14px; font-size: 15px; font-weight: 700; color: #344054; }
+.cert_admin_grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.cert_admin_item { border: 1px solid #ECEEF1; border-radius: 10px; padding: 12px; background: #fff; }
+.cert_admin_thumb { aspect-ratio: 3 / 4; background: #F8F9FB; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.cert_admin_thumb img { width: 100%; height: 100%; object-fit: contain; }
+.cert_admin_label { margin: 8px 0; font-size: 13px; font-weight: 600; color: #344054; }
+.cert_admin_form { display: flex; flex-direction: column; gap: 8px; }
+.cert_admin_fileinput { font-size: 12px; width: 100%; }
+.cert_admin_fileinput::file-selector-button { margin-right: 8px; padding: 5px 9px; border: 1px solid #D0D5DD; border-radius: 6px; background: #fff; cursor: pointer; font-size: 12px; }

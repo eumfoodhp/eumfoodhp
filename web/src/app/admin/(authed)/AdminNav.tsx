@@ -8,6 +8,7 @@ const ITEMS = [
   { href: '/admin/notices', label: '공지사항', icon: <NoticeIcon /> },
   { href: '/admin/press', label: '보도자료', icon: <PressIcon /> },
   { href: '/admin/history', label: '연혁', icon: <HistoryIcon /> },
+  { href: '/admin/certs', label: '인증서', icon: <CertIcon /> },
   { href: '/admin/contacts', label: '1:1 문의', icon: <ChatIcon /> },
   { href: '/admin/sales', label: '영업 문의', icon: <MailIcon /> },
 ];
@@ -74,6 +75,13 @@ function MailIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" />
+    </svg>
+  );
+}
+function CertIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="9" r="6" /><path d="M9 14.4 7.5 22l4.5-2.6 4.5 2.6-1.5-7.6" />
     </svg>
   );
 }

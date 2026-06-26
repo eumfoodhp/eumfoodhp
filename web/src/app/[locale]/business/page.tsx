@@ -14,11 +14,15 @@ import SectionHeader from '@/components/SectionHeader';
 import FacilitySection from '@/components/FacilitySection';
 import CertGrid from '@/components/CertGrid';
 import BizProcessSnake from '@/components/BizProcessSnake';
+import { getCertImageMap, certStaticPath } from '@/lib/certs';
 import '@/styles/sub.css';
 import '@/styles/board_pages.css';
 import '@/styles/business_facility.css';
 import '@/styles/business_process.css';
 import '@/styles/about_cert.css';
+
+// 인증서 이미지는 Supabase Storage 사용 → 어드민 교체가 바로 반영되게 동적 렌더
+export const revalidate = 0;
 
 // 제조공정 — 카테고리별 스텝(한/영/중 + 아이콘 prefix). 아이콘: /images/sub/process/{iconPrefix}{n}.png
 const PROCESS = [
@@ -93,23 +97,25 @@ type Cat = {
 };
 
 const HACCP_CERTS = [
-  { key: 'cert_name_1', img: '/images/sub/cert/cert-01-pickles.png' },
-  { key: 'cert_name_2', img: '/images/sub/cert/cert-02-braise.png' },
-  { key: 'cert_name_3', img: '/images/sub/cert/cert-03-salted.png' },
-  { key: 'cert_name_4', img: '/images/sub/cert/cert-04-jeotgal.png' },
-  { key: 'cert_name_5', img: '/images/sub/cert/cert-05-sauce.png' },
-  { key: 'cert_name_6', img: '/images/sub/cert/cert-06-mix.png' },
-  { key: 'cert_name_7', img: '/images/sub/cert/cert-07-tea.png' },
+  { key: 'cert_name_1', file: 'cert-01-pickles.png' },
+  { key: 'cert_name_2', file: 'cert-02-braise.png' },
+  { key: 'cert_name_3', file: 'cert-03-salted.png' },
+  { key: 'cert_name_4', file: 'cert-04-jeotgal.png' },
+  { key: 'cert_name_5', file: 'cert-05-sauce.png' },
+  { key: 'cert_name_6', file: 'cert-06-mix.png' },
+  { key: 'cert_name_7', file: 'cert-07-tea.png' },
 ];
 const OTHER_CERTS = [
-  { key: 'cert_name_9', img: '/images/sub/cert/cert-09-master.png' }, // 전통식품마스터
-  { key: 'cert_name_8', img: '/images/sub/cert/cert-08-tax.png' },    // 성실납세자
+  { key: 'cert_name_9', file: 'cert-09-master.png' }, // 전통식품마스터
+  { key: 'cert_name_8', file: 'cert-08-tax.png' },    // 성실납세자
 ];
 
 export default async function BusinessOnePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const certMap = await getCertImageMap();
+  const certImg = (file: string) => certMap[file] ?? certStaticPath(file);
 
   const isZh = locale === 'zh';
 
@@ -177,7 +183,7 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
                 </h3>
                 <div className="haccp_icon_wrap">
                   <img
-                    src="/images/sub/cert/cert-haccp-mark.png"
+                    src={certImg('cert-haccp-mark.png')}
                     alt="HACCP MAFRA 인증 마크"
                     className="haccp_icon"
                     width="107"
@@ -199,11 +205,11 @@ export default async function BusinessOnePage({ params }: { params: Promise<{ lo
               <div className="cert_bottom">
                 {/* HACCP 라벨 제거 (사용자 요청) */}
                 <CertGrid
-                  items={HACCP_CERTS.map((c) => ({ key: c.key, img: c.img, label: t(c.key) }))}
+                  items={HACCP_CERTS.map((c) => ({ key: c.key, img: certImg(c.file), label: t(c.key) }))}
                 />
                 <h4 className="cert_group_title cert_group_title--other">{t('cert_group_other')}</h4>
                 <CertGrid
-                  items={OTHER_CERTS.map((c) => ({ key: c.key, img: c.img, label: t(c.key) }))}
+                  items={OTHER_CERTS.map((c) => ({ key: c.key, img: certImg(c.file), label: t(c.key) }))}
                 />
               </div>
             </div>
