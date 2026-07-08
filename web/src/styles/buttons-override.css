@@ -1407,6 +1407,37 @@ html[lang="zh"] .ov_title {
     letter-spacing: -0.4px !important;
 }
 
+/* ── 홈 ov 메인 타이틀 — 모바일 좌/우 잘림 수정 ──
+   데스크탑은 [제목1][육각][제목2] 3열이 스크롤로 가운데 수렴하는 구조.
+   모바일(≤768)에서 그 3열/translate 가 안 풀려 "진심을 다한 연결,"은 왼쪽,
+   "함께 나누는 성장의 가치"는 오른쪽으로 화면 밖으로 잘리던 것 →
+   세로 스택 + 셀 풀폭 + 중앙정렬 + transform 해제로 확정.
+   (스택 전환 자체는 main.css block1 @media ≤1024 이므로 범위 일치) */
+@media (max-width: 1024px) {
+    .overview_section .ov_title_wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        column-gap: 0 !important;
+    }
+    .overview_section .ov_title_cell,
+    .overview_section .ov_title_cell--left,
+    .overview_section .ov_title_cell--right {
+        width: 100% !important;
+        justify-content: center !important;
+        overflow: visible !important;
+        transform: none !important;
+    }
+    .overview_section .ov_title,
+    .overview_section .ov_title.left,
+    .overview_section .ov_title.right {
+        transform: none !important;
+        text-align: center !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+}
+
 html[lang="zh"] .ov_sub {
     letter-spacing: 0.04em;
 }
